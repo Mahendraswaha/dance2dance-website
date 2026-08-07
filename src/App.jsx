@@ -66,11 +66,15 @@ const Hero = () => {
   return (
     <section ref={heroRef} className="relative h-[100dvh] w-full flex items-end pb-24 md:pb-32 px-6 lg:px-12">
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1547153760-18fc86324498?q=80&w=2000&auto=format&fit=crop" 
-          alt="Bailarina no escuro com foco de luz" 
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
           className="w-full h-full object-cover opacity-60"
-        />
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
       </div>
       
