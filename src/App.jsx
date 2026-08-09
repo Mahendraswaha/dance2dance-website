@@ -160,13 +160,19 @@ const HeroSequence = () => {
       tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.25);
       
       // 2. O bloco de texto inteiro sobe vindo de baixo da tela
-      // Volta a vir exatamente do limite inferior da tela (window.innerHeight)
-      // Mas agora com 'power3.out' e duração menor (0.4), o que faz ele subir MUITO mais rápido 
-      // logo no começo do scroll e depois estacionar suavemente no centro.
       tl.fromTo('.seq-block-rest', 
         { y: () => window.innerHeight, opacity: 1 },
         { y: 0, opacity: 1, ease: 'power3.out', duration: 0.4 }, 
         0.25
+      );
+      // O bloco some para dar espaço à última frase
+      tl.to('.seq-block-rest', { opacity: 0, y: -50, duration: 0.05 }, 0.7);
+
+      // 3. A última frase aparece no centro (assim como a primeira)
+      tl.fromTo('.seq-text-last', 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.05 }, 
+        0.75
       );
       
       // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
@@ -280,10 +286,13 @@ const HeroSequence = () => {
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             Dance2Dance cria as condições para que as pessoas se encontrem.
           </p>
+      </div>
 
-          <h2 className="font-drama italic text-3xl md:text-4xl text-background leading-tight mt-2">
-            A dança e o movimento fazem o resto.
-          </h2>
+      {/* 3. Última frase (Centralizada com destaque dourado) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
+        <h2 className="seq-text-last absolute font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight">
+          A <span className="text-accent">dança e o movimento</span> fazem o resto.
+        </h2>
       </div>
     </section>
   );
