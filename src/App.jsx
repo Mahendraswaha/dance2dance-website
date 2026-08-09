@@ -160,11 +160,11 @@ const HeroSequence = () => {
       tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.25);
       
       // 2. O bloco de texto inteiro sobe vindo de baixo da tela
-      // Começa a subir no 0.25 (exatamente quando a primeira frase começa a sumir)
+      // Começa um pouco antes da primeira frase sumir (0.22), partindo de mais perto (y: 300) com fade-in
       tl.fromTo('.seq-block-rest', 
-        { y: () => window.innerHeight, opacity: 1 },
-        { y: 0, ease: 'none', duration: 0.75 }, 
-        0.25
+        { y: 300, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'power3.out', duration: 0.78 }, 
+        0.22
       );
       
       // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
