@@ -275,7 +275,7 @@ const HeroSequence = () => {
       
       {/* 1. Primeira frase (Centralizada como o original) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
-        <h2 className="seq-text-1 absolute font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
+        <h2 className="seq-text-1 font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
           Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
         </h2>
       </div>
@@ -301,7 +301,7 @@ const HeroSequence = () => {
 
       {/* 3. Última frase (Centralizada com destaque dourado) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
-        <h2 className="seq-text-last absolute font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight">
+        <h2 className="seq-text-last font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight">
           A <span className="text-accent">dança e o movimento</span> fazem o resto.
         </h2>
       </div>
