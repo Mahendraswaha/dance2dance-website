@@ -19,7 +19,7 @@ const Navbar = () => {
             gsap.to(logoRef.current, { height: '2rem', duration: 0.3, ease: 'power2.out' });
           } else if (self.progress === 0) {
             gsap.to(navRef.current, { backgroundColor: 'transparent', borderColor: 'transparent', duration: 0.3, backdropFilter: 'blur(0px)' });
-            gsap.to(logoRef.current, { height: '5rem', duration: 0.3, ease: 'power2.out' });
+            gsap.to(logoRef.current, { height: '8rem', duration: 0.3, ease: 'power2.out' });
           }
         }
       });
@@ -31,7 +31,7 @@ const Navbar = () => {
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
       <div ref={navRef} className="px-6 py-4 rounded-full border border-transparent transition-colors flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-20 object-contain" />
+          <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-32 object-contain" />
         </div>
         <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80">
           <a href="#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">Workshops</a>
