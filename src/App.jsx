@@ -35,16 +35,16 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
-      <div ref={navRef} className="px-6 py-4 rounded-full border border-transparent transition-colors flex items-center justify-between">
+      <div ref={navRef} className="px-4 md:px-6 py-3 md:py-4 rounded-full border border-transparent transition-colors flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-20 object-contain" />
+          <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-10 md:h-20 object-contain" />
         </div>
         <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80">
           <a href="#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">Workshops</a>
           <a href="#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">Projeto Social</a>
           <a href="#agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">Agenda</a>
         </div>
-        <button className="btn-magnetic bg-accent text-primary px-6 py-2 rounded-full font-heading font-bold text-sm">
+        <button className="btn-magnetic bg-accent text-primary px-4 md:px-6 py-2 rounded-full font-heading font-bold text-xs md:text-sm whitespace-nowrap">
           <span className="relative z-10">Inscreva-se</span>
         </button>
       </div>
@@ -256,8 +256,8 @@ const HeroSequence = () => {
       {/* Texto do Hero */}
       <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
         <h1 className="flex flex-col gap-2">
-          <span className="hero-elem font-heading font-bold text-4xl md:text-5xl text-background/90 tracking-tight">O movimento encontra a</span>
-          <span className="hero-elem font-drama italic text-6xl md:text-8xl text-accent leading-none">Transformação.</span>
+          <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">O movimento encontra a</span>
+          <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-8xl text-accent leading-none">Transformação.</span>
         </h1>
         <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
           A dança e o movimento como ferramentas de expressão, bem-estar e transformação social.
@@ -509,7 +509,7 @@ const Philosophy = () => {
         <p className="phil-line font-heading font-semibold text-background/50 text-xl md:text-2xl tracking-tight">
           A maioria dos projetos foca em: <span className="text-background/80">técnica isolada</span>.
         </p>
-        <h2 className="phil-line font-drama italic text-4xl md:text-7xl leading-tight text-background">
+        <h2 className="phil-line font-drama italic text-3xl md:text-7xl leading-tight text-background">
           Nós focamos na <br/>
           <span className="text-accent">transformação social.</span>
         </h2>
@@ -581,7 +581,7 @@ const Action = () => {
   return (
     <section id="agenda" className="py-32 px-6 lg:px-12 bg-background text-primary">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="font-drama italic text-4xl md:text-7xl mb-16 md:mb-24 text-center">Inicie sua Jornada</h2>
+        <h2 className="font-drama italic text-3xl md:text-7xl mb-16 md:mb-24 text-center">Inicie sua Jornada</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {/* Tier 1 */}
