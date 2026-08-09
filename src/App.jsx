@@ -6,8 +6,8 @@ import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'luc
 gsap.registerPlugin(ScrollTrigger);
 
 const Brand = ({ className = '' }) => (
-  <span className={`font-batang font-normal ${className}`}>
-    Dance<span className="text-accent inline-block" style={{ transform: 'scale(1.05)', transformOrigin: 'bottom' }}>2</span>Dance
+  <span className={`font-batang font-normal text-[1.15em] ${className}`}>
+    Dance<span className="text-accent">2</span>Dance
   </span>
 );
 

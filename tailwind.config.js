@@ -17,7 +17,7 @@ export default {
         heading: ['Inter', 'sans-serif'],
         drama: ['"Playfair Display"', 'serif'],
         data: ['"JetBrains Mono"', 'monospace'],
-        batang: ['Batang', 'Georgia', 'serif'],
+        batang: ['Batang', '"Times New Roman"', 'serif'],
       },
     },
   },
