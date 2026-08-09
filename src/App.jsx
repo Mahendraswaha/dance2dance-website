@@ -173,6 +173,9 @@ const HeroSequence = () => {
           );
         }
       });
+      
+      // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
+      tl.to('.dark-overlay', { opacity: 0, duration: 0.2 }, 0.8);
 
     }, containerRef);
 
@@ -254,7 +257,7 @@ const HeroSequence = () => {
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      <div className="dark-overlay absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Textos da Sequência (Surgem depois) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
