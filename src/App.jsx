@@ -186,10 +186,15 @@ const HeroSequence = () => {
 
     }, containerRef);
 
+    let lastWidth = window.innerWidth;
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      render(animationData.frame);
+      // No mobile, ignorar mudanças de altura (causadas pela barra de endereço)
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        render(animationData.frame);
+      }
     };
     window.addEventListener('resize', handleResize);
 
@@ -218,11 +223,11 @@ const HeroSequence = () => {
   }, [isLoaded]);
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full bg-primary overflow-hidden">
+    <section ref={containerRef} className="relative h-[100dvh] w-full bg-primary overflow-hidden">
       
       {/* Fallback de carregamento */}
       {!isLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-primary z-20">
+        <div className="absolute inset-0 flex items-center justify-center bg-primary z-0">
           <div className="w-12 h-12 rounded-full border-4 border-accent border-t-transparent animate-spin" />
         </div>
       )}
@@ -504,7 +509,7 @@ const Philosophy = () => {
         <p className="phil-line font-heading font-semibold text-background/50 text-xl md:text-2xl tracking-tight">
           A maioria dos projetos foca em: <span className="text-background/80">técnica isolada</span>.
         </p>
-        <h2 className="phil-line font-drama italic text-5xl md:text-7xl leading-tight text-background">
+        <h2 className="phil-line font-drama italic text-4xl md:text-7xl leading-tight text-background">
           Nós focamos na <br/>
           <span className="text-accent">transformação social.</span>
         </h2>
@@ -576,7 +581,7 @@ const Action = () => {
   return (
     <section id="agenda" className="py-32 px-6 lg:px-12 bg-background text-primary">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="font-drama italic text-5xl md:text-7xl mb-24 text-center">Inicie sua Jornada</h2>
+        <h2 className="font-drama italic text-4xl md:text-7xl mb-16 md:mb-24 text-center">Inicie sua Jornada</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {/* Tier 1 */}
@@ -672,7 +677,7 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="bg-primary text-background min-h-screen">
+    <div className="bg-primary text-background min-h-[100dvh] overflow-x-hidden">
       <Navbar />
       <HeroSequence />
       <Features />
