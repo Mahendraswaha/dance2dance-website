@@ -48,8 +48,12 @@ const Navbar = () => {
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
     const ctx = gsap.context(() => {
       gsap.from('.hero-elem', {
         y: 40,
@@ -67,6 +71,7 @@ const Hero = () => {
     <section ref={heroRef} className="relative h-[100dvh] w-full flex items-end pb-24 md:pb-32 px-6 lg:px-12">
       <div className="absolute inset-0 z-0">
         <video 
+          ref={videoRef}
           autoPlay 
           loop 
           muted 
