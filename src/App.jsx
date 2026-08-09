@@ -31,7 +31,13 @@ const Navbar = () => {
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
       <div ref={navRef} className="px-6 py-4 rounded-full border border-transparent transition-colors flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-32 object-contain" />
+          <img 
+            ref={logoRef} 
+            src="/logo-dance2dance.png" 
+            alt="Dance2Dance Logo" 
+            className="h-32 object-contain"
+            style={{ imageRendering: '-webkit-optimize-contrast', transform: 'translateZ(0)' }}
+          />
         </div>
         <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80">
           <a href="#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">Workshops</a>
