@@ -5,6 +5,12 @@ import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'luc
 
 gsap.registerPlugin(ScrollTrigger);
 
+const Brand = () => (
+  <span className="font-batang">
+    Dance<span className="text-accent">2</span>Dance
+  </span>
+);
+
 const Navbar = () => {
   const navRef = useRef(null);
   const logoRef = useRef(null);
@@ -272,7 +278,7 @@ const HeroSequence = () => {
       {/* 2. Restante do texto (Alinhado à esquerda como o Hero) */}
       <div className="seq-block-rest absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-center px-6 lg:px-12 pointer-events-none gap-6 opacity-0">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
+            <strong className="text-background"><Brand /></strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
@@ -284,7 +290,7 @@ const HeroSequence = () => {
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            Dance2Dance cria as condições para que as pessoas se encontrem.
+            <Brand /> cria as condições para que as pessoas se encontrem.
           </p>
       </div>
 
