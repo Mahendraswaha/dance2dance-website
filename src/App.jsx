@@ -165,14 +165,17 @@ const HeroSequence = () => {
       );
       tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.25);
       
-      // 2. O bloco de texto inteiro sobe vindo de baixo da tela
-      tl.fromTo('.seq-block-rest', 
-        { y: () => window.innerHeight, opacity: 1 },
-        { y: 0, opacity: 1, ease: 'power3.out', duration: 0.4 }, 
+      // 2. O bloco de texto rola continuamente (como créditos de filme)
+      // Ele começa fisicamente abaixo da tela (top-full) e rola até sair completamente pelo topo
+      tl.to('.seq-block-rest', 
+        { 
+          yPercent: -100,
+          y: () => -window.innerHeight,
+          ease: 'none', 
+          duration: 0.5 
+        }, 
         0.25
       );
-      // O bloco some para dar espaço à última frase
-      tl.to('.seq-block-rest', { opacity: 0, y: -50, duration: 0.05 }, 0.7);
 
       // 3. A última frase aparece no centro (assim como a primeira)
       tl.fromTo('.seq-text-last', 
@@ -280,8 +283,8 @@ const HeroSequence = () => {
         </h2>
       </div>
 
-      {/* 2. Restante do texto (Alinhado à esquerda como o Hero) */}
-      <div className="seq-block-rest absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-center px-6 lg:px-12 pointer-events-none gap-6 opacity-0">
+      {/* 2. Restante do texto (Rola continuamente) */}
+      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <Brand className="text-background" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
           </p>
