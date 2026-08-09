@@ -151,16 +151,21 @@ const HeroSequence = () => {
         }
       }, 0);
       
-      // Mapeamento dos textos do manifesto ao longo da timeline do canvas
-      // O bloco de texto inteiro sobe e aparece
-      tl.fromTo('.seq-block', 
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, duration: 0.1 }, 
+      // 1. A primeira frase original aparece no centro
+      tl.fromTo('.seq-text-1', 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.05 }, 
         0.1
       );
+      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.25);
       
-      // Efeito parallax muito sutil de subida enquanto a imagem anima
-      tl.to('.seq-block', { y: -80, ease: 'none', duration: 0.8 }, 0.2);
+      // 2. O bloco de texto inteiro sobe vindo de baixo da tela
+      // O bloco entra a partir do 0.3 e vai subindo até o final da timeline
+      tl.fromTo('.seq-block-rest', 
+        { y: () => window.innerHeight, opacity: 1 },
+        { y: 0, ease: 'none', duration: 0.7 }, 
+        0.3
+      );
       
       // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
       tl.to('.dark-overlay', { opacity: 0, duration: 0.2 }, 0.8);
@@ -248,12 +253,16 @@ const HeroSequence = () => {
       <div className="dark-overlay absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Textos da Sequência (Surgem depois) */}
-      <div className="absolute inset-0 flex items-center px-6 lg:px-24 z-10 pointer-events-none">
-        <div className="seq-block flex flex-col items-start text-left max-w-2xl gap-6 opacity-0">
-          <h2 className="font-heading font-bold text-3xl md:text-5xl text-background/90 leading-tight">
-            Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
-          </h2>
-          
+      
+      {/* 1. Primeira frase (Centralizada como o original) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
+        <h2 className="seq-text-1 absolute font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
+          Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
+        </h2>
+      </div>
+
+      {/* 2. Restante do texto (Alinhado à esquerda como o Hero) */}
+      <div className="seq-block-rest absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-center px-6 lg:px-12 pointer-events-none gap-6 opacity-0">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
           </p>
@@ -273,7 +282,6 @@ const HeroSequence = () => {
           <h2 className="font-drama italic text-3xl md:text-4xl text-background leading-tight mt-2">
             A dança e o movimento fazem o resto.
           </h2>
-        </div>
       </div>
     </section>
   );
