@@ -5,9 +5,9 @@ import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'luc
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Brand = () => (
-  <span className="font-batang">
-    Dance<span className="text-accent">2</span>Dance
+const Brand = ({ className = '' }) => (
+  <span className={`font-batang font-normal ${className}`}>
+    Dance<span className="text-accent inline-block" style={{ transform: 'scale(1.05)', transformOrigin: 'bottom' }}>2</span>Dance
   </span>
 );
 
@@ -283,7 +283,7 @@ const HeroSequence = () => {
       {/* 2. Restante do texto (Alinhado à esquerda como o Hero) */}
       <div className="seq-block-rest absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-center px-6 lg:px-12 pointer-events-none gap-6 opacity-0">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <strong className="text-background"><Brand /></strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
+            <Brand className="text-background" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
