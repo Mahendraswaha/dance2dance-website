@@ -46,64 +46,11 @@ const Navbar = () => {
   );
 };
 
-const Hero = () => {
-  const heroRef = useRef(null);
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
-    }
-    const ctx = gsap.context(() => {
-      gsap.from('.hero-elem', {
-        y: 40,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.08,
-        ease: 'power3.out',
-        delay: 0.2
-      });
-    }, heroRef);
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <section ref={heroRef} className="relative h-[100dvh] w-full flex items-end pb-24 md:pb-32 px-6 lg:px-12">
-      <div className="absolute inset-0 z-0">
-        <video 
-          ref={videoRef}
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="w-full h-full object-cover opacity-60"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
-      </div>
-      
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start">
-        <h1 className="flex flex-col gap-2">
-          <span className="hero-elem font-heading font-bold text-4xl md:text-5xl text-background/90 tracking-tight">O movimento encontra a</span>
-          <span className="hero-elem font-drama italic text-6xl md:text-8xl text-accent leading-none">Transformação.</span>
-        </h1>
-        <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
-          A dança e o movimento como ferramentas de expressão, bem-estar e transformação social.
-        </p>
-        <div className="hero-elem mt-10">
-          <button className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2">
-            <span className="relative z-10 flex items-center gap-2">Explorar Workshops <ArrowRight size={20}/></span>
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const ImageSequence = () => {
+const HeroSequence = () => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const heroContentRef = useRef(null);
+  const videoRef = useRef(null);
   const [images, setImages] = useState([]);
   const frameCount = 240;
 
@@ -126,12 +73,17 @@ const ImageSequence = () => {
   }, []);
 
   useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
+  useEffect(() => {
     if (images.length === 0 || !canvasRef.current || !containerRef.current) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    // Configura canvas para alta resolução baseado no container pai
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -155,45 +107,63 @@ const ImageSequence = () => {
     const animationData = { frame: 0 };
     
     const gsapCtx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top top',
-        end: '+=400%', // Animação dura 4 vezes a altura da tela
-        pin: true,
-        scrub: 0.5, // Suavidade ao seguir o mouse
-        onUpdate: (self) => {
-          const frameIndex = Math.min(
-            frameCount - 1,
-            Math.floor(self.progress * frameCount)
-          );
-          if (animationData.frame !== frameIndex) {
-            animationData.frame = frameIndex;
-            // Usa requestAnimationFrame para renderizar perfeitamente no ciclo
-            requestAnimationFrame(() => render(frameIndex));
-          }
+      
+      // Animação inicial de entrada
+      gsap.from('.hero-elem', {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.08,
+        ease: 'power3.out',
+        delay: 0.2
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=400%', 
+          pin: true,
+          scrub: 0.5,
         }
       });
       
-      // Animar os textos (surgindo e sumindo)
-      gsap.fromTo('.seq-text-1', 
+      // Quando começa a rolar, o video some suavemente e o canvas aparece
+      tl.to(videoRef.current, { opacity: 0, duration: 0.05 }, 0);
+      
+      // O texto principal do hero sobe e some
+      tl.to(heroContentRef.current, { y: -200, opacity: 0, duration: 0.15 }, 0);
+
+      // Reprodução do canvas frame a frame
+      tl.to(animationData, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        duration: 1,
+        onUpdate: () => {
+          requestAnimationFrame(() => render(animationData.frame));
+        }
+      }, 0);
+      
+      // Entrada e saída dos textos adicionais
+      tl.fromTo('.seq-text-1', 
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, scrollTrigger: { trigger: containerRef.current, start: 'top top', end: '+=100%', scrub: 1 } }
+        { opacity: 1, y: 0, duration: 0.15 }, 0.2
       );
-      gsap.to('.seq-text-1', 
-        { opacity: 0, y: -50, scrollTrigger: { trigger: containerRef.current, start: '+=100%', end: '+=150%', scrub: 1 } }
+      tl.to('.seq-text-1', 
+        { opacity: 0, y: -50, duration: 0.15 }, 0.45
       );
       
-      gsap.fromTo('.seq-text-2', 
+      tl.fromTo('.seq-text-2', 
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, scrollTrigger: { trigger: containerRef.current, start: '+=150%', end: '+=250%', scrub: 1 } }
+        { opacity: 1, y: 0, duration: 0.15 }, 0.6
       );
-      gsap.to('.seq-text-2', 
-        { opacity: 0, y: -50, scrollTrigger: { trigger: containerRef.current, start: '+=250%', end: '+=300%', scrub: 1 } }
+      tl.to('.seq-text-2', 
+        { opacity: 0, y: -50, duration: 0.15 }, 0.85
       );
-      
+
     }, containerRef);
 
-    // Ajusta o canvas se a janela mudar de tamanho
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -209,23 +179,56 @@ const ImageSequence = () => {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full bg-primary overflow-hidden">
-      {/* Loading state visual fallback */}
+      
+      {/* Fallback de carregamento */}
       {images.length < frameCount && (
         <div className="absolute inset-0 flex items-center justify-center bg-primary z-20">
           <div className="w-12 h-12 rounded-full border-4 border-accent border-t-transparent animate-spin" />
         </div>
       )}
       
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 z-0 flex items-center justify-center">
         <canvas 
           ref={canvasRef} 
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
+        
+        {/* Vídeo do Hero em loop (frame 1 da animação essencialmente) */}
+        <video 
+          ref={videoRef}
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
       </div>
-      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
       
+      {/* Texto do Hero */}
+      <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
+        <h1 className="flex flex-col gap-2">
+          <span className="hero-elem font-heading font-bold text-4xl md:text-5xl text-background/90 tracking-tight">O movimento encontra a</span>
+          <span className="hero-elem font-drama italic text-6xl md:text-8xl text-accent leading-none">Transformação.</span>
+        </h1>
+        <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
+          A dança e o movimento como ferramentas de expressão, bem-estar e transformação social.
+        </p>
+        <div className="hero-elem mt-10 pointer-events-auto">
+          <button className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2">
+            <span className="relative z-10 flex items-center gap-2">Explorar Workshops <ArrowRight size={20}/></span>
+          </button>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+
+      {/* Textos da Sequência (Surgem depois) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10 pointer-events-none">
-        <h2 className="seq-text-1 absolute font-heading font-bold text-4xl md:text-6xl text-background">
+        <h2 className="seq-text-1 absolute font-heading font-bold text-4xl md:text-6xl text-background opacity-0">
           Descubra a Arte <br/><span className="text-accent italic font-drama">do Movimento</span>
         </h2>
         <h2 className="seq-text-2 absolute opacity-0 font-heading font-bold text-4xl md:text-6xl text-background">
@@ -606,8 +609,7 @@ export default function App() {
   return (
     <div className="bg-primary text-background min-h-screen">
       <Navbar />
-      <Hero />
-      <ImageSequence />
+      <HeroSequence />
       <Features />
       <Philosophy />
       <Protocol />
