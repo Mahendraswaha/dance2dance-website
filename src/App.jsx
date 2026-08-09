@@ -122,45 +122,48 @@ const HeroSequence = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=400%', 
+          end: '+=800%', 
           pin: true,
           scrub: 0.5,
         }
       });
       
-      // Quando começa a rolar, o video some suavemente e o canvas aparece
+      // Quando começa a rolar, o video some suavemente
       tl.to(videoRef.current, { opacity: 0, duration: 0.05 }, 0);
       
       // O texto principal do hero sobe e some
-      tl.to(heroContentRef.current, { y: -200, opacity: 0, duration: 0.15 }, 0);
+      tl.to(heroContentRef.current, { y: -200, opacity: 0, duration: 0.1 }, 0);
 
       // Reprodução do canvas frame a frame
       tl.to(animationData, {
         frame: frameCount - 1,
         snap: "frame",
         ease: "none",
-        duration: 1,
+        duration: 1, // timeline normalizada
         onUpdate: () => {
           requestAnimationFrame(() => render(animationData.frame));
         }
       }, 0);
       
-      // Entrada e saída dos textos adicionais
-      tl.fromTo('.seq-text-1', 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.15 }, 0.2
-      );
-      tl.to('.seq-text-1', 
-        { opacity: 0, y: -50, duration: 0.15 }, 0.45
-      );
+      // Mapeamento dos textos do manifesto ao longo da timeline do canvas
+      // Cada bloco entra (fade in + sobe) e sai (fade out + sobe)
+      const blocks = [
+        '.seq-text-1', '.seq-text-2', '.seq-text-3', 
+        '.seq-text-4', '.seq-text-5', '.seq-text-6'
+      ];
       
-      tl.fromTo('.seq-text-2', 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.15 }, 0.6
-      );
-      tl.to('.seq-text-2', 
-        { opacity: 0, y: -50, duration: 0.15 }, 0.85
-      );
+      // 0.1 (início após o hero sumir) até 1.0. 
+      // Temos 6 blocos. 0.9 de espaço / 6 blocos = 0.15 de espaço por bloco.
+      blocks.forEach((block, index) => {
+        const startPoint = 0.1 + (index * 0.14);
+        tl.fromTo(block, 
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 0.05 }, startPoint
+        );
+        tl.to(block, 
+          { opacity: 0, y: -50, duration: 0.05 }, startPoint + 0.09
+        );
+      });
 
     }, containerRef);
 
@@ -227,62 +230,30 @@ const HeroSequence = () => {
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Textos da Sequência (Surgem depois) */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10 pointer-events-none">
-        <h2 className="seq-text-1 absolute font-heading font-bold text-4xl md:text-6xl text-background opacity-0">
-          Descubra a Arte <br/><span className="text-accent italic font-drama">do Movimento</span>
-        </h2>
-        <h2 className="seq-text-2 absolute opacity-0 font-heading font-bold text-4xl md:text-6xl text-background">
-          Conecte-se com <br/><span className="text-accent italic font-drama">seu corpo</span>
-        </h2>
-      </div>
-    </section>
-  );
-};
-
-const Manifesto = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.manifesto-text', {
-        y: 40,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        }
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <section ref={containerRef} className="py-24 md:py-40 px-6 lg:px-12 bg-primary">
-      <div className="max-w-4xl mx-auto flex flex-col gap-10 md:gap-14">
-        <h2 className="manifesto-text font-heading font-bold text-4xl md:text-6xl text-background/90 leading-tight">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
+        <h2 className="seq-text-1 absolute font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
           Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
         </h2>
         
-        <div className="flex flex-col gap-6 text-xl md:text-3xl text-background/70 font-heading leading-relaxed">
-          <p className="manifesto-text">
-            <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
-          </p>
-          <p className="manifesto-text">
-            O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
-          </p>
-          <p className="manifesto-text">
-            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
-          </p>
-          <p className="manifesto-text">
-            Dance2Dance cria as condições para que as pessoas se encontrem.
-          </p>
-          <p className="manifesto-text font-drama italic text-4xl md:text-6xl text-background mt-4">
-            A dança e o movimento fazem o resto.
-          </p>
-        </div>
+        <p className="seq-text-2 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
+          <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
+        </p>
+
+        <p className="seq-text-3 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
+          O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
+        </p>
+
+        <p className="seq-text-4 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
+          A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
+        </p>
+
+        <p className="seq-text-5 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
+          Dance2Dance cria as condições para que as pessoas se encontrem.
+        </p>
+
+        <h2 className="seq-text-6 absolute opacity-0 font-drama italic text-4xl md:text-6xl text-background max-w-4xl leading-tight mt-4">
+          A dança e o movimento fazem o resto.
+        </h2>
       </div>
     </section>
   );
@@ -659,7 +630,6 @@ export default function App() {
     <div className="bg-primary text-background min-h-screen">
       <Navbar />
       <HeroSequence />
-      <Manifesto />
       <Features />
       <Philosophy />
       <Protocol />
