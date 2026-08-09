@@ -239,6 +239,55 @@ const HeroSequence = () => {
   );
 };
 
+const Manifesto = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.manifesto-text', {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        }
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="py-24 md:py-40 px-6 lg:px-12 bg-primary">
+      <div className="max-w-4xl mx-auto flex flex-col gap-10 md:gap-14">
+        <h2 className="manifesto-text font-heading font-bold text-4xl md:text-6xl text-background/90 leading-tight">
+          Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
+        </h2>
+        
+        <div className="flex flex-col gap-6 text-xl md:text-3xl text-background/70 font-heading leading-relaxed">
+          <p className="manifesto-text">
+            <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
+          </p>
+          <p className="manifesto-text">
+            O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
+          </p>
+          <p className="manifesto-text">
+            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
+          </p>
+          <p className="manifesto-text">
+            Dance2Dance cria as condições para que as pessoas se encontrem.
+          </p>
+          <p className="manifesto-text font-drama italic text-4xl md:text-6xl text-background mt-4">
+            A dança e o movimento fazem o resto.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Shuffler Card - Be The Dance
 const CardShuffler = () => {
   const [cards, setCards] = useState([
@@ -610,6 +659,7 @@ export default function App() {
     <div className="bg-primary text-background min-h-screen">
       <Navbar />
       <HeroSequence />
+      <Manifesto />
       <Features />
       <Philosophy />
       <Protocol />
