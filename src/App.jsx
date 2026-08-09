@@ -101,6 +101,141 @@ const Hero = () => {
   );
 };
 
+const ImageSequence = () => {
+  const canvasRef = useRef(null);
+  const containerRef = useRef(null);
+  const [images, setImages] = useState([]);
+  const frameCount = 240;
+
+  useEffect(() => {
+    const loadedImages = [];
+    let loadedCount = 0;
+    
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      const frameNumber = i.toString().padStart(3, '0');
+      img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === frameCount) {
+          setImages(loadedImages);
+        }
+      };
+      loadedImages.push(img);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (images.length === 0 || !canvasRef.current || !containerRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Configura canvas para alta resolução baseado no container pai
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const render = (index) => {
+      if (images[index]) {
+        const img = images[index];
+        const hRatio = canvas.width / img.width;
+        const vRatio = canvas.height / img.height;
+        const ratio = Math.max(hRatio, vRatio);
+        const centerShift_x = (canvas.width - img.width * ratio) / 2;
+        const centerShift_y = (canvas.height - img.height * ratio) / 2;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, img.width, img.height,
+          centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+      }
+    };
+
+    render(0);
+
+    const animationData = { frame: 0 };
+    
+    const gsapCtx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top top',
+        end: '+=400%', // Animação dura 4 vezes a altura da tela
+        pin: true,
+        scrub: 0.5, // Suavidade ao seguir o mouse
+        onUpdate: (self) => {
+          const frameIndex = Math.min(
+            frameCount - 1,
+            Math.floor(self.progress * frameCount)
+          );
+          if (animationData.frame !== frameIndex) {
+            animationData.frame = frameIndex;
+            // Usa requestAnimationFrame para renderizar perfeitamente no ciclo
+            requestAnimationFrame(() => render(frameIndex));
+          }
+        }
+      });
+      
+      // Animar os textos (surgindo e sumindo)
+      gsap.fromTo('.seq-text-1', 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, scrollTrigger: { trigger: containerRef.current, start: 'top top', end: '+=100%', scrub: 1 } }
+      );
+      gsap.to('.seq-text-1', 
+        { opacity: 0, y: -50, scrollTrigger: { trigger: containerRef.current, start: '+=100%', end: '+=150%', scrub: 1 } }
+      );
+      
+      gsap.fromTo('.seq-text-2', 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, scrollTrigger: { trigger: containerRef.current, start: '+=150%', end: '+=250%', scrub: 1 } }
+      );
+      gsap.to('.seq-text-2', 
+        { opacity: 0, y: -50, scrollTrigger: { trigger: containerRef.current, start: '+=250%', end: '+=300%', scrub: 1 } }
+      );
+      
+    }, containerRef);
+
+    // Ajusta o canvas se a janela mudar de tamanho
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      render(animationData.frame);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      gsapCtx.revert();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [images]);
+
+  return (
+    <section ref={containerRef} className="relative h-screen w-full bg-primary overflow-hidden">
+      {/* Loading state visual fallback */}
+      {images.length < frameCount && (
+        <div className="absolute inset-0 flex items-center justify-center bg-primary z-20">
+          <div className="w-12 h-12 rounded-full border-4 border-accent border-t-transparent animate-spin" />
+        </div>
+      )}
+      
+      <div className="absolute inset-0 flex items-center justify-center">
+        <canvas 
+          ref={canvasRef} 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10 pointer-events-none">
+        <h2 className="seq-text-1 absolute font-heading font-bold text-4xl md:text-6xl text-background">
+          Descubra a Arte <br/><span className="text-accent italic font-drama">do Movimento</span>
+        </h2>
+        <h2 className="seq-text-2 absolute opacity-0 font-heading font-bold text-4xl md:text-6xl text-background">
+          Conecte-se com <br/><span className="text-accent italic font-drama">seu corpo</span>
+        </h2>
+      </div>
+    </section>
+  );
+};
+
 // Shuffler Card - Be The Dance
 const CardShuffler = () => {
   const [cards, setCards] = useState([
@@ -472,6 +607,7 @@ export default function App() {
     <div className="bg-primary text-background min-h-screen">
       <Navbar />
       <Hero />
+      <ImageSequence />
       <Features />
       <Philosophy />
       <Protocol />
