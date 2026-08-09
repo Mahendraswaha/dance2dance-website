@@ -124,7 +124,7 @@ const HeroSequence = () => {
           start: 'top top',
           end: '+=800%', 
           pin: true,
-          scrub: 0.5,
+          scrub: true,
         }
       });
       
@@ -160,9 +160,12 @@ const HeroSequence = () => {
           { opacity: 0, y: 50 },
           { opacity: 1, y: 0, duration: 0.05 }, startPoint
         );
-        tl.to(block, 
-          { opacity: 0, y: -50, duration: 0.05 }, startPoint + 0.09
-        );
+        // Não aplica fade-out no último bloco. Deixa ele subir junto com a página.
+        if (index < blocks.length - 1) {
+          tl.to(block, 
+            { opacity: 0, y: -50, duration: 0.05 }, startPoint + 0.09
+          );
+        }
       });
 
     }, containerRef);
