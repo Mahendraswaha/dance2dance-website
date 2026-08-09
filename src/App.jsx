@@ -152,27 +152,15 @@ const HeroSequence = () => {
       }, 0);
       
       // Mapeamento dos textos do manifesto ao longo da timeline do canvas
-      // Cada bloco entra (fade in + sobe) e sai (fade out + sobe)
-      const blocks = [
-        '.seq-text-1', '.seq-text-2', '.seq-text-3', 
-        '.seq-text-4', '.seq-text-5', '.seq-text-6'
-      ];
+      // O bloco de texto inteiro sobe e aparece
+      tl.fromTo('.seq-block', 
+        { opacity: 0, y: 80 },
+        { opacity: 1, y: 0, duration: 0.1 }, 
+        0.1
+      );
       
-      // 0.1 (início após o hero sumir) até 1.0. 
-      // Temos 6 blocos. 0.9 de espaço / 6 blocos = 0.15 de espaço por bloco.
-      blocks.forEach((block, index) => {
-        const startPoint = 0.1 + (index * 0.14);
-        tl.fromTo(block, 
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.05 }, startPoint
-        );
-        // Não aplica fade-out no último bloco. Deixa ele subir junto com a página.
-        if (index < blocks.length - 1) {
-          tl.to(block, 
-            { opacity: 0, y: -50, duration: 0.05 }, startPoint + 0.09
-          );
-        }
-      });
+      // Efeito parallax muito sutil de subida enquanto a imagem anima
+      tl.to('.seq-block', { y: -80, ease: 'none', duration: 0.8 }, 0.2);
       
       // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
       tl.to('.dark-overlay', { opacity: 0, duration: 0.2 }, 0.8);
@@ -260,30 +248,32 @@ const HeroSequence = () => {
       <div className="dark-overlay absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Textos da Sequência (Surgem depois) */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
-        <h2 className="seq-text-1 absolute font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
-          Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
-        </h2>
-        
-        <p className="seq-text-2 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
-          <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
-        </p>
+      <div className="absolute inset-0 flex items-center px-6 lg:px-24 z-10 pointer-events-none">
+        <div className="seq-block flex flex-col items-start text-left max-w-2xl gap-6 opacity-0">
+          <h2 className="font-heading font-bold text-3xl md:text-5xl text-background/90 leading-tight">
+            Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
+          </h2>
+          
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            <strong className="text-background">Dance2Dance</strong> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
+          </p>
 
-        <p className="seq-text-3 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
-          O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
-        </p>
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
+          </p>
 
-        <p className="seq-text-4 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
-          A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
-        </p>
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
+          </p>
 
-        <p className="seq-text-5 absolute opacity-0 font-heading text-xl md:text-3xl text-background/90 max-w-4xl leading-relaxed">
-          Dance2Dance cria as condições para que as pessoas se encontrem.
-        </p>
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            Dance2Dance cria as condições para que as pessoas se encontrem.
+          </p>
 
-        <h2 className="seq-text-6 absolute opacity-0 font-drama italic text-4xl md:text-6xl text-background max-w-4xl leading-tight mt-4">
-          A dança e o movimento fazem o resto.
-        </h2>
+          <h2 className="font-drama italic text-3xl md:text-4xl text-background leading-tight mt-2">
+            A dança e o movimento fazem o resto.
+          </h2>
+        </div>
       </div>
     </section>
   );
