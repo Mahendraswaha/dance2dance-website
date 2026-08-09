@@ -51,7 +51,8 @@ const HeroSequence = () => {
   const containerRef = useRef(null);
   const heroContentRef = useRef(null);
   const videoRef = useRef(null);
-  const [images, setImages] = useState([]);
+  const imagesRef = useRef([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const frameCount = 240;
 
   useEffect(() => {
@@ -64,11 +65,14 @@ const HeroSequence = () => {
       img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
       img.onload = () => {
         loadedCount++;
+        loadedImages.push(img);
         if (loadedCount === frameCount) {
-          setImages(loadedImages);
+          // Ordena as imagens para garantir a sequência correta
+          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
+          imagesRef.current = loadedImages;
+          setIsLoaded(true);
         }
       };
-      loadedImages.push(img);
     }
   }, []);
 
@@ -79,7 +83,7 @@ const HeroSequence = () => {
   }, []);
 
   useEffect(() => {
-    if (images.length === 0 || !canvasRef.current || !containerRef.current) return;
+    if (!canvasRef.current || !containerRef.current) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -88,8 +92,9 @@ const HeroSequence = () => {
     canvas.height = window.innerHeight;
 
     const render = (index) => {
-      if (images[index]) {
-        const img = images[index];
+      const imgs = imagesRef.current;
+      if (imgs && imgs.length > 0 && imgs[Math.floor(index)]) {
+        const img = imgs[Math.floor(index)];
         const hRatio = canvas.width / img.width;
         const vRatio = canvas.height / img.height;
         const ratio = Math.max(hRatio, vRatio);
@@ -125,6 +130,7 @@ const HeroSequence = () => {
           end: '+=800%', 
           pin: true,
           scrub: true,
+          pinSpacing: true, // Força a criação do espaço para não sobrepor
         }
       });
       
@@ -181,13 +187,31 @@ const HeroSequence = () => {
       gsapCtx.revert();
       window.removeEventListener('resize', handleResize);
     };
-  }, [images]);
+  }, []); // Dependência vazia: roda IMEDIATAMENTE no mount para travar a tela
+
+  // Re-render inicial frame once images are loaded
+  useEffect(() => {
+    if (isLoaded && canvasRef.current) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      const img = imagesRef.current[0];
+      if (img) {
+        const hRatio = canvas.width / img.width;
+        const vRatio = canvas.height / img.height;
+        const ratio = Math.max(hRatio, vRatio);
+        const centerShift_x = (canvas.width - img.width * ratio) / 2;
+        const centerShift_y = (canvas.height - img.height * ratio) / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, img.width, img.height, centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+      }
+    }
+  }, [isLoaded]);
 
   return (
     <section ref={containerRef} className="relative h-screen w-full bg-primary overflow-hidden">
       
       {/* Fallback de carregamento */}
-      {images.length < frameCount && (
+      {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-primary z-20">
           <div className="w-12 h-12 rounded-full border-4 border-accent border-t-transparent animate-spin" />
         </div>
