@@ -177,11 +177,14 @@ const HeroSequence = () => {
         0.25
       );
 
-      // 3. A última frase aparece no centro (assim como a primeira)
+      // O bloco começa a desaparecer em fade nos últimos 20% do trajeto (de 0.65 a 0.75)
+      tl.to('.seq-block-rest', { opacity: 0, duration: 0.1, ease: 'power2.inOut' }, 0.65);
+
+      // 3. A última frase aparece no centro em cross-fade com a saída do bloco
       tl.fromTo('.seq-text-last', 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.05 }, 
-        0.75
+        { opacity: 0, scale: 0.95 }, 
+        { opacity: 1, scale: 1, ease: 'power2.out', duration: 0.1 }, 
+        0.65
       );
       
       // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
