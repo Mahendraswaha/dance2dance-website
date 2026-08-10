@@ -583,59 +583,53 @@ const Protocol = () => {
   );
 };
 
-const Action = () => {
+const Activities = () => {
   return (
-    <section id="agenda" className="py-32 px-6 lg:px-12 bg-background text-primary">
+    <section id="atividades" className="py-32 px-6 lg:px-12 bg-background text-primary">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="font-drama italic text-3xl md:text-7xl mb-16 md:mb-24 text-center">Inicie sua Jornada</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          {/* Tier 1 */}
-          <div className="p-10 rounded-[3rem] bg-white border border-primary/10 flex flex-col gap-8 shadow-sm">
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2">Conheça</h3>
-              <p className="font-heading text-primary/60 text-sm">Explore nossos projetos de dança e alongamento.</p>
-            </div>
-            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Workshops Be The Dance</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Aulas Biostretch</li>
-            </ul>
-            <button className="btn-magnetic mt-auto w-full py-4 rounded-full border border-primary text-primary font-bold text-sm">
-              <span className="relative z-10">Ver Detalhes</span>
-            </button>
-          </div>
+        <span className="font-heading tracking-widest text-accent text-xs uppercase mb-4">O que fazemos</span>
+        
+        <h2 className="font-drama italic text-3xl md:text-5xl lg:text-6xl mb-16 md:mb-24 text-center flex flex-col items-center">
+          Nossas Atividades
+          <div className="w-8 h-[1px] bg-accent/50 mt-8"></div>
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
+          {/* Card 1 */}
+          <a href="/be-the-dance" className="group flex flex-col items-center text-center bg-[#111111] hover:bg-[#151515] border border-primary/5 hover:border-primary/20 rounded-xl p-10 md:p-12 transition-all duration-500 cursor-pointer">
+            <img src="/logo-bethedance.png" alt="Be the Dance" className="h-20 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" />
+            <h3 className="font-heading font-semibold text-xl mb-4 text-primary">Be the Dance</h3>
+            <p className="font-heading text-sm text-primary/70 leading-relaxed">
+              Workshops de dança onde o movimento vira encontro. Ritmos que se cruzam, corpos que se escutam, uma coreografia que nasce do coletivo.
+            </p>
+          </a>
           
-          {/* Tier 2 - Pop */}
-          <div className="p-10 rounded-[3rem] bg-primary text-background flex flex-col gap-8 shadow-2xl scale-105 ring-4 ring-accent/20 z-10 relative">
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2 text-accent">Participe</h3>
-              <p className="font-heading text-background/60 text-sm">Inscreva-se nos próximos workshops agendados.</p>
-            </div>
-            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Acesso Prioritário</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Material de Apoio</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Mentoria Coletiva</li>
-            </ul>
-            <button className="btn-magnetic mt-auto w-full py-4 rounded-full bg-accent text-primary font-bold text-sm">
-              <span className="relative z-10">Ver Agenda</span>
-            </button>
-          </div>
+          {/* Card 2 */}
+          <a href="/biostretch" className="group flex flex-col items-center text-center bg-[#111111] hover:bg-[#151515] border border-primary/5 hover:border-primary/20 rounded-xl p-10 md:p-12 transition-all duration-500 cursor-pointer">
+            <img src="/logo-biostretch.png" alt="BioStretch" className="h-20 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" />
+            <h3 className="font-heading font-semibold text-xl mb-4 text-primary">BioStretch</h3>
+            <p className="font-heading text-sm text-primary/70 leading-relaxed">
+              Práticas de movimento consciente que devolvem ao corpo força, presença e autoria. Escutar o corpo para redescobrir o próprio ritmo.
+            </p>
+          </a>
           
-          {/* Tier 3 */}
-          <div className="p-10 rounded-[3rem] bg-white border border-primary/10 flex flex-col gap-8 shadow-sm">
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2">Apoie</h3>
-              <p className="font-heading text-primary/60 text-sm">Torne-se um financiador do nosso projeto social.</p>
-            </div>
-            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Relatórios de Impacto</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Visitas ao Projeto</li>
-            </ul>
-            <button className="btn-magnetic mt-auto w-full py-4 rounded-full border border-primary text-primary font-bold text-sm">
-              <span className="relative z-10">Seja um Parceiro</span>
-            </button>
-          </div>
+          {/* Card 3 */}
+          <a href="/kroppsskole" className="group flex flex-col items-center text-center bg-[#111111] hover:bg-[#151515] border border-primary/5 hover:border-primary/20 rounded-xl p-10 md:p-12 transition-all duration-500 cursor-pointer">
+            <img src="/logo-kroppsskole.png" alt="Kroppsskole" className="h-20 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" />
+            <h3 className="font-heading font-semibold text-xl mb-4 text-primary">Kroppsskole</h3>
+            <p className="font-heading text-sm text-primary/70 leading-relaxed">
+              Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos — Transformando.
+            </p>
+          </a>
         </div>
+        
+        <div className="mt-20 border-b border-primary/20 pb-2">
+          <a href="/programacao" className="font-heading text-xs tracking-widest text-primary/60 hover:text-accent uppercase transition-colors">
+            Conheça nossa programação
+          </a>
+        </div>
+        
       </div>
     </section>
   );
@@ -689,7 +683,7 @@ export default function App() {
       <Features />
       <Philosophy />
       <Protocol />
-      <Action />
+      <Activities />
       <Footer />
     </div>
   );
