@@ -420,11 +420,11 @@ const Philosophy = () => {
       
       <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col gap-8">
         <p className="phil-line font-heading font-semibold text-background/50 text-xl md:text-2xl tracking-tight">
-          A maioria dos projetos foca em: <span className="text-background/80">técnica isolada</span>.
+          Movemos o corpo para <span className="text-background/80">aproximar pessoas</span>.
         </p>
-        <h2 className="phil-line font-drama italic text-3xl md:text-7xl leading-tight text-background">
-          Nós focamos na <br/>
-          <span className="text-accent">transformação social.</span>
+        <h2 className="phil-line font-drama italic text-3xl md:text-6xl lg:text-7xl leading-tight text-background">
+          Aproximamos pessoas para <br/>
+          <span className="text-accent">transformar comunidades.</span>
         </h2>
       </div>
     </section>
