@@ -419,7 +419,7 @@ const Philosophy = () => {
       </div>
       
       <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col gap-8">
-        <p className="phil-line font-heading font-semibold text-background/50 text-2xl md:text-3xl tracking-tight">
+        <p className="phil-line font-heading font-normal text-background/50 text-2xl md:text-3xl tracking-tight">
           Movemos o corpo para <span className="text-background/80">aproximar pessoas</span>.
         </p>
         <h2 className="phil-line font-drama italic text-3xl md:text-6xl lg:text-7xl leading-tight text-background">
