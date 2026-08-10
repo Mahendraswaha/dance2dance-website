@@ -375,7 +375,7 @@ const Activities = () => {
             <div className="w-7 h-[1px] bg-[#C4B49A]/40 group-hover:bg-[#4A9B8E]/60 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
             
             <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
-              Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos — Transformando.
+              Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos e Transformando.
             </p>
           </a>
 
