@@ -350,7 +350,7 @@ const Activities = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(90,168,122,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
-              <img src="/logo-biostretch.png" alt="BioStretch" className="max-h-full max-w-[150px] object-contain" />
+              <img src="/logo-biostretch.png" alt="BioStretch" className="max-h-full max-w-[180px] scale-110 object-contain" />
             </div>
             
             <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">BioStretch</h3>
