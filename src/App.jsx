@@ -414,9 +414,6 @@ const Philosophy = () => {
 
   return (
     <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] overflow-hidden flex items-center justify-center">
-      <div className="absolute inset-0 z-0 opacity-20">
-        <img src="https://images.unsplash.com/photo-1507342602737-0ce331b2fbc4?q=80&w=2000&auto=format&fit=crop" alt="" className="w-full h-full object-cover grayscale" />
-      </div>
       
       <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col gap-8">
         <p className="phil-line font-heading font-normal text-background/50 text-2xl md:text-3xl tracking-tight">
