@@ -358,7 +358,7 @@ const Activities = () => {
             <div className="w-7 h-[1px] bg-[#C4B49A]/40 group-hover:bg-[#5AA87A]/60 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
             
             <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
-              Práticas de movimento consciente que devolvem ao corpo força, presença e autoria. Escutar o corpo para redescobrir o próprio ritmo.
+              Práticas de movimento consciente que ampliam a percepção, estimulam a reorganização corporal e transformam a maneira como habitamos o corpo.
             </p>
           </a>
           
