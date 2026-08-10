@@ -315,171 +315,78 @@ const HeroSequence = () => {
   );
 };
 
-// Shuffler Card - Be The Dance
-const CardShuffler = () => {
-  const [cards, setCards] = useState([
-    { id: 1, title: 'Expressão Coreográfica', color: 'bg-textDark' },
-    { id: 2, title: 'Ritmo e Musicalidade', color: 'bg-primary' },
-    { id: 3, title: 'Dança Contemporânea', color: 'bg-[#1a1a24]' }
-  ]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCards(prev => {
-        const newCards = [...prev];
-        const last = newCards.pop();
-        newCards.unshift(last);
-        return newCards;
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
+const Activities = () => {
   return (
-    <div className="relative h-48 w-full perspective-1000">
-      {cards.map((c, i) => (
-        <div 
-          key={c.id} 
-          className={`absolute inset-0 rounded-2xl ${c.color} p-6 border border-accent/20 flex flex-col justify-between shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]`}
-          style={{
-            transform: `translateY(${i * 12}px) scale(${1 - i * 0.05})`,
-            opacity: 1 - i * 0.2,
-            zIndex: 10 - i
-          }}
-        >
-          <div className="flex justify-between items-start">
-            <Play size={24} className="text-accent" />
-            <span className="font-data text-xs text-background/50">MOD {c.id}</span>
-          </div>
-          <h4 className="font-heading font-bold text-lg text-background">{c.title}</h4>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// Typewriter Card - Biostretch
-const CardTypewriter = () => {
-  const [text, setText] = useState('');
-  const fullText = ">> Inicializando módulo de Body-Awareness...\n>> Calibrando flexibilidade...\n>> Ativando consciência corporal.";
-  
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setText(fullText.substring(0, i));
-      i++;
-      if (i > fullText.length) {
-        setTimeout(() => { i = 0; }, 2000);
-      }
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="h-48 w-full bg-primary rounded-2xl p-6 border border-accent/20 flex flex-col relative overflow-hidden">
-      <div className="flex items-center gap-2 mb-4">
-        <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-        <span className="font-data text-xs text-accent">Live Feed</span>
-      </div>
-      <div className="font-data text-sm text-background/80 whitespace-pre-line leading-relaxed">
-        {text}
-        <span className="inline-block w-2 h-4 bg-accent ml-1 animate-pulse" />
-      </div>
-    </div>
-  );
-};
-
-// Scheduler Card - Projeto Social
-const CardScheduler = () => {
-  const cursorRef = useRef(null);
-  
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-      tl.to(cursorRef.current, { x: 80, y: 30, duration: 1, ease: 'power2.inOut' })
-        .to(cursorRef.current, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 })
-        .to('.day-cell', { backgroundColor: '#C9A84C', color: '#0D0D12', duration: 0.2 }, '-=0.1')
-        .to(cursorRef.current, { x: 180, y: 90, duration: 1, ease: 'power2.inOut' }, '+=0.5')
-        .to(cursorRef.current, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 })
-        .to('.save-btn', { backgroundColor: '#C9A84C', color: '#0D0D12', duration: 0.2 }, '-=0.1')
-        .to(cursorRef.current, { opacity: 0, duration: 0.2 }, '+=0.5')
-        .set('.day-cell, .save-btn', { clearProps: 'all' })
-        .set(cursorRef.current, { x: 0, y: 0, opacity: 1 });
-    });
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <div className="h-48 w-full bg-textDark rounded-2xl p-6 border border-background/10 relative overflow-hidden">
-      <MousePointer2 ref={cursorRef} className="absolute z-10 text-background drop-shadow-md" size={24} style={{ top: 20, left: 20 }}/>
-      
-      <div className="grid grid-cols-7 gap-2 mb-6">
-        {['D','S','T','Q','Q','S','S'].map((d,i) => (
-          <div key={i} className={`h-8 rounded flex items-center justify-center font-data text-xs bg-primary text-background/50 ${i===3 ? 'day-cell' : ''}`}>
-            {d}
-          </div>
-        ))}
-      </div>
-      
-      <div className="flex justify-between items-center mt-8">
-        <div className="font-heading font-semibold text-sm text-background">Relatório de Impacto</div>
-        <div className="save-btn px-4 py-1 bg-primary text-background/50 rounded-full font-data text-xs">Baixar</div>
-      </div>
-    </div>
-  );
-};
-
-const Features = () => {
-  const featRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.feat-card', {
-        scrollTrigger: {
-          trigger: featRef.current,
-          start: 'top 75%'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power3.out'
-      });
-    }, featRef);
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <section id="workshops" ref={featRef} className="py-32 px-6 lg:px-12 bg-primary">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="font-heading font-bold text-3xl md:text-5xl text-background mb-16">Artefatos Funcionais</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section id="workshops" className="py-24 px-8 bg-[#0C0C0C] min-h-screen flex items-center">
+      <div className="max-w-[1200px] w-full mx-auto text-center">
+        
+        <p className="font-heading text-[10px] tracking-[5px] uppercase text-[#8A8A8A] mb-5">O que fazemos</p>
+        
+        <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 leading-tight tracking-tight">Nossas Atividades</h2>
+        
+        <div className="w-12 h-[1px] bg-[#C4B49A]/70 mx-auto mb-16"></div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
           
-          <div className="feat-card flex flex-col gap-6">
-            <CardShuffler />
-            <div>
-              <img src="/logo-bethedance.png" alt="Be The Dance" className="h-12 mb-3 object-contain object-left" />
-              <p className="font-heading text-background/60 text-sm leading-relaxed">Workshops imersivos de dança explorando ritmo, expressão e coreografia em um ambiente focado no movimento livre.</p>
+          {/* Card 1 - Be The Dance */}
+          <a href="/be-the-dance" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#8BBCD8]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(139,188,216,0.15)] flex flex-col items-center">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(139,188,216,0.4)_0%,transparent_70%)]"></div>
+            
+            <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
+              <img src="/logo-bethedance.png" alt="Be the Dance" className="max-h-full max-w-[150px] object-contain" />
             </div>
-          </div>
+            
+            <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">Be the Dance</h3>
+            
+            <div className="w-7 h-[1px] bg-[#C4B49A]/40 group-hover:bg-[#8BBCD8]/60 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
+            
+            <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
+              Workshops de dança onde o movimento vira encontro. Ritmos que se cruzam, corpos que se escutam, uma coreografia que nasce do coletivo.
+            </p>
+          </a>
           
-          <div className="feat-card flex flex-col gap-6">
-            <CardTypewriter />
-            <div>
-              <img src="/logo-biostretch.png" alt="Biostretch" className="h-10 mb-3 object-contain object-left" />
-              <p className="font-heading text-background/60 text-sm leading-relaxed">Sessões de body-awareness para expansão da consciência corporal, flexibilidade e conexão mente-corpo.</p>
+          {/* Card 2 - BioStretch */}
+          <a href="/biostretch" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(90,168,122,0.15)] flex flex-col items-center">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(90,168,122,0.4)_0%,transparent_70%)]"></div>
+            
+            <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
+              <img src="/logo-biostretch.png" alt="BioStretch" className="max-h-full max-w-[150px] object-contain" />
             </div>
-          </div>
+            
+            <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">BioStretch</h3>
+            
+            <div className="w-7 h-[1px] bg-[#C4B49A]/40 group-hover:bg-[#5AA87A]/60 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
+            
+            <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
+              Práticas de movimento consciente que devolvem ao corpo força, presença e autoria. Escutar o corpo para redescobrir o próprio ritmo.
+            </p>
+          </a>
           
-          <div className="feat-card flex flex-col gap-6">
-            <CardScheduler />
-            <div>
-              <h3 className="font-heading font-bold text-xl text-background mb-2">Transparência Social</h3>
-              <p className="font-heading text-background/60 text-sm leading-relaxed">Espaço reservado para financiadores acompanharem métricas de impacto e o funcionamento do projeto social em tempo real.</p>
+          {/* Card 3 - Kroppsskole */}
+          <a href="/kroppsskole" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#4A9B8E]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(74,155,142,0.15)] flex flex-col items-center">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(74,155,142,0.4)_0%,transparent_70%)]"></div>
+            
+            <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
+              <img src="/logo-kroppsskole.png" alt="Kroppsskole" className="max-h-full max-w-[150px] object-contain" />
             </div>
-          </div>
+            
+            <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">Kroppsskole</h3>
+            
+            <div className="w-7 h-[1px] bg-[#C4B49A]/40 group-hover:bg-[#4A9B8E]/60 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
+            
+            <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
+              Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos — Transformando.
+            </p>
+          </a>
 
         </div>
+        
+        <div className="mt-16">
+          <a href="/programacao" className="inline-block font-heading text-[10px] tracking-[4px] uppercase text-[#C4B49A] decoration-transparent border-b border-[#C4B49A]/30 pb-2 transition-all duration-400 hover:border-[#C4B49A]/80 hover:text-[#F0EDE8] hover:pb-2.5">
+            CONHEÇA NOSSA PROGRAMAÇÃO
+          </a>
+        </div>
+        
       </div>
     </section>
   );
@@ -583,53 +490,59 @@ const Protocol = () => {
   );
 };
 
-const Activities = () => {
+const Action = () => {
   return (
-    <section id="atividades" className="py-32 px-6 lg:px-12 bg-background text-primary">
+    <section id="agenda" className="py-32 px-6 lg:px-12 bg-background text-primary">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
+        <h2 className="font-drama italic text-3xl md:text-7xl mb-16 md:mb-24 text-center">Inicie sua Jornada</h2>
         
-        <span className="font-heading tracking-widest text-accent text-xs uppercase mb-4">O que fazemos</span>
-        
-        <h2 className="font-drama italic text-3xl md:text-5xl lg:text-6xl mb-16 md:mb-24 text-center flex flex-col items-center">
-          Nossas Atividades
-          <div className="w-8 h-[1px] bg-accent/50 mt-8"></div>
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full">
-          {/* Card 1 */}
-          <a href="/be-the-dance" className="group flex flex-col items-center text-center bg-[#111111] hover:bg-[#151515] border border-primary/5 hover:border-primary/20 rounded-xl p-10 md:p-12 transition-all duration-500 cursor-pointer">
-            <img src="/logo-bethedance.png" alt="Be the Dance" className="h-20 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" />
-            <h3 className="font-heading font-semibold text-xl mb-4 text-primary">Be the Dance</h3>
-            <p className="font-heading text-sm text-primary/70 leading-relaxed">
-              Workshops de dança onde o movimento vira encontro. Ritmos que se cruzam, corpos que se escutam, uma coreografia que nasce do coletivo.
-            </p>
-          </a>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+          {/* Tier 1 */}
+          <div className="p-10 rounded-[3rem] bg-white border border-primary/10 flex flex-col gap-8 shadow-sm">
+            <div>
+              <h3 className="font-heading font-bold text-2xl mb-2">Conheça</h3>
+              <p className="font-heading text-primary/60 text-sm">Explore nossos projetos de dança e alongamento.</p>
+            </div>
+            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Workshops Be The Dance</li>
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Aulas Biostretch</li>
+            </ul>
+            <button className="btn-magnetic mt-auto w-full py-4 rounded-full border border-primary text-primary font-bold text-sm">
+              <span className="relative z-10">Ver Detalhes</span>
+            </button>
+          </div>
           
-          {/* Card 2 */}
-          <a href="/biostretch" className="group flex flex-col items-center text-center bg-[#111111] hover:bg-[#151515] border border-primary/5 hover:border-primary/20 rounded-xl p-10 md:p-12 transition-all duration-500 cursor-pointer">
-            <img src="/logo-biostretch.png" alt="BioStretch" className="h-20 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" />
-            <h3 className="font-heading font-semibold text-xl mb-4 text-primary">BioStretch</h3>
-            <p className="font-heading text-sm text-primary/70 leading-relaxed">
-              Práticas de movimento consciente que devolvem ao corpo força, presença e autoria. Escutar o corpo para redescobrir o próprio ritmo.
-            </p>
-          </a>
+          {/* Tier 2 - Pop */}
+          <div className="p-10 rounded-[3rem] bg-primary text-background flex flex-col gap-8 shadow-2xl scale-105 ring-4 ring-accent/20 z-10 relative">
+            <div>
+              <h3 className="font-heading font-bold text-2xl mb-2 text-accent">Participe</h3>
+              <p className="font-heading text-background/60 text-sm">Inscreva-se nos próximos workshops agendados.</p>
+            </div>
+            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Acesso Prioritário</li>
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Material de Apoio</li>
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Mentoria Coletiva</li>
+            </ul>
+            <button className="btn-magnetic mt-auto w-full py-4 rounded-full bg-accent text-primary font-bold text-sm">
+              <span className="relative z-10">Ver Agenda</span>
+            </button>
+          </div>
           
-          {/* Card 3 */}
-          <a href="/kroppsskole" className="group flex flex-col items-center text-center bg-[#111111] hover:bg-[#151515] border border-primary/5 hover:border-primary/20 rounded-xl p-10 md:p-12 transition-all duration-500 cursor-pointer">
-            <img src="/logo-kroppsskole.png" alt="Kroppsskole" className="h-20 object-contain mb-8 group-hover:scale-105 transition-transform duration-500" />
-            <h3 className="font-heading font-semibold text-xl mb-4 text-primary">Kroppsskole</h3>
-            <p className="font-heading text-sm text-primary/70 leading-relaxed">
-              Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos — Transformando.
-            </p>
-          </a>
+          {/* Tier 3 */}
+          <div className="p-10 rounded-[3rem] bg-white border border-primary/10 flex flex-col gap-8 shadow-sm">
+            <div>
+              <h3 className="font-heading font-bold text-2xl mb-2">Apoie</h3>
+              <p className="font-heading text-primary/60 text-sm">Torne-se um financiador do nosso projeto social.</p>
+            </div>
+            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Relatórios de Impacto</li>
+              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Visitas ao Projeto</li>
+            </ul>
+            <button className="btn-magnetic mt-auto w-full py-4 rounded-full border border-primary text-primary font-bold text-sm">
+              <span className="relative z-10">Seja um Parceiro</span>
+            </button>
+          </div>
         </div>
-        
-        <div className="mt-20 border-b border-primary/20 pb-2">
-          <a href="/programacao" className="font-heading text-xs tracking-widest text-primary/60 hover:text-accent uppercase transition-colors">
-            Conheça nossa programação
-          </a>
-        </div>
-        
       </div>
     </section>
   );
@@ -680,10 +593,10 @@ export default function App() {
     <div className="bg-primary text-background min-h-[100dvh] overflow-x-hidden">
       <Navbar />
       <HeroSequence />
-      <Features />
+      <Activities />
       <Philosophy />
       <Protocol />
-      <Activities />
+      <Action />
       <Footer />
     </div>
   );
