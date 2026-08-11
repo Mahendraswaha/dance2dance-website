@@ -703,7 +703,7 @@ const Action = () => {
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ filter: 'brightness(0.45)' }}
+        style={{ filter: 'brightness(0.7)' }}
       />
 
       {/* Overlay de transição fade-to-black no loop */}
@@ -714,7 +714,7 @@ const Action = () => {
       />
 
       {/* Gradiente para legibilidade e transição suave */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/20 to-primary/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/10 to-primary/60" />
 
       {/* Cobertura da marca d'água no canto inferior direito */}
       <div className="absolute bottom-0 right-0 w-80 h-32 bg-gradient-to-tl from-primary via-primary/90 to-transparent pointer-events-none" />
