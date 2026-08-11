@@ -697,7 +697,7 @@ const Action = () => {
   }, [isLoaded]);
 
   return (
-    <section id="agenda" className="relative py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center min-h-[80vh]">
+    <section id="agenda" className="relative z-20 bg-[#0C0C0C] py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center min-h-[80vh]">
 
       {/* Canvas com a sequência de frames em loop */}
       <canvas
@@ -756,8 +756,9 @@ const Action = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-background rounded-t-[4rem] px-6 lg:px-12 pt-24 pb-12 mt-10">
-      <div className="max-w-7xl mx-auto flex flex-col gap-24">
+    <div className="bg-[#0C0C0C] relative z-20 pt-10">
+      <footer className="bg-primary text-background rounded-t-[4rem] px-6 lg:px-12 pt-24 pb-12">
+        <div className="max-w-7xl mx-auto flex flex-col gap-24">
         
         <div className="flex flex-col md:flex-row justify-between gap-12">
           <div className="max-w-sm">
@@ -791,6 +792,7 @@ const Footer = () => {
         
       </div>
     </footer>
+    </div>
   );
 };
 
