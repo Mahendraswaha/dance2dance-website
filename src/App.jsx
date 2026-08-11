@@ -731,7 +731,7 @@ const Action = () => {
         </h2>
 
         <p className="font-heading text-background/50 text-lg md:text-xl max-w-lg leading-relaxed">
-          Encontre um workshop, uma aula, o seu lugar. O corpo sabe o caminho, basta começar.
+          Encontre um workshop, uma aula, o seu lugar. <br className="hidden sm:block" />O corpo sabe o caminho, basta começar.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
