@@ -718,7 +718,7 @@ const Action = () => {
 
       {/* Desfoque suave invisível estendido na marca d'água usando máscara radial alargada */}
       <div 
-        className="hidden md:block absolute bottom-0 right-0 w-[45rem] h-12 pointer-events-none" 
+        className="hidden md:block absolute bottom-0 right-0 w-[36rem] h-10 pointer-events-none" 
         style={{ 
           backdropFilter: 'blur(10px)', 
           WebkitBackdropFilter: 'blur(10px)', 
