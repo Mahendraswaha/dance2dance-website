@@ -456,29 +456,82 @@ const Protocol = () => {
   }, []);
 
   const protocols = [
-    { num: '01', title: 'Expressão', desc: 'Desbloqueio do corpo através de movimentos coreografados e ritmados.' },
-    { num: '02', title: 'Bem-estar', desc: 'Conexão profunda com a bio-mecânica, alongamento e relaxamento guiado.' },
-    { num: '03', title: 'Transformação', desc: 'Impacto direto na comunidade transformando a arte em ferramenta social.' }
+    {
+      num: '01',
+      label: 'O ponto de partida',
+      title: 'Expressão',
+      desc: 'O corpo guarda o que a palavra não alcança. Nos workshops, o movimento torna-se linguagem — um espaço onde ritmo, presença e improvisação libertam o que estava contido.',
+      visual: (
+        <div className="relative w-64 h-64 flex items-center justify-center">
+          <div className="absolute w-64 h-64 rounded-full border border-accent/10 animate-[spin_20s_linear_infinite]" />
+          <div className="absolute w-44 h-44 rounded-full border border-accent/20 animate-[spin_14s_linear_infinite_reverse]" />
+          <div className="absolute w-24 h-24 rounded-full border border-accent/40 animate-[spin_8s_linear_infinite]" />
+          <div className="w-3 h-3 rounded-full bg-accent animate-pulse" />
+        </div>
+      )
+    },
+    {
+      num: '02',
+      label: 'O que o movimento cura',
+      title: 'Bem-estar',
+      desc: 'Escutar o corpo é um ato político. As práticas de movimento consciente ampliam a percepção, reorganizam padrões físicos e devolvem às pessoas a autoria sobre si mesmas.',
+      visual: (
+        <div className="relative w-64 h-64 flex items-center justify-center overflow-hidden">
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-full h-[1px] bg-accent/30"
+              style={{
+                top: `${20 + i * 15}%`,
+                animation: `pulse ${2 + i * 0.4}s ease-in-out infinite`,
+                animationDelay: `${i * 0.2}s`,
+                transform: `scaleX(${0.4 + i * 0.15})`
+              }}
+            />
+          ))}
+          <div className="w-12 h-12 rounded-full border-2 border-accent/60 animate-[ping_3s_ease-in-out_infinite]" />
+        </div>
+      )
+    },
+    {
+      num: '03',
+      label: 'O que fica na comunidade',
+      title: 'Transformação',
+      desc: 'Quando pessoas se movem juntas, algo muda. A dança atravessa muros, cria vínculos e abre espaço para uma transformação que começa no corpo e reverbera no bairro, na rua, na cidade.',
+      visual: (
+        <div className="relative w-64 h-64 flex items-center justify-center">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-accent/10 border border-accent/20"
+              style={{
+                width: `${80 + i * 64}px`,
+                height: `${80 + i * 64}px`,
+                animation: `ping ${2.5 + i * 0.8}s ease-out infinite`,
+                animationDelay: `${i * 0.6}s`
+              }}
+            />
+          ))}
+          <div className="w-8 h-8 rounded-full bg-accent/60" />
+        </div>
+      )
+    }
   ];
 
   return (
     <section id="social" ref={protocolRef} className="relative bg-primary text-background">
       {protocols.map((p, i) => (
         <div key={p.num} className="proto-card h-[100dvh] w-full flex items-center justify-center sticky top-0 bg-primary border-b border-textDark/30">
-          <div className="max-w-5xl mx-auto px-6 lg:px-12 w-full flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12 w-full flex flex-col md:flex-row items-center justify-between gap-16">
             <div className="w-full md:w-1/2 flex justify-center">
-              {/* Unique SVG Canvas Animation per card */}
-              <div className="w-64 h-64 relative border border-accent/20 rounded-full flex items-center justify-center">
-                {i === 0 && <div className="w-32 h-32 border border-accent animate-[spin_10s_linear_infinite]" />}
-                {i === 1 && <div className="w-full h-[1px] bg-accent/50 animate-[pulse_2s_ease-in-out_infinite]" />}
-                {i === 2 && <div className="w-32 h-32 rounded-full bg-accent/20 animate-ping" />}
-              </div>
+              {p.visual}
             </div>
             
-            <div className="w-full md:w-1/2 flex flex-col gap-6">
-              <span className="font-data text-accent text-xl">Fase {p.num}</span>
-              <h2 className="font-heading font-black text-5xl md:text-7xl tracking-tighter">{p.title}</h2>
-              <p className="font-heading text-background/60 text-lg md:text-xl max-w-md">{p.desc}</p>
+            <div className="w-full md:w-1/2 flex flex-col gap-5">
+              <span className="font-heading text-xs tracking-[4px] uppercase text-accent/70">{p.label}</span>
+              <h2 className="font-drama italic text-6xl md:text-8xl leading-none text-background">{p.title}</h2>
+              <div className="w-8 h-[1px] bg-accent/40" />
+              <p className="font-heading text-background/60 text-base md:text-lg max-w-md leading-relaxed">{p.desc}</p>
             </div>
           </div>
         </div>
@@ -489,57 +542,43 @@ const Protocol = () => {
 
 const Action = () => {
   return (
-    <section id="agenda" className="py-32 px-6 lg:px-12 bg-background text-primary">
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="font-drama italic text-3xl md:text-7xl mb-16 md:mb-24 text-center">Inicie sua Jornada</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          {/* Tier 1 */}
-          <div className="p-10 rounded-[3rem] bg-white border border-primary/10 flex flex-col gap-8 shadow-sm">
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2">Conheça</h3>
-              <p className="font-heading text-primary/60 text-sm">Explore nossos projetos de dança e alongamento.</p>
-            </div>
-            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Workshops Be The Dance</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Aulas Biostretch</li>
-            </ul>
-            <button className="btn-magnetic mt-auto w-full py-4 rounded-full border border-primary text-primary font-bold text-sm">
-              <span className="relative z-10">Ver Detalhes</span>
-            </button>
-          </div>
-          
-          {/* Tier 2 - Pop */}
-          <div className="p-10 rounded-[3rem] bg-primary text-background flex flex-col gap-8 shadow-2xl scale-105 ring-4 ring-accent/20 z-10 relative">
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2 text-accent">Participe</h3>
-              <p className="font-heading text-background/60 text-sm">Inscreva-se nos próximos workshops agendados.</p>
-            </div>
-            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Acesso Prioritário</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Material de Apoio</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Mentoria Coletiva</li>
-            </ul>
-            <button className="btn-magnetic mt-auto w-full py-4 rounded-full bg-accent text-primary font-bold text-sm">
-              <span className="relative z-10">Ver Agenda</span>
-            </button>
-          </div>
-          
-          {/* Tier 3 */}
-          <div className="p-10 rounded-[3rem] bg-white border border-primary/10 flex flex-col gap-8 shadow-sm">
-            <div>
-              <h3 className="font-heading font-bold text-2xl mb-2">Apoie</h3>
-              <p className="font-heading text-primary/60 text-sm">Torne-se um financiador do nosso projeto social.</p>
-            </div>
-            <ul className="flex flex-col gap-4 font-heading text-sm font-medium">
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Relatórios de Impacto</li>
-              <li className="flex gap-3 items-center"><Check size={16} className="text-accent"/> Visitas ao Projeto</li>
-            </ul>
-            <button className="btn-magnetic mt-auto w-full py-4 rounded-full border border-primary text-primary font-bold text-sm">
-              <span className="relative z-10">Seja um Parceiro</span>
-            </button>
-          </div>
+    <section id="agenda" className="relative py-48 px-6 lg:px-12 bg-[#0C0C0C] overflow-hidden flex items-center justify-center">
+      
+      {/* Glow de fundo */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
+
+        <p className="font-heading text-[11px] tracking-[5px] uppercase text-accent/70">
+          O próximo passo é simples
+        </p>
+
+        <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-tight">
+          Venha se{' '}
+          <span className="text-accent">mover.</span>
+        </h2>
+
+        <p className="font-heading text-background/50 text-lg md:text-xl max-w-lg leading-relaxed">
+          Encontre um workshop, uma aula, um encontro. O corpo sabe o caminho — basta começar.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <a
+            href="/programacao"
+            className="btn-magnetic bg-accent text-primary px-10 py-4 rounded-full font-heading font-bold text-sm flex items-center gap-2 justify-center"
+          >
+            <span className="relative z-10 flex items-center gap-2">Ver Programação <ArrowRight size={16}/></span>
+          </a>
+          <a
+            href="/apoie"
+            className="px-10 py-4 rounded-full font-heading font-normal text-sm border border-background/20 text-background/60 hover:border-background/50 hover:text-background/90 transition-all duration-300 flex items-center justify-center"
+          >
+            Quero apoiar o projeto
+          </a>
         </div>
+
       </div>
     </section>
   );
