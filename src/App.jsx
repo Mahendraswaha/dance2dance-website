@@ -495,6 +495,44 @@ const Protocol = () => {
     },
     {
       num: '03',
+      label: 'O que o corpo inventa',
+      title: 'Criação',
+      desc: 'O movimento é matéria-prima. Da dança nasce a coreografia, do silêncio nasce o gesto, do encontro nasce a obra. A arte não é destino — é o que acontece quando o corpo tem liberdade para se expressar.',
+      visual: (
+        <div className="relative w-64 h-64 flex items-center justify-center">
+          {/* Triângulo que se forma */}
+          <svg viewBox="0 0 200 200" className="absolute w-full h-full">
+            <polygon
+              points="100,20 180,160 20,160"
+              fill="none"
+              stroke="rgba(201,168,76,0.15)"
+              strokeWidth="1"
+              className="animate-[spin_30s_linear_infinite]"
+              style={{ transformOrigin: '100px 100px' }}
+            />
+            <polygon
+              points="100,40 160,150 40,150"
+              fill="none"
+              stroke="rgba(201,168,76,0.25)"
+              strokeWidth="1"
+              className="animate-[spin_20s_linear_infinite_reverse]"
+              style={{ transformOrigin: '100px 100px' }}
+            />
+            <polygon
+              points="100,60 140,140 60,140"
+              fill="none"
+              stroke="rgba(201,168,76,0.5)"
+              strokeWidth="1"
+              className="animate-[spin_12s_linear_infinite]"
+              style={{ transformOrigin: '100px 100px' }}
+            />
+          </svg>
+          <div className="w-2 h-2 rounded-full bg-accent animate-[ping_2s_ease-in-out_infinite]" />
+        </div>
+      )
+    },
+    {
+      num: '04',
       label: 'O que fica na comunidade',
       title: 'Transformação',
       desc: 'Quando pessoas se movem juntas, algo muda. A dança atravessa muros, cria vínculos e abre espaço para uma transformação que começa no corpo e reverbera no bairro, na rua, na cidade.',
