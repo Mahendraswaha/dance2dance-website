@@ -164,9 +164,9 @@ const Action = () => {
           {t("action.kicker")}
         </p>
 
-        <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-tight">
+        <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-tight break-words">
           {t("action.title.p1")}{' '}
-          <span className="text-accent">{t("action.title.p2")}</span>
+          <span className="text-accent pr-2 md:pr-4">{t("action.title.p2")}</span>
         </h2>
 
         <p className="font-heading text-background/90 text-lg md:text-xl max-w-lg leading-relaxed font-medium">
