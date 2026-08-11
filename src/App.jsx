@@ -642,29 +642,58 @@ const Action = () => {
       ctx.drawImage(img, 0, 0, img.width, img.height, cx, cy, img.width * ratio, img.height * ratio);
     };
 
-    // Transição: 60 frames = ~4 segundos de fade
-    const transitionFrames = 60;
-    const fadeOutStart = frameCount - transitionFrames; // frame 180
+    const fadingRef = { current: false };
+    const fadeOpacityRef = { current: 0 };
+    const FADE_STEPS = 45; // ~3s a 15fps
 
-    // ~15fps, com crossfade para preto no loop
+    const setOverlayOpacity = (val) => {
+      if (overlayRef.current) overlayRef.current.style.opacity = val;
+    };
+
+    const startFadeOut = () => {
+      // Segura no último frame e vai escurecendo
+      let step = 0;
+      const timer = setInterval(() => {
+        step++;
+        const opacity = step / FADE_STEPS;
+        setOverlayOpacity(opacity);
+        if (step >= FADE_STEPS) {
+          clearInterval(timer);
+          // Volta ao frame 0 e começa o fade-in
+          frameRef.current = 0;
+          render(0);
+          startFadeIn();
+        }
+      }, 1000 / 15);
+    };
+
+    const startFadeIn = () => {
+      let step = FADE_STEPS;
+      const timer = setInterval(() => {
+        step--;
+        const opacity = step / FADE_STEPS;
+        setOverlayOpacity(opacity);
+        if (step <= 0) {
+          clearInterval(timer);
+          fadingRef.current = false; // libera o loop normal
+        }
+      }, 1000 / 15);
+    };
+
+    // Loop principal a ~15fps
     const interval = setInterval(() => {
+      if (fadingRef.current) return; // pausado durante a transição
+
       const current = frameRef.current;
       render(current);
 
-      // Calcula opacidade do overlay escuro
-      if (overlayRef.current) {
-        let opacity = 0;
-        if (current >= fadeOutStart) {
-          // Fade para preto: cresce de 0 → 1 nos últimos 60 frames
-          opacity = (current - fadeOutStart) / transitionFrames;
-        } else if (current < transitionFrames) {
-          // Fade do preto: desce de 1 → 0 nos primeiros 60 frames
-          opacity = 1 - (current / transitionFrames);
-        }
-        overlayRef.current.style.opacity = opacity;
+      if (current >= frameCount - 1) {
+        // Chegou no último frame — inicia o fade
+        fadingRef.current = true;
+        startFadeOut();
+      } else {
+        frameRef.current = current + 1;
       }
-
-      frameRef.current = (current + 1) % frameCount;
     }, 1000 / 15);
 
     return () => {
