@@ -4,5 +4,88 @@
     "social": "Sosialt Prosjekt",
     "agenda": "Timeplan",
     "subscribe": "Meld deg på"
+  },
+  "hero": {
+    "subtitle1": "Bevegelse møter",
+    "subtitle2": "Transformasjon.",
+    "desc": "Dans og bevegelse som verktøy for uttrykk og velvære. Kunst som en vei til sosial transformasjon.",
+    "cta": "Utforsk Workshops",
+    "seq1": {
+      "p1": "Det er steder som ikke finnes på kartet.",
+      "p2": "Bare i kroppen."
+    },
+    "seq2": {
+      "p1": "er en sosial organisasjon som ble født for å bygge disse stedene. Rom hvor dans ikke bare er opptreden, men fremfor alt er tilstedeværelse. Hvor bevegelse er mer enn trening eller tøying, det er lytting og uttrykk. Hvor kunst ikke er et mål, men begynnelsen på et møte.",
+      "p2": "Møtet med seg selv og møtet som skjer når folk puster og beveger seg i samme rytme.",
+      "p3": "Endring begynner i huden, når en person gjenoppdager sin egen styrke, sin kreativitet, sin egen stemme. Og når dette skjer i en gruppe, åpnes en vei for",
+      "p4": "sosial transformasjon",
+      "p6": "skaper vilkårene for at folk kan møtes."
+    },
+    "seq3": "Dans og bevegelse gjør resten."
+  },
+  "activities": {
+    "kicker": "Hva vi gjør",
+    "title": "Våre Aktiviteter",
+    "card1": {
+      "desc": "Danseworkshops hvor bevegelse blir et møte. Kryssende rytmer, kropper som lytter til hverandre, en koreografi født fra kollektivet."
+    },
+    "card2": {
+      "desc": "Bevisste bevegelsespraksiser som utvider oppfatningen, stimulerer kroppslig omorganisering og forvandler måten vi bor i kroppen på."
+    },
+    "card3": {
+      "desc": "Samfunnsprosjekter som krysser gater og nabolag, vever bånd, skaper forbindelser og transformerer."
+    },
+    "cta": "SE VÅRT PROGRAM"
+  },
+  "phil": {
+    "line1": {
+      "p1": "Vi beveger kroppen for å",
+      "p2": "bringe folk sammen"
+    },
+    "line2": {
+      "p1": "Vi bringer folk sammen for å",
+      "p2": "transformere samfunn."
+    }
+  },
+  "proto": {
+    "1": {
+      "kicker": "Startpunktet",
+      "title": "Uttrykk",
+      "desc": "Kroppen holder det ord ikke kan nå. I workshopene blir bevegelse språk — et rom der rytme, nærvær og improvisasjon frigjør det som var innesperret."
+    },
+    "2": {
+      "kicker": "Hva bevegelse helbreder",
+      "title": "Velvære",
+      "desc": "Å lytte til kroppen er en politisk handling. Bevisste bevegelsespraksiser utvider oppfatningen, omorganiserer fysiske mønstre og gir folk forfatterskapet over seg selv tilbake."
+    },
+    "3": {
+      "kicker": "Hva kroppen finner opp",
+      "title": "Skapelse",
+      "desc": "Bevegelse er råmateriale. Fra dans blir koreografi født, fra stillhet blir gesten født, fra møtet blir verket født. Kunst er det som skjer når kroppen har frihet til å uttrykke seg."
+    },
+    "4": {
+      "kicker": "Hva som forblir i samfunnet",
+      "title": "Transformasjon",
+      "desc": "Når folk beveger seg sammen, endres noe. Dans krysser vegger, skaper bånd og åpner rom for en transformasjon som begynner i kroppen og gir gjenlyd i nabolaget, på gaten, i byen."
+    }
+  },
+  "action": {
+    "kicker": "Neste steg er enkelt",
+    "title": {
+      "p1": "Kom og",
+      "p2": "beveg deg."
+    },
+    "desc": "Finn en workshop, en klasse, din plass. Kroppen vet veien, bare begynn.",
+    "btn1": "Se Program",
+    "btn2": "Jeg vil støtte prosjektet"
+  },
+  "footer": {
+    "desc": "Transformerer liv gjennom bevegelse og dans. Et prosjekt med fokus på uttrykk og sosialt velvære.",
+    "links": {
+      "impact": "Sosial Påvirkning",
+      "contact": "Kontakt",
+      "terms": "Vilkår"
+    },
+    "rights": "Alle rettigheter reservert."
   }
 }

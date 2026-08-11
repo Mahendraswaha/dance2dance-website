@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 import Brand from './Brand';
 
 const Protocol = () => {
+  const { t } = useTranslation();
   const protocolRef = useRef(null);
 
   useEffect(() => {
@@ -38,9 +39,9 @@ const Protocol = () => {
   const protocols = [
     {
       num: '01',
-      label: 'O ponto de partida',
-      title: 'Expressão',
-      desc: 'O corpo guarda o que a palavra não alcança. Nos workshops, o movimento torna-se linguagem — um espaço onde ritmo, presença e improvisação libertam o que estava contido.',
+      label: t("proto.1.kicker"),
+      title: t("proto.1.title"),
+      desc: t("proto.1.desc"),
       visual: (
         <div className="relative w-64 h-64 flex items-center justify-center">
           <div className="absolute w-64 h-64 rounded-full border border-accent/10 animate-[spin_20s_linear_infinite]" />
@@ -52,9 +53,9 @@ const Protocol = () => {
     },
     {
       num: '02',
-      label: 'O que o movimento cura',
-      title: 'Bem-estar',
-      desc: 'Escutar o corpo é um ato político. As práticas de movimento consciente ampliam a percepção, reorganizam padrões físicos e devolvem às pessoas a autoria sobre si mesmas.',
+      label: t("proto.2.kicker"),
+      title: t("proto.2.title"),
+      desc: t("proto.2.desc"),
       visual: (
         <div className="relative w-64 h-64 flex items-center justify-center overflow-hidden">
           {[...Array(5)].map((_, i) => (
@@ -75,9 +76,9 @@ const Protocol = () => {
     },
     {
       num: '03',
-      label: 'O que o corpo inventa',
-      title: 'Criação',
-      desc: 'O movimento é matéria-prima. Da dança nasce a coreografia, do silêncio nasce o gesto, do encontro nasce a obra. A arte é o que acontece quando o corpo tem liberdade para se expressar.',
+      label: t("proto.3.kicker"),
+      title: t("proto.3.title"),
+      desc: t("proto.3.desc"),
       visual: (
         <div className="relative w-64 h-64 flex items-center justify-center">
           {/* Triângulo que se forma */}
@@ -113,9 +114,9 @@ const Protocol = () => {
     },
     {
       num: '04',
-      label: 'O que fica na comunidade',
-      title: 'Transformação',
-      desc: 'Quando pessoas se movem juntas, algo muda. A dança atravessa muros, cria vínculos e abre espaço para uma transformação que começa no corpo e reverbera no bairro, na rua, na cidade.',
+      label: t("proto.4.kicker"),
+      title: t("proto.4.title"),
+      desc: t("proto.4.desc"),
       visual: (
         <div className="relative w-64 h-64 flex items-center justify-center">
           {[...Array(3)].map((_, i) => (

@@ -4,5 +4,88 @@
     "social": "Social Project",
     "agenda": "Schedule",
     "subscribe": "Subscribe"
+  },
+  "hero": {
+    "subtitle1": "Movement meets",
+    "subtitle2": "Transformation.",
+    "desc": "Dance and movement as tools for expression and well-being. Art as a path to social transformation.",
+    "cta": "Explore Workshops",
+    "seq1": {
+      "p1": "There are places that do not exist on the map.",
+      "p2": "Only in the body."
+    },
+    "seq2": {
+      "p1": "is a social organization born to build these places. Spaces where dance is not only performance, but above all is presence. Where movement is more than exercise or stretching, it is listening and expression. Where art is not an end, but the beginning of an encounter.",
+      "p2": "The encounter with oneself and the encounter that happens when people breathe and move at the same rhythm.",
+      "p3": "Change begins in the skin, when a person rediscovers their own strength, their creativity, their own voice. And when this happens in a group, a path opens up for",
+      "p4": "social transformation",
+      "p6": "creates the conditions for people to meet."
+    },
+    "seq3": "Dance and movement do the rest."
+  },
+  "activities": {
+    "kicker": "What we do",
+    "title": "Our Activities",
+    "card1": {
+      "desc": "Dance workshops where movement becomes an encounter. Crossing rhythms, bodies that listen to each other, a choreography born from the collective."
+    },
+    "card2": {
+      "desc": "Conscious movement practices that broaden perception, stimulate body reorganization and transform the way we inhabit the body."
+    },
+    "card3": {
+      "desc": "Community projects that cross streets and neighborhoods, weaving ties, creating bonds and Transforming."
+    },
+    "cta": "SEE OUR SCHEDULE"
+  },
+  "phil": {
+    "line1": {
+      "p1": "We move the body to",
+      "p2": "bring people together"
+    },
+    "line2": {
+      "p1": "We bring people together to",
+      "p2": "transform communities."
+    }
+  },
+  "proto": {
+    "1": {
+      "kicker": "The starting point",
+      "title": "Expression",
+      "desc": "The body keeps what words cannot reach. In the workshops, movement becomes language — a space where rhythm, presence and improvisation release what was contained."
+    },
+    "2": {
+      "kicker": "What movement heals",
+      "title": "Well-being",
+      "desc": "Listening to the body is a political act. Conscious movement practices expand perception, reorganize physical patterns and return to people the authorship over themselves."
+    },
+    "3": {
+      "kicker": "What the body invents",
+      "title": "Creation",
+      "desc": "Movement is raw material. From dance choreography is born, from silence the gesture is born, from the encounter the work is born. Art is what happens when the body has the freedom to express itself."
+    },
+    "4": {
+      "kicker": "What remains in the community",
+      "title": "Transformation",
+      "desc": "When people move together, something changes. Dance crosses walls, creates bonds and opens space for a transformation that begins in the body and reverberates in the neighborhood, on the street, in the city."
+    }
+  },
+  "action": {
+    "kicker": "The next step is simple",
+    "title": {
+      "p1": "Come",
+      "p2": "move."
+    },
+    "desc": "Find a workshop, a class, your place. The body knows the way, just start.",
+    "btn1": "See Schedule",
+    "btn2": "I want to support the project"
+  },
+  "footer": {
+    "desc": "Transforming lives through movement and dance. A project focused on expression and social well-being.",
+    "links": {
+      "impact": "Social Impact",
+      "contact": "Contact",
+      "terms": "Terms"
+    },
+    "rights": "All rights reserved."
   }
 }

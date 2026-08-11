@@ -4,5 +4,88 @@
     "social": "Projeto Social",
     "agenda": "Agenda",
     "subscribe": "Inscreva-se"
+  },
+  "hero": {
+    "subtitle1": "O movimento encontra a",
+    "subtitle2": "Transformação.",
+    "desc": "A dança e o movimento como ferramentas de expressão e bem-estar. A arte como caminho para a transformação social.",
+    "cta": "Explorar Workshops",
+    "seq1": {
+      "p1": "Há lugares que não existem no mapa.",
+      "p2": "Só no corpo."
+    },
+    "seq2": {
+      "p1": "é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento é mais que exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.",
+      "p2": "O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.",
+      "p3": "A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua criatividade, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a",
+      "p4": "transformação social",
+      "p6": "cria as condições para que as pessoas se encontrem."
+    },
+    "seq3": "A dança e o movimento fazem o resto."
+  },
+  "activities": {
+    "kicker": "O que fazemos",
+    "title": "Nossas Atividades",
+    "card1": {
+      "desc": "Workshops de dança onde o movimento vira encontro. Ritmos que se cruzam, corpos que se escutam, uma coreografia que nasce do coletivo."
+    },
+    "card2": {
+      "desc": "Práticas de movimento consciente que ampliam a percepção, estimulam a reorganização corporal e transformam a maneira como habitamos o corpo."
+    },
+    "card3": {
+      "desc": "Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos e Transformando."
+    },
+    "cta": "CONHEÇA NOSSA PROGRAMAÇÃO"
+  },
+  "phil": {
+    "line1": {
+      "p1": "Movemos o corpo para",
+      "p2": "aproximar pessoas"
+    },
+    "line2": {
+      "p1": "Aproximamos pessoas para",
+      "p2": "transformar comunidades."
+    }
+  },
+  "proto": {
+    "1": {
+      "kicker": "O ponto de partida",
+      "title": "Expressão",
+      "desc": "O corpo guarda o que a palavra não alcança. Nos workshops, o movimento torna-se linguagem — um espaço onde ritmo, presença e improvisação libertam o que estava contido."
+    },
+    "2": {
+      "kicker": "O que o movimento cura",
+      "title": "Bem-estar",
+      "desc": "Escutar o corpo é um ato político. As práticas de movimento consciente ampliam a percepção, reorganizam padrões físicos e devolvem às pessoas a autoria sobre si mesmas."
+    },
+    "3": {
+      "kicker": "O que o corpo inventa",
+      "title": "Criação",
+      "desc": "O movimento é matéria-prima. Da dança nasce a coreografia, do silêncio nasce o gesto, do encontro nasce a obra. A arte é o que acontece quando o corpo tem liberdade para se expressar."
+    },
+    "4": {
+      "kicker": "O que fica na comunidade",
+      "title": "Transformação",
+      "desc": "Quando pessoas se movem juntas, algo muda. A dança atravessa muros, cria vínculos e abre espaço para uma transformação que começa no corpo e reverbera no bairro, na rua, na cidade."
+    }
+  },
+  "action": {
+    "kicker": "O próximo passo é simples",
+    "title": {
+      "p1": "Venha se",
+      "p2": "mover."
+    },
+    "desc": "Encontre um workshop, uma aula, o seu lugar. O corpo sabe o caminho, basta começar.",
+    "btn1": "Ver Programação",
+    "btn2": "Quero apoiar o projeto"
+  },
+  "footer": {
+    "desc": "Transformando vidas através do movimento e da dança. Um projeto focado em expressão e bem-estar social.",
+    "links": {
+      "impact": "Impacto Social",
+      "contact": "Contato",
+      "terms": "Termos"
+    },
+    "rights": "Todos os direitos reservados."
   }
 }

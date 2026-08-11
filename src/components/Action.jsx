@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 import Brand from './Brand';
 
 const Action = () => {
+  const { t } = useTranslation();
   const canvasRef = useRef(null);
   const overlayRef = useRef(null);
   const imagesRef = useRef([]);
@@ -160,16 +161,16 @@ const Action = () => {
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
         <p className="font-heading text-[11px] tracking-[5px] uppercase text-accent font-semibold">
-          O próximo passo é simples
+          {t("action.kicker")}
         </p>
 
         <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-tight">
           Venha se{' '}
-          <span className="text-accent">mover.</span>
+          <span className="text-accent">{t("action.title.p2")}</span>
         </h2>
 
         <p className="font-heading text-background/90 text-lg md:text-xl max-w-lg leading-relaxed font-medium">
-          Encontre um workshop, uma aula, o seu lugar. <br className="hidden sm:block" />O corpo sabe o caminho, basta começar.
+          {t("action.desc").split(". ")[0] + "."} <br className="hidden sm:block" />{t("action.desc").split(". ")[1]}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
@@ -177,13 +178,13 @@ const Action = () => {
             href="/programacao"
             className="btn-magnetic bg-accent text-primary px-10 py-4 rounded-full font-heading font-bold text-sm flex items-center gap-2 justify-center"
           >
-            <span className="relative z-10 flex items-center gap-2">Ver Programação <ArrowRight size={16}/></span>
+            <span className="relative z-10 flex items-center gap-2">{t("action.btn1")} <ArrowRight size={16}/></span>
           </a>
           <a
             href="/apoie"
             className="px-10 py-4 rounded-full font-heading font-normal text-sm border border-background/20 text-background/60 hover:border-background/50 hover:text-background/90 transition-all duration-300 flex items-center justify-center"
           >
-            Quero apoiar o projeto
+            {t("action.btn2")}
           </a>
         </div>
 

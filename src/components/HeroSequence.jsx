@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 import Brand from './Brand';
 
 const HeroSequence = () => {
+  const { t } = useTranslation();
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const heroContentRef = useRef(null);
@@ -218,15 +219,15 @@ const HeroSequence = () => {
       {/* Texto do Hero */}
       <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
         <h1 className="flex flex-col gap-2">
-          <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">O movimento encontra a</span>
-          <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-8xl text-accent leading-none">Transformação.</span>
+          <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">{t("hero.subtitle1")}</span>
+          <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-8xl text-accent leading-none">{t("hero.subtitle2")}</span>
         </h1>
         <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
-          A dança e o movimento como ferramentas de expressão e bem-estar. A arte como caminho para a transformação social.
+          {t("hero.desc")}
         </p>
         <div className="hero-elem mt-10 pointer-events-auto">
           <button className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2">
-            <span className="relative z-10 flex items-center gap-2">Explorar Workshops <ArrowRight size={20}/></span>
+            <span className="relative z-10 flex items-center gap-2">{t("hero.cta")} <ArrowRight size={20}/></span>
           </button>
         </div>
       </div>
@@ -238,26 +239,26 @@ const HeroSequence = () => {
       {/* 1. Primeira frase (Centralizada como o original) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
         <h2 className="seq-text-1 font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
-          Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
+          {t("hero.seq1.p1")} <br/><span className="text-accent italic font-drama">{t("hero.seq1.p2")}</span>
         </h2>
       </div>
 
       {/* 2. Restante do texto (Rola continuamente) */}
       <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <Brand className="text-background text-2xl md:text-3xl" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento é mais que exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.
+            <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p1")}
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
+            {t("hero.seq2.p2")}
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua criatividade, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
+            {t("hero.seq2.p3")} <strong className="text-accent">{t("hero.seq2.p4")}</strong>.
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <Brand className="text-background text-2xl md:text-3xl" /> cria as condições para que as pessoas se encontrem.
+            <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p6")}
           </p>
       </div>
 
