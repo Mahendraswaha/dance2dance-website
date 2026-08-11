@@ -721,7 +721,7 @@ const Action = () => {
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
-        <p className="font-heading text-[11px] tracking-[5px] uppercase text-accent/70">
+        <p className="font-heading text-[11px] tracking-[5px] uppercase text-accent font-semibold">
           O próximo passo é simples
         </p>
 
@@ -730,7 +730,7 @@ const Action = () => {
           <span className="text-accent">mover.</span>
         </h2>
 
-        <p className="font-heading text-background/50 text-lg md:text-xl max-w-lg leading-relaxed">
+        <p className="font-heading text-background/90 text-lg md:text-xl max-w-lg leading-relaxed font-medium">
           Encontre um workshop, uma aula, o seu lugar. <br className="hidden sm:block" />O corpo sabe o caminho, basta começar.
         </p>
 
