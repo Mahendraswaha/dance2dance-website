@@ -497,7 +497,7 @@ const Protocol = () => {
       num: '03',
       label: 'O que o corpo inventa',
       title: 'Criação',
-      desc: 'O movimento é matéria-prima. Da dança nasce a coreografia, do silêncio nasce o gesto, do encontro nasce a obra. A arte não é destino — é o que acontece quando o corpo tem liberdade para se expressar.',
+      desc: 'O movimento é matéria-prima. Da dança nasce a coreografia, do silêncio nasce o gesto, do encontro nasce a obra. A arte é o que acontece quando o corpo tem liberdade para se expressar.',
       visual: (
         <div className="relative w-64 h-64 flex items-center justify-center">
           {/* Triângulo que se forma */}
@@ -580,12 +580,22 @@ const Protocol = () => {
 
 const Action = () => {
   return (
-    <section id="agenda" className="relative py-48 px-6 lg:px-12 bg-[#0C0C0C] overflow-hidden flex items-center justify-center">
+    <section id="agenda" className="relative py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center">
       
-      {/* Glow de fundo */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px]" />
-      </div>
+      {/* Vídeo de fundo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: 'brightness(0.55)' }}
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Gradiente sobre o vídeo para legibilidade */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary/70" />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
