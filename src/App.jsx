@@ -580,6 +580,7 @@ const Protocol = () => {
 
 const Action = () => {
   const canvasRef = useRef(null);
+  const overlayRef = useRef(null);
   const imagesRef = useRef([]);
   const frameRef = useRef(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -615,7 +616,7 @@ const Action = () => {
     }
   }, []);
 
-  // Animação automática em loop
+  // Animação automática em loop com transição suave
   useEffect(() => {
     if (!isLoaded || !canvasRef.current) return;
 
@@ -641,10 +642,29 @@ const Action = () => {
       ctx.drawImage(img, 0, 0, img.width, img.height, cx, cy, img.width * ratio, img.height * ratio);
     };
 
-    // ~15fps para efeito cinematográfico e atmosférico
+    // Transição: 60 frames = ~4 segundos de fade
+    const transitionFrames = 60;
+    const fadeOutStart = frameCount - transitionFrames; // frame 180
+
+    // ~15fps, com crossfade para preto no loop
     const interval = setInterval(() => {
-      render(frameRef.current);
-      frameRef.current = (frameRef.current + 1) % frameCount;
+      const current = frameRef.current;
+      render(current);
+
+      // Calcula opacidade do overlay escuro
+      if (overlayRef.current) {
+        let opacity = 0;
+        if (current >= fadeOutStart) {
+          // Fade para preto: cresce de 0 → 1 nos últimos 60 frames
+          opacity = (current - fadeOutStart) / transitionFrames;
+        } else if (current < transitionFrames) {
+          // Fade do preto: desce de 1 → 0 nos primeiros 60 frames
+          opacity = 1 - (current / transitionFrames);
+        }
+        overlayRef.current.style.opacity = opacity;
+      }
+
+      frameRef.current = (current + 1) % frameCount;
     }, 1000 / 15);
 
     return () => {
@@ -661,6 +681,13 @@ const Action = () => {
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{ filter: 'brightness(0.45)' }}
+      />
+
+      {/* Overlay de transição fade-to-black no loop */}
+      <div
+        ref={overlayRef}
+        className="absolute inset-0 bg-primary pointer-events-none"
+        style={{ opacity: 0 }}
       />
 
       {/* Gradiente para legibilidade e transição suave */}
