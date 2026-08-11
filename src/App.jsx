@@ -716,8 +716,8 @@ const Action = () => {
       {/* Gradiente para legibilidade e transição suave */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/10 to-primary/60" />
 
-      {/* Cobertura da marca d'água (escondida no mobile pois o recorte 'cover' já joga ela para fora da tela) */}
-      <div className="hidden md:block absolute bottom-0 right-0 w-64 h-24 bg-gradient-to-tl from-[#0C0C0C] via-[#0C0C0C]/80 to-transparent pointer-events-none" />
+      {/* Cobertura exata da marca d'água (somente blur no cantinho) */}
+      <div className="hidden md:block absolute bottom-0 right-0 w-40 h-12 backdrop-blur-xl bg-[#0C0C0C]/40 rounded-tl-xl pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
