@@ -266,7 +266,7 @@ const HeroSequence = () => {
           <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-8xl text-accent leading-none">Transformação.</span>
         </h1>
         <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
-          A dança e o movimento como ferramentas de expressão, bem-estar e transformação social.
+          A dança e o movimento como ferramentas de expressão e bem-estar. A arte como caminho para a transformação social.
         </p>
         <div className="hero-elem mt-10 pointer-events-auto">
           <button className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2">
