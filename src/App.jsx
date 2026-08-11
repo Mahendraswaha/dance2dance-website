@@ -699,10 +699,10 @@ const Action = () => {
   return (
     <section id="agenda" className="relative z-20 bg-[#0C0C0C] py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center min-h-[80vh]">
 
-      {/* Canvas com a sequência de frames em loop (escala 1.10 joga a marca d'água para fora) */}
+      {/* Canvas com a sequência de frames em loop */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full scale-[1.10]"
+        className="absolute inset-0 w-full h-full"
         style={{ filter: 'brightness(0.7)' }}
       />
 
@@ -715,6 +715,17 @@ const Action = () => {
 
       {/* Gradiente para legibilidade e transição suave */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/10 to-primary/60 pointer-events-none" />
+
+      {/* Desfoque suave invisível apenas na marca d'água usando máscara radial */}
+      <div 
+        className="hidden md:block absolute bottom-0 right-0 w-80 h-24 pointer-events-none" 
+        style={{ 
+          backdropFilter: 'blur(8px)', 
+          WebkitBackdropFilter: 'blur(8px)', 
+          WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 20%, transparent 80%)',
+          maskImage: 'radial-gradient(ellipse at bottom right, black 20%, transparent 80%)'
+        }} 
+      />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
