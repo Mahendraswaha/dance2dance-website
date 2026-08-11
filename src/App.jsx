@@ -289,7 +289,7 @@ const HeroSequence = () => {
       {/* 2. Restante do texto (Rola continuamente) */}
       <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <Brand className="text-background" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento não é exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.
+            <Brand className="text-background text-2xl md:text-3xl" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento é mais que exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
@@ -301,7 +301,7 @@ const HeroSequence = () => {
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <Brand className="text-background" /> cria as condições para que as pessoas se encontrem.
+            <Brand className="text-background text-2xl md:text-3xl" /> cria as condições para que as pessoas se encontrem.
           </p>
       </div>
 
