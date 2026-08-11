@@ -777,6 +777,8 @@ const Footer = () => {
             </div>
             <div className="flex flex-col gap-4">
               <a href="#" className="hover:text-accent transition-colors">Instagram</a>
+              <a href="#" className="hover:text-accent transition-colors">Facebook</a>
+              <a href="#" className="hover:text-accent transition-colors">YouTube</a>
               <a href="#" className="hover:text-accent transition-colors">Contato</a>
               <a href="#" className="hover:text-accent transition-colors">Termos</a>
             </div>
