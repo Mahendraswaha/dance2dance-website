@@ -675,53 +675,23 @@ const Action = () => {
       }, 1000 / 15);
     };
 
-    // Loop com velocidade orgânica usando requestAnimationFrame
-    // Três ondas senoidais sobrepostas criam variação imprevisível
-    // Velocidade oscila suavemente entre ~8fps e ~24fps
-    let rafId;
-    let lastFrameTime = 0;
-    let accumulator = 0;
+    // Loop fixo a 15fps — suave e consistente
+    const interval = setInterval(() => {
+      if (fadingRef.current) return;
 
-    const animate = (timestamp) => {
-      if (!lastFrameTime) lastFrameTime = timestamp;
-      const delta = Math.min(timestamp - lastFrameTime, 100); // cap para evitar saltos
-      lastFrameTime = timestamp;
+      const current = frameRef.current;
+      render(current);
 
-      if (!fadingRef.current) {
-        // Combina 3 ondas com frequências e fases diferentes
-        const speed =
-          1.0 +
-          0.55 * Math.sin(timestamp * 0.00038) +          // onda lenta (dominante)
-          0.28 * Math.sin(timestamp * 0.00127 + 1.7) +    // onda média
-          0.17 * Math.sin(timestamp * 0.00391 + 3.2);     // onda rápida (detalhe)
-
-        // Intervalo alvo por frame: base 15fps modulado
-        const targetInterval = (1000 / 15) / Math.max(speed, 0.35);
-
-        accumulator += delta;
-
-        if (accumulator >= targetInterval) {
-          accumulator -= targetInterval;
-
-          const current = frameRef.current;
-          render(current);
-
-          if (current >= frameCount - 1) {
-            fadingRef.current = true;
-            startFadeOut();
-          } else {
-            frameRef.current = current + 1;
-          }
-        }
+      if (current >= frameCount - 1) {
+        fadingRef.current = true;
+        startFadeOut();
+      } else {
+        frameRef.current = current + 1;
       }
-
-      rafId = requestAnimationFrame(animate);
-    };
-
-    rafId = requestAnimationFrame(animate);
+    }, 1000 / 15);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      clearInterval(interval);
       window.removeEventListener('resize', resize);
     };
   }, [isLoaded]);
