@@ -148,7 +148,7 @@ const Protocol = () => {
             
             <div className="w-full md:w-1/2 flex flex-col gap-5">
               <span className="font-heading text-xs tracking-[4px] uppercase text-accent/70">{p.label}</span>
-              <h2 className="font-drama italic text-5xl sm:text-6xl md:text-8xl leading-none text-background break-words">{p.title}</h2>
+              <h2 className="font-drama italic text-4xl sm:text-5xl md:text-8xl leading-none text-background">{p.title}</h2>
               <div className="w-8 h-[1px] bg-accent/40" />
               <p className="font-heading text-background/60 text-base md:text-lg max-w-md leading-relaxed">{p.desc}</p>
             </div>
