@@ -772,6 +772,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <a href="#" className="hover:text-accent transition-colors">Be The Dance</a>
               <a href="#" className="hover:text-accent transition-colors">Biostretch</a>
+              <a href="#" className="hover:text-accent transition-colors">Kroppsskole</a>
               <a href="#" className="hover:text-accent transition-colors">Impacto Social</a>
             </div>
             <div className="flex flex-col gap-4">
