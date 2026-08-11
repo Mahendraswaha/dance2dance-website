@@ -579,23 +579,92 @@ const Protocol = () => {
 };
 
 const Action = () => {
-  return (
-    <section id="agenda" className="relative py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center">
-      
-      {/* Vídeo de fundo */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ filter: 'brightness(0.55)' }}
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+  const canvasRef = useRef(null);
+  const imagesRef = useRef([]);
+  const frameRef = useRef(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const frameCount = 240;
 
-      {/* Gradiente sobre o vídeo para legibilidade */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary/70" />
+  // Carrega as imagens (virão do cache do browser, pois o Hero já as carregou)
+  useEffect(() => {
+    const loadedImages = [];
+    let loadedCount = 0;
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      const frameNumber = i.toString().padStart(3, '0');
+      img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
+      img.onload = () => {
+        loadedCount++;
+        loadedImages.push(img);
+        if (loadedCount === frameCount) {
+          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
+          imagesRef.current = loadedImages;
+          setIsLoaded(true);
+        }
+      };
+      // Se a imagem já estava em cache, onload pode não disparar
+      if (img.complete) {
+        loadedCount++;
+        loadedImages.push(img);
+        if (loadedCount === frameCount) {
+          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
+          imagesRef.current = loadedImages;
+          setIsLoaded(true);
+        }
+      }
+    }
+  }, []);
+
+  // Animação automática em loop
+  useEffect(() => {
+    if (!isLoaded || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const render = (index) => {
+      const img = imagesRef.current[index];
+      if (!img || !canvas.width) return;
+      const hRatio = canvas.width / img.width;
+      const vRatio = canvas.height / img.height;
+      const ratio = Math.max(hRatio, vRatio);
+      const cx = (canvas.width - img.width * ratio) / 2;
+      const cy = (canvas.height - img.height * ratio) / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, img.width, img.height, cx, cy, img.width * ratio, img.height * ratio);
+    };
+
+    // ~15fps para efeito cinematográfico e atmosférico
+    const interval = setInterval(() => {
+      render(frameRef.current);
+      frameRef.current = (frameRef.current + 1) % frameCount;
+    }, 1000 / 15);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', resize);
+    };
+  }, [isLoaded]);
+
+  return (
+    <section id="agenda" className="relative py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center min-h-[80vh]">
+
+      {/* Canvas com a sequência de frames em loop */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ filter: 'brightness(0.45)' }}
+      />
+
+      {/* Gradiente para legibilidade e transição suave */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/20 to-primary/70" />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
