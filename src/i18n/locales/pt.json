@@ -21,7 +21,10 @@
       "p4": "transformação social",
       "p6": "cria as condições para que as pessoas se encontrem."
     },
-    "seq3": "A dança e o movimento fazem o resto."
+    "seq3": {
+      "p1": "A dança e o movimento",
+      "p2": "fazem o resto."
+    }
   },
   "activities": {
     "kicker": "O que fazemos",

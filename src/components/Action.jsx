@@ -165,7 +165,7 @@ const Action = () => {
         </p>
 
         <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-tight">
-          Venha se{' '}
+          {t("action.title.p1")}{' '}
           <span className="text-accent">{t("action.title.p2")}</span>
         </h2>
 

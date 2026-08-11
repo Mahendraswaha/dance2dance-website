@@ -265,7 +265,7 @@ const HeroSequence = () => {
       {/* 3. Última frase (Centralizada com destaque dourado) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
         <h2 className="seq-text-last font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight">
-          A <span className="text-accent">dança e o movimento</span> fazem o resto.
+          <span className="text-accent">{t('hero.seq3.p1')}</span> {t('hero.seq3.p2')}
         </h2>
       </div>
     </section>

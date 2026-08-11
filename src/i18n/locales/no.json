@@ -21,7 +21,10 @@
       "p4": "sosial transformasjon",
       "p6": "skaper vilkårene for at folk kan møtes."
     },
-    "seq3": "Dans og bevegelse gjør resten."
+    "seq3": {
+      "p1": "Dans og bevegelse",
+      "p2": "gjør resten."
+    }
   },
   "activities": {
     "kicker": "Hva vi gjør",

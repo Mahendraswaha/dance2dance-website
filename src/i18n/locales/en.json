@@ -21,7 +21,10 @@
       "p4": "social transformation",
       "p6": "creates the conditions for people to meet."
     },
-    "seq3": "Dance and movement do the rest."
+    "seq3": {
+      "p1": "Dance and movement",
+      "p2": "do the rest."
+    }
   },
   "activities": {
     "kicker": "What we do",
