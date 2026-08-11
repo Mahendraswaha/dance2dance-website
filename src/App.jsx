@@ -643,23 +643,19 @@ const Action = () => {
     };
 
     const fadingRef = { current: false };
-    const fadeOpacityRef = { current: 0 };
-    const FADE_STEPS = 45; // ~3s a 15fps
+    const FADE_STEPS = 45; // ~3s
 
     const setOverlayOpacity = (val) => {
       if (overlayRef.current) overlayRef.current.style.opacity = val;
     };
 
     const startFadeOut = () => {
-      // Segura no último frame e vai escurecendo
       let step = 0;
       const timer = setInterval(() => {
         step++;
-        const opacity = step / FADE_STEPS;
-        setOverlayOpacity(opacity);
+        setOverlayOpacity(step / FADE_STEPS);
         if (step >= FADE_STEPS) {
           clearInterval(timer);
-          // Volta ao frame 0 e começa o fade-in
           frameRef.current = 0;
           render(0);
           startFadeIn();
@@ -671,33 +667,61 @@ const Action = () => {
       let step = FADE_STEPS;
       const timer = setInterval(() => {
         step--;
-        const opacity = step / FADE_STEPS;
-        setOverlayOpacity(opacity);
+        setOverlayOpacity(step / FADE_STEPS);
         if (step <= 0) {
           clearInterval(timer);
-          fadingRef.current = false; // libera o loop normal
+          fadingRef.current = false;
         }
       }, 1000 / 15);
     };
 
-    // Loop principal a ~15fps
-    const interval = setInterval(() => {
-      if (fadingRef.current) return; // pausado durante a transição
+    // Loop com velocidade orgânica usando requestAnimationFrame
+    // Três ondas senoidais sobrepostas criam variação imprevisível
+    // Velocidade oscila suavemente entre ~8fps e ~24fps
+    let rafId;
+    let lastFrameTime = 0;
+    let accumulator = 0;
 
-      const current = frameRef.current;
-      render(current);
+    const animate = (timestamp) => {
+      if (!lastFrameTime) lastFrameTime = timestamp;
+      const delta = Math.min(timestamp - lastFrameTime, 100); // cap para evitar saltos
+      lastFrameTime = timestamp;
 
-      if (current >= frameCount - 1) {
-        // Chegou no último frame — inicia o fade
-        fadingRef.current = true;
-        startFadeOut();
-      } else {
-        frameRef.current = current + 1;
+      if (!fadingRef.current) {
+        // Combina 3 ondas com frequências e fases diferentes
+        const speed =
+          1.0 +
+          0.55 * Math.sin(timestamp * 0.00038) +          // onda lenta (dominante)
+          0.28 * Math.sin(timestamp * 0.00127 + 1.7) +    // onda média
+          0.17 * Math.sin(timestamp * 0.00391 + 3.2);     // onda rápida (detalhe)
+
+        // Intervalo alvo por frame: base 15fps modulado
+        const targetInterval = (1000 / 15) / Math.max(speed, 0.35);
+
+        accumulator += delta;
+
+        if (accumulator >= targetInterval) {
+          accumulator -= targetInterval;
+
+          const current = frameRef.current;
+          render(current);
+
+          if (current >= frameCount - 1) {
+            fadingRef.current = true;
+            startFadeOut();
+          } else {
+            frameRef.current = current + 1;
+          }
+        }
       }
-    }, 1000 / 15);
+
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
 
     return () => {
-      clearInterval(interval);
+      cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resize);
     };
   }, [isLoaded]);
