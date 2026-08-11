@@ -1,0 +1,274 @@
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
+gsap.registerPlugin(ScrollTrigger);
+
+import Brand from './Brand';
+
+const HeroSequence = () => {
+  const canvasRef = useRef(null);
+  const containerRef = useRef(null);
+  const heroContentRef = useRef(null);
+  const videoRef = useRef(null);
+  const imagesRef = useRef([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const frameCount = 240;
+
+  useEffect(() => {
+    const loadedImages = [];
+    let loadedCount = 0;
+    
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      const frameNumber = i.toString().padStart(3, '0');
+      img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
+      img.onload = () => {
+        loadedCount++;
+        loadedImages.push(img);
+        if (loadedCount === frameCount) {
+          // Ordena as imagens para garantir a sequência correta
+          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
+          imagesRef.current = loadedImages;
+          setIsLoaded(true);
+        }
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!canvasRef.current || !containerRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const render = (index) => {
+      const imgs = imagesRef.current;
+      if (imgs && imgs.length > 0 && imgs[Math.floor(index)]) {
+        const img = imgs[Math.floor(index)];
+        const hRatio = canvas.width / img.width;
+        const vRatio = canvas.height / img.height;
+        const ratio = Math.max(hRatio, vRatio);
+        const centerShift_x = (canvas.width - img.width * ratio) / 2;
+        const centerShift_y = (canvas.height - img.height * ratio) / 2;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, img.width, img.height,
+          centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+      }
+    };
+
+    render(0);
+
+    const animationData = { frame: 0 };
+    
+    const gsapCtx = gsap.context(() => {
+      
+      // Animação inicial de entrada
+      gsap.from('.hero-elem', {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.08,
+        ease: 'power3.out',
+        delay: 0.2
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=800%', 
+          pin: true,
+          scrub: true,
+          pinSpacing: true, // Força a criação do espaço para não sobrepor
+        }
+      });
+      
+      // Quando começa a rolar, o video some suavemente
+      tl.to(videoRef.current, { opacity: 0, duration: 0.05 }, 0);
+      
+      // O texto principal do hero sobe e some
+      tl.to(heroContentRef.current, { y: -200, opacity: 0, duration: 0.1 }, 0);
+
+      // Reprodução do canvas frame a frame
+      tl.to(animationData, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        duration: 1, // timeline normalizada
+        onUpdate: () => {
+          requestAnimationFrame(() => render(animationData.frame));
+        }
+      }, 0);
+      
+      // 1. A primeira frase original aparece no centro
+      tl.fromTo('.seq-text-1', 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.05 }, 
+        0.1
+      );
+      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.25);
+      
+      // 2. O bloco de texto rola continuamente (como créditos de filme)
+      // Ele começa fisicamente abaixo da tela (top-full) e rola até sair completamente pelo topo
+      tl.to('.seq-block-rest', 
+        { 
+          yPercent: -100,
+          y: () => -window.innerHeight,
+          ease: 'none', 
+          duration: 0.5 
+        }, 
+        0.25
+      );
+
+      // O bloco começa a desaparecer em fade mais cedo (0.55) para evitar encostar no Nav
+      tl.to('.seq-block-rest', { opacity: 0, duration: 0.15, ease: 'power2.inOut' }, 0.55);
+
+      // 3. A última frase aparece no centro em cross-fade acompanhando a saída do bloco
+      tl.fromTo('.seq-text-last', 
+        { opacity: 0, scale: 0.95 }, 
+        { opacity: 1, scale: 1, ease: 'power2.out', duration: 0.1 }, 
+        0.60
+      );
+      
+      // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
+      tl.to('.dark-overlay', { opacity: 0, duration: 0.2 }, 0.8);
+
+    }, containerRef);
+
+    let lastWidth = window.innerWidth;
+    const handleResize = () => {
+      // No mobile, ignorar mudanças de altura (causadas pela barra de endereço)
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        render(animationData.frame);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      gsapCtx.revert();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Dependência vazia: roda IMEDIATAMENTE no mount para travar a tela
+
+  // Re-render inicial frame once images are loaded
+  useEffect(() => {
+    if (isLoaded && canvasRef.current) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      const img = imagesRef.current[0];
+      if (img) {
+        const hRatio = canvas.width / img.width;
+        const vRatio = canvas.height / img.height;
+        const ratio = Math.max(hRatio, vRatio);
+        const centerShift_x = (canvas.width - img.width * ratio) / 2;
+        const centerShift_y = (canvas.height - img.height * ratio) / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, img.width, img.height, centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+      }
+    }
+  }, [isLoaded]);
+
+  return (
+    <section ref={containerRef} className="relative h-[100dvh] w-full bg-primary overflow-hidden">
+      
+      {/* Fallback de carregamento */}
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-primary z-0">
+          <div className="w-12 h-12 rounded-full border-4 border-accent border-t-transparent animate-spin" />
+        </div>
+      )}
+      
+      <div className="absolute inset-0 z-0 flex items-center justify-center">
+        <canvas 
+          ref={canvasRef} 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        
+        {/* Vídeo do Hero em loop (frame 1 da animação essencialmente) */}
+        <video 
+          ref={videoRef}
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
+      </div>
+      
+      {/* Texto do Hero */}
+      <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
+        <h1 className="flex flex-col gap-2">
+          <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">O movimento encontra a</span>
+          <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-8xl text-accent leading-none">Transformação.</span>
+        </h1>
+        <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
+          A dança e o movimento como ferramentas de expressão e bem-estar. A arte como caminho para a transformação social.
+        </p>
+        <div className="hero-elem mt-10 pointer-events-auto">
+          <button className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2">
+            <span className="relative z-10 flex items-center gap-2">Explorar Workshops <ArrowRight size={20}/></span>
+          </button>
+        </div>
+      </div>
+
+      <div className="dark-overlay absolute inset-0 bg-black/40 pointer-events-none" />
+
+      {/* Textos da Sequência (Surgem depois) */}
+      
+      {/* 1. Primeira frase (Centralizada como o original) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
+        <h2 className="seq-text-1 font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
+          Há lugares que não existem no mapa. <br/><span className="text-accent italic font-drama">Só no corpo.</span>
+        </h2>
+      </div>
+
+      {/* 2. Restante do texto (Rola continuamente) */}
+      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            <Brand className="text-background text-2xl md:text-3xl" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento é mais que exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.
+          </p>
+
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.
+          </p>
+
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua criatividade, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
+          </p>
+
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
+            <Brand className="text-background text-2xl md:text-3xl" /> cria as condições para que as pessoas se encontrem.
+          </p>
+      </div>
+
+      {/* 3. Última frase (Centralizada com destaque dourado) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
+        <h2 className="seq-text-last font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight">
+          A <span className="text-accent">dança e o movimento</span> fazem o resto.
+        </h2>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSequence;
