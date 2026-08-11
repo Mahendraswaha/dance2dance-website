@@ -60,7 +60,7 @@ const Navbar = () => {
           </div>
 
           {/* Links e Idiomas (Centro Absoluto) */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
             <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
               <a href="#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</a>
               <a href="#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</a>
