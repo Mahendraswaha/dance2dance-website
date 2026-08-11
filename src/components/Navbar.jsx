@@ -43,7 +43,7 @@ const Navbar = () => {
           <a href="#agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</a>
         </div>
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 text-xs font-heading font-bold text-background/50">
+          <div className="flex items-center gap-2 text-xs font-heading font-bold text-background/50">
             <button onClick={() => i18n.changeLanguage('pt')} className={`hover:text-accent transition-colors ${i18n.language === 'pt' ? 'text-accent' : ''}`}>PT</button>
             <span>|</span>
             <button onClick={() => i18n.changeLanguage('en')} className={`hover:text-accent transition-colors ${i18n.language === 'en' ? 'text-accent' : ''}`}>EN</button>
