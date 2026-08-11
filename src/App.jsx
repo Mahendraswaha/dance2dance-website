@@ -716,8 +716,8 @@ const Action = () => {
       {/* Gradiente para legibilidade e transição suave */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/10 to-primary/60" />
 
-      {/* Cobertura exata da marca d'água: mais larga, mais baixa, fade para cima */}
-      <div className="hidden md:block absolute bottom-0 right-0 w-56 h-10 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/90 to-transparent pointer-events-none" />
+      {/* Cobertura exata da marca d'água: bem larga e baixa, fade para cima */}
+      <div className="hidden md:block absolute bottom-0 right-0 w-[30rem] h-14 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/90 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
