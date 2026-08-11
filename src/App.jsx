@@ -716,14 +716,14 @@ const Action = () => {
       {/* Gradiente para legibilidade e transição suave */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/10 to-primary/60 pointer-events-none" />
 
-      {/* Desfoque suave invisível apenas na marca d'água usando máscara radial */}
+      {/* Desfoque suave invisível estendido na marca d'água usando máscara radial alargada */}
       <div 
-        className="hidden md:block absolute bottom-0 right-0 w-80 h-24 pointer-events-none" 
+        className="hidden md:block absolute bottom-0 right-0 w-[45rem] h-20 pointer-events-none" 
         style={{ 
-          backdropFilter: 'blur(8px)', 
-          WebkitBackdropFilter: 'blur(8px)', 
-          WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 20%, transparent 80%)',
-          maskImage: 'radial-gradient(ellipse at bottom right, black 20%, transparent 80%)'
+          backdropFilter: 'blur(10px)', 
+          WebkitBackdropFilter: 'blur(10px)', 
+          WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 60%, transparent 90%)',
+          maskImage: 'radial-gradient(ellipse at bottom right, black 60%, transparent 90%)'
         }} 
       />
 
