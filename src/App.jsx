@@ -289,7 +289,7 @@ const HeroSequence = () => {
       {/* 2. Restante do texto (Rola continuamente) */}
       <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <Brand className="text-background" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é performance, é presença. Onde o movimento não é exercício ou alongamento, é escuta e encontro.
+            <Brand className="text-background" /> é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento não é exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
@@ -297,11 +297,11 @@ const HeroSequence = () => {
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
+            A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua criatividade, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a <strong className="text-accent">transformação social</strong>.
           </p>
 
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
-            <Brand /> cria as condições para que as pessoas se encontrem.
+            <Brand className="text-background" /> cria as condições para que as pessoas se encontrem.
           </p>
       </div>
 
@@ -716,8 +716,8 @@ const Action = () => {
       {/* Gradiente para legibilidade e transição suave */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/10 to-primary/60" />
 
-      {/* Cobertura da marca d'água no canto inferior direito */}
-      <div className="absolute bottom-0 right-0 w-80 h-32 bg-gradient-to-tl from-primary via-primary/90 to-transparent pointer-events-none" />
+      {/* Cobertura da marca d'água (escondida no mobile pois o recorte 'cover' já joga ela para fora da tela) */}
+      <div className="hidden md:block absolute bottom-0 right-0 w-64 h-24 bg-gradient-to-tl from-[#0C0C0C] via-[#0C0C0C]/80 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-10">
 
