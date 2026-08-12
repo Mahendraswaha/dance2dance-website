@@ -22,15 +22,15 @@
       "p6": "skaper vilkårene for at folk kan møtes."
     },
     "seq3": {
-      "p1": "Dans og bevegelse",
-      "p2": "gjør resten."
+      "p1": "Dans og bevegelse gjør",
+      "p2": "resten."
     }
   },
   "activities": {
     "kicker": "Hva vi gjør",
     "title": "Våre Aktiviteter",
     "card1": {
-      "desc": "Danseworkshops hvor bevegelse blir et møte. Kryssende rytmer, kropper som lytter til hverandre, en koreografi født fra kollektivet."
+      "desc": "Hver kropp bærer en dans den ennå ikke har våget å slippe ut. Disse verkstedene er rommet der bevegelse, tilstedeværelse og uttrykk bringer den frem i lyset."
     },
     "card2": {
       "desc": "Bevisste bevegelsespraksiser som utvider oppfatningen, stimulerer kroppslig omorganisering og forvandler måten vi bor i kroppen på."
@@ -54,7 +54,7 @@
     "1": {
       "kicker": "Startpunktet",
       "title": "Uttrykk",
-      "desc": "Kroppen holder det ord ikke kan nå. I workshopene blir bevegelse språk — et rom der rytme, nærvær og improvisasjon frigjør det som var innesperret."
+      "desc": "Kroppen bevarer det som ordene ikke klarer å uttrykke. I workshopene blir bevegelsen til et språk og skaper et rom der rytme, nærvær og improvisasjon frigjør det som har vært holdt tilbake."
     },
     "2": {
       "kicker": "Hva bevegelse helbreder",
@@ -69,7 +69,7 @@
     "4": {
       "kicker": "Hva som forblir i samfunnet",
       "title": "Transformasjon",
-      "desc": "Når folk beveger seg sammen, endres noe. Dans krysser vegger, skaper bånd og åpner rom for en transformasjon som begynner i kroppen og gir gjenlyd i nabolaget, på gaten, i byen."
+      "desc": "Når folk beveger seg sammen, endres noe. Dans krysser vegger, skaper bånd og åpner rom for en transformasjon som begynner i kroppen og gir gjenlyd på gaten, i nabolaget i byen."
     }
   },
   "action": {

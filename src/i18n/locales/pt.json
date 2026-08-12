@@ -15,7 +15,7 @@
       "p2": "Só no corpo."
     },
     "seq2": {
-      "p1": "é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo é presença. Onde o movimento é mais que exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.",
+      "p1": "é uma organização social que nasceu para construir esses lugares. Espaços onde a dança não é somente performance, mas sobretudo presença. Onde o movimento é mais que exercício ou alongamento, é escuta e expressão. Onde a arte não é um fim, mas o início de um encontro.",
       "p2": "O encontro consigo mesmo e o encontro que acontece quando pessoas respiram e se movem no mesmo ritmo.",
       "p3": "A mudança começa na pele, quando uma pessoa redescobre sua própria força, sua criatividade, sua própria voz. E, quando isso acontece em grupo, abre-se um caminho para a",
       "p4": "transformação social",
@@ -30,13 +30,13 @@
     "kicker": "O que fazemos",
     "title": "Nossas Atividades",
     "card1": {
-      "desc": "Workshops de dança onde o movimento vira encontro. Ritmos que se cruzam, corpos que se escutam, uma coreografia que nasce do coletivo."
+      "desc": "Cada corpo carrega uma dança que ainda não se atreveu a sair. Estes workshops são o espaço onde movimento, presença e expressão a trazem à luz."
     },
     "card2": {
       "desc": "Práticas de movimento consciente que ampliam a percepção, estimulam a reorganização corporal e transformam a maneira como habitamos o corpo."
     },
     "card3": {
-      "desc": "Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos e Transformando."
+      "desc": "Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos e transformando."
     },
     "cta": "CONHEÇA NOSSA PROGRAMAÇÃO"
   },
@@ -54,7 +54,7 @@
     "1": {
       "kicker": "O ponto de partida",
       "title": "Expressão",
-      "desc": "O corpo guarda o que a palavra não alcança. Nos workshops, o movimento torna-se linguagem — um espaço onde ritmo, presença e improvisação libertam o que estava contido."
+      "desc": "O corpo guarda o que a palavra não alcança expressar. Nos workshops, o movimento torna-se linguagem e cria um espaço onde ritmo, presença e improvisação libertam o que esteve contido."
     },
     "2": {
       "kicker": "O que o movimento cura",
@@ -69,7 +69,7 @@
     "4": {
       "kicker": "O que fica na comunidade",
       "title": "Transformação",
-      "desc": "Quando pessoas se movem juntas, algo muda. A dança atravessa muros, cria vínculos e abre espaço para uma transformação que começa no corpo e reverbera no bairro, na rua, na cidade."
+      "desc": "Quando pessoas se movem juntas, algo muda. A dança atravessa muros, cria vínculos e abre espaço para uma transformação que começa no corpo e reverbera na rua, no bairro, na cidade."
     }
   },
   "action": {

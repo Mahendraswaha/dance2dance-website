@@ -22,21 +22,21 @@
       "p6": "creates the conditions for people to meet."
     },
     "seq3": {
-      "p1": "Dance and movement",
-      "p2": "do the rest."
+      "p1": "Dance and movement do",
+      "p2": "the rest."
     }
   },
   "activities": {
     "kicker": "What we do",
     "title": "Our Activities",
     "card1": {
-      "desc": "Dance workshops where movement becomes an encounter. Crossing rhythms, bodies that listen to each other, a choreography born from the collective."
+      "desc": "Every body carries a dance it hasn't yet dared to step into. These workshops are the space where movement, presence and expression bring it to light."
     },
     "card2": {
       "desc": "Conscious movement practices that broaden perception, stimulate body reorganization and transform the way we inhabit the body."
     },
     "card3": {
-      "desc": "Community projects that cross streets and neighborhoods, weaving ties, creating bonds and Transforming."
+      "desc": "Community projects that cross streets and neighborhoods, weaving ties, creating bonds and transforming."
     },
     "cta": "SEE OUR SCHEDULE"
   },
@@ -54,7 +54,7 @@
     "1": {
       "kicker": "The starting point",
       "title": "Expression",
-      "desc": "The body keeps what words cannot reach. In the workshops, movement becomes language — a space where rhythm, presence and improvisation release what was contained."
+      "desc": "The body holds what words cannot express. In the workshops, movement becomes a language and creates a space where rhythm, presence and improvisation set free what has been held back."
     },
     "2": {
       "kicker": "What movement heals",
@@ -69,7 +69,7 @@
     "4": {
       "kicker": "What remains in the community",
       "title": "Transformation",
-      "desc": "When people move together, something changes. Dance crosses walls, creates bonds and opens space for a transformation that begins in the body and reverberates in the neighborhood, on the street, in the city."
+      "desc": "When people move together, something changes. Dance crosses walls, creates bonds and opens space for a transformation that begins in the body and reverberates on the street, in the neighborhood, in the city."
     }
   },
   "action": {
