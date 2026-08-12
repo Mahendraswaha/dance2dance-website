@@ -1,0 +1,106 @@
+{
+  "be-the-dance": {
+    "id": "be-the-dance",
+    "title": "Be the Dance",
+    "description": "Filosofia e conceito do Be the Dance...",
+    "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/be-the-dance-hero.jpg",
+    "workshops": [
+      {
+        "id": "workshop-1",
+        "slug": "workshop-1",
+        "title": "Workshop 1 (Be the Dance)",
+        "shortDescription": "Resumo do workshop 1",
+        "fullDescription": "Descrição completa do workshop 1...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "workshop-2",
+        "slug": "workshop-2",
+        "title": "Workshop 2 (Be the Dance)",
+        "shortDescription": "Resumo do workshop 2",
+        "fullDescription": "Descrição completa do workshop 2...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "be-the-dance-pro",
+        "slug": "be-the-dance-pro",
+        "title": "Be the Dance Pro",
+        "shortDescription": "Programa de aprofundamento",
+        "fullDescription": "Descrição completa do Be the Dance Pro...",
+        "image": "https://via.placeholder.com/600x400"
+      }
+    ],
+    "corporate": {
+      "title": "Formato para Empresas",
+      "description": "Detalhes sobre o Be the Dance in Company..."
+    }
+  },
+  "biostretch": {
+    "id": "biostretch",
+    "title": "Biostretch",
+    "description": "Filosofia e conceito do Biostretch...",
+    "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/biostretch-hero.jpg",
+    "workshops": [
+      {
+        "id": "uma-melhor-postura",
+        "slug": "uma-melhor-postura",
+        "title": "Uma Melhor Postura",
+        "shortDescription": "Aprenda a melhorar sua postura no dia a dia.",
+        "fullDescription": "Descrição completa do workshop de postura...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "aprendendo-a-relaxar",
+        "slug": "aprendendo-a-relaxar",
+        "title": "Aprendendo a Relaxar",
+        "shortDescription": "Técnicas de relaxamento profundo.",
+        "fullDescription": "Descrição completa do workshop Aprendendo a Relaxar...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "alongar-respirar-e-meditar",
+        "slug": "alongar-respirar-e-meditar",
+        "title": "Alongar, Respirar e Meditar",
+        "shortDescription": "Combinação de alongamento, respiração e meditação.",
+        "fullDescription": "Descrição completa...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "transformando-habitos",
+        "slug": "transformando-habitos",
+        "title": "Transformando Hábitos",
+        "shortDescription": "Mude seus hábitos para uma vida mais saudável.",
+        "fullDescription": "Descrição completa...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "movimentos-diarios-para-prevenir-o-stress",
+        "slug": "movimentos-diarios-para-prevenir-o-stress",
+        "title": "Movimentos Diários para Prevenir o Stress",
+        "shortDescription": "Rotinas de movimento anti-stress.",
+        "fullDescription": "Descrição completa...",
+        "image": "https://via.placeholder.com/600x400"
+      },
+      {
+        "id": "recuperando-o-foco",
+        "slug": "recuperando-o-foco",
+        "title": "Recuperando o Foco",
+        "shortDescription": "Técnicas para melhorar a concentração.",
+        "fullDescription": "Descrição completa...",
+        "image": "https://via.placeholder.com/600x400"
+      }
+    ],
+    "individualSessions": {
+      "title": "Sessões Individuais",
+      "description": "Atendimento personalizado de Biostretch."
+    },
+    "regularClasses": {
+      "title": "Aulas Regulares",
+      "description": "Turmas semanais de Biostretch."
+    },
+    "corporate": {
+      "title": "Formato para Empresas",
+      "description": "Biostretch in Company..."
+    }
+  }
+}
