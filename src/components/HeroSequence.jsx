@@ -247,9 +247,9 @@ const HeroSequence = () => {
           {t("hero.desc")}
         </p>
         <div className="hero-elem mt-10 pointer-events-auto">
-          <button className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2">
+          <a href="/#workshops" className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2 inline-flex">
             <span className="relative z-10 flex items-center gap-2">{t("hero.cta")} <ArrowRight size={20}/></span>
-          </button>
+          </a>
         </div>
       </div>
 

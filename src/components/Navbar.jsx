@@ -56,15 +56,17 @@ const Navbar = () => {
           
           {/* Logo (Esquerda) */}
           <div className="flex items-center justify-start flex-1 z-20">
-            <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-10 md:h-20 object-contain" />
+            <a href="/">
+              <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-10 md:h-20 object-contain" />
+            </a>
           </div>
 
           {/* Links e Idiomas (Centro Absoluto) */}
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
             <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
-              <a href="#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</a>
-              <a href="#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</a>
-              <a href="#agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</a>
+              <a href="/#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</a>
+              <a href="/#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</a>
+              <a href="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</a>
             </div>
             <div className="flex md:hidden items-center gap-1 text-[10px] font-heading font-bold text-background/50">
               <button onClick={() => i18n.changeLanguage('no')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'no' ? 'text-accent' : ''}`}>NO</button>
