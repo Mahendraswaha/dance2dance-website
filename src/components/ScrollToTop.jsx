@@ -11,11 +11,11 @@ export default function ScrollToTop() {
         const id = hash.replace('#', '');
         const element = document.getElementById(id);
         if (element) {
-          // Force a scroll to the element's exact calculated position after GSAP spacer is injected
-          const y = element.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          // Usamos 'auto' em vez de 'smooth' para evitar que o navegador trave
+          // tentando desenhar 240 frames da animação do Hero num smooth scroll de 9000px
+          element.scrollIntoView({ behavior: 'auto' });
         }
-      }, 400);
+      }, 500);
     } else {
       window.scrollTo(0, 0);
     }
