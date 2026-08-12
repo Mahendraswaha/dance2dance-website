@@ -175,7 +175,7 @@ const Action = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
           <a
-            href="/programacao"
+            href="/agenda"
             className="btn-magnetic bg-accent text-primary px-10 py-4 rounded-full font-heading font-bold text-sm flex items-center gap-2 justify-center"
           >
             <span className="relative z-10 flex items-center gap-2">{t("action.btn1")} <ArrowRight size={16}/></span>
