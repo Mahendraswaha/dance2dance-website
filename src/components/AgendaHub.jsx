@@ -1,104 +1,132 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import programsData from '../data/programs.json';
+import { useTranslation } from 'react-i18next';
+import { Calendar, MapPin, Clock } from 'lucide-react';
 
-export default function AgendaHub() {
-  const [filter, setFilter] = useState('all');
+export default function AgendaHub({ programs }) {
+  const { t } = useTranslation();
+  const [activeFilter, setActiveFilter] = useState('all');
 
-  // Extract all workshops from all programs to create a unified agenda
-  const allEvents = [];
-  
-  Object.keys(programsData).forEach(programKey => {
-    const program = programsData[programKey];
-    if (program.workshops) {
-      program.workshops.forEach(ws => {
-        allEvents.push({
-          ...ws,
-          programId: program.id,
-          programTitle: program.title,
-          // Mocking dates since the actual JSON doesn't have dates yet
-          dateStr: "15 e 16 de Outubro, 2024",
-          location: "Online / Ao Vivo"
-        });
-      });
-    }
-  });
+  // Para demonstração, vamos extrair todos os workshops e adicionar datas fictícias.
+  // Idealmente, a 'Agenda' seria um array separado de 'eventos' em programs.json.
+  const allEvents = Object.values(programs).flatMap(p => 
+    p.workshops.map(w => ({
+      ...w,
+      programId: p.id,
+      programTitle: p.title,
+      date: "Em breve",
+      time: "A definir",
+      location: "Porto Alegre / RS"
+    }))
+  );
 
-  const filteredEvents = filter === 'all' 
+  const filteredEvents = activeFilter === 'all' 
     ? allEvents 
-    : allEvents.filter(e => e.programId === filter);
+    : allEvents.filter(e => e.programId === activeFilter);
 
   return (
-    <div className="pt-24 pb-20 bg-[#FAFAFA] min-h-screen font-sans">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="pt-32 pb-24 bg-primary min-h-screen font-sans text-background">
+      <div className="max-w-[1200px] mx-auto px-8">
         
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-light mb-6 text-gray-900 tracking-wide">
-            Agenda
-          </h1>
-          <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Acompanhe nossas próximas turmas, eventos e workshops. Escolha o melhor momento para sua transformação.
+        {/* Header */}
+        <header className="mb-16 text-center">
+          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">Calendário</p>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-batang text-4xl md:text-6xl font-normal mb-6 text-[#F0EDE8]"
+          >
+            Agenda Completa
+          </motion.h1>
+          <div className="w-12 h-[1px] bg-accent/70 mx-auto mb-8"></div>
+          <p className="font-heading text-[#9A9A9A] font-light max-w-2xl mx-auto">
+            Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.
           </p>
-        </div>
+        </header>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           <button 
-            onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider transition-colors ${filter === 'all' ? 'bg-[#A67B5B] text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-[#A67B5B] hover:text-[#A67B5B]'}`}
+            onClick={() => setActiveFilter('all')}
+            className={`font-heading text-[11px] tracking-[3px] uppercase px-6 py-2 rounded-full border transition-all ${
+              activeFilter === 'all' 
+                ? 'bg-accent border-accent text-primary font-semibold' 
+                : 'border-[#333] text-[#9A9A9A] hover:border-accent/50 hover:text-accent'
+            }`}
           >
-            Todos os Eventos
+            Todos
           </button>
-          {Object.keys(programsData).map(key => (
-            <button 
-              key={key}
-              onClick={() => setFilter(key)}
-              className={`px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider transition-colors ${filter === key ? 'bg-[#A67B5B] text-white' : 'bg-white text-gray-600 border border-gray-200 hover:border-[#A67B5B] hover:text-[#A67B5B]'}`}
-            >
-              {programsData[key].title}
-            </button>
-          ))}
+          <button 
+            onClick={() => setActiveFilter('be-the-dance')}
+            className={`font-heading text-[11px] tracking-[3px] uppercase px-6 py-2 rounded-full border transition-all ${
+              activeFilter === 'be-the-dance' 
+                ? 'bg-accent border-accent text-primary font-semibold' 
+                : 'border-[#333] text-[#9A9A9A] hover:border-accent/50 hover:text-accent'
+            }`}
+          >
+            Be The Dance
+          </button>
+          <button 
+            onClick={() => setActiveFilter('biostretch')}
+            className={`font-heading text-[11px] tracking-[3px] uppercase px-6 py-2 rounded-full border transition-all ${
+              activeFilter === 'biostretch' 
+                ? 'bg-accent border-accent text-primary font-semibold' 
+                : 'border-[#333] text-[#9A9A9A] hover:border-accent/50 hover:text-accent'
+            }`}
+          >
+            Biostretch
+          </button>
         </div>
 
-        {/* Agenda List */}
+        {/* Events List */}
         <div className="space-y-6">
           {filteredEvents.map((event, index) => (
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              key={`${event.programId}-${event.id}`}
-              className="bg-white p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col md:flex-row items-center gap-6"
+              key={`${event.id}-${index}`} 
+              className="bg-[#141414] border border-[#222222] p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start md:items-center hover:border-accent/30 transition-colors rounded-[2px]"
             >
-              <div className="flex-shrink-0 w-full md:w-48 text-center md:text-left border-b md:border-b-0 md:border-r border-gray-100 pb-4 md:pb-0 md:pr-6">
-                <span className="block text-sm uppercase tracking-widest text-[#A67B5B] font-semibold mb-1">Data</span>
-                <span className="block text-lg text-gray-800">{event.dateStr}</span>
+              
+              {/* Date Box */}
+              <div className="md:w-48 shrink-0 flex flex-col">
+                <span className="font-heading text-sm text-accent uppercase tracking-widest mb-1">{event.date}</span>
+                <span className="font-heading text-xs text-[#666] flex items-center gap-2">
+                  <Clock size={12} /> {event.time}
+                </span>
               </div>
               
-              <div className="flex-grow text-center md:text-left">
-                <span className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2 block">
-                  {event.programTitle}
-                </span>
-                <h3 className="text-2xl font-medium text-gray-900 mb-2">{event.title}</h3>
-                <p className="text-gray-500 text-sm flex items-center justify-center md:justify-start">
-                  <span className="mr-2">📍</span> {event.location}
+              {/* Event Info */}
+              <div className="flex-grow">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="font-heading text-[9px] tracking-[2px] uppercase bg-[#222] px-3 py-1 text-[#AAA] rounded-[2px]">
+                    {event.programTitle}
+                  </span>
+                </div>
+                <h3 className="font-batang text-2xl text-[#F0EDE8] mb-2">{event.title}</h3>
+                <p className="font-heading text-sm text-[#9A9A9A] font-light flex items-center gap-2">
+                  <MapPin size={14} className="text-accent/70" /> {event.location}
                 </p>
               </div>
               
-              <div className="flex-shrink-0 w-full md:w-auto flex flex-col sm:flex-row gap-3 pt-4 md:pt-0 mt-2 md:mt-0">
-                <Link 
-                  to={`/${event.programId}/${event.slug}`}
-                  className="px-6 py-3 border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900 rounded-full text-center text-sm font-semibold uppercase tracking-wider transition-colors"
+              {/* Action */}
+              <div className="shrink-0 w-full md:w-auto mt-4 md:mt-0">
+                <a 
+                  href={`/${event.programId}/${event.slug}`} 
+                  className="font-heading text-[10px] tracking-[3px] uppercase text-accent border-b border-accent/30 pb-1 hover:text-[#F0EDE8] hover:border-accent/80 transition-all inline-block"
                 >
                   Detalhes
-                </Link>
-                <button className="px-6 py-3 bg-gray-900 hover:bg-black text-white rounded-full text-center text-sm font-semibold uppercase tracking-wider transition-colors">
-                  Inscreva-se
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}
+          
+          {filteredEvents.length === 0 && (
+            <div className="text-center py-20 text-[#666] font-heading font-light">
+              Nenhum evento encontrado para este filtro no momento.
+            </div>
+          )}
         </div>
 
       </div>

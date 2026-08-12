@@ -9,88 +9,99 @@ export default function ProgramTemplate({ program }) {
   if (!program) return <div>Program not found</div>;
 
   return (
-    <div className="pt-20 pb-16 bg-[#FAFAFA] min-h-screen font-sans text-gray-800">
+    <div className="pt-24 pb-16 bg-primary min-h-screen font-sans text-background">
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         {program.heroImage ? (
           <div 
-            className="absolute inset-0 bg-cover bg-center z-0" 
+            className="absolute inset-0 bg-cover bg-center z-0 opacity-60" 
             style={{ backgroundImage: `url(${program.heroImage})` }}
           >
-            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
           </div>
         ) : (
-          <div className="absolute inset-0 bg-[#A67B5B] z-0 opacity-20"></div>
+          <div className="absolute inset-0 bg-primary z-0 opacity-20"></div>
         )}
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto text-white drop-shadow-md">
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto drop-shadow-md mt-16">
+          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">Programa</p>
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-light mb-6 tracking-wide"
+            className="font-batang text-5xl md:text-7xl font-normal mb-6 tracking-wide text-background"
           >
             {program.title}
           </motion.h1>
+          <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
         </div>
       </section>
 
       {/* Concept / Philosophy Section */}
-      <section className="py-20 px-6 max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-light mb-8 text-[#A67B5B]">A Filosofia</h2>
-        <p className="text-lg md:text-xl leading-relaxed text-gray-600">
+      <section className="py-24 px-8 max-w-4xl mx-auto text-center">
+        <h2 className="font-drama italic text-3xl md:text-5xl font-light mb-8 text-background/90">A Filosofia</h2>
+        <p className="font-heading text-lg md:text-xl leading-[1.8] text-[#9A9A9A] font-light">
           {program.description}
         </p>
       </section>
 
       {/* Workshops Grid */}
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <h2 className="text-4xl font-light text-center mb-16 text-gray-800 tracking-wide">
-          Workshops & Programas
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <section className="py-16 px-8 max-w-[1200px] mx-auto">
+        <div className="text-center mb-16">
+            <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 tracking-tight">
+            Workshops
+            </h2>
+            <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
           {program.workshops && program.workshops.map((workshop) => (
             <motion.div 
-              whileHover={{ y: -5 }}
               key={workshop.id} 
-              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100"
+              className="group relative bg-[#141414] px-8 pt-10 pb-12 overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-accent/35 flex flex-col items-center text-center"
             >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(201,168,76,0.4)_0%,transparent_70%)]"></div>
+              
               <div 
-                className="h-56 bg-gray-200 bg-cover bg-center"
+                className="w-full h-48 bg-[#0C0C0C] bg-cover bg-center mb-8 relative z-10 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
                 style={{ backgroundImage: `url(${workshop.image})` }}
               ></div>
-              <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-2xl font-medium mb-3 text-gray-800">{workshop.title}</h3>
-                <p className="text-gray-500 mb-6 flex-grow leading-relaxed">
-                  {workshop.shortDescription}
-                </p>
-                <Link 
-                  to={`/${program.id}/${workshop.slug}`}
-                  className="inline-block text-center border-2 border-[#A67B5B] text-[#A67B5B] hover:bg-[#A67B5B] hover:text-white px-6 py-3 rounded-full uppercase tracking-wider text-sm font-semibold transition-colors duration-300"
-                >
-                  Saber Mais
-                </Link>
-              </div>
+              
+              <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">{workshop.title}</h3>
+              <div className="w-7 h-[1px] bg-accent/40 group-hover:bg-accent/80 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
+              
+              <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10 mb-8 flex-grow">
+                {workshop.shortDescription}
+              </p>
+
+              <Link 
+                to={`/${program.id}/${workshop.slug}`}
+                className="relative z-10 inline-block font-heading text-[10px] tracking-[4px] uppercase text-accent decoration-transparent border-b border-accent/30 pb-2 transition-all duration-400 hover:border-accent/80 hover:text-background hover:pb-2.5 mt-auto"
+              >
+                Saber Mais
+              </Link>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Additional Sections (e.g. Corporate, Individual Sessions) */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* Additional Sections */}
+      <section className="py-24 bg-[#08080C] border-t border-[#1a1a1a]">
+        <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
           {program.corporate && (
-            <div className="p-10 bg-[#f4f1ec] rounded-3xl">
-              <h3 className="text-2xl font-light mb-4 text-[#A67B5B]">{program.corporate.title}</h3>
-              <p className="text-gray-600 mb-6">{program.corporate.description}</p>
-              <button className="text-sm font-semibold uppercase tracking-wider text-gray-800 border-b border-gray-800 pb-1">
+            <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
+              <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{program.corporate.title}</h3>
+              <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
+              <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{program.corporate.description}</p>
+              <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
                 Fale Conosco
               </button>
             </div>
           )}
           {program.individualSessions && (
-            <div className="p-10 bg-[#f4f1ec] rounded-3xl">
-              <h3 className="text-2xl font-light mb-4 text-[#A67B5B]">{program.individualSessions.title}</h3>
-              <p className="text-gray-600 mb-6">{program.individualSessions.description}</p>
-              <button className="text-sm font-semibold uppercase tracking-wider text-gray-800 border-b border-gray-800 pb-1">
+            <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
+              <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{program.individualSessions.title}</h3>
+              <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
+              <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{program.individualSessions.description}</p>
+              <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
                 Agendar
               </button>
             </div>
