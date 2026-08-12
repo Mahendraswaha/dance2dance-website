@@ -15,28 +15,35 @@ const HeroSequence = () => {
   const heroContentRef = useRef(null);
   const videoRef = useRef(null);
   const imagesRef = useRef([]);
+  const [firstFrameLoaded, setFirstFrameLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const frameCount = 240;
 
   useEffect(() => {
-    const loadedImages = [];
     let loadedCount = 0;
+    imagesRef.current = new Array(frameCount).fill(null);
     
-    for (let i = 1; i <= frameCount; i++) {
-      const img = new Image();
-      const frameNumber = i.toString().padStart(3, '0');
-      img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
-      img.onload = () => {
-        loadedCount++;
-        loadedImages.push(img);
-        if (loadedCount === frameCount) {
-          // Ordena as imagens para garantir a sequência correta
-          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
-          imagesRef.current = loadedImages;
-          setIsLoaded(true);
-        }
-      };
-    }
+    const firstImg = new Image();
+    firstImg.src = `/gallery/sequence/frame-001.jpg`;
+    firstImg.onload = () => {
+      imagesRef.current[0] = firstImg;
+      loadedCount++;
+      setFirstFrameLoaded(true); // Libera a tela imediatamente com o frame 1
+      
+      // Começa a carregar o resto em background
+      for (let i = 2; i <= frameCount; i++) {
+        const img = new Image();
+        const frameNumber = i.toString().padStart(3, '0');
+        img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
+        img.onload = () => {
+          imagesRef.current[i-1] = img;
+          loadedCount++;
+          if (loadedCount === frameCount) {
+            setIsLoaded(true);
+          }
+        };
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -56,8 +63,21 @@ const HeroSequence = () => {
 
     const render = (index) => {
       const imgs = imagesRef.current;
-      if (imgs && imgs.length > 0 && imgs[Math.floor(index)]) {
-        const img = imgs[Math.floor(index)];
+      const floorIndex = Math.floor(index);
+      
+      let img = imgs[floorIndex];
+      
+      // Se o frame exato não carregou (scroll muito rápido), acha o último frame que carregou
+      if (!img) {
+        for(let i = floorIndex - 1; i >= 0; i--) {
+          if (imgs[i]) {
+            img = imgs[i];
+            break;
+          }
+        }
+      }
+      
+      if (img) {
         const hRatio = canvas.width / img.width;
         const vRatio = canvas.height / img.height;
         const ratio = Math.max(hRatio, vRatio);
@@ -167,9 +187,9 @@ const HeroSequence = () => {
     };
   }, []); // Dependência vazia: roda IMEDIATAMENTE no mount para travar a tela
 
-  // Re-render inicial frame once images are loaded
+  // Re-render inicial frame once first image is loaded
   useEffect(() => {
-    if (isLoaded && canvasRef.current) {
+    if (firstFrameLoaded && canvasRef.current) {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       const img = imagesRef.current[0];
@@ -183,13 +203,13 @@ const HeroSequence = () => {
         ctx.drawImage(img, 0, 0, img.width, img.height, centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
       }
     }
-  }, [isLoaded]);
+  }, [firstFrameLoaded]);
 
   return (
     <section ref={containerRef} className="relative h-[100dvh] w-full bg-primary overflow-hidden">
       
-      {/* Fallback de carregamento */}
-      {!isLoaded && (
+      {/* Fallback de carregamento (apenas para o primeiro frame) */}
+      {!firstFrameLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-primary z-0">
           <div className="w-12 h-12 rounded-full border-4 border-accent border-t-transparent animate-spin" />
         </div>
@@ -208,6 +228,7 @@ const HeroSequence = () => {
           loop 
           muted 
           playsInline
+          poster="/gallery/sequence/frame-001.jpg"
           className="absolute inset-0 w-full h-full object-cover opacity-60"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
