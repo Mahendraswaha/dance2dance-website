@@ -6,14 +6,16 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     if (hash) {
-      // We use setTimeout to ensure the DOM and GSAP ScrollTriggers are ready
+      // Wait longer so GSAP ScrollTrigger has time to add the pin-spacer (which drastically changes page height)
       setTimeout(() => {
         const id = hash.replace('#', '');
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          // Force a scroll to the element's exact calculated position after GSAP spacer is injected
+          const y = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
-      }, 100);
+      }, 400);
     } else {
       window.scrollTo(0, 0);
     }
