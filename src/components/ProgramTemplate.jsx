@@ -80,8 +80,11 @@ export default function ProgramTemplate({ program }) {
             loop 
             muted 
             playsInline
-            onPlay={() => setIsVideoPlaying(true)}
-            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-[2500ms] ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0' : 'opacity-60'}`}
+            onLoadedData={() => {
+              // Quando o vídeo carrega o primeiro frame, iniciamos o crossfade
+              setTimeout(() => setIsVideoPlaying(true), 100);
+            }}
+            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0' : 'opacity-60'}`}
           ></video>
         )}
 
