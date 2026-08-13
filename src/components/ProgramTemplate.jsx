@@ -65,6 +65,7 @@ export default function ProgramTemplate({ program }) {
           <video 
             ref={videoRef}
             src={program.heroVideo}
+            poster={program.heroPoster || program.heroImage}
             autoPlay 
             loop 
             muted 
