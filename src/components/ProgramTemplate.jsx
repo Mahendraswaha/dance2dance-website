@@ -11,17 +11,25 @@ export default function ProgramTemplate({ program }) {
   return (
     <div className="pt-24 pb-16 bg-primary min-h-screen font-sans text-background">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        {program.heroImage ? (
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-primary">
+        {program.heroVideo ? (
+          <video 
+            src={program.heroVideo}
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
+          ></video>
+        ) : program.heroImage ? (
           <div 
             className="absolute inset-0 bg-cover bg-center z-0 opacity-60" 
             style={{ backgroundImage: `url(${program.heroImage})` }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
-          </div>
+          ></div>
         ) : (
           <div className="absolute inset-0 bg-primary z-0 opacity-20"></div>
         )}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent z-[5]"></div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto drop-shadow-md mt-16">
           <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">Programa</p>
           <motion.h1 
