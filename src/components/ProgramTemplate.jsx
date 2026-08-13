@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.8;
+    }
+  }, [program]);
   
   if (!program) return <div>Program not found</div>;
 
@@ -14,6 +21,7 @@ export default function ProgramTemplate({ program }) {
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary pt-24">
         {program.heroVideo ? (
           <video 
+            ref={videoRef}
             src={program.heroVideo}
             autoPlay 
             loop 
