@@ -9,6 +9,7 @@ export default function ProgramTemplate({ program }) {
   const workshopsRef = useRef(null);
   const [isFading, setIsFading] = useState(false);
   const [logoVisible, setLogoVisible] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,25 +62,33 @@ export default function ProgramTemplate({ program }) {
     <div className="bg-primary min-h-screen font-sans text-background pb-16">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary pt-24">
-        {program.heroVideo ? (
+        
+        {/* Poster / Fallback Background */}
+        {(program.heroPoster || program.heroImage) && (
+          <div 
+            className={`absolute inset-0 bg-cover bg-center z-0 transition-opacity duration-1000 ease-in-out ${isVideoPlaying ? 'opacity-0' : 'opacity-60'}`} 
+            style={{ backgroundImage: `url(${program.heroPoster || program.heroImage})` }}
+          ></div>
+        )}
+
+        {/* Video Player */}
+        {program.heroVideo && (
           <video 
             ref={videoRef}
             src={program.heroVideo}
-            poster={program.heroPoster || program.heroImage}
             autoPlay 
             loop 
             muted 
             playsInline
-            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-[2500ms] ease-in-out ${isFading ? 'opacity-0' : 'opacity-60'}`}
+            onPlay={() => setIsVideoPlaying(true)}
+            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-[2500ms] ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0' : 'opacity-60'}`}
           ></video>
-        ) : program.heroImage ? (
-          <div 
-            className="absolute inset-0 bg-cover bg-center z-0 opacity-60" 
-            style={{ backgroundImage: `url(${program.heroImage})` }}
-          ></div>
-        ) : (
+        )}
+
+        {!program.heroPoster && !program.heroImage && !program.heroVideo && (
           <div className="absolute inset-0 bg-primary z-0 opacity-20"></div>
         )}
+
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent z-[5]"></div>
         
         {/* Watermark Logo */}
