@@ -6,7 +6,27 @@ import { useTranslation } from 'react-i18next';
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
   const videoRef = useRef(null);
+  const workshopsRef = useRef(null);
   const [isFading, setIsFading] = useState(true);
+  const [logoVisible, setLogoVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!workshopsRef.current) return;
+      const rect = workshopsRef.current.getBoundingClientRect();
+      // Quando a seção de workshops estiver a menos de 300px do topo (perto do logo), esconde
+      if (rect.top < 300) {
+        setLogoVisible(false);
+      } else {
+        setLogoVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -63,7 +83,7 @@ export default function ProgramTemplate({ program }) {
         
         {/* Watermark Logo */}
         {program.logo && (
-          <div className="fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40">
+          <div className={`fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40 transition-opacity duration-700 ease-in-out ${logoVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="max-w-7xl mx-auto flex">
               <img 
                 src={program.logo} 
@@ -128,7 +148,7 @@ export default function ProgramTemplate({ program }) {
       </section>
 
       {/* Workshops Grid */}
-      <section className="py-16 px-8 max-w-[1200px] mx-auto">
+      <section ref={workshopsRef} className="py-16 px-8 max-w-[1200px] mx-auto">
         <div className="text-center mb-16">
             <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 tracking-tight">
             Workshops
