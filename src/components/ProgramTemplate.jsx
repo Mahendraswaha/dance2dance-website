@@ -7,7 +7,7 @@ export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
   const videoRef = useRef(null);
   const workshopsRef = useRef(null);
-  const [isFading, setIsFading] = useState(true);
+  const [isFading, setIsFading] = useState(false);
   const [logoVisible, setLogoVisible] = useState(true);
 
   useEffect(() => {
