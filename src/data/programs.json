@@ -8,28 +8,52 @@
     "logo": "/logo-bethedance.png",
     "workshops": [
       {
-        "id": "workshop-1",
-        "slug": "workshop-1",
-        "title": "Workshop 1 (Be the Dance)",
-        "shortDescription": "Resumo do workshop 1",
-        "fullDescription": "Descrição completa do workshop 1...",
-        "image": "https://via.placeholder.com/600x400"
+        "id": "be-water",
+        "slug": "be-water",
+        "title": "Be Water",
+        "shortDescription": "Descubra a fluidez do movimento e a adaptabilidade.",
+        "fullDescription": "Descrição completa do workshop Be Water...",
+        "logo": "/logo-bewater.png"
       },
       {
-        "id": "workshop-2",
-        "slug": "workshop-2",
-        "title": "Workshop 2 (Be the Dance)",
-        "shortDescription": "Resumo do workshop 2",
-        "fullDescription": "Descrição completa do workshop 2...",
-        "image": "https://via.placeholder.com/600x400"
+        "id": "be-balance",
+        "slug": "be-balance",
+        "title": "Be Balance",
+        "shortDescription": "Encontre o seu eixo, foco e equilíbrio corporal.",
+        "fullDescription": "Descrição completa do workshop Be Balance...",
+        "logo": "/logo-bebalance.png"
+      },
+      {
+        "id": "be-total",
+        "slug": "be-total",
+        "title": "Be Total",
+        "shortDescription": "Uma experiência completa de integração do ser em movimento.",
+        "fullDescription": "Descrição completa do workshop Be Total...",
+        "logo": "/logo-betotal.png"
+      },
+      {
+        "id": "be-stillness",
+        "slug": "be-stillness",
+        "title": "Be Stillness",
+        "shortDescription": "Aprenda a encontrar a pausa e o repouso ativo.",
+        "fullDescription": "Descrição completa do workshop Be Stillness...",
+        "logo": "/logo-bestillness.png"
       },
       {
         "id": "be-the-dance-pro",
         "slug": "be-the-dance-pro",
         "title": "Be the Dance Pro",
-        "shortDescription": "Programa de aprofundamento",
+        "shortDescription": "Programa de aprofundamento e mentoria para facilitadores.",
         "fullDescription": "Descrição completa do Be the Dance Pro...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/logo-bethedance-pro.png"
+      },
+      {
+        "id": "be-the-dance-corp",
+        "slug": "be-the-dance-corp",
+        "title": "Be the Dance Corp",
+        "shortDescription": "Formato in company focado em desenvolvimento de times.",
+        "fullDescription": "Descrição completa do Be the Dance Corp...",
+        "logo": "/logo-bethedance-corp.png"
       }
     ],
     "corporate": {

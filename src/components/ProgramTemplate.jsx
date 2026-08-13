@@ -112,10 +112,16 @@ export default function ProgramTemplate({ program }) {
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(201,168,76,0.4)_0%,transparent_70%)]"></div>
               
-              <div 
-                className="w-full h-48 bg-[#0C0C0C] bg-cover bg-center mb-8 relative z-10 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
-                style={{ backgroundImage: `url(${workshop.image})` }}
-              ></div>
+              {workshop.logo ? (
+                <div className="w-full h-32 flex items-center justify-center mb-10 relative z-10">
+                  <img src={workshop.logo} alt={workshop.title} className="max-h-full max-w-[80%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
+                </div>
+              ) : (
+                <div 
+                  className="w-full h-48 bg-[#0C0C0C] bg-cover bg-center mb-8 relative z-10 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
+                  style={{ backgroundImage: `url(${workshop.image})` }}
+                ></div>
+              )}
               
               <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">{workshop.title}</h3>
               <div className="w-7 h-[1px] bg-accent/40 group-hover:bg-accent/80 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
