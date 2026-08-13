@@ -118,7 +118,7 @@
     "title": "Biostretch",
     "subtitle": "Ser forte é ser flexível.",
     "logo": "/logo-biostretch.png",
-    "logoClassName": "h-10 md:h-20",
+    "logoClassName": "w-40 md:w-60",
     "description": "Biostretch é um sistema de exercícios...",
     "philosophy": [
       {
