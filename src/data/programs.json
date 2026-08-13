@@ -5,6 +5,7 @@
     "description": "Filosofia e conceito do Be the Dance...",
     "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/be-the-dance-hero.jpg",
     "heroVideo": "/Hero-video-BetheDance.mp4",
+    "logo": "/logo-bethedance.png",
     "workshops": [
       {
         "id": "workshop-1",

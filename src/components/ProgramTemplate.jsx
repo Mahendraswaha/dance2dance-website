@@ -60,15 +60,32 @@ export default function ProgramTemplate({ program }) {
           <div className="absolute inset-0 bg-primary z-0 opacity-20"></div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent z-[5]"></div>
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto drop-shadow-md mt-16">
-          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">Programa</p>
-          <motion.h1 
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto drop-shadow-md mt-16 flex flex-col items-center">
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-batang text-5xl md:text-7xl font-normal mb-6 tracking-wide text-background"
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center justify-center gap-4 mb-6"
           >
-            {program.title}
-          </motion.h1>
+            {/* Logo do Dance2Dance */}
+            <img 
+              src="/logo-dance2dance.png" 
+              alt="Dance2Dance" 
+              className="h-16 md:h-24 object-contain opacity-80" 
+            />
+            {/* Logo do Programa */}
+            {program.logo ? (
+              <img 
+                src={program.logo} 
+                alt={program.title} 
+                className="h-16 md:h-24 object-contain opacity-60" 
+              />
+            ) : (
+              <h1 className="font-batang text-5xl md:text-7xl font-normal tracking-wide text-background">
+                {program.title}
+              </h1>
+            )}
+          </motion.div>
           <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
         </div>
       </section>

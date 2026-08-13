@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,14 +10,8 @@ import Brand from './Brand';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
-  const location = useLocation();
   const navRef = useRef(null);
   const logoRef = useRef(null);
-
-  let subLogo = null;
-  if (location.pathname.startsWith('/be-the-dance')) subLogo = '/logo-bethedance.png';
-  else if (location.pathname.startsWith('/biostretch')) subLogo = '/logo-biostretch.png';
-  else if (location.pathname.startsWith('/kroppsskole')) subLogo = '/logo-kroppsskole.png';
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -63,15 +56,8 @@ const Navbar = () => {
           
           {/* Logo (Esquerda) */}
           <div className="flex items-center justify-start flex-1 z-20">
-            <a href="/" className="relative inline-flex flex-col items-start">
+            <a href="/">
               <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-10 md:h-20 object-contain" />
-              {subLogo && (
-                <img 
-                  src={subLogo} 
-                  alt="Program Logo" 
-                  className="absolute top-full left-0 mt-1 md:mt-2 h-4 md:h-6 object-contain opacity-40 transition-all duration-300 pointer-events-none" 
-                />
-              )}
             </a>
           </div>
 
