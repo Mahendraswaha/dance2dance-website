@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,17 +57,17 @@ const Navbar = () => {
           
           {/* Logo (Esquerda) */}
           <div className="flex items-center justify-start flex-1 z-20">
-            <a href="/">
+            <Link to="/">
               <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-10 md:h-20 object-contain" />
-            </a>
+            </Link>
           </div>
 
           {/* Links e Idiomas (Centro Absoluto) */}
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
             <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
-              <a href="/#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</a>
-              <a href="/#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</a>
-              <a href="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</a>
+              <Link to="/#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</Link>
+              <Link to="/#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</Link>
+              <Link to="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</Link>
             </div>
             <div className="flex md:hidden items-center gap-1 text-[10px] font-heading font-bold text-background/50">
               <button onClick={() => i18n.changeLanguage('no')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'no' ? 'text-accent' : ''}`}>NO</button>
