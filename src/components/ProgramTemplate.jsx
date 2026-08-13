@@ -93,30 +93,21 @@ export default function ProgramTemplate({ program }) {
       </section>
 
       {/* Concept / Philosophy Section */}
-      <section className="py-24 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="font-drama italic text-3xl md:text-5xl font-light mb-16 text-background/90">A Filosofia</h2>
-        
+      <section className="py-24 px-8 max-w-3xl mx-auto">
         {program.philosophy ? (
-          <div className="space-y-16">
+          <div className="space-y-10">
             {program.philosophy.map((section, index) => (
-              <div key={index} className="flex flex-col items-center">
-                {section.title && (
-                  <h3 className="font-heading text-[10px] tracking-[4px] uppercase text-accent mb-6">
-                    {section.title}
-                  </h3>
-                )}
-                <div className="space-y-4 w-full">
-                  {section.content.map((paragraph, pIndex) => (
-                    <p key={pIndex} className={`font-heading text-lg md:text-xl leading-[1.8] text-[#9A9A9A] font-light ${paragraph.startsWith('•') ? 'text-left max-w-2xl mx-auto' : ''}`}>
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+              <div key={index} className="flex flex-col items-start gap-6">
+                {section.content.map((paragraph, pIndex) => (
+                  <p key={pIndex} className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             ))}
           </div>
         ) : (
-          <p className="font-heading text-lg md:text-xl leading-[1.8] text-[#9A9A9A] font-light">
+          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
             {program.description}
           </p>
         )}
