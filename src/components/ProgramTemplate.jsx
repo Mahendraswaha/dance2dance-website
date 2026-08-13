@@ -17,7 +17,7 @@ export default function ProgramTemplate({ program }) {
         if (!video || !video.duration) return;
         
         const { currentTime, duration } = video;
-        const fadeTime = 1.0; // 1 second fade before end
+        const fadeTime = 2.5; // Start fading 2.5s before end
         
         if (duration - currentTime < fadeTime) {
           setIsFading(true); // Fade out at the end
@@ -49,7 +49,7 @@ export default function ProgramTemplate({ program }) {
             loop 
             muted 
             playsInline
-            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${isFading ? 'opacity-0' : 'opacity-60'}`}
+            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-[2500ms] ease-in-out ${isFading ? 'opacity-0' : 'opacity-60'}`}
           ></video>
         ) : program.heroImage ? (
           <div 
