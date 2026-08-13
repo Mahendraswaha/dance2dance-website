@@ -146,6 +146,9 @@ export default function ProgramTemplate({ program }) {
         <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
           {program.corporate && (
             <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
+              {program.corporate.logo && (
+                <img src={program.corporate.logo} alt={program.corporate.title} className="h-20 object-contain mb-8" />
+              )}
               <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{program.corporate.title}</h3>
               <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
               <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{program.corporate.description}</p>

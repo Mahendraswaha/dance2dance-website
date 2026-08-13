@@ -48,17 +48,18 @@
         "logo": "/logo-bethedance-pro.png"
       },
       {
-        "id": "be-the-dance-corp",
-        "slug": "be-the-dance-corp",
-        "title": "Be the Dance Corp",
-        "shortDescription": "Formato in company focado em desenvolvimento de times.",
-        "fullDescription": "Descrição completa do Be the Dance Corp...",
-        "logo": "/logo-bethedance-corp.png"
+        "id": "be-the-dance-day",
+        "slug": "be-the-dance-day",
+        "title": "Be the Dance Day",
+        "shortDescription": "Um dia inteiro de imersão no movimento e na consciência corporal.",
+        "fullDescription": "Descrição completa do Be the Dance Day...",
+        "logo": "/logo-bethedance-DAY.png"
       }
     ],
     "corporate": {
       "title": "Formato para Empresas",
-      "description": "Detalhes sobre o Be the Dance in Company..."
+      "description": "Detalhes sobre o Be the Dance in Company...",
+      "logo": "/logo-bethedance-corp.png"
     }
   },
   "biostretch": {
