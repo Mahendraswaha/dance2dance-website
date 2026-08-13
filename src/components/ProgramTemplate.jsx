@@ -63,7 +63,7 @@ export default function ProgramTemplate({ program }) {
         
         {/* Watermark Logo */}
         {program.logo && (
-          <div className="absolute top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-10">
+          <div className="fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40">
             <div className="max-w-7xl mx-auto flex">
               <img 
                 src={program.logo} 
