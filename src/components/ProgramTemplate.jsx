@@ -68,7 +68,7 @@ export default function ProgramTemplate({ program }) {
               <img 
                 src={program.logo} 
                 alt="Program Watermark" 
-                className="h-10 md:h-20 object-contain opacity-20"
+                className="h-12 md:h-24 ml-16 md:ml-64 object-contain opacity-60"
               />
             </div>
           </div>
