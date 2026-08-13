@@ -9,9 +9,9 @@ export default function ProgramTemplate({ program }) {
   if (!program) return <div>Program not found</div>;
 
   return (
-    <div className="pt-24 pb-16 bg-primary min-h-screen font-sans text-background">
+    <div className="bg-primary min-h-screen font-sans text-background pb-16">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-primary">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary pt-24">
         {program.heroVideo ? (
           <video 
             src={program.heroVideo}
