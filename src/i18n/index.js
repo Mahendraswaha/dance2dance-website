@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Dicionários
 import pt from './locales/pt.json';
@@ -13,11 +14,15 @@ const resources = {
 };
 
 i18n
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'pt', // idioma padrão
-    fallbackLng: 'en',
+    fallbackLng: 'pt',
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
     interpolation: {
       escapeValue: false // o React já faz o escape por padrão
     }

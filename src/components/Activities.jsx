@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ const Activities = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
           
           {/* Card 1 - Be The Dance */}
-          <a href="/be-the-dance" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#8BBCD8]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(139,188,216,0.15)] flex flex-col items-center">
+          <Link to="/be-the-dance" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#8BBCD8]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(139,188,216,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(139,188,216,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
@@ -37,10 +38,10 @@ const Activities = () => {
             <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
               {t("activities.card1.desc")}
             </p>
-          </a>
+          </Link>
           
           {/* Card 2 - BioStretch */}
-          <a href="/biostretch" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(90,168,122,0.15)] flex flex-col items-center">
+          <Link to="/biostretch" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(90,168,122,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(90,168,122,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
@@ -54,10 +55,10 @@ const Activities = () => {
             <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
               {t("activities.card2.desc")}
             </p>
-          </a>
+          </Link>
           
           {/* Card 3 - Kroppsskole */}
-          <a href="/kroppsskole" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#4A9B8E]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(74,155,142,0.15)] flex flex-col items-center">
+          <Link to="/kroppsskole" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#4A9B8E]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(74,155,142,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(74,155,142,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
@@ -71,14 +72,14 @@ const Activities = () => {
             <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10">
               {t("activities.card3.desc")}
             </p>
-          </a>
+          </Link>
 
         </div>
         
         <div className="mt-16">
-          <a href="/agenda" className="inline-block font-heading text-[10px] tracking-[4px] uppercase text-[#C4B49A] decoration-transparent border-b border-[#C4B49A]/30 pb-2 transition-all duration-400 hover:border-[#C4B49A]/80 hover:text-[#F0EDE8] hover:pb-2.5">
+          <Link to="/agenda" className="inline-block font-heading text-[10px] tracking-[4px] uppercase text-[#C4B49A] decoration-transparent border-b border-[#C4B49A]/30 pb-2 transition-all duration-400 hover:border-[#C4B49A]/80 hover:text-[#F0EDE8] hover:pb-2.5">
             {t("activities.cta")}
-          </a>
+          </Link>
         </div>
         
       </div>
