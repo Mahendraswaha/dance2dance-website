@@ -2,7 +2,58 @@
   "be-the-dance": {
     "id": "be-the-dance",
     "title": "Be the Dance",
+    "subtitle": "Descubra a dança que existe em você.",
     "description": "Filosofia e conceito do Be the Dance...",
+    "philosophy": [
+      {
+        "title": "BE THE DANCE",
+        "content": [
+          "é um programa de quatro workshops de dança.",
+          "Foi desenhado para você explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando algo essencial e único que já existe em você: sua própria dança."
+        ]
+      },
+      {
+        "title": "BE THE DANCE É PARA TODOS",
+        "content": [
+          "A dança pode nascer no corpo de qualquer pessoa que se permita mover.",
+          "Não há exigências.",
+          "Basta sentir e permitir que o movimento se expresse.",
+          "Em qualquer idade ou condição física, é possível descobrir uma forma própria de dançar."
+        ]
+      },
+      {
+        "title": "ONDE ESTÁ A DANÇA?",
+        "content": [
+          "Não está restrita a uma técnica, a um estilo pré-definido ou a um talento especial.",
+          "Ela existe em cada pessoa, como uma criatividade inerente pronta para ganhar forma por meio do corpo."
+        ]
+      },
+      {
+        "title": "COMO ACONTECE A DANÇA?",
+        "content": [
+          "A dança nos acompanha há milênios, como ritual, celebração e expressão artística. Ainda que você não lembre, há no corpo uma memória de movimento, uma capacidade de sentir, criar e dançar.",
+          "Ao criar um diálogo sensível entre música e corpo, abrimos a possibilidade de explorar novos caminhos de movimento. Ir além do conhecido permite que novas formas de expressão possam emergir.",
+          "A dança acontece para além do controle e da busca por uma forma ideal. Quando nos permitimos estar presentes, uma expressão mais autêntica e única pode emergir do corpo."
+        ]
+      },
+      {
+        "title": "QUAIS OS BENEFÍCIOS?",
+        "content": [
+          "• Favorecer o relaxamento profundo e contribuir para a redução do estresse.",
+          "• Ampliar a energia, a disponibilidade corporal e a fluidez dos movimentos.",
+          "• Reconhecer movimentos naturais e ampliar a consciência corporal, criando espaço para uma expressão mais autêntica.",
+          "• Desenvolver a atenção, despertando os sentidos e aprofundando a presença.",
+          "• Explorar a relação entre respiração e movimento, descobrindo novas formas de dançar com mais liberdade.",
+          "• Ampliar a percepção reconhecendo as diferentes partes do corpo e as relações entre elas."
+        ]
+      },
+      {
+        "title": "BE THE DANCE",
+        "content": [
+          "Workshops que integram a consciência do movimento com práticas de dança e meditação, para você descobrir e expressar a dança que já existe em você."
+        ]
+      }
+    ],
     "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/be-the-dance-hero.jpg",
     "heroVideo": "/Hero-video-BetheDance.mp4",
     "logo": "/logo-bethedance.png",

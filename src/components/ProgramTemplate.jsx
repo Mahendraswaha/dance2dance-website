@@ -84,15 +84,42 @@ export default function ProgramTemplate({ program }) {
             {program.title}
           </motion.h1>
           <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
+          {program.subtitle && (
+            <p className="font-heading text-lg mt-8 text-background/80 max-w-2xl mx-auto font-light tracking-wide">
+              {program.subtitle}
+            </p>
+          )}
         </div>
       </section>
 
       {/* Concept / Philosophy Section */}
       <section className="py-24 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="font-drama italic text-3xl md:text-5xl font-light mb-8 text-background/90">A Filosofia</h2>
-        <p className="font-heading text-lg md:text-xl leading-[1.8] text-[#9A9A9A] font-light">
-          {program.description}
-        </p>
+        <h2 className="font-drama italic text-3xl md:text-5xl font-light mb-16 text-background/90">A Filosofia</h2>
+        
+        {program.philosophy ? (
+          <div className="space-y-16">
+            {program.philosophy.map((section, index) => (
+              <div key={index} className="flex flex-col items-center">
+                {section.title && (
+                  <h3 className="font-heading text-[10px] tracking-[4px] uppercase text-accent mb-6">
+                    {section.title}
+                  </h3>
+                )}
+                <div className="space-y-4 w-full">
+                  {section.content.map((paragraph, pIndex) => (
+                    <p key={pIndex} className={`font-heading text-lg md:text-xl leading-[1.8] text-[#9A9A9A] font-light ${paragraph.startsWith('•') ? 'text-left max-w-2xl mx-auto' : ''}`}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="font-heading text-lg md:text-xl leading-[1.8] text-[#9A9A9A] font-light">
+            {program.description}
+          </p>
+        )}
       </section>
 
       {/* Workshops Grid */}
