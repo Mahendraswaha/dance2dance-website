@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -6,10 +6,32 @@ import { useTranslation } from 'react-i18next';
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
   const videoRef = useRef(null);
+  const [isFading, setIsFading] = useState(true);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.8;
+      videoRef.current.playbackRate = 0.7;
+      
+      const handleTimeUpdate = () => {
+        const video = videoRef.current;
+        if (!video || !video.duration) return;
+        
+        const { currentTime, duration } = video;
+        const fadeTime = 1.0; // 1 second fade before end
+        
+        if (duration - currentTime < fadeTime) {
+          setIsFading(true); // Fade out at the end
+        } else if (currentTime > 0.1 && currentTime < fadeTime) {
+          setIsFading(false); // Fade in at the start
+        }
+      };
+
+      videoRef.current.addEventListener('timeupdate', handleTimeUpdate);
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+        }
+      };
     }
   }, [program]);
   
@@ -27,7 +49,7 @@ export default function ProgramTemplate({ program }) {
             loop 
             muted 
             playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
+            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${isFading ? 'opacity-0' : 'opacity-60'}`}
           ></video>
         ) : program.heroImage ? (
           <div 
