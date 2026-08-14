@@ -63,10 +63,10 @@ export default function ProgramTemplate({ program }) {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary pt-24">
         
-        {/* Poster / Fallback Background */}
+        {/* Poster / Fallback Background - mostra instantaneamente, some suavemente quando vídeo inicia */}
         {(program.heroPoster || program.heroImage) && (
           <div 
-            className={`absolute inset-0 bg-cover bg-center z-0 transition-opacity duration-1000 ease-in-out ${isVideoPlaying ? 'opacity-0' : 'opacity-60'}`} 
+            className={`absolute inset-0 bg-cover bg-center z-0 opacity-60 ${isVideoPlaying ? 'transition-opacity duration-1000 ease-in-out opacity-0' : ''}`} 
             style={{ backgroundImage: `url(${program.heroPoster || program.heroImage})` }}
           ></div>
         )}
