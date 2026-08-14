@@ -164,50 +164,52 @@ export default function ProgramTemplate({ program }) {
       </section>
 
       {/* Workshops Grid */}
-      <section ref={workshopsRef} className="py-16 px-8 max-w-[1200px] mx-auto">
-        <div className="text-center mb-16">
-            <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 tracking-tight">
-            Workshops
-            </h2>
-            <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
-        </div>
+      {program.workshops && program.workshops.length > 0 && (
+        <section ref={workshopsRef} className="py-16 px-8 max-w-[1200px] mx-auto">
+          <div className="text-center mb-16">
+              <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 tracking-tight">
+              Workshops
+              </h2>
+              <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
-          {program.workshops && program.workshops.map((workshop) => (
-            <motion.div 
-              key={workshop.id} 
-              className="group relative bg-[#141414] px-8 pt-10 pb-12 overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-accent/35 flex flex-col items-center text-center"
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(201,168,76,0.4)_0%,transparent_70%)]"></div>
-              
-              {workshop.logo ? (
-                <div className="w-full h-32 flex items-center justify-center mb-10 relative z-10">
-                  <img src={workshop.logo} alt={workshop.title} className="max-h-[80%] max-w-[65%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
-                </div>
-              ) : (
-                <div 
-                  className="w-full h-48 bg-[#0C0C0C] bg-cover bg-center mb-8 relative z-10 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
-                  style={{ backgroundImage: `url(${workshop.image})` }}
-                ></div>
-              )}
-              
-              <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">{workshop.title}</h3>
-              <div className="w-7 h-[1px] bg-accent/40 group-hover:bg-accent/80 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
-              
-              <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10 mb-8 flex-grow">
-                {workshop.shortDescription}
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
+            {program.workshops.map((workshop) => (
+              <Link to={`/${program.id}/${workshop.slug}`} key={workshop.id} className="contents">
+                <motion.div 
+                  className="group relative bg-[#141414] px-8 pt-10 pb-12 overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-accent/35 flex flex-col items-center text-center"
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(201,168,76,0.4)_0%,transparent_70%)]"></div>
+                  
+                  {workshop.logo ? (
+                    <div className="w-full h-32 flex items-center justify-center mb-10 relative z-10">
+                      <img src={workshop.logo} alt={workshop.title} className="max-h-[80%] max-w-[65%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                  ) : (
+                    <div 
+                      className="w-full h-48 bg-[#0C0C0C] bg-cover bg-center mb-8 relative z-10 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
+                      style={{ backgroundImage: `url(${workshop.image})` }}
+                    ></div>
+                  )}
+                  
+                  <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">{workshop.title}</h3>
+                  <div className="w-7 h-[1px] bg-accent/40 group-hover:bg-accent/80 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
+                  
+                  <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10 mb-8 flex-grow">
+                    {workshop.shortDescription}
+                  </p>
 
-              <Link 
-                to={`/${program.id}/${workshop.slug}`}
-                className="relative z-10 inline-block font-heading text-[10px] tracking-[4px] uppercase text-accent decoration-transparent border-b border-accent/30 pb-2 transition-all duration-400 hover:border-accent/80 hover:text-background hover:pb-2.5 mt-auto"
-              >
-                Saber Mais
+                  <div className="mt-auto relative z-10 w-full">
+                    <div className="inline-flex items-center gap-2 font-heading text-[11px] font-semibold text-accent uppercase tracking-[2px] transition-all duration-300 group-hover:text-white">
+                      Saiba mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </motion.div>
               </Link>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Additional Sections */}
       <section className="py-24 bg-[#08080C] border-t border-[#1a1a1a]">

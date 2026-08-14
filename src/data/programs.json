@@ -160,6 +160,7 @@
       }
     ],
     "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/biostretch-hero.jpg",
+    "heroVideo": "/hero-video.mp4",
     "workshops": [
       {
         "id": "uma-melhor-postura",
@@ -218,9 +219,24 @@
       "title": "Aulas Regulares",
       "description": "Turmas semanais de Biostretch."
     },
-    "corporate": {
-      "title": "Formato para Empresas",
-      "description": "Biostretch in Company..."
+      "corporate": {
+        "title": "Formato para Empresas",
+        "description": "Biostretch in Company..."
+      }
+    },
+    "kroppsskole": {
+      "title": "Kroppsskole",
+      "description": "Uma abordagem integrada para o corpo e o movimento.",
+      "sections": [
+        {
+          "title": "O QUE É KROPPSSKOLE?",
+          "content": [
+            "Kroppsskole é uma prática em desenvolvimento constante, focada em..."
+          ]
+        }
+      ],
+      "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/kroppsskole-hero.jpg",
+      "heroVideo": "/hero-video.mp4",
+      "logo": "/logo-kroppsskole.png"
     }
   }
-}
