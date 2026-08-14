@@ -70,22 +70,22 @@ const Navbar = () => {
               <Link to="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</Link>
             </div>
             <div className="flex md:hidden items-center gap-1 text-[10px] font-heading font-bold text-background/50">
-              <button onClick={() => i18n.changeLanguage('no')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'no' ? 'text-accent' : ''}`}>NO</button>
+              <button onClick={() => i18n.changeLanguage('no')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'no' ? 'text-accent' : ''}`}>NO</button>
               <span>|</span>
-              <button onClick={() => i18n.changeLanguage('en')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'en' ? 'text-accent' : ''}`}>EN</button>
+              <button onClick={() => i18n.changeLanguage('en')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'en' ? 'text-accent' : ''}`}>EN</button>
               <span>|</span>
-              <button onClick={() => i18n.changeLanguage('pt')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'pt' ? 'text-accent' : ''}`}>PT</button>
+              <button onClick={() => i18n.changeLanguage('pt')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'pt' ? 'text-accent' : ''}`}>PT</button>
             </div>
           </div>
 
           {/* Botão e Idiomas (Direita) */}
           <div className="flex items-center justify-end gap-3 md:gap-4 flex-1 z-20">
             <div className="hidden md:flex items-center gap-2 text-xs font-heading font-bold text-background/50">
-              <button onClick={() => i18n.changeLanguage('no')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'no' ? 'text-accent' : ''}`}>NO</button>
+              <button onClick={() => i18n.changeLanguage('no')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'no' ? 'text-accent' : ''}`}>NO</button>
               <span>|</span>
-              <button onClick={() => i18n.changeLanguage('en')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'en' ? 'text-accent' : ''}`}>EN</button>
+              <button onClick={() => i18n.changeLanguage('en')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'en' ? 'text-accent' : ''}`}>EN</button>
               <span>|</span>
-              <button onClick={() => i18n.changeLanguage('pt')} className={`hover:text-accent transition-colors px-1 ${i18n.language === 'pt' ? 'text-accent' : ''}`}>PT</button>
+              <button onClick={() => i18n.changeLanguage('pt')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'pt' ? 'text-accent' : ''}`}>PT</button>
             </div>
             <button className="btn-magnetic bg-accent text-primary px-3 md:px-6 py-2 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
               <span className="relative z-10">{t('nav.subscribe')}</span>
