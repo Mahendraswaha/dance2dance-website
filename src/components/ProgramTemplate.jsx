@@ -182,7 +182,7 @@ export default function ProgramTemplate({ program }) {
               
               {workshop.logo ? (
                 <div className="w-full h-32 flex items-center justify-center mb-10 relative z-10">
-                  <img src={workshop.logo} alt={workshop.title} className="max-h-full max-w-[80%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
+                  <img src={workshop.logo} alt={workshop.title} className="max-h-[80%] max-w-[65%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
                 </div>
               ) : (
                 <div 
