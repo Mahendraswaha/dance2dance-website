@@ -96,7 +96,7 @@ export default function ProgramTemplate({ program }) {
           <div className="absolute inset-0 bg-primary z-0 opacity-20"></div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent z-[5]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary from-10% via-primary/30 via-50% to-transparent z-[5]"></div>
         
         {/* Watermark Logo */}
         {program.logo && (
