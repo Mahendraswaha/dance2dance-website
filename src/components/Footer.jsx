@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +19,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between gap-12">
           <div className="max-w-sm">
             <div className="flex items-center gap-4 mb-6">
-              <img src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-12 object-contain" />
+              <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="cursor-pointer hover:opacity-80 transition-opacity">
+                <img src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-12 object-contain" />
+              </button>
             </div>
             <p className="font-heading text-background/60 text-sm mb-10">{t("footer.desc")}</p>
             
@@ -36,9 +39,9 @@ const Footer = () => {
           
           <div className="flex gap-16 font-heading text-sm font-medium">
             <div className="flex flex-col gap-4">
-              <a href="#" className="hover:text-accent transition-colors">Be The Dance</a>
-              <a href="#" className="hover:text-accent transition-colors">Biostretch</a>
-              <a href="#" className="hover:text-accent transition-colors">Kroppsskole</a>
+              <Link to="/bethedance" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">Be The Dance</Link>
+              <Link to="/biostretch" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">Biostretch</Link>
+              <Link to="/kroppsskole" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">Kroppsskole</Link>
               <a href="#" className="hover:text-accent transition-colors">{t("footer.links.impact")}</a>
             </div>
             <div className="flex flex-col gap-4">
