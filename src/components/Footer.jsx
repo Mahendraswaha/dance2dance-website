@@ -20,7 +20,18 @@ const Footer = () => {
             <div className="flex items-center gap-4 mb-6">
               <img src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-12 object-contain" />
             </div>
-            <p className="font-heading text-background/60 text-sm">{t("footer.desc")}</p>
+            <p className="font-heading text-background/60 text-sm mb-10">{t("footer.desc")}</p>
+            
+            <div className="flex flex-row gap-8 items-end">
+              <div className="flex flex-col gap-3">
+                <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px]">We are unlimiters</span>
+                <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited" className="h-7 md:h-9 object-contain object-left" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px]">Strategic partner</span>
+                <img src="/logo-poaciadanca.png" alt="Cia de Dança" className="h-7 md:h-9 object-contain object-left" />
+              </div>
+            </div>
           </div>
           
           <div className="flex gap-16 font-heading text-sm font-medium">
