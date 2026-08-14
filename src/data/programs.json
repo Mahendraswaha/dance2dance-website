@@ -166,7 +166,7 @@
         "title": "Uma Melhor Postura",
         "shortDescription": "Aprenda a melhorar sua postura no dia a dia.",
         "fullDescription": "Descrição completa do workshop de postura...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/icone-uma-melhor-postura.png"
       },
       {
         "id": "aprendendo-a-relaxar",
@@ -174,7 +174,7 @@
         "title": "Aprendendo a Relaxar",
         "shortDescription": "Técnicas de relaxamento profundo.",
         "fullDescription": "Descrição completa do workshop Aprendendo a Relaxar...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/icone-Aprendendo-a-Relaxar.png"
       },
       {
         "id": "alongar-respirar-e-meditar",
@@ -182,7 +182,7 @@
         "title": "Alongar, Respirar e Meditar",
         "shortDescription": "Combinação de alongamento, respiração e meditação.",
         "fullDescription": "Descrição completa...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/icone-Alongar-Respirar-Meditar.png"
       },
       {
         "id": "transformando-habitos",
@@ -190,7 +190,7 @@
         "title": "Transformando Hábitos",
         "shortDescription": "Mude seus hábitos para uma vida mais saudável.",
         "fullDescription": "Descrição completa...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/icone-Transformando-Habitos.png"
       },
       {
         "id": "movimentos-diarios-para-prevenir-o-stress",
@@ -198,7 +198,7 @@
         "title": "Movimentos Diários para Prevenir o Stress",
         "shortDescription": "Rotinas de movimento anti-stress.",
         "fullDescription": "Descrição completa...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/icone-Movimentos-Diarios-para-Prevenir-o-Stress.png"
       },
       {
         "id": "recuperando-o-foco",
@@ -206,7 +206,7 @@
         "title": "Recuperando o Foco",
         "shortDescription": "Técnicas para melhorar a concentração.",
         "fullDescription": "Descrição completa...",
-        "image": "https://via.placeholder.com/600x400"
+        "logo": "/icone-Recuperando-o-Foco.png"
       }
     ],
     "individualSessions": {
