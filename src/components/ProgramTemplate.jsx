@@ -88,7 +88,7 @@ export default function ProgramTemplate({ program }) {
             onLoadedData={() => {
               setTimeout(() => setIsVideoPlaying(true), 100);
             }}
-            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0' : 'opacity-60'}`}
+            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0 duration-1000' : 'opacity-60 duration-[3000ms]'}`}
           ></video>
         )}
 
