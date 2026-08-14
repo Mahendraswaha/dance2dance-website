@@ -160,7 +160,9 @@
       }
     ],
     "heroImage": "https://poaciadanca.com.br/wp-content/uploads/2021/08/biostretch-hero.jpg",
-    "heroVideo": "/hero-video.mp4",
+    "heroVideo": "/Hero-video-Biostretch.mp4",
+    "heroPoster": "/frame-001-biostretch.jpg",
+    "heroBlurPlaceholder": "/9j//gAPTGF2YzYzLjEuMTAwAP/bAEMACD4+ST5JVVVVVVVVZF1kaGhoZGRkZGhoaHBwcIODg3BwcGhocHB8fIODj5OPh4eDh5OTm5uburqystnZ4P/////EAFsAAAMBAQAAAAAAAAAAAAAAAAYEBwUCAQEBAQAAAAAAAAAAAAAAAAAAAgMQAAMAAQQDAQAAAAAAAAAAAAACAQMRMoESMUFhUREBAAAAAAAAAAAAAAAAAAAAAP/AABEIABIAIAMBIgACEQADEQD/2gAMAwEAAhEDEQA/AB1MrL9gbTLr7JP2HtTIVG5us/SbO7N5orbTH1KHKjKi6jCmKWs2xeQdoRtsXkHaUP/Z",
     "workshops": [
       {
         "id": "uma-melhor-postura",
