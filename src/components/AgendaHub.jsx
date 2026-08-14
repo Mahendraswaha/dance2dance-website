@@ -10,14 +10,14 @@ export default function AgendaHub({ programs }) {
   // Para demonstração, vamos extrair todos os workshops e adicionar datas fictícias.
   // Idealmente, a 'Agenda' seria um array separado de 'eventos' em programs.json.
   const allEvents = Object.values(programs).flatMap(p => 
-    p.workshops.map(w => ({
+    p.workshops ? p.workshops.map(w => ({
       ...w,
       programId: p.id,
       programTitle: p.title,
       date: "Em breve",
       time: "A definir",
       location: "Porto Alegre / RS"
-    }))
+    })) : []
   );
 
   const filteredEvents = activeFilter === 'all' 
