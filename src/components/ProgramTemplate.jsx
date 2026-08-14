@@ -66,8 +66,12 @@ export default function ProgramTemplate({ program }) {
         {/* Poster / Fallback Background - mostra instantaneamente, some suavemente quando vídeo inicia */}
         {(program.heroPoster || program.heroImage) && (
           <div 
-            className={`absolute inset-0 bg-cover bg-center z-0 opacity-60 ${isVideoPlaying ? 'transition-opacity duration-1000 ease-in-out opacity-0' : ''}`} 
-            style={{ backgroundImage: `url(${program.heroPoster || program.heroImage})` }}
+            className="absolute inset-0 bg-cover bg-center z-0"
+            style={{ 
+              backgroundImage: `url(${program.heroPoster || program.heroImage})`,
+              opacity: isVideoPlaying ? 0 : 0.6,
+              transition: isVideoPlaying ? 'opacity 1s ease-in-out' : 'none'
+            }}
           ></div>
         )}
 
