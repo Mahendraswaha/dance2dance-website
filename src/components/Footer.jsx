@@ -29,7 +29,7 @@ const Footer = () => {
               </a>
               <a href="https://poaciadanca.com.br/en/" target="_blank" rel="noopener noreferrer" className="flex flex-col gap-3 group">
                 <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px] group-hover:text-accent transition-colors">Strategic partner</span>
-                <img src="/logo-poaciadanca.png" alt="Cia de Dança" className="h-7 md:h-9 object-contain object-left group-hover:opacity-80 transition-opacity" />
+                <img src="/logo-poaciadanca.png" alt="Cia de Dança" className="h-7 md:h-9 scale-[1.3] origin-left object-contain object-left group-hover:opacity-80 transition-opacity" />
               </a>
             </div>
           </div>
