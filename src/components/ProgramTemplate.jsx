@@ -68,7 +68,7 @@ export default function ProgramTemplate({ program }) {
           <div 
             className="absolute inset-0 bg-cover bg-center z-0"
             style={{ 
-              backgroundImage: `url(${program.heroPoster || program.heroImage})`,
+              backgroundImage: `url(${program.heroPoster || program.heroImage})${program.heroBlurPlaceholder ? `, url(data:image/jpeg;base64,${program.heroBlurPlaceholder})` : ''}`,
               opacity: isVideoPlaying ? 0 : 0.6,
               transition: isVideoPlaying ? 'opacity 1s ease-in-out' : 'none'
             }}
