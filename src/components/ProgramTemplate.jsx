@@ -64,13 +64,13 @@ export default function ProgramTemplate({ program }) {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-primary pt-24">
         
-        {/* Poster / Fallback Background - mostra instantaneamente, e faz crossfade no loop */}
+        {/* Poster / Fallback Background - mostra instantaneamente, e some suavemente quando o vídeo inicia */}
         {(program.heroPoster || program.heroImage) && (
           <div 
             className="absolute inset-0 bg-cover bg-center z-0"
             style={{ 
               backgroundImage: `url(${program.heroPoster || program.heroImage})${program.heroBlurPlaceholder ? `, url(data:image/jpeg;base64,${program.heroBlurPlaceholder})` : ''}`,
-              opacity: (!isVideoPlaying || isFading) ? 0.6 : 0,
+              opacity: (!isVideoPlaying) ? 0.6 : 0,
               transition: 'opacity 1s ease-in-out'
             }}
           ></div>
@@ -88,7 +88,7 @@ export default function ProgramTemplate({ program }) {
             onLoadedData={() => {
               setTimeout(() => setIsVideoPlaying(true), 100);
             }}
-            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ease-in-out ${!isVideoPlaying ? 'opacity-0' : 'opacity-60'}`}
+            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0' : 'opacity-60'}`}
           ></video>
         )}
 
