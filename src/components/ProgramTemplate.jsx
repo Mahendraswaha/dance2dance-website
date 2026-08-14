@@ -10,7 +10,6 @@ export default function ProgramTemplate({ program }) {
   const [isFading, setIsFading] = useState(false);
   const [logoVisible, setLogoVisible] = useState(true);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isPosterVisible, setIsPosterVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,8 +69,8 @@ export default function ProgramTemplate({ program }) {
             className="absolute inset-0 bg-cover bg-center z-0"
             style={{ 
               backgroundImage: `url(${program.heroPoster || program.heroImage})`,
-              opacity: isPosterVisible ? 0.6 : 0,
-              transition: 'opacity 1.5s ease-in-out'
+              opacity: isVideoPlaying ? 0 : 0.6,
+              transition: isVideoPlaying ? 'opacity 1s ease-in-out' : 'none'
             }}
           ></div>
         )}
@@ -86,10 +85,7 @@ export default function ProgramTemplate({ program }) {
             muted 
             playsInline
             onLoadedData={() => {
-              // 1. Vídeo fica visível
-              setIsVideoPlaying(true);
-              // 2. No próximo tick, inicia o fade-out do poster
-              setTimeout(() => setIsPosterVisible(false), 50);
+              setTimeout(() => setIsVideoPlaying(true), 100);
             }}
             className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0' : 'opacity-60'}`}
           ></video>
