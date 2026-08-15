@@ -51,15 +51,7 @@ const SocialPage = () => {
         });
       });
 
-      // Pillar cards stagger
-      gsap.from('.pillar-card', {
-        scrollTrigger: { trigger: '.pillars-grid', start: 'top 85%' },
-        y: 45,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.12,
-        ease: 'power3.out'
-      });
+
 
       // Value cards stagger
       gsap.from('.value-card', {
@@ -244,7 +236,7 @@ const SocialPage = () => {
             {pillars.map((key) => {
               const Icon = PILLAR_ICONS[key];
               return (
-                <div key={key} className="pillar-card border border-background/8 bg-primary p-10 md:p-12 flex flex-col gap-6 group hover:border-background/20 transition-all duration-500">
+                <div key={key} className="pillar-card reveal-elem border border-background/8 bg-primary p-10 md:p-12 flex flex-col gap-6 group hover:border-background/20 transition-all duration-500">
                   <div className="flex items-start justify-between">
                     <Icon size={22} className="text-accent/60 group-hover:text-accent transition-colors duration-400" strokeWidth={1.5} />
                   </div>
