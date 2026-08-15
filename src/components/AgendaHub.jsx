@@ -25,7 +25,7 @@ export default function AgendaHub({ programs }) {
     : allEvents.filter(e => e.programId === activeFilter);
 
   return (
-    <div className="bg-primary text-background min-h-[100dvh] pt-24 px-6 lg:px-12 flex flex-col">
+    <div className="bg-primary text-background min-h-[100dvh] pt-24 px-6 lg:px-12 flex flex-col relative">
       <div className="max-w-7xl mx-auto w-full flex-grow">
         
         {/* Header */}
@@ -127,9 +127,9 @@ export default function AgendaHub({ programs }) {
               Nenhum evento encontrado para este filtro no momento.
             </div>
           )}
-        </div>
       </div>
-      <div className="w-full h-16 bg-gradient-to-b from-primary to-[#0C0C0C] relative z-0"></div>
+      {/* Smooth transition to footer */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#0C0C0C] pointer-events-none"></div>
     </div>
   );
 }
