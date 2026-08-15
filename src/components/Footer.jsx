@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <div className="bg-[#0C0C0C] relative z-20">
       <footer className="bg-primary text-background rounded-t-[4rem] px-6 lg:px-12 pt-24 pb-12">
-        <div className="max-w-7xl mx-auto flex flex-col gap-24">
+        <div className="max-w-7xl mx-auto flex flex-col gap-8">
         
         <div className="flex flex-col md:flex-row justify-between gap-12">
           <div className="max-w-sm flex flex-col h-full">
