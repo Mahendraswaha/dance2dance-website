@@ -90,5 +90,32 @@
       "terms": "Terms"
     },
     "rights": "All rights reserved."
+  },
+  "social_page": {
+    "hero": {
+      "title": "Dance that transforms.",
+      "subtitle": "More than movement, dance is a powerful tool for reintegration and social healing. Discover how we are impacting communities.",
+      "scroll": "Scroll to explore"
+    },
+    "story": {
+      "title": "Our Social Impact",
+      "p1": "[PLACEHOLDER TEXT] We believe art should be accessible to everyone. Our community projects take dance where it's needed most, creating safe spaces for self-expression and belonging.",
+      "p2": "[PLACEHOLDER TEXT] We work directly with local partners to ensure each initiative has deep roots in the community, promoting sustainable and lasting change."
+    },
+    "impact": {
+      "label1": "Lives Transformed",
+      "label2": "Active Projects",
+      "label3": "Communities"
+    },
+    "partners": {
+      "kicker": "Who is with us",
+      "desc": "This project gains strength through union with organizations and collectives that share our vision and dedication to social transformation through art."
+    },
+    "cta": {
+      "title": "Be part of the movement.",
+      "desc": "Support Dance2Dance and help us bring dance and movement to more people.",
+      "btn1": "Make a Donation",
+      "btn2": "Talk to the Team"
+    }
   }
 }

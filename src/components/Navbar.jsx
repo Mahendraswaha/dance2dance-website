@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
             <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
               <Link to="/#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</Link>
-              <Link to="/#social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</Link>
+              <Link to="/social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</Link>
               <Link to="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</Link>
             </div>
             <div className="flex md:hidden items-center gap-1 text-[10px] font-heading font-bold text-background/50">

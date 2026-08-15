@@ -90,5 +90,32 @@
       "terms": "Termos"
     },
     "rights": "Todos os direitos reservados."
+  },
+  "social_page": {
+    "hero": {
+      "title": "A dança que transforma.",
+      "subtitle": "Mais do que movimento, a dança é uma ferramenta poderosa para reintegração e cura social. Descubra como estamos impactando comunidades.",
+      "scroll": "Role para explorar"
+    },
+    "story": {
+      "title": "Nosso Impacto Social",
+      "p1": "[TEXTO PLACEHOLDER] Acreditamos que a arte deve ser acessível a todos. Nossos projetos comunitários levam a dança para onde ela é mais necessária, criando espaços seguros para autoexpressão e pertencimento.",
+      "p2": "[TEXTO PLACEHOLDER] Trabalhamos diretamente com parceiros locais para garantir que cada iniciativa tenha raízes profundas na comunidade, promovendo mudanças sustentáveis e duradouras."
+    },
+    "impact": {
+      "label1": "Vidas Transformadas",
+      "label2": "Projetos Ativos",
+      "label3": "Comunidades"
+    },
+    "partners": {
+      "kicker": "Quem está conosco",
+      "desc": "Este projeto ganha força através da união com organizações e coletivos que compartilham da nossa visão e dedicação à transformação social através da arte."
+    },
+    "cta": {
+      "title": "Faça parte do movimento.",
+      "desc": "Apoie o Dance2Dance e nos ajude a levar a dança e o movimento para mais pessoas.",
+      "btn1": "Fazer uma Doação",
+      "btn2": "Falar com a Equipe"
+    }
   }
 }

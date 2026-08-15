@@ -90,5 +90,32 @@
       "terms": "Vilkår"
     },
     "rights": "Alle rettigheter reservert."
+  },
+  "social_page": {
+    "hero": {
+      "title": "Dans som transformerer.",
+      "subtitle": "Mer enn bevegelse, dans er et kraftig verktøy for reintegrering og sosial helbredelse. Oppdag hvordan vi påvirker samfunn.",
+      "scroll": "Rull ned for å utforske"
+    },
+    "story": {
+      "title": "Vår Sosiale Påvirkning",
+      "p1": "[PLACEHOLDER TEXT] Vi tror kunst bør være tilgjengelig for alle. Våre samfunnsprosjekter tar dans dit det trengs mest, og skaper trygge rom for selvuttrykk og tilhørighet.",
+      "p2": "[PLACEHOLDER TEXT] Vi jobber direkte med lokale partnere for å sikre at hvert initiativ har dype røtter i samfunnet, og fremmer bærekraftig og varig endring."
+    },
+    "impact": {
+      "label1": "Liv Forvandlet",
+      "label2": "Aktive Prosjekter",
+      "label3": "Samfunn"
+    },
+    "partners": {
+      "kicker": "Hvem er med oss",
+      "desc": "Dette prosjektet får styrke gjennom fellesskap med organisasjoner og kollektiver som deler vår visjon og dedikasjon til sosial transformasjon gjennom kunst."
+    },
+    "cta": {
+      "title": "Bli en del av bevegelsen.",
+      "desc": "Støtt Dance2Dance og hjelp oss å bringe dans og bevegelse til flere mennesker.",
+      "btn1": "Gi en Donasjon",
+      "btn2": "Snakk med Teamet"
+    }
   }
 }

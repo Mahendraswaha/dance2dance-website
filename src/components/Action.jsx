@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,12 +181,12 @@ const Action = () => {
           >
             <span className="relative z-10 flex items-center gap-2">{t("action.btn1")} <ArrowRight size={16}/></span>
           </a>
-          <a
-            href="/apoie"
+          <Link
+            to="/social"
             className="px-10 py-4 rounded-full font-heading font-normal text-sm border border-background/20 text-background/60 hover:border-background/50 hover:text-background/90 transition-all duration-300 flex items-center justify-center"
           >
             {t("action.btn2")}
-          </a>
+          </Link>
         </div>
 
       </div>
