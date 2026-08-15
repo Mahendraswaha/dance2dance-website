@@ -12,7 +12,7 @@ import Brand from './Brand';
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <div className="relative z-20">
+    <div className="bg-[#0C0C0C] relative z-20">
       <footer className="bg-primary text-background rounded-t-[4rem] px-6 lg:px-12 pt-24 pb-12">
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
         

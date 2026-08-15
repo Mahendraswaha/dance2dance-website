@@ -25,8 +25,8 @@ export default function AgendaHub({ programs }) {
     : allEvents.filter(e => e.programId === activeFilter);
 
   return (
-    <div className="pt-32 pb-24 bg-primary min-h-screen font-sans text-background">
-      <div className="max-w-[1200px] mx-auto px-8">
+    <div className="bg-primary text-background min-h-[100dvh] pt-24 px-6 lg:px-12 flex flex-col">
+      <div className="max-w-7xl mx-auto w-full flex-grow">
         
         {/* Header */}
         <header className="mb-16 text-center">
@@ -128,8 +128,8 @@ export default function AgendaHub({ programs }) {
             </div>
           )}
         </div>
-
       </div>
+      <div className="w-full h-16 bg-gradient-to-b from-primary to-[#0C0C0C] relative z-0"></div>
     </div>
   );
 }

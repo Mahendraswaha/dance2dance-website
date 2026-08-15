@@ -241,6 +241,8 @@ export default function ProgramTemplate({ program }) {
             )}
           </div>
         </section>
+      ) : (
+        <div className="w-full h-16 bg-gradient-to-b from-primary to-[#0C0C0C] relative z-0"></div>
       )}
     </div>
   );
