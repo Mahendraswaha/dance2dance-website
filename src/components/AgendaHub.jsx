@@ -129,5 +129,6 @@ export default function AgendaHub({ programs }) {
           )}
       </div>
     </div>
+    </div>
   );
 }
