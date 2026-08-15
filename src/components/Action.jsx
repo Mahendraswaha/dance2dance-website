@@ -128,7 +128,7 @@ const Action = () => {
   }, [isLoaded]);
 
   return (
-    <section id="agenda" className="relative z-20 bg-[#0C0C0C] pt-32 pb-32 px-6 lg:px-12 overflow-hidden flex items-center justify-center min-h-[80vh]">
+    <section id="agenda" className="relative z-20 bg-[#0C0C0C] py-48 px-6 lg:px-12 overflow-hidden flex items-center justify-center min-h-[80vh]">
 
       {/* Canvas com a sequência de frames em loop */}
       <canvas
