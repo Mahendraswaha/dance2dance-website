@@ -85,7 +85,7 @@ const SocialPage = () => {
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden">
+      <section className="relative h-[100dvh] w-full pt-28 pb-16 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
             src="/logo-D2D-dancer.png"
@@ -96,11 +96,11 @@ const SocialPage = () => {
                style={{ background: 'radial-gradient(circle, #C9A84C 0%, transparent 70%)' }} />
         </div>
 
-        <div className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
+        <div className="relative z-10 w-full h-full max-w-7xl mx-auto flex flex-col justify-end items-start pb-12 md:pb-24 px-6 lg:px-12 pointer-events-none">
           <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-accent mb-6">
             {t('social_page.hero.kicker')}
           </span>
-          <h1 className="flex flex-col gap-0 md:gap-2 mb-8">
+          <h1 className="flex flex-col gap-0 md:gap-2 mb-8 max-w-4xl">
             <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-background leading-none">
               {t('social_page.hero.title_line1')}
             </span>
@@ -109,7 +109,7 @@ const SocialPage = () => {
             </span>
           </h1>
 
-          <div className="hero-elem w-full max-w-md pointer-events-auto">
+          <div className="hero-elem w-full max-w-xl pointer-events-auto">
             <div className="h-[1px] w-full bg-background/10 mb-8 draw-line" />
             <p className="font-heading text-background/70 text-lg md:text-xl leading-[1.6]">
               {t('social_page.hero.subtitle')}
