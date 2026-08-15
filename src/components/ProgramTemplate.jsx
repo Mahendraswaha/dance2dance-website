@@ -130,7 +130,7 @@ export default function ProgramTemplate({ program }) {
       </section>
 
       {/* Concept / Philosophy Section */}
-      <section className="py-24 px-8 max-w-3xl mx-auto">
+      <section className="pt-24 pb-12 px-8 max-w-3xl mx-auto">
         {program.philosophy ? (
           <div className="space-y-12">
             {program.philosophy.map((section, index) => (
@@ -166,7 +166,7 @@ export default function ProgramTemplate({ program }) {
 
       {/* Workshops Grid */}
       {program.workshops && program.workshops.length > 0 && (
-        <section ref={workshopsRef} className="py-16 px-8 max-w-[1200px] mx-auto">
+        <section ref={workshopsRef} className="pt-16 pb-12 px-8 max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
               <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 tracking-tight">
               Workshops
@@ -213,8 +213,8 @@ export default function ProgramTemplate({ program }) {
       )}
 
       {/* Additional Sections */}
-      {(program.corporate || program.individualSessions) ? (
-        <section className="py-24 bg-[#08080C] border-t border-[#1a1a1a]">
+      {(program.corporate || program.individualSessions) && (
+        <section className="pt-24 pb-12 bg-[#08080C] border-t border-[#1a1a1a]">
           <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
             {program.corporate && (
               <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
@@ -241,8 +241,6 @@ export default function ProgramTemplate({ program }) {
             )}
           </div>
         </section>
-      ) : (
-        <div className="w-full h-16 bg-gradient-to-b from-primary to-[#0C0C0C] relative z-0"></div>
       )}
     </div>
   );
