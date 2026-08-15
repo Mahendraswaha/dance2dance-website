@@ -96,13 +96,13 @@ const SocialPage = () => {
                style={{ background: 'radial-gradient(circle, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
-        {/* Content Layer: Absolute covering the full section, acting as a flex column pushed to bottom */}
-        <div className="absolute inset-0 z-10 w-full flex flex-col justify-end pointer-events-none">
+        {/* Content Layer: Bulletproof Absolute Bottom Positioning */}
+        <div className="absolute bottom-16 md:bottom-24 left-0 w-full px-6 lg:px-12 pointer-events-none z-10">
           
-          {/* Inner Wrapper: restricts width, centers it, adds padding */}
-          <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 pb-24 md:pb-32">
+          {/* Alignment Wrapper: matches max-w-7xl of navbar */}
+          <div className="max-w-7xl mx-auto w-full">
             
-            {/* Text Restrictor: prevents text from crossing to the right side */}
+            {/* Text Restrictor */}
             <div className="w-full md:w-2/3 lg:w-1/2">
               <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
                 {t('social_page.hero.kicker')}
