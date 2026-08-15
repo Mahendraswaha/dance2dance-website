@@ -17,15 +17,15 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto flex flex-col gap-24">
         
         <div className="flex flex-col md:flex-row justify-between gap-12">
-          <div className="max-w-sm">
+          <div className="max-w-sm flex flex-col h-full">
             <div className="flex items-center gap-4 mb-6">
               <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="cursor-pointer hover:opacity-80 transition-opacity">
                 <img src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-12 object-contain" />
               </button>
             </div>
-            <p className="font-heading text-background/60 text-sm mb-10">{t("footer.desc")}</p>
+            <p className="font-heading text-background/60 text-sm">{t("footer.desc")}</p>
             
-            <div className="flex flex-row gap-10 items-start mt-12">
+            <div className="flex flex-row gap-10 items-start mt-auto pt-16">
               <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer" className="flex flex-col gap-4 group">
                 <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px] group-hover:text-accent transition-colors">We are unlimiters</span>
                 <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited" className="h-7 md:h-8 object-contain object-left group-hover:opacity-80 transition-opacity" />
