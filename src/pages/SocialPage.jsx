@@ -51,8 +51,6 @@ const SocialPage = () => {
         });
       });
 
-
-
       // Value cards stagger
       gsap.from('.value-card', {
         scrollTrigger: { trigger: '.value-section', start: 'top 75%' },
@@ -89,46 +87,50 @@ const SocialPage = () => {
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
             src="/logo-D2D-dancer.png"
-            className="hero-dancer absolute right-[-5%] bottom-0 h-[95%] opacity-[0.07] object-contain"
+            className="hero-dancer absolute right-[-5%] bottom-0 h-[95%] opacity-[0.05] object-contain filter grayscale"
             alt=""
           />
-          <div className="absolute top-[30%] left-[20%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full opacity-[0.04] pointer-events-none"
-               style={{ background: 'radial-gradient(circle, #C9A84C 0%, transparent 70%)' }} />
+          <div className="absolute top-[30%] left-[20%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full opacity-[0.03]"
+               style={{ background: 'radial-gradient(circle, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
-        <div className="relative z-10 w-full h-full max-w-7xl mx-auto flex flex-col justify-end items-start pb-12 md:pb-24 px-6 lg:px-12 pointer-events-none">
-          <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-accent mb-6">
-            {t('social_page.hero.kicker')}
-          </span>
-          <h1 className="flex flex-col gap-0 md:gap-2 mb-8 max-w-4xl">
-            <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-background leading-none">
-              {t('social_page.hero.title_line1')}
+        {/* Following Home page structure */}
+        <div className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
+          
+          <div className="w-full md:w-2/3 lg:w-1/2">
+            <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
+              {t('social_page.hero.kicker')}
             </span>
-            <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-background/40 leading-none">
-              {t('social_page.hero.title_line2')}
-            </span>
-          </h1>
+            <h1 className="flex flex-col gap-0 md:gap-2 mb-8">
+              <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-background leading-none">
+                {t('social_page.hero.title_line1')}
+              </span>
+              <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-slate-300/40 leading-none">
+                {t('social_page.hero.title_line2')}
+              </span>
+            </h1>
 
-          <div className="hero-elem w-full max-w-xl pointer-events-auto">
-            <div className="h-[1px] w-full bg-background/10 mb-8 draw-line" />
-            <p className="font-heading text-background/70 text-lg md:text-xl leading-[1.6]">
-              {t('social_page.hero.subtitle')}
-            </p>
-          </div>
+            <div className="hero-elem w-full pointer-events-auto">
+              <div className="h-[1px] w-full bg-slate-100/10 mb-8 draw-line" />
+              <p className="font-heading text-background/70 text-lg md:text-xl leading-[1.6]">
+                {t('social_page.hero.subtitle')}
+              </p>
+            </div>
 
-          <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-accent/40 pointer-events-auto">
-            <ArrowDown size={18} />
-            <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page.hero.scroll')}</span>
+            <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-slate-400/40 pointer-events-auto">
+              <ArrowDown size={18} />
+              <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page.hero.scroll')}</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── CONTEXT / MANIFESTO ─────────────────────────────────────── */}
-      <section className="py-28 md:py-48 px-6 lg:px-12 bg-[#0B0B0F] relative">
+      <section className="py-24 md:py-32 px-6 lg:px-12 bg-[#0C0C0C] relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-20 items-start">
 
           <div className="md:col-span-4 reveal-elem">
-            <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent block mb-8">
+            <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-400 block mb-8">
               {t('social_page.context.kicker')}
             </span>
             <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl leading-[1.0] text-background/90">
@@ -137,15 +139,15 @@ const SocialPage = () => {
           </div>
 
           <div className="md:col-span-8 flex flex-col gap-10 reveal-elem">
-            <div className="h-[1px] bg-background/10 draw-line" />
+            <div className="h-[1px] bg-slate-100/10 draw-line" />
             <p className="font-heading text-background/60 text-base md:text-lg leading-[1.85] font-light">
               {t('social_page.context.p1')}
             </p>
             <p className="font-heading text-background/60 text-base md:text-lg leading-[1.85] font-light">
               {t('social_page.context.p2')}
             </p>
-            <div className="border-l-2 border-accent/30 pl-8 mt-4">
-              <p className="font-drama italic text-2xl md:text-3xl text-background/80 leading-[1.35]">
+            <div className="border-l-2 border-slate-300/30 pl-8 mt-4">
+              <p className="font-drama italic text-2xl md:text-3xl text-slate-200/80 leading-[1.35]">
                 {t('social_page.context.quote')}
               </p>
             </div>
@@ -154,16 +156,16 @@ const SocialPage = () => {
       </section>
 
       {/* ─── PERCEIVED VALUE SECTION ─────────────────────────────────── */}
-      <section className="value-section py-28 md:py-40 px-6 lg:px-12 bg-primary relative overflow-hidden">
+      <section className="value-section py-24 md:py-32 px-6 lg:px-12 bg-primary relative overflow-hidden">
         {/* Subtle dividing glow */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] opacity-[0.035]"
-               style={{ background: 'radial-gradient(ellipse, #C9A84C 0%, transparent 70%)' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] opacity-[0.02]"
+               style={{ background: 'radial-gradient(ellipse, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20 reveal-elem">
-            <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
+            <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
               {t('social_page.value.kicker')}
             </span>
             <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight">
@@ -178,7 +180,7 @@ const SocialPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
 
             {/* Paid card */}
-            <div className="value-card border border-background/10 bg-[#0D0D11] p-10 md:p-12 flex flex-col gap-6">
+            <div className="value-card border border-background/10 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6">
               <span className="font-heading text-[10px] tracking-[4px] uppercase text-background/40">
                 {t('social_page.value.paid.label')}
               </span>
@@ -192,17 +194,17 @@ const SocialPage = () => {
             </div>
 
             {/* Free card (Gamle Oslo) */}
-            <div className="value-card border border-accent/20 bg-[#0D0D11] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
+            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
               {/* Subtle corner accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 opacity-[0.04]"
-                   style={{ background: 'radial-gradient(circle at top right, #C9A84C, transparent)' }} />
-              <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent">
+              <div className="absolute top-0 right-0 w-20 h-20 opacity-[0.03]"
+                   style={{ background: 'radial-gradient(circle at top right, #E2E8F0, transparent)' }} />
+              <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
                 {t('social_page.value.free.label')}
               </span>
-              <div className="font-drama italic text-5xl md:text-6xl text-accent">
+              <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
                 {t('social_page.value.free.price')}
               </div>
-              <div className="h-[1px] bg-accent/15 draw-line" />
+              <div className="h-[1px] bg-slate-300/15 draw-line" />
               <p className="font-heading text-background/50 text-sm leading-[1.8] font-light">
                 {t('social_page.value.free.desc')}
               </p>
@@ -211,7 +213,7 @@ const SocialPage = () => {
 
           {/* Value insight quote */}
           <div className="mt-16 max-w-3xl mx-auto text-center reveal-elem">
-            <p className="font-drama italic text-xl md:text-2xl text-background/50 leading-[1.5]">
+            <p className="font-drama italic text-xl md:text-2xl text-slate-300/50 leading-[1.5]">
               {t('social_page.value.insight')}
             </p>
           </div>
@@ -219,14 +221,14 @@ const SocialPage = () => {
       </section>
 
       {/* ─── FUNDING PILLARS ─────────────────────────────────────────── */}
-      <section className="pillars-section py-28 md:py-48 px-6 lg:px-12 bg-[#0B0B0F] relative">
+      <section className="pillars-section py-24 md:py-32 px-6 lg:px-12 bg-[#0C0C0C] relative">
         <div className="max-w-7xl mx-auto">
 
           <div className="text-center mb-20 reveal-elem">
-            <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
+            <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
               {t('social_page.model.kicker')}
             </span>
-            <h2 className="font-drama italic text-4xl md:text-6xl text-background leading-tight">
+            <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight">
               {t('social_page.model.title')}
             </h2>
             <p className="font-heading text-background/45 text-base md:text-lg font-light max-w-2xl mx-auto mt-8 leading-[1.8]">
@@ -239,15 +241,15 @@ const SocialPage = () => {
             {pillars.map((key) => {
               const Icon = PILLAR_ICONS[key];
               return (
-                <div key={key} className="pillar-card reveal-elem border border-background/8 bg-primary p-10 md:p-12 flex flex-col gap-6 group hover:border-background/20 transition-all duration-500">
+                <div key={key} className="pillar-card reveal-elem border border-background/10 bg-primary p-10 md:p-12 flex flex-col gap-6 group hover:border-background/20 transition-all duration-500">
                   <div className="flex items-start justify-between">
-                    <Icon size={22} className="text-accent/60 group-hover:text-accent transition-colors duration-400" strokeWidth={1.5} />
+                    <Icon size={24} className="text-slate-400/60 group-hover:text-slate-300 transition-colors duration-400" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-heading font-semibold text-sm md:text-base text-background/90 mb-4 tracking-wide uppercase">
+                    <h3 className="font-heading font-semibold text-sm md:text-base text-slate-200 mb-4 tracking-wide uppercase">
                       {t(`social_page.model.${key}.title`)}
                     </h3>
-                    <p className="font-heading text-background/45 text-sm md:text-base leading-[1.8] font-light">
+                    <p className="font-heading text-background/50 text-sm md:text-base leading-[1.8] font-light">
                       {t(`social_page.model.${key}.desc`)}
                     </p>
                   </div>
@@ -257,11 +259,11 @@ const SocialPage = () => {
           </div>
 
           {/* Summary strip */}
-          <div className="mt-10 reveal-elem border border-background/8 bg-[#0D0D11] p-10 md:p-14 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-            <div className="flex-1 font-heading text-background/45 text-sm md:text-base leading-[1.85] font-light">
+          <div className="mt-10 reveal-elem border border-background/10 bg-primary p-10 md:p-14 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+            <div className="flex-1 font-heading text-background/50 text-sm md:text-base leading-[1.85] font-light">
               {t('social_page.model.summary')}
             </div>
-            <div className="shrink-0 font-drama italic text-2xl md:text-3xl text-accent/70 text-center md:text-right leading-tight max-w-[260px]">
+            <div className="shrink-0 font-drama italic text-2xl md:text-3xl text-slate-300/70 text-center md:text-right leading-tight max-w-[260px]">
               {t('social_page.model.highlight')}
             </div>
           </div>
@@ -269,10 +271,10 @@ const SocialPage = () => {
       </section>
 
       {/* ─── PARTNERS ────────────────────────────────────────────────── */}
-      <section className="py-28 md:py-40 px-6 lg:px-12 bg-primary relative">
+      <section className="py-24 md:py-32 px-6 lg:px-12 bg-primary relative">
         <div className="max-w-5xl mx-auto reveal-elem">
           <div className="text-center mb-20">
-            <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
+            <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
               {t('social_page.partners.kicker')}
             </span>
             <h3 className="font-drama italic text-3xl md:text-5xl text-background/80 leading-tight">
@@ -282,15 +284,15 @@ const SocialPage = () => {
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24 mt-16">
             <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer"
-               className="group opacity-40 hover:opacity-100 transition-opacity duration-500">
+               className="group opacity-40 hover:opacity-80 transition-opacity duration-500">
               <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited"
-                   className="h-10 md:h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                   className="h-10 md:h-14 object-contain filter grayscale transition-all duration-500 brightness-200" />
             </a>
-            <div className="hidden md:block w-[1px] h-14 bg-white/8" />
+            <div className="hidden md:block w-[1px] h-14 bg-white/10" />
             <a href="https://poaciadanca.com.br/en/" target="_blank" rel="noopener noreferrer"
-               className="group opacity-40 hover:opacity-100 transition-opacity duration-500">
+               className="group opacity-40 hover:opacity-80 transition-opacity duration-500">
               <img src="/logo-poaciadanca.png" alt="POA Cia de Dança"
-                   className="h-14 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                   className="h-14 md:h-20 object-contain filter grayscale transition-all duration-500 brightness-200" />
             </a>
           </div>
 
@@ -301,29 +303,29 @@ const SocialPage = () => {
       </section>
 
       {/* ─── CTA ─────────────────────────────────────────────────────── */}
-      <section id="apoie" className="py-40 md:py-56 px-6 lg:px-12 bg-[#0B0B0F] relative overflow-hidden">
+      <section id="apoie" className="py-32 md:py-48 px-6 lg:px-12 bg-[#0C0C0C] relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] opacity-[0.05]"
-               style={{ background: 'radial-gradient(ellipse, #C9A84C 0%, transparent 70%)' }} />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] opacity-[0.03]"
+               style={{ background: 'radial-gradient(ellipse, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center reveal-elem flex flex-col items-center">
-          <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-10">
+          <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-10">
             {t('social_page.cta.kicker')}
           </span>
           <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-[0.95] mb-10">
             {t('social_page.cta.title')}
           </h2>
-          <div className="h-[1px] w-24 bg-accent/30 mb-10 draw-line mx-auto" />
+          <div className="h-[1px] w-24 bg-slate-400/30 mb-10 draw-line mx-auto" />
           <p className="font-heading text-background/55 text-base md:text-lg font-light max-w-2xl mb-16 leading-[1.8]">
             {t('social_page.cta.desc')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5">
-            <button className="btn-magnetic bg-accent text-primary px-10 py-5 rounded-full font-heading font-bold text-sm tracking-wide flex items-center gap-2">
+            <button className="btn-magnetic bg-slate-200 text-primary px-10 py-5 rounded-full font-heading font-bold text-sm tracking-wide flex items-center gap-2">
               {t('social_page.cta.btn1')} <ArrowRight size={15} />
             </button>
-            <button className="px-10 py-5 rounded-full font-heading font-light text-sm border border-background/20 text-background/70 hover:border-accent/50 hover:text-background transition-all duration-400">
+            <button className="px-10 py-5 rounded-full font-heading font-light text-sm border border-background/20 text-background/70 hover:border-slate-300 hover:text-background transition-all duration-400">
               {t('social_page.cta.btn2')}
             </button>
           </div>
