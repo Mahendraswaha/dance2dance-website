@@ -33,16 +33,21 @@ const Philosophy = () => {
     <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] flex items-center justify-center">
       
       {/* Watermark - Fixed while scrolling */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: 'url(/logo-D2D-dancer.png)',
-          backgroundAttachment: 'fixed',
-          backgroundPosition: 'calc(50% - 400px) center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'auto 60vh'
-        }}
-      />
+      <style>{`
+        .watermark-bg {
+          background-image: url(/logo-D2D-dancer.png);
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: auto 60vh;
+          background-position: center;
+        }
+        @media (min-width: 1024px) {
+          .watermark-bg {
+            background-position: calc(50% - 400px) center;
+          }
+        }
+      `}</style>
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none watermark-bg" />
 
       <div className="relative z-10 max-w-4xl w-full mx-auto text-center flex flex-col gap-8">
         <p className="phil-line font-heading font-normal text-background/50 text-2xl md:text-3xl tracking-tight">
