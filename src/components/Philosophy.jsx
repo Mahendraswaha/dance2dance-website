@@ -38,12 +38,13 @@ const Philosophy = () => {
           background-image: url(/logo-D2D-dancer.png);
           background-attachment: fixed;
           background-repeat: no-repeat;
-          background-size: auto 60vh;
-          background-position: center;
+          background-size: auto 45vh; /* Menor no celular */
+          background-position: center calc(50% + 60px); /* Deslocado para baixo */
         }
         @media (min-width: 1024px) {
           .watermark-bg {
-            background-position: calc(50% - 400px) center;
+            background-size: auto 60vh; /* Tamanho normal no desktop */
+            background-position: calc(50% - 400px) calc(50% + 60px); /* Esquerda e deslocado para baixo */
           }
         }
       `}</style>
