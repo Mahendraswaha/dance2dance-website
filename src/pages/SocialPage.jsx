@@ -96,24 +96,27 @@ const SocialPage = () => {
                style={{ background: 'radial-gradient(circle, #C9A84C 0%, transparent 70%)' }} />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 flex flex-col items-start">
-          <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-accent mb-10">
+        <div className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
+          <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-accent mb-6">
             {t('social_page.hero.kicker')}
           </span>
-          <h1 className="hero-elem font-drama italic text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.92] text-background mb-10">
-            {t('social_page.hero.title_line1')}
-            <br />
-            <span className="text-background/40">{t('social_page.hero.title_line2')}</span>
+          <h1 className="flex flex-col gap-0 md:gap-2 mb-8">
+            <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-background leading-none">
+              {t('social_page.hero.title_line1')}
+            </span>
+            <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-background/40 leading-none">
+              {t('social_page.hero.title_line2')}
+            </span>
           </h1>
 
-          <div className="hero-elem w-full max-w-xl">
-            <div className="h-[1px] w-full bg-background/10 mb-10 draw-line" />
-            <p className="font-heading text-background/55 text-base md:text-lg leading-[1.75] font-light">
+          <div className="hero-elem w-full max-w-md pointer-events-auto">
+            <div className="h-[1px] w-full bg-background/10 mb-8 draw-line" />
+            <p className="font-heading text-background/70 text-lg md:text-xl leading-[1.6]">
               {t('social_page.hero.subtitle')}
             </p>
           </div>
 
-          <div className="hero-elem flex flex-col items-start gap-3 mt-20 text-accent/40">
+          <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-accent/40 pointer-events-auto">
             <ArrowDown size={18} />
             <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page.hero.scroll')}</span>
           </div>
