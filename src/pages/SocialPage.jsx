@@ -83,7 +83,7 @@ const SocialPage = () => {
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative h-[100dvh] w-full pt-28 pb-16 overflow-hidden">
+      <section className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden flex flex-col justify-end pb-24 md:pb-32">
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
             src="/logo-D2D-dancer.png"
@@ -94,9 +94,8 @@ const SocialPage = () => {
                style={{ background: 'radial-gradient(circle, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
-        {/* Following Home page structure */}
-        <div className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
-          
+        {/* Text Container aligned to bottom naturally via parent flex */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pointer-events-none">
           <div className="w-full md:w-2/3 lg:w-1/2">
             <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
               {t('social_page.hero.kicker')}
