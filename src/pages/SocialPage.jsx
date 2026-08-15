@@ -96,34 +96,42 @@ const SocialPage = () => {
                style={{ background: 'radial-gradient(circle, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
-        {/* Content Layer: Safe flex layout with explicit padding-top prevents overlapping */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 mt-auto">
+        {/* Content Layer: Padding matches the Navbar outer padding exactly */}
+        <div className="relative z-10 w-full px-6 lg:px-12 mt-auto pointer-events-none">
           
-          {/* Text Restrictor: Increased to w-2/3 to prevent excessive wrapping of huge words */}
-          <div className="w-full md:w-3/4 lg:w-2/3">
-            <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
-              {t('social_page.hero.kicker')}
-            </span>
-            <h1 className="flex flex-col gap-0 md:gap-2 mb-8">
-              {/* Reduced max size from 8xl to 7xl to respect viewport heights */}
-              <span className="hero-elem font-drama italic text-5xl md:text-6xl lg:text-7xl text-background leading-none">
-                {t('social_page.hero.title_line1')}
-              </span>
-              <span className="hero-elem font-drama italic text-5xl md:text-6xl lg:text-7xl text-slate-300/40 leading-none">
-                {t('social_page.hero.title_line2')}
-              </span>
-            </h1>
+          {/* Alignment Wrapper matches Navbar's max-w-7xl */}
+          <div className="max-w-7xl mx-auto w-full pointer-events-auto">
+            
+            {/* Offset Wrapper matches Navbar's negative margin pull-out so text aligns with logo */}
+            <div className="-mx-4 md:-mx-6 px-4 md:px-6">
+              
+              <div className="w-full md:w-3/4 lg:w-2/3">
+                <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
+                  {t('social_page.hero.kicker')}
+                </span>
+                <h1 className="flex flex-col gap-0 md:gap-2 mb-8 pointer-events-none">
+                  {/* Reduced max size from 8xl to 7xl to respect viewport heights */}
+                  <span className="hero-elem font-drama italic text-5xl md:text-6xl lg:text-7xl text-background leading-none">
+                    {t('social_page.hero.title_line1')}
+                  </span>
+                  <span className="hero-elem font-drama italic text-5xl md:text-6xl lg:text-7xl text-slate-300/40 leading-none">
+                    {t('social_page.hero.title_line2')}
+                  </span>
+                </h1>
 
-            <div className="hero-elem w-full pointer-events-auto">
-              <div className="h-[1px] w-full max-w-md bg-slate-100/10 mb-8 draw-line" />
-              <p className="font-heading text-background/70 text-base md:text-lg lg:text-xl leading-[1.6] max-w-lg">
-                {t('social_page.hero.subtitle')}
-              </p>
-            </div>
+                <div className="hero-elem w-full">
+                  <div className="h-[1px] w-full max-w-md bg-slate-100/10 mb-8 draw-line" />
+                  <p className="font-heading text-background/70 text-base md:text-lg lg:text-xl leading-[1.6] max-w-lg">
+                    {t('social_page.hero.subtitle')}
+                  </p>
+                </div>
 
-            <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-slate-400/40 pointer-events-auto">
-              <ArrowDown size={18} />
-              <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page.hero.scroll')}</span>
+                <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-slate-400/40">
+                  <ArrowDown size={18} />
+                  <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page.hero.scroll')}</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
