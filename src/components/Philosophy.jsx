@@ -40,7 +40,7 @@ const Philosophy = () => {
           backgroundAttachment: 'fixed',
           backgroundPosition: 'calc(50% - 400px) center',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'auto 85vh'
+          backgroundSize: 'auto 60vh'
         }}
       />
 
