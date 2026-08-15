@@ -93,29 +93,48 @@
   },
   "social_page": {
     "hero": {
-      "title": "Dance that transforms.",
-      "subtitle": "More than movement, dance is a powerful tool for reintegration and social healing. Discover how we are impacting communities.",
+      "kicker": "Social Project",
+      "title_line1": "Art that",
+      "title_line2": "belongs to everyone.",
+      "subtitle": "An innovative model for universal access to culture and movement. Premium workshops, offered free of charge to residents of Gamle Oslo — sustained by those who can pay.",
       "scroll": "Scroll to explore"
     },
-    "story": {
-      "title": "Our Social Impact",
-      "p1": "[PLACEHOLDER TEXT] We believe art should be accessible to everyone. Our community projects take dance where it's needed most, creating safe spaces for self-expression and belonging.",
-      "p2": "[PLACEHOLDER TEXT] We work directly with local partners to ensure each initiative has deep roots in the community, promoting sustainable and lasting change."
+    "context": {
+      "kicker": "The proposition",
+      "title": "Why Gamle Oslo?",
+      "p1": "Gamle Oslo is a neighbourhood of contrasts — diversity, history and cultural richness coexist with inequalities in access to quality services and activities. This is exactly the context that calls us to act.",
+      "p2": "Dance2Dance is born in this territory with a clear mission: that dance, movement and well-being should not be a privilege for those who can pay. Every workshop we develop carries the same quality, the same care and the same intention — regardless of who is in the room.",
+      "quote": "The same product. The same quality. The same value. For everyone."
     },
-    "impact": {
-      "label1": "Lives Transformed",
-      "label2": "Active Projects",
-      "label3": "Communities"
+    "model": {
+      "kicker": "How it works",
+      "title": "A model that sustains itself.",
+      "step1": {
+        "title": "External participants pay",
+        "desc": "Residents from outside Gamle Oslo join workshops at regular rates, with access to the same premium quality experience."
+      },
+      "step2": {
+        "title": "Revenue funds the project",
+        "desc": "Each paid registration directly contributes to covering operational costs and enabling free access for the local community."
+      },
+      "step3": {
+        "title": "Gamle Oslo residents join free",
+        "desc": "Local residents have guaranteed, free access to all workshops — no waiting lists, no distinction, no lesser quality."
+      },
+      "summary": "This model eliminates dependence on continuous external subsidies. Sustainability comes from the practitioner community itself, creating a virtuous cycle where commercial growth amplifies social impact.",
+      "highlight": "Those who can, sustain. Those who need, receive."
     },
     "partners": {
       "kicker": "Who is with us",
-      "desc": "This project gains strength through union with organizations and collectives that share our vision and dedication to social transformation through art."
+      "title": "Partners who build together.",
+      "desc": "Dance2Dance does not act alone. We work in network with organisations that share the conviction that art transforms and that access to culture is a right."
     },
     "cta": {
-      "title": "Be part of the movement.",
-      "desc": "Support Dance2Dance and help us bring dance and movement to more people.",
-      "btn1": "Make a Donation",
-      "btn2": "Talk to the Team"
+      "kicker": "Join us",
+      "title": "Support what is still being born.",
+      "desc": "Funds, companies and partners who arrive now are part of the foundation — and the story — of this project. Get in touch and discover how to be part of it.",
+      "btn1": "I want to be a partner",
+      "btn2": "Talk to the team"
     }
   }
 }

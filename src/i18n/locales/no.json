@@ -93,29 +93,48 @@
   },
   "social_page": {
     "hero": {
-      "title": "Dans som transformerer.",
-      "subtitle": "Mer enn bevegelse, dans er et kraftig verktøy for reintegrering og sosial helbredelse. Oppdag hvordan vi påvirker samfunn.",
+      "kicker": "Sosialt Prosjekt",
+      "title_line1": "Kunst som",
+      "title_line2": "tilhører alle.",
+      "subtitle": "En innovativ modell for universell tilgang til kultur og bevegelse. Premium workshops, tilbudt gratis til beboere i Gamle Oslo — bæret av dem som kan betale.",
       "scroll": "Rull ned for å utforske"
     },
-    "story": {
-      "title": "Vår Sosiale Påvirkning",
-      "p1": "[PLACEHOLDER TEXT] Vi tror kunst bør være tilgjengelig for alle. Våre samfunnsprosjekter tar dans dit det trengs mest, og skaper trygge rom for selvuttrykk og tilhørighet.",
-      "p2": "[PLACEHOLDER TEXT] Vi jobber direkte med lokale partnere for å sikre at hvert initiativ har dype røtter i samfunnet, og fremmer bærekraftig og varig endring."
+    "context": {
+      "kicker": "Forslaget",
+      "title": "Hvorfor Gamle Oslo?",
+      "p1": "Gamle Oslo er et nabolag fylt av kontraster — mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne sammenhengen som kaller oss til handling.",
+      "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvtære ikke skal være et privilegium for dem som kan betale. Hvert workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon — uavhengig av hvem som er i rommet.",
+      "quote": "Samme produkt. Samme kvalitet. Samme verdi. For alle."
     },
-    "impact": {
-      "label1": "Liv Forvandlet",
-      "label2": "Aktive Prosjekter",
-      "label3": "Samfunn"
+    "model": {
+      "kicker": "Slik fungerer det",
+      "title": "En modell som er selvbærende.",
+      "step1": {
+        "title": "Deltakere utenfra betaler",
+        "desc": "Beboere utenfor Gamle Oslo deltar på workshops til vanlige priser, med tilgang til den samme premium-opplevelsen."
+      },
+      "step2": {
+        "title": "Inntekter finansierer prosjektet",
+        "desc": "Hver betalt påmelding bidrar direkte til å dekke driftskostnader og muliggjøre gratis tilgang for lokalsamfunnet."
+      },
+      "step3": {
+        "title": "Beboere i Gamle Oslo deltar gratis",
+        "desc": "Lokale beboere har garantert, gratis tilgang til alle workshops — ingen ventelister, ingen skiller, ingen lavere kvalitet."
+      },
+      "summary": "Denne modellen eliminerer avhengigheten av kontinuerlige eksterne subsidier. Bærekraften kommer fra praksisfellesskapet selv, og skaper en god sirkel der kommersiell vekst forsterker sosial påvirkning.",
+      "highlight": "De som kan, bærer. De som trenger, mottar."
     },
     "partners": {
       "kicker": "Hvem er med oss",
-      "desc": "Dette prosjektet får styrke gjennom fellesskap med organisasjoner og kollektiver som deler vår visjon og dedikasjon til sosial transformasjon gjennom kunst."
+      "title": "Partnere som bygger sammen.",
+      "desc": "Dance2Dance handler ikke alene. Vi jobber i nettverk med organisasjoner som deler overbevisningen om at kunst forvandler og at tilgang til kultur er en rettighet."
     },
     "cta": {
-      "title": "Bli en del av bevegelsen.",
-      "desc": "Støtt Dance2Dance og hjelp oss å bringe dans og bevegelse til flere mennesker.",
-      "btn1": "Gi en Donasjon",
-      "btn2": "Snakk med Teamet"
+      "kicker": "Bli med oss",
+      "title": "Støtt det som ennå er i ferd med å bli til.",
+      "desc": "Fond, bedrifter og partnere som kommer nå er en del av grunnlaget — og historien — til dette prosjektet. Ta kontakt og finn ut hvordan du kan være en del av det.",
+      "btn1": "Jeg vil bli partner",
+      "btn2": "Snakk med teamet"
     }
   }
 }
