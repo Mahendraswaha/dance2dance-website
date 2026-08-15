@@ -96,7 +96,7 @@
       "kicker": "Social Project",
       "title_line1": "Art that",
       "title_line2": "belongs to everyone.",
-      "subtitle": "An innovative model for universal access to culture and movement. Premium workshops, offered free of charge to residents of Gamle Oslo — sustained by those who can pay.",
+      "subtitle": "A model for universal access to culture and movement. Premium workshops, free for residents of Gamle Oslo — sustained by multiple funding sources.",
       "scroll": "Scroll to explore"
     },
     "context": {
@@ -106,23 +106,44 @@
       "p2": "Dance2Dance is born in this territory with a clear mission: that dance, movement and well-being should not be a privilege for those who can pay. Every workshop we develop carries the same quality, the same care and the same intention — regardless of who is in the room.",
       "quote": "The same product. The same quality. The same value. For everyone."
     },
+    "value": {
+      "kicker": "The value of what we offer",
+      "title": "Free does not mean without value.",
+      "subtitle": "Those who receive it for free receive exactly the same as those who pay. We make the real price visible because perceived value matters — for supporters and participants alike.",
+      "paid": {
+        "label": "External participants",
+        "price": "[XXX] NOK",
+        "desc": "Residents from outside Gamle Oslo participate at the regular rate, with access to the same premium quality experience."
+      },
+      "free": {
+        "label": "Gamle Oslo residents",
+        "price": "Free",
+        "desc": "Local residents have guaranteed, free access to all workshops. No waiting lists, no distinction, no lesser quality."
+      },
+      "insight": "“Free access with price transparency creates dignity. The person is not receiving charity — they are receiving the opportunity to be part of something with real value.”"
+    },
     "model": {
-      "kicker": "How it works",
-      "title": "A model that sustains itself.",
-      "step1": {
-        "title": "External participants pay",
-        "desc": "Residents from outside Gamle Oslo join workshops at regular rates, with access to the same premium quality experience."
+      "kicker": "How we sustain ourselves",
+      "title": "An ecosystem of support.",
+      "intro": "Dance2Dance was designed not to rely on a single source. Our sustainability comes from the strategic combination of multiple pillars — each essential, none sufficient alone.",
+      "pillar1": {
+        "title": "Paying participants",
+        "desc": "Those who come from outside Gamle Oslo pay the real value of the workshop. This revenue directly contributes to enabling free access for local residents."
       },
-      "step2": {
-        "title": "Revenue funds the project",
-        "desc": "Each paid registration directly contributes to covering operational costs and enabling free access for the local community."
+      "pillar2": {
+        "title": "Companies & sponsors",
+        "desc": "Private companies wishing to associate their brand with real social impact and quality culture find in Dance2Dance a purposeful and visible partner."
       },
-      "step3": {
-        "title": "Gamle Oslo residents join free",
-        "desc": "Local residents have guaranteed, free access to all workshops — no waiting lists, no distinction, no lesser quality."
+      "pillar3": {
+        "title": "Public funds & municipality",
+        "desc": "The project aligns with public policies on cultural and community inclusion, making it eligible for support from cultural funds and the City of Oslo."
       },
-      "summary": "This model eliminates dependence on continuous external subsidies. Sustainability comes from the practitioner community itself, creating a virtuous cycle where commercial growth amplifies social impact.",
-      "highlight": "Those who can, sustain. Those who need, receive."
+      "pillar4": {
+        "title": "Individual donors",
+        "desc": "People who believe in the power of art as social transformation can support directly, becoming part of the story from the very beginning."
+      },
+      "summary": "The diversification of revenue sources is intentional: it ensures the project does not depend on any single entity, making it more resilient and scalable over time.",
+      "highlight": "Multiple sources. One mission."
     },
     "partners": {
       "kicker": "Who is with us",

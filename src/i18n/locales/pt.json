@@ -96,7 +96,7 @@
       "kicker": "Projeto Social",
       "title_line1": "Arte que",
       "title_line2": "pertence a todos.",
-      "subtitle": "Um modelo inovador de acesso universal à cultura e ao movimento. Workshops de alto nível, oferecidos gratuitamente aos moradores de Gamle Oslo — sustentados por quem pode pagar.",
+      "subtitle": "Um modelo de acesso universal à cultura e ao movimento. Workshops de alto nível, gratuitos para moradores de Gamle Oslo — sustentados por múltiplas fontes de financiamento.",
       "scroll": "Role para explorar"
     },
     "context": {
@@ -106,23 +106,44 @@
       "p2": "O Dance2Dance nasce nesse território com uma missão clara: que a dança, a expressão corporal e o bem-estar não sejam privilégio de quem pode pagar. Cada workshop que desenvolvemos tem a mesma qualidade, o mesmo cuidado e a mesma intenção — independentemente de quem está na sala.",
       "quote": "O mesmo produto. A mesma qualidade. O mesmo valor. Para todos."
     },
+    "value": {
+      "kicker": "O valor do que oferecemos",
+      "title": "Gratuito não significa sem valor.",
+      "subtitle": "Quem recebe gratuitamente recebe exatamente o mesmo que quem paga. Tornamos o preço real visível porque valor percebido importa — tanto para quem apia quanto para quem participa.",
+      "paid": {
+        "label": "Participantes externos",
+        "price": "[XXX] NOK",
+        "desc": "Moradores de fora de Gamle Oslo participam mediante pagamento regular, com acesso à mesma experiência de qualidade premium."
+      },
+      "free": {
+        "label": "Moradores de Gamle Oslo",
+        "price": "Gratuito",
+        "desc": "Residentes da região têm acesso garantido e gratuito a todos os workshops. Sem listas de espera, sem distinção, sem menor qualidade."
+      },
+      "insight": "“O acesso gratuito com transparência de preço cria dignidade. A pessoa não recebe caridade — recebe a oportunidade de participar de algo que tem valor real.”"
+    },
     "model": {
-      "kicker": "Como funciona",
-      "title": "Um modelo que se sustenta.",
-      "step1": {
-        "title": "Participantes externos pagam",
-        "desc": "Moradores de fora de Gamle Oslo participam dos workshops mediante pagamento regular, com acesso à mesma experiência de qualidade premium."
+      "kicker": "Como nos sustentamos",
+      "title": "Um ecossistema de apoio.",
+      "intro": "O Dance2Dance foi desenhado para não depender de uma única fonte. Nossa sustentabilidade nasce da combinação estratégica de múltiplos pilares — cada um essencial, nenhum suficiente sozinho.",
+      "pillar1": {
+        "title": "Participantes pagantes",
+        "desc": "Quem vem de fora de Gamle Oslo paga o valor real do workshop. Essa receita contribui diretamente para viabilizar o acesso gratuito aos moradores locais."
       },
-      "step2": {
-        "title": "Receita alimenta o projeto",
-        "desc": "Cada inscrição paga contribui diretamente para cobrir os custos operacionais e viabilizar o acesso gratuito para a comunidade local."
+      "pillar2": {
+        "title": "Empresas e patrocinadores",
+        "desc": "Empresas privadas que desejam associar sua marca a impacto social real e cultura de qualidade encontram no Dance2Dance um parceiro com proposito e visibilidade."
       },
-      "step3": {
-        "title": "Moradores de Gamle Oslo entram de graça",
-        "desc": "Residentes da região têm acesso garantido e gratuito a todos os workshops — sem listas de espera, sem distinção, sem menor qualidade."
+      "pillar3": {
+        "title": "Fundos públicos e municipalidade",
+        "desc": "O projeto alinha-se com políticas públicas de inclusão cultural e comunitária, tornando-o elegivel para apoio de fundos culturais e da municipalidade de Oslo."
       },
-      "summary": "Este modelo elimina a dependência de subsídios externos contínuos. A sustentabilidade vem da própria comunidade de praticantes, criando um ciclo virtuoso onde o crescimento comercial amplifica o impacto social.",
-      "highlight": "Quem pode, sustenta. Quem precisa, recebe."
+      "pillar4": {
+        "title": "Financiadores individuais",
+        "desc": "Pessoas que acreditam no poder da arte como transformação social podem apoiar de forma direta, fazendo parte da história desde o início."
+      },
+      "summary": "A diversificação das fontes de receita é intencional: ela garante que o projeto não dependa de nenhuma entidade única, tornando-o mais resistente e escalavel ao longo do tempo.",
+      "highlight": "Várias fontes. Uma missão."
     },
     "partners": {
       "kicker": "Quem está conosco",

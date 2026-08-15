@@ -96,7 +96,7 @@
       "kicker": "Sosialt Prosjekt",
       "title_line1": "Kunst som",
       "title_line2": "tilhører alle.",
-      "subtitle": "En innovativ modell for universell tilgang til kultur og bevegelse. Premium workshops, tilbudt gratis til beboere i Gamle Oslo — bæret av dem som kan betale.",
+      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Gamle Oslo — bæret av flere finansieringskilder.",
       "scroll": "Rull ned for å utforske"
     },
     "context": {
@@ -106,23 +106,44 @@
       "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvtære ikke skal være et privilegium for dem som kan betale. Hvert workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon — uavhengig av hvem som er i rommet.",
       "quote": "Samme produkt. Samme kvalitet. Samme verdi. For alle."
     },
+    "value": {
+      "kicker": "Verdien av det vi tilbyr",
+      "title": "Gratis betyr ikke uten verdi.",
+      "subtitle": "De som mottar det gratis, mottar nøyaktig det samme som de som betaler. Vi gjør den reelle prisen synlig fordi opplevd verdi betyr noe — for støttespillere og deltakere alike.",
+      "paid": {
+        "label": "Eksterne deltakere",
+        "price": "[XXX] NOK",
+        "desc": "Beboere utenfor Gamle Oslo deltar til vanlig pris, med tilgang til den samme premium-opplevelsen."
+      },
+      "free": {
+        "label": "Beboere i Gamle Oslo",
+        "price": "Gratis",
+        "desc": "Lokale beboere har garantert, gratis tilgang til alle workshops. Ingen ventelister, ingen skiller, ingen lavere kvalitet."
+      },
+      "insight": "“Gratis tilgang med pristransparens skaper verdighet. Personen mottar ikke veldedighet — de mottar muligheten til å være en del av noe med ekte verdi.”"
+    },
     "model": {
-      "kicker": "Slik fungerer det",
-      "title": "En modell som er selvbærende.",
-      "step1": {
-        "title": "Deltakere utenfra betaler",
-        "desc": "Beboere utenfor Gamle Oslo deltar på workshops til vanlige priser, med tilgang til den samme premium-opplevelsen."
+      "kicker": "Hvordan vi finansierer oss",
+      "title": "Et økosystem av støtte.",
+      "intro": "Dance2Dance er designet for å ikke støle på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer — hver enkelt essensiell, ingen tilstrekkelig alene.",
+      "pillar1": {
+        "title": "Betalende deltakere",
+        "desc": "De som kommer fra utenfor Gamle Oslo betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
       },
-      "step2": {
-        "title": "Inntekter finansierer prosjektet",
-        "desc": "Hver betalt påmelding bidrar direkte til å dekke driftskostnader og muliggjøre gratis tilgang for lokalsamfunnet."
+      "pillar2": {
+        "title": "Bedrifter og sponsorer",
+        "desc": "Private bedrifter som ønsker å assosiere merkevaren sin med ekte sosial påvirkning og kvalitetskultur finner i Dance2Dance en partner med formål og synlighet."
       },
-      "step3": {
-        "title": "Beboere i Gamle Oslo deltar gratis",
-        "desc": "Lokale beboere har garantert, gratis tilgang til alle workshops — ingen ventelister, ingen skiller, ingen lavere kvalitet."
+      "pillar3": {
+        "title": "Offentlige midler og kommunen",
+        "desc": "Prosjektet er i tråd med offentlig politikk for kulturell og lokalsamfunnsmessig inkludering, noe som gjør det støtteberettiget fra kulturmidler og Oslo kommune."
       },
-      "summary": "Denne modellen eliminerer avhengigheten av kontinuerlige eksterne subsidier. Bærekraften kommer fra praksisfellesskapet selv, og skaper en god sirkel der kommersiell vekst forsterker sosial påvirkning.",
-      "highlight": "De som kan, bærer. De som trenger, mottar."
+      "pillar4": {
+        "title": "Individuelle givere",
+        "desc": "Mennesker som tror på kunstens kraft som sosial transformasjon kan støtte direkte, og bli en del av historien helt fra begynnelsen."
+      },
+      "summary": "Diversifiseringen av inntektskilder er tilsiktet: den sikrer at prosjektet ikke er avhengig av noen enkelt enhet, og gjør det mer motstandsdyktig og skalerbart over tid.",
+      "highlight": "Flere kilder. én misjon."
     },
     "partners": {
       "kicker": "Hvem er med oss",

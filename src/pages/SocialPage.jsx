@@ -2,11 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, Users, Building2, Landmark, Heart } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Funding pillar icons mapped by key
+const PILLAR_ICONS = {
+  pillar1: Users,
+  pillar2: Building2,
+  pillar3: Landmark,
+  pillar4: Heart,
+};
 
 const SocialPage = () => {
   const { t } = useTranslation();
@@ -23,22 +31,19 @@ const SocialPage = () => {
         delay: 0.3
       });
 
-      // Subtle background float
+      // Subtle float on dancer
       gsap.to('.hero-dancer', {
-        y: -20,
+        y: -18,
         duration: 6,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut'
       });
 
-      // Scroll-triggered reveals
+      // Generic scroll reveals
       gsap.utils.toArray('.reveal-elem').forEach((elem) => {
         gsap.from(elem, {
-          scrollTrigger: {
-            trigger: elem,
-            start: 'top 85%',
-          },
+          scrollTrigger: { trigger: elem, start: 'top 85%' },
           y: 36,
           opacity: 0,
           duration: 1,
@@ -46,50 +51,55 @@ const SocialPage = () => {
         });
       });
 
-      // Model cards stagger
-      gsap.from('.model-card', {
-        scrollTrigger: {
-          trigger: '.model-section',
-          start: 'top 75%',
-        },
-        y: 50,
+      // Pillar cards stagger
+      gsap.from('.pillar-card', {
+        scrollTrigger: { trigger: '.pillars-section', start: 'top 75%' },
+        y: 45,
         opacity: 0,
-        duration: 0.9,
-        stagger: 0.15,
+        duration: 0.85,
+        stagger: 0.12,
         ease: 'power3.out'
       });
 
-      // Horizontal line draw animation
-      gsap.from('.draw-line', {
-        scrollTrigger: {
-          trigger: '.draw-line',
-          start: 'top 80%',
-        },
-        scaleX: 0,
-        transformOrigin: 'left center',
-        duration: 1.2,
+      // Value cards stagger
+      gsap.from('.value-card', {
+        scrollTrigger: { trigger: '.value-section', start: 'top 75%' },
+        scale: 0.96,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
         ease: 'power3.out'
+      });
+
+      // Line draw
+      gsap.utils.toArray('.draw-line').forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: 'top 85%' },
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 1.2,
+          ease: 'power3.out'
+        });
       });
     });
 
     return () => ctx.revert();
   }, []);
 
+  const pillars = ['pillar1', 'pillar2', 'pillar3', 'pillar4'];
+
   return (
     <div className="bg-primary text-background min-h-[100dvh] overflow-x-hidden">
       <Navbar />
 
-      {/* ─── HERO ─────────────────────────────────────────────────────── */}
+      {/* ─── HERO ────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden">
-
-        {/* Background dancer silhouette */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
             src="/logo-D2D-dancer.png"
             className="hero-dancer absolute right-[-5%] bottom-0 h-[95%] opacity-[0.07] object-contain"
             alt=""
           />
-          {/* Gold radial glow */}
           <div className="absolute top-[30%] left-[20%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full opacity-[0.04] pointer-events-none"
                style={{ background: 'radial-gradient(circle, #C9A84C 0%, transparent 70%)' }} />
         </div>
@@ -118,11 +128,10 @@ const SocialPage = () => {
         </div>
       </section>
 
-      {/* ─── CONTEXT / MANIFESTO ──────────────────────────────────────── */}
+      {/* ─── CONTEXT / MANIFESTO ─────────────────────────────────────── */}
       <section className="py-28 md:py-48 px-6 lg:px-12 bg-[#0B0B0F] relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-20 items-start">
 
-          {/* Left: sticky label column */}
           <div className="md:col-span-4 reveal-elem">
             <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent block mb-8">
               {t('social_page.context.kicker')}
@@ -132,7 +141,6 @@ const SocialPage = () => {
             </h2>
           </div>
 
-          {/* Right: text content */}
           <div className="md:col-span-8 flex flex-col gap-10 reveal-elem">
             <div className="h-[1px] bg-background/10 draw-line" />
             <p className="font-heading text-background/60 text-base md:text-lg leading-[1.85] font-light">
@@ -141,8 +149,6 @@ const SocialPage = () => {
             <p className="font-heading text-background/60 text-base md:text-lg leading-[1.85] font-light">
               {t('social_page.context.p2')}
             </p>
-
-            {/* Pull quote */}
             <div className="border-l-2 border-accent/30 pl-8 mt-4">
               <p className="font-drama italic text-2xl md:text-3xl text-background/80 leading-[1.35]">
                 {t('social_page.context.quote')}
@@ -152,8 +158,73 @@ const SocialPage = () => {
         </div>
       </section>
 
-      {/* ─── MODEL SECTION ────────────────────────────────────────────── */}
-      <section className="model-section py-28 md:py-48 px-6 lg:px-12 bg-primary relative">
+      {/* ─── PERCEIVED VALUE SECTION ─────────────────────────────────── */}
+      <section className="value-section py-28 md:py-40 px-6 lg:px-12 bg-primary relative overflow-hidden">
+        {/* Subtle dividing glow */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] opacity-[0.035]"
+               style={{ background: 'radial-gradient(ellipse, #C9A84C 0%, transparent 70%)' }} />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20 reveal-elem">
+            <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
+              {t('social_page.value.kicker')}
+            </span>
+            <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight">
+              {t('social_page.value.title')}
+            </h2>
+            <p className="font-heading text-background/50 text-base md:text-lg font-light max-w-2xl mx-auto mt-8 leading-[1.8]">
+              {t('social_page.value.subtitle')}
+            </p>
+          </div>
+
+          {/* Value cards: Free vs Paid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+
+            {/* Paid card */}
+            <div className="value-card border border-background/10 bg-[#0D0D11] p-10 md:p-12 flex flex-col gap-6">
+              <span className="font-heading text-[10px] tracking-[4px] uppercase text-background/40">
+                {t('social_page.value.paid.label')}
+              </span>
+              <div className="font-drama italic text-5xl md:text-6xl text-background/80">
+                {t('social_page.value.paid.price')}
+              </div>
+              <div className="h-[1px] bg-background/8 draw-line" />
+              <p className="font-heading text-background/50 text-sm leading-[1.8] font-light">
+                {t('social_page.value.paid.desc')}
+              </p>
+            </div>
+
+            {/* Free card (Gamle Oslo) */}
+            <div className="value-card border border-accent/20 bg-[#0D0D11] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
+              {/* Subtle corner accent */}
+              <div className="absolute top-0 right-0 w-20 h-20 opacity-[0.04]"
+                   style={{ background: 'radial-gradient(circle at top right, #C9A84C, transparent)' }} />
+              <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent">
+                {t('social_page.value.free.label')}
+              </span>
+              <div className="font-drama italic text-5xl md:text-6xl text-accent">
+                {t('social_page.value.free.price')}
+              </div>
+              <div className="h-[1px] bg-accent/15 draw-line" />
+              <p className="font-heading text-background/50 text-sm leading-[1.8] font-light">
+                {t('social_page.value.free.desc')}
+              </p>
+            </div>
+          </div>
+
+          {/* Value insight quote */}
+          <div className="mt-16 max-w-3xl mx-auto text-center reveal-elem">
+            <p className="font-drama italic text-xl md:text-2xl text-background/50 leading-[1.5]">
+              {t('social_page.value.insight')}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FUNDING PILLARS ─────────────────────────────────────────── */}
+      <section className="pillars-section py-28 md:py-48 px-6 lg:px-12 bg-[#0B0B0F] relative">
         <div className="max-w-7xl mx-auto">
 
           <div className="text-center mb-20 reveal-elem">
@@ -163,48 +234,47 @@ const SocialPage = () => {
             <h2 className="font-drama italic text-4xl md:text-6xl text-background leading-tight">
               {t('social_page.model.title')}
             </h2>
+            <p className="font-heading text-background/45 text-base md:text-lg font-light max-w-2xl mx-auto mt-8 leading-[1.8]">
+              {t('social_page.model.intro')}
+            </p>
           </div>
 
-          {/* 3-step model diagram */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 relative mt-16">
-            {/* Connecting line (desktop only) */}
-            <div className="hidden md:block absolute top-[60px] left-[16.7%] right-[16.7%] h-[1px] bg-background/10 draw-line" />
-
-            {[
-              { num: '01', key: 'step1' },
-              { num: '02', key: 'step2' },
-              { num: '03', key: 'step3' }
-            ].map(({ num, key }) => (
-              <div key={num} className="model-card flex flex-col items-center text-center px-8 py-12 relative group">
-                {/* Number circle */}
-                <div className="w-[56px] h-[56px] rounded-full border border-background/15 flex items-center justify-center mb-10 group-hover:border-accent/50 transition-all duration-500 relative z-10 bg-primary">
-                  <span className="font-heading text-xs text-accent">{num}</span>
+          {/* 2x2 grid of funding pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+            {pillars.map((key) => {
+              const Icon = PILLAR_ICONS[key];
+              return (
+                <div key={key} className="pillar-card border border-background/8 bg-primary p-10 md:p-12 flex flex-col gap-6 group hover:border-background/20 transition-all duration-500">
+                  <div className="flex items-start justify-between">
+                    <Icon size={22} className="text-accent/60 group-hover:text-accent transition-colors duration-400" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-semibold text-sm md:text-base text-background/90 mb-4 tracking-wide uppercase">
+                      {t(`social_page.model.${key}.title`)}
+                    </h3>
+                    <p className="font-heading text-background/45 text-sm md:text-base leading-[1.8] font-light">
+                      {t(`social_page.model.${key}.desc`)}
+                    </p>
+                  </div>
                 </div>
-
-                <h3 className="font-heading font-semibold text-sm md:text-base tracking-wide text-background/90 mb-5 uppercase">
-                  {t(`social_page.model.${key}.title`)}
-                </h3>
-                <p className="font-heading text-background/50 text-sm md:text-base leading-[1.8] font-light">
-                  {t(`social_page.model.${key}.desc`)}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Summary strip */}
-          <div className="mt-24 reveal-elem border border-background/8 bg-[#0D0D11] rounded-[2px] p-10 md:p-16 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-            <div className="flex-1 font-heading text-background/50 text-sm leading-[1.8] font-light">
+          <div className="mt-10 reveal-elem border border-background/8 bg-[#0D0D11] p-10 md:p-14 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+            <div className="flex-1 font-heading text-background/45 text-sm md:text-base leading-[1.85] font-light">
               {t('social_page.model.summary')}
             </div>
-            <div className="shrink-0 font-drama italic text-3xl md:text-4xl text-accent/80 text-center md:text-right leading-tight max-w-[280px]">
+            <div className="shrink-0 font-drama italic text-2xl md:text-3xl text-accent/70 text-center md:text-right leading-tight max-w-[260px]">
               {t('social_page.model.highlight')}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── PARTNERS ─────────────────────────────────────────────────── */}
-      <section className="py-28 md:py-40 px-6 lg:px-12 bg-[#0B0B0F] relative">
+      {/* ─── PARTNERS ────────────────────────────────────────────────── */}
+      <section className="py-28 md:py-40 px-6 lg:px-12 bg-primary relative">
         <div className="max-w-5xl mx-auto reveal-elem">
           <div className="text-center mb-20">
             <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
@@ -217,13 +287,13 @@ const SocialPage = () => {
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24 mt-16">
             <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer"
-               className="group flex flex-col items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
+               className="group opacity-40 hover:opacity-100 transition-opacity duration-500">
               <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited"
                    className="h-10 md:h-14 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
             </a>
             <div className="hidden md:block w-[1px] h-14 bg-white/8" />
             <a href="https://poaciadanca.com.br/en/" target="_blank" rel="noopener noreferrer"
-               className="group flex flex-col items-center gap-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
+               className="group opacity-40 hover:opacity-100 transition-opacity duration-500">
               <img src="/logo-poaciadanca.png" alt="POA Cia de Dança"
                    className="h-14 md:h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
             </a>
@@ -235,9 +305,8 @@ const SocialPage = () => {
         </div>
       </section>
 
-      {/* ─── CTA / SUPPORT ────────────────────────────────────────────── */}
-      <section id="apoie" className="py-40 md:py-56 px-6 lg:px-12 bg-primary relative overflow-hidden">
-        {/* Soft glow */}
+      {/* ─── CTA ─────────────────────────────────────────────────────── */}
+      <section id="apoie" className="py-40 md:py-56 px-6 lg:px-12 bg-[#0B0B0F] relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] opacity-[0.05]"
                style={{ background: 'radial-gradient(ellipse, #C9A84C 0%, transparent 70%)' }} />
@@ -250,7 +319,7 @@ const SocialPage = () => {
           <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-[0.95] mb-10">
             {t('social_page.cta.title')}
           </h2>
-          <div className="h-[1px] w-24 bg-accent/30 mb-10 draw-line" />
+          <div className="h-[1px] w-24 bg-accent/30 mb-10 draw-line mx-auto" />
           <p className="font-heading text-background/55 text-base md:text-lg font-light max-w-2xl mb-16 leading-[1.8]">
             {t('social_page.cta.desc')}
           </p>
