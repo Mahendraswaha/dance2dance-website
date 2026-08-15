@@ -53,7 +53,7 @@ const SocialPage = () => {
 
       // Pillar cards stagger
       gsap.from('.pillar-card', {
-        scrollTrigger: { trigger: '.pillars-section', start: 'top 75%' },
+        scrollTrigger: { trigger: '.pillars-grid', start: 'top 85%' },
         y: 45,
         opacity: 0,
         duration: 0.85,
@@ -240,7 +240,7 @@ const SocialPage = () => {
           </div>
 
           {/* 2x2 grid of funding pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          <div className="pillars-grid grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
             {pillars.map((key) => {
               const Icon = PILLAR_ICONS[key];
               return (
