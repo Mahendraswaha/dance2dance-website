@@ -30,20 +30,22 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] overflow-hidden flex items-center justify-center">
+    <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] flex items-center justify-center">
       
       {/* Watermark - Fixed while scrolling */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-hidden">
-          <img 
-            src="/logo-D2D-dancer.png" 
-            alt="" 
-            className="h-[50%] md:h-[80%] opacity-20 object-contain -ml-4 md:ml-12"
-          />
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center">
+          <div className="relative w-full max-w-4xl mx-auto h-full flex items-center">
+            <img 
+              src="/logo-D2D-dancer.png" 
+              alt="" 
+              className="absolute left-0 h-[70%] md:h-[90%] opacity-20 object-contain -translate-x-[45%] md:-translate-x-[55%]"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col gap-8">
+      <div className="relative z-10 max-w-4xl w-full mx-auto text-center flex flex-col gap-8">
         <p className="phil-line font-heading font-normal text-background/50 text-2xl md:text-3xl tracking-tight">
           {t("phil.line1.p1")} <span className="text-background/80">{t("phil.line1.p2")}</span>.
         </p>
