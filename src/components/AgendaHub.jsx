@@ -128,8 +128,6 @@ export default function AgendaHub({ programs }) {
             </div>
           )}
       </div>
-      {/* Smooth transition to footer */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#0C0C0C] pointer-events-none"></div>
     </div>
   );
 }
