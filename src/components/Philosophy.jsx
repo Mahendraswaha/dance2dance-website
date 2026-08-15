@@ -32,6 +32,13 @@ const Philosophy = () => {
   return (
     <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] overflow-hidden flex items-center justify-center">
       
+      {/* Watermark */}
+      <img 
+        src="/logo-D2D-dancer.png" 
+        alt="" 
+        className="absolute left-[-20%] md:left-[-10%] top-1/2 -translate-y-1/2 h-[60%] md:h-[120%] opacity-30 pointer-events-none z-0 object-contain"
+      />
+
       <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col gap-8">
         <p className="phil-line font-heading font-normal text-background/50 text-2xl md:text-3xl tracking-tight">
           {t("phil.line1.p1")} <span className="text-background/80">{t("phil.line1.p2")}</span>.
