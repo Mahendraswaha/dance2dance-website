@@ -13,7 +13,7 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <div className="bg-primary relative z-20">
-      <footer className="bg-primary text-background rounded-t-[4rem] px-6 lg:px-12 pt-10 pb-12">
+      <footer className="bg-primary text-background rounded-t-[4rem] px-6 lg:px-12 pt-16 pb-12">
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
         
         <div className="flex flex-col md:flex-row justify-between gap-12">
