@@ -214,7 +214,7 @@ export default function ProgramTemplate({ program }) {
 
       {/* Additional Sections */}
       {(program.corporate || program.individualSessions) && (
-        <section className="py-24 bg-primary border-t border-[#1a1a1a]">
+        <section className="pt-16 pb-8 bg-primary border-t border-[#1a1a1a]">
           <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
             {program.corporate && (
               <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
