@@ -25,14 +25,14 @@ const Footer = () => {
             </div>
             <p className="font-heading text-background/60 text-sm mb-10">{t("footer.desc")}</p>
             
-            <div className="flex flex-row gap-8 items-end mt-12">
+            <div className="flex flex-row gap-8 items-start mt-12">
               <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer" className="flex flex-col gap-5 group">
                 <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px] group-hover:text-accent transition-colors">We are unlimiters</span>
                 <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited" className="h-7 md:h-9 object-contain object-left group-hover:opacity-80 transition-opacity" />
               </a>
               <a href="https://poaciadanca.com.br/en/" target="_blank" rel="noopener noreferrer" className="flex flex-col gap-5 group">
                 <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px] group-hover:text-accent transition-colors">Strategic partner</span>
-                <img src="/logo-poaciadanca.png" alt="Cia de Dança" className="h-7 md:h-9 scale-[1.3] origin-bottom-left object-contain object-left group-hover:opacity-80 transition-opacity" />
+                <img src="/logo-poaciadanca.png" alt="Cia de Dança" className="h-7 md:h-9 scale-[1.3] origin-top-left object-contain object-left group-hover:opacity-80 transition-opacity" />
               </a>
             </div>
           </div>
