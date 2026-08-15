@@ -25,7 +25,7 @@ const Footer = () => {
             </div>
             <p className="font-heading text-background/60 text-sm">{t("footer.desc")}</p>
             
-            <div className="flex flex-row gap-10 items-start mt-auto pt-16">
+            <div className="flex flex-row gap-10 items-start mt-20 md:mt-32">
               <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer" className="flex flex-col gap-4 group">
                 <span className="text-[9px] font-heading text-background/40 uppercase tracking-[1px] group-hover:text-accent transition-colors">We are unlimiters</span>
                 <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited" className="h-7 md:h-8 object-contain object-left group-hover:opacity-80 transition-opacity" />
