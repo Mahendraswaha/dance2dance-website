@@ -213,7 +213,7 @@ export default function ProgramTemplate({ program }) {
       )}
 
       {/* Additional Sections */}
-      {(program.corporate || program.individualSessions) && (
+      {(program.corporate || program.individualSessions) ? (
         <section className="py-24 bg-[#08080C] border-t border-[#1a1a1a]">
           <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
             {program.corporate && (
@@ -241,6 +241,8 @@ export default function ProgramTemplate({ program }) {
             )}
           </div>
         </section>
+      ) : (
+        <div className="w-full h-32 bg-gradient-to-b from-[#111111] to-[#0C0C0C] relative z-0"></div>
       )}
     </div>
   );
