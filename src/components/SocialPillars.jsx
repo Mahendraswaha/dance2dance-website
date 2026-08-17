@@ -171,13 +171,15 @@ const SocialPillars = () => {
                 onClick={() => setActiveIndex(index)}
                 className={`pillar-card w-full sm:w-[220px] md:w-[240px] h-[220px] md:h-[300px] flex flex-col items-center py-8 px-5 cursor-pointer relative overflow-hidden ${isActive ? 'active' : ''}`}
               >
-                <div className="font-drama text-3xl text-accent mb-2 font-normal">{p.number}</div>
-                <div className="w-[30px] h-[1px] bg-accent mb-4 opacity-60" />
-                <div className="text-xs md:text-[13px] tracking-[2px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.4] min-h-[2.8em] flex items-center justify-center">
-                  {t(`social_page.model.${p.key}.title`)}
+                <div className="flex flex-col items-center h-[120px] w-full">
+                  <div className="font-drama text-3xl text-accent mb-2 font-normal">{p.number}</div>
+                  <div className="w-[30px] h-[1px] bg-accent mb-4 opacity-60" />
+                  <div className="text-xs md:text-[13px] tracking-[2px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.4] w-full flex-1 flex items-center justify-center">
+                    {t(`social_page.model.${p.key}.title`)}
+                  </div>
                 </div>
                 
-                <div className="flex-1 flex items-center justify-center mt-4 shrink-0">
+                <div className="flex items-center justify-center mt-auto mb-auto shrink-0">
                   {index === 0 && (
                     <svg className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] text-accent" viewBox="0 0 70 70" fill="none">
                         <circle cx="35" cy="22" r="10" stroke="currentColor" strokeWidth="1"/>
