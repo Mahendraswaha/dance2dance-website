@@ -85,21 +85,19 @@ const SocialPage = () => {
       {/* ─── HERO ────────────────────────────────────────────────────── */}
       <section className="relative w-full min-h-[100dvh] flex flex-col justify-end pt-40 pb-16 md:pb-24 overflow-hidden bg-primary">
         
-        {/* Background Layer - Centered cinematic letterbox */}
-        <div className="absolute top-1/2 left-0 w-full h-[70vh] -translate-y-1/2 z-0 pointer-events-none overflow-hidden">
+        {/* Background Layer - Video as a centered uncropped element */}
+        <div className="absolute top-1/2 left-1/2 w-full max-w-7xl h-[70vh] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex items-center justify-center">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity"
+            className="w-full h-full object-contain opacity-50 mix-blend-luminosity"
           >
             <source src="/hero-social-project-small.mp4" type="video/mp4" />
           </video>
-          {/* Fade Top Edge */}
-          <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary to-transparent" />
-          {/* Fade Bottom Edge */}
-          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
+          {/* Soft vignette/fade around the edges of the video container */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_50%,_#0D0D12_100%)]" />
         </div>
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
