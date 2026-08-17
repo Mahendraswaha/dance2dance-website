@@ -12,6 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 const SocialPage = () => {
   const { t } = useTranslation();
 
+  const heroBlurPlaceholder = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAALAAtAAD//gAPTGF2YzYzLjEuMTAwAP/bAEMACAQEBAQEBQUFBQUFBgYGBgYGBgYGBgYGBgcHBwgICAcHBwYGBwcICAgICQkJCAgICAkJCgoKDAwLCw4ODhERFP/EAHQAAAIDAQAAAAAAAAAAAAAAAAUEAwIHBgEAAwEAAAAAAAAAAAAAAAAAAAIEBRAAAgEEAQICCwEAAAAAAAAAAgEDBBIAEQYFE9IhBxUUVJSTkVMXMjEiEQEAAgEEAwEAAAAAAAAAAAABAgARUQWCMiMEAyH/wAARCAALABQDASIAAhEAAxEA/9oADAMBAAIRAxEAPwDDNvGenxlUTRU4sEU0wRh3DGMLjaQojkaAU3pXE0K35vWL5Sb9H9cZzimb19X6KOUqV9n2I1/q8TOalKGQTITiYVMEZFYSdsgJxmOiFvIvxVzH7dB8YHgwzxLkvX6/jtBLU9Sq5TEJI7u4xJiE0iG5jq4tf0y2ZPzJt4S9cdV9+q/nSeLIZbh9oyRT8U6acroR2315RJBPCCeTXi3/2Q==";
+
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero reveal
@@ -84,6 +87,7 @@ const SocialPage = () => {
               loop 
               muted 
               playsInline
+              poster={heroBlurPlaceholder}
               className="w-full h-full object-contain object-right opacity-50 mix-blend-luminosity"
             >
               <source src="/hero-social-project-small.mp4" type="video/mp4" />
