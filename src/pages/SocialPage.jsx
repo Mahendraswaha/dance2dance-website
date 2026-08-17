@@ -85,19 +85,19 @@ const SocialPage = () => {
       {/* ─── HERO ────────────────────────────────────────────────────── */}
       <section className="relative w-full min-h-[100dvh] flex flex-col justify-end pt-40 pb-16 md:pb-24 overflow-hidden bg-primary">
         
-        {/* Background Layer */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-primary">
+        {/* Background Layer - Restricted to 70% height with seamless fade to bottom */}
+        <div className="absolute top-0 left-0 w-full h-[70vh] z-0 pointer-events-none overflow-hidden">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
+            className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity"
           >
             <source src="/hero-social-project-small.mp4" type="video/mp4" />
           </video>
-          {/* Gradient overlay to ensure text remains legible */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+          {/* Gradient that fades the video perfectly into the background color at the 70vh mark */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
         </div>
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
