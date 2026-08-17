@@ -182,22 +182,22 @@ const SocialPillars = () => {
                 <div className="flex items-center justify-center mt-auto mb-auto shrink-0">
                   {index === 0 && (
                     <svg className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] text-accent" viewBox="0 0 70 70" fill="none">
-                        <circle cx="35" cy="22" r="10" stroke="currentColor" strokeWidth="1"/>
-                        <path d="M20 52 C20 40 28 35 35 35 C42 35 50 40 50 52" stroke="currentColor" strokeWidth="1" fill="none"/>
+                        <circle cx="35" cy="25" r="10" stroke="currentColor" strokeWidth="1"/>
+                        <path d="M20 55 C20 43 28 38 35 38 C42 38 50 43 50 55" stroke="currentColor" strokeWidth="1" fill="none"/>
                         <circle cx="35" cy="35" r="22" stroke="currentColor" strokeWidth="0.5" opacity="0.3"/>
                         <circle cx="35" cy="35" r="28" stroke="currentColor" strokeWidth="0.3" opacity="0.2"/>
                     </svg>
                   )}
                   {index === 1 && (
                     <svg className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] text-accent" viewBox="0 0 70 70" fill="none">
-                        <rect x="20" y="25" width="30" height="30" stroke="currentColor" strokeWidth="1"/>
-                        <line x1="28" y1="25" x2="28" y2="55" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
-                        <line x1="35" y1="25" x2="35" y2="55" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
-                        <line x1="42" y1="25" x2="42" y2="55" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
-                        <line x1="20" y1="35" x2="50" y2="35" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
-                        <line x1="20" y1="45" x2="50" y2="45" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
-                        <circle cx="35" cy="15" r="3" stroke="currentColor" strokeWidth="1"/>
-                        <line x1="35" y1="18" x2="35" y2="25" stroke="currentColor" strokeWidth="0.5"/>
+                        <rect x="20" y="26" width="30" height="30" stroke="currentColor" strokeWidth="1"/>
+                        <line x1="28" y1="26" x2="28" y2="56" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
+                        <line x1="35" y1="26" x2="35" y2="56" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
+                        <line x1="42" y1="26" x2="42" y2="56" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
+                        <line x1="20" y1="36" x2="50" y2="36" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
+                        <line x1="20" y1="46" x2="50" y2="46" stroke="currentColor" strokeWidth="0.5" opacity="0.5"/>
+                        <circle cx="35" cy="16" r="3" stroke="currentColor" strokeWidth="1"/>
+                        <line x1="35" y1="19" x2="35" y2="26" stroke="currentColor" strokeWidth="0.5"/>
                     </svg>
                   )}
                   {index === 2 && (
