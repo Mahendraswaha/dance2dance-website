@@ -77,21 +77,17 @@ const SocialPage = () => {
       <section className="relative w-full min-h-[100dvh] flex flex-col justify-end pt-40 pb-16 md:pb-24 overflow-hidden bg-primary">
         
         {/* Background Layer - Video aligned perfectly to the right */}
-        <div className="absolute top-1/2 left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
-          <div className="w-full max-w-7xl mx-auto h-full relative">
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              poster="/hero-social-poster.jpg"
-              className="w-full h-full object-contain object-right opacity-50 mix-blend-luminosity"
-            >
-              <source src="/hero-social-project-small.mp4" type="video/mp4" />
-            </video>
-          </div>
-          {/* Subtle gradient to blend left edge */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent" />
+        <div className="absolute top-1/2 right-0 w-full md:w-4/5 lg:w-1/2 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            poster="/hero-social-poster.jpg"
+            className="w-full h-full object-cover object-center opacity-50 mix-blend-luminosity [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]"
+          >
+            <source src="/hero-social-project-small.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
