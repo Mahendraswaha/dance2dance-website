@@ -173,7 +173,7 @@ const SocialPillars = () => {
               >
                 <div className="font-drama text-3xl text-accent mb-2 font-normal">{p.number}</div>
                 <div className="w-[30px] h-[1px] bg-accent mb-4 opacity-60" />
-                <div className="text-xs md:text-[13px] tracking-[2px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.4]">
+                <div className="text-xs md:text-[13px] tracking-[2px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.4] min-h-[2.8em] flex items-center justify-center">
                   {t(`social_page.model.${p.key}.title`)}
                 </div>
                 
