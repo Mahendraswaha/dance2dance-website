@@ -80,7 +80,7 @@ const SocialPage = () => {
         
         {/* Background Layer - Video aligned perfectly to the right */}
         <div className="absolute top-1/2 left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
-          <div className="w-full max-w-7xl mx-auto h-full relative">
+          <div className="w-full max-w-7xl mx-auto h-full relative -mr-4 md:-mr-6">
             <video 
               autoPlay 
               loop 
