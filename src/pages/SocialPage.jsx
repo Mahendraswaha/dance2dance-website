@@ -85,19 +85,19 @@ const SocialPage = () => {
       {/* ─── HERO ────────────────────────────────────────────────────── */}
       <section className="relative w-full min-h-[100dvh] flex flex-col justify-end pt-40 pb-16 md:pb-24 overflow-hidden bg-primary">
         
-        {/* Background Layer - Video as a centered uncropped element */}
-        <div className="absolute top-1/2 left-1/2 w-full max-w-7xl h-[70vh] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex items-center justify-center">
+        {/* Background Layer - Video aligned to the right */}
+        <div className="absolute top-1/2 left-1/2 w-full max-w-7xl px-6 lg:px-12 h-[70vh] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline
-            className="w-full h-full object-contain opacity-50 mix-blend-luminosity"
+            className="w-full h-full object-contain object-right opacity-50 mix-blend-luminosity"
           >
             <source src="/hero-social-project-small.mp4" type="video/mp4" />
           </video>
-          {/* Soft vignette/fade around the edges of the video container */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_50%,_#0D0D12_100%)]" />
+          {/* Fade left edge to blend with background if video doesn't fill width */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent" />
         </div>
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
