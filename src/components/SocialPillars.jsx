@@ -155,10 +155,10 @@ const SocialPillars = () => {
 
       {/* ─── TOP SECTION ─── */}
       <div className="flex flex-col items-center justify-center pt-24 pb-12 px-6 lg:px-12 relative max-w-7xl mx-auto">
-        <div className="text-[11px] tracking-[4px] uppercase text-accent mb-4 font-medium text-center">
+        <div className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6 text-center">
           {t('social_page.model.kicker')}
         </div>
-        <h2 className="font-drama text-4xl md:text-5xl text-[#f5f0e8] text-center leading-[1.3] mb-12">
+        <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight mb-12 text-center">
           {t('social_page.model.title')}
         </h2>
 
@@ -220,11 +220,6 @@ const SocialPillars = () => {
               </div>
             );
           })}
-        </div>
-
-        <div className="flex items-center gap-2 mt-10 text-[#6b6b6b] text-xs tracking-[1px] font-medium opacity-80">
-          <MousePointer2 size={14} className="stroke-[#6b6b6b]" strokeWidth={2} />
-          Passe o mouse para explorar
         </div>
       </div>
 
