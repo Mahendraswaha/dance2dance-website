@@ -5,16 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown, ArrowRight, Users, Building2, Landmark, Heart } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SocialPillars from '../components/SocialPillars';
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Funding pillar icons mapped by key
-const PILLAR_ICONS = {
-  pillar1: Users,
-  pillar2: Building2,
-  pillar3: Landmark,
-  pillar4: Heart,
-};
 
 const SocialPage = () => {
   const { t } = useTranslation();
@@ -75,8 +68,6 @@ const SocialPage = () => {
 
     return () => ctx.revert();
   }, []);
-
-  const pillars = ['pillar1', 'pillar2', 'pillar3', 'pillar4'];
 
   return (
     <div className="bg-primary text-background min-h-[100dvh] overflow-x-hidden">
@@ -227,54 +218,7 @@ const SocialPage = () => {
       </section>
 
       {/* ─── FUNDING PILLARS ─────────────────────────────────────────── */}
-      <section className="pillars-section py-24 md:py-32 px-6 lg:px-12 bg-[#0C0C0C] relative">
-        <div className="max-w-7xl mx-auto">
-
-          <div className="text-center mb-20 reveal-elem">
-            <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
-              {t('social_page.model.kicker')}
-            </span>
-            <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight">
-              {t('social_page.model.title')}
-            </h2>
-            <p className="font-heading text-background/45 text-base md:text-lg font-light max-w-2xl mx-auto mt-8 leading-[1.8]">
-              {t('social_page.model.intro')}
-            </p>
-          </div>
-
-          {/* 2x2 grid of funding pillars */}
-          <div className="pillars-grid grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
-            {pillars.map((key) => {
-              const Icon = PILLAR_ICONS[key];
-              return (
-                <div key={key} className="pillar-card reveal-elem border border-background/10 bg-primary p-10 md:p-12 flex flex-col gap-6 group hover:border-background/20 transition-all duration-500">
-                  <div className="flex items-start justify-between">
-                    <Icon size={24} className="text-slate-400/60 group-hover:text-slate-300 transition-colors duration-400" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-semibold text-sm md:text-base text-slate-200 mb-4 tracking-wide uppercase">
-                      {t(`social_page.model.${key}.title`)}
-                    </h3>
-                    <p className="font-heading text-background/50 text-sm md:text-base leading-[1.8] font-light">
-                      {t(`social_page.model.${key}.desc`)}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Summary strip */}
-          <div className="mt-10 reveal-elem border border-background/10 bg-primary p-10 md:p-14 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-            <div className="flex-1 font-heading text-background/50 text-sm md:text-base leading-[1.85] font-light">
-              {t('social_page.model.summary')}
-            </div>
-            <div className="shrink-0 font-drama italic text-2xl md:text-3xl text-slate-300/70 text-center md:text-right leading-tight max-w-[260px]">
-              {t('social_page.model.highlight')}
-            </div>
-          </div>
-        </div>
-      </section>
+      <SocialPillars />
 
       {/* ─── PARTNERS ────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 px-6 lg:px-12 bg-primary relative">
