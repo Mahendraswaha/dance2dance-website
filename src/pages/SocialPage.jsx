@@ -79,8 +79,8 @@ const SocialPage = () => {
       <section className="relative w-full min-h-[100dvh] flex flex-col justify-end pt-40 pb-16 md:pb-24 overflow-hidden bg-primary">
         
         {/* Background Layer - Video aligned perfectly to the right */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-screen px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
-          <div className="w-full max-w-7xl mx-auto h-full relative">
+        <div className="absolute top-1/2 left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
+          <div className="w-full max-w-7xl mx-auto h-full relative translate-x-3 md:translate-x-4">
             <video 
               autoPlay 
               loop 
