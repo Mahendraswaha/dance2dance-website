@@ -71,7 +71,7 @@ const BiostretchPhilosophy = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* ─── MOMENTO 1 — O Reconhecimento ─── */}
-        <div className="pt-32 pb-40 md:pl-[10%]">
+        <div className="pt-32 pb-64 md:pl-[20%]">
           <p className="bio-fade font-drama italic text-[8vw] md:text-[5vw] lg:text-[4vw] text-background/90 leading-[1.15] md:max-w-[65%]">
             Seu corpo já sabe o que está tenso.
             <br />
@@ -80,7 +80,7 @@ const BiostretchPhilosophy = () => {
         </div>
 
         {/* ─── MOMENTO 2 — O Nome como Método ─── */}
-        <div className="pb-20 md:pl-[10%]">
+        <div className="pb-20 md:pl-[20%]">
           <span className="bio-m2-line font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
             Quatro décadas de pesquisa em movimento
           </span>
@@ -91,7 +91,7 @@ const BiostretchPhilosophy = () => {
         </div>
 
         {/* ─── MOMENTO 3 — O Princípio ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-32 md:pl-[10%]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-32 md:pl-[20%]">
           <div className="md:col-span-3">
             <span className="bio-fade font-heading text-[10px] tracking-[4px] uppercase text-accent block">
               O princípio
@@ -119,7 +119,7 @@ const BiostretchPhilosophy = () => {
         </div>
 
         {/* ─── MOMENTO 5 — As Camadas ─── */}
-        <div className="pb-32 flex flex-col gap-14 md:pl-[10%] md:max-w-[65%]">
+        <div className="pb-32 flex flex-col gap-14 md:pl-[20%] md:max-w-[75%]">
           <div className="bio-layer flex flex-col gap-3">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2]">
               Na superfície, tensão se dissolve.
@@ -162,7 +162,7 @@ const BiostretchPhilosophy = () => {
         </div>
 
         {/* ─── MOMENTO 6 — Síntese ─── */}
-        <div className="pb-24 md:pl-[10%]">
+        <div className="pb-24 md:pl-[20%]">
           <div className="bio-fade">
             <p className="font-drama italic text-3xl md:text-5xl lg:text-6xl text-background/90 leading-[1.1] md:max-w-[70%]">
               Menos esforço.
