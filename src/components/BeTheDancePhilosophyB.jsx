@@ -69,14 +69,14 @@ const BeTheDancePhilosophyB = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* ─── MOMENTO 1 — Esquerda (com respiro) ─── */}
-        <div className="pt-32 pb-32 flex justify-start md:pl-[10%]">
+        <div className="pt-32 pb-32 flex justify-start md:pl-[20%]">
           <p className="btdb-slide-right font-drama italic text-3xl md:text-5xl text-background/90 leading-[1.2] max-w-sm">
             Você não precisa aprender a dançar.
           </p>
         </div>
 
         {/* ─── MOMENTO 3 — Começa a migrar para a direita ─── */}
-        <div className="pb-40 flex justify-start md:pl-[15%]">
+        <div className="pb-40 flex justify-start md:pl-[25%]">
           <div className="btdb-slide-right max-w-xl border-l border-white/10 pl-6 md:pl-10">
             <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-500 block mb-6">
               A ideia
@@ -98,7 +98,7 @@ const BeTheDancePhilosophyB = () => {
         {/* ─── MOMENTO 5 — Deslocamentos (Escada visual em direção ao centro) ─── */}
         <div className="pb-40 flex flex-col gap-16 relative">
           
-          <div className="btdb-stagger-block md:w-[45%] md:ml-[20%]">
+          <div className="btdb-stagger-block md:w-[45%] md:ml-[30%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
               Do esforço ao fluxo.
             </p>
@@ -108,7 +108,7 @@ const BeTheDancePhilosophyB = () => {
             </p>
           </div>
 
-          <div className="btdb-stagger-block md:w-[45%] md:ml-[28%]">
+          <div className="btdb-stagger-block md:w-[45%] md:ml-[36%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
               Da forma à presença.
             </p>
@@ -118,7 +118,7 @@ const BeTheDancePhilosophyB = () => {
             </p>
           </div>
 
-          <div className="btdb-stagger-block md:w-[45%] md:ml-[36%]">
+          <div className="btdb-stagger-block md:w-[45%] md:ml-[42%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
               Do controle à escuta.
             </p>
@@ -128,7 +128,7 @@ const BeTheDancePhilosophyB = () => {
             </p>
           </div>
 
-          <div className="btdb-stagger-block md:w-[45%] md:ml-[44%]">
+          <div className="btdb-stagger-block md:w-[45%] md:ml-[48%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
               Do isolamento à percepção.
             </p>
