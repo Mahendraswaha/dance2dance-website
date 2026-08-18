@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight, Columns } from 'lucide-react';
 import BeTheDancePhilosophy from './BeTheDancePhilosophy';
 import BeTheDancePhilosophyA from './BeTheDancePhilosophyA';
+import BeTheDancePhilosophyB from './BeTheDancePhilosophyB';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
@@ -146,6 +147,12 @@ export default function ProgramTemplate({ program }) {
                 Direção A
               </button>
               <button 
+                onClick={() => setCompareVersion('B')}
+                className={`font-heading text-xs px-3 py-1 rounded-full transition-colors ${compareVersion === 'B' ? 'bg-accent text-primary font-bold' : 'text-slate-300 hover:text-white'}`}
+              >
+                Direção B
+              </button>
+              <button 
                 onClick={() => setCompareVersion('C')}
                 className={`font-heading text-xs px-3 py-1 rounded-full transition-colors ${compareVersion === 'C' ? 'bg-accent text-primary font-bold' : 'text-slate-300 hover:text-white'}`}
               >
@@ -154,7 +161,9 @@ export default function ProgramTemplate({ program }) {
             </div>
           </div>
           
-          {compareVersion === 'A' ? <BeTheDancePhilosophyA /> : <BeTheDancePhilosophy />}
+          {compareVersion === 'A' && <BeTheDancePhilosophyA />}
+          {compareVersion === 'B' && <BeTheDancePhilosophyB />}
+          {compareVersion === 'C' && <BeTheDancePhilosophy />}
         </div>
       ) : (
         <section className="py-24 px-8 max-w-3xl mx-auto">
