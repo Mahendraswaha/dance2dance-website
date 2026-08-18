@@ -2,8 +2,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Columns } from 'lucide-react';
 import BeTheDancePhilosophy from './BeTheDancePhilosophy';
+import BeTheDancePhilosophyA from './BeTheDancePhilosophyA';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
@@ -12,6 +13,7 @@ export default function ProgramTemplate({ program }) {
   const [isFading, setIsFading] = useState(false);
   const [logoVisible, setLogoVisible] = useState(true);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [compareVersion, setCompareVersion] = useState('C'); // 'A' or 'C'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,7 +134,28 @@ export default function ProgramTemplate({ program }) {
 
       {/* Concept / Philosophy Section */}
       {program.id === 'be-the-dance' ? (
-        <BeTheDancePhilosophy />
+        <div className="relative">
+          {/* Compare Toggle */}
+          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#141414] border border-[#222] rounded-full px-4 py-2 flex items-center gap-4 shadow-2xl">
+            <span className="font-heading text-[10px] tracking-[2px] uppercase text-slate-400">Comparar:</span>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => setCompareVersion('A')}
+                className={`font-heading text-xs px-3 py-1 rounded-full transition-colors ${compareVersion === 'A' ? 'bg-accent text-primary font-bold' : 'text-slate-300 hover:text-white'}`}
+              >
+                Direção A
+              </button>
+              <button 
+                onClick={() => setCompareVersion('C')}
+                className={`font-heading text-xs px-3 py-1 rounded-full transition-colors ${compareVersion === 'C' ? 'bg-accent text-primary font-bold' : 'text-slate-300 hover:text-white'}`}
+              >
+                Direção C
+              </button>
+            </div>
+          </div>
+          
+          {compareVersion === 'A' ? <BeTheDancePhilosophyA /> : <BeTheDancePhilosophy />}
+        </div>
       ) : (
         <section className="py-24 px-8 max-w-3xl mx-auto">
           {program.philosophy ? (
