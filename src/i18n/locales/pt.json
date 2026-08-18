@@ -163,7 +163,7 @@
       "kicker": "Investimento de Impacto Social",
       "title_line1": "Excelência",
       "title_line2": "que transforma.",
-      "subtitle": "A alta cultura não precisa ser um privilégio. Com a metodologia da Porto Alegre Cia de Dança, levamos workshops de nível internacional aos moradores de Gamle Oslo — através de um modelo de financiamento plural, seguro e sustentável.",
+      "subtitle": "A cultura não precisa ser um privilégio. Com a metodologia da Porto Alegre Cia de Dança, levamos workshops de nível internacional aos moradores de Tøyen e Grønland através de um modelo de financiamento plural, seguro e sustentável.",
       "scroll": "Descubra o modelo",
       "badge": "Powered by",
       "badge_brand": "Porto Alegre Cia de Dança"
@@ -171,9 +171,9 @@
     "context": {
       "kicker": "Nosso Propósito",
       "title": "A arte de democratizar a excelência.",
-      "p1": "Gamle Oslo respira diversidade, mas também enfrenta barreiras visíveis de acesso à cultura de qualidade. Onde muitos veem um desafio, nós vemos o terreno perfeito para plantar um novo modelo de integração social.",
-      "p2": "Com o respaldo técnico e a expertise de anos da Porto Alegre Cia de Dança, o Dance2Dance oferece uma experiência estética e transformadora incomparável. A mesma exigência dos palcos internacionais, agora a serviço da comunidade local.",
-      "quote": "Excelência não é exclusividade. O mesmo método, o mesmo respeito, para todos."
+      "p1": "Tøyen e Grønland respiram diversidade, mas também enfrentam barreiras visíveis de acesso à cultura. Onde muitos veem um desafio, nós vemos o terreno perfeito para plantar um novo modelo de integração social.",
+      "p2": "Com o respaldo técnico e a expertise de anos da Porto Alegre Cia de Dança, Dance2Dance oferece uma experiência estética e transformadora. Conhecimentos e práticas desenvolvidos ao longo de anos de experiência artística chegam agora à comunidade local por meio de workshops de dança, práticas de consciência corporal e experiências de integração social.",
+      "quote": "Excelência não é privilégio. É oportunidade."
     },
     "value": {
       "kicker": "Transparência B2B",
@@ -182,7 +182,7 @@
       "paid": {
         "label": "Público Pagante",
         "price": "Valor de Mercado",
-        "desc": "Alunos regulares atestam a qualidade premium do serviço e injetam receita que retroalimenta o impacto social."
+        "desc": "Alunos regulares atestam a qualidade do serviço e injetam receita que retroalimenta o impacto social."
       },
       "free": {
         "label": "Comunidade Local",
@@ -209,7 +209,7 @@
       },
       "pillar4": {
         "title": "Private Donors",
-        "desc": "Filantropos independentes que exigem métricas claras e apostam no poder transformador da dança de alto desempenho."
+        "desc": "Filantropos independentes que exigem métricas claras e apostam no poder transformador de práticas corporais e do acesso à cultura."
       },
       "summary": "Um modelo antifrágil: se uma fonte oscila, a matriz financeira se reequilibra. Segurança máxima para quem investe, continuidade garantida para quem dança.",
       "highlight": "ESG na prática. Risco diluído."
@@ -217,7 +217,7 @@
     "partners": {
       "kicker": "Quem está conosco",
       "title": "Parceiros que constroem junto.",
-      "desc": "O Dance2Dance não age sozinho. Trabalhamos em rede com organizações que compartilham da convicção de que a arte transforma e que o acesso à cultura é um direito."
+      "desc": "Dance2Dance não age sozinho. Trabalhamos em rede com organizações que compartilham da convicção de que a arte transforma e que o acesso à cultura é um direito."
     },
     "cta": {
       "kicker": "Seja um Founding Partner",
