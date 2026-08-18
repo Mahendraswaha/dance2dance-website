@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -64,6 +65,8 @@ const BeTheDancePhilosophy = () => {
     return () => ctx.revert();
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <section ref={sectionRef} className="bg-primary px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -71,7 +74,7 @@ const BeTheDancePhilosophy = () => {
         {/* ─── MOMENTO 1 — Esquerda (com respiro) ─── */}
         <div className="pt-32 pb-32 flex justify-start md:pl-[20%]">
           <p className="btdb-slide-right font-drama italic text-3xl md:text-5xl text-background/90 leading-[1.2] max-w-sm">
-            Você não precisa aprender a dançar.
+            {t('be_the_dance_philosophy.m1.l1')}
           </p>
         </div>
 
@@ -79,17 +82,17 @@ const BeTheDancePhilosophy = () => {
         <div className="pb-40 flex justify-start md:pl-[25%]">
           <div className="btdb-slide-right max-w-xl border-l border-white/10 pl-6 md:pl-10">
             <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent block mb-6">
-              O POTENCIAL
+              {t('be_the_dance_philosophy.m3.kicker')}
             </span>
             <div className="flex flex-col gap-6">
               <p className="font-heading text-lg md:text-xl text-background/60 leading-[1.8] font-light">
-                Existe uma possibilidade de dança em cada corpo.
-                Não uma dança que se aprende mas uma que se descobre.
+                {t('be_the_dance_philosophy.m3.p1')}<br />
+                {t('be_the_dance_philosophy.m3.p2')}
               </p>
               <p className="font-heading text-lg md:text-xl text-background/60 leading-[1.8] font-light">
-                Ritmo, impulso, pausa. O corpo já conhece esse
-                vocabulário. Cada workshop cria as condições para que
-                ele se torne expressão.
+                {t('be_the_dance_philosophy.m3.p3')}<br />
+                {t('be_the_dance_philosophy.m3.p4')}<br />
+                {t('be_the_dance_philosophy.m3.p5')}
               </p>
             </div>
           </div>
@@ -100,41 +103,37 @@ const BeTheDancePhilosophy = () => {
           
           <div className="btdb-stagger-block md:w-[45%] md:ml-[30%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
-              Do esforço ao fluxo.
+              {t('be_the_dance_philosophy.m5.c1.title')}
             </p>
             <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Soltar a tensão acumulada. Deixar o movimento
-              encontrar seu próprio caminho.
+              {t('be_the_dance_philosophy.m5.c1.desc')}
             </p>
           </div>
 
           <div className="btdb-stagger-block md:w-[45%] md:ml-[36%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
-              Da forma à presença.
+              {t('be_the_dance_philosophy.m5.c2.title')}
             </p>
             <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Sair da preocupação com "como estou dançando"
-              para perceber o que o corpo quer dizer.
+              {t('be_the_dance_philosophy.m5.c2.desc')}
             </p>
           </div>
 
           <div className="btdb-stagger-block md:w-[45%] md:ml-[42%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
-              Do controle à escuta.
+              {t('be_the_dance_philosophy.m5.c3.title')}
             </p>
             <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Ouvir a respiração. Seguir o impulso.
-              Responder à música antes de pensar.
+              {t('be_the_dance_philosophy.m5.c3.desc')}
             </p>
           </div>
 
           <div className="btdb-stagger-block md:w-[45%] md:ml-[48%]">
             <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-2">
-              Do isolamento à percepção.
+              {t('be_the_dance_philosophy.m5.c4.title')}
             </p>
             <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Reconhecer o corpo por inteiro. Sentir como uma
-              parte se conecta a outra, e outra, e outra.
+              {t('be_the_dance_philosophy.m5.c4.desc')}
             </p>
           </div>
 
@@ -147,13 +146,13 @@ const BeTheDancePhilosophy = () => {
           
           <div className="relative z-10">
             <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-8">
-              DO FAZER AO SER
+              {t('be_the_dance_philosophy.m2.kicker')}
             </span>
             <h2 className="font-drama italic text-[15vw] md:text-[11vw] lg:text-[9vw] text-background/90 leading-[0.85] tracking-tight">
-              BE THE
+              {t('be_the_dance_philosophy.m2.t1')}
             </h2>
             <h2 className="font-drama italic text-[15vw] md:text-[11vw] lg:text-[9vw] text-background/90 leading-[0.85] tracking-tight">
-              DANCE
+              {t('be_the_dance_philosophy.m2.t2')}
             </h2>
           </div>
         </div>
@@ -161,9 +160,9 @@ const BeTheDancePhilosophy = () => {
         {/* ─── MOMENTO 4 — A Citação Histórica (O eco do centro) ─── */}
         <div className="pb-32 flex justify-center text-center">
           <p className="btdb-fade font-drama italic text-2xl md:text-3xl text-slate-300/40 leading-[1.35] max-w-2xl">
-            Há milênios, antes de qualquer técnica,
+            {t('be_the_dance_philosophy.m4.l1')}
             <br className="hidden md:block" />
-            {' '}o corpo já dançava.
+            {' '}{t('be_the_dance_philosophy.m4.l2')}
           </p>
         </div>
 
@@ -171,10 +170,10 @@ const BeTheDancePhilosophy = () => {
         <div className="pb-32 flex justify-center text-center">
           <div className="btdb-fade">
             <p className="font-drama italic text-3xl md:text-5xl text-background/90 leading-[1.2] max-w-2xl mx-auto">
-              A dança não precisa ser aprendida.
+              {t('be_the_dance_philosophy.m6.l1')}
             </p>
             <p className="font-drama italic text-3xl md:text-5xl text-accent leading-[1.2] mt-4 max-w-2xl mx-auto">
-              Precisa ser permitida.
+              {t('be_the_dance_philosophy.m6.l2')}
             </p>
           </div>
         </div>
@@ -183,11 +182,11 @@ const BeTheDancePhilosophy = () => {
         <div className="pb-24 flex justify-center text-center">
           <div className="btdb-fade">
             <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
-              Os caminhos
+              {t('be_the_dance_philosophy.m7.kicker')}
             </span>
             <p className="font-heading text-lg md:text-xl text-background/50 font-light leading-[1.6]">
-              Cada workshop explora um território.<br />
-              Escolha o que te chama primeiro.
+              {t('be_the_dance_philosophy.m7.l1')}<br />
+              {t('be_the_dance_philosophy.m7.l2')}
             </p>
           </div>
         </div>

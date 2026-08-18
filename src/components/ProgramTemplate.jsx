@@ -120,12 +120,12 @@ export default function ProgramTemplate({ program }) {
             animate={{ opacity: 1, y: 0 }}
             className="font-batang text-5xl md:text-7xl font-normal mb-6 tracking-wide text-background"
           >
-            {program.title}
+            {t(`programs.${program.id}.title`, program.title)}
           </motion.h1>
           <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
           {program.subtitle && (
             <p className="font-heading text-lg mt-8 text-background/80 max-w-2xl mx-auto font-light tracking-wide">
-              {program.subtitle}
+              {t(`programs.${program.id}.subtitle`, program.subtitle)}
             </p>
           )}
         </div>
@@ -140,14 +140,14 @@ export default function ProgramTemplate({ program }) {
         <section className="py-24 px-8 max-w-3xl mx-auto">
           {program.philosophy ? (
             <div className="space-y-12">
-              {program.philosophy.map((section, index) => (
+              {t(`programs.${program.id}.philosophy`, { returnObjects: true })?.map?.((section, index) => (
                 <div key={index} className="flex flex-col items-start gap-4">
                   {section.title && (
                     <h3 className="font-heading text-[10px] tracking-[4px] uppercase text-accent mb-2 mt-4">
                       {section.title}
                     </h3>
                   )}
-                  {section.content.map((paragraph, pIndex) => {
+                  {section.content?.map?.((paragraph, pIndex) => {
                     const isBullet = paragraph.trim().startsWith('•');
                     const text = isBullet ? paragraph.replace('•', '').trim() : paragraph;
                     return (
@@ -166,7 +166,7 @@ export default function ProgramTemplate({ program }) {
             </div>
           ) : (
             <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
-              {program.description}
+              {t(`programs.${program.id}.description`, program.description)}
             </p>
           )}
         </section>
@@ -192,7 +192,7 @@ export default function ProgramTemplate({ program }) {
                   
                   {workshop.logo ? (
                     <div className="w-full h-32 flex items-center justify-center mb-10 relative z-10">
-                      <img src={workshop.logo} alt={workshop.title} className="max-h-[80%] max-w-[65%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
+                      <img src={workshop.logo} alt={t(`programs.${program.id}.workshops.${workshop.id}.title`, workshop.title)} className="max-h-[80%] max-w-[65%] object-contain opacity-85 group-hover:opacity-100 transition-opacity" />
                     </div>
                   ) : (
                     <div 
@@ -201,11 +201,11 @@ export default function ProgramTemplate({ program }) {
                     ></div>
                   )}
                   
-                  <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">{workshop.title}</h3>
+                  <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">{t(`programs.${program.id}.workshops.${workshop.id}.title`, workshop.title)}</h3>
                   <div className="w-7 h-[1px] bg-accent/40 group-hover:bg-accent/80 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
                   
                   <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10 mb-8 flex-grow">
-                    {workshop.shortDescription}
+                    {t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription)}
                   </p>
 
                   <div className="mt-auto relative z-10 w-full">
@@ -227,11 +227,11 @@ export default function ProgramTemplate({ program }) {
             {program.corporate && (
               <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
                 {program.corporate.logo && (
-                  <img src={program.corporate.logo} alt={program.corporate.title} className="h-20 object-contain mb-8" />
+                  <img src={program.corporate.logo} alt={t(`programs.${program.id}.corporate.title`, program.corporate.title)} className="h-20 object-contain mb-8" />
                 )}
-                <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{program.corporate.title}</h3>
+                <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.corporate.title`, program.corporate.title)}</h3>
                 <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{program.corporate.description}</p>
+                <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
                 <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
                   Fale Conosco
                 </button>
@@ -239,9 +239,9 @@ export default function ProgramTemplate({ program }) {
             )}
             {program.individualSessions && (
               <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
-                <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{program.individualSessions.title}</h3>
+                <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.individualSessions.title`, program.individualSessions.title)}</h3>
                 <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{program.individualSessions.description}</p>
+                <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
                 <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
                   Agendar
                 </button>

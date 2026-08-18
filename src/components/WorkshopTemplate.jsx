@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function WorkshopTemplate({ workshop, program }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   if (!workshop) return <div className="min-h-screen bg-primary text-background flex items-center justify-center">Workshop not found</div>;
 
@@ -16,7 +18,7 @@ export default function WorkshopTemplate({ workshop, program }) {
           onClick={() => navigate(-1)}
           className="font-heading text-[10px] tracking-[4px] uppercase text-accent/70 hover:text-accent mb-12 flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
         >
-          <span className="mr-2">&larr;</span> Voltar para {program?.title}
+          <span className="mr-2">&larr;</span> {t('navigation.back', 'Voltar para')} {t(`programs.${program.id}.title`, program.title)}
         </button>
 
         {/* Header */}
@@ -27,11 +29,11 @@ export default function WorkshopTemplate({ workshop, program }) {
             animate={{ opacity: 1, y: 0 }}
             className="font-batang text-4xl md:text-6xl font-normal mb-6 leading-tight text-[#F0EDE8]"
           >
-            {workshop.title}
+            {t(`programs.${program.id}.workshops.${workshop.id}.title`, workshop.title)}
           </motion.h1>
           <div className="w-12 h-[1px] bg-accent/70 mb-8"></div>
           <p className="font-heading text-xl text-[#9A9A9A] font-light leading-relaxed">
-            {workshop.shortDescription}
+            {t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription)}
           </p>
         </header>
 
@@ -51,11 +53,9 @@ export default function WorkshopTemplate({ workshop, program }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="prose prose-invert prose-lg max-w-none font-heading font-light text-[#9A9A9A] leading-relaxed"
+          className="prose prose-invert prose-lg max-w-none font-heading font-light text-[#9A9A9A] leading-relaxed whitespace-pre-wrap"
         >
-          {/* Aqui idealmente você usaria um dangerouslySetInnerHTML se o conteúdo for HTML rico,
-              ou apenas mapearia parágrafos se for texto simples. Por hora mostramos o fullDescription */}
-          <p>{workshop.fullDescription}</p>
+          {t(`programs.${program.id}.workshops.${workshop.id}.fullDescription`, workshop.fullDescription)}
         </motion.div>
 
         {/* Call to Action */}

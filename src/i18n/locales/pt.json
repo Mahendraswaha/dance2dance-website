@@ -226,5 +226,285 @@
       "btn1": "Agendar Reunião Executiva",
       "btn2": "Baixar Pitch Deck Institucional"
     }
+  },
+  "programs": {
+    "be-the-dance": {
+      "title": "Be the Dance",
+      "subtitle": "Descubra a dança que existe em você.",
+      "description": "Filosofia e conceito do Be the Dance...",
+      "philosophy": [
+        {
+          "title": "BE THE DANCE",
+          "content": [
+            "é um programa de quatro workshops de dança.",
+            "Foi desenhado para você explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando algo essencial e único que já existe em você: sua própria dança."
+          ]
+        },
+        {
+          "title": "BE THE DANCE É PARA TODOS",
+          "content": [
+            "A dança pode nascer no corpo de qualquer pessoa que se permita mover.",
+            "Não há exigências.",
+            "Basta sentir e permitir que o movimento se expresse.",
+            "Em qualquer idade ou condição física, é possível descobrir uma forma própria de dançar."
+          ]
+        },
+        {
+          "title": "ONDE ESTÁ A DANÇA?",
+          "content": [
+            "Não está restrita a uma técnica, a um estilo pré-definido ou a um talento especial.",
+            "Ela existe em cada pessoa, como uma criatividade inerente pronta para ganhar forma por meio do corpo."
+          ]
+        },
+        {
+          "title": "COMO ACONTECE A DANÇA?",
+          "content": [
+            "A dança nos acompanha há milênios, como ritual, celebração e expressão artística. Ainda que você não lembre, há no corpo uma memória de movimento, uma capacidade de sentir, criar e dançar.",
+            "Ao criar um diálogo sensível entre música e corpo, abrimos a possibilidade de explorar novos caminhos de movimento. Ir além do conhecido permite que novas formas de expressão possam emergir.",
+            "A dança acontece para além do controle e da busca por uma forma ideal. Quando nos permitimos estar presentes, uma expressão mais autêntica e única pode emergir do corpo."
+          ]
+        },
+        {
+          "title": "QUAIS OS BENEFÍCIOS?",
+          "content": [
+            "• Favorecer o relaxamento profundo e contribuir para a redução do estresse.",
+            "• Ampliar a energia, a disponibilidade corporal e a fluidez dos movimentos.",
+            "• Reconhecer movimentos naturais e ampliar a consciência corporal, criando espaço para uma expressão mais autêntica.",
+            "• Desenvolver a atenção, despertando os sentidos e aprofundando a presença.",
+            "• Explorar a relação entre respiração e movimento, descobrindo novas formas de dançar com mais liberdade.",
+            "• Ampliar a percepção reconhecendo as diferentes partes do corpo e as relações entre elas."
+          ]
+        },
+        {
+          "title": "BE THE DANCE",
+          "content": [
+            "Workshops que integram a consciência do movimento com práticas de dança e meditação, para você descobrir e expressar a dança que já existe em você."
+          ]
+        }
+      ],
+      "workshops": {
+        "be-water": {
+          "title": "Be Water",
+          "shortDescription": "Descubra a fluidez do movimento e a adaptabilidade.",
+          "fullDescription": "Descrição completa do workshop Be Water..."
+        },
+        "be-balance": {
+          "title": "Be Balance",
+          "shortDescription": "Encontre o seu eixo, foco e equilíbrio corporal.",
+          "fullDescription": "Descrição completa do workshop Be Balance..."
+        },
+        "be-total": {
+          "title": "Be Total",
+          "shortDescription": "Uma experiência completa de integração do ser em movimento.",
+          "fullDescription": "Descrição completa do workshop Be Total..."
+        },
+        "be-stillness": {
+          "title": "Be Stillness",
+          "shortDescription": "Aprenda a encontrar a pausa e o repouso ativo.",
+          "fullDescription": "Descrição completa do workshop Be Stillness..."
+        },
+        "be-the-dance-pro": {
+          "title": "Be the Dance Pro",
+          "shortDescription": "Programa de aprofundamento e mentoria para facilitadores.",
+          "fullDescription": "Descrição completa do Be the Dance Pro..."
+        },
+        "be-the-dance-day": {
+          "title": "Be the Dance Day",
+          "shortDescription": "Um dia inteiro de imersão no movimento e na consciência corporal.",
+          "fullDescription": "Descrição completa do Be the Dance Day..."
+        }
+      },
+      "corporate": {
+        "title": "Formato para Empresas",
+        "description": "Detalhes sobre o Be the Dance in Company..."
+      }
+    },
+    "biostretch": {
+      "title": "Biostretch",
+      "subtitle": "Ser forte é ser flexível.",
+      "description": "Biostretch é um sistema de exercícios...",
+      "philosophy": [
+        {
+          "title": "O QUE É O BIOSTRETCH?",
+          "content": [
+            "Biostretch é um sistema de exercícios que promove a reconexão com o corpo por meio da consciência do movimento.",
+            "O método utiliza a atenção como sua principal ferramenta: um recurso simples, poderoso e acessível a todos. Ao direcioná-la para a experiência do movimento, ampliamos a percepção do corpo e abrimos espaço para novas possibilidades de organização corporal.",
+            "Inspirado em mais de quatro décadas de estudos em dança, Educação Somática e meditação, o método reconhece o corpo como um sistema inteligente, integrado e em constante transformação. Em vez de buscar desempenho ou correção, propõe uma investigação sutil da experiência corporal, na qual importa menos o que se faz e mais como se faz.",
+            "É dessa experiência de presença que nasce uma nova forma de perceber e habitar o corpo. Mas como essa transformação acontece na prática?"
+          ]
+        },
+        {
+          "title": "COMO ATUA?",
+          "content": [
+            "A prática do Biostretch convida você a desacelerar, relaxar o corpo e direcionar a atenção para movimentos simples e para as sensações que eles despertam.",
+            "Nessa exploração, torna-se possível reconhecer padrões de tensão, hábitos de movimento e formas de organização corporal que costumam permanecer fora da nossa percepção por operarem de forma automática e inconsciente. A aparente simplicidade da prática revela um trabalho profundo de escuta, percepção e reorganização.",
+            "Ao serem realizados de forma lenta, suave e sem esforço, os exercícios favorecem um estado de equilíbrio no sistema nervoso, responsável por coordenar a comunicação entre corpo e mente e regular as funções do organismo. Nesse estado, o corpo encontra espaço para liberar tensões, reorganizar-se e recuperar a fluidez natural do movimento.",
+            "Mais do que ensinar novos movimentos, o Biostretch fortalece a confiança na inteligência inata do corpo e convida a redescobrir o prazer de mover-se com liberdade, presença e consciência. O melhor é que essa experiência está ao alcance de qualquer pessoa."
+          ]
+        },
+        {
+          "title": "QUEM PODE PRATICAR?",
+          "content": [
+            "O Biostretch pode ser praticado por pessoas de todas as idades e diferentes níveis de experiência, condicionamento físico ou mobilidade.",
+            "A prática respeita a individualidade de cada corpo. Não existe um movimento ideal a ser alcançado nem um padrão externo a ser seguido. Cada pessoa explora as sequências dentro de seus próprios limites e possibilidades, no seu próprio ritmo.",
+            "Em vez de adaptar o corpo a um modelo, o Biostretch valoriza aquilo que cada pessoa já possui: sua capacidade de perceber, aprender e encontrar caminhos mais confortáveis e funcionais para o movimento. Assim, a prática fortalece a autonomia, a confiança e o prazer de habitar o próprio corpo.",
+            "E o que essa prática pode transformar no dia a dia?"
+          ]
+        },
+        {
+          "title": "QUAIS OS BENEFÍCIOS?",
+          "content": [
+            "A prática regular do Biostretch contribui para aliviar tensões, ampliar a mobilidade, melhorar a postura e tornar os movimentos mais leves, coordenados e confortáveis. Com o tempo, o corpo recupera a fluidez e eficiência, tornando as atividades do dia a dia mais fáceis e prazerosas.",
+            "Ao favorecer o equilíbrio do sistema nervoso, a prática também ajuda a reduzir os efeitos do estresse, melhorar a qualidade da respiração e aliviar dores e desconfortos associados à tensão muscular, especialmente em regiões como pescoço, ombros e costas. Além disso, contribui para prevenir lesões relacionadas a padrões repetitivos e ao uso excessivo do corpo.",
+            "Com o tempo, essas mudanças se estendem para além da prática e passam a fazer parte da maneira como nos movemos, percebemos e utilizamos o corpo no dia a dia."
+          ]
+        }
+      ],
+      "workshops": {
+        "uma-melhor-postura": {
+          "title": "Uma Melhor Postura",
+          "shortDescription": "E se você pudesse melhorar sua postura sem tentar “corrigir” seu corpo?\nExperimente uma nova relação com seu corpo, com mais apoio, liberdade e facilidade para se mover.",
+          "fullDescription": "Sua postura conta uma história. Ela reflete a maneira como você organiza o corpo, os hábitos que desenvolveu ao longo da vida e a forma como se relaciona com o ambiente ao seu redor.\nMais do que uma posição que devemos manter, a postura é uma organização dinâmica do corpo para se mover, se equilibrar e encontrar o mundo. Ela está presente em tudo o que fazemos e influencia nossa sensação de conforto, liberdade de movimento, apoio e bem-estar.\nNosso esqueleto e nossa musculatura possuem uma incrível capacidade de nos sustentar contra a gravidade e, ao mesmo tempo, permitir movimento e adaptação. Porém, ao longo do tempo, podemos desenvolver hábitos que aumentam o esforço necessário para nos manter de pé e nos mover, criando tensão, desconforto e limitações desnecessárias.\nA postura não é, portanto, algo estático nem uma “posição correta” que precisamos controlar o tempo todo. As diferentes partes do corpo estão constantemente se relacionando e ajustando entre si. Existe uma conversa contínua entre músculos, ossos, respiração, equilíbrio e movimento.\nÉ essa inteligência inata do corpo que nos permite encontrar equilíbrio e suporte.\nNo workshop Uma Melhor Postura, você terá a oportunidade de reconhecer padrões posturais habituais e explorar novas possibilidades de organização do corpo. Através da percepção e do movimento, podemos reduzir esforços desnecessários e descobrir maneiras mais eficazes, confortáveis e naturais de nos sustentar.\nUma postura saudável não é rígida. Ela é estável e, ao mesmo tempo, flexível. É a sensação de estar apoiado, de encontrar a verticalidade sem esforço excessivo e de poder se mover com mais facilidade, liberdade e presença."
+        },
+        "aprendendo-a-relaxar": {
+          "title": "Aprendendo a Relaxar",
+          "shortDescription": "E se relaxar não fosse algo que você precisa fazer?\nDescubra como liberar tensões desnecessárias e criar espaço para mais calma e presença.",
+          "fullDescription": "Estar relaxado é nosso estado natural. Por isso, relaxar não é algo que possamos fazer, mas sim algo que podemos deixar acontecer liberando tensões e esforços que já não são necessários. Quando o corpo se sente seguro e confortável, o relaxamento acontece naturalmente e podemos perceber melhor nossa respiração, nossos movimentos e os hábitos que influenciam a maneira como nos relacionamos com o próprio corpo.\nNo workshop Aprendendo a Relaxar, através de movimentos suaves e sem esforço, conectados com a respiração, vamos criar condições para que o corpo desacelere e o sistema nervoso encontre um estado de maior calma e restauração.\nO relaxamento se torna, então, muito mais do que uma pausa. Ele pode ser um caminho para ampliar a consciência, perceber o que acontece dentro de nós e descobrir novas possibilidades de estar no mundo.\nMais calma por dentro. Mais presença, confiança e liberdade para encontrar o mundo lá fora."
+        },
+        "alongar-respirar-e-meditar": {
+          "title": "Alongar, Respirar e Meditar",
+          "shortDescription": "O que acontece quando o corpo e a mente simplesmente param? Prepare o corpo, encontre sua respiração e descubra um caminho para a meditação.",
+          "fullDescription": "Em nossa vida cotidiana, estamos quase sempre fazendo alguma coisa. Nosso corpo e nossa mente se acostumaram ao movimento, à ação e aos estímulos constantes. Por isso, simplesmente sentar, ficar em silêncio e estar presente pode ser um desafio.\nPara que a meditação aconteça, podemos primeiro criar condições para que o corpo encontre conforto e quietude.\nNo workshop Alongar, Respirar e Meditar, vamos explorar movimentos suaves para liberar as articulações e tensões desnecessárias, encontrando pontos de apoio que nos permitam sentar com mais conforto e estabilidade, mantendo a coluna ereta sem rigidez.\nA respiração será nossa companheira e uma âncora para o momento presente, ajudando a manter a atenção alerta enquanto o corpo e a mente desaceleram.\nAo final, teremos preparado o corpo e a atenção para simplesmente sentar, respirar e estar.\nSem precisar alcançar nada. Sem precisar fazer nada. Apenas criando espaço para a meditação acontecer."
+        },
+        "transformando-habitos": {
+          "title": "Transformando Hábitos",
+          "shortDescription": "Você escolhe como se move ou seus hábitos escolhem por você?\nReconheça seus padrões de movimento e descubra novas possibilidades para se mover com mais liberdade, conforto e facilidade.",
+          "fullDescription": "Grande parte do que fazemos todos os dias acontece no automático. São hábitos e padrões de movimento que aprendemos ao longo da vida e que influenciam nossa postura, a maneira como nos movemos e até como nos sentimos.\nOs hábitos são importantes. Eles nos ajudam a economizar energia e realizar tarefas sem precisar pensar em cada movimento. Mas alguns padrões que um dia foram úteis podem, com o tempo, tornar-se limitantes, criando tensões, desconfortos e esforços desnecessários.\nNo workshop Transformando Hábitos, vamos reconhecer esses padrões e experimentar novas possibilidades de movimento. Ao ampliar nossa percepção, podemos descobrir maneiras diferentes de organizar o corpo, com mais conforto, eficiência e liberdade.\nUm hábito não precisa simplesmente ser eliminado. Podemos transformá-lo, oferecendo ao corpo novas opções e permitindo que ele descubra maneiras mais fáceis, prazerosas e eficientes de se mover.\nMais percepção. Mais possibilidades. Mais liberdade para escolher como se mover."
+        },
+        "movimentos-diarios-para-prevenir-o-stress": {
+          "title": "Movimentos Diários para Prevenir o Stress",
+          "shortDescription": "E se alguns minutos de movimento pudessem mudar a maneira como você atravessa o seu dia?\nAprenda movimentos simples para liberar tensões, recuperar o equilíbrio e levar mais calma para a vida cotidiana.",
+          "fullDescription": "O estresse é uma resposta natural do nosso organismo diante de situações que exigem adaptação. O que faz diferença para nosso bem-estar é simplesmente a maneira como nosso corpo responde a ele e consegue, depois, retornar a um estado de equilíbrio.\nNa vida cotidiana, podemos permanecer por longos períodos em estados de alerta, acumulando tensão e esforço sem perceber. Aos poucos, isso pode afetar nossa energia, nossa concentração, nosso sono, nossa capacidade de relaxar e nossa sensação geral de bem-estar.\nNo workshop Movimentos Diários para Prevenir o Estresse, vamos explorar sequências guiadas de movimentos suaves que ajudam a perceber e liberar tensões acumuladas, acalmar a mente e direcionar a atenção para regiões do corpo que tendemos a manter contraídas.\nMais do que relaxar por alguns momentos, vamos aprender movimentos e estratégias simples que podem ser incorporados ao cotidiano, criando pequenas pausas para interromper o acúmulo de tensão e recuperar o equilíbrio.\nAprender a perceber o estresse no corpo é o primeiro passo para aprender a responder a ele de uma maneira diferente."
+        },
+        "recuperando-o-foco": {
+          "title": "Recuperando o Foco",
+          "shortDescription": "E se recuperar o foco começasse pelo corpo?\nDesperte sua atenção através do movimento e descubra como mais presença corporal pode abrir espaço para mais clareza e concentração.",
+          "fullDescription": "Em um mundo cheio de estímulos e distrações, manter a atenção tornou-se um desafio. Muitas vezes, buscamos melhorar nossa concentração tentando controlar a mente, sem perceber que o estado do corpo também influencia profundamente nossa capacidade de estar presentes.\nInspirado no livro de Johann Hari, Foco Roubado: Por que você não consegue prestar atenção e como voltar a pensar profundamente, este workshop convida você a voltar a atenção para partes do corpo que muitas vezes passam despercebidas.\nNo workshop Recuperando o Foco, vamos explorar sequências simples de movimentos, realizadas de maneira suave e sem esforço. Mais do que executar os movimentos corretamente, vamos prestar atenção em como nos movemos, percebendo detalhes, diferenças e novas possibilidades.\nAo desenvolver essa qualidade de atenção através do movimento, ampliamos nossa percepção corporal e podemos descobrir maneiras mais eficientes e confortáveis de organizar nossos movimentos, reduzindo esforços desnecessários e favorecendo o bem-estar.\nQuando o corpo encontra segurança e pode relaxar, a mente também ganha espaço para desacelerar. Assim, o movimento se transforma em uma ferramenta para cultivar presença, atenção e foco.\nRecuperar o foco é também recuperar a capacidade de estar verdadeiramente presente no que estamos fazendo."
+        }
+      },
+      "corporate": {
+        "title": "Formato para Empresas",
+        "description": "Biostretch in Company..."
+      },
+      "individualSessions": {
+        "title": "Sessões Individuais",
+        "description": "Atendimento personalizado de Biostretch."
+      }
+    },
+    "kroppsskole": {
+      "title": "Kroppsskole",
+      "subtitle": "",
+      "description": "Uma abordagem integrada para o corpo e o movimento.",
+      "philosophy": [],
+      "workshops": {}
+    }
+  },
+  "biostretch_philosophy": {
+    "m1": {
+      "l1": "Seu corpo já sabe o que está tenso.",
+      "l2": "Você só deixou de escutá-lo."
+    },
+    "m2": {
+      "kicker": "Quatro décadas de pesquisa em movimento",
+      "title": "BIOSTRETCH"
+    },
+    "m3": {
+      "kicker": "O princípio",
+      "p1": "Movimentos simples. Atenção precisa.",
+      "p2": "O Biostretch usa a ferramenta mais acessível que existe, a sua atenção, para transformar a maneira como o corpo se organiza.",
+      "p3": "Importa menos o que se faz",
+      "p4": "e mais como se faz."
+    },
+    "m4": {
+      "l1": "O corpo não esqueceu como se mover.",
+      "l2": "Prestar atenção é que foi esquecido."
+    },
+    "m5": {
+      "c1": {
+        "title": "Na superfície, tensão se dissolve.",
+        "desc": "O que se acumulou no pescoço, nos ombros, nas costas encontra espaço para se soltar."
+      },
+      "c2": {
+        "title": "Abaixo, padrões se revelam.",
+        "desc": "Hábitos automáticos de movimento — que nunca foram escolhidos — tornam-se visíveis pela primeira vez."
+      },
+      "c3": {
+        "title": "Mais fundo, o ritmo muda.",
+        "desc": "O sistema nervoso encontra equilíbrio. A respiração se aprofunda. O estresse perde terreno."
+      },
+      "c4": {
+        "title": "Na base, algo se reorganiza.",
+        "desc": "O corpo descobre caminhos mais inteligentes para se mover. Não por esforço, por percepção."
+      }
+    },
+    "m6": {
+      "l1": "Menos esforço.",
+      "l2": "Mais consciência.",
+      "l3": "Qualquer corpo, qualquer idade, qualquer ponto de partida."
+    },
+    "m7": {
+      "kicker": "Seis práticas",
+      "l1": "Cada workshop trabalha uma camada.",
+      "l2": "Comece pela que seu corpo pedir."
+    }
+  },
+  "be_the_dance_philosophy": {
+    "m1": {
+      "l1": "Você não precisa aprender a dançar."
+    },
+    "m3": {
+      "kicker": "O POTENCIAL",
+      "p1": "Existe uma possibilidade de dança em cada corpo.",
+      "p2": "Não uma dança que se aprende mas uma que se descobre.",
+      "p3": "Ritmo, impulso, pausa. O corpo já conhece esse",
+      "p4": "vocabulário. Cada workshop cria as condições para que",
+      "p5": "ele se torne expressão."
+    },
+    "m5": {
+      "c1": {
+        "title": "Do esforço ao fluxo.",
+        "desc": "Soltar a tensão acumulada. Deixar o movimento encontrar seu próprio caminho."
+      },
+      "c2": {
+        "title": "Da forma à presença.",
+        "desc": "Sair da preocupação com \"como estou dançando\" para perceber o que o corpo quer dizer."
+      },
+      "c3": {
+        "title": "Do controle à escuta.",
+        "desc": "Ouvir a respiração. Seguir o impulso. Responder à música antes de pensar."
+      },
+      "c4": {
+        "title": "Do isolamento à percepção.",
+        "desc": "Reconhecer o corpo por inteiro. Sentir como uma parte se conecta a outra, e outra, e outra."
+      }
+    },
+    "m2": {
+      "kicker": "DO FAZER AO SER",
+      "t1": "BE THE",
+      "t2": "DANCE"
+    },
+    "m4": {
+      "l1": "Há milênios, antes de qualquer técnica,",
+      "l2": "o corpo já dançava."
+    },
+    "m6": {
+      "l1": "A dança não precisa ser aprendida.",
+      "l2": "Precisa ser permitida."
+    },
+    "m7": {
+      "kicker": "Os caminhos",
+      "l1": "Cada workshop explora um território.",
+      "l2": "Escolha o que te chama primeiro."
+    }
   }
 }
