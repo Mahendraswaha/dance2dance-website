@@ -173,7 +173,7 @@ const BeTheDancePhilosophy = () => {
             <p className="font-drama italic text-3xl md:text-5xl text-background/90 leading-[1.2] max-w-2xl mx-auto">
               A dança não precisa ser aprendida.
             </p>
-            <p className="font-drama italic text-3xl md:text-5xl text-background/40 leading-[1.2] mt-4 max-w-2xl mx-auto">
+            <p className="font-drama italic text-3xl md:text-5xl text-accent leading-[1.2] mt-4 max-w-2xl mx-auto">
               Precisa ser permitida.
             </p>
           </div>
