@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
 import BeTheDancePhilosophy from './BeTheDancePhilosophy';
+import BiostretchPhilosophy from './BiostretchPhilosophy';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
@@ -133,6 +134,8 @@ export default function ProgramTemplate({ program }) {
       {/* Concept / Philosophy Section */}
       {program.id === 'be-the-dance' ? (
         <BeTheDancePhilosophy />
+      ) : program.id === 'biostretch' ? (
+        <BiostretchPhilosophy />
       ) : (
         <section className="py-24 px-8 max-w-3xl mx-auto">
           {program.philosophy ? (
