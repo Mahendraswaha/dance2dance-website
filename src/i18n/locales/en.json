@@ -157,5 +157,74 @@
       "btn1": "I want to be a partner",
       "btn2": "Talk to the team"
     }
+  },
+  "social_page_b2b": {
+    "hero": {
+      "kicker": "Social Impact Investment",
+      "title_line1": "Excellence",
+      "title_line2": "that transforms.",
+      "subtitle": "High culture doesn't have to be a privilege. With the methodology of Porto Alegre Cia de Dança, we bring world-class workshops to Gamle Oslo residents — through a plural, secure, and sustainable financing model.",
+      "scroll": "Discover the model",
+      "badge": "Powered by",
+      "badge_brand": "Porto Alegre Cia de Dança"
+    },
+    "context": {
+      "kicker": "Our Purpose",
+      "title": "The art of democratizing excellence.",
+      "p1": "Gamle Oslo breathes diversity, but also faces visible barriers to accessing quality culture. Where many see a challenge, we see the perfect ground to plant a new model of social integration.",
+      "p2": "Backed by the technical expertise of Porto Alegre Cia de Dança, Dance2Dance offers an unparalleled aesthetic and transformative experience. The same standard of international stages, now serving the local community.",
+      "quote": "Excellence is not exclusive. The same method, the same respect, for everyone."
+    },
+    "value": {
+      "kicker": "B2B Transparency",
+      "title": "Perceived value. Real impact.",
+      "subtitle": "Our free spots are not charity, they are full scholarships funded by our ecosystem. By pricing the workshop for external audiences, we prove the high value delivered to local residents and our investors.",
+      "paid": {
+        "label": "Paying Audience",
+        "price": "Market Value",
+        "desc": "Regular students attest to the premium quality of the service and inject revenue that fuels the social impact."
+      },
+      "free": {
+        "label": "Local Community",
+        "price": "Guaranteed Access",
+        "desc": "Residents receive unrestricted access to the same infrastructure and teachers, generating dignity and belonging."
+      },
+      "insight": "“Social projects that do not compromise on the highest standards of technical quality attract partners who demand excellence in their own brands.”"
+    },
+    "model": {
+      "kicker": "Governance and Sustainability",
+      "title": "Smart Financial Ecosystem.",
+      "intro": "Investors avoid projects dependent on single donors. Dance2Dance was built on 4 revenue pillars that guarantee longevity, financial security, and risk mitigation for all stakeholders.",
+      "pillar1": {
+        "title": "Self Revenue",
+        "desc": "Ticket sales to participants outside the impact zone cover basic costs and attest to the product's demand."
+      },
+      "pillar2": {
+        "title": "Visionary Brands",
+        "desc": "Corporate sponsors who add the project to their ESG impact reports, gaining visibility and social equity."
+      },
+      "pillar3": {
+        "title": "Public Funding",
+        "desc": "Strategic alignment with public policies and cultural grants from the Norwegian government, validating institutional rigor."
+      },
+      "pillar4": {
+        "title": "Private Donors",
+        "desc": "Independent philanthropists who demand clear metrics and bet on the transformative power of high-performance dance."
+      },
+      "summary": "An antifragile model: if one source fluctuates, the financial matrix rebalances itself. Maximum security for investors, guaranteed continuity for dancers.",
+      "highlight": "ESG in practice. Diluted risk."
+    },
+    "partners": {
+      "kicker": "Who is with us",
+      "title": "Partners who build together.",
+      "desc": "Dance2Dance does not act alone. We work in a network with organizations that share the conviction that art transforms and that access to culture is a right."
+    },
+    "cta": {
+      "kicker": "Become a Founding Partner",
+      "title": "Associate your brand with transformation.",
+      "desc": "We are selecting strategic partners for Dance2Dance's founding year. Companies that join us now secure naming rights quotas and leadership in social impact in Oslo.",
+      "btn1": "Schedule Executive Meeting",
+      "btn2": "Download Institutional Pitch Deck"
+    }
   }
 }

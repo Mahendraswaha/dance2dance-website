@@ -157,5 +157,74 @@
       "btn1": "Jeg vil bli partner",
       "btn2": "Snakk med teamet"
     }
+  },
+  "social_page_b2b": {
+    "hero": {
+      "kicker": "Sosial Investering",
+      "title_line1": "Fremragende",
+      "title_line2": "som transformerer.",
+      "subtitle": "Høykultur trenger ikke være et privilegium. Med metodikken fra Porto Alegre Cia de Dança bringer vi førsteklasses workshops til innbyggerne i Gamle Oslo — gjennom en pluralistisk, sikker og bærekraftig finansieringsmodell.",
+      "scroll": "Oppdag modellen",
+      "badge": "Powered by",
+      "badge_brand": "Porto Alegre Cia de Dança"
+    },
+    "context": {
+      "kicker": "Vårt formål",
+      "title": "Kunsten å demokratisere fremragende kvalitet.",
+      "p1": "Gamle Oslo puster mangfold, men møter også synlige barrierer for tilgang til kvalitetskultur. Der mange ser en utfordring, ser vi det perfekte grunnlaget for å plante en ny modell for sosial integrering.",
+      "p2": "Støttet av den tekniske ekspertisen til Porto Alegre Cia de Dança, tilbyr Dance2Dance en uovertruffen estetisk og transformerende opplevelse. Den samme standarden som internasjonale scener, nå til tjeneste for lokalsamfunnet.",
+      "quote": "Fremragende kvalitet er ikke eksklusivt. Samme metode, samme respekt, for alle."
+    },
+    "value": {
+      "kicker": "B2B Transparens",
+      "title": "Oppfattet verdi. Reell innvirkning.",
+      "subtitle": "Våre gratis plasser er ikke veldedighet, de er fullstendige stipender finansiert av vårt økosystem. Ved å prise workshopen for eksterne deltakere, beviser vi den høye verdien levert til lokale innbyggere og våre investorer.",
+      "paid": {
+        "label": "Betalende deltakere",
+        "price": "Markedsverdi",
+        "desc": "Regulære studenter bekrefter den førsteklasses kvaliteten på tjenesten og tilfører inntekter som driver den sosiale innvirkningen."
+      },
+      "free": {
+        "label": "Lokalsamfunn",
+        "price": "Garantert tilgang",
+        "desc": "Innbyggere får ubegrenset tilgang til samme infrastruktur og lærere, noe som genererer verdighet og tilhørighet."
+      },
+      "insight": "“Sosiale prosjekter som ikke går på kompromiss med de høyeste standardene for teknisk kvalitet, tiltrekker seg partnere som krever fremragende kvalitet i sine egne merkevarer.”"
+    },
+    "model": {
+      "kicker": "Styring og Bærekraft",
+      "title": "Smart Økonomisk Økosystem.",
+      "intro": "Investorer unngår prosjekter som er avhengige av én enkelt donor. Dance2Dance ble bygget på 4 inntekts-pilarer som garanterer lang levetid, økonomisk sikkerhet og risikoreduksjon for alle interessenter.",
+      "pillar1": {
+        "title": "Egeninntekt",
+        "desc": "Billettsalg til deltakere utenfor innvirkningssonen dekker grunnleggende kostnader og bekrefter etterspørselen etter produktet."
+      },
+      "pillar2": {
+        "title": "Visjonære Merkevarer",
+        "desc": "Bedriftssponsorer som legger prosjektet til sine ESG-rapporter, og oppnår synlighet og sosial egenkapital."
+      },
+      "pillar3": {
+        "title": "Offentlig Støtte",
+        "desc": "Strategisk tilpasning til offentlig politikk og kulturtilskudd fra den norske stat, noe som validerer institusjonell strenghet."
+      },
+      "pillar4": {
+        "title": "Private Givere",
+        "desc": "Uavhengige filantroper som krever klare beregninger og satser på den transformerende kraften til høyprestasjonsdans."
+      },
+      "summary": "En antifragil modell: hvis én kilde svinger, balanserer den økonomiske matrisen seg selv. Maksimal sikkerhet for investorer, garantert kontinuitet for dansere.",
+      "highlight": "ESG i praksis. Utvannet risiko."
+    },
+    "partners": {
+      "kicker": "Hvem er med oss",
+      "title": "Partnere som bygger sammen.",
+      "desc": "Dance2Dance handler ikke alene. Vi jobber i et nettverk med organisasjoner som deler overbevisningen om at kunst forvandler og at tilgang til kultur er en rettighet."
+    },
+    "cta": {
+      "kicker": "Bli en Founding Partner",
+      "title": "Knytt merkevaren din til transformasjon.",
+      "desc": "Vi velger ut strategiske partnere for Dance2Dances grunnleggingsår. Bedrifter som blir med oss nå sikrer navnerettigheter og lederskap innen sosial innvirkning i Oslo.",
+      "btn1": "Planlegg Ledermøte",
+      "btn2": "Last ned Institusjonell Pitch Deck"
+    }
   }
 }

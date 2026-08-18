@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const SocialPillars = () => {
+const SocialPillars = ({ translationKey = 'social_page' }) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const canvasRef = useRef(null);
@@ -155,10 +155,10 @@ const SocialPillars = () => {
       {/* ─── TOP SECTION ─── */}
       <div className="flex flex-col items-center justify-center pt-24 pb-12 px-6 lg:px-12 relative max-w-7xl mx-auto">
         <div className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6 text-center">
-          {t('social_page.model.kicker')}
+          {t(`${translationKey}.model.kicker`)}
         </div>
         <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight mb-12 text-center">
-          {t('social_page.model.title')}
+          {t(`${translationKey}.model.title`)}
         </h2>
 
         <div className="flex gap-4 md:gap-6 justify-center flex-wrap w-full">
@@ -175,7 +175,7 @@ const SocialPillars = () => {
                   <div className="font-drama text-3xl text-accent mb-2 font-normal">{p.number}</div>
                   <div className="w-[30px] h-[1px] bg-accent mb-4 opacity-60" />
                   <div className="text-xs md:text-[13px] tracking-[2px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.4] w-full flex-1 flex items-center justify-center">
-                    {t(`social_page.model.${p.key}.title`)}
+                    {t(`${translationKey}.model.${p.key}.title`)}
                   </div>
                 </div>
                 
@@ -256,7 +256,7 @@ const SocialPillars = () => {
                 <div className="flex flex-col gap-0.5">
                   <span className="text-[11px] text-accent font-medium leading-none">{p.number}</span>
                   <span className="text-[10px] md:text-xs lg:text-[13px] tracking-[1px] uppercase text-[#d4cfc7] font-medium leading-[1.3] max-w-[150px]">
-                    {t(`social_page.model.${p.key}.title`)}
+                    {t(`${translationKey}.model.${p.key}.title`)}
                   </span>
                 </div>
               </div>
@@ -273,11 +273,11 @@ const SocialPillars = () => {
               {pillarsData[activeIndex].number}
             </div>
             <h2 className="font-drama text-2xl md:text-3xl lg:text-4xl text-[#f5f0e8] font-normal leading-[1.2] mb-4 lg:mb-5 animate-fade-in-2">
-              {t(`social_page.model.${pillarsData[activeIndex].key}.title`)}
+              {t(`${translationKey}.model.${pillarsData[activeIndex].key}.title`)}
             </h2>
             <div className="w-[40px] h-[2px] bg-accent mb-5 lg:mb-6 animate-fade-in-3" />
             <p className="text-sm md:text-[15px] lg:text-base leading-[1.75] text-[#a8a39b] font-light animate-fade-in-4">
-              {t(`social_page.model.${pillarsData[activeIndex].key}.desc`)}
+              {t(`${translationKey}.model.${pillarsData[activeIndex].key}.desc`)}
             </p>
           </div>
 
