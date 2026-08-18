@@ -72,7 +72,7 @@ const BiostretchPhilosophy = () => {
 
         {/* ─── MOMENTO 1 — O Reconhecimento ─── */}
         <div className="pt-32 pb-64 md:pl-[20%]">
-          <p className="bio-fade font-drama italic text-3xl md:text-5xl text-background/90 leading-[1.2] md:max-w-[65%]">
+          <p className="bio-fade font-drama italic text-3xl md:text-5xl text-background/90 leading-[1.2]">
             Seu corpo já sabe o que está tenso.
             <br />
             <span className="text-accent">Você só deixou de escutá-lo.</span>
