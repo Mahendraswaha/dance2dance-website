@@ -10,8 +10,22 @@ export default function WorkshopTemplate({ workshop, program }) {
   if (!workshop) return <div className="min-h-screen bg-primary text-background flex items-center justify-center">Workshop not found</div>;
 
   return (
-    <div className="pt-32 pb-24 bg-primary min-h-screen font-sans text-background">
-      <div className="max-w-[900px] mx-auto px-8">
+    <div className="pt-32 pb-24 bg-primary min-h-screen font-sans text-background relative">
+      
+      {/* Watermark Logo */}
+      {program.logo && (
+        <div className={`fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40 transition-opacity duration-700 ease-in-out opacity-100`}>
+          <div className="max-w-7xl mx-auto flex">
+            <img 
+              src={program.logo} 
+              alt="Program Watermark" 
+              className={`${program.logoClassName || 'h-12 md:h-24 ml-4 md:ml-10'} object-contain opacity-40`}
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="max-w-[900px] mx-auto px-8 relative z-10">
         
         {/* Back Button */}
         <button 
