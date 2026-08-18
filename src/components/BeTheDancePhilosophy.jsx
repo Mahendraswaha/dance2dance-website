@@ -1,182 +1,243 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * BE THE DANCE — Direção C: "Pergunta e Silêncio"
+ * 
+ * Conceito: A seção é uma sequência de perguntas que o visitante
+ * responde internamente. Cada resposta interna revela o próximo conteúdo.
+ * O ritmo é: tensão → pausa → recontextualização → nova tensão.
+ * 
+ * Cada pergunta aparece sozinha com muito espaço.
+ * O scroll preenche o vazio com uma observação que recontextualiza.
+ */
 const BeTheDancePhilosophy = () => {
+  const sectionRef = useRef(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Fade-in for all reveal elements
-      gsap.utils.toArray('.btd-reveal').forEach((elem) => {
-        gsap.from(elem, {
-          scrollTrigger: { trigger: elem, start: 'top 85%' },
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-        });
-      });
 
-      // Stagger fade for moment 2 lines
-      const m2Lines = gsap.utils.toArray('.btd-m2-line');
-      if (m2Lines.length) {
-        gsap.from(m2Lines, {
-          scrollTrigger: { trigger: m2Lines[0], start: 'top 85%' },
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-        });
-      }
-
-      // Line draw
-      gsap.utils.toArray('.btd-draw-line').forEach((el) => {
+      // Each "answer" block fades in as the visitor scrolls past the question
+      gsap.utils.toArray('.btd-answer').forEach((el) => {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 85%' },
-          scaleX: 0,
-          transformOrigin: 'left center',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+          },
+          opacity: 0,
+          y: 30,
           duration: 1.2,
           ease: 'power3.out',
         });
       });
 
-      // Displacement blocks with translate-y
-      gsap.utils.toArray('.btd-displacement').forEach((elem, i) => {
-        gsap.from(elem, {
-          scrollTrigger: { trigger: elem, start: 'top 85%' },
-          y: 20,
+      // Questions fade in cleanly
+      gsap.utils.toArray('.btd-question').forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 82%',
+          },
           opacity: 0,
-          duration: 0.8,
-          delay: i * 0.1,
+          duration: 1,
+          ease: 'power2.out',
+        });
+      });
+
+      // The name reveal
+      gsap.from('.btd-name', {
+        scrollTrigger: {
+          trigger: '.btd-name',
+          start: 'top 80%',
+        },
+        opacity: 0,
+        y: 20,
+        duration: 1.4,
+        ease: 'power4.out',
+      });
+
+      // Synthesis reveal
+      gsap.from('.btd-synthesis', {
+        scrollTrigger: {
+          trigger: '.btd-synthesis',
+          start: 'top 80%',
+        },
+        opacity: 0,
+        duration: 1.4,
+        ease: 'power2.out',
+      });
+
+      // Line draw
+      gsap.utils.toArray('.btd-line').forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: 'top 85%' },
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 1.4,
           ease: 'power3.out',
         });
       });
-    });
+
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section className="bg-primary px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section ref={sectionRef} className="bg-primary">
 
-        {/* ─── MOMENTO 1 — A Quebra de Expectativa ─── */}
-        <div className="pt-32 pb-24">
-          <p className="btd-reveal font-drama italic text-3xl md:text-4xl lg:text-5xl text-background/90 leading-[1.15] md:max-w-[55%]">
-            Você não precisa aprender a dançar.
+      {/* ━━━ PERGUNTA 1 ━━━ */}
+      <div className="min-h-[60vh] flex items-center px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto w-full">
+          <p className="btd-question font-drama italic text-[7vw] md:text-[4vw] lg:text-[3.2vw] text-background/90 leading-[1.15]">
+            Quando foi a última vez que você<br className="hidden md:block" /> se moveu sem pensar em como?
           </p>
         </div>
+      </div>
 
-        {/* ─── MOMENTO 2 — A Revelação do Nome ─── */}
-        <div className="pb-20">
-          <span className="btd-m2-line font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-500 block mb-8">
+      {/* ━━━ RESPOSTA 1 — O corpo como silêncio recoberto ━━━ */}
+      <div className="px-6 lg:px-12 pb-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="btd-answer md:ml-[30%] max-w-xl">
+            <div className="btd-line h-[1px] bg-white/10 mb-10" />
+            <p className="font-heading text-base md:text-lg text-background/50 font-light leading-[1.9]">
+              Antes de qualquer técnica, antes de qualquer nome para isso,
+              o corpo já sabia dançar. Não como performance —
+              como impulso. Como ritmo. Como resposta ao que se ouve
+              e ao que se sente.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ━━━ O NOME ━━━ */}
+      <div className="py-32 md:py-44 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto text-center btd-name">
+          <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-500 block mb-8">
             Um programa de quatro workshops
           </span>
-          <h2 className="btd-m2-line font-drama italic text-[15vw] md:text-[10vw] lg:text-[8vw] text-background/90 leading-[0.9] tracking-tight">
-            BE THE
+          <h2 className="font-drama italic text-[14vw] md:text-[9vw] lg:text-[7vw] text-background/90 leading-[0.85] tracking-tight">
+            BE THE DANCE
           </h2>
-          <h2 className="btd-m2-line font-drama italic text-[15vw] md:text-[10vw] lg:text-[8vw] text-background/90 leading-[0.9] tracking-tight">
-            DANCE
-          </h2>
-          <div className="btd-draw-line h-[1px] bg-white/8 mt-10 max-w-full" />
         </div>
+      </div>
 
-        {/* ─── MOMENTO 3 — A Inversão ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-28 md:pb-32">
-          <div className="md:col-span-4">
-            <span className="btd-reveal font-heading text-[10px] tracking-[4px] uppercase text-slate-500 block">
-              A ideia
-            </span>
-          </div>
-          <div className="md:col-span-8 flex flex-col gap-10 btd-reveal">
-            <p className="font-heading text-lg md:text-xl text-background/60 leading-[1.85] font-light">
+      {/* ━━━ PERGUNTA 2 ━━━ */}
+      <div className="min-h-[50vh] flex items-center px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto w-full">
+          <p className="btd-question font-drama italic text-[7vw] md:text-[4vw] lg:text-[3.2vw] text-background/90 leading-[1.15]">
+            E se a dança não fosse algo<br className="hidden md:block" /> que se aprende?
+          </p>
+        </div>
+      </div>
+
+      {/* ━━━ RESPOSTA 2 — A inversão ━━━ */}
+      <div className="px-6 lg:px-12 pb-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="btd-answer md:ml-[30%] max-w-xl">
+            <div className="btd-line h-[1px] bg-white/10 mb-10" />
+            <p className="font-heading text-base md:text-lg text-background/50 font-light leading-[1.9] mb-8">
               Existe uma possibilidade de dança em cada corpo.
               Não uma dança que se aprende — uma que se descobre.
             </p>
-            <p className="font-heading text-lg md:text-xl text-background/60 leading-[1.85] font-light">
-              Ritmo, impulso, pausa. O corpo já conhece esses
-              vocabulários. O workshop cria as condições para que
-              eles se tornem expressão.
+            <p className="font-heading text-base md:text-lg text-background/50 font-light leading-[1.9]">
+              Ritmo, impulso, pausa. O corpo já conhece esses vocabulários.
+              O workshop cria as condições para que eles se tornem expressão.
             </p>
           </div>
         </div>
+      </div>
 
-        {/* ─── MOMENTO 4 — A Pergunta Silenciosa ─── */}
-        <div className="py-28 md:py-32 flex justify-center">
-          <p className="btd-reveal font-drama italic text-2xl md:text-3xl text-slate-300/50 leading-[1.35] text-center max-w-2xl">
-            Há milênios, antes de qualquer técnica,
-            <br className="hidden md:block" />
-            {' '}o corpo já dançava.
+      {/* ━━━ PERGUNTA 3 ━━━ */}
+      <div className="min-h-[50vh] flex items-center px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto w-full">
+          <p className="btd-question font-drama italic text-[7vw] md:text-[4vw] lg:text-[3.2vw] text-background/90 leading-[1.15]">
+            O que acontece quando<br className="hidden md:block" /> você para de controlar?
           </p>
         </div>
+      </div>
 
-        {/* ─── MOMENTO 5 — Os Deslocamentos ─── */}
-        <div className="pb-32 flex flex-col gap-16 md:max-w-[50%]">
+      {/* ━━━ RESPOSTA 3 — Os deslocamentos ━━━ */}
+      <div className="px-6 lg:px-12 pb-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="md:ml-[30%] max-w-xl">
+            <div className="btd-line h-[1px] bg-white/10 mb-16" />
 
-          <div className="btd-displacement flex flex-col gap-3">
-            <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2]">
-              Do esforço ao fluxo.
-            </p>
-            <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Soltar a tensão acumulada. Deixar o movimento
-              encontrar seu próprio caminho.
-            </p>
+            <div className="btd-answer flex flex-col gap-14">
+
+              <div>
+                <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-3">
+                  Do esforço ao fluxo.
+                </p>
+                <p className="font-heading text-sm md:text-[15px] text-background/35 font-light leading-[1.85]">
+                  Soltar a tensão acumulada. Deixar o movimento
+                  encontrar seu próprio caminho.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-3">
+                  Da forma à presença.
+                </p>
+                <p className="font-heading text-sm md:text-[15px] text-background/35 font-light leading-[1.85]">
+                  Sair da preocupação com "como estou dançando"
+                  para perceber o que o corpo quer dizer.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-3">
+                  Do controle à escuta.
+                </p>
+                <p className="font-heading text-sm md:text-[15px] text-background/35 font-light leading-[1.85]">
+                  Ouvir a respiração. Seguir o impulso.
+                  Responder à música antes de pensar.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2] mb-3">
+                  Do isolamento à percepção.
+                </p>
+                <p className="font-heading text-sm md:text-[15px] text-background/35 font-light leading-[1.85]">
+                  Reconhecer o corpo inteiro. Sentir como uma
+                  parte se conecta a outra, e outra, e outra.
+                </p>
+              </div>
+
+            </div>
           </div>
-
-          <div className="btd-displacement flex flex-col gap-3">
-            <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2]">
-              Da forma à presença.
-            </p>
-            <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Sair da preocupação com "como estou dançando"
-              para perceber o que o corpo quer dizer.
-            </p>
-          </div>
-
-          <div className="btd-displacement flex flex-col gap-3">
-            <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2]">
-              Do controle à escuta.
-            </p>
-            <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Ouvir a respiração. Seguir o impulso.
-              Responder à música antes de pensar.
-            </p>
-          </div>
-
-          <div className="btd-displacement flex flex-col gap-3">
-            <p className="font-drama italic text-xl md:text-2xl text-background/80 leading-[1.2]">
-              Do isolamento à percepção.
-            </p>
-            <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.8]">
-              Reconhecer o corpo inteiro. Sentir como uma
-              parte se conecta a outra, e outra, e outra.
-            </p>
-          </div>
-
         </div>
+      </div>
 
-        {/* ─── MOMENTO 6 — A Síntese ─── */}
-        <div className="pb-24">
-          <p className="btd-reveal font-drama italic text-3xl md:text-4xl lg:text-5xl text-background/90 leading-[1.15] md:max-w-[65%]">
-            A dança não precisa ser aprendida.
-            <br />
+      {/* ━━━ SÍNTESE ━━━ */}
+      <div className="py-32 md:py-44 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto text-center btd-synthesis">
+          <p className="font-drama italic text-3xl md:text-5xl lg:text-6xl text-background/90 leading-[1.1] max-w-3xl mx-auto">
+            A dança não precisa<br /> ser aprendida.
+          </p>
+          <p className="font-drama italic text-3xl md:text-5xl lg:text-6xl text-background/40 leading-[1.1] mt-3 max-w-3xl mx-auto">
             Precisa ser permitida.
           </p>
         </div>
+      </div>
 
-        {/* ─── MOMENTO 7 — A Passagem para os Workshops ─── */}
-        <div className="pb-20 flex flex-col items-center text-center gap-5 btd-reveal">
-          <span className="font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-500 block">
+      {/* ━━━ TRANSIÇÃO PARA OS WORKSHOPS ━━━ */}
+      <div className="pb-24 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto text-center btd-answer">
+          <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-500 block mb-5">
             Quatro caminhos
           </span>
-          <p className="font-heading text-xl md:text-2xl text-background/60 font-light leading-[1.6] max-w-md">
-            Cada workshop explora um território.
-            <br />
+          <p className="font-heading text-lg md:text-xl text-background/50 font-light leading-[1.6]">
+            Cada workshop explora um território.<br />
             Escolha o que chama primeiro.
           </p>
         </div>
-
       </div>
+
     </section>
   );
 };
