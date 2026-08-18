@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
+import BeTheDancePhilosophy from './BeTheDancePhilosophy';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
@@ -130,39 +131,43 @@ export default function ProgramTemplate({ program }) {
       </section>
 
       {/* Concept / Philosophy Section */}
-      <section className="py-24 px-8 max-w-3xl mx-auto">
-        {program.philosophy ? (
-          <div className="space-y-12">
-            {program.philosophy.map((section, index) => (
-              <div key={index} className="flex flex-col items-start gap-4">
-                {section.title && (
-                  <h3 className="font-heading text-[10px] tracking-[4px] uppercase text-accent mb-2 mt-4">
-                    {section.title}
-                  </h3>
-                )}
-                {section.content.map((paragraph, pIndex) => {
-                  const isBullet = paragraph.trim().startsWith('•');
-                  const text = isBullet ? paragraph.replace('•', '').trim() : paragraph;
-                  return (
-                    <div key={pIndex} className="flex items-start gap-4">
-                      {isBullet && (
-                        <div className="w-4 h-[1px] bg-accent/60 mt-3.5 shrink-0"></div>
-                      )}
-                      <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
-                        {text}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
-            {program.description}
-          </p>
-        )}
-      </section>
+      {program.id === 'be-the-dance' ? (
+        <BeTheDancePhilosophy />
+      ) : (
+        <section className="py-24 px-8 max-w-3xl mx-auto">
+          {program.philosophy ? (
+            <div className="space-y-12">
+              {program.philosophy.map((section, index) => (
+                <div key={index} className="flex flex-col items-start gap-4">
+                  {section.title && (
+                    <h3 className="font-heading text-[10px] tracking-[4px] uppercase text-accent mb-2 mt-4">
+                      {section.title}
+                    </h3>
+                  )}
+                  {section.content.map((paragraph, pIndex) => {
+                    const isBullet = paragraph.trim().startsWith('•');
+                    const text = isBullet ? paragraph.replace('•', '').trim() : paragraph;
+                    return (
+                      <div key={pIndex} className="flex items-start gap-4">
+                        {isBullet && (
+                          <div className="w-4 h-[1px] bg-accent/60 mt-3.5 shrink-0"></div>
+                        )}
+                        <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
+                          {text}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed text-left">
+              {program.description}
+            </p>
+          )}
+        </section>
+      )}
 
       {/* Workshops Grid */}
       {program.workshops && program.workshops.length > 0 && (
