@@ -71,17 +71,17 @@ const BiostretchPhilosophy = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* ─── MOMENTO 1 — O Reconhecimento ─── */}
-        <div className="pt-32 pb-28 md:pl-[10%]">
+        <div className="pt-32 pb-40 md:pl-[10%]">
           <p className="bio-fade font-drama italic text-[8vw] md:text-[5vw] lg:text-[4vw] text-background/90 leading-[1.15] md:max-w-[65%]">
             Seu corpo já sabe o que está tenso.
             <br />
-            Você só deixou de ouvir.
+            <span className="text-accent">Você só deixou de escutá-lo.</span>
           </p>
         </div>
 
         {/* ─── MOMENTO 2 — O Nome como Método ─── */}
         <div className="pb-20 md:pl-[10%]">
-          <span className="bio-m2-line font-heading text-[10px] tracking-[5px] uppercase text-slate-500 block mb-6">
+          <span className="bio-m2-line font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
             Quatro décadas de pesquisa em movimento
           </span>
           <h2 className="bio-m2-line font-drama italic text-[14vw] md:text-[11vw] lg:text-[9vw] text-background/90 leading-[0.85] tracking-tight">
@@ -100,7 +100,7 @@ const BiostretchPhilosophy = () => {
           <div className="md:col-span-8 flex flex-col gap-10 bio-fade">
             <p className="font-heading text-lg md:text-xl text-background/60 leading-[1.8] font-light">
               Movimentos simples. Atenção precisa.<br className="hidden md:block" />
-              O Biostretch usa a ferramenta mais acessível que existe — a sua atenção — para transformar a maneira como o corpo se organiza.
+              O Biostretch usa a ferramenta mais acessível que existe, a sua atenção, para transformar a maneira como o corpo se organiza.
             </p>
             <p className="font-heading text-xl md:text-2xl text-background/80 leading-[1.6] font-light">
               Importa menos o que se faz<br />
@@ -114,7 +114,7 @@ const BiostretchPhilosophy = () => {
           <p className="bio-fade font-drama italic text-2xl md:text-3xl text-slate-300/40 leading-[1.4] max-w-2xl">
             O corpo não esqueceu como se mover.
             <br />
-            Esqueceu como prestar atenção.
+            Prestar atenção é que foi esquecido.
           </p>
         </div>
 
@@ -126,7 +126,7 @@ const BiostretchPhilosophy = () => {
             </p>
             <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.85]">
               O que se acumulou no pescoço, nos ombros, nas costas
-              encontra espaço para soltar.
+              encontra espaço para se soltar.
             </p>
           </div>
           
@@ -156,7 +156,7 @@ const BiostretchPhilosophy = () => {
             </p>
             <p className="font-heading text-sm md:text-base text-background/40 font-light leading-[1.85]">
               O corpo descobre caminhos mais inteligentes para
-              se mover. Não por esforço — por percepção.
+              se mover. Não por esforço, por percepção.
             </p>
           </div>
         </div>
@@ -168,7 +168,7 @@ const BiostretchPhilosophy = () => {
               Menos esforço.
             </p>
             <p className="font-drama italic text-3xl md:text-5xl lg:text-6xl text-background/90 leading-[1.1] mt-2 md:max-w-[70%]">
-              Mais inteligência.
+              Mais consciência.
             </p>
             <p className="font-heading text-base md:text-lg text-background/45 font-light leading-[1.6] mt-8">
               Qualquer corpo, qualquer idade, qualquer ponto de partida.
