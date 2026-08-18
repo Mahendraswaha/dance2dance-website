@@ -506,5 +506,12 @@
       "l1": "Cada workshop explora um território.",
       "l2": "Escolha o que te chama primeiro."
     }
+  },
+  "actions": {
+    "learn_more": "Saiba mais",
+    "ready_to_start": "Pronto para começar?",
+    "view_dates": "Ver datas disponíveis",
+    "contact_us": "Fale Conosco",
+    "book": "Agendar"
   }
 }

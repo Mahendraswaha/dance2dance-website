@@ -74,12 +74,12 @@ export default function WorkshopTemplate({ workshop, program }) {
 
         {/* Call to Action */}
         <div className="mt-20 pt-16 border-t border-[#222222] text-center">
-          <h3 className="font-batang text-2xl text-[#F0EDE8] mb-6">Pronto para começar?</h3>
+          <h3 className="font-batang text-2xl text-[#F0EDE8] mb-6">{t('actions.ready_to_start', 'Pronto para começar?')}</h3>
           <Link 
             to="/agenda" 
             className="inline-block font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-8 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-[2px]"
           >
-            Ver datas disponíveis
+            {t('actions.view_dates', 'Ver datas disponíveis')}
           </Link>
         </div>
 

@@ -229,7 +229,7 @@
   },
   "programs": {
     "be-the-dance": {
-      "title": "[TODO: Translate] Be the Dance",
+      "title": "Be the Dance",
       "subtitle": "[TODO: Translate] Descubra a dança que existe em você.",
       "description": "[TODO: Translate] Filosofia e conceito do Be the Dance...",
       "philosophy": [
@@ -284,32 +284,32 @@
       ],
       "workshops": {
         "be-water": {
-          "title": "[TODO: Translate] Be Water",
+          "title": "Be Water",
           "shortDescription": "[TODO: Translate] Descubra a fluidez do movimento e a adaptabilidade.",
           "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Water..."
         },
         "be-balance": {
-          "title": "[TODO: Translate] Be Balance",
+          "title": "Be Balance",
           "shortDescription": "[TODO: Translate] Encontre o seu eixo, foco e equilíbrio corporal.",
           "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Balance..."
         },
         "be-total": {
-          "title": "[TODO: Translate] Be Total",
+          "title": "Be Total",
           "shortDescription": "[TODO: Translate] Uma experiência completa de integração do ser em movimento.",
           "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Total..."
         },
         "be-stillness": {
-          "title": "[TODO: Translate] Be Stillness",
+          "title": "Be Stillness",
           "shortDescription": "[TODO: Translate] Aprenda a encontrar a pausa e o repouso ativo.",
           "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Stillness..."
         },
         "be-the-dance-pro": {
-          "title": "[TODO: Translate] Be the Dance Pro",
+          "title": "Be the Dance Pro",
           "shortDescription": "[TODO: Translate] Programa de aprofundamento e mentoria para facilitadores.",
           "fullDescription": "[TODO: Translate] Descrição completa do Be the Dance Pro..."
         },
         "be-the-dance-day": {
-          "title": "[TODO: Translate] Be the Dance Day",
+          "title": "Be the Dance Day",
           "shortDescription": "[TODO: Translate] Um dia inteiro de imersão no movimento e na consciência corporal.",
           "fullDescription": "[TODO: Translate] Descrição completa do Be the Dance Day..."
         }
@@ -402,7 +402,7 @@
       }
     },
     "kroppsskole": {
-      "title": "[TODO: Translate] Kroppsskole",
+      "title": "Kroppsskole",
       "subtitle": "[TODO: Translate] ",
       "description": "[TODO: Translate] Uma abordagem integrada para o corpo e o movimento.",
       "philosophy": [],
@@ -506,5 +506,12 @@
       "l1": "Hvert workshop utforsker et territorium.",
       "l2": "Velg det som kaller på deg først."
     }
+  },
+  "actions": {
+    "learn_more": "Les mer",
+    "ready_to_start": "Klar til å begynne?",
+    "view_dates": "Se ledige datoer",
+    "contact_us": "Kontakt oss",
+    "book": "Bestill"
   }
 }

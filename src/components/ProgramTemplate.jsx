@@ -210,7 +210,7 @@ export default function ProgramTemplate({ program }) {
 
                   <div className="mt-auto relative z-10 w-full">
                     <div className="inline-flex items-center gap-2 font-heading text-[11px] font-semibold text-accent uppercase tracking-[2px] transition-all duration-300 group-hover:text-white">
-                      Saiba mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      {t('actions.learn_more', 'Saiba mais')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </motion.div>
@@ -233,7 +233,7 @@ export default function ProgramTemplate({ program }) {
                 <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
                 <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
                 <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
-                  Fale Conosco
+                  {t('actions.contact_us', 'Fale Conosco')}
                 </button>
               </div>
             )}
@@ -243,7 +243,7 @@ export default function ProgramTemplate({ program }) {
                 <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
                 <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
                 <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
-                  Agendar
+                  {t('actions.book', 'Agendar')}
                 </button>
               </div>
             )}
