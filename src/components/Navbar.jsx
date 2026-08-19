@@ -74,7 +74,7 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Links e Menu Hamburger (Centro Absoluto) */}
+            {/* Links (Centro Absoluto) */}
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
               {/* Desktop Links */}
               <div className="hidden md:flex gap-8 text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
@@ -82,14 +82,6 @@ const Navbar = () => {
                 <Link to="/social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</Link>
                 <Link to="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</Link>
               </div>
-              
-              {/* Mobile Hamburger Button */}
-              <button 
-                className="flex md:hidden text-background/80 hover:text-accent transition-colors p-2"
-                onClick={() => setIsMobileMenuOpen(true)}
-              >
-                <Menu size={24} strokeWidth={1.5} />
-              </button>
             </div>
 
             {/* Botão e Idiomas (Direita) */}
@@ -102,7 +94,16 @@ const Navbar = () => {
                 <span>|</span>
                 <button onClick={() => i18n.changeLanguage('pt')} className={`hover:text-accent transition-colors px-1 ${i18n.resolvedLanguage === 'pt' ? 'text-accent' : ''}`}>PT</button>
               </div>
-              <button className="btn-magnetic bg-accent text-primary px-3 md:px-6 py-2 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
+              
+              {/* Mobile Hamburger Button */}
+              <button 
+                className="flex md:hidden text-background/80 hover:text-accent transition-colors p-2"
+                onClick={() => setIsMobileMenuOpen(true)}
+              >
+                <Menu size={24} strokeWidth={1.5} />
+              </button>
+
+              <button className="btn-magnetic bg-accent text-primary px-4 md:px-6 py-2.5 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
                 <span className="relative z-10">{t('nav.subscribe')}</span>
               </button>
             </div>
@@ -111,46 +112,54 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Backdrop */}
       <div 
-        className={`fixed inset-0 bg-[#0C0C0C]/95 backdrop-blur-md z-[100] transition-all duration-500 flex flex-col justify-between ${
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] transition-opacity duration-500 ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      {/* Sidebar Menu (Esquerda) */}
+      <div 
+        className={`fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-[#0C0C0C] z-[100] shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Header do Menu */}
-        <div className="flex items-center justify-between px-6 py-8">
-          <img src="/logo-dance2dance.png" alt="Dance2Dance" className="h-10 object-contain" />
+        <div className="flex items-center justify-between px-8 py-8 border-b border-white/5">
+          <img src="/logo-dance2dance.png" alt="Dance2Dance" className="h-8 object-contain" />
           <button 
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-background/80 hover:text-accent transition-colors rounded-full bg-white/5"
           >
-            <X size={28} strokeWidth={1.5} />
+            <X size={24} strokeWidth={1.5} />
           </button>
         </div>
 
         {/* Links Principais */}
-        <div className="flex flex-col items-center justify-center flex-1 gap-12">
-          <Link to="/#workshops" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-5xl text-background hover:text-accent transition-colors">
+        <div className="flex flex-col items-start justify-center flex-1 gap-10 px-8">
+          <Link to="/#workshops" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
             {t('nav.workshops')}
           </Link>
-          <Link to="/social" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-5xl text-background hover:text-accent transition-colors">
+          <Link to="/social" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
             {t('nav.social')}
           </Link>
-          <Link to="/agenda" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-5xl text-background hover:text-accent transition-colors">
+          <Link to="/agenda" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
             {t('nav.agenda')}
           </Link>
         </div>
 
         {/* Footer do Menu */}
-        <div className="px-6 py-12 flex flex-col items-center gap-10 border-t border-white/5">
+        <div className="px-8 py-10 flex flex-col items-start gap-8 border-t border-white/5">
           {/* Idiomas */}
-          <div className="flex items-center gap-8 text-base font-heading font-bold text-background/50">
+          <div className="flex items-center gap-6 text-sm font-heading font-bold text-background/50">
             <button onClick={() => { i18n.changeLanguage('no'); setIsMobileMenuOpen(false); }} className={`hover:text-accent transition-colors ${i18n.resolvedLanguage === 'no' ? 'text-accent' : ''}`}>NO</button>
             <button onClick={() => { i18n.changeLanguage('en'); setIsMobileMenuOpen(false); }} className={`hover:text-accent transition-colors ${i18n.resolvedLanguage === 'en' ? 'text-accent' : ''}`}>EN</button>
             <button onClick={() => { i18n.changeLanguage('pt'); setIsMobileMenuOpen(false); }} className={`hover:text-accent transition-colors ${i18n.resolvedLanguage === 'pt' ? 'text-accent' : ''}`}>PT</button>
           </div>
           {/* CTA */}
-          <button className="bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-sm w-full max-w-xs uppercase tracking-wider">
+          <button className="bg-accent text-primary px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center">
             {t('nav.subscribe')}
           </button>
         </div>
