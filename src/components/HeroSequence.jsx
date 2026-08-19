@@ -241,6 +241,17 @@ const HeroSequence = () => {
         </video>
 
         <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
+
+        {/* Desfoque suave invisível estendido na marca d'água usando máscara radial */}
+        <div 
+          className="hidden md:block absolute bottom-0 right-0 w-[36rem] h-10 pointer-events-none" 
+          style={{ 
+            backdropFilter: 'blur(10px)', 
+            WebkitBackdropFilter: 'blur(10px)', 
+            WebkitMaskImage: 'radial-gradient(ellipse at bottom right, black 60%, transparent 90%)',
+            maskImage: 'radial-gradient(ellipse at bottom right, black 60%, transparent 90%)'
+          }} 
+        />
       </div>
       
       {/* Texto do Hero */}
