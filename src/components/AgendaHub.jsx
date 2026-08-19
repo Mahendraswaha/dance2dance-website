@@ -17,7 +17,7 @@ export default function AgendaHub({ programs }) {
       translatedTitle: t(`programs.${p.id}.workshops.${w.id}.title`, w.title),
       date: t('agenda.coming_soon', "Em breve"),
       time: t('agenda.tbd', "A definir"),
-      location: t('agenda.location', "Porto Alegre / RS")
+      location: t('agenda.location', "Oslo, Noruega")
     })) : []
   );
 
