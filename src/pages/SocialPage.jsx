@@ -191,7 +191,7 @@ const SocialPage = () => {
               <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
                 {t('social_page_b2b.value.paid.label')}
               </span>
-              <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
+              <div className="font-drama italic text-3xl sm:text-4xl md:text-6xl text-slate-200 break-words w-full">
                 {t('social_page_b2b.value.paid.price')}
               </div>
               <div className="h-[1px] bg-slate-300/15 draw-line" />
@@ -205,7 +205,7 @@ const SocialPage = () => {
               <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
                 {t('social_page_b2b.value.free.label')}
               </span>
-              <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
+              <div className="font-drama italic text-3xl sm:text-4xl md:text-6xl text-slate-200 break-words w-full">
                 {t('social_page_b2b.value.free.price')}
               </div>
               <div className="h-[1px] bg-slate-300/15 draw-line" />
