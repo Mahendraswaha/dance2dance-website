@@ -312,6 +312,31 @@
           "title": "Be the Dance Day",
           "shortDescription": "Um dia inteiro de imersão no movimento e na consciência corporal.",
           "fullDescription": "Descrição completa do Be the Dance Day..."
+        },
+        "btd_day": {
+          "title": "BE THE DANCE DAY",
+          "subtitle": "Encontrar, dançar e celebrar",
+          "kicker": "Encontro",
+          "desc": "Dançar é também encontrar o outro.",
+          "p1": "Há músicas que nos fazem viajar, ritmos que despertam o corpo e movimentos que nos aproximam, mesmo quando não falamos a mesma língua.",
+          "p2": "O Be The Dance Day é um encontro aberto a todos, para dançar, divertir-se e partilhar a experiência do movimento ao som de diferentes músicas e culturas.",
+          "p3": "Ao longo do encontro, somos convidados a experimentar diferentes ritmos, formas de dançar e maneiras de nos relacionarmos com a música e com quem está à nossa volta. Sem necessidade de saber dançar, sem passos certos ou errados — apenas a curiosidade de experimentar e a liberdade de nos deixarmos levar.",
+          "p4": "Mais do que aprender uma dança, é uma oportunidade para viver a dança como encontro: com a música, com o corpo, com diferentes culturas e com outras pessoas.",
+          "p5": "Be The Dance Day é uma celebração do movimento e da diversidade. Um espaço para deixar o corpo participar, descobrir novos ritmos, se divertir, criar ligações e simplesmente dançar.",
+          "p6": "Venha como você é. Vamos dançar juntos."
+        },
+        "btd_pro": {
+          "title": "BE THE DANCE PRO",
+          "subtitle": "Ir além da técnica",
+          "kicker": "Masterclass",
+          "desc": "Você já é bailarino. Agora, seja a dança.",
+          "p1": "A técnica é o instrumento através do qual o bailarino expressa a sua arte. Mas existe algo além dela — uma presença, uma qualidade de entrega, uma forma de estar no movimento que faz com que alguns bailarinos sejam capazes de capturar a nossa atenção e nos tocar de uma maneira única.",
+          "p2": "Neste workshop, investigamos esse “algo mais”. Um convite para ir além da execução, do intelecto e da mente que observa e controla, e mergulhar numa experiência de presença, consciência e entrega.",
+          "p3": "Através de práticas de educação somática, meditação, improvisação guiada e outras ferramentas de exploração do movimento, criamos espaço para escutar o corpo, ampliar a percepção e descobrir novas possibilidades de estar em cena.",
+          "p4": "Mais do que acrescentar novas ferramentas à técnica, Be The Dance Pro propõe uma jornada para dentro de si. Uma investigação sobre o que acontece quando deixamos de apenas fazer a dança e permitimos que ela aconteça através de nós.",
+          "p5": "Be The Dance Pro é uma experiência de presença e totalidade. Um espaço para aprofundar a relação entre corpo, mente e movimento e descobrir aquilo que torna cada bailarino único.",
+          "p6": "Uma busca por se perder na dança para encontrar aquele lugar onde bailarino e dança deixam de ser duas coisas diferentes.",
+          "p7": "O momento em que o bailarino é a própria dança."
         }
       },
       "corporate": {

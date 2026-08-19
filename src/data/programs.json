@@ -30,12 +30,45 @@
       {
         "id": "be-the-dance-pro",
         "slug": "be-the-dance-pro",
-        "logo": "/logo-bethedance-pro.png"
+        "logo": "/logo-bethedance-pro.png",
+        "titleKey": "programs.be-the-dance.workshops.btd_pro.title",
+        "subtitleKey": "programs.be-the-dance.workshops.btd_pro.subtitle",
+        "kickerKey": "programs.be-the-dance.workshops.btd_pro.kicker",
+        "descKey": "programs.be-the-dance.workshops.btd_pro.desc",
+        "contentKeys": [
+          "programs.be-the-dance.workshops.btd_pro.p1",
+          "programs.be-the-dance.workshops.btd_pro.p2",
+          "programs.be-the-dance.workshops.btd_pro.p3",
+          "programs.be-the-dance.workshops.btd_pro.p4",
+          "programs.be-the-dance.workshops.btd_pro.p5",
+          "programs.be-the-dance.workshops.btd_pro.p6",
+          "programs.be-the-dance.workshops.btd_pro.p7"
+        ],
+        "duration": "Intensive",
+        "level": "Advanced / Pro",
+        "format": "In-person",
+        "image": "/gallery/btd/btd-6.jpg"
       },
       {
         "id": "be-the-dance-day",
         "slug": "be-the-dance-day",
-        "logo": "/logo-bethedance-DAY.png"
+        "logo": "/logo-bethedance-DAY.png",
+        "titleKey": "programs.be-the-dance.workshops.btd_day.title",
+        "subtitleKey": "programs.be-the-dance.workshops.btd_day.subtitle",
+        "kickerKey": "programs.be-the-dance.workshops.btd_day.kicker",
+        "descKey": "programs.be-the-dance.workshops.btd_day.desc",
+        "contentKeys": [
+          "programs.be-the-dance.workshops.btd_day.p1",
+          "programs.be-the-dance.workshops.btd_day.p2",
+          "programs.be-the-dance.workshops.btd_day.p3",
+          "programs.be-the-dance.workshops.btd_day.p4",
+          "programs.be-the-dance.workshops.btd_day.p5",
+          "programs.be-the-dance.workshops.btd_day.p6"
+        ],
+        "duration": "1 Day",
+        "level": "All levels",
+        "format": "In-person",
+        "image": "/gallery/btd/btd-5.jpg"
       }
     ],
     "corporate": {
