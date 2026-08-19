@@ -182,7 +182,8 @@ const Action = () => {
             <span className="relative z-10 flex items-center gap-2">{t("action.btn1")} <ArrowRight size={16}/></span>
           </a>
           <Link
-            to="/social-b2b"
+            to="/social"
+            onClick={() => window.scrollTo(0, 0)}
             className="px-10 py-4 rounded-full font-heading font-normal text-sm border border-background/20 text-background/60 hover:border-background/50 hover:text-background/90 transition-all duration-300 flex items-center justify-center"
           >
             {t("action.btn2")}
