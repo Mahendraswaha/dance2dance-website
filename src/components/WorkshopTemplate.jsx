@@ -71,7 +71,7 @@ export default function WorkshopTemplate({ workshop, program }) {
           <h3 className="font-batang text-2xl text-[#F0EDE8] mb-6">{t('actions.ready_to_start', 'Pronto para começar?')}</h3>
           <Link 
             to="/agenda" 
-            className="inline-block font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-8 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-[2px] mb-12"
+            className="inline-block font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-8 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-full mb-12"
           >
             {t('actions.view_dates', 'Ver datas disponíveis')}
           </Link>
