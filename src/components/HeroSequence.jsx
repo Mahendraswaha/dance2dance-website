@@ -165,8 +165,10 @@ const HeroSequence = () => {
         0.55 // <- Aparece um pouco antes também
       );
       
-      // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
-      tl.to('.dark-overlay', { opacity: 0, duration: 0.2 }, 0.8);
+      // Clareia o filtro escuro gradativamente a partir do meio da rolagem (0.4)
+      tl.to('.dark-overlay', { opacity: 0, duration: 0.4, ease: 'power1.inOut' }, 0.4);
+      // Clareia também o gradiente do rodapé para ficar bem iluminado no final
+      tl.to('.hero-gradient', { opacity: 0.3, duration: 0.4, ease: 'power1.inOut' }, 0.4);
 
     }, containerRef);
 
@@ -235,7 +237,7 @@ const HeroSequence = () => {
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
+        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent" />
       </div>
       
       {/* Texto do Hero */}
