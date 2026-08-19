@@ -46,8 +46,7 @@
         ],
         "duration": "Intensive",
         "level": "Advanced / Pro",
-        "format": "In-person",
-        "image": "/gallery/btd/btd-6.jpg"
+        "format": "In-person"
       },
       {
         "id": "be-the-dance-day",
@@ -67,8 +66,7 @@
         ],
         "duration": "1 Day",
         "level": "All levels",
-        "format": "In-person",
-        "image": "/gallery/btd/btd-5.jpg"
+        "format": "In-person"
       }
     ],
     "corporate": {
