@@ -512,7 +512,8 @@
     "ready_to_start": "Pronto para começar?",
     "view_dates": "Ver datas disponíveis",
     "contact_us": "Fale Conosco",
-    "book": "Agendar"
+    "book": "Agendar",
+    "back": "Voltar"
   },
   "labels": {
     "program": "Programa",

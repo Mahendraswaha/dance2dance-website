@@ -32,7 +32,7 @@ export default function WorkshopTemplate({ workshop, program }) {
           onClick={() => navigate(-1)}
           className="font-heading text-[10px] tracking-[4px] uppercase text-accent/70 hover:text-accent mb-12 flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
         >
-          <span className="mr-2">&larr;</span> {t('navigation.back', 'Voltar para')} {t(`programs.${program.id}.title`, program.title)}
+          <span className="mr-2">&larr;</span> {t('actions.back', 'Voltar')}
         </button>
 
         {/* Header */}

@@ -512,7 +512,8 @@
     "ready_to_start": "Ready to start?",
     "view_dates": "View available dates",
     "contact_us": "Contact Us",
-    "book": "Book now"
+    "book": "Book now",
+    "back": "Back"
   },
   "labels": {
     "program": "Program",

@@ -512,7 +512,8 @@
     "ready_to_start": "Klar til å begynne?",
     "view_dates": "Se ledige datoer",
     "contact_us": "Kontakt oss",
-    "book": "Bestill"
+    "book": "Bestill",
+    "back": "Tilbake"
   },
   "labels": {
     "program": "Program",
