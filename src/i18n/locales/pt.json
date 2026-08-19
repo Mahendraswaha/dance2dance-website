@@ -513,5 +513,10 @@
     "view_dates": "Ver datas disponíveis",
     "contact_us": "Fale Conosco",
     "book": "Agendar"
+  },
+  "labels": {
+    "program": "Programa",
+    "workshops": "Workshops",
+    "workshop": "Workshop"
   }
 }

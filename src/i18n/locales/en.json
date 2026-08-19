@@ -513,5 +513,10 @@
     "view_dates": "View available dates",
     "contact_us": "Contact Us",
     "book": "Book now"
+  },
+  "labels": {
+    "program": "Program",
+    "workshops": "Workshops",
+    "workshop": "Workshop"
   }
 }

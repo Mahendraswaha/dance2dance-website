@@ -37,7 +37,7 @@ export default function WorkshopTemplate({ workshop, program }) {
 
         {/* Header */}
         <header className="mb-16">
-          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent/80 mb-5">Workshop</p>
+          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent/80 mb-5">{t('labels.workshop', 'Workshop')}</p>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

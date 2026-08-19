@@ -513,5 +513,10 @@
     "view_dates": "Se ledige datoer",
     "contact_us": "Kontakt oss",
     "book": "Bestill"
+  },
+  "labels": {
+    "program": "Program",
+    "workshops": "Workshops",
+    "workshop": "Workshop"
   }
 }

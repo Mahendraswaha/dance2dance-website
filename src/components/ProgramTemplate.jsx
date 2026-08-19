@@ -114,7 +114,7 @@ export default function ProgramTemplate({ program }) {
         )}
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto drop-shadow-md mt-16">
-          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">Programa</p>
+          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">{t('labels.program', 'Programa')}</p>
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -177,7 +177,7 @@ export default function ProgramTemplate({ program }) {
         <section ref={workshopsRef} className="py-16 px-8 max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
               <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 tracking-tight">
-              Workshops
+              {t('labels.workshops', 'Workshops')}
               </h2>
               <div className="w-12 h-[1px] bg-accent/70 mx-auto"></div>
           </div>
