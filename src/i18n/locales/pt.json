@@ -513,11 +513,22 @@
     "view_dates": "Ver datas disponíveis",
     "contact_us": "Fale Conosco",
     "book": "Agendar",
-    "back": "Voltar"
+    "back": "Voltar",
+    "details": "Detalhes"
   },
   "labels": {
     "program": "Programa",
     "workshops": "Workshops",
-    "workshop": "Workshop"
+    "workshop": "Workshop",
+    "calendar": "Calendário",
+    "full_agenda": "Agenda Completa",
+    "all": "Todos"
+  },
+  "agenda": {
+    "subtitle": "Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.",
+    "no_events": "Nenhum evento encontrado para este filtro no momento.",
+    "coming_soon": "Em breve",
+    "tbd": "A definir",
+    "location": "Porto Alegre / RS"
   }
 }

@@ -513,11 +513,22 @@
     "view_dates": "Se ledige datoer",
     "contact_us": "Kontakt oss",
     "book": "Bestill",
-    "back": "Tilbake"
+    "back": "Tilbake",
+    "details": "Detaljer"
   },
   "labels": {
     "program": "Program",
     "workshops": "Workshops",
-    "workshop": "Workshop"
+    "workshop": "Workshop",
+    "calendar": "Kalender",
+    "full_agenda": "Full Agenda",
+    "all": "Alle"
+  },
+  "agenda": {
+    "subtitle": "Følg med på våre kommende datoer for workshops, faste timer og opplevelser fra Be The Dance og Biostretch.",
+    "no_events": "Ingen arrangementer funnet for dette filteret for øyeblikket.",
+    "coming_soon": "Kommer snart",
+    "tbd": "TBD",
+    "location": "Porto Alegre / RS, Brasil"
   }
 }

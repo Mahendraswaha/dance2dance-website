@@ -13,10 +13,11 @@ export default function AgendaHub({ programs }) {
     p.workshops ? p.workshops.map(w => ({
       ...w,
       programId: p.id,
-      programTitle: p.title,
-      date: "Em breve",
-      time: "A definir",
-      location: "Porto Alegre / RS"
+      programTitle: t(`programs.${p.id}.title`, p.title),
+      translatedTitle: t(`programs.${p.id}.workshops.${w.id}.title`, w.title),
+      date: t('agenda.coming_soon', "Em breve"),
+      time: t('agenda.tbd', "A definir"),
+      location: t('agenda.location', "Porto Alegre / RS")
     })) : []
   );
 
@@ -30,17 +31,17 @@ export default function AgendaHub({ programs }) {
         
         {/* Header */}
         <header className="mb-16 text-center">
-          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">Calendário</p>
+          <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">{t('labels.calendar', 'Calendário')}</p>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="font-batang text-4xl md:text-6xl font-normal mb-6 text-[#F0EDE8]"
           >
-            Agenda Completa
+            {t('labels.full_agenda', 'Agenda Completa')}
           </motion.h1>
           <div className="w-12 h-[1px] bg-accent/70 mx-auto mb-8"></div>
           <p className="font-heading text-[#9A9A9A] font-light max-w-2xl mx-auto">
-            Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.
+            {t('agenda.subtitle', 'Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.')}
           </p>
         </header>
 
@@ -54,7 +55,7 @@ export default function AgendaHub({ programs }) {
                 : 'border-[#333] text-[#9A9A9A] hover:border-accent/50 hover:text-accent'
             }`}
           >
-            Todos
+            {t('labels.all', 'Todos')}
           </button>
           <button 
             onClick={() => setActiveFilter('be-the-dance')}
@@ -104,7 +105,7 @@ export default function AgendaHub({ programs }) {
                     {event.programTitle}
                   </span>
                 </div>
-                <h3 className="font-batang text-2xl text-[#F0EDE8] mb-2">{event.title}</h3>
+                <h3 className="font-batang text-2xl text-[#F0EDE8] mb-2">{event.translatedTitle}</h3>
                 <p className="font-heading text-sm text-[#9A9A9A] font-light flex items-center gap-2">
                   <MapPin size={14} className="text-accent/70" /> {event.location}
                 </p>
@@ -116,7 +117,7 @@ export default function AgendaHub({ programs }) {
                   href={`/${event.programId}/${event.slug}`} 
                   className="font-heading text-[10px] tracking-[3px] uppercase text-accent border-b border-accent/30 pb-1 hover:text-[#F0EDE8] hover:border-accent/80 transition-all inline-block"
                 >
-                  Detalhes
+                  {t('actions.details', 'Detalhes')}
                 </a>
               </div>
             </motion.div>
@@ -124,7 +125,7 @@ export default function AgendaHub({ programs }) {
           
           {filteredEvents.length === 0 && (
             <div className="text-center py-20 text-[#666] font-heading font-light">
-              Nenhum evento encontrado para este filtro no momento.
+              {t('agenda.no_events', 'Nenhum evento encontrado para este filtro no momento.')}
             </div>
           )}
       </div>
