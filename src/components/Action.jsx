@@ -90,7 +90,9 @@ const Action = () => {
           clearInterval(timer);
           frameRef.current = 0;
           render(0);
-          startFadeIn();
+          setTimeout(() => {
+            startFadeIn();
+          }, 1500); // 1.5s suspiro/pause
         }
       }, 1000 / 15);
     };
