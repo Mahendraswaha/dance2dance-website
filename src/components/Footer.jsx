@@ -42,7 +42,7 @@ const Footer = () => {
               <Link to="/be-the-dance" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">Be The Dance</Link>
               <Link to="/biostretch" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">Biostretch</Link>
               <Link to="/kroppsskole" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">Kroppsskole</Link>
-              <a href="#" className="hover:text-accent transition-colors">{t("footer.links.impact")}</a>
+              <Link to="/social" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">{t("footer.links.impact")}</Link>
             </div>
             <div className="flex flex-col gap-4">
               <a href="#" className="hover:text-accent transition-colors">Instagram</a>
