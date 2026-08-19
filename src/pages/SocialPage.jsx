@@ -187,8 +187,8 @@ const SocialPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
 
             {/* Paid card */}
-            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
-              <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
+            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col gap-6 relative overflow-hidden">
+              <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
                 {t('social_page_b2b.value.paid.label')}
               </span>
               <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
@@ -201,8 +201,8 @@ const SocialPage = () => {
             </div>
 
             {/* Free card (Gamle Oslo) */}
-            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
-              <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
+            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col gap-6 relative overflow-hidden">
+              <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
                 {t('social_page_b2b.value.free.label')}
               </span>
               <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
