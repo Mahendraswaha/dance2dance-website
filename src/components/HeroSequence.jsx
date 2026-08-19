@@ -120,8 +120,8 @@ const HeroSequence = () => {
       // Quando começa a rolar, o video some suavemente
       tl.to(videoRef.current, { opacity: 0, duration: 0.05 }, 0);
       
-      // O texto principal do hero sobe e some
-      tl.to(heroContentRef.current, { y: -200, opacity: 0, duration: 0.1 }, 0);
+      // O texto principal do hero sobe e some (usando autoAlpha para remover os pointer-events do botão)
+      tl.to(heroContentRef.current, { y: -200, autoAlpha: 0, duration: 0.1 }, 0);
 
       // Reprodução do canvas frame a frame
       tl.to(animationData, {
@@ -164,6 +164,9 @@ const HeroSequence = () => {
         { opacity: 1, scale: 1, ease: 'power2.out', duration: 0.1 }, 
         0.55 // <- Aparece um pouco antes também
       );
+
+      // Desaparece com a última frase no final, para deixar o palco limpo para o background iluminado
+      tl.to('.seq-text-last', { opacity: 0, scale: 1.05, duration: 0.15, ease: 'power2.in' }, 0.85);
       
       // Clareia o filtro escuro gradativamente a partir do meio da rolagem (0.4)
       tl.to('.dark-overlay', { opacity: 0, duration: 0.4, ease: 'power1.inOut' }, 0.4);
