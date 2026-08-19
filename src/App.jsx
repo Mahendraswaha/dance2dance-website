@@ -5,7 +5,6 @@ import AgendaPage from './pages/AgendaPage';
 import ProgramPage from './pages/ProgramPage';
 import WorkshopPage from './pages/WorkshopPage';
 import SocialPage from './pages/SocialPage';
-import SocialPageB2B from './pages/SocialPageB2B';
 import ScrollToTop from './components/ScrollToTop';
 
 // Import i18n
@@ -19,7 +18,6 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/agenda" element={<AgendaPage />} />
         <Route path="/social" element={<SocialPage />} />
-        <Route path="/social-b2b" element={<SocialPageB2B />} />
         <Route path="/:programId" element={<ProgramPage />} />
         <Route path="/:programId/:workshopId" element={<WorkshopPage />} />
       </Routes>

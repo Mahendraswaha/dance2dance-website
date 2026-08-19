@@ -98,29 +98,36 @@ const SocialPage = () => {
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start mt-auto px-6 lg:px-12 pointer-events-none">
+          
+          {/* B2B Authority Badge */}
+          <div className="hero-elem inline-flex items-center gap-3 px-4 py-2 mb-8 rounded-full border border-slate-700/50 bg-black/40 backdrop-blur-md">
+            <span className="text-xs text-slate-400 uppercase tracking-widest">{t('social_page_b2b.hero.badge')}</span>
+            <span className="font-heading font-bold text-sm text-accent">{t('social_page_b2b.hero.badge_brand')}</span>
+          </div>
+
           <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
-            {t('social_page.hero.kicker')}
+            {t('social_page_b2b.hero.kicker')}
           </span>
           <h1 className="flex flex-col gap-0 md:gap-2 mb-8 pointer-events-none">
             {/* Reduced max size from 8xl to 7xl to respect viewport heights */}
             <span className="hero-elem font-drama italic text-5xl md:text-6xl lg:text-7xl text-background leading-none">
-              {t('social_page.hero.title_line1')}
+              {t('social_page_b2b.hero.title_line1')}
             </span>
             <span className="hero-elem font-drama italic text-5xl md:text-6xl lg:text-7xl text-slate-300/40 leading-none">
-              {t('social_page.hero.title_line2')}
+              {t('social_page_b2b.hero.title_line2')}
             </span>
           </h1>
 
           <div className="hero-elem w-full pointer-events-auto">
             <div className="h-[1px] w-full max-w-md bg-slate-100/10 mb-8 draw-line" />
             <p className="font-heading text-background/70 text-base md:text-lg lg:text-xl leading-[1.6] max-w-lg">
-              {t('social_page.hero.subtitle')}
+              {t('social_page_b2b.hero.subtitle')}
             </p>
           </div>
 
           <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-slate-400/40 pointer-events-auto">
             <ArrowDown size={18} />
-            <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page.hero.scroll')}</span>
+            <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page_b2b.hero.scroll')}</span>
           </div>
         </div>
       </section>
@@ -131,24 +138,24 @@ const SocialPage = () => {
 
           <div className="md:col-span-4 reveal-elem">
             <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-400 block mb-8">
-              {t('social_page.context.kicker')}
+              {t('social_page_b2b.context.kicker')}
             </span>
             <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl leading-[1.0] text-background/90">
-              {t('social_page.context.title')}
+              {t('social_page_b2b.context.title')}
             </h2>
           </div>
 
           <div className="md:col-span-8 flex flex-col gap-10 reveal-elem">
             <div className="h-[1px] bg-slate-100/10 draw-line" />
             <p className="font-heading text-background/60 text-base md:text-lg leading-[1.85] font-light">
-              {t('social_page.context.p1')}
+              {t('social_page_b2b.context.p1')}
             </p>
             <p className="font-heading text-background/60 text-base md:text-lg leading-[1.85] font-light">
-              {t('social_page.context.p2')}
+              {t('social_page_b2b.context.p2')}
             </p>
             <div className="border-l-2 border-slate-300/30 pl-8 mt-4">
               <p className="font-drama italic text-2xl md:text-3xl text-slate-200/80 leading-[1.35]">
-                {t('social_page.context.quote')}
+                {t('social_page_b2b.context.quote')}
               </p>
             </div>
           </div>
@@ -166,13 +173,13 @@ const SocialPage = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20 reveal-elem">
             <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
-              {t('social_page.value.kicker')}
+              {t('social_page_b2b.value.kicker')}
             </span>
             <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background leading-tight">
-              {t('social_page.value.title')}
+              {t('social_page_b2b.value.title')}
             </h2>
             <p className="font-heading text-background/50 text-base md:text-lg font-light max-w-2xl mx-auto mt-8 leading-[1.8]">
-              {t('social_page.value.subtitle')}
+              {t('social_page_b2b.value.subtitle')}
             </p>
           </div>
 
@@ -182,28 +189,28 @@ const SocialPage = () => {
             {/* Paid card */}
             <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
               <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
-                {t('social_page.value.paid.label')}
+                {t('social_page_b2b.value.paid.label')}
               </span>
               <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
-                {t('social_page.value.paid.price')}
+                {t('social_page_b2b.value.paid.price')}
               </div>
               <div className="h-[1px] bg-slate-300/15 draw-line" />
               <p className="font-heading text-slate-300/60 text-sm leading-[1.8] font-light">
-                {t('social_page.value.paid.desc')}
+                {t('social_page_b2b.value.paid.desc')}
               </p>
             </div>
 
             {/* Free card (Gamle Oslo) */}
             <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
               <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
-                {t('social_page.value.free.label')}
+                {t('social_page_b2b.value.free.label')}
               </span>
               <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
-                {t('social_page.value.free.price')}
+                {t('social_page_b2b.value.free.price')}
               </div>
               <div className="h-[1px] bg-slate-300/15 draw-line" />
               <p className="font-heading text-slate-300/60 text-sm leading-[1.8] font-light">
-                {t('social_page.value.free.desc')}
+                {t('social_page_b2b.value.free.desc')}
               </p>
             </div>
           </div>
@@ -211,24 +218,24 @@ const SocialPage = () => {
           {/* Value insight quote */}
           <div className="mt-16 max-w-3xl mx-auto text-center reveal-elem">
             <p className="font-drama italic text-xl md:text-2xl text-slate-300/50 leading-[1.5]">
-              {t('social_page.value.insight')}
+              {t('social_page_b2b.value.insight')}
             </p>
           </div>
         </div>
       </section>
 
       {/* ─── FUNDING PILLARS ─────────────────────────────────────────── */}
-      <SocialPillars />
+      <SocialPillars translationKey="social_page_b2b" />
 
       {/* ─── PARTNERS ────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 px-6 lg:px-12 bg-primary relative">
         <div className="max-w-5xl mx-auto reveal-elem">
           <div className="text-center mb-20">
             <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
-              {t('social_page.partners.kicker')}
+              {t('social_page_b2b.partners.kicker')}
             </span>
             <h3 className="font-drama italic text-3xl md:text-5xl text-background/80 leading-tight">
-              {t('social_page.partners.title')}
+              {t('social_page_b2b.partners.title')}
             </h3>
           </div>
 
@@ -247,36 +254,34 @@ const SocialPage = () => {
           </div>
 
           <p className="mt-16 font-heading text-background/40 font-light text-sm md:text-base text-center max-w-2xl mx-auto leading-[1.8]">
-            {t('social_page.partners.desc')}
+            {t('social_page_b2b.partners.desc')}
           </p>
         </div>
       </section>
 
-      {/* ─── CTA ─────────────────────────────────────────────────────── */}
-      <section id="apoie" className="py-32 md:py-48 px-6 lg:px-12 bg-[#0C0C0C] relative overflow-hidden">
+      {/* ─── CTA B2B ─────────────────────────────────────────────────── */}
+      <section id="apoie" className="py-24 bg-gradient-to-br from-[#0a0a0e] to-[#1a1a24] border-t border-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] opacity-[0.03]"
                style={{ background: 'radial-gradient(ellipse, #E2E8F0 0%, transparent 70%)' }} />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center reveal-elem flex flex-col items-center">
-          <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-10">
-            {t('social_page.cta.kicker')}
+        <div className="relative z-10 max-w-4xl mx-auto text-center reveal-elem px-6">
+          <span className="text-accent uppercase tracking-widest text-xs font-bold mb-4 block">
+            {t('social_page_b2b.cta.kicker')}
           </span>
-          <h2 className="font-drama italic text-5xl md:text-7xl lg:text-8xl text-background leading-[0.95] mb-10">
-            {t('social_page.cta.title')}
+          <h2 className="font-drama italic text-5xl md:text-7xl text-white mb-6">
+            {t('social_page_b2b.cta.title')}
           </h2>
-          <div className="h-[1px] w-24 bg-slate-400/30 mb-10 draw-line mx-auto" />
-          <p className="font-heading text-background/55 text-base md:text-lg font-light max-w-2xl mb-16 leading-[1.8]">
-            {t('social_page.cta.desc')}
+          <p className="text-slate-400 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+            {t('social_page_b2b.cta.desc')}
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-5">
-            <button className="btn-magnetic bg-slate-200 text-primary px-10 py-5 rounded-full font-heading font-bold text-sm tracking-wide flex items-center gap-2">
-              {t('social_page.cta.btn1')} <ArrowRight size={15} />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-accent text-primary px-8 py-4 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(200,160,80,0.3)]">
+              {t('social_page_b2b.cta.btn1')}
             </button>
-            <button className="px-10 py-5 rounded-full font-heading font-light text-sm border border-background/20 text-background/70 hover:border-slate-300 hover:text-background transition-all duration-400">
-              {t('social_page.cta.btn2')}
+            <button className="bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors">
+              {t('social_page_b2b.cta.btn2')}
             </button>
           </div>
         </div>
