@@ -10,7 +10,7 @@ export default function WorkshopTemplate({ workshop, program }) {
   if (!workshop) return <div className="min-h-screen bg-primary text-background flex items-center justify-center">Workshop not found</div>;
 
   return (
-    <div className="pt-32 pb-24 bg-primary min-h-screen font-sans text-background relative">
+    <div className="pt-48 md:pt-56 pb-24 bg-primary min-h-screen font-sans text-background relative">
       
       {/* Watermark Logo */}
       {program.logo && (
@@ -25,7 +25,7 @@ export default function WorkshopTemplate({ workshop, program }) {
         </div>
       )}
 
-      <div className="max-w-[900px] mx-auto px-8 relative z-10">
+      <div className="max-w-[900px] mx-auto px-12 md:px-20 lg:px-24 relative z-10">
         
 
 
