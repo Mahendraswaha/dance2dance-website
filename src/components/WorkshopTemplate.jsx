@@ -27,13 +27,7 @@ export default function WorkshopTemplate({ workshop, program }) {
 
       <div className="max-w-[900px] mx-auto px-8 relative z-10">
         
-        {/* Back Button */}
-        <button 
-          onClick={() => navigate(-1)}
-          className="font-heading text-[10px] tracking-[4px] uppercase text-accent/70 hover:text-accent mb-12 flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
-        >
-          <span className="mr-2">&larr;</span> {t('actions.back', 'Voltar')}
-        </button>
+
 
         {/* Header */}
         <header className="mb-16">
@@ -73,14 +67,21 @@ export default function WorkshopTemplate({ workshop, program }) {
         </motion.div>
 
         {/* Call to Action */}
-        <div className="mt-20 pt-16 border-t border-[#222222] text-center">
+        <div className="mt-20 pt-16 border-t border-[#222222] flex flex-col items-center">
           <h3 className="font-batang text-2xl text-[#F0EDE8] mb-6">{t('actions.ready_to_start', 'Pronto para começar?')}</h3>
           <Link 
             to="/agenda" 
-            className="inline-block font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-8 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-[2px]"
+            className="inline-block font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-8 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-[2px] mb-12"
           >
             {t('actions.view_dates', 'Ver datas disponíveis')}
           </Link>
+          
+          <button 
+            onClick={() => navigate(-1)}
+            className="font-heading text-[10px] tracking-[4px] uppercase text-[#9A9A9A] hover:text-accent flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
+          >
+            <span className="mr-2">&larr;</span> {t('actions.back', 'Voltar')}
+          </button>
         </div>
 
       </div>
