@@ -140,7 +140,8 @@ const HeroSequence = () => {
         { opacity: 1, y: 0, duration: 0.05 }, 
         0.1
       );
-      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.25);
+      // Fade out mais cedo
+      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.20);
       
       // 2. O bloco de texto rola continuamente (como créditos de filme)
       // Ele começa fisicamente abaixo da tela (top-full) e rola até sair completamente pelo topo
@@ -151,17 +152,17 @@ const HeroSequence = () => {
           ease: 'none', 
           duration: 0.5 
         }, 
-        0.25
+        0.15 // <- COMEÇA A SUBIR MAIS CEDO (antes era 0.25)
       );
 
-      // O bloco começa a desaparecer em fade mais cedo (0.55) para evitar encostar no Nav
-      tl.to('.seq-block-rest', { opacity: 0, duration: 0.15, ease: 'power2.inOut' }, 0.55);
+      // O bloco começa a desaparecer em fade mais cedo para acompanhar
+      tl.to('.seq-block-rest', { opacity: 0, duration: 0.15, ease: 'power2.inOut' }, 0.50);
 
       // 3. A última frase aparece no centro em cross-fade acompanhando a saída do bloco
       tl.fromTo('.seq-text-last', 
         { opacity: 0, scale: 0.95 }, 
         { opacity: 1, scale: 1, ease: 'power2.out', duration: 0.1 }, 
-        0.60
+        0.55 // <- Aparece um pouco antes também
       );
       
       // Teste: Clareia o filtro escuro no momento em que a última frase entra (0.8) até o fim da timeline
