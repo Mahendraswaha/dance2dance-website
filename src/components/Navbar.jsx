@@ -128,7 +128,9 @@ const Navbar = () => {
       >
         {/* Header do Menu */}
         <div className="flex items-center justify-between px-8 py-8 border-b border-white/5">
-          <img src="/logo-dance2dance.png" alt="Dance2Dance" className="h-8 object-contain" />
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/logo-dance2dance.png" alt="Dance2Dance" className="h-8 object-contain" />
+          </Link>
           <button 
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-background/80 hover:text-accent transition-colors rounded-full bg-white/5"
