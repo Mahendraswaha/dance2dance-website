@@ -187,28 +187,32 @@ const SocialPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
 
             {/* Paid card */}
-            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col gap-6 relative overflow-hidden">
-              <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
-                {t('social_page_b2b.value.paid.label')}
-              </span>
-              <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200">
-                {t('social_page_b2b.value.paid.price')}
+            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col relative overflow-hidden h-full">
+              <div className="flex-1 flex flex-col gap-6 mb-6">
+                <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
+                  {t('social_page_b2b.value.paid.label')}
+                </span>
+                <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200">
+                  {t('social_page_b2b.value.paid.price')}
+                </div>
               </div>
-              <div className="h-[1px] bg-slate-300/15 draw-line" />
+              <div className="h-[1px] bg-slate-300/15 draw-line mb-6" />
               <p className="font-heading text-slate-300/60 text-sm leading-[1.8] font-light">
                 {t('social_page_b2b.value.paid.desc')}
               </p>
             </div>
 
             {/* Free card (Gamle Oslo) */}
-            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col gap-6 relative overflow-hidden">
-              <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
-                {t('social_page_b2b.value.free.label')}
-              </span>
-              <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200">
-                {t('social_page_b2b.value.free.price')}
+            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col relative overflow-hidden h-full">
+              <div className="flex-1 flex flex-col gap-6 mb-6">
+                <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
+                  {t('social_page_b2b.value.free.label')}
+                </span>
+                <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200">
+                  {t('social_page_b2b.value.free.price')}
+                </div>
               </div>
-              <div className="h-[1px] bg-slate-300/15 draw-line" />
+              <div className="h-[1px] bg-slate-300/15 draw-line mb-6" />
               <p className="font-heading text-slate-300/60 text-sm leading-[1.8] font-light">
                 {t('social_page_b2b.value.free.desc')}
               </p>
