@@ -180,14 +180,14 @@ const SocialPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
 
             {/* Paid card */}
-            <div className="value-card border border-background/10 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6">
-              <span className="font-heading text-[10px] tracking-[4px] uppercase text-background/40">
+            <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
+              <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
                 {t('social_page.value.paid.label')}
               </span>
-              <div className="font-drama italic text-5xl md:text-6xl text-background/80">
+              <div className="font-drama italic text-5xl md:text-6xl text-slate-200">
                 {t('social_page.value.paid.price')}
               </div>
-              <div className="h-[1px] bg-background/8 draw-line" />
+              <div className="h-[1px] bg-slate-300/15 draw-line" />
               <p className="font-heading text-background/50 text-sm leading-[1.8] font-light">
                 {t('social_page.value.paid.desc')}
               </p>
