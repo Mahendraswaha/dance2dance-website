@@ -188,16 +188,13 @@ const SocialPage = () => {
                 {t('social_page.value.paid.price')}
               </div>
               <div className="h-[1px] bg-slate-300/15 draw-line" />
-              <p className="font-heading text-background/50 text-sm leading-[1.8] font-light">
+              <p className="font-heading text-slate-300/60 text-sm leading-[1.8] font-light">
                 {t('social_page.value.paid.desc')}
               </p>
             </div>
 
             {/* Free card (Gamle Oslo) */}
             <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-10 md:p-12 flex flex-col gap-6 relative overflow-hidden">
-              {/* Subtle corner accent */}
-              <div className="absolute top-0 right-0 w-20 h-20 opacity-[0.03]"
-                   style={{ background: 'radial-gradient(circle at top right, #E2E8F0, transparent)' }} />
               <span className="font-heading text-[10px] tracking-[4px] uppercase text-slate-300">
                 {t('social_page.value.free.label')}
               </span>
@@ -205,7 +202,7 @@ const SocialPage = () => {
                 {t('social_page.value.free.price')}
               </div>
               <div className="h-[1px] bg-slate-300/15 draw-line" />
-              <p className="font-heading text-background/50 text-sm leading-[1.8] font-light">
+              <p className="font-heading text-slate-300/60 text-sm leading-[1.8] font-light">
                 {t('social_page.value.free.desc')}
               </p>
             </div>
