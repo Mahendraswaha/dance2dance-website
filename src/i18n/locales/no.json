@@ -230,133 +230,133 @@
   "programs": {
     "be-the-dance": {
       "title": "Be the Dance",
-      "subtitle": "[TODO: Translate] Descubra a dança que existe em você.",
-      "description": "[TODO: Translate] Filosofia e conceito do Be the Dance...",
+      "subtitle": "Descubra a dança que existe em você.",
+      "description": "Filosofia e conceito do Be the Dance...",
       "philosophy": [
         {
-          "title": "[TODO: Translate] BE THE DANCE",
+          "title": "BE THE DANCE",
           "content": [
-            "[TODO: Translate] é um programa de quatro workshops de dança.",
-            "[TODO: Translate] Foi desenhado para você explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando algo essencial e único que já existe em você: sua própria dança."
+            "é um programa de quatro workshops de dança.",
+            "Foi desenhado para você explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando algo essencial e único que já existe em você: sua própria dança."
           ]
         },
         {
-          "title": "[TODO: Translate] BE THE DANCE É PARA TODOS",
+          "title": "BE THE DANCE É PARA TODOS",
           "content": [
-            "[TODO: Translate] A dança pode nascer no corpo de qualquer pessoa que se permita mover.",
-            "[TODO: Translate] Não há exigências.",
-            "[TODO: Translate] Basta sentir e permitir que o movimento se expresse.",
-            "[TODO: Translate] Em qualquer idade ou condição física, é possível descobrir uma forma própria de dançar."
+            "A dança pode nascer no corpo de qualquer pessoa que se permita mover.",
+            "Não há exigências.",
+            "Basta sentir e permitir que o movimento se expresse.",
+            "Em qualquer idade ou condição física, é possível descobrir uma forma própria de dançar."
           ]
         },
         {
-          "title": "[TODO: Translate] ONDE ESTÁ A DANÇA?",
+          "title": "ONDE ESTÁ A DANÇA?",
           "content": [
-            "[TODO: Translate] Não está restrita a uma técnica, a um estilo pré-definido ou a um talento especial.",
-            "[TODO: Translate] Ela existe em cada pessoa, como uma criatividade inerente pronta para ganhar forma por meio do corpo."
+            "Não está restrita a uma técnica, a um estilo pré-definido ou a um talento especial.",
+            "Ela existe em cada pessoa, como uma criatividade inerente pronta para ganhar forma por meio do corpo."
           ]
         },
         {
-          "title": "[TODO: Translate] COMO ACONTECE A DANÇA?",
+          "title": "COMO ACONTECE A DANÇA?",
           "content": [
-            "[TODO: Translate] A dança nos acompanha há milênios, como ritual, celebração e expressão artística. Ainda que você não lembre, há no corpo uma memória de movimento, uma capacidade de sentir, criar e dançar.",
-            "[TODO: Translate] Ao criar um diálogo sensível entre música e corpo, abrimos a possibilidade de explorar novos caminhos de movimento. Ir além do conhecido permite que novas formas de expressão possam emergir.",
-            "[TODO: Translate] A dança acontece para além do controle e da busca por uma forma ideal. Quando nos permitimos estar presentes, uma expressão mais autêntica e única pode emergir do corpo."
+            "A dança nos acompanha há milênios, como ritual, celebração e expressão artística. Ainda que você não lembre, há no corpo uma memória de movimento, uma capacidade de sentir, criar e dançar.",
+            "Ao criar um diálogo sensível entre música e corpo, abrimos a possibilidade de explorar novos caminhos de movimento. Ir além do conhecido permite que novas formas de expressão possam emergir.",
+            "A dança acontece para além do controle e da busca por uma forma ideal. Quando nos permitimos estar presentes, uma expressão mais autêntica e única pode emergir do corpo."
           ]
         },
         {
-          "title": "[TODO: Translate] QUAIS OS BENEFÍCIOS?",
+          "title": "QUAIS OS BENEFÍCIOS?",
           "content": [
-            "[TODO: Translate] • Favorecer o relaxamento profundo e contribuir para a redução do estresse.",
-            "[TODO: Translate] • Ampliar a energia, a disponibilidade corporal e a fluidez dos movimentos.",
-            "[TODO: Translate] • Reconhecer movimentos naturais e ampliar a consciência corporal, criando espaço para uma expressão mais autêntica.",
-            "[TODO: Translate] • Desenvolver a atenção, despertando os sentidos e aprofundando a presença.",
-            "[TODO: Translate] • Explorar a relação entre respiração e movimento, descobrindo novas formas de dançar com mais liberdade.",
-            "[TODO: Translate] • Ampliar a percepção reconhecendo as diferentes partes do corpo e as relações entre elas."
+            "• Favorecer o relaxamento profundo e contribuir para a redução do estresse.",
+            "• Ampliar a energia, a disponibilidade corporal e a fluidez dos movimentos.",
+            "• Reconhecer movimentos naturais e ampliar a consciência corporal, criando espaço para uma expressão mais autêntica.",
+            "• Desenvolver a atenção, despertando os sentidos e aprofundando a presença.",
+            "• Explorar a relação entre respiração e movimento, descobrindo novas formas de dançar com mais liberdade.",
+            "• Ampliar a percepção reconhecendo as diferentes partes do corpo e as relações entre elas."
           ]
         },
         {
-          "title": "[TODO: Translate] BE THE DANCE",
+          "title": "BE THE DANCE",
           "content": [
-            "[TODO: Translate] Workshops que integram a consciência do movimento com práticas de dança e meditação, para você descobrir e expressar a dança que já existe em você."
+            "Workshops que integram a consciência do movimento com práticas de dança e meditação, para você descobrir e expressar a dança que já existe em você."
           ]
         }
       ],
       "workshops": {
         "be-water": {
           "title": "Be Water",
-          "shortDescription": "[TODO: Translate] Descubra a fluidez do movimento e a adaptabilidade.",
-          "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Water..."
+          "shortDescription": "Kort beskrivelse av workshopen...",
+          "fullDescription": "Full beskrivelse av workshopen..."
         },
         "be-balance": {
           "title": "Be Balance",
-          "shortDescription": "[TODO: Translate] Encontre o seu eixo, foco e equilíbrio corporal.",
-          "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Balance..."
+          "shortDescription": "Kort beskrivelse av workshopen...",
+          "fullDescription": "Full beskrivelse av workshopen..."
         },
         "be-total": {
           "title": "Be Total",
-          "shortDescription": "[TODO: Translate] Uma experiência completa de integração do ser em movimento.",
-          "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Total..."
+          "shortDescription": "Kort beskrivelse av workshopen...",
+          "fullDescription": "Full beskrivelse av workshopen..."
         },
         "be-stillness": {
           "title": "Be Stillness",
-          "shortDescription": "[TODO: Translate] Aprenda a encontrar a pausa e o repouso ativo.",
-          "fullDescription": "[TODO: Translate] Descrição completa do workshop Be Stillness..."
+          "shortDescription": "Kort beskrivelse av workshopen...",
+          "fullDescription": "Full beskrivelse av workshopen..."
         },
         "be-the-dance-pro": {
           "title": "Be the Dance Pro",
-          "shortDescription": "[TODO: Translate] Programa de aprofundamento e mentoria para facilitadores.",
-          "fullDescription": "[TODO: Translate] Descrição completa do Be the Dance Pro..."
+          "shortDescription": "Kort beskrivelse av workshopen...",
+          "fullDescription": "Full beskrivelse av workshopen..."
         },
         "be-the-dance-day": {
           "title": "Be the Dance Day",
-          "shortDescription": "[TODO: Translate] Um dia inteiro de imersão no movimento e na consciência corporal.",
-          "fullDescription": "[TODO: Translate] Descrição completa do Be the Dance Day..."
+          "shortDescription": "Kort beskrivelse av workshopen...",
+          "fullDescription": "Full beskrivelse av workshopen..."
         }
       },
       "corporate": {
-        "title": "[TODO: Translate] Formato para Empresas",
-        "description": "[TODO: Translate] Detalhes sobre o Be the Dance in Company..."
+        "title": "Bedriftsformat",
+        "description": "Detalhes sobre o Be the Dance in Company..."
       }
     },
     "biostretch": {
       "title": "Biostretch",
       "subtitle": "Fire tiår med forskning på bevegelse.",
-      "description": "[TODO: Translate] Biostretch é um sistema de exercícios...",
+      "description": "Biostretch é um sistema de exercícios...",
       "philosophy": [
         {
-          "title": "[TODO: Translate] O QUE É O BIOSTRETCH?",
+          "title": "O QUE É O BIOSTRETCH?",
           "content": [
-            "[TODO: Translate] Biostretch é um sistema de exercícios que promove a reconexão com o corpo por meio da consciência do movimento.",
-            "[TODO: Translate] O método utiliza a atenção como sua principal ferramenta: um recurso simples, poderoso e acessível a todos. Ao direcioná-la para a experiência do movimento, ampliamos a percepção do corpo e abrimos espaço para novas possibilidades de organização corporal.",
-            "[TODO: Translate] Inspirado em mais de quatro décadas de estudos em dança, Educação Somática e meditação, o método reconhece o corpo como um sistema inteligente, integrado e em constante transformação. Em vez de buscar desempenho ou correção, propõe uma investigação sutil da experiência corporal, na qual importa menos o que se faz e mais como se faz.",
-            "[TODO: Translate] É dessa experiência de presença que nasce uma nova forma de perceber e habitar o corpo. Mas como essa transformação acontece na prática?"
+            "Biostretch é um sistema de exercícios que promove a reconexão com o corpo por meio da consciência do movimento.",
+            "O método utiliza a atenção como sua principal ferramenta: um recurso simples, poderoso e acessível a todos. Ao direcioná-la para a experiência do movimento, ampliamos a percepção do corpo e abrimos espaço para novas possibilidades de organização corporal.",
+            "Inspirado em mais de quatro décadas de estudos em dança, Educação Somática e meditação, o método reconhece o corpo como um sistema inteligente, integrado e em constante transformação. Em vez de buscar desempenho ou correção, propõe uma investigação sutil da experiência corporal, na qual importa menos o que se faz e mais como se faz.",
+            "É dessa experiência de presença que nasce uma nova forma de perceber e habitar o corpo. Mas como essa transformação acontece na prática?"
           ]
         },
         {
-          "title": "[TODO: Translate] COMO ATUA?",
+          "title": "COMO ATUA?",
           "content": [
-            "[TODO: Translate] A prática do Biostretch convida você a desacelerar, relaxar o corpo e direcionar a atenção para movimentos simples e para as sensações que eles despertam.",
-            "[TODO: Translate] Nessa exploração, torna-se possível reconhecer padrões de tensão, hábitos de movimento e formas de organização corporal que costumam permanecer fora da nossa percepção por operarem de forma automática e inconsciente. A aparente simplicidade da prática revela um trabalho profundo de escuta, percepção e reorganização.",
-            "[TODO: Translate] Ao serem realizados de forma lenta, suave e sem esforço, os exercícios favorecem um estado de equilíbrio no sistema nervoso, responsável por coordenar a comunicação entre corpo e mente e regular as funções do organismo. Nesse estado, o corpo encontra espaço para liberar tensões, reorganizar-se e recuperar a fluidez natural do movimento.",
-            "[TODO: Translate] Mais do que ensinar novos movimentos, o Biostretch fortalece a confiança na inteligência inata do corpo e convida a redescobrir o prazer de mover-se com liberdade, presença e consciência. O melhor é que essa experiência está ao alcance de qualquer pessoa."
+            "A prática do Biostretch convida você a desacelerar, relaxar o corpo e direcionar a atenção para movimentos simples e para as sensações que eles despertam.",
+            "Nessa exploração, torna-se possível reconhecer padrões de tensão, hábitos de movimento e formas de organização corporal que costumam permanecer fora da nossa percepção por operarem de forma automática e inconsciente. A aparente simplicidade da prática revela um trabalho profundo de escuta, percepção e reorganização.",
+            "Ao serem realizados de forma lenta, suave e sem esforço, os exercícios favorecem um estado de equilíbrio no sistema nervoso, responsável por coordenar a comunicação entre corpo e mente e regular as funções do organismo. Nesse estado, o corpo encontra espaço para liberar tensões, reorganizar-se e recuperar a fluidez natural do movimento.",
+            "Mais do que ensinar novos movimentos, o Biostretch fortalece a confiança na inteligência inata do corpo e convida a redescobrir o prazer de mover-se com liberdade, presença e consciência. O melhor é que essa experiência está ao alcance de qualquer pessoa."
           ]
         },
         {
-          "title": "[TODO: Translate] QUEM PODE PRATICAR?",
+          "title": "QUEM PODE PRATICAR?",
           "content": [
-            "[TODO: Translate] O Biostretch pode ser praticado por pessoas de todas as idades e diferentes níveis de experiência, condicionamento físico ou mobilidade.",
-            "[TODO: Translate] A prática respeita a individualidade de cada corpo. Não existe um movimento ideal a ser alcançado nem um padrão externo a ser seguido. Cada pessoa explora as sequências dentro de seus próprios limites e possibilidades, no seu próprio ritmo.",
-            "[TODO: Translate] Em vez de adaptar o corpo a um modelo, o Biostretch valoriza aquilo que cada pessoa já possui: sua capacidade de perceber, aprender e encontrar caminhos mais confortáveis e funcionais para o movimento. Assim, a prática fortalece a autonomia, a confiança e o prazer de habitar o próprio corpo.",
-            "[TODO: Translate] E o que essa prática pode transformar no dia a dia?"
+            "O Biostretch pode ser praticado por pessoas de todas as idades e diferentes níveis de experiência, condicionamento físico ou mobilidade.",
+            "A prática respeita a individualidade de cada corpo. Não existe um movimento ideal a ser alcançado nem um padrão externo a ser seguido. Cada pessoa explora as sequências dentro de seus próprios limites e possibilidades, no seu próprio ritmo.",
+            "Em vez de adaptar o corpo a um modelo, o Biostretch valoriza aquilo que cada pessoa já possui: sua capacidade de perceber, aprender e encontrar caminhos mais confortáveis e funcionais para o movimento. Assim, a prática fortalece a autonomia, a confiança e o prazer de habitar o próprio corpo.",
+            "E o que essa prática pode transformar no dia a dia?"
           ]
         },
         {
-          "title": "[TODO: Translate] QUAIS OS BENEFÍCIOS?",
+          "title": "QUAIS OS BENEFÍCIOS?",
           "content": [
-            "[TODO: Translate] A prática regular do Biostretch contribui para aliviar tensões, ampliar a mobilidade, melhorar a postura e tornar os movimentos mais leves, coordenados e confortáveis. Com o tempo, o corpo recupera a fluidez e eficiência, tornando as atividades do dia a dia mais fáceis e prazerosas.",
-            "[TODO: Translate] Ao favorecer o equilíbrio do sistema nervoso, a prática também ajuda a reduzir os efeitos do estresse, melhorar a qualidade da respiração e aliviar dores e desconfortos associados à tensão muscular, especialmente em regiões como pescoço, ombros e costas. Além disso, contribui para prevenir lesões relacionadas a padrões repetitivos e ao uso excessivo do corpo.",
-            "[TODO: Translate] Com o tempo, essas mudanças se estendem para além da prática e passam a fazer parte da maneira como nos movemos, percebemos e utilizamos o corpo no dia a dia."
+            "A prática regular do Biostretch contribui para aliviar tensões, ampliar a mobilidade, melhorar a postura e tornar os movimentos mais leves, coordenados e confortáveis. Com o tempo, o corpo recupera a fluidez e eficiência, tornando as atividades do dia a dia mais fáceis e prazerosas.",
+            "Ao favorecer o equilíbrio do sistema nervoso, a prática também ajuda a reduzir os efeitos do estresse, melhorar a qualidade da respiração e aliviar dores e desconfortos associados à tensão muscular, especialmente em regiões como pescoço, ombros e costas. Além disso, contribui para prevenir lesões relacionadas a padrões repetitivos e ao uso excessivo do corpo.",
+            "Com o tempo, essas mudanças se estendem para além da prática e passam a fazer parte da maneira como nos movemos, percebemos e utilizamos o corpo no dia a dia."
           ]
         }
       ],
@@ -393,18 +393,18 @@
         }
       },
       "corporate": {
-        "title": "[TODO: Translate] Formato para Empresas",
-        "description": "[TODO: Translate] Biostretch in Company..."
+        "title": "Bedriftsformat",
+        "description": "Biostretch in Company..."
       },
       "individualSessions": {
-        "title": "[TODO: Translate] Sessões Individuais",
-        "description": "[TODO: Translate] Atendimento personalizado de Biostretch."
+        "title": "Individuelle Timer",
+        "description": "Personlige Biostretch-økter."
       }
     },
     "kroppsskole": {
       "title": "Kroppsskole",
-      "subtitle": "[TODO: Translate] ",
-      "description": "[TODO: Translate] Uma abordagem integrada para o corpo e o movimento.",
+      "subtitle": "",
+      "description": "Uma abordagem integrada para o corpo e o movimento.",
       "philosophy": [],
       "workshops": {}
     }

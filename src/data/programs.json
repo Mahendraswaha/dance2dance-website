@@ -102,6 +102,7 @@
     "heroVideo": "/Hero-video-kroppsskole.mp4",
     "heroPoster": "/frame-001-kroppsskole.jpg",
     "heroBlurPlaceholder": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiA5Ij48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDcwNzA3Ii8+PC9zdmc+",
-    "logo": "/logo-kroppsskole.png"
+    "logo": "/logo-kroppsskole.png",
+    "id": "kroppsskole"
   }
 }
