@@ -188,11 +188,11 @@ const SocialPage = () => {
 
             {/* Paid card */}
             <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col relative overflow-hidden h-full">
-              <div className="flex-1 flex flex-col gap-6 mb-6">
+              <div className="flex flex-col gap-6 mb-6">
                 <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
                   {t('social_page_b2b.value.paid.label')}
                 </span>
-                <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200">
+                <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200 min-h-[2.2em]">
                   {t('social_page_b2b.value.paid.price')}
                 </div>
               </div>
@@ -204,11 +204,11 @@ const SocialPage = () => {
 
             {/* Free card (Gamle Oslo) */}
             <div className="value-card border border-slate-300/20 bg-[#0C0C0C] p-8 md:p-12 flex flex-col relative overflow-hidden h-full">
-              <div className="flex-1 flex flex-col gap-6 mb-6">
+              <div className="flex flex-col gap-6 mb-6">
                 <span className="font-heading text-[10px] tracking-[2px] md:tracking-[4px] uppercase text-slate-300 break-words w-full">
                   {t('social_page_b2b.value.free.label')}
                 </span>
-                <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200">
+                <div className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-slate-200 min-h-[2.2em]">
                   {t('social_page_b2b.value.free.price')}
                 </div>
               </div>
