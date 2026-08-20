@@ -138,10 +138,10 @@ const HeroSequence = () => {
       tl.fromTo('.seq-text-1', 
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 0.05 }, 
-        0.1
+        0.06
       );
       // Fade out mais cedo
-      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.20);
+      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.15);
       
       // 2. O bloco de texto rola continuamente (como créditos de filme)
       // Ele começa fisicamente abaixo da tela (top-full) e rola até sair completamente pelo topo
