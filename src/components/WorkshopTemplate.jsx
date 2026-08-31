@@ -114,12 +114,13 @@ export default function WorkshopTemplate({ workshop, program }) {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.35, duration: 0.8 }}
-            className="w-full h-[280px] md:h-[420px] rounded-[2px] mb-16 bg-cover bg-center border border-[#1a1a1a] relative overflow-hidden"
-            style={{ backgroundImage: `url(${workshop.image})` }}
-          >
-            {/* Subtle bottom gradient for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-          </motion.div>
+            className="w-full h-[280px] md:h-[420px] mb-16 bg-cover bg-center relative overflow-hidden"
+            style={{ 
+              backgroundImage: `url(${workshop.image})`,
+              WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at center, black 40%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 80% 70% at center, black 40%, transparent 100%)'
+            }}
+          />
         )}
 
         {/* ─── DRAMATIC HOOK ───────────────────────── */}
