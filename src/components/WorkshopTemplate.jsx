@@ -172,7 +172,7 @@ export default function WorkshopTemplate({ workshop, program }) {
         <div className="space-y-0">
           {bodyParagraphs.map((paragraph, index) => {
             if (paragraph === '\u200B') {
-              return <div key={index} className="h-8 md:h-12 w-full" aria-hidden="true" />;
+              return <div key={index} className="h-8 w-full" aria-hidden="true" />;
             }
             
             const isQuote = isPullQuote(paragraph);
