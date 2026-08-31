@@ -115,12 +115,19 @@ export default function WorkshopTemplate({ workshop, program }) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.35, duration: 0.8 }}
             className="w-full h-[280px] md:h-[420px] mb-16 bg-cover bg-center relative overflow-hidden"
-            style={{ 
-              backgroundImage: `url(${workshop.image})`,
-              WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at center, black 40%, transparent 100%)',
-              maskImage: 'radial-gradient(ellipse 80% 70% at center, black 40%, transparent 100%)'
-            }}
-          />
+            style={{ backgroundImage: `url(${workshop.image})` }}
+          >
+            {/* Edge fade using linear gradients matching the background color */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `
+                  linear-gradient(to right, #0D0D12 -5%, transparent 20%, transparent 80%, #0D0D12 105%),
+                  linear-gradient(to bottom, #0D0D12 -5%, transparent 20%, transparent 80%, #0D0D12 105%)
+                `
+              }}
+            />
+          </motion.div>
         )}
 
         {/* ─── DRAMATIC HOOK ───────────────────────── */}
