@@ -122,8 +122,8 @@ export default function WorkshopTemplate({ workshop, program }) {
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: `
-                  linear-gradient(to right, #0D0D12 -5%, transparent 20%, transparent 80%, #0D0D12 105%),
-                  linear-gradient(to bottom, #0D0D12 -5%, transparent 20%, transparent 80%, #0D0D12 105%)
+                  linear-gradient(to right, #0D0D12 2%, transparent 35%, transparent 65%, #0D0D12 98%),
+                  linear-gradient(to bottom, #0D0D12 2%, transparent 35%, transparent 65%, #0D0D12 98%)
                 `
               }}
             />
