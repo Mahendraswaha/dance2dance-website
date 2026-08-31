@@ -14,14 +14,30 @@ export default function WorkshopTemplate({ workshop, program }) {
   const rawText = t(`programs.${program.id}.workshops.${workshop.id}.fullDescription`, workshop.fullDescription || '');
   const paragraphs = rawText.split(/\n+/).filter(p => p.trim().length > 0);
 
+  const closingQuote = t(`programs.${program.id}.workshops.${workshop.id}.closingQuote`, { defaultValue: '' });
+  const closingAuthor = t(`programs.${program.id}.workshops.${workshop.id}.closingAuthor`, { defaultValue: '' });
+
   // First paragraph = dramatic hook
   const hook = paragraphs[0] || '';
-  // Last paragraph = poetic closing (if short)
-  const lastParagraph = paragraphs[paragraphs.length - 1] || '';
-  const hasPoetClosing = paragraphs.length > 3 && lastParagraph.length < 100;
   
-  // Middle paragraphs (between hook and closing)
-  const bodyParagraphs = paragraphs.slice(1, hasPoetClosing ? -1 : undefined);
+  let poeticClosing = '';
+  let poeticAuthor = '';
+  let bodyParagraphs = [];
+  
+  if (closingQuote) {
+    poeticClosing = closingQuote;
+    poeticAuthor = closingAuthor;
+    bodyParagraphs = paragraphs.slice(1);
+  } else {
+    const lastParagraph = paragraphs[paragraphs.length - 1] || '';
+    const hasPoetClosing = paragraphs.length > 3 && lastParagraph.length < 100;
+    if (hasPoetClosing) {
+      poeticClosing = lastParagraph;
+      bodyParagraphs = paragraphs.slice(1, -1);
+    } else {
+      bodyParagraphs = paragraphs.slice(1);
+    }
+  }
   
   // Identify pull quotes: short paragraphs (< 120 chars) that feel poetic
   const isPullQuote = (text) => text.length < 120 && text.length > 15;
@@ -196,17 +212,22 @@ export default function WorkshopTemplate({ workshop, program }) {
         </div>
 
         {/* ─── POETIC CLOSING ─────────────────────── */}
-        {hasPoetClosing && (
+        {poeticClosing && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mt-16 mb-8 text-center"
+            className="mt-16 mb-8 text-center flex flex-col items-center"
           >
-            <p className="font-drama italic text-xl md:text-2xl text-accent/50 leading-[1.5]">
-              {lastParagraph}
+            <p className="font-drama italic text-xl md:text-2xl text-accent/50 leading-[1.6] whitespace-pre-line">
+              {poeticClosing}
             </p>
+            {poeticAuthor && (
+              <span className="mt-6 font-heading text-[11px] tracking-[3px] uppercase text-[#777777]">
+                {poeticAuthor}
+              </span>
+            )}
           </motion.div>
         )}
 
