@@ -172,7 +172,8 @@ export default function WorkshopTemplate({ workshop, program }) {
         <div className="space-y-0">
           {bodyParagraphs.map((paragraph, index) => {
             if (paragraph === '\u200B') {
-              return <div key={index} className="h-8 w-full" aria-hidden="true" />;
+              // Return null so the gap is exactly mb-8 (32px) from the previous paragraph
+              return null;
             }
             
             const isQuote = isPullQuote(paragraph);
