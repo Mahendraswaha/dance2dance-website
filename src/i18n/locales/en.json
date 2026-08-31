@@ -530,5 +530,14 @@
     "coming_soon": "Coming soon",
     "tbd": "TBD",
     "location": "Oslo, Norway"
+  },
+  "workshop_info": {
+    "duration": "Duration",
+    "price": "Investment",
+    "level": "Level",
+    "currency": "kr",
+    "all_levels": "All levels",
+    "advanced_pro": "Advanced / Pro",
+    "format_in_person": "In-person"
   }
 }

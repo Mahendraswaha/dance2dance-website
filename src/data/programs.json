@@ -10,22 +10,38 @@
       {
         "id": "be-water",
         "slug": "be-water",
-        "logo": "/logo-bewater.png"
+        "logo": "/logo-bewater.png",
+        "duration": "9h",
+        "price": "2 000",
+        "level": "all_levels",
+        "image": "/gallery/workshops/be-water.jpg"
       },
       {
         "id": "be-balance",
         "slug": "be-balance",
-        "logo": "/logo-bebalance.png"
+        "logo": "/logo-bebalance.png",
+        "duration": "9h",
+        "price": "2 000",
+        "level": "all_levels",
+        "image": "/gallery/workshops/be-balance.jpg"
       },
       {
         "id": "be-total",
         "slug": "be-total",
-        "logo": "/logo-betotal.png"
+        "logo": "/logo-betotal.png",
+        "duration": "9h",
+        "price": "2 000",
+        "level": "all_levels",
+        "image": "/gallery/workshops/be-total.jpg"
       },
       {
         "id": "be-stillness",
         "slug": "be-stillness",
-        "logo": "/logo-bestillness.png"
+        "logo": "/logo-bestillness.png",
+        "duration": "9h",
+        "price": "2 000",
+        "level": "all_levels",
+        "image": "/gallery/workshops/be-stillness.jpg"
       },
       {
         "id": "be-the-dance-pro",
@@ -44,9 +60,11 @@
           "programs.be-the-dance.workshops.btd_pro.p6",
           "programs.be-the-dance.workshops.btd_pro.p7"
         ],
-        "duration": "Intensive",
-        "level": "Advanced / Pro",
-        "format": "In-person"
+        "duration": "20h",
+        "level": "advanced_pro",
+        "format": "In-person",
+        "price": "4 400",
+        "image": "/gallery/workshops/be-the-dance-pro.jpg"
       },
       {
         "id": "be-the-dance-day",
@@ -64,9 +82,11 @@
           "programs.be-the-dance.workshops.btd_day.p5",
           "programs.be-the-dance.workshops.btd_day.p6"
         ],
-        "duration": "1 Day",
-        "level": "All levels",
-        "format": "In-person"
+        "duration": "2h",
+        "level": "all_levels",
+        "format": "In-person",
+        "price": "300",
+        "image": "/gallery/workshops/be-the-dance-day.jpg"
       }
     ],
     "corporate": {
@@ -85,32 +105,56 @@
       {
         "id": "uma-melhor-postura",
         "slug": "uma-melhor-postura",
-        "logo": "/icone-uma-melhor-postura.png"
+        "logo": "/icone-uma-melhor-postura.png",
+        "duration": "6h",
+        "price": "1 250",
+        "level": "all_levels",
+        "image": "/gallery/workshops/uma-melhor-postura.jpg"
       },
       {
         "id": "aprendendo-a-relaxar",
         "slug": "aprendendo-a-relaxar",
-        "logo": "/icone-Aprendendo-a-Relaxar.png"
+        "logo": "/icone-Aprendendo-a-Relaxar.png",
+        "duration": "6h",
+        "price": "1 250",
+        "level": "all_levels",
+        "image": "/gallery/workshops/aprendendo-a-relaxar.jpg"
       },
       {
         "id": "alongar-respirar-e-meditar",
         "slug": "alongar-respirar-e-meditar",
-        "logo": "/icone-Alongar-Respirar-Meditar.png"
+        "logo": "/icone-Alongar-Respirar-Meditar.png",
+        "duration": "6h",
+        "price": "1 250",
+        "level": "all_levels",
+        "image": "/gallery/workshops/alongar-respirar-e-meditar.jpg"
       },
       {
         "id": "transformando-habitos",
         "slug": "transformando-habitos",
-        "logo": "/icone-Transformando-Habitos.png"
+        "logo": "/icone-Transformando-Habitos.png",
+        "duration": "6h",
+        "price": "1 250",
+        "level": "all_levels",
+        "image": "/gallery/workshops/transformando-habitos.jpg"
       },
       {
         "id": "movimentos-diarios-para-prevenir-o-stress",
         "slug": "movimentos-diarios-para-prevenir-o-stress",
-        "logo": "/icone-Movimentos-Diarios-para-Prevenir-o-Stress.png"
+        "logo": "/icone-Movimentos-Diarios-para-Prevenir-o-Stress.png",
+        "duration": "6h",
+        "price": "1 250",
+        "level": "all_levels",
+        "image": "/gallery/workshops/transformando-habitos.jpg"
       },
       {
         "id": "recuperando-o-foco",
         "slug": "recuperando-o-foco",
-        "logo": "/icone-Recuperando-o-Foco.png"
+        "logo": "/icone-Recuperando-o-Foco.png",
+        "duration": "6h",
+        "price": "1 250",
+        "level": "all_levels",
+        "image": "/gallery/workshops/be-stillness.jpg"
       }
     ],
     "individualSessions": {},
