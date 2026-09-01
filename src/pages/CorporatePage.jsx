@@ -244,7 +244,7 @@ export default function CorporatePage() {
                   viewport={{ once: true, margin: '-30px' }}
                   variants={fadeUp}
                   custom={index}
-                  className="group relative bg-gradient-to-br from-[#141414] to-[#0f0f0f] border border-[#1f1f1f] rounded-[4px] p-8 flex flex-col items-center justify-center transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-accent/25 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(226,195,102,0.08)] overflow-hidden min-h-[220px]"
+                  className="group relative bg-gradient-to-br from-[#141414] to-[#0f0f0f] border border-[#1f1f1f] rounded-[4px] py-10 px-6 md:py-16 md:px-8 flex flex-col items-center justify-center transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-accent/25 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(226,195,102,0.08)] overflow-hidden min-h-[260px] md:min-h-[320px]"
                 >
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms]" />
                   
