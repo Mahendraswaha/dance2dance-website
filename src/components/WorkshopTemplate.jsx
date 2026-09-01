@@ -70,26 +70,45 @@ export default function WorkshopTemplate({ workshop, program }) {
         
         {/* ─── HEADER ─────────────────────────────── */}
         <header className="mb-12">
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="font-heading text-[10px] tracking-[5px] uppercase text-accent/80 mb-5"
+          >
+            {t(`programs.${program.id}.title`, program.title)}
+          </motion.p>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }}
+            className="font-batang text-4xl md:text-6xl font-normal mb-6 leading-tight text-[#F0EDE8]"
+          >
+            {t(`programs.${program.id}.workshops.${workshop.id}.title`, workshop.title)}
+          </motion.h1>
+
+          <motion.div initial={{ width: 0 }} animate={{ width: 48 }} transition={{ delay: 0.3, duration: 0.6 }}
+            className="h-[1px] bg-accent/70 mb-8"
+          />
+
           <motion.div 
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-              className="font-heading text-xl text-[#CFCFCF] font-light leading-relaxed"
-            >
-              {(() => {
-                const text = t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription);
-                if (text.includes('?')) {
-                  const parts = text.split('?');
-                  const question = parts[0] + '?';
-                  const answer = parts.slice(1).join('?').trim();
-                  return (
-                    <>
-                      <span className="italic block mb-2">{question}</span>
-                      {answer && <span>{answer}</span>}
-                    </>
-                  );
-                }
-                return <p>{text}</p>;
-              })()}
-            </motion.div>
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
+            className="font-heading text-xl text-[#CFCFCF] font-light leading-relaxed"
+          >
+            {(() => {
+              const text = t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription);
+              if (text.includes('?')) {
+                const parts = text.split('?');
+                const question = parts[0] + '?';
+                const answer = parts.slice(1).join('?').trim();
+                return (
+                  <>
+                    <span className="italic block mb-2">{question}</span>
+                    {answer && <span>{answer}</span>}
+                  </>
+                );
+              }
+              return <p>{text}</p>;
+            })()}
+          </motion.div>
         </header>
 
         {/* ─── INFO PILLS ─────────────────────────── */}
