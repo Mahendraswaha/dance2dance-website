@@ -623,5 +623,34 @@
       "text": "Get in touch to learn about the possibilities of Biostretch workshops and experiences designed for your corporate environment.",
       "button": "Contact Us"
     }
+  },
+  "individual": {
+    "kicker": "INDIVIDUAL SESSIONS",
+    "title": "Biostretch Individual Sessions",
+    "subtitle": "A personalized approach, tailored to your needs.",
+    "hook": "Biostretch individual sessions are an option for those who wish to deepen their body work in a personalized way, dedicating more attention to specific needs, perceptions and movement patterns.",
+    "body": {
+      "p1": "While workshops provide a collective experience of exploration and awareness through movement, the individual session allows a more attentive and targeted approach to what is particularly relevant to you.",
+      "pullQuote": "A space to perceive and explore.",
+      "p2": "In a safe and welcoming environment, movements are guided by verbal suggestions and gentle touches, inviting you to perceive the body and the sensations that arise during movement. The sequences are performed slowly and gently, promoting relaxation and a more refined perception of how the body moves and organizes itself.",
+      "p3": "From this attention, new perceptions about habits and body patterns can emerge, opening new possibilities for moving with more comfort and efficiency."
+    },
+    "focused": {
+      "kicker": "DIRECTED TO WHAT YOU NEED",
+      "p1": "The individual session allows you to deepen specific aspects, such as tension, posture, mobility, flexibility, balance, coordination or movement patterns. Each session is adapted to the characteristics and needs of each person, respecting their rhythm and their moment.",
+      "p2": "More than simply stretching or moving the body, Biostretch proposes an investigation through movement, developing an awareness that can be carried into daily activities.",
+      "pullQuote": "An investigation through movement."
+    },
+    "deepening": {
+      "kicker": "FOR THOSE WHO WANT TO GO DEEPER",
+      "p1": "If you have participated in a workshop and wish to explore some aspect of the work more deeply, or if you are looking for a more focused approach to a specific need, the individual session can be an excellent choice.",
+      "p2": "Give your body time and attention to discover new possibilities of movement."
+    },
+    "closing": "Give your body time and attention to discover new possibilities of movement.",
+    "cta": {
+      "title": "Schedule your individual session",
+      "text": "Get in touch to schedule your individual Biostretch session.",
+      "button": "Schedule Session"
+    }
   }
 }

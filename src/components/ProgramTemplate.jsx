@@ -241,14 +241,14 @@ export default function ProgramTemplate({ program }) {
               </Link>
             )}
             {program.individualSessions && (
-              <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
+              <Link to={`/${program.id}/individual`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block">
                 <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.individualSessions.title`, program.individualSessions.title)}</h3>
                 <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
                 <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
-                <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
-                  {t('actions.book', 'Agendar')}
-                </button>
-              </div>
+                <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
+                  {t('actions.learn_more', 'Saiba mais')}
+                </span>
+              </Link>
             )}
           </div>
         </section>

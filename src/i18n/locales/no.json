@@ -623,5 +623,34 @@
       "text": "Ta kontakt for å lære om mulighetene for Biostretch-workshops og opplevelser utviklet for ditt bedriftsmiljø.",
       "button": "Kontakt Oss"
     }
+  },
+  "individual": {
+    "kicker": "INDIVIDUELLE TIMER",
+    "title": "Individuelle Biostretch-timer",
+    "subtitle": "Et personlig tilpasset arbeid, rettet mot dine behov.",
+    "hook": "Individuelle Biostretch-timer er et alternativ for deg som ønsker å fordype kroppsarbeidet på en personlig måte, med mer oppmerksomhet til spesifikke behov, oppfatninger og bevegelsesmønstre.",
+    "body": {
+      "p1": "Mens workshopene gir en kollektiv opplevelse av utforskning og bevissthet gjennom bevegelse, gir den individuelle timen et mer oppmerksomt og rettet blikk mot det som er spesielt relevant for deg.",
+      "pullQuote": "Et rom for å oppdage og utforske.",
+      "p2": "I et trygt og velkommende miljø blir bevegelsene veiledet gjennom verbale forslag og milde berøringer, som inviterer deg til å kjenne kroppen og fornemmelsene som oppstår under bevegelsen. Sekvensene utføres sakte og mykt, noe som fremmer avslapning og en mer forfinet oppfatning av hvordan kroppen beveger seg og organiserer seg.",
+      "p3": "Fra denne oppmerksomheten kan nye oppfatninger om vaner og kroppsmønstre oppstå, som åpner nye muligheter for å bevege seg med mer komfort og effektivitet."
+    },
+    "focused": {
+      "kicker": "RETTET MOT DET DU TRENGER",
+      "p1": "Den individuelle timen lar deg fordype spesifikke aspekter, som spenninger, holdning, mobilitet, fleksibilitet, balanse, koordinasjon eller bevegelsesmønstre. Hver time er tilpasset den enkeltes egenskaper og behov, med respekt for deres rytme og øyeblikk.",
+      "p2": "Mer enn bare å tøye eller bevege kroppen, foreslår Biostretch en undersøkelse gjennom bevegelse, som utvikler en bevissthet som kan tas med inn i daglige aktiviteter.",
+      "pullQuote": "En undersøkelse gjennom bevegelse."
+    },
+    "deepening": {
+      "kicker": "FOR DE SOM VIL GÅ DYPERE",
+      "p1": "Hvis du har deltatt på en workshop og ønsker å utforske noen aspekter av arbeidet dypere, eller om du søker en mer fokusert tilnærming til et spesifikt behov, kan den individuelle timen være et utmerket valg.",
+      "p2": "Gi kroppen din tid og oppmerksomhet til å oppdage nye bevegelsesmuligheter."
+    },
+    "closing": "Gi kroppen din tid og oppmerksomhet til å oppdage nye bevegelsesmuligheter.",
+    "cta": {
+      "title": "Bestill din individuelle time",
+      "text": "Ta kontakt for å bestille din individuelle Biostretch-time.",
+      "button": "Bestill time"
+    }
   }
 }

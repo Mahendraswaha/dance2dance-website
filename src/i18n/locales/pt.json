@@ -623,5 +623,34 @@
       "text": "Entre em contato para conhecer as possibilidades de workshops e experiências de Biostretch desenvolvidas para o seu ambiente corporativo.",
       "button": "Fale Conosco"
     }
+  },
+  "individual": {
+    "kicker": "SESSÕES INDIVIDUAIS",
+    "title": "Sessões Individuais de Biostretch",
+    "subtitle": "Um trabalho personalizado, voltado para as suas necessidades.",
+    "hook": "As sessões individuais de Biostretch são uma opção para quem deseja aprofundar o trabalho corporal de forma personalizada, dedicando mais atenção a necessidades, percepções e padrões de movimento específicos.",
+    "body": {
+      "p1": "Enquanto os workshops proporcionam uma experiência coletiva de exploração e consciência através do movimento, a sessão individual permite um olhar mais atento e direcionado para aquilo que é particularmente relevante para você.",
+      "pullQuote": "Um espaço para perceber e explorar.",
+      "p2": "Em um ambiente seguro e acolhedor, os movimentos são orientados por sugestões verbais e toques suaves, convidando você a perceber o corpo e as sensações que surgem durante o movimento. As sequências são realizadas de forma lenta e suave, favorecendo o relaxamento e uma percepção mais refinada de como o corpo se movimenta e se organiza.",
+      "p3": "A partir dessa atenção, podem surgir novas percepções sobre hábitos e padrões corporais, abrindo novas possibilidades para se mover com mais conforto e eficiência."
+    },
+    "focused": {
+      "kicker": "DIRECIONADO AO QUE VOCÊ PRECISA",
+      "p1": "A sessão individual permite aprofundar aspectos específicos, como tensões, postura, mobilidade, flexibilidade, equilíbrio, coordenação ou padrões de movimento. Cada sessão é adaptada às características e necessidades de cada pessoa, respeitando seu ritmo e seu momento.",
+      "p2": "Mais do que simplesmente alongar ou movimentar o corpo, o Biostretch propõe uma investigação através do movimento, desenvolvendo uma consciência que pode ser levada para as atividades do dia a dia.",
+      "pullQuote": "Uma investigação através do movimento."
+    },
+    "deepening": {
+      "kicker": "PARA QUEM QUER APROFUNDAR",
+      "p1": "Se você participou de um workshop e deseja explorar mais profundamente algum aspecto do trabalho, ou se busca uma abordagem mais focada em uma necessidade específica, a sessão individual pode ser uma excelente escolha.",
+      "p2": "Dê ao seu corpo tempo e atenção para descobrir novas possibilidades de movimento."
+    },
+    "closing": "Dê ao seu corpo tempo e atenção para descobrir novas possibilidades de movimento.",
+    "cta": {
+      "title": "Agende sua sessão individual",
+      "text": "Entre em contato para agendar sua sessão individual de Biostretch.",
+      "button": "Agendar Sessão"
+    }
   }
 }
