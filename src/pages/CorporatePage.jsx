@@ -49,7 +49,7 @@ export default function CorporatePage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { scrollY } = useScroll();
-  const logoOpacity = useTransform(scrollY, [200, 500], [0.4, 0]);
+  const logoOpacity = useTransform(scrollY, [700, 1000], [0.4, 0]);
 
 
   const body = t('corporate.body', { returnObjects: true });
