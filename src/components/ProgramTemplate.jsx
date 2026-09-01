@@ -205,7 +205,10 @@ export default function ProgramTemplate({ program }) {
                   <div className="w-7 h-[1px] bg-accent/40 group-hover:bg-accent/80 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
                   
                   <p className="font-heading text-[14px] leading-[1.75] text-[#9A9A9A] font-light relative z-10 mb-8 flex-grow">
-                    {t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription)}
+                    {(() => {
+                      const text = t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription);
+                      return text.includes('?') ? text.split('?')[0] + '?' : text;
+                    })()}
                   </p>
 
                   <div className="mt-auto relative z-10 w-full">
