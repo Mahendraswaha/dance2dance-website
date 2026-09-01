@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Monitor, PersonStanding, Zap, Eye, Sprout, Handshake, Activity, Wind, Move, Compass, Coffee, Sun, Shield, Heart, Users } from 'lucide-react';
@@ -48,6 +48,9 @@ const Emblem = ({ children }) => (
 export default function CorporatePage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { scrollY } = useScroll();
+  const logoOpacity = useTransform(scrollY, [200, 500], [0.4, 0]);
+
 
   const body = t('corporate.body', { returnObjects: true });
   const benefits = t('corporate.benefits', { returnObjects: true });
@@ -63,11 +66,12 @@ export default function CorporatePage() {
         {/* Watermark Logo */}
         <div className="fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40">
           <div className="max-w-7xl mx-auto flex">
-            <img
-              src="/logo-biostretch.png"
-              alt="Biostretch"
-              className="w-32 md:w-44 object-contain opacity-40"
-            />
+            <motion.img
+                src="/logo-biostretch.png"
+                alt="Biostretch"
+                className="w-32 md:w-44 object-contain"
+                style={{ opacity: logoOpacity }}
+              />
           </div>
         </div>
 
