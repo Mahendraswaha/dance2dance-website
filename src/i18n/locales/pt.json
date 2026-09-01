@@ -545,5 +545,83 @@
     "all_levels": "Todos os níveis",
     "advanced_pro": "Avançado / Pro",
     "format_in_person": "Presencial"
+  },
+  "corporate": {
+    "kicker": "BIOSTRETCH PARA EMPRESAS",
+    "title": "Bem-estar que se traduz em presença",
+    "subtitle": "Quando existe espaço para a pausa e para o cuidado, o trabalho ganha outra qualidade.",
+    "hook": "O Biostretch leva para dentro das empresas experiências de movimento e consciência corporal que criam momentos de pausa, reconexão e cuidado, integrando bem-estar à rotina de trabalho de maneira simples, acessível e profunda.",
+    "body": {
+      "p1": "Por meio de práticas que combinam movimento, alongamento, respiração e atenção ao corpo, os colaboradores são convidados a sair do modo automático e desenvolver uma relação mais consciente com sua postura, seus movimentos e seu próprio bem-estar.",
+      "pullQuote": "Uma experiência pensada para cada ambiente.",
+      "p2": "Cada empresa tem sua própria dinâmica. Cada equipe enfrenta diferentes desafios físicos e mentais ao longo da jornada de trabalho. Longos períodos diante do computador, tarefas repetitivas, muitas horas em pé, pressão por resultados e uma rotina intensa podem gerar desgaste e acúmulo de tensões que passam despercebidas, até que o corpo dê os seus sinais.",
+      "p3": "Por isso, o Biostretch é sempre adaptado às características e necessidades de cada organização. As práticas são construídas para oferecer uma experiência inclusiva e significativa, respeitando diferentes idades, perfis e níveis de condicionamento físico. Não é ginástica laboral. É consciência em movimento."
+    },
+    "benefits": {
+      "kicker": "MOVIMENTO COM PROPÓSITO",
+      "intro": "O Biostretch parte de um princípio simples: o corpo foi feito para se movimentar. Ao trazer mais atenção para a forma como nos posicionamos, respiramos e nos movimentamos, a prática cria oportunidades para desenvolver maior consciência corporal e incorporar hábitos de autocuidado que permanecem para além do workshop.",
+      "cards": {
+        "consciousness": {
+          "title": "Consciência corporal",
+          "desc": "Perceber como o corpo se organiza no dia a dia"
+        },
+        "tension_relief": {
+          "title": "Alívio de tensões",
+          "desc": "Liberar o que se acumula sem que a gente perceba"
+        },
+        "mobility": {
+          "title": "Mobilidade e equilíbrio",
+          "desc": "Recuperar a liberdade de movimentos que o corpo naturalmente possui"
+        },
+        "coordination": {
+          "title": "Coordenação e percepção",
+          "desc": "Ampliar a relação entre intenção e movimento"
+        },
+        "pause": {
+          "title": "Pausa e recuperação",
+          "desc": "Criar intervalos que renovam a energia ao longo da jornada"
+        },
+        "presence": {
+          "title": "Presença e atenção",
+          "desc": "Cultivar a capacidade de estar inteiro no que se faz"
+        },
+        "overload": {
+          "title": "Redução da sobrecarga",
+          "desc": "Interromper o ciclo de tensão antes que ele se instale"
+        },
+        "selfcare": {
+          "title": "Autocuidado",
+          "desc": "Desenvolver o hábito de cuidar de si como parte da rotina"
+        },
+        "environment": {
+          "title": "Ambiente mais humano",
+          "desc": "Contribuir para relações mais saudáveis e sustentáveis no trabalho"
+        }
+      }
+    },
+    "audience": {
+      "kicker": "PARA EMPRESAS QUE VALORIZAM PESSOAS",
+      "intro": "O Biostretch Corporativo é indicado para organizações que desejam criar espaços de pausa orientada, escuta ativa e fortalecimento do bem-estar físico e emocional dentro do ambiente institucional.",
+      "items": {
+        "seated": "Longos períodos sentadas diante de telas",
+        "standing": "Muitas horas em pé ou em constante deslocamento",
+        "high_demand": "Ambientes de alta demanda que pedem momentos de pausa e reconexão",
+        "attention": "Equipes que buscam mais atenção e consciência corporal",
+        "wellbeing_culture": "Empresas que querem integrar bem-estar à sua cultura",
+        "relationships": "Organizações que valorizam relações e equilíbrio no trabalho"
+      }
+    },
+    "workshops_section": {
+      "kicker": "WORKSHOPS E EXPERIÊNCIAS",
+      "p1": "Os workshops de Biostretch são desenhados para proporcionar experiências que vão além de uma simples pausa na rotina. São momentos de reconexão com o corpo, com a respiração e com o presente.",
+      "p2": "Cada encontro cria um espaço para desacelerar, movimentar-se com mais consciência e renovar a energia para seguir o dia com mais presença e equilíbrio.",
+      "p3": "As experiências podem ser realizadas como parte de programas de qualidade de vida, semanas internas, eventos corporativos, encontros de equipes e outras iniciativas voltadas ao bem-estar."
+    },
+    "closing": "Empresas são feitas de pessoas. Quando existe espaço para o cuidado, para a pausa e para o equilíbrio, criam-se melhores condições para relações mais saudáveis, equipes mais presentes e um ambiente de trabalho verdadeiramente sustentável.",
+    "cta": {
+      "title": "Vamos criar uma experiência para a sua equipe?",
+      "text": "Entre em contato para conhecer as possibilidades de workshops e experiências de Biostretch desenvolvidas para o seu ambiente corporativo.",
+      "button": "Fale Conosco"
+    }
   }
 }

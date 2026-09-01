@@ -545,5 +545,83 @@
     "all_levels": "Alle nivåer",
     "advanced_pro": "Avansert / Pro",
     "format_in_person": "Fysisk"
+  },
+  "corporate": {
+    "kicker": "BIOSTRETCH FOR BEDRIFTER",
+    "title": "Velvære som gir tilstedeværelse",
+    "subtitle": "Når det finnes rom for pause og omsorg, får arbeidet en annen kvalitet.",
+    "hook": "Biostretch bringer opplevelser av bevegelse og kroppsbevissthet inn i bedrifter, og skaper øyeblikk av pause, gjenforening og omsorg, som integrerer velvære i arbeidsrutinen på en enkel, tilgjengelig og dyp måte.",
+    "body": {
+      "p1": "Gjennom praksiser som kombinerer bevegelse, strekking, pust og oppmerksomhet på kroppen, inviteres medarbeiderne til å gå ut av automatmodus og utvikle en mer bevisst relasjon til sin holdning, sine bevegelser og sitt eget velvære.",
+      "pullQuote": "En opplevelse designet for hvert miljø.",
+      "p2": "Hver bedrift har sin egen dynamikk. Hvert team møter ulike fysiske og mentale utfordringer gjennom arbeidsdagen. Lange perioder foran datamaskinen, repetitive oppgaver, mange timer stående, press for resultater og en intens rutine kan generere slitasje og oppsamlet spenning som går ubemerket hen, helt til kroppen gir sine signaler.",
+      "p3": "Derfor tilpasses Biostretch alltid til egenskapene og behovene til hver organisasjon. Praksisene er bygget for å tilby en inkluderende og meningsfull opplevelse, som respekterer ulike aldre, profiler og kondisjonsnivåer. Det er ikke arbeidsplassgymnastikk. Det er bevissthet i bevegelse."
+    },
+    "benefits": {
+      "kicker": "BEVEGELSE MED HENSIKT",
+      "intro": "Biostretch starter fra et enkelt prinsipp: kroppen er laget for å bevege seg. Ved å bringe mer oppmerksomhet til hvordan vi posisjonerer oss, puster og beveger oss, skaper praksisen muligheter for å utvikle større kroppsbevissthet og innlemme egenomsorgsvaner som varer utover workshopen.",
+      "cards": {
+        "consciousness": {
+          "title": "Kroppsbevissthet",
+          "desc": "Å oppdage hvordan kroppen organiserer seg i hverdagen"
+        },
+        "tension_relief": {
+          "title": "Spenningslindring",
+          "desc": "Å frigjøre det som samler seg opp uten at vi merker det"
+        },
+        "mobility": {
+          "title": "Mobilitet og balanse",
+          "desc": "Å gjenvinne bevegelsesfriheten kroppen naturlig besitter"
+        },
+        "coordination": {
+          "title": "Koordinasjon og persepsjon",
+          "desc": "Å utvide forholdet mellom intensjon og bevegelse"
+        },
+        "pause": {
+          "title": "Pause og restitusjon",
+          "desc": "Å skape intervaller som fornyer energien gjennom dagen"
+        },
+        "presence": {
+          "title": "Tilstedeværelse og oppmerksomhet",
+          "desc": "Å dyrke evnen til å være helt til stede i det man gjør"
+        },
+        "overload": {
+          "title": "Reduksjon av overbelastning",
+          "desc": "Å avbryte spenningssyklusen før den setter seg"
+        },
+        "selfcare": {
+          "title": "Egenomsorg",
+          "desc": "Å utvikle vanen med å ta vare på seg selv som del av rutinen"
+        },
+        "environment": {
+          "title": "Et mer menneskelig miljø",
+          "desc": "Å bidra til sunnere og mer bærekraftige relasjoner på arbeidsplassen"
+        }
+      }
+    },
+    "audience": {
+      "kicker": "FOR BEDRIFTER SOM VERDSETTER MENNESKER",
+      "intro": "Biostretch Corporate er designet for organisasjoner som ønsker å skape rom for veiledet pause, aktiv lytting og styrking av fysisk og emosjonelt velvære innenfor det institusjonelle miljøet.",
+      "items": {
+        "seated": "Lange perioder sittende foran skjermer",
+        "standing": "Mange timer stående eller i konstant bevegelse",
+        "high_demand": "Miljøer med høye krav som trenger øyeblikk av pause og gjenforening",
+        "attention": "Team som søker mer oppmerksomhet og kroppsbevissthet",
+        "wellbeing_culture": "Bedrifter som vil integrere velvære i sin kultur",
+        "relationships": "Organisasjoner som verdsetter relasjoner og balanse på arbeidsplassen"
+      }
+    },
+    "workshops_section": {
+      "kicker": "WORKSHOPS OG OPPLEVELSER",
+      "p1": "Biostretch-workshoper er designet for å gi opplevelser som går utover en enkel pause i rutinen. De er øyeblikk av gjenforening med kroppen, med pusten og med nåtiden.",
+      "p2": "Hvert møte skaper et rom for å senke farten, bevege seg med mer bevissthet og fornye energien for å fortsette dagen med mer tilstedeværelse og balanse.",
+      "p3": "Opplevelsene kan leveres som del av livskvalitetsprogrammer, interne uker, bedriftsarrangementer, teammøter og andre velværeinitiativer."
+    },
+    "closing": "Bedrifter er laget av mennesker. Når det finnes rom for omsorg, for pause og for balanse, skapes bedre betingelser for sunnere relasjoner, mer tilstedeværende team og et virkelig bærekraftig arbeidsmiljø.",
+    "cta": {
+      "title": "Skal vi skape en opplevelse for teamet ditt?",
+      "text": "Ta kontakt for å lære om mulighetene for Biostretch-workshops og opplevelser utviklet for ditt bedriftsmiljø.",
+      "button": "Kontakt Oss"
+    }
   }
 }

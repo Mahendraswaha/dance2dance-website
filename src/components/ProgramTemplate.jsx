@@ -225,17 +225,17 @@ export default function ProgramTemplate({ program }) {
         <section className="pt-16 pb-16 bg-primary border-t border-[#1a1a1a]">
           <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
             {program.corporate && (
-              <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
+              <Link to={`/${program.id}/empresas`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block">
                 {program.corporate.logo && (
                   <img src={program.corporate.logo} alt={t(`programs.${program.id}.corporate.title`, program.corporate.title)} className="h-20 object-contain mb-8" />
                 )}
                 <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.corporate.title`, program.corporate.title)}</h3>
                 <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
                 <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
-                <button className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
-                  {t('actions.contact_us', 'Fale Conosco')}
-                </button>
-              </div>
+                <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
+                  {t('actions.learn_more', 'Saiba mais')}
+                </span>
+              </Link>
             )}
             {program.individualSessions && (
               <div className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors">
