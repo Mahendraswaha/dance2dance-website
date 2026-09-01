@@ -601,10 +601,10 @@
     },
     "audience": {
       "kicker": "PARA EMPRESAS QUE VALORIZAM PESSOAS",
-      "intro": "O Biostretch Corporativo é indicado para organizações que desejam criar espaços de pausa orientada, escuta ativa e fortalecimento do bem-estar físico e emocional dentro do ambiente institucional. Especialmente indicado para equipes que:",
+      "intro": "O Biostretch Corporativo é indicado para organizações que desejam criar espaços de pausa orientada, escuta ativa e fortalecimento do bem-estar físico e emocional dentro do ambiente institucional. Especialmente indicado para:",
       "items": {
-        "seated": "Longos períodos sentadas diante de telas",
-        "standing": "Muitas horas em pé ou em constante deslocamento",
+        "seated": "Pessoas que passam longos períodos sentadas diante de telas",
+        "standing": "Colaboradores que ficam muitas horas em pé ou em constante deslocamento",
         "high_demand": "Ambientes de alta demanda que pedem momentos de pausa e reconexão",
         "attention": "Equipes que buscam mais atenção e consciência corporal",
         "wellbeing_culture": "Empresas que querem integrar bem-estar à sua cultura",

@@ -601,10 +601,10 @@
     },
     "audience": {
       "kicker": "FOR BEDRIFTER SOM VERDSETTER MENNESKER",
-      "intro": "Biostretch Corporate er designet for organisasjoner som ønsker å skape rom for veiledet pause, aktiv lytting og styrking av fysisk og emosjonelt velvære innenfor det institusjonelle miljøet. Spesielt anbefalt for team som:",
+      "intro": "Biostretch Corporate er designet for organisasjoner som ønsker å skape rom for veiledet pause, aktiv lytting og styrking av fysisk og emosjonelt velvære innenfor det institusjonelle miljøet. Spesielt anbefalt for:",
       "items": {
-        "seated": "Lange perioder sittende foran skjermer",
-        "standing": "Mange timer stående eller i konstant bevegelse",
+        "seated": "Personer som tilbringer lange perioder sittende foran skjermer",
+        "standing": "Medarbeidere som står i mange timer eller er i konstant bevegelse",
         "high_demand": "Miljøer med høye krav som trenger øyeblikk av pause og gjenforening",
         "attention": "Team som søker mer oppmerksomhet og kroppsbevissthet",
         "wellbeing_culture": "Bedrifter som vil integrere velvære i sin kultur",
