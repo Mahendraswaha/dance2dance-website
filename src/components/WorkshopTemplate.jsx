@@ -191,7 +191,7 @@ export default function WorkshopTemplate({ workshop, program }) {
                 >
                   <div className="max-w-lg text-center">
                     <div className="w-8 h-[1px] bg-accent/30 mx-auto mb-6" />
-                    <p className="font-drama italic text-xl md:text-2xl text-accent/60 leading-[1.5]">
+                    <p className="font-drama italic text-xl md:text-2xl text-accent leading-[1.5]">
                       {paragraph}
                     </p>
                     <div className="w-8 h-[1px] bg-accent/30 mx-auto mt-6" />
@@ -225,7 +225,7 @@ export default function WorkshopTemplate({ workshop, program }) {
             transition={{ duration: 0.8 }}
             className="mt-16 mb-8 text-center flex flex-col items-center"
           >
-            <p className="font-drama italic text-xl md:text-2xl text-accent/50 leading-[1.6] whitespace-pre-line">
+            <p className="font-drama italic text-xl md:text-2xl text-accent leading-[1.6] whitespace-pre-line">
               {poeticClosing}
             </p>
             {poeticAuthor && (
