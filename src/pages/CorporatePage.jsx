@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Monitor, PersonStanding, Zap, Eye, Sprout, Handshake } from 'lucide-react';
+import { Monitor, PersonStanding, Zap, Eye, Sprout, Handshake, Activity, Wind, Move, Compass, Coffee, Sun, Shield, Heart, Users } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -12,9 +12,15 @@ const fadeUp = {
 };
 
 const benefitCards = [
-  'consciousness', 'tension_relief', 'mobility',
-  'coordination', 'pause', 'presence',
-  'overload', 'selfcare', 'environment'
+  { key: 'consciousness', icon: Activity },
+  { key: 'tension_relief', icon: Wind },
+  { key: 'mobility', icon: Move },
+  { key: 'coordination', icon: Compass },
+  { key: 'pause', icon: Coffee },
+  { key: 'presence', icon: Sun },
+  { key: 'overload', icon: Shield },
+  { key: 'selfcare', icon: Heart },
+  { key: 'environment', icon: Users }
 ];
 
 const audienceIcons = [
@@ -25,6 +31,19 @@ const audienceIcons = [
   { icon: Sprout, key: 'wellbeing_culture' },
   { icon: Handshake, key: 'relationships' },
 ];
+
+
+const Emblem = ({ children }) => (
+  <div className="relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 mt-4">
+    <div className="absolute inset-0 rounded-full border border-accent/30" />
+    <div className="absolute inset-1 rounded-full border border-accent/10" />
+    <div className="absolute inset-2 rounded-full border border-accent/40 border-dashed" />
+    <div className="absolute inset-0 rounded-full bg-accent/5 blur-sm" />
+    <div className="relative text-accent">
+      {children}
+    </div>
+  </div>
+);
 
 export default function CorporatePage() {
   const navigate = useNavigate();
@@ -47,7 +66,7 @@ export default function CorporatePage() {
             <img
               src="/logo-biostretch.png"
               alt="Biostretch"
-              className="h-8 md:h-16 ml-4 md:ml-10 object-contain opacity-40"
+              className="w-32 md:w-44 object-contain opacity-40"
             />
           </div>
         </div>
@@ -166,7 +185,7 @@ export default function CorporatePage() {
 
           <div className="max-w-[1100px] mx-auto px-8 md:px-16 lg:px-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {benefitCards.map((key, index) => (
+              {benefitCards.map(({ key, icon: Icon }, index) => (
                 <motion.div
                   key={key}
                   initial="hidden"
@@ -174,13 +193,22 @@ export default function CorporatePage() {
                   viewport={{ once: true, margin: '-30px' }}
                   variants={fadeUp}
                   custom={index}
-                  className="group relative bg-[#141414] border border-[#222222] rounded-[2px] p-8 transition-all duration-500 hover:border-accent/25"
+                  className="group relative bg-gradient-to-br from-[#141414] to-[#0a0a0a] border border-[#222222] rounded-[2px] p-8 md:p-10 transition-all duration-500 hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(226,195,102,0.05)] overflow-hidden flex flex-col items-center justify-center text-center"
                 >
-                  <div className="w-6 h-[1px] bg-accent/50 mb-5 group-hover:w-10 transition-all duration-500" />
-                  <h4 className="font-drama italic text-lg text-[#E2C366] mb-3 leading-tight">
+                  <div className="absolute inset-2 border border-accent/10 rounded-[1px] pointer-events-none group-hover:border-accent/20 transition-colors duration-500" />
+                  
+                  <div className="absolute top-4 left-5 md:top-5 md:left-6 font-drama text-3xl md:text-4xl text-accent/30 font-light group-hover:text-accent/60 transition-colors duration-500">
+                    {index + 1}
+                  </div>
+
+                  <Emblem>
+                    <Icon size={32} strokeWidth={1} />
+                  </Emblem>
+
+                  <h4 className="font-heading text-[11px] md:text-[12px] tracking-[2px] uppercase text-[#E2C366] font-medium leading-[1.4] w-full mt-2 group-hover:text-[#F0EDE8] transition-colors duration-500">
                     {benefits.cards[key]?.title}
                   </h4>
-                  <p className="font-heading text-[13px] text-[#9A9A9A] font-light leading-[1.7]">
+                  <p className="font-heading text-[12px] text-[#9A9A9A] font-light leading-[1.6] mt-3 max-w-[85%]">
                     {benefits.cards[key]?.desc}
                   </p>
                 </motion.div>
@@ -216,12 +244,16 @@ export default function CorporatePage() {
                   viewport={{ once: true, margin: '-30px' }}
                   variants={fadeUp}
                   custom={index}
-                  className="group flex items-start gap-5 p-6 bg-[#141414] border border-[#222222] rounded-[2px] transition-all duration-500 hover:border-accent/25"
+                  className="group relative bg-gradient-to-br from-[#141414] to-[#0f0f0f] border border-[#1f1f1f] rounded-[4px] p-8 flex flex-col items-center justify-center transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-accent/25 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(226,195,102,0.08)] overflow-hidden min-h-[220px]"
                 >
-                  <div className="shrink-0 mt-0.5">
-                    <Icon size={20} className="text-accent/60 group-hover:text-accent transition-colors duration-500" strokeWidth={1.5} />
-                  </div>
-                  <p className="font-heading text-[14px] text-[#CFCFCF] font-light leading-[1.7]">
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms]" />
+                  
+                  <div className="font-drama text-2xl text-accent mb-2 font-normal opacity-40">0{index + 1}</div>
+                  <div className="w-[30px] h-[1px] bg-accent mb-6 opacity-40" />
+
+                  <Icon size={36} className="text-accent/60 group-hover:text-accent transition-colors duration-500 mb-6" strokeWidth={1} />
+                  
+                  <p className="font-heading text-[12px] tracking-[1px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.6]">
                     {audience.items[key]}
                   </p>
                 </motion.div>
