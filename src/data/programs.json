@@ -145,7 +145,7 @@
         "duration": "6h",
         "price": "1 250",
         "level": "all_levels",
-        "image": "/gallery/workshops/movimentos-diarios.jpg"
+        "image": "/gallery/workshops/transformando-habitos.jpg"
       },
       {
         "id": "recuperando-o-foco",
@@ -154,7 +154,7 @@
         "duration": "6h",
         "price": "1 250",
         "level": "all_levels",
-        "image": "/gallery/workshops/recuperando-o-foco.jpg"
+        "image": "/gallery/workshops/be-stillness.jpg"
       }
     ],
     "individualSessions": {},
