@@ -40,15 +40,15 @@ const Activities = () => {
             </p>
           </Link>
           
-          {/* Card 2 - BioStretch */}
+          {/* Card 2 - Biostretch */}
           <Link to="/biostretch" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(90,168,122,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(90,168,122,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
-              <img src="/logo-biostretch.png" alt="BioStretch" className="max-h-full max-w-[180px] scale-110 object-contain" />
+              <img src="/logo-biostretch.png" alt="Biostretch" className="max-h-full max-w-[180px] scale-110 object-contain" />
             </div>
             
-            <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">BioStretch</h3>
+            <h3 className="text-[22px] font-normal text-[#F0EDE8] mb-3.5 tracking-wide relative z-10 font-batang">Biostretch</h3>
             
             <div className="w-7 h-[1px] bg-[#C4B49A]/40 group-hover:bg-[#5AA87A]/60 mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10"></div>
             
