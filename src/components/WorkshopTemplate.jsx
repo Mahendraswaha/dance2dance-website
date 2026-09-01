@@ -91,7 +91,7 @@ export default function WorkshopTemplate({ workshop, program }) {
           
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-            className="font-heading text-xl text-[#9A9A9A] font-light leading-relaxed"
+            className="font-heading text-xl text-[#CFCFCF] font-light leading-relaxed"
           >
             {t(`programs.${program.id}.workshops.${workshop.id}.shortDescription`, workshop.shortDescription)}
           </motion.p>
@@ -191,7 +191,7 @@ export default function WorkshopTemplate({ workshop, program }) {
                 >
                   <div className="max-w-lg text-center">
                     <div className="w-8 h-[1px] bg-accent/30 mx-auto mb-6" />
-                    <p className="font-drama italic text-xl md:text-2xl text-accent leading-[1.5]">
+                    <p className="font-drama italic text-xl md:text-2xl text-[#E2C366] leading-[1.5]">
                       {paragraph}
                     </p>
                     <div className="w-8 h-[1px] bg-accent/30 mx-auto mt-6" />
@@ -208,7 +208,7 @@ export default function WorkshopTemplate({ workshop, program }) {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className="font-heading font-light text-[#9A9A9A] text-base md:text-lg leading-[1.85] mb-8"
+                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
               >
                 {paragraph}
               </motion.p>
@@ -225,11 +225,11 @@ export default function WorkshopTemplate({ workshop, program }) {
             transition={{ duration: 0.8 }}
             className="mt-16 mb-8 text-center flex flex-col items-center"
           >
-            <p className="font-drama italic text-xl md:text-2xl text-accent leading-[1.6] whitespace-pre-line">
+            <p className="font-drama italic text-xl md:text-2xl text-[#E2C366] leading-[1.6] whitespace-pre-line">
               {poeticClosing}
             </p>
             {poeticAuthor && (
-              <span className="mt-6 font-heading text-[11px] tracking-[3px] uppercase text-[#777777]">
+              <span className="mt-6 font-heading text-[11px] tracking-[3px] uppercase text-[#9A9A9A]">
                 {poeticAuthor}
               </span>
             )}
@@ -253,7 +253,7 @@ export default function WorkshopTemplate({ workshop, program }) {
           
           <button 
             onClick={() => navigate(-1)}
-            className="font-heading text-[10px] tracking-[4px] uppercase text-[#9A9A9A] hover:text-accent flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
+            className="font-heading text-[10px] tracking-[4px] uppercase text-[#CFCFCF] hover:text-accent flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
           >
             <span className="mr-2">&larr;</span> {t('actions.back', 'Voltar')}
           </button>
