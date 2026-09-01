@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import { Clock, Tag, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -67,6 +68,28 @@ export default function IndividualPage() {
               {t('individual.subtitle')}
             </motion.p>
           </header>
+
+          {/* INFO PILLS */}
+          <motion.div 
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+            className="flex flex-wrap gap-3 mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-slate-700/40 bg-[#0C0C0C]">
+              <Clock size={14} className="text-accent/70" />
+              <span className="font-data text-[12px] tracking-wide text-slate-300">2h</span>
+            </div>
+            
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-slate-700/40 bg-[#0C0C0C]">
+              <Tag size={14} className="text-accent/70" />
+              <span className="font-data text-[12px] tracking-wide text-slate-300">1 200kr</span>
+            </div>
+            
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-slate-700/40 bg-[#0C0C0C]">
+              <Users size={14} className="text-accent/70" />
+              <span className="font-data text-[12px] tracking-wide text-slate-300">{t('workshop_info.all_levels', 'Todos os níveis')}</span>
+            </div>
+          </motion.div>
+
 
           {/* DRAMATIC HOOK */}
           <motion.div
