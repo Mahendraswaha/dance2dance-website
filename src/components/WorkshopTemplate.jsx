@@ -40,7 +40,7 @@ export default function WorkshopTemplate({ workshop, program }) {
   }
   
   // Identify pull quotes: short paragraphs (< 120 chars) that feel poetic
-  const isPullQuote = (text) => text.length < 120 && text.length > 15;
+  const isPullQuote = (text) => text.length < 120 && text.length >= 10;
 
   // Animation variants
   const fadeUp = {
