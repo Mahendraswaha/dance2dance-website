@@ -656,5 +656,37 @@
       "text": "Entre em contato para agendar sua sessão individual de Biostretch.",
       "button": "Agendar Sessão"
     }
+  },
+  "regular_classes": {
+    "kicker": "PRÁTICA CONTÍNUA",
+    "title": "Aulas Regulares",
+    "subtitle": "O valor do trabalho continuado.",
+    "duration": "90 min",
+    "format": "Presencial",
+    "hook": "Uma única aula de Biostretch pode abrir muitas portas. Mas uma transformação profunda raramente acontece de uma só vez.",
+    "block1": {
+      "p1": "Uma única aula de Biostretch pode abrir muitas portas. Pode trazer um insight, uma sensação nova, um espaço inesperado de alívio ou uma percepção sobre o corpo que antes não estava ali. Às vezes, basta uma experiência para alguma coisa começar a mudar.",
+      "p2": "No entanto, uma transformação profunda raramente acontece de uma só vez. O corpo precisa de tempo para assimilar, experimentar, reorganizar e integrar aquilo que vivenciamos."
+    },
+    "pullQuote1": "É na regularidade que o corpo começa a aprender.",
+    "block2": {
+      "kicker": "CONSCIÊNCIA EM MOVIMENTO",
+      "p1": "É por isso que o Biostretch não é pensado como uma aula isolada, mas como um processo contínuo de investigação.",
+      "p2": "A cada encontro, voltamos ao corpo com um pouco mais de consciência. Revisitamos movimentos, sensações e padrões. Descobrimos novas possibilidades e começamos, pouco a pouco, a reconhecer aquilo que antes passava despercebido.",
+      "p3": "Não se trata de fazer mais, nem de forçar uma mudança. Trata-se de criar espaço para que ela aconteça.",
+      "p4": "Com o tempo, o que numa primeira aula parecia apenas uma sensação sutil começa a tornar-se familiar. O que era difícil de perceber torna-se mais claro. O movimento ganha novas possibilidades, a respiração encontra mais espaço e o corpo passa a responder de outra maneira."
+    },
+    "pullQuote2": "Uma aula pode despertar. A continuidade permite aprofundar.",
+    "block3": {
+      "kicker": "A CONVERSA DO CORPO",
+      "p1": "Cada encontro é parte de uma conversa que o corpo vai construindo consigo mesmo.",
+      "p2": "E talvez seja aí que resida a verdadeira potência do Biostretch: não numa grande transformação de um dia para o outro, mas nas pequenas mudanças que, repetidas e integradas ao longo do tempo, transformam a forma como habitamos o nosso próprio corpo."
+    },
+    "closing": "Porque o corpo não precisa apenas de estímulo.\nPrecisa de tempo para aprender.",
+    "cta": {
+      "title": "Venha praticar com continuidade",
+      "text": "Consulte os horários das turmas e reserve seu lugar na prática regular presencial.",
+      "button": "Ver agenda & horários"
+    }
   }
 }

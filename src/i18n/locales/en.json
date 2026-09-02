@@ -656,5 +656,37 @@
       "text": "Get in touch to schedule your individual Biostretch session.",
       "button": "Schedule Session"
     }
+  },
+  "regular_classes": {
+    "kicker": "CONTINUOUS PRACTICE",
+    "title": "Regular Classes",
+    "subtitle": "The value of ongoing work.",
+    "duration": "90 min",
+    "format": "In-person",
+    "hook": "A single Biostretch class can open many doors. But deep transformation rarely happens all at once.",
+    "block1": {
+      "p1": "A single Biostretch class can open many doors. It can bring an insight, a new sensation, an unexpected space of relief, or a perception of the body that was not there before. Sometimes, a single experience is enough for something to begin to shift.",
+      "p2": "However, deep transformation rarely happens all at once. The body needs time to assimilate, experiment, reorganize, and integrate what we experience."
+    },
+    "pullQuote1": "It is in regularity that the body begins to learn.",
+    "block2": {
+      "kicker": "AWARENESS IN MOTION",
+      "p1": "This is why Biostretch is not conceived as an isolated class, but as an ongoing process of investigation.",
+      "p2": "With each session, we return to the body with a little more awareness. We revisit movements, sensations, and patterns. We discover new possibilities and begin, step by step, to recognize what previously went unnoticed.",
+      "p3": "It is not about doing more, nor forcing a change. It is about creating space for it to happen.",
+      "p4": "Over time, what seemed like merely a subtle sensation in a first class begins to become familiar. What was difficult to perceive becomes clearer. Movement gains new possibilities, breathing finds more room, and the body begins to respond in a different way."
+    },
+    "pullQuote2": "A single class can awaken. Continuity allows deepening.",
+    "block3": {
+      "kicker": "THE BODY'S DIALOGUE",
+      "p1": "Each session is part of a conversation that the body builds with itself.",
+      "p2": "And perhaps that is where the true power of Biostretch lies: not in an overnight transformation, but in the small shifts that, repeated and integrated over time, transform how we inhabit our own body."
+    },
+    "closing": "Because the body does not only need stimulation.\nIt needs time to learn.",
+    "cta": {
+      "title": "Practice with continuity",
+      "text": "Check class schedules and reserve your spot for regular in-person practice.",
+      "button": "View schedule & times"
+    }
   }
 }

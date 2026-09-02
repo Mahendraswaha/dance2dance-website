@@ -656,5 +656,37 @@
       "text": "Ta kontakt for å bestille din individuelle Biostretch-time.",
       "button": "Bestill time"
     }
+  },
+  "regular_classes": {
+    "kicker": "KONTINUERLIG PRAKSIS",
+    "title": "Faste Timer",
+    "subtitle": "Verdien av et kontinuerlig arbeid.",
+    "duration": "90 min",
+    "format": "Fysisk oppmøte",
+    "hook": "En enkelt Biostretch-time kan åpne mange dører. Men en dyp forandring skjer sjelden på én gang.",
+    "block1": {
+      "p1": "En enkelt Biostretch-time kan åpne mange dører. Den kan gi en innsikt, en ny fornemmelse, et uventet pusterom eller en opplevelse av kroppen som ikke var der før. Noen ganger er én erfaring nok til at noe begynner å endre seg.",
+      "p2": "Likevel skjer en dyp forandring sjelden på én gang. Kroppen trenger tid til å fordøye, utforske, omorganisere og integrere det vi opplever."
+    },
+    "pullQuote1": "Det er i regelmessigheten at kroppen begynner å lære.",
+    "block2": {
+      "kicker": "BEVISSTHET I BEVEGELSE",
+      "p1": "Det er derfor Biostretch ikke er tenkt som en enkeltstående time, men som en kontinuerlig utforskningsprosess.",
+      "p2": "Ved hvert møte vender vi tilbake til kroppen med litt mer oppmerksomhet. Vi gjenoppdager bevegelser, fornemmelser og mønstre. Vi oppdager nye muligheter og begynner, litt etter litt, å gjenkjenne det som tidligere gikk ubemerket hen.",
+      "p3": "Det handler ikke om å gjøre mer, eller å tvinge frem en endring. Det handler om å skape rom for at den kan skje.",
+      "p4": "Med tiden begynner det som i en første time bare virket som en flyktig følelse å bli fortrolig. Det som var vanskelig å legge merke til, blir klarere. Bevegelsen får nye nyanser, pusten finner mer plass, og kroppen begynner å respondere annerledes."
+    },
+    "pullQuote2": "En time kan vekke. Kontinuiteten lar oss gå i dybden.",
+    "block3": {
+      "kicker": "KROPPENS SAMTALE",
+      "p1": "Hvert møte er en del av en samtale kroppen bygger med seg selv.",
+      "p2": "Og kanskje er det nettopp der Biostretch har sin virkelige styrke: ikke i en brå forandring over natten, men i de små justeringene som, gjentatt og integrert over tid, forandrer måten vi bebor vår egen kropp på."
+    },
+    "closing": "Fordi kroppen ikke bare trenger stimulering.\nDen trenger tid til å lære.",
+    "cta": {
+      "title": "Bli med på faste timer",
+      "text": "Se timeplanen og sikre deg plass på den faste fysiske praksisen.",
+      "button": "Se timeplan og tider"
+    }
   }
 }
