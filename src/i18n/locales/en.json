@@ -405,6 +405,10 @@
       "individualSessions": {
         "title": "Individual Sessions",
         "description": "Personalized Biostretch sessions."
+      },
+      "regularClasses": {
+        "title": "Regular Classes",
+        "description": "Continuous weekly in-person practice to maintain and deepen well-being."
       }
     },
     "kroppsskole": {

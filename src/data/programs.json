@@ -159,8 +159,9 @@
     ],
     "individualSessions": {},
     "regularClasses": {
+      "id": "aulas-regulares",
       "title": "Aulas Regulares",
-      "description": "Turmas semanais de Biostretch."
+      "description": "Prática contínua semanal."
     },
     "corporate": {}
   },

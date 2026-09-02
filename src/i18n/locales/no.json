@@ -405,6 +405,10 @@
       "individualSessions": {
         "title": "Individuelle Timer",
         "description": "Personlige Biostretch-økter."
+      },
+      "regularClasses": {
+        "title": "Faste Timer",
+        "description": "Kontinuerlig ukentlig praksis for å opprettholde og utdype velvære."
       }
     },
     "kroppsskole": {

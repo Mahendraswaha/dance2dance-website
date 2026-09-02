@@ -405,6 +405,10 @@
       "individualSessions": {
         "title": "Sessões Individuais",
         "description": "Atendimento personalizado de Biostretch."
+      },
+      "regularClasses": {
+        "title": "Aulas Regulares",
+        "description": "Prática contínua semanal presencial para manutenção e aprofundamento do bem-estar."
       }
     },
     "kroppsskole": {

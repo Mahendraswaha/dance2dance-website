@@ -224,31 +224,53 @@ export default function ProgramTemplate({ program }) {
       )}
 
       {/* Additional Sections */}
-      {(program.corporate || program.individualSessions) && (
+      {(program.corporate || program.individualSessions || program.regularClasses) && (
         <section className="pt-16 pb-16 bg-primary border-t border-[#1a1a1a]">
-          <div className="max-w-[1200px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
-            {program.corporate && (
-              <Link to={`/${program.id}/empresas`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block">
-                {program.corporate.logo && (
-                  <img src={program.corporate.logo} alt={t(`programs.${program.id}.corporate.title`, program.corporate.title)} className="h-20 object-contain mb-8" />
-                )}
-                <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.corporate.title`, program.corporate.title)}</h3>
-                <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
-                <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
-                  {t('actions.learn_more', 'Saiba mais')}
-                </span>
+          <div className="max-w-[1200px] mx-auto px-8 flex flex-col gap-12">
+            
+            {/* Top Full-width Banner: Aulas Regulares */}
+            {program.regularClasses && (
+              <Link to={`/${program.id}/aulas-regulares`} className="p-10 md:p-14 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group">
+                <div className="flex-1">
+                  <h3 className="font-batang text-3xl md:text-4xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.regularClasses.title`, program.regularClasses.title)}</h3>
+                  <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
+                  <p className="font-heading text-[#9A9A9A] font-light leading-relaxed max-w-2xl">{t(`programs.${program.id}.regularClasses.description`, program.regularClasses.description)}</p>
+                </div>
+                <div className="shrink-0">
+                  <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 group-hover:text-background group-hover:border-accent/80 transition-all inline-flex items-center gap-2">
+                    {t('actions.learn_more', 'Saiba mais')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
               </Link>
             )}
-            {program.individualSessions && (
-              <Link to={`/${program.id}/individual`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block">
-                <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.individualSessions.title`, program.individualSessions.title)}</h3>
-                <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
-                <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 hover:text-background hover:border-accent/80 transition-all">
-                  {t('actions.learn_more', 'Saiba mais')}
-                </span>
-              </Link>
+
+            {/* Bottom 2 Cards Grid: Corporate & Individual */}
+            {(program.corporate || program.individualSessions) && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {program.corporate && (
+                  <Link to={`/${program.id}/empresas`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block group">
+                    {program.corporate.logo && (
+                      <img src={program.corporate.logo} alt={t(`programs.${program.id}.corporate.title`, program.corporate.title)} className="h-20 object-contain mb-8 opacity-90 group-hover:opacity-100 transition-opacity" />
+                    )}
+                    <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.corporate.title`, program.corporate.title)}</h3>
+                    <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
+                    <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
+                    <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 group-hover:text-background group-hover:border-accent/80 transition-all">
+                      {t('actions.learn_more', 'Saiba mais')}
+                    </span>
+                  </Link>
+                )}
+                {program.individualSessions && (
+                  <Link to={`/${program.id}/individual`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block group">
+                    <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.individualSessions.title`, program.individualSessions.title)}</h3>
+                    <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
+                    <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
+                    <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 group-hover:text-background group-hover:border-accent/80 transition-all">
+                      {t('actions.learn_more', 'Saiba mais')}
+                    </span>
+                  </Link>
+                )}
+              </div>
             )}
           </div>
         </section>
