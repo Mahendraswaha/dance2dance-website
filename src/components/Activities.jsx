@@ -15,7 +15,7 @@ const Activities = () => {
     <section id="workshops" className="py-24 px-8 bg-[#0C0C0C] min-h-screen flex items-center">
       <div className="max-w-[1200px] w-full mx-auto text-center">
         
-        <p className="font-heading text-[10px] tracking-[5px] uppercase text-[#8A8A8A] mb-5">{t("activities.kicker")}</p>
+        <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">{t("activities.kicker")}</p>
         
         <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 leading-tight tracking-tight">{t("activities.title")}</h2>
         
