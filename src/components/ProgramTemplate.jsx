@@ -225,53 +225,59 @@ export default function ProgramTemplate({ program }) {
 
       {/* Additional Sections */}
       {(program.corporate || program.individualSessions || program.regularClasses) && (
-        <section className="pt-16 pb-16 bg-primary border-t border-[#1a1a1a]">
-          <div className="max-w-[1200px] mx-auto px-8 flex flex-col gap-12">
-            
-            {/* Top Full-width Banner: Aulas Regulares */}
-            {program.regularClasses && (
-              <Link to={`/${program.id}/aulas-regulares`} className="p-8 md:p-10 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group">
-                <div className="flex-1">
-                  <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.regularClasses.title`, program.regularClasses.title)}</h3>
-                  <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                  <p className="font-heading text-[#9A9A9A] font-light leading-relaxed max-w-2xl">{t(`programs.${program.id}.regularClasses.description`, program.regularClasses.description)}</p>
-                </div>
-                <div className="shrink-0">
-                  <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 group-hover:text-background group-hover:border-accent/80 transition-all inline-flex items-center gap-2">
-                    {t('actions.learn_more', 'Saiba mais')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
-            )}
+        <section className="pt-24 pb-32 bg-primary border-t border-[#1a1a1a]">
+          <div className="max-w-[1000px] mx-auto px-8">
+            <div className="flex flex-col border-t border-[#222222]">
+              
+              {/* Aulas Regulares */}
+              {program.regularClasses && (
+                <Link to={`/${program.id}/aulas-regulares`} className="group block py-10 md:py-12 border-b border-[#222222] hover:border-accent/60 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                      <h3 className="font-batang text-2xl md:text-3xl font-normal text-[#F0EDE8] mb-3 group-hover:text-accent transition-colors">{t(`programs.${program.id}.regularClasses.title`, program.regularClasses.title)}</h3>
+                      <p className="font-heading text-[#9A9A9A] font-light text-lg leading-relaxed max-w-2xl">{t(`programs.${program.id}.regularClasses.description`, program.regularClasses.description)}</p>
+                    </div>
+                    <div className="shrink-0 text-accent opacity-40 group-hover:opacity-100 group-hover:translate-x-3 transition-all duration-300 flex items-center gap-3">
+                      <span className="font-heading text-[10px] tracking-[3px] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">{t('actions.learn_more', 'Saiba mais')}</span>
+                      <ArrowRight size={28} strokeWidth={1} />
+                    </div>
+                  </div>
+                </Link>
+              )}
 
-            {/* Bottom 2 Cards Grid: Corporate & Individual */}
-            {(program.corporate || program.individualSessions) && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {program.corporate && (
-                  <Link to={`/${program.id}/empresas`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block group">
-                    {program.corporate.logo && (
-                      <img src={program.corporate.logo} alt={t(`programs.${program.id}.corporate.title`, program.corporate.title)} className="h-20 object-contain mb-8 opacity-90 group-hover:opacity-100 transition-opacity" />
-                    )}
-                    <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.corporate.title`, program.corporate.title)}</h3>
-                    <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                    <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
-                    <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 group-hover:text-background group-hover:border-accent/80 transition-all">
-                      {t('actions.learn_more', 'Saiba mais')}
-                    </span>
-                  </Link>
-                )}
-                {program.individualSessions && (
-                  <Link to={`/${program.id}/individual`} className="p-12 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors block group">
-                    <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.individualSessions.title`, program.individualSessions.title)}</h3>
-                    <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
-                    <p className="font-heading text-[#9A9A9A] mb-8 font-light leading-relaxed">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
-                    <span className="font-heading text-[10px] tracking-[4px] uppercase text-accent border-b border-accent/30 pb-2 group-hover:text-background group-hover:border-accent/80 transition-all">
-                      {t('actions.learn_more', 'Saiba mais')}
-                    </span>
-                  </Link>
-                )}
-              </div>
-            )}
+              {/* Sessões Individuais */}
+              {program.individualSessions && (
+                <Link to={`/${program.id}/individual`} className="group block py-10 md:py-12 border-b border-[#222222] hover:border-accent/60 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                      <h3 className="font-batang text-2xl md:text-3xl font-normal text-[#F0EDE8] mb-3 group-hover:text-accent transition-colors">{t(`programs.${program.id}.individualSessions.title`, program.individualSessions.title)}</h3>
+                      <p className="font-heading text-[#9A9A9A] font-light text-lg leading-relaxed max-w-2xl">{t(`programs.${program.id}.individualSessions.description`, program.individualSessions.description)}</p>
+                    </div>
+                    <div className="shrink-0 text-accent opacity-40 group-hover:opacity-100 group-hover:translate-x-3 transition-all duration-300 flex items-center gap-3">
+                      <span className="font-heading text-[10px] tracking-[3px] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">{t('actions.learn_more', 'Saiba mais')}</span>
+                      <ArrowRight size={28} strokeWidth={1} />
+                    </div>
+                  </div>
+                </Link>
+              )}
+
+              {/* Formato para Empresas */}
+              {program.corporate && (
+                <Link to={`/${program.id}/empresas`} className="group block py-10 md:py-12 border-b border-[#222222] hover:border-accent/60 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                      <h3 className="font-batang text-2xl md:text-3xl font-normal text-[#F0EDE8] mb-3 group-hover:text-accent transition-colors">{t(`programs.${program.id}.corporate.title`, program.corporate.title)}</h3>
+                      <p className="font-heading text-[#9A9A9A] font-light text-lg leading-relaxed max-w-2xl">{t(`programs.${program.id}.corporate.description`, program.corporate.description)}</p>
+                    </div>
+                    <div className="shrink-0 text-accent opacity-40 group-hover:opacity-100 group-hover:translate-x-3 transition-all duration-300 flex items-center gap-3">
+                      <span className="font-heading text-[10px] tracking-[3px] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">{t('actions.learn_more', 'Saiba mais')}</span>
+                      <ArrowRight size={28} strokeWidth={1} />
+                    </div>
+                  </div>
+                </Link>
+              )}
+
+            </div>
           </div>
         </section>
       )}
