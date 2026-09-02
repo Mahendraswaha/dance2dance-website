@@ -200,9 +200,7 @@ export default function IndividualPage() {
               <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8">
                 {deepening.p1}
               </p>
-              <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8">
-                {deepening.p2}
-              </p>
+
             </motion.div>
           </section>
 
