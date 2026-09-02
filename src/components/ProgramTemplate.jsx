@@ -230,9 +230,9 @@ export default function ProgramTemplate({ program }) {
             
             {/* Top Full-width Banner: Aulas Regulares */}
             {program.regularClasses && (
-              <Link to={`/${program.id}/aulas-regulares`} className="p-10 md:p-14 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group">
+              <Link to={`/${program.id}/aulas-regulares`} className="p-8 md:p-10 bg-[#141414] border border-[#222222] rounded-[2px] hover:border-accent/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group">
                 <div className="flex-1">
-                  <h3 className="font-batang text-3xl md:text-4xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.regularClasses.title`, program.regularClasses.title)}</h3>
+                  <h3 className="font-batang text-2xl font-normal mb-4 text-[#F0EDE8]">{t(`programs.${program.id}.regularClasses.title`, program.regularClasses.title)}</h3>
                   <div className="w-7 h-[1px] bg-accent/40 mb-6"></div>
                   <p className="font-heading text-[#9A9A9A] font-light leading-relaxed max-w-2xl">{t(`programs.${program.id}.regularClasses.description`, program.regularClasses.description)}</p>
                 </div>
