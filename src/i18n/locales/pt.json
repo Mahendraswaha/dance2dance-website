@@ -87,7 +87,8 @@
     "links": {
       "impact": "Impacto Social",
       "contact": "Contato",
-      "terms": "Termos"
+      "terms": "Termos",
+      "privacy": "Privacidade"
     },
     "rights": "Todos os direitos reservados."
   },
@@ -687,6 +688,72 @@
       "title": "Venha praticar com continuidade",
       "text": "Consulte os horários das turmas e reserve seu lugar na prática regular presencial.",
       "button": "Ver agenda & horários"
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Política de Privacidade",
+      "lastUpdated": "Última atualização: Setembro de 2026",
+      "sections": [
+        {
+          "title": "1. Introdução",
+          "content": "<p>Bem-vindo ao site da <strong>Dance2Dance</strong> (incluindo as vertentes Biostretch e Be The Dance). Nosso compromisso é com a integridade e a segurança dos dados pessoais dos nossos usuários e alunos. Esta Política de Privacidade aplica-se a todas as interações digitais realizadas em nosso site, serviços associados e plataformas sob nosso controle.</p><p>Ao acessar e utilizar nossas plataformas, você reconhece e concorda com as práticas descritas nesta política. Nós tratamos a proteção de seus dados pessoais com a máxima seriedade e nos comprometemos a processá-los de forma responsável, transparente e segura, em conformidade com as legislações vigentes (como LGPD e GDPR).</p>"
+        },
+        {
+          "title": "2. Definições",
+          "content": "<p><strong>Dados Pessoais:</strong> São informações que identificam ou podem identificar uma pessoa natural.</p><p><strong>Dados Pessoais Sensíveis:</strong> São informações que revelam características pessoais íntimas. Por precaução, solicitamos apenas informações essenciais para a prática de nossas atividades e adaptação ao seu corpo.</p><p><strong>Tratamento de Dados Pessoais:</strong> Abrange qualquer operação com Dados Pessoais, como coleta, registro, armazenamento, uso ou exclusão.</p>"
+        },
+        {
+          "title": "3. Dados Coletados",
+          "content": "<p>Nós coletamos e processamos os seguintes tipos de dados pessoais:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informações Fornecidas por Você:</strong> Nome, sobrenome, endereço de e-mail, informações fornecidas durante o cadastro em workshops, formulários de anamnese ou contato.</li><li><strong>Informações Coletadas Automaticamente:</strong> Quando você visita nosso site, coletamos informações anonimizadas sobre seu dispositivo, localização genérica, páginas visitadas e interação, para fins estatísticos e de funcionamento da plataforma.</li></ul>"
+        },
+        {
+          "title": "4. Uso de Cookies",
+          "content": "<p>Utilizamos cookies (pequenos arquivos de texto armazenados no seu dispositivo) para melhorar a experiência do usuário, entender como nossos serviços são utilizados e garantir o correto funcionamento do site.</p><p>Você pode configurar seu navegador para recusar cookies, mas isso pode afetar a disponibilidade de certas funcionalidades do site.</p>"
+        },
+        {
+          "title": "5. Finalidades do Processamento",
+          "content": "<p>Os dados coletados são utilizados para:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Proporcionar, operar e melhorar nossos serviços, aulas e workshops;</li><li>Personalizar sua experiência e adaptar as práticas físicas (quando aplicável);</li><li>Comunicar informações importantes sobre a organização das turmas e eventos;</li><li>Cumprir obrigações legais aplicáveis.</li></ul>"
+        },
+        {
+          "title": "6. Compartilhamento de Dados",
+          "content": "<p>Seus dados são confidenciais. Eles só serão compartilhados com prestadores de serviço estritamente necessários para a operação do site e gestão de turmas, exigindo deles as mesmas garantias de proteção de dados. Não vendemos suas informações para terceiros.</p>"
+        },
+        {
+          "title": "7. Seus Direitos",
+          "content": "<p>Você possui diversos direitos em relação aos seus dados, incluindo: direito de acesso, retificação, exclusão de dados sob nossa posse, e direito de retirar o consentimento. Para exercer esses direitos, entre em contato conosco.</p>"
+        }
+      ]
+    },
+    "terms": {
+      "title": "Termos de Uso",
+      "lastUpdated": "Última atualização: Setembro de 2026",
+      "sections": [
+        {
+          "title": "1. Aceitação dos Termos",
+          "content": "<p>Seja bem-vindo ao site da <strong>Dance2Dance</strong>. Ao navegar e usar nosso site e serviços, você concorda automaticamente em seguir as regras e condições estabelecidas aqui. Caso não concorde com algum ponto, por favor, considere não usar nossos serviços. É muito importante para nós que você se sinta seguro e informado a todo momento.</p>"
+        },
+        {
+          "title": "2. Natureza da Prática e Isenção",
+          "content": "<p>As metodologias ensinadas (Biostretch e Be The Dance) consistem em práticas focadas no movimento, respiração e consciência corporal. <strong>Elas não substituem orientações, diagnósticos ou tratamentos médicos, fisioterapêuticos ou psicológicos.</strong> Ao participar, você assume a responsabilidade de respeitar os limites do seu próprio corpo e buscar liberação médica caso possua condições preexistentes.</p>"
+        },
+        {
+          "title": "3. Inscrições e Cancelamentos",
+          "content": "<p>Para participação em workshops e aulas regulares, as inscrições são confirmadas após o pagamento. Caso haja a necessidade de cancelamento por parte do aluno, aplicam-se regras específicas de antecedência informadas no momento da reserva, visando organizar o número limitado de vagas. Cancelamentos de última hora podem não ser passíveis de reembolso.</p>"
+        },
+        {
+          "title": "4. Direitos de Conteúdo e Propriedade Intelectual",
+          "content": "<p>O conteúdo disponível, incluindo textos, metodologias (como os blocos do Biostretch), imagens, ilustrações, fotografias e áudios constituem propriedade intelectual protegida. O acesso às nossas aulas e plataformas concede a você o direito de vivenciar a prática para fins estritamente pessoais.</p><p>É <strong>expressamente proibida</strong> a gravação, reprodução, distribuição ou ensino da metodologia sem a devida formação certificada ou autorização escrita.</p>"
+        },
+        {
+          "title": "5. Privacidade e Segurança",
+          "content": "<p>Ao interagir com nosso site, você aceita nossa Política de Privacidade, que detalha nossa abordagem responsável para o manejo de dados e conformidade com as leis. Adotamos práticas rígidas para garantir a confidencialidade das informações compartilhadas conosco.</p>"
+        },
+        {
+          "title": "6. Modificações dos Termos",
+          "content": "<p>A evolução é parte de como operamos, o que significa que estes Termos podem passar por atualizações para refletir melhor as mudanças em nossos serviços. Sempre que isso acontecer, a versão mais recente estará disponível nesta página.</p>"
+        }
+      ]
     }
   }
 }

@@ -12,6 +12,8 @@ import ScrollToTop from './components/ScrollToTop';
 
 // Import i18n
 import './i18n';
+import TermsPage from './pages/TermsPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 export default function App() {
   return (
@@ -26,7 +28,9 @@ export default function App() {
         <Route path="/biostretch/aulas-regulares" element={<RegularClassesPage />} />
         <Route path="/:programId" element={<ProgramPage />} />
         <Route path="/:programId/:workshopId" element={<WorkshopPage />} />
-      </Routes>
+                <Route path="/termos" element={<TermsPage />} />
+          <Route path="/privacidade" element={<PrivacyPolicyPage />} />
+        </Routes>
     </BrowserRouter>
   );
 }

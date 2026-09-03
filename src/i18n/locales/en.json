@@ -87,7 +87,8 @@
     "links": {
       "impact": "Social Impact",
       "contact": "Contact",
-      "terms": "Terms"
+      "terms": "Terms",
+      "privacy": "Privacy"
     },
     "rights": "All rights reserved."
   },
@@ -687,6 +688,72 @@
       "title": "Practice with continuity",
       "text": "Check class schedules and reserve your spot for regular in-person practice.",
       "button": "View schedule & times"
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: September 2026",
+      "sections": [
+        {
+          "title": "1. Introduction",
+          "content": "<p>Welcome to the <strong>Dance2Dance</strong> website (including Biostretch and Be The Dance). We are committed to the integrity and security of the personal data of our users and students. This Privacy Policy applies to all digital interactions on our website, associated services, and platforms under our control.</p><p>By accessing our platforms, you acknowledge and agree to the practices described herein. We process your data responsibly, transparently, and securely, in accordance with applicable laws (such as GDPR and LGPD).</p>"
+        },
+        {
+          "title": "2. Definitions",
+          "content": "<p><strong>Personal Data:</strong> Information that identifies or can identify a natural person.</p><p><strong>Sensitive Personal Data:</strong> Information revealing intimate personal characteristics. We only request essential information required for our activities.</p><p><strong>Data Processing:</strong> Any operation involving Personal Data, such as collection, storage, use, or deletion.</p>"
+        },
+        {
+          "title": "3. Collected Data",
+          "content": "<p>We collect and process:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Information Provided by You:</strong> Name, surname, email address, info provided during workshop registration or contact forms.</li><li><strong>Automatically Collected Information:</strong> Anonymized data about your device, location, and interaction for statistical and functional purposes.</li></ul>"
+        },
+        {
+          "title": "4. Use of Cookies",
+          "content": "<p>We use cookies to improve user experience, understand usage patterns, and ensure site functionality. You can configure your browser to refuse cookies, though some site features may be affected.</p>"
+        },
+        {
+          "title": "5. Processing Purposes",
+          "content": "<p>The data is used to:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Provide and improve our services, classes, and workshops;</li><li>Personalize your experience;</li><li>Communicate important information about classes and events;</li><li>Comply with legal obligations.</li></ul>"
+        },
+        {
+          "title": "6. Data Sharing",
+          "content": "<p>Your data is confidential. We only share it with strictly necessary service providers for site operation and class management, requiring the same data protection guarantees. We do not sell your information.</p>"
+        },
+        {
+          "title": "7. Your Rights",
+          "content": "<p>You have rights regarding your data, including the right to access, rectify, delete, and withdraw consent. To exercise these rights, please contact us.</p>"
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "lastUpdated": "Last updated: September 2026",
+      "sections": [
+        {
+          "title": "1. Acceptance of Terms",
+          "content": "<p>Welcome to <strong>Dance2Dance</strong>. By browsing and using our site and services, you automatically agree to follow the rules and conditions established here. If you do not agree with any point, please do not use our services.</p>"
+        },
+        {
+          "title": "2. Nature of Practice and Disclaimer",
+          "content": "<p>The methodologies taught (Biostretch and Be The Dance) are practices focused on movement, breathing, and body awareness. <strong>They do not replace medical, physiotherapeutic, or psychological diagnoses or treatments.</strong> You assume the responsibility to respect your body's limits and seek medical clearance if you have pre-existing conditions.</p>"
+        },
+        {
+          "title": "3. Registration and Cancellations",
+          "content": "<p>Registrations for workshops and classes are confirmed upon payment. Specific cancellation rules apply depending on the event to organize limited spots. Last-minute cancellations may not be eligible for refunds.</p>"
+        },
+        {
+          "title": "4. Intellectual Property",
+          "content": "<p>The available content, including texts, methodologies, images, and audio, is protected intellectual property. Access to our classes grants you the right to experience the practice for personal purposes only.</p><p>Recording, reproduction, distribution, or teaching of the methodology without certification or written authorization is <strong>strictly prohibited</strong>.</p>"
+        },
+        {
+          "title": "5. Privacy and Security",
+          "content": "<p>By interacting with our site, you accept our Privacy Policy, which details our responsible approach to data handling. We adopt strict practices to ensure confidentiality.</p>"
+        },
+        {
+          "title": "6. Modifications to Terms",
+          "content": "<p>These Terms may be updated to reflect changes in our services. The latest version will always be available on this page.</p>"
+        }
+      ]
     }
   }
 }

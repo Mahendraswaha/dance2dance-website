@@ -87,7 +87,8 @@
     "links": {
       "impact": "Sosial Påvirkning",
       "contact": "Kontakt",
-      "terms": "Vilkår"
+      "terms": "Vilkår",
+      "privacy": "Personvern"
     },
     "rights": "Alle rettigheter reservert."
   },
@@ -687,6 +688,72 @@
       "title": "Bli med på faste timer",
       "text": "Se timeplanen og sikre deg plass på den faste fysiske praksisen.",
       "button": "Se timeplan og tider"
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Personvernerklæring",
+      "lastUpdated": "Sist oppdatert: September 2026",
+      "sections": [
+        {
+          "title": "1. Introduksjon",
+          "content": "<p>Velkommen til <strong>Dance2Dance</strong> (inkludert Biostretch og Be The Dance). Vi er forpliktet til integriteten og sikkerheten til personopplysningene til våre brukere og studenter. Denne personvernerklæringen gjelder for all digital interaksjon på vår nettside og tilknyttede plattformer.</p><p>Ved å bruke plattformene våre anerkjenner og godtar du praksisene beskrevet her. Vi behandler dataene dine ansvarlig og i samsvar med gjeldende lover (som GDPR).</p>"
+        },
+        {
+          "title": "2. Definisjoner",
+          "content": "<p><strong>Personopplysninger:</strong> Informasjon som identifiserer eller kan identifisere en fysisk person.</p><p><strong>Sensitive Personopplysninger:</strong> Informasjon som avslører intime personlige egenskaper. Vi ber kun om essensiell informasjon.</p><p><strong>Databehandling:</strong> Enhver operasjon som involverer personopplysninger, som innsamling, lagring eller sletting.</p>"
+        },
+        {
+          "title": "3. Innsamlede Data",
+          "content": "<p>Vi samler inn og behandler:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informasjon fra deg:</strong> Navn, e-post, og info gitt ved registrering til workshops.</li><li><strong>Automatisk innsamlet informasjon:</strong> Anonymiserte data om enhet og interaksjon for statistiske formål.</li></ul>"
+        },
+        {
+          "title": "4. Bruk av Informasjonskapsler (Cookies)",
+          "content": "<p>Vi bruker informasjonskapsler for å forbedre brukeropplevelsen og sikre nettstedets funksjonalitet. Du kan konfigurere nettleseren din til å avvise informasjonskapsler.</p>"
+        },
+        {
+          "title": "5. Formål med Behandlingen",
+          "content": "<p>Dataene brukes til å:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Tilby og forbedre våre tjenester;</li><li>Tilpasse opplevelsen din;</li><li>Kommunisere viktig informasjon om klasser;</li><li>Overholde juridiske forpliktelser.</li></ul>"
+        },
+        {
+          "title": "6. Datadeling",
+          "content": "<p>Dine data er konfidensielle. Vi deler dem kun med strengt nødvendige tjenesteleverandører. Vi selger ikke informasjonen din.</p>"
+        },
+        {
+          "title": "7. Dine Rettigheter",
+          "content": "<p>Du har rett til innsyn, retting, sletting, og til å trekke tilbake samtykke. Kontakt oss for å utøve disse rettighetene.</p>"
+        }
+      ]
+    },
+    "terms": {
+      "title": "Brukervilkår",
+      "lastUpdated": "Sist oppdatert: September 2026",
+      "sections": [
+        {
+          "title": "1. Aksept av Vilkår",
+          "content": "<p>Velkommen til <strong>Dance2Dance</strong>. Ved å bruke nettstedet og tjenestene våre godtar du automatisk disse reglene. Hvis du ikke er enig, vennligst ikke bruk tjenestene våre.</p>"
+        },
+        {
+          "title": "2. Praksisens Natur og Ansvarsfraskrivelse",
+          "content": "<p>Metodikkene (Biostretch og Be The Dance) fokuserer på bevegelse og kroppsbevissthet. <strong>De erstatter ikke medisinsk eller psykologisk behandling.</strong> Du har ansvar for å respektere kroppens grenser.</p>"
+        },
+        {
+          "title": "3. Påmelding og Avbestilling",
+          "content": "<p>Påmeldinger er bekreftet ved betaling. Spesifikke avbestillingsregler gjelder avhengig av arrangementet. Avbestillinger i siste liten refunderes kanskje ikke.</p>"
+        },
+        {
+          "title": "4. Åndsverk og Eiendomsrett",
+          "content": "<p>Innholdet, inkludert metoder og tekster, er beskyttet åndsverk. Tilgang gir deg rett til å oppleve praksisen kun for personlige formål.</p><p>Kopiering eller undervisning av metodikken uten autorisasjon er <strong>strengt forbudt</strong>.</p>"
+        },
+        {
+          "title": "5. Personvern",
+          "content": "<p>Ved å bruke nettstedet godtar du vår personvernerklæring, som detaljerer vår håndtering av data i samsvar med lover.</p>"
+        },
+        {
+          "title": "6. Endringer i Vilkår",
+          "content": "<p>Disse vilkårene kan oppdateres for å gjenspeile endringer i våre tjenester. Den nyeste versjonen vil alltid være her.</p>"
+        }
+      ]
     }
   }
 }
