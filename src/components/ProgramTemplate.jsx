@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
 import BeTheDancePhilosophy from './BeTheDancePhilosophy';
 import BiostretchPhilosophy from './BiostretchPhilosophy';
+import KroppsskolePhilosophy from './KroppsskolePhilosophy';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
@@ -135,8 +136,10 @@ export default function ProgramTemplate({ program }) {
       {program.id === 'be-the-dance' ? (
         <BeTheDancePhilosophy />
       ) : program.id === 'biostretch' ? (
-        <BiostretchPhilosophy />
-      ) : (
+          <BiostretchPhilosophy />
+        ) : program.id === 'kroppsskole' ? (
+          <KroppsskolePhilosophy />
+        ) : (
         <section className="py-24 px-8 max-w-3xl mx-auto">
           {program.philosophy ? (
             <div className="space-y-12">

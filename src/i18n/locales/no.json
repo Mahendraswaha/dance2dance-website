@@ -417,7 +417,20 @@
       "subtitle": "",
       "description": "Uma abordagem integrada para o corpo e o movimento.",
       "philosophy": [],
-      "workshops": {}
+      "workshops": {},
+      "philosophy_data": {
+        "subtitle": "Gjennom kroppen og videre",
+        "hook": "\"For å fly, må du ha røtter.\"",
+        "b1_p1": "Før vi tenker, føler kroppen allerede. Før vi snakker, kommuniserer den allerede. Før vi forstår, vet den allerede.",
+        "b1_p2": "Kroppsskole er født ut av denne oppfatningen. En skole for å lære med kroppen, om kroppen, gjennom kroppen. Her utforsker vi en intelligens som bor i bevegelse, holdning og pust. Den føler, oppfatter, justerer og husker.",
+        "quote1": "\"Det er en kunnskap som kroppen bærer, og som sinnet ennå ikke har oversatt.\"",
+        "b2_p1": "Vi inviterer forskjellige tilretteleggere, praksiser og kunnskap for å skape opplevelser som kobler oss tilbake til denne intelligensen. Klasser, kurs, innlevelser og samlinger som utforsker bevegelse, berøring, pust, uttrykk og tilstedeværelse.",
+        "b2_p2": "Vi ønsker mangfoldige kropper, historier og uttrykksformer velkommen. Jo mer mangfoldig perspektivet på kroppen er, desto flere muligheter har vi til å forstå den.",
+        "quote2": "\"Kroppen er grunnlaget. Fra den oppstår balanse, tilstedeværelse og transformasjon.\"",
+        "b3_p1": "Emosjonell helse og dyp velvære modnes når vi tar vare på grunnlaget. Når vi puster bedre, går annerledes og føler med mer klarhet, endres noe i hvordan vi er i verden. Forandringen starter i kroppen og stråler ut til alt vi er.",
+        "b3_p2": "Kroppsskole er et rom for denne prosessen. Et sted der kunnskap og erfaring møtes. Hvor vi kan eksperimentere uten å måtte ha rett. Hvor en liten endring i kroppen kan forandre hvordan vi lever.",
+        "closing": "\"Gjennom kroppen forbereder vi oss på å gå videre.\""
+      }
     }
   },
   "biostretch_philosophy": {

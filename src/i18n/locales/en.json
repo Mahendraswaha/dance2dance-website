@@ -417,7 +417,20 @@
       "subtitle": "",
       "description": "Uma abordagem integrada para o corpo e o movimento.",
       "philosophy": [],
-      "workshops": {}
+      "workshops": {},
+      "philosophy_data": {
+        "subtitle": "Through the body and beyond",
+        "hook": "\"To fly, you must have roots.\"",
+        "b1_p1": "Before we think, the body already feels. Before we speak, it already communicates. Before we understand, it already knows.",
+        "b1_p2": "Kroppsskole is born from this perception. A school to learn with the body, about the body, through the body. Here, we explore an intelligence that lives in gesture, posture, and breath. It feels, perceives, adjusts, and remembers.",
+        "quote1": "\"There is a knowledge that the body carries and the mind has not yet translated.\"",
+        "b2_p1": "We invite different facilitators, practices, and knowledge to create experiences that reconnect us with this intelligence. Classes, courses, immersions, and gatherings that explore movement, touch, breath, expression, and presence.",
+        "b2_p2": "We welcome diverse bodies, histories, and forms of expression. The more diverse the perspective on the body, the more possibilities we have to understand it.",
+        "quote2": "\"The body is the foundation. From it, balance, presence, and transformation arise.\"",
+        "b3_p1": "Emotional health and deep well-being mature when we care for the foundation. When we breathe better, walk differently, and feel with more clarity, something shifts in how we are in the world. The change starts in the body and radiates to all that we are.",
+        "b3_p2": "Kroppsskole is a space for this process. A place where knowledge and experience meet. Where we can experiment without needing to be right. Where a small change in the body can transform how we live.",
+        "closing": "\"Through the body, we prepare to go beyond.\""
+      }
     }
   },
   "biostretch_philosophy": {
