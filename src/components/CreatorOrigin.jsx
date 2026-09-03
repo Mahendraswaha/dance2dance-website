@@ -21,7 +21,7 @@ export default function CreatorOrigin({ programId }) {
   const renderParagraph = (p, idx) => {
     if (p.startsWith('[SILVER]')) {
       return (
-        <p key={idx} className="font-drama italic text-2xl md:text-3xl text-slate-300 leading-relaxed my-12 font-light">
+        <p key={idx} className="font-drama italic text-lg md:text-xl text-[#8A8A8A] leading-loose my-8 font-light">
           {p.replace('[SILVER]', '')}
         </p>
       );
@@ -29,11 +29,19 @@ export default function CreatorOrigin({ programId }) {
     
     if (p.startsWith('[GOLD]')) {
       return (
-        <div key={idx} className="py-12 my-12 border-l-2 border-accent pl-6 md:pl-8 text-left relative">
+        <div key={idx} className="py-12 my-12 border-t border-b border-accent/20 text-center relative px-4">
           <p className="font-batang italic text-2xl md:text-[28px] text-accent leading-relaxed">
             {p.replace('[GOLD]', '')}
           </p>
         </div>
+      );
+    }
+
+    if (p.startsWith('[SIGNATURE]')) {
+      return (
+        <p key={idx} className="font-batang italic text-xl md:text-2xl text-[#F0EDE8]/90 mt-12 text-right">
+          {p.replace('[SIGNATURE]', '')}
+        </p>
       );
     }
 
@@ -49,19 +57,19 @@ export default function CreatorOrigin({ programId }) {
     }
     
     return (
-      <p key={idx} className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-loose font-light">
+      <p key={idx} className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-loose font-light whitespace-pre-line">
         {p}
       </p>
     );
   };
 
   return (
-    <section className="py-24 px-8 max-w-4xl mx-auto border-t border-white/5 relative z-10">
+    <section className="py-24 px-8 max-w-3xl mx-auto border-t border-white/5 relative z-10">
       
-      <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+      <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start">
         
         {/* Coluna de Texto (Esquerda) */}
-        <div className="flex-1 max-w-[500px]">
+        <div className="flex-1">
           
           <div className="text-left mb-12">
             <h2 className="font-heading text-sm tracking-[4px] uppercase text-accent mb-4">
@@ -105,8 +113,6 @@ export default function CreatorOrigin({ programId }) {
                     <button
                       onClick={() => {
                         setIsExpanded(false);
-                        // Opcional: Rolar de volta para o topo da seo ao recolher
-                        // window.scrollBy({ top: -500, behavior: 'smooth' }); 
                       }}
                       className="group flex items-center gap-3 text-accent/60 hover:text-accent transition-colors focus:outline-none"
                     >
@@ -147,10 +153,10 @@ export default function CreatorOrigin({ programId }) {
         </div>
 
         {/* Coluna da Imagem (Direita) */}
-        <div className="w-full md:w-[300px] shrink-0 sticky top-32 order-first md:order-last">
+        <div className="w-full md:w-[220px] shrink-0 sticky top-32 order-first md:order-last">
           <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/5 shadow-2xl relative">
             <img 
-              src={originData.photo_url || "/images/creator-be-the-dance.jpg"} 
+              src={originData.photo_url || "/images/creator-be-the-dance.jpeg"} 
               alt="Criadora" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               onError={(e) => {
