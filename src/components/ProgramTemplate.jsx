@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import BeTheDancePhilosophy from './BeTheDancePhilosophy';
 import BiostretchPhilosophy from './BiostretchPhilosophy';
 import KroppsskolePhilosophy from './KroppsskolePhilosophy';
+import CreatorOrigin from './CreatorOrigin';
 
 export default function ProgramTemplate({ program }) {
   const { t } = useTranslation();
@@ -278,12 +279,12 @@ export default function ProgramTemplate({ program }) {
                     </div>
                   </div>
                 </Link>
-              )}
-
-            </div>
+              )}</div>
           </div>
         </section>
       )}
+
+      <CreatorOrigin programId={program.id} />
     </div>
   );
 }
