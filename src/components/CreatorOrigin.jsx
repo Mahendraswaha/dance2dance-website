@@ -21,7 +21,7 @@ export default function CreatorOrigin({ programId }) {
   const renderParagraph = (p, idx) => {
     if (p.startsWith('[SILVER]')) {
       return (
-        <p key={idx} className="font-drama italic text-xl md:text-2xl text-[#8A8A8A] leading-loose my-8 font-light">
+        <p key={idx} className="font-drama italic text-xl md:text-2xl text-[#8A8A8A] leading-loose my-8 font-light whitespace-pre-line">
           {p.replace('[SILVER]', '')}
         </p>
       );
@@ -30,7 +30,7 @@ export default function CreatorOrigin({ programId }) {
     if (p.startsWith('[GOLD]')) {
       return (
         <div key={idx} className="py-12 my-12 border-t border-b border-accent/20 text-center relative px-4">
-          <p className="font-batang italic text-2xl md:text-[28px] text-accent leading-relaxed">
+          <p className="font-batang italic text-2xl md:text-[28px] text-accent leading-relaxed whitespace-pre-line">
             {p.replace('[GOLD]', '')}
           </p>
         </div>
