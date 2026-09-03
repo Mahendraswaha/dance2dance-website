@@ -19,9 +19,26 @@ export default function CreatorOrigin({ programId }) {
   const remainingParagraphs = paragraphs.slice(2);
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-background border-t border-white/5 relative z-10">
+    <section className="py-24 px-6 md:px-12 border-t border-white/5 relative z-10">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
+          
+          {/* Foto da Criadora */}
+          <div className="flex justify-center mb-8">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-accent/40 shadow-2xl relative">
+              <img 
+                src={originData.photo_url || "/images/creator.jpg"} 
+                alt="Criadora" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback se a imagem no for encontrada
+                  e.target.style.display = 'none';
+                  e.target.parentElement.classList.add('bg-accent/10');
+                }}
+              />
+            </div>
+          </div>
+
           <h2 className="font-heading text-sm tracking-[4px] uppercase text-accent mb-4">
             {originData.title || "A Origem"}
           </h2>
@@ -86,7 +103,8 @@ export default function CreatorOrigin({ programId }) {
 
         {!isExpanded && (
           <div className="mt-12 flex justify-center relative">
-            <div className="absolute bottom-full left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+            {/* O degrad agora usa from-primary para casar com o fundo escuro da pgina */}
+            <div className="absolute bottom-full left-0 w-full h-32 bg-gradient-to-t from-primary to-transparent pointer-events-none"></div>
             
             <button
               onClick={() => setIsExpanded(true)}
