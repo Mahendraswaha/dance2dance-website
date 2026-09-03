@@ -21,7 +21,7 @@ export default function CreatorOrigin({ programId }) {
   const renderParagraph = (p, idx) => {
     if (p.startsWith('[SILVER]')) {
       return (
-        <p key={idx} className="font-drama italic text-lg md:text-xl text-[#8A8A8A] leading-loose my-8 font-light">
+        <p key={idx} className="font-drama italic text-xl md:text-2xl text-[#8A8A8A] leading-loose my-8 font-light">
           {p.replace('[SILVER]', '')}
         </p>
       );
@@ -64,109 +64,111 @@ export default function CreatorOrigin({ programId }) {
   };
 
   return (
-    <section className="py-24 px-8 max-w-3xl mx-auto border-t border-white/5 relative z-10">
-      
-      <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start">
+    <section className="py-24 border-t border-white/5 relative z-10">
+      <div className="max-w-[1000px] mx-auto px-8">
         
-        {/* Coluna de Texto (Esquerda) */}
-        <div className="flex-1">
+        <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start">
           
-          <div className="text-left mb-12">
-            <h2 className="font-heading text-sm tracking-[4px] uppercase text-accent mb-4">
-              {originData.title || "A Origem"}
-            </h2>
-            <div className="w-12 h-[1px] bg-accent/30"></div>
-          </div>
-
-          <div className="space-y-8">
-            {teaserParagraphs.map(renderParagraph)}
-          </div>
-
-          <AnimatePresence initial={false}>
-            {isExpanded && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                className="overflow-hidden"
-              >
-                <div className="pt-8 space-y-8">
-                  {remainingParagraphs.map(renderParagraph)}
-
-                  {/* CV Link */}
-                  <div className="pt-16 pb-8 flex flex-col items-center justify-center gap-12">
-                    
-                    <Link 
-                      to={originData.cv_url || "#"} 
-                      className="group flex flex-col items-center gap-3"
-                    >
-                      <span className="font-heading text-sm tracking-[3px] uppercase text-accent/80 group-hover:text-accent transition-colors">
-                        {originData.cv_link_text || "Ver curr�culo completo"}
-                      </span>
-                      <div className="w-10 h-10 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-background transition-all duration-300">
-                        <ArrowRight size={16} />
-                      </div>
-                    </Link>
-
-                    {/* Bot�o Recolher */}
-                    <button
-                      onClick={() => {
-                        setIsExpanded(false);
-                      }}
-                      className="group flex items-center gap-3 text-accent/60 hover:text-accent transition-colors focus:outline-none"
-                    >
-                      <ChevronUp size={16} strokeWidth={1} />
-                      <span className="font-heading text-[10px] tracking-[3px] uppercase">
-                        {originData.read_less || "Recolher"}
-                      </span>
-                    </button>
-
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {!isExpanded && (
-            <div className="mt-8 flex relative">
-              <div className="absolute bottom-full left-0 w-full h-40 bg-gradient-to-t from-primary to-transparent pointer-events-none"></div>
-              
-              <button
-                onClick={() => setIsExpanded(true)}
-                className="group flex flex-col items-start gap-3 focus:outline-none relative z-10"
-              >
-                <span className="font-heading text-[10px] tracking-[3px] uppercase text-[#9A9A9A] group-hover:text-accent transition-colors">
-                  {originData.read_more || "Ler hist�ria completa"}
-                </span>
-                <motion.div
-                  animate={{ y: [0, 4, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-accent/50 group-hover:text-accent pl-4"
-                >
-                  <ChevronDown size={20} strokeWidth={1} />
-                </motion.div>
-              </button>
+          {/* Coluna de Texto (Esquerda) */}
+          <div className="flex-1">
+            
+            <div className="text-left mb-12">
+              <h2 className="font-heading text-sm tracking-[4px] uppercase text-accent mb-4">
+                {originData.title || "A Origem"}
+              </h2>
+              <div className="w-12 h-[1px] bg-accent/30"></div>
             </div>
-          )}
 
-        </div>
+            <div className="space-y-8">
+              {teaserParagraphs.map(renderParagraph)}
+            </div>
 
-        {/* Coluna da Imagem (Direita) */}
-        <div className="w-full md:w-[220px] shrink-0 sticky top-32 order-first md:order-last">
-          <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/5 shadow-2xl relative">
-            <img 
-              src={originData.photo_url || "/images/creator-be-the-dance.jpeg"} 
-              alt="Criadora" 
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.parentElement.classList.add('bg-accent/10');
-              }}
-            />
+            <AnimatePresence initial={false}>
+              {isExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-8 space-y-8">
+                    {remainingParagraphs.map(renderParagraph)}
+
+                    {/* CV Link */}
+                    <div className="pt-16 pb-8 flex flex-col items-center justify-center gap-12">
+                      
+                      <Link 
+                        to={originData.cv_url || "#"} 
+                        className="group flex flex-col items-center gap-3"
+                      >
+                        <span className="font-heading text-sm tracking-[3px] uppercase text-accent/80 group-hover:text-accent transition-colors">
+                          {originData.cv_link_text || "Ver curr�culo completo"}
+                        </span>
+                        <div className="w-10 h-10 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-background transition-all duration-300">
+                          <ArrowRight size={16} />
+                        </div>
+                      </Link>
+
+                      {/* Bot�o Recolher */}
+                      <button
+                        onClick={() => {
+                          setIsExpanded(false);
+                        }}
+                        className="group flex items-center gap-3 text-accent/60 hover:text-accent transition-colors focus:outline-none"
+                      >
+                        <ChevronUp size={16} strokeWidth={1} />
+                        <span className="font-heading text-[10px] tracking-[3px] uppercase">
+                          {originData.read_less || "Recolher"}
+                        </span>
+                      </button>
+
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {!isExpanded && (
+              <div className="mt-8 flex relative">
+                <div className="absolute bottom-full left-0 w-full h-40 bg-gradient-to-t from-primary to-transparent pointer-events-none"></div>
+                
+                <button
+                  onClick={() => setIsExpanded(true)}
+                  className="group flex flex-col items-start gap-3 focus:outline-none relative z-10"
+                >
+                  <span className="font-heading text-[10px] tracking-[3px] uppercase text-[#9A9A9A] group-hover:text-accent transition-colors">
+                    {originData.read_more || "Ler hist�ria completa"}
+                  </span>
+                  <motion.div
+                    animate={{ y: [0, 4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="text-accent/50 group-hover:text-accent pl-4"
+                  >
+                    <ChevronDown size={20} strokeWidth={1} />
+                  </motion.div>
+                </button>
+              </div>
+            )}
+
           </div>
-        </div>
 
+          {/* Coluna da Imagem (Direita) */}
+          <div className="w-full md:w-[220px] shrink-0 sticky top-32 order-first md:order-last">
+            <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/5 shadow-2xl relative">
+              <img 
+                src={originData.photo_url || "/images/creator-be-the-dance.jpeg"} 
+                alt="Criadora" 
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.parentElement.classList.add('bg-accent/10');
+                }}
+              />
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
