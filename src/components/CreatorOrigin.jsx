@@ -20,8 +20,8 @@ export default function CreatorOrigin({ programId }) {
 
   return (
     <section className="py-24 px-6 md:px-12 border-t border-white/5 relative z-10">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-12">
+      <div className="max-w-[600px] mx-auto">
+        <div className="text-center mb-16">
           
           {/* Foto da Criadora */}
           <div className="flex justify-center mb-8">
@@ -31,7 +31,6 @@ export default function CreatorOrigin({ programId }) {
                 alt="Criadora" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  // Fallback se a imagem no for encontrada
                   e.target.style.display = 'none';
                   e.target.parentElement.classList.add('bg-accent/10');
                 }}
@@ -45,9 +44,9 @@ export default function CreatorOrigin({ programId }) {
           <div className="w-12 h-[1px] bg-accent/30 mx-auto"></div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           {teaserParagraphs.map((p, idx) => (
-            <p key={idx} className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-relaxed font-light">
+            <p key={idx} className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-loose font-light">
               {p}
             </p>
           ))}
@@ -62,13 +61,13 @@ export default function CreatorOrigin({ programId }) {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
               className="overflow-hidden"
             >
-              <div className="pt-6 space-y-6">
+              <div className="pt-8 space-y-8">
                 {remainingParagraphs.map((p, idx) => {
                   const isQuote = p.startsWith('"') || p.startsWith('�') || p.startsWith('�');
                   if (isQuote) {
                     return (
-                      <div key={idx} className="py-6 text-center">
-                        <p className="font-batang italic text-2xl md:text-3xl text-accent leading-snug">
+                      <div key={idx} className="py-12 my-12 border-t border-b border-accent/20 text-center relative px-4">
+                        <p className="font-batang italic text-2xl md:text-[28px] text-accent leading-relaxed">
                           {p}
                         </p>
                       </div>
@@ -76,14 +75,14 @@ export default function CreatorOrigin({ programId }) {
                   }
                   
                   return (
-                    <p key={idx} className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-relaxed font-light">
+                    <p key={idx} className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-loose font-light">
                       {p}
                     </p>
                   );
                 })}
 
                 {/* CV Link */}
-                <div className="pt-16 pb-8 flex justify-center">
+                <div className="pt-20 pb-8 flex justify-center">
                   <Link 
                     to={originData.cv_url || "#"} 
                     className="group flex flex-col items-center gap-3"
@@ -91,8 +90,8 @@ export default function CreatorOrigin({ programId }) {
                     <span className="font-heading text-sm tracking-[3px] uppercase text-accent/80 group-hover:text-accent transition-colors">
                       {originData.cv_link_text || "Ver curr�culo completo"}
                     </span>
-                    <div className="w-8 h-8 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-background transition-all duration-300">
-                      <ArrowRight size={14} />
+                    <div className="w-10 h-10 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-background transition-all duration-300">
+                      <ArrowRight size={16} />
                     </div>
                   </Link>
                 </div>
@@ -103,8 +102,7 @@ export default function CreatorOrigin({ programId }) {
 
         {!isExpanded && (
           <div className="mt-12 flex justify-center relative">
-            {/* O degrad agora usa from-primary para casar com o fundo escuro da pgina */}
-            <div className="absolute bottom-full left-0 w-full h-32 bg-gradient-to-t from-primary to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-full left-0 w-full h-40 bg-gradient-to-t from-primary to-transparent pointer-events-none"></div>
             
             <button
               onClick={() => setIsExpanded(true)}
