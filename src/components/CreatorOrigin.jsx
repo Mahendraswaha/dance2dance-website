@@ -154,7 +154,7 @@ export default function CreatorOrigin({ programId }) {
           </div>
 
           {/* Coluna da Imagem (Direita) */}
-          <div className="w-full md:w-[220px] shrink-0 sticky top-32 order-first md:order-last">
+          <div className="w-[180px] sm:w-[220px] mx-auto md:mx-0 shrink-0 relative md:sticky md:top-32 order-first md:order-last mb-10 md:mb-0">
             <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/5 shadow-2xl relative">
               <img 
                 src={originData.photo_url || "/images/creator-be-the-dance.jpeg"} 
