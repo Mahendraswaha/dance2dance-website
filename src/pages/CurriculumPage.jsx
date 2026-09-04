@@ -13,45 +13,17 @@ export default function CurriculumPage() {
   
   if (!cvData || !cvData.paragraphs) return null;
 
-  const [activePhase, setActivePhase] = useState(0);
-  const phaseRefs = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const paragraphRefs = useRef([]);
 
-  // Images mapped to the 3 narrative phases:
-  // Phase 0: Classical roots (Kiev / Cuba / Ballet)
-  // Phase 1: Exploration & Transition (Release / NY / Direction)
-  // Phase 2: Meditation, Dance2Dance & Norway-Brazil bridge
+  // Now we map each of the 6 paragraphs directly to one of the 6 new photos!
   const phaseImages = [
-    {
-      src: '/images/cv-phase-1.jpeg',
-      fallback: '/images/creator-be-the-dance.jpg',
-      caption: 'Raízes Clássicas'
-    },
-    {
-      src: '/images/cv-phase-2.jpeg',
-      fallback: '/images/creator-biostretch.jpeg',
-      caption: 'Transição & Somática'
-    },
-    {
-      src: '/images/cv-phase-3.jpeg',
-      fallback: '/images/creator-be-the-dance.jpg',
-      caption: 'Dance2Dance & Presença'
-    }
-  ];
-
-  // Group paragraphs into the 3 phases (2 paragraphs each)
-  const phases = [
-    {
-      id: 0,
-      paragraphs: cvData.paragraphs.slice(0, 2)
-    },
-    {
-      id: 1,
-      paragraphs: cvData.paragraphs.slice(2, 4)
-    },
-    {
-      id: 2,
-      paragraphs: cvData.paragraphs.slice(4, 6)
-    }
+    { src: '/images/cv-1.jpg' },
+    { src: '/images/cv-2.jpg' },
+    { src: '/images/cv-3.jpg' },
+    { src: '/images/cv-4.jpg' },
+    { src: '/images/cv-5.jpg' },
+    { src: '/images/cv-6.jpg' }
   ];
 
   useEffect(() => {
@@ -59,20 +31,21 @@ export default function CurriculumPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(entry.target.dataset.phase);
+            const index = Number(entry.target.dataset.index);
             if (!isNaN(index)) {
-              setActivePhase(index);
+              setActiveIndex(index);
             }
           }
         });
       },
       {
-        rootMargin: '-20% 0px -40% 0px',
-        threshold: 0.2
+        // Adjust rootMargin so the trigger happens closer to the center of the screen
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0
       }
     );
 
-    phaseRefs.current.forEach((ref) => {
+    paragraphRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
@@ -124,66 +97,66 @@ export default function CurriculumPage() {
           </div>
 
           {/* Mobile Image (discreet portrait at the top) */}
-          <div className="md:hidden w-[200px] aspect-[3/4] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative">
+          <div className="md:hidden w-full max-w-[280px] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative aspect-[3/4]">
             <img 
-              src={phaseImages[activePhase].src}
+              src={phaseImages[activeIndex]?.src || phaseImages[0].src}
               alt="Safia"
               className="w-full h-full object-cover grayscale transition-opacity duration-700"
-              onError={(e) => {
-                e.target.src = phaseImages[activePhase].fallback;
-              }}
             />
           </div>
 
           {/* Main Content Layout */}
-          <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24 justify-between items-start relative">
             
             {/* Left Column: Narrative Prose */}
-            <div className="flex-1 max-w-[620px] space-y-20">
-              {phases.map((phase) => (
+            <div className="flex-1 max-w-[580px] pb-32">
+              {cvData.paragraphs.map((p, pIdx) => (
                 <div 
-                  key={phase.id}
-                  data-phase={phase.id}
-                  ref={(el) => (phaseRefs.current[phase.id] = el)}
-                  className="space-y-8 relative"
+                  key={pIdx}
+                  data-index={pIdx}
+                  ref={(el) => (paragraphRefs.current[pIdx] = el)}
+                  // The minimum height ensures that short paragraphs still allow scrolling nicely
+                  className="min-h-[35vh] flex items-center" 
                 >
-                  {phase.paragraphs.map((p, pIdx) => (
-                    <p 
-                      key={pIdx} 
-                      className="font-drama text-lg md:text-xl text-[#F0EDE8]/90 leading-loose font-light"
-                    >
-                      {p}
-                    </p>
-                  ))}
+                  <p className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}>
+                    {p}
+                  </p>
                 </div>
               ))}
             </div>
 
             {/* Right Column: Sticky Image Frame (Desktop only, seamless crossfade) */}
-            <div className="hidden md:block w-[260px] shrink-0 sticky top-36">
+            <div className="hidden md:block w-[280px] shrink-0 sticky top-36">
               <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-[#141414]">
                 {phaseImages.map((imgObj, idx) => (
                   <div
                     key={idx}
                     className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
                     style={{ 
-                      opacity: activePhase === idx ? 1 : 0,
-                      pointerEvents: activePhase === idx ? 'auto' : 'none'
+                      opacity: activeIndex === idx ? 1 : 0,
+                      pointerEvents: activeIndex === idx ? 'auto' : 'none'
                     }}
                   >
                     <img 
                       src={imgObj.src} 
                       alt={`Registro ${idx + 1}`}
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                      onError={(e) => {
-                        e.target.src = imgObj.fallback;
-                      }}
                     />
                   </div>
                 ))}
                 
                 {/* Subtle dark vignette overlay to unify with background */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent pointer-events-none" />
+              </div>
+              
+              {/* Optional: Indicator Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {phaseImages.map((_, idx) => (
+                  <div 
+                    key={idx}
+                    className={`h-[2px] transition-all duration-500 ${activeIndex === idx ? 'w-6 bg-accent' : 'w-2 bg-white/20'}`}
+                  />
+                ))}
               </div>
             </div>
 
