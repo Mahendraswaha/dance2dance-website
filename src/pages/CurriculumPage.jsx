@@ -111,7 +111,7 @@ export default function CurriculumPage() {
                   <div 
                     data-index={pIdx}
                     ref={(el) => (paragraphRefs.current[pIdx] = el)}
-                    className={pIdx === cvData.paragraphs.length - 1 ? 'mb-0' : 'mb-16 md:mb-24'} 
+                    className={pIdx === cvData.paragraphs.length - 1 ? 'mb-0' : 'mb-10 md:mb-12'} 
                   >
                     <p 
                       className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}
