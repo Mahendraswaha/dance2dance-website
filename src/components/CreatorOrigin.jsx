@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
@@ -8,6 +8,7 @@ import AnimatedFrame from './AnimatedFrame';
 export default function CreatorOrigin({ programId }) {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const sectionRef = useRef(null); // Reference para a seção inteira rolar
 
   const originData = t(`programs.${programId}.origin`, { returnObjects: true });
   
@@ -46,7 +47,7 @@ export default function CreatorOrigin({ programId }) {
       );
     }
 
-    const isQuote = p.startsWith('"') || p.startsWith('“') || p.startsWith('«');
+    const isQuote = p.startsWith('"') || p.startsWith('"') || p.startsWith('"') || p.startsWith('"') || p.startsWith('"') || p.startsWith('"') || p.startsWith('"');
     if (isQuote) {
       return (
         <div key={idx} className="py-12 my-12 border-t border-b border-accent/20 text-center relative px-4">
@@ -65,7 +66,7 @@ export default function CreatorOrigin({ programId }) {
   };
 
   return (
-    <section className="py-24 border-t border-white/5 relative z-10">
+    <section ref={sectionRef} className="py-24 border-t border-white/5 relative z-10">
       <div className="max-w-[1000px] mx-auto px-8">
         
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start">
@@ -154,9 +155,9 @@ export default function CreatorOrigin({ programId }) {
 
           </div>
 
-          {/* Coluna da Imagem (Direita) - Agora com AnimatedFrame */}
+          {/* Coluna da Imagem (Direita) - Agora com AnimatedFrame dinmico */}
           <div className="w-[180px] sm:w-[220px] mx-auto md:mx-0 shrink-0 relative md:sticky md:top-32 order-first md:order-last mb-10 md:mb-0">
-            <AnimatedFrame className="w-full aspect-[3/4]">
+            <AnimatedFrame scrollTarget={sectionRef} className="w-full aspect-[3/4]">
               <img 
                 src={originData.photo_url || "/images/creator-be-the-dance.jpg"} 
                 alt="Criadora" 
