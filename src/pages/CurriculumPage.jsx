@@ -97,7 +97,7 @@ export default function CurriculumPage() {
           </div>
 
           {/* Mobile Image (discreet square at the top) */}
-          <div className="md:hidden w-full max-w-[280px] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative aspect-square">
+          <div className="md:hidden w-full max-w-[400px] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative aspect-square">
             <img 
               src={phaseImages[activeIndex]?.src || phaseImages[0].src}
               alt="Safia"
@@ -106,10 +106,10 @@ export default function CurriculumPage() {
           </div>
 
           {/* Main Content Layout */}
-          <div className="flex flex-col md:flex-row gap-12 md:gap-24 justify-between items-start relative">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start relative">
             
             {/* Left Column: Narrative Prose */}
-            <div className="flex-1 max-w-[580px] pb-32">
+            <div className="flex-1 max-w-[460px] pb-32">
               {cvData.paragraphs.map((p, pIdx) => (
                 <div 
                   key={pIdx}
@@ -126,7 +126,7 @@ export default function CurriculumPage() {
             </div>
 
             {/* Right Column: Sticky Image Frame (Desktop only, seamless crossfade) */}
-            <div className="hidden md:block w-[280px] shrink-0 sticky top-36">
+            <div className="hidden md:block w-[400px] shrink-0 sticky top-36">
               <div className="w-full aspect-square rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-[#141414]">
                 {phaseImages.map((imgObj, idx) => (
                   <div
