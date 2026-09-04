@@ -111,8 +111,7 @@ export default function CurriculumPage() {
                   <div 
                     data-index={pIdx}
                     ref={(el) => (paragraphRefs.current[pIdx] = el)}
-                    // The minimum height ensures that short paragraphs still allow scrolling nicely
-                    className={`min-h-[35vh] md:min-h-[35vh] min-h-0 flex ${pIdx === 0 ? 'items-start' : 'items-center'} mb-16 md:mb-0`} 
+                    className={pIdx === cvData.paragraphs.length - 1 ? 'mb-0' : 'mb-16 md:mb-24'} 
                   >
                     <p 
                       className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}
