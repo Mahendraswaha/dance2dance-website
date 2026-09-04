@@ -9,6 +9,7 @@ import CorporatePage from './pages/CorporatePage';
 import IndividualPage from './pages/IndividualPage';
 import RegularClassesPage from './pages/RegularClassesPage';
 import ScrollToTop from './components/ScrollToTop';
+import CurriculumPage from './pages/CurriculumPage';
 
 // Import i18n
 import './i18n';
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/biostretch/empresas" element={<CorporatePage />} />
         <Route path="/biostretch/individual" element={<IndividualPage />} />
         <Route path="/biostretch/aulas-regulares" element={<RegularClassesPage />} />
+        <Route path="/safia" element={<CurriculumPage />} />
         <Route path="/:programId" element={<ProgramPage />} />
         <Route path="/:programId/:workshopId" element={<WorkshopPage />} />
                 <Route path="/termos" element={<TermsPage />} />

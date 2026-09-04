@@ -360,7 +360,7 @@
         "read_more": "Ler história completa",
         "read_less": "Ocultar",
         "cv_link_text": "Currículo da Criadora",
-        "cv_url": "#"
+        "cv_url": "/safia"
       }
     },
     "biostretch": {
@@ -451,7 +451,7 @@
       "origin": {
         "title": "A Origem do Biostretch",
         "photo_url": "/images/creator-biostretch.jpeg",
-        "cv_url": "#",
+        "cv_url": "/safia",
         "cv_link_text": "Ver currículo completo",
         "read_more": "Ler história completa",
         "read_less": "Recolher",
@@ -840,5 +840,27 @@
         }
       ]
     }
+  },
+  "cv": {
+    "title": "Safia",
+    "subtitle": "Diretora Artística & Educadora do Movimento",
+    "highlights_title": "Síntese da Trajetória",
+    "highlights": [
+      "Diretora Artística do Dance2Dance (Noruega) e Porto Alegre Cia de Dança (Brasil).",
+      "Criadora das metodologias Biostretch e Be The Dance.",
+      "Formação na Escola Estatal de Ballet Clássico de Kiev (Ucrânia).",
+      "Atuação no Ballet Nacional de Cuba e Ballet de Camaguey.",
+      "Especialização em Dança Moderna e Técnica Release (Trisha Brown Company, NY).",
+      "Especialização em Educação Somática e certificação no método Gyrotonic.",
+      "Graduação em Letras pela Universidade Federal do Rio Grande do Sul (UFRGS)."
+    ],
+    "paragraphs": [
+      "A dança entrou na minha vida por uma prescrição médica. Aos sete anos, o ballet clássico foi a solução indicada para alinhar a postura dos pés. O que começou como uma necessidade ortopédica transformou-se em fascínio. A disciplina das barras e o entusiasmo de meu primeiro mestre, João Luiz Rolla, plantaram a semente da minha trajetória profissional.",
+      "O desejo de compreender o movimento levou-me além das fronteiras locais. Em 1988, recebi uma bolsa na Escola Estatal de Ballet Clássico de Kiev. Foram dois anos de imersão no método Vaganova, respirando a cultura teatral da ex-União Soviética. Mais tarde, atuei em Cuba, no Ballet de Camaguey e no Ballet Nacional. Ali a precisão clássica encontrou a pulsação de uma comunidade artística extremamente viva.",
+      "A vivência clássica criou raízes profundas. Com o tempo, surgiu a urgência de expandir o repertório do corpo. No Brasil, integrei a Companhia Terpsí Teatro de Dança, iniciando o contato com linguagens contemporâneas. Em 1997, uma bolsa governamental levou-me a Nova York para estudar a técnica Release na Trisha Brown Company e na Movement Research. O encontro com a Educação Somática ali mudaria definitivamente minha forma de entender o esforço corporal.",
+      "Minha jornada caminhou por múltiplas frentes. Dancei em palcos internacionais. Ensinei crianças em projetos sociais na periferia. Atuei nos bastidores como assistente de coreografia no Teatro Castro Alves, na Bahia. Paralelamente, formei-me em Letras, aprofundando minha conexão com a literatura. Mergulhei também em formações terapêuticas corporais, como o Gyrotonic, e certifiquei-me como educadora pelo Teatro Escola Brincante.",
+      "Em 2007, ajudei a fundar a Porto Alegre Cia de Dança, assumindo a direção artística. A soma dessas vivências técnicas e pedagógicas abriu caminho para a criação de metodologias próprias. O Biostretch nasceu como um sistema de inteligência corporal, integrando práticas somáticas. O Be The Dance surgiu como um espaço de reencontro com o movimento livre.",
+      "Hoje divido minha atuação entre o Brasil e a Noruega, onde sou Diretora Artística do Dance2Dance. Sigo ensinando, investigando e conduzindo sessões de consciência corporal pelo mundo. Acredito na capacidade que o corpo tem de se reinventar e expressar a própria vida."
+    ]
   }
 }

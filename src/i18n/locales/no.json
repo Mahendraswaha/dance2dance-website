@@ -360,7 +360,7 @@
         "read_more": "Les hele historien",
         "read_less": "Vis mindre",
         "cv_link_text": "Skaperens CV",
-        "cv_url": "#"
+        "cv_url": "/safia"
       }
     },
     "biostretch": {
@@ -451,7 +451,7 @@
       "origin": {
         "title": "Opprinnelsen til Biostretch",
         "photo_url": "/images/creator-biostretch.jpeg",
-        "cv_url": "#",
+        "cv_url": "/safia",
         "cv_link_text": "Se hele CV-en",
         "read_more": "Les hele historien",
         "read_less": "Lukk",
@@ -840,5 +840,27 @@
         }
       ]
     }
+  },
+  "cv": {
+    "title": "Safia",
+    "subtitle": "Kunstnerisk leder og bevegelsespædagog",
+    "highlights_title": "Karrierehøydepunkter",
+    "highlights": [
+      "Kunstnerisk leder for Dance2Dance (Norge) og Porto Alegre Dance Company (Brasil).",
+      "Skaper av metodene Biostretch og Be The Dance.",
+      "Utdannet ved statens ballettskole i Kiev (Ukraina).",
+      "Opptrådte med Nasjonalballetten på Cuba og Ballet de Camaguey.",
+      "Spesialisering i moderne dans og Release-teknikk (Trisha Brown Company, NY).",
+      "Spesialisering i somatisk utdanning og sertifisert i Gyrotonic-metoden.",
+      "Grad i litteratur fra Federal University of Rio Grande do Sul (UFRGS)."
+    ],
+    "paragraphs": [
+      "Dans kom inn i livet mitt som en medisinsk resept. Som syvåring ble klassisk ballett anbefalt for å rette opp fotstillingen min. Det som begynte som en ortopedisk nødvendighet, ble raskt til en fascinasjon. Disiplinen ved barren og entusiasmen til min første læremester, João Luiz Rolla, sådde frøet til min profesjonelle karriere.",
+      "Ønsket om å forstå bevegelse tok meg forbi lokale grenser. I 1988 mottok jeg et stipend til statens ballettskole i Kiev. Det var en toårig fordypning i Vaganova-metoden, hvor jeg pustet inn teaterkulturen fra det tidligere Sovjetunionen. Senere opptrådte jeg i Cuba med Ballet de Camaguey og Nasjonalballetten. Der møtte den klassiske presisjonen pulsen fra et svært levende kunstnermiljø.",
+      "Den klassiske erfaringen ga meg dype røtter. Med tiden vokste behovet for å utvide kroppens repertoar. Tilbake i Brasil ble jeg med i Terpsí Danseteater, hvor jeg startet mitt møte med moderne uttrykk. I 1997 tok et statsstipend meg til New York for å studere Release-teknikk ved Trisha Brown Company og Movement Research. Møtet med somatisk utdanning der endret min forståelse av fysisk anstrengelse for alltid.",
+      "Min reise har utviklet seg på mange fronter. Jeg danset på internasjonale scener. Jeg underviste barn i sosiale prosjekter. Jeg jobbet bak kulissene som koreografiassistent ved Castro Alves-teateret i Bahia. Samtidig tok jeg en grad i litteratur, noe som fordypet min forbindelse til det skrevne ord. Jeg fordypet meg også i kroppsterapier, som Gyrotonic, og ble sertifisert pedagog ved Brincante teaterskole.",
+      "I 2007 var jeg med på å grunnlegge Porto Alegre Dance Company og overtok den kunstneriske ledelsen. Summen av disse tekniske og pedagogiske erfaringene banet vei for å skape mine egne metoder. Biostretch ble født som et system for kroppslig intelligens, som integrerer somatiske praksiser. Be The Dance vokste frem som et rom for å gjenforenes med fri bevegelse.",
+      "I dag deler jeg arbeidet mitt mellom Brasil og Norge, hvor jeg er kunstnerisk leder for Dance2Dance. Jeg fortsetter å undervise, forske og lede sesjoner for kroppsbevissthet over hele verden. Jeg tror på kroppens evne til å gjenoppfinne seg selv og uttrykke livet."
+    ]
   }
 }
