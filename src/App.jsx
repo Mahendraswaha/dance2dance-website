@@ -13,6 +13,8 @@ import ScrollToTop from './components/ScrollToTop';
 import CurriculumPage from './pages/CurriculumPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminRoute from './components/AdminRoute';
 
 // Import i18n
 import './i18n';
@@ -34,6 +36,7 @@ export default function App() {
         <Route path="/safia" element={<CurriculumPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<SignupPage />} />
+        <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/:programId" element={<ProgramPage />} />
         <Route path="/:programId/:workshopId" element={<WorkshopPage />} />
                 <Route path="/termos" element={<TermsPage />} />
