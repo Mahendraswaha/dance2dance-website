@@ -23,7 +23,7 @@ export default function CurriculumPage() {
   const phaseImages = [
     {
       src: '/images/cv-phase-1.jpeg',
-      fallback: '/images/creator-be-the-dance.jpeg',
+      fallback: '/images/creator-be-the-dance.jpg',
       caption: 'Raízes Clássicas'
     },
     {
@@ -33,7 +33,7 @@ export default function CurriculumPage() {
     },
     {
       src: '/images/cv-phase-3.jpeg',
-      fallback: '/images/creator-be-the-dance.jpeg',
+      fallback: '/images/creator-be-the-dance.jpg',
       caption: 'Dance2Dance & Presença'
     }
   ];

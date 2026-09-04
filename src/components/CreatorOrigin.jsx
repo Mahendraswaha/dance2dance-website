@@ -157,7 +157,7 @@ export default function CreatorOrigin({ programId }) {
           <div className="w-[180px] sm:w-[220px] mx-auto md:mx-0 shrink-0 relative md:sticky md:top-32 order-first md:order-last mb-10 md:mb-0">
             <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/5 shadow-2xl relative">
               <img 
-                src={originData.photo_url || "/images/creator-be-the-dance.jpeg"} 
+                src={originData.photo_url || "/images/creator-be-the-dance.jpg"} 
                 alt="Criadora" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 onError={(e) => {
