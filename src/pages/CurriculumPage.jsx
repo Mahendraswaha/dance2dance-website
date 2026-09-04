@@ -59,15 +59,6 @@ export default function CurriculumPage() {
       <main className="flex-grow pt-36 md:pt-44 pb-32 relative">
         <div className="max-w-[1000px] mx-auto px-8">
           
-          {/* Back button */}
-          <button 
-            onClick={() => navigate(-1)}
-            className="group inline-flex items-center gap-2 font-heading text-xs tracking-[3px] uppercase text-[#9A9A9A] hover:text-accent transition-colors mb-12 focus:outline-none"
-          >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            <span>{t('actions.back', 'Voltar')}</span>
-          </button>
-
           {/* Header */}
           <div className="mb-20">
             <motion.h1 
@@ -116,7 +107,7 @@ export default function CurriculumPage() {
                   data-index={pIdx}
                   ref={(el) => (paragraphRefs.current[pIdx] = el)}
                   // The minimum height ensures that short paragraphs still allow scrolling nicely
-                  className="min-h-[35vh] flex items-center" 
+                  className={`min-h-[35vh] flex ${pIdx === 0 ? 'items-start' : 'items-center'}`} 
                 >
                   <p className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}>
                     {p}
@@ -160,6 +151,17 @@ export default function CurriculumPage() {
               </div>
             </div>
 
+          </div>
+
+          {/* Back button (bottom) */}
+          <div className="mt-24 border-t border-white/10 pt-12 flex justify-start">
+            <button 
+              onClick={() => navigate(-1)}
+              className="group inline-flex items-center gap-2 font-heading text-xs tracking-[3px] uppercase text-[#9A9A9A] hover:text-accent transition-colors focus:outline-none"
+            >
+              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+              <span>{t('actions.back', 'Voltar')}</span>
+            </button>
           </div>
 
         </div>
