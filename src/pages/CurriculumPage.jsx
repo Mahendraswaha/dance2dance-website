@@ -114,9 +114,10 @@ export default function CurriculumPage() {
                   // The minimum height ensures that short paragraphs still allow scrolling nicely
                   className={`min-h-[35vh] flex ${pIdx === 0 ? 'items-start' : 'items-center'}`} 
                 >
-                  <p className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}>
-                    {p}
-                  </p>
+                  <p 
+                    className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}
+                    dangerouslySetInnerHTML={{ __html: p }}
+                  />
                 </div>
               ))}
             </div>
