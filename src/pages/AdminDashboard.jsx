@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 export default function AdminDashboard() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     title: '',
     startDate: '',
@@ -36,25 +37,67 @@ export default function AdminDashboard() {
     fetchEvents();
   }, []);
 
-  async function handleCreateEvent(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await addDoc(collection(db, 'events'), {
-        title: formData.title,
-        startDate: formData.startDate,
-        scheduleDetails: formData.scheduleDetails,
-        location: formData.location,
-        totalSpots: Number(formData.totalSpots),
-        enrolledCount: 0,
-        waitlistCount: 0,
-        status: 'active',
-        createdAt: new Date().toISOString()
-      });
+      if (editingId) {
+        // Modo Edição
+        const eventRef = doc(db, 'events', editingId);
+        await updateDoc(eventRef, {
+          title: formData.title,
+          startDate: formData.startDate,
+          scheduleDetails: formData.scheduleDetails,
+          location: formData.location,
+          totalSpots: Number(formData.totalSpots)
+        });
+        setEditingId(null);
+      } else {
+        // Modo Criação
+        await addDoc(collection(db, 'events'), {
+          title: formData.title,
+          startDate: formData.startDate,
+          scheduleDetails: formData.scheduleDetails,
+          location: formData.location,
+          totalSpots: Number(formData.totalSpots),
+          enrolledCount: 0,
+          waitlistCount: 0,
+          status: 'active',
+          createdAt: new Date().toISOString()
+        });
+      }
       setFormData({ title: '', startDate: '', scheduleDetails: '', location: '', totalSpots: '' });
-      fetchEvents(); // recarrega a lista
+      fetchEvents(); 
     } catch (err) {
-      console.error("Erro ao criar evento", err);
-      alert("Erro ao criar evento.");
+      console.error("Erro ao salvar evento", err);
+      alert("Erro ao salvar evento.");
+    }
+  }
+
+  function handleEditClick(event) {
+    setFormData({
+      title: event.title,
+      startDate: event.startDate,
+      scheduleDetails: event.scheduleDetails,
+      location: event.location,
+      totalSpots: event.totalSpots
+    });
+    setEditingId(event.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function handleCancelEdit() {
+    setEditingId(null);
+    setFormData({ title: '', startDate: '', scheduleDetails: '', location: '', totalSpots: '' });
+  }
+
+  async function handleDelete(id) {
+    if(window.confirm('Tem certeza que deseja apagar este evento permanentemente?')) {
+      try {
+        await deleteDoc(doc(db, 'events', id));
+        fetchEvents();
+      } catch(err) {
+        alert('Erro ao deletar.');
+      }
     }
   }
 
@@ -73,8 +116,8 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Coluna 1: Formulário de Criação */}
           <div className="lg:col-span-1 bg-[#0a0a0a] border border-[#222222] p-8 rounded-[2px]">
-            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">Criar Novo Evento</h2>
-            <form onSubmit={handleCreateEvent} className="space-y-4">
+            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">{editingId ? 'Editar Evento' : 'Criar Novo Evento'}</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Título do Evento</label>
                 <input list="event-titles" required type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Selecione ou digite..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
@@ -115,9 +158,16 @@ export default function AdminDashboard() {
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Total de Vagas</label>
                 <input required type="number" name="totalSpots" value={formData.totalSpots} onChange={handleChange} min="1" placeholder="Ex: 20" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
               </div>
-              <button type="submit" className="w-full bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px] mt-4">
-                Publicar Evento
-              </button>
+              <div className="flex gap-2 mt-4">
+                <button type="submit" className="flex-1 bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px]">
+                  {editingId ? 'Salvar Alterações' : 'Publicar Evento'}
+                </button>
+                {editingId && (
+                  <button type="button" onClick={handleCancelEdit} className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[11px] uppercase tracking-[3px] font-semibold px-4 rounded-[2px] transition-colors">
+                    Cancelar
+                  </button>
+                )}
+              </div>
             </form>
           </div>
 
@@ -137,7 +187,7 @@ export default function AdminDashboard() {
                     <div>
                       <h3 className="font-drama text-2xl text-accent mb-1">{event.title}</h3>
                       <p className="font-heading text-sm text-[#9A9A9A] whitespace-pre-wrap mt-1">
-                        <strong className="text-accent">Início:</strong> {event.startDate} <br/>
+                        <strong className="text-accent">Início:</strong> {event.startDate ? event.startDate.split('-').reverse().join('/') : ''} <br/>
                         <strong className="text-accent">Agenda:</strong> {event.scheduleDetails} <br/>
                         <strong className="text-accent">Local:</strong> {event.location}
                       </p>
@@ -151,9 +201,19 @@ export default function AdminDashboard() {
                         <span className="block font-heading text-xs uppercase tracking-widest text-[#CFCFCF]">Espera</span>
                         <span className="font-sans text-xl text-[#F0EDE8]">{event.waitlistCount}</span>
                       </div>
-                      <button className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[10px] uppercase tracking-[2px] font-semibold px-4 py-2 rounded-[2px] transition-colors">
-                        Ver Alunos
-                      </button>
+                      <div className="flex flex-col gap-2">
+                        <button className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[10px] uppercase tracking-[2px] font-semibold px-4 py-2 rounded-[2px] transition-colors">
+                          Ver Alunos
+                        </button>
+                        <div className="flex gap-2">
+                          <button onClick={() => handleEditClick(event)} className="flex-1 bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">
+                            Editar
+                          </button>
+                          <button onClick={() => handleDelete(event.id)} className="flex-1 bg-[#1a1a1a] hover:bg-red-900/50 text-[#9A9A9A] hover:text-red-400 font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">
+                            Excluir
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
