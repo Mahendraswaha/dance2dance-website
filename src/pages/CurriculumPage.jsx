@@ -92,32 +92,33 @@ export default function CurriculumPage() {
             />
           </div>
 
-          {/* Mobile Image (discreet square at the top) */}
-          <div className="md:hidden w-full max-w-[400px] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative aspect-square">
-            <img 
-              src={phaseImages[activeIndex]?.src || phaseImages[0].src}
-              alt="Safia"
-              className="w-full h-full object-cover grayscale transition-opacity duration-700"
-            />
-          </div>
-
           {/* Main Content Layout */}
           <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start relative">
             
             {/* Left Column: Narrative Prose */}
             <div className="flex-1 max-w-[460px] pb-32">
               {cvData.paragraphs.map((p, pIdx) => (
-                <div 
-                  key={pIdx}
-                  data-index={pIdx}
-                  ref={(el) => (paragraphRefs.current[pIdx] = el)}
-                  // The minimum height ensures that short paragraphs still allow scrolling nicely
-                  className={`min-h-[35vh] flex ${pIdx === 0 ? 'items-start' : 'items-center'}`} 
-                >
-                  <p 
-                    className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}
-                    dangerouslySetInnerHTML={{ __html: p }}
-                  />
+                <div key={pIdx}>
+                  {/* Mobile Image interspersed */}
+                  <div className="md:hidden w-full max-w-[400px] mx-auto mb-8 rounded-sm overflow-hidden border border-white/10 shadow-xl aspect-square">
+                    <img 
+                      src={phaseImages[pIdx]?.src || phaseImages[0].src}
+                      alt={`Registro ${pIdx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div 
+                    data-index={pIdx}
+                    ref={(el) => (paragraphRefs.current[pIdx] = el)}
+                    // The minimum height ensures that short paragraphs still allow scrolling nicely
+                    className={`min-h-[35vh] md:min-h-[35vh] min-h-0 flex ${pIdx === 0 ? 'items-start' : 'items-center'} mb-16 md:mb-0`} 
+                  >
+                    <p 
+                      className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}
+                      dangerouslySetInnerHTML={{ __html: p }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
