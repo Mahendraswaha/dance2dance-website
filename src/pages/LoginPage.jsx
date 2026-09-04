@@ -11,9 +11,27 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, resetPassword } = useAuth();
   const navigate = useNavigate();
+
+  async function handleResetPassword(e) {
+    e.preventDefault();
+    if (!email) {
+      return setError('Digite seu e-mail acima para redefinir a senha.');
+    }
+    try {
+      setMessage('');
+      setError('');
+      setLoading(true);
+      await resetPassword(email);
+      setMessage('Verifique sua caixa de entrada para redefinir a senha.');
+    } catch (err) {
+      setError('Falha ao redefinir a senha. Verifique o e-mail digitado.');
+    }
+    setLoading(false);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,15 +57,20 @@ export default function LoginPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="w-full max-w-md bg-[#0a0a0a] border border-[#222222] p-8 md:p-12 rounded-[2px] shadow-2xl relative z-10"
+          className="w-full max-w-md bg-[#0a0a0a] border border-[#222222] p-8 md:p-12 rounded-full shadow-2xl relative z-10"
         >
           <div className="text-center mb-10">
             <h1 className="font-batang text-3xl text-[#F0EDE8] mb-2">Bem-vindo de volta</h1>
             <p className="font-heading text-sm font-light text-[#9A9A9A]">Acesse sua conta para gerenciar suas aulas.</p>
           </div>
 
+          {message && (
+            <div className="mb-6 p-4 bg-green-900/20 border border-green-500/20 text-green-400 text-sm font-heading rounded-full">
+              {message}
+            </div>
+          )}
           {error && (
-            <div className="mb-6 p-4 bg-red-900/20 border border-red-500/20 text-red-400 text-sm font-heading rounded-[2px]">
+            <div className="mb-6 p-4 bg-red-900/20 border border-red-500/20 text-red-400 text-sm font-heading rounded-full">
               {error}
             </div>
           )}
@@ -60,7 +83,7 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light"
+                className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-full font-heading font-light"
               />
             </div>
             
@@ -71,14 +94,24 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light"
+                className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-full font-heading font-light"
               />
             </div>
 
+            <div className="flex justify-between items-center mt-2 mb-4">
+              <button 
+                type="button" 
+                onClick={handleResetPassword}
+                className="text-[#9A9A9A] hover:text-[#F0EDE8] text-xs font-heading transition-colors"
+              >
+                Esqueceu a senha?
+              </button>
+            </div>
+            
             <button 
               disabled={loading}
               type="submit"
-              className="w-full bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px] mt-4 disabled:opacity-50"
+              className="w-full bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-full mt-4 disabled:opacity-50"
             >
               {loading ? 'Entrando...' : 'Entrar'}
             </button>
