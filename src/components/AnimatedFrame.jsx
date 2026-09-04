@@ -1,85 +1,89 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function AnimatedFrame({ children, className = '' }) {
-  const ref = useRef(null);
+export default function AnimatedFrame({ 
+  children, 
+  className = '', 
+  scrollTarget = null 
+}) {
+  const localRef = useRef(null);
+  const targetRef = scrollTarget || localRef;
   
-  // Track the scroll progress of this specific image container
+  // Track scroll progress of the entire section if scrollTarget is provided
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: targetRef,
     offset: ["start end", "end start"]
   });
 
-  // Hardware-accelerated transforms for 0 performance impact
-  // scaleX/scaleY stretches the lines
-  // x/y offsets shift them slightly for a parallax feel
-  const scaleGrow = useTransform(scrollYProgress, [0, 1], [0.85, 1.15]);
-  const scaleShrink = useTransform(scrollYProgress, [0, 1], [1.15, 0.85]);
+  // Colors
+  const colorMain = "bg-[#E5E4E2]/60"; // Platinum/Silver
+  const colorAccent = "bg-[#E5E4E2]/30";
+
+  // Hardware-accelerated transforms
+  const scaleGrow = useTransform(scrollYProgress, [0, 1], [0.8, 1.2]);
+  const scaleShrink = useTransform(scrollYProgress, [0, 1], [1.2, 0.8]);
   
-  const shiftUp = useTransform(scrollYProgress, [0, 1], [15, -15]);
-  const shiftDown = useTransform(scrollYProgress, [0, 1], [-15, 15]);
-  const shiftLeft = useTransform(scrollYProgress, [0, 1], [15, -15]);
-  const shiftRight = useTransform(scrollYProgress, [0, 1], [-15, 15]);
+  const shiftUp = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const shiftDown = useTransform(scrollYProgress, [0, 1], [-20, 20]);
+  const shiftLeft = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const shiftRight = useTransform(scrollYProgress, [0, 1], [-20, 20]);
 
   return (
-    <div ref={ref} className={`relative p-3 md:p-5 ${className}`}>
+    <div ref={localRef} className={`relative p-3 md:p-5 ${className}`}>
       
       {/* 
-        FRAME LINES 
-        We use hardware-accelerated transforms (scale, x, y) 
-        so it doesn't trigger layout repaints. 
+        ASSIMETRIA ELEGANTE
+        Linhas desalinhadas propositalmente (estilo crop-mark arquitetônico)
       */}
 
-      {/* --- TOP BORDER LINES --- */}
-      {/* Main Top Horizontal (Extends left to right, moves right) */}
+      {/* --- LINHAS HORIZONTAIS --- */}
+      {/* Topo Principal (Avança muito pra direita, começa um pouco depois da esquerda) */}
       <motion.div 
         style={{ scaleX: scaleGrow, x: shiftRight }} 
-        className="absolute top-2 left-[-10px] right-[-10px] h-[1px] bg-accent/40 origin-left z-0" 
+        className={`absolute top-2 left-[5%] right-[-25px] h-[1px] ${colorMain} origin-left z-0`}
       />
-      {/* Secondary Top Accent (Short, moves left) */}
+      {/* Topo Secundário (Traço curto apenas na esquerda, deslocado pra cima) */}
       <motion.div 
         style={{ scaleX: scaleShrink, x: shiftLeft }} 
-        className="absolute top-0 right-4 w-[40%] h-[1px] bg-accent/30 origin-right z-0" 
+        className={`absolute top-[-4px] left-[-15px] w-[25%] h-[1px] ${colorAccent} origin-right z-0`}
       />
 
-      {/* --- BOTTOM BORDER LINES --- */}
-      {/* Main Bottom Horizontal (Extends left to right, moves left) */}
+      {/* Base Principal (Avança muito pra esquerda, termina antes da direita) */}
       <motion.div 
         style={{ scaleX: scaleGrow, x: shiftLeft }} 
-        className="absolute bottom-2 left-[-10px] right-[-10px] h-[1px] bg-accent/40 origin-right z-0" 
+        className={`absolute bottom-2 left-[-25px] right-[5%] h-[1px] ${colorMain} origin-right z-0`}
       />
-      {/* Secondary Bottom Accent (Short, moves right) */}
+      {/* Base Secundária (Traço curto apenas na direita, deslocado pra baixo) */}
       <motion.div 
         style={{ scaleX: scaleShrink, x: shiftRight }} 
-        className="absolute bottom-0 left-4 w-[40%] h-[1px] bg-accent/30 origin-left z-0" 
+        className={`absolute bottom-[-4px] right-[-15px] w-[25%] h-[1px] ${colorAccent} origin-left z-0`}
       />
 
-      {/* --- LEFT BORDER LINES --- */}
-      {/* Main Left Vertical (Extends top to bottom, moves down) */}
-      <motion.div 
-        style={{ scaleY: scaleGrow, y: shiftDown }} 
-        className="absolute left-2 top-[-10px] bottom-[-10px] w-[1px] bg-accent/40 origin-top z-0" 
-      />
-      {/* Secondary Left Accent (Short, moves up) */}
-      <motion.div 
-        style={{ scaleY: scaleShrink, y: shiftUp }} 
-        className="absolute left-0 bottom-4 h-[40%] w-[1px] bg-accent/30 origin-bottom z-0" 
-      />
-
-      {/* --- RIGHT BORDER LINES --- */}
-      {/* Main Right Vertical (Extends top to bottom, moves up) */}
+      {/* --- LINHAS VERTICAIS --- */}
+      {/* Esquerda Principal (Sobe muito, termina antes do final) */}
       <motion.div 
         style={{ scaleY: scaleGrow, y: shiftUp }} 
-        className="absolute right-2 top-[-10px] bottom-[-10px] w-[1px] bg-accent/40 origin-bottom z-0" 
+        className={`absolute left-2 top-[-25px] bottom-[5%] w-[1px] ${colorMain} origin-bottom z-0`}
       />
-      {/* Secondary Right Accent (Short, moves down) */}
+      {/* Esquerda Secundária (Traço curto em cima) */}
       <motion.div 
         style={{ scaleY: scaleShrink, y: shiftDown }} 
-        className="absolute right-0 top-4 h-[40%] w-[1px] bg-accent/30 origin-top z-0" 
+        className={`absolute left-[-4px] top-[15%] h-[20%] w-[1px] ${colorAccent} origin-top z-0`}
+      />
+
+      {/* Direita Principal (Desce muito, começa abaixo do topo) */}
+      <motion.div 
+        style={{ scaleY: scaleGrow, y: shiftDown }} 
+        className={`absolute right-2 top-[5%] bottom-[-25px] w-[1px] ${colorMain} origin-top z-0`}
+      />
+      {/* Direita Secundária (Traço curto embaixo) */}
+      <motion.div 
+        style={{ scaleY: scaleShrink, y: shiftUp }} 
+        className={`absolute right-[-4px] bottom-[15%] h-[20%] w-[1px] ${colorAccent} origin-bottom z-0`}
       />
 
       {/* INNER CONTENT (The Image) */}
-      <div className="relative z-10 w-full h-full rounded-sm overflow-hidden shadow-2xl border border-white/5">
+      <div className="relative z-10 w-full h-full rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
         {children}
       </div>
       
