@@ -189,7 +189,7 @@ const Navbar = () => {
               </span>
               <button 
                 onClick={() => { logout(); setIsMobileMenuOpen(false); navigate('/'); }}
-                className="bg-transparent border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-[2px] font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
+                className="bg-transparent border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
               >
                 Sair
               </button>
@@ -199,14 +199,14 @@ const Navbar = () => {
               <Link 
                 to="/login" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-[2px] font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
+                className="border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
               >
                 Entrar
               </Link>
               <Link 
                 to="/cadastro" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-accent text-primary px-6 py-4 rounded-[2px] font-heading font-bold text-xs w-full uppercase tracking-wider text-center"
+                className="bg-accent text-primary px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center"
               >
                 Cadastre-se
               </Link>
