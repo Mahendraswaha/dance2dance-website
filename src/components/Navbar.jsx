@@ -182,10 +182,36 @@ const Navbar = () => {
             <button onClick={() => { i18n.changeLanguage('en'); setIsMobileMenuOpen(false); }} className={`hover:text-accent transition-colors ${i18n.resolvedLanguage === 'en' ? 'text-accent' : ''}`}>EN</button>
             <button onClick={() => { i18n.changeLanguage('pt'); setIsMobileMenuOpen(false); }} className={`hover:text-accent transition-colors ${i18n.resolvedLanguage === 'pt' ? 'text-accent' : ''}`}>PT</button>
           </div>
-          {/* CTA */}
-          <button className="bg-accent text-primary px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center">
-            {t('nav.subscribe')}
-          </button>
+          {currentUser ? (
+            <div className="flex flex-col w-full gap-4">
+              <span className="font-heading text-sm text-[#9A9A9A]">
+                Olá, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
+              </span>
+              <button 
+                onClick={() => { logout(); setIsMobileMenuOpen(false); navigate('/'); }}
+                className="bg-transparent border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-[2px] font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
+              >
+                Sair
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col w-full gap-4">
+              <Link 
+                to="/login" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-[2px] font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
+              >
+                Entrar
+              </Link>
+              <Link 
+                to="/cadastro" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="bg-accent text-primary px-6 py-4 rounded-[2px] font-heading font-bold text-xs w-full uppercase tracking-wider text-center"
+              >
+                Cadastre-se
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>
