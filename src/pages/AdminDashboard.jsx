@@ -81,14 +81,22 @@ export default function AdminDashboard() {
                 <datalist id="event-titles">
                   {/* Be the Dance */}
                   <option value="Be Water" />
-                  <option value="Be Earth" />
-                  <option value="Be Fire" />
-                  <option value="Be Air" />
-                  <option value="Be The Dance - Imersão Completa" />
+                  <option value="Be Balance" />
+                  <option value="Be Total" />
+                  <option value="Be Stillness" />
+                  <option value="Be The Dance PRO" />
+                  <option value="Be The Dance DAY" />
+                  
                   {/* Biostretch */}
-                  <option value="Biostretch - Sessão Individual" />
-                  <option value="Biostretch - Aulas Regulares" />
-                  <option value="Biostretch - Workshop" />
+                  <option value="Uma Melhor Postura" />
+                  <option value="Aprendendo a Relaxar" />
+                  <option value="Alongar, Respirar e Meditar" />
+                  <option value="Transformando Hábitos" />
+                  <option value="Movimentos Diários para Prevenir o Stress" />
+                  <option value="Recuperando o Foco" />
+                  <option value="Biostretch: Sessão Individual" />
+                  <option value="Biostretch: Aulas Regulares" />
+                  <option value="Biostretch: Corporate" />
                 </datalist>
               </div>
               <div>
