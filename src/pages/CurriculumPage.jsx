@@ -96,8 +96,8 @@ export default function CurriculumPage() {
             />
           </div>
 
-          {/* Mobile Image (discreet portrait at the top) */}
-          <div className="md:hidden w-full max-w-[280px] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative aspect-[3/4]">
+          {/* Mobile Image (discreet square at the top) */}
+          <div className="md:hidden w-full max-w-[280px] mx-auto mb-16 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative aspect-square">
             <img 
               src={phaseImages[activeIndex]?.src || phaseImages[0].src}
               alt="Safia"
@@ -127,7 +127,7 @@ export default function CurriculumPage() {
 
             {/* Right Column: Sticky Image Frame (Desktop only, seamless crossfade) */}
             <div className="hidden md:block w-[280px] shrink-0 sticky top-36">
-              <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-[#141414]">
+              <div className="w-full aspect-square rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-[#141414]">
                 {phaseImages.map((imgObj, idx) => (
                   <div
                     key={idx}
