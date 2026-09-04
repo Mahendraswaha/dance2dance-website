@@ -3,7 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,8 @@ import Brand from './Brand';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -103,9 +106,28 @@ const Navbar = () => {
                 <Menu size={24} strokeWidth={1.5} />
               </button>
 
-              <button className="btn-magnetic bg-accent text-primary px-4 md:px-6 py-2.5 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
-                <span className="relative z-10">{t('nav.subscribe')}</span>
-              </button>
+              {currentUser ? (
+                <div className="hidden md:flex items-center gap-3">
+                  <span className="font-heading text-xs text-[#9A9A9A]">
+                    Olá, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
+                  </span>
+                  <button 
+                    onClick={() => { logout(); navigate('/'); }}
+                    className="border border-[#333333] text-background hover:border-accent hover:text-accent px-4 py-2 rounded-full font-heading font-bold text-[10px] whitespace-nowrap transition-colors"
+                  >
+                    Sair
+                  </button>
+                </div>
+              ) : (
+                <div className="hidden md:flex items-center gap-2">
+                  <Link to="/login" className="font-heading text-xs text-background hover:text-accent px-3 py-2 transition-colors">
+                    Entrar
+                  </Link>
+                  <Link to="/cadastro" className="btn-magnetic bg-accent text-primary px-4 md:px-6 py-2.5 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
+                    <span className="relative z-10">Cadastre-se</span>
+                  </Link>
+                </div>
+              )}
             </div>
 
           </div>
