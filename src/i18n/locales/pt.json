@@ -852,5 +852,71 @@
       "A partir de 2011, a prática diária da meditação redefiniu a minha relação com o corpo. O foco deslocou-se da forma externa para a qualidade da presença. A respiração consciente e o silêncio tornaram-se matérias do próprio gesto. Dessa convergência entre dança, educação somática e meditação nasceram os métodos Biostretch e Be The Dance.",
       "Atualmente na Noruega, busco atuar como uma ponte artística com o Brasil. Dessa travessia nasce Dance<span class='text-accent text-[1.2em] font-normal'>2</span>Dance, projeto central que sintetiza décadas de pesquisa corporal, experiência pedagógica e investigação sobre a relação entre técnica, presença e expressão. Sediada na Noruega, a iniciativa é um espaço de encontro e transformação, voltada tanto para bailarinos e artistas quanto para pessoas que desejam aprofundar a relação com o próprio corpo."
     ]
+  },
+  "corporate_bethedance": {
+    "kicker": "BE THE DANCE IN COMPANY",
+    "title": "Cuide de quem faz a empresa acontecer.",
+    "subtitle": "Uma experiência imersiva de bem-estar, presença e conexão para equipes.",
+    "hook": "Dois dias fora da rotina corporativa, em contato com a natureza, combinando movimento, dança, práticas de autocuidado e experiências de interação.",
+    "body": {
+      "p1": "Uma pausa com propósito\nEm um cotidiano marcado por velocidade, telas e pressão por resultados, criar espaço para desacelerar também é uma forma de cuidar das pessoas.",
+      "p2": "Be The Dance in Company oferece às equipes a oportunidade de sair do contexto habitual de trabalho e experimentar novas formas de interação e conexão.",
+      "pullQuote": "",
+      "p3": ""
+    },
+    "how_it_works": {
+      "kicker": "COMO FUNCIONA",
+      "intro": "",
+      "items": {
+        "step1": {
+          "title": "SAIR DA ROTINA",
+          "desc": "Um ambiente diferente, em contato com a natureza e distante das demandas do dia a dia."
+        },
+        "step2": {
+          "title": "CUIDAR DO CORPO",
+          "desc": "Dança, práticas corporais, Biostretch, relaxamento, meditação e autocuidado."
+        },
+        "step3": {
+          "title": "EXPERIMENTAR",
+          "desc": "Dinâmicas que estimulam presença, espontaneidade, criatividade e novas experiências."
+        },
+        "step4": {
+          "title": "ESTAR JUNTOS",
+          "desc": "Um contexto que permite que colegas se encontrem para além de cargos, funções e reuniões."
+        }
+      }
+    },
+    "benefits": {
+      "kicker": "O QUE LEVAMOS PARA A EMPRESA",
+      "intro": "",
+      "cards": {
+        "bem_estar": {
+          "title": "BEM-ESTAR",
+          "desc": "Tempo e espaço para recuperar energia e reduzir o ritmo."
+        },
+        "conexao": {
+          "title": "CONEXÃO",
+          "desc": "Relações mais próximas e experiências compartilhadas."
+        },
+        "integracao": {
+          "title": "INTEGRAÇÃO",
+          "desc": "Um novo contexto para fortalecer vínculos dentro das equipes."
+        },
+        "presenca": {
+          "title": "PRESENÇA",
+          "desc": "Menos telas, mais atenção ao corpo, ao ambiente e às pessoas."
+        },
+        "criatividade": {
+          "title": "CRIATIVIDADE",
+          "desc": "Novos estímulos e perspectivas fora dos padrões habituais."
+        }
+      }
+    },
+    "closing": "É mais do que uma atividade de team building.\nÉ uma experiência de bem-estar e conexão que permite às pessoas desacelerar, experimentar e se relacionar de uma maneira diferente.\n\nA empresa cria o espaço.\nAs pessoas vivem a experiência.\nE a conexão permanece.\n\nBe The Dance in Company\nDois dias para desacelerar. Cuidar. Experimentar. Estar juntos.\nPara empresas que entendem que cuidar das pessoas também é cuidar da forma como elas trabalham juntas.",
+    "cta": {
+      "title": "Leve essa experiência para a sua empresa",
+      "text": "Entre em contato para desenharmos juntos a vivência ideal para a sua equipe.",
+      "button": "Falar com a equipe"
+    }
   }
 }
