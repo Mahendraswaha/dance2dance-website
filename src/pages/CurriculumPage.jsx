@@ -27,29 +27,34 @@ export default function CurriculumPage() {
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.dataset.index);
-            if (!isNaN(index)) {
-              setActiveIndex(index);
-            }
+    const handleScroll = () => {
+      // Find which paragraph is closest to the center of the viewport
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex = 0;
+      let minDistance = Infinity;
+
+      paragraphRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          // We consider the vertical center of each text block
+          const blockCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(viewportCenter - blockCenter);
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = index;
           }
-        });
-      },
-      {
-        // Adjust rootMargin so the trigger happens closer to the center of the screen
-        rootMargin: '-40% 0px -40% 0px',
-        threshold: 0
-      }
-    );
+        }
+      });
 
-    paragraphRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+      setActiveIndex(closestIndex);
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger once on mount
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
