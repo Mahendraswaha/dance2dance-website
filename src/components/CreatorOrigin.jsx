@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AnimatedFrame from './AnimatedFrame';
 
 export default function CreatorOrigin({ programId }) {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ export default function CreatorOrigin({ programId }) {
       );
     }
 
-    const isQuote = p.startsWith('"') || p.startsWith('�') || p.startsWith('�');
+    const isQuote = p.startsWith('"') || p.startsWith('“') || p.startsWith('«');
     if (isQuote) {
       return (
         <div key={idx} className="py-12 my-12 border-t border-b border-accent/20 text-center relative px-4">
@@ -103,14 +104,14 @@ export default function CreatorOrigin({ programId }) {
                         className="group flex flex-col items-center gap-3"
                       >
                         <span className="font-heading text-sm tracking-[3px] uppercase text-accent/80 group-hover:text-accent transition-colors">
-                          {originData.cv_link_text || "Ver curr�culo completo"}
+                          {originData.cv_link_text || "Ver currículo completo"}
                         </span>
                         <div className="w-10 h-10 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-background transition-all duration-300">
                           <ArrowRight size={16} />
                         </div>
                       </Link>
 
-                      {/* Bot�o Recolher */}
+                      {/* Botão Recolher */}
                       <button
                         onClick={() => {
                           setIsExpanded(false);
@@ -138,7 +139,7 @@ export default function CreatorOrigin({ programId }) {
                   className="group flex flex-col items-start gap-3 focus:outline-none relative z-10"
                 >
                   <span className="font-heading text-[10px] tracking-[3px] uppercase text-[#9A9A9A] group-hover:text-accent transition-colors">
-                    {originData.read_more || "Ler hist�ria completa"}
+                    {originData.read_more || "Ler história completa"}
                   </span>
                   <motion.div
                     animate={{ y: [0, 4, 0] }}
@@ -153,9 +154,9 @@ export default function CreatorOrigin({ programId }) {
 
           </div>
 
-          {/* Coluna da Imagem (Direita) */}
+          {/* Coluna da Imagem (Direita) - Agora com AnimatedFrame */}
           <div className="w-[180px] sm:w-[220px] mx-auto md:mx-0 shrink-0 relative md:sticky md:top-32 order-first md:order-last mb-10 md:mb-0">
-            <div className="w-full aspect-[3/4] rounded-sm overflow-hidden border border-white/5 shadow-2xl relative">
+            <AnimatedFrame className="w-full aspect-[3/4]">
               <img 
                 src={originData.photo_url || "/images/creator-be-the-dance.jpg"} 
                 alt="Criadora" 
@@ -165,7 +166,7 @@ export default function CreatorOrigin({ programId }) {
                   e.target.parentElement.classList.add('bg-accent/10');
                 }}
               />
-            </div>
+            </AnimatedFrame>
           </div>
 
         </div>
