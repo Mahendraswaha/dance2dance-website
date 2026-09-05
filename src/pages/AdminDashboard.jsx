@@ -4,6 +4,7 @@ import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc 
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useTranslation } from 'react-i18next';
 
 export default function AdminDashboard() {
   const { t } = useTranslation();
