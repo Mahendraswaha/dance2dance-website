@@ -694,7 +694,72 @@
           "title": "A more human environment",
           "desc": "Contributing to healthier and more sustainable workplace relationships"
         }
-      }
+      },
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Physiology & Awareness",
+          "items": [
+            {
+              "key": "consciousness",
+              "label": "Body awareness",
+              "desc": "Notice how the body organizes and responds throughout the workday."
+            },
+            {
+              "key": "tension_relief",
+              "label": "Tension release",
+              "desc": "Discharge accumulated stress and physical overload from daily routines."
+            },
+            {
+              "key": "mobility",
+              "label": "Mobility & balance",
+              "desc": "Restore natural movement freedom and postural equilibrium."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Focus & Sustainability",
+          "items": [
+            {
+              "key": "coordination",
+              "label": "Coordination & perception",
+              "desc": "Refine alignment between intention, posture, and conscious motion."
+            },
+            {
+              "key": "pause",
+              "label": "Mindful pauses",
+              "desc": "Create structured intervals that replenish physical and cognitive energy."
+            },
+            {
+              "key": "presence",
+              "label": "Attentive presence",
+              "desc": "Cultivate the ability to remain fully engaged in every task."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Self-Care & Work Climate",
+          "items": [
+            {
+              "key": "overload",
+              "label": "Strain reduction",
+              "desc": "Interrupt the cycle of strain before it becomes chronic tension."
+            },
+            {
+              "key": "selfcare",
+              "label": "Continuous self-care",
+              "desc": "Embed habits of personal wellness into company culture."
+            },
+            {
+              "key": "environment",
+              "label": "Harmonious environment",
+              "desc": "Foster healthier, more sustainable, and deeply humane workplace relations."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "FOR COMPANIES THAT VALUE PEOPLE",
@@ -1038,5 +1103,101 @@
     "profileSuccess": "Profile updated successfully!",
     "profileError": "Failed to update profile. Please try again.",
     "readOnlyEmail": "Email address cannot be changed directly."
+  },
+  "btd_corporate": {
+    "kicker": "BE THE DANCE FOR COMPANIES",
+    "title": "Human connections and collective vitality",
+    "subtitle": "When an organization offers its professionals moments of spontaneity and ease, mutual trust transforms workplace collaboration.",
+    "hook": "Daily work routines demand continuous focus on operational targets. Taking the team out of that functional environment into an artistic shared experience reveals the human dimension of each person, solidifying group cohesion in an enduring way.",
+    "body": {
+      "p1": "Fostering relaxation, ease, and joy in a corporate setting reflects leadership that genuinely values people. Dance is part of our shared human heritage. Across cultures and eras, moving together awakens personal fulfillment and restores individual vitality.",
+      "pullQuote": "The shared experience of movement brings people together with authenticity.",
+      "p2": "Engaging in a shared activity within an atmosphere of openness and equality enables colleagues to discover new common ground. Movement builds direct bridges of warmth and mutual respect. Professionals who previously interacted only around operational tasks begin to perceive one another as whole individuals, establishing closer, candid, and lasting bonds.",
+      "p3": "Providing this space for personal fulfillment reinforces the perception of authentic organizational care. Investing in dedicated time to unwind demonstrates a company commitment to the comprehensive health of its teams. The outcome is a cohesive, engaged group conscious of the value of each member."
+    },
+    "pillars_section": {
+      "kicker": "DIMENSIONS OF THE EXPERIENCE",
+      "intro": "The artistic practice of Be the Dance nurtures both individual well-being and collective dynamics, producing lasting positive effects on workplace culture:",
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Vitality and Ease",
+          "items": [
+            {
+              "label": "Individual relaxation",
+              "desc": "Releasing daily tensions through diverse and engaging musical rhythms."
+            },
+            {
+              "label": "Personal fulfillment",
+              "desc": "Encouraging spontaneity and renewed enthusiasm through creative physical expression."
+            },
+            {
+              "label": "Shared lightness",
+              "desc": "A group celebration that rekindles energy and motivation for work."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Bonds and Collective Trust",
+          "items": [
+            {
+              "label": "Authentic connection",
+              "desc": "Genuine rapport among colleagues across departments and organizational levels."
+            },
+            {
+              "label": "Spontaneous communication",
+              "desc": "Encouraging candid dialogue within a safe, welcoming environment of attentive listening."
+            },
+            {
+              "label": "Mutual trust",
+              "desc": "Gaining deeper appreciation for the strengths and sensitivity of every colleague."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Culture and Institutional Care",
+          "items": [
+            {
+              "label": "Team cohesion",
+              "desc": "Strengthening unity and a shared sense of organizational belonging."
+            },
+            {
+              "label": "Valuing people",
+              "desc": "Tangible proof of the company commitment to human care."
+            },
+            {
+              "label": "Relational harmony",
+              "desc": "A more collaborative, resilient, and supportive working environment."
+            }
+          ]
+        }
+      ]
+    },
+    "audience": {
+      "kicker": "SETTINGS AND APPLICATIONS",
+      "intro": "Be the Dance Corporate serves organizations that recognize how interpersonal relationships drive long-term business sustainability. Formats tailored for:",
+      "items": {
+        "intense_routines": "Organizations operating under high demands that require structured periods of renewal",
+        "integration": "Teams undergoing mergers, rapid expansion, or structural transitions",
+        "leadership": "Executive retreats and strategic leadership meetings focused on empathy and interpersonal connection",
+        "remote_teams": "Remote or hybrid companies seeking impactful in-person connection during annual gatherings",
+        "conventions": "Annual conventions, corporate retreats, and institutional integration weeks",
+        "culture": "Companies dedicated to talent retention and the emotional sustainability of their workforce"
+      }
+    },
+    "workshops_section": {
+      "kicker": "THE WEEKEND IMMERSION",
+      "p1": "The premier corporate format of Be the Dance is structured as a dedicated weekend retreat focused on relaxation and shared experience. Stepping away from daily operational demands creates the ideal setting for genuine reconnection.",
+      "p2": "The program guides professionals through world music, playful synchronization exercises, and celebratory group movement. Sensitive facilitation allows every participant to engage according to their own comfort, ensuring a welcoming experience for all.",
+      "p3": "Every detail of the gathering is carefully curated so your team can simply immerse themselves. Let the musical richness, guided movement, and natural camaraderie do the rest."
+    },
+    "closing": "Organizations thrive when their people connect on a deeply human level. By offering moments of joy, relaxation, and genuine togetherness, a company honors its present and secures its future.",
+    "cta": {
+      "title": "Design an immersion for your team",
+      "text": "Get in touch to create a customized experience tailored to your organization.",
+      "button": "Talk to Our Team"
+    }
   }
 }

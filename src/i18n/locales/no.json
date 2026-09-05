@@ -694,7 +694,72 @@
           "title": "Et mer menneskelig miljø",
           "desc": "Å bidra til sunnere og mer bærekraftige relasjoner på arbeidsplassen"
         }
-      }
+      },
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Fysiologi og Bevissthet",
+          "items": [
+            {
+              "key": "consciousness",
+              "label": "Kroppsbevissthet",
+              "desc": "Legge merke til hvordan kroppen organiserer seg i arbeidshverdagen."
+            },
+            {
+              "key": "tension_relief",
+              "label": "Avspenning",
+              "desc": "Frigjøre oppbygd stress og fysisk belastning fra rutinepreget arbeid."
+            },
+            {
+              "key": "mobility",
+              "label": "Mobilitet og balanse",
+              "desc": "Gjenvinne naturlig bevegelsesfrihet og funksjonell stabilitet."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Tilsteværelse og Bærekraft",
+          "items": [
+            {
+              "key": "coordination",
+              "label": "Koordinasjon og persepsjon",
+              "desc": "Styrke sammenhengen mellom intensjon, holdning og bevegelse."
+            },
+            {
+              "key": "pause",
+              "label": "Veiledet pause",
+              "desc": "Skape bevisste pauser som fornyer fysisk og mental energi."
+            },
+            {
+              "key": "presence",
+              "label": "Oppmerksomt nærvær",
+              "desc": "Kultivere evnen til å være til stede i hver oppgave."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Egenomsorg og Arbeidsmiljø",
+          "items": [
+            {
+              "key": "overload",
+              "label": "Belastningsreduksjon",
+              "desc": "Avbryte spenningsmønstre før de setter seg i kroppen."
+            },
+            {
+              "key": "selfcare",
+              "label": "Varig egenomsorg",
+              "desc": "Utvikle gode helsevaner som en naturlig del av bedriftskulturen."
+            },
+            {
+              "key": "environment",
+              "label": "Harmonisk miljø",
+              "desc": "Bygge sunnere, mer bærekraftige og menneskelige relasjoner på jobb."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "FOR BEDRIFTER SOM VERDSETTER MENNESKER",
@@ -1038,5 +1103,101 @@
     "profileSuccess": "Profilen ble oppdatert!",
     "profileError": "Kunne ikke oppdatere profilen. Vennligst prøv igjen.",
     "readOnlyEmail": "E-postadressen kan ikke endres direkte."
+  },
+  "btd_corporate": {
+    "kicker": "BE THE DANCE FOR BEDRIFTER",
+    "title": "Menneskelige relasjoner og kollektiv vitalitet",
+    "subtitle": "Når organisasjonen gir sine medarbeidere rom for spontanitet og uformelt samvær, forvandler gjensidig tillit arbeidsmiljøet.",
+    "hook": "Hverdagens arbeid krever kontinuerlig fokus på operative mål. Å ta teamet ut av de vante rammene og inn i et kunstnerisk fellesskap synliggjør den menneskelige dimensjonen hos hver enkelt, og styrker samhørigheten på varig vis.",
+    "body": {
+      "p1": "Å fremme avslapning, letthet og glede på arbeidsplassen gjenspeiler et modent lederskap med omsorg for sine ansatte. Dans er en grunnleggende del av menneskets natur. Gjennom hele historien har felles bevegelse skapt personlig tilfredsstillelse og fornyet energi.",
+      "pullQuote": "Den delte bevegelsesopplevelsen bringer mennesker sammen med ekte tilstedeværelse.",
+      "p2": "Når medarbeidere deler en felles opplevelse i en åpen og likeverdig atmosfære, oppdages nye kontaktflater. Felles bevegelse bygger direkte broer av varme og respekt. Kolleger som ellers bare deler faglige oppgaver, ser hverandre som hele mennesker, og utvikler nære, oppriktige og varige bånd.",
+      "p3": "Å gi rom for denne personlige gleden bekrefter en oppriktig omtanke fra arbeidsgiveren. Investering i uformelle og meningsfulle opplevelser viser at bedriften bryr seg om medarbeidernes helhetlige trivsel. Resultatet er et sammensveiset, motivert team som verdsetter hverandres bidrag."
+    },
+    "pillars_section": {
+      "kicker": "DIMENSJONER AV OPPLEVELSEN",
+      "intro": "Be the Dance virker samtidig på individuelt velvære og gruppedynamikk, med varig positiv effekt på bedriftskulturen:",
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Vitalitet og Avspenning",
+          "items": [
+            {
+              "label": "Individuell avspenning",
+              "desc": "Frigjøring av hverdagsspenninger gjennom mangfoldige og fengende musikalske rytmer."
+            },
+            {
+              "label": "Personlig tilfredsstillelse",
+              "desc": "Stimulering av spontanitet og fornyet livsglede gjennom kreativ kroppslig utfoldelse."
+            },
+            {
+              "label": "Delt letthet",
+              "desc": "En felles feiring som gjenoppretter engasjement og arbeidslyst."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Bånd og Felles Tillit",
+          "items": [
+            {
+              "label": "Ekte kontakt",
+              "desc": "Oppriktig relasjonsbygging på tvers av avdelinger og organisatoriske nivåer."
+            },
+            {
+              "label": "Spontan kommunikasjon",
+              "desc": "Åpenhet for ærlig dialog i et trygt og inkluderende miljø med aktiv lytting."
+            },
+            {
+              "label": "Gjensidig tillit",
+              "desc": "Dypere forståelse for hverandres styrker og menneskelige kvaliteter."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Kultur og Institusjonell Omsorg",
+          "items": [
+            {
+              "label": "Teamsamhold",
+              "desc": "Styrking av fellesskapsfølelsen og tilhørigheten til organisasjonen."
+            },
+            {
+              "label": "Verdsetting av mennesker",
+              "desc": "Et tydelig bevis på bedriftens engasjement for medarbeidernes velvære."
+            },
+            {
+              "label": "Relasjonell harmoni",
+              "desc": "Et mer samarbeidsorientert, robust og omsorgsfullt arbeidsmiljø."
+            }
+          ]
+        }
+      ]
+    },
+    "audience": {
+      "kicker": "BRUKSOMRÅDER OG FORMATER",
+      "intro": "Be the Dance for bedrifter henvender seg til virksomheter som forstår betydningen av mellommenneskelige relasjoner for langsiktig bærekraft. Formater tilpasset for:",
+      "items": {
+        "intense_routines": "Bedrifter med høyt arbeidstempo som trenger strukturerte pauser for fornyelse",
+        "integration": "Team i fusjonsprosesser, rask vekst eller omstillingsfaser",
+        "leadership": "Ledersamlinger og strategiseminarer med fokus på empati og relasjonsbygging",
+        "remote_teams": "Fjernarbeidende eller hybride team som møtes fysisk til samlinger",
+        "conventions": "Årskonferanser, bedriftssamlinger og kickoff-arrangementer",
+        "culture": "Virksomheter med fokus på å beholde talenter og skape et bærekraftig arbeidsmiljø"
+      }
+    },
+    "workshops_section": {
+      "kicker": "HELGEIMMERSJON",
+      "p1": "Det ideelle bedriftsformatet for Be the Dance er bygget opp som en helgesamling dedikert til avspenning og fellesskap. Ved å ta deltakerne bort fra det vante tempoet, skapes de perfekte rammene for ekte kontakt.",
+      "p2": "Programmet leder deltakerne gjennom variert musikk fra hele verden, lekne samspilløvelser og felles feiring i bevegelse. Sensitiv veiledning sørger for at alle kan delta på sine egne premisser, og oppleve trygghet og glede.",
+      "p3": "Alle detaljer rundt samlingen ivaretas slik at teamet utelukkende kan fokusere på opplevelsen. La musikken, bevegelsen og fellesskapet gjøre resten."
+    },
+    "closing": "Mennesker som møtes med åpenhet skaper solide organisasjoner. Ved å tilby stunder med glede, letthet og ekte fellesskap viser bedriften respekt for nåtiden og trygger sin egen fremtid.",
+    "cta": {
+      "title": "Planlegg en opplevelse for ditt team",
+      "text": "Ta kontakt for å skreddersy en samling tilpasset din organisasjon.",
+      "button": "Snakk med teamet vårt"
+    }
   }
 }

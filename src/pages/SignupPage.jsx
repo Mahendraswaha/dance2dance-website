@@ -320,7 +320,7 @@ export default function SignupPage() {
             />
 
             <button 
-              disabled={loading || !turnstileToken}
+              disabled={loading}
               type="submit"
               className="w-full bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px] mt-8 disabled:opacity-50"
             >

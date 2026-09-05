@@ -318,7 +318,7 @@ export default function ContactPage() {
                 {/* Botão de Enviar */}
                 <button
                   type="submit"
-                  disabled={loading || !turnstileToken}
+                  disabled={loading}
                   className="w-full btn-magnetic bg-accent text-primary font-heading text-xs uppercase tracking-[3px] font-bold py-4 rounded-full hover:bg-[#F0EDE8] transition-colors duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(200,160,80,0.2)] disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />

@@ -694,7 +694,72 @@
           "title": "Ambiente mais humano",
           "desc": "Contribuir para relações mais saudáveis e sustentáveis no trabalho"
         }
-      }
+      },
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Fisiologia e Consciência",
+          "items": [
+            {
+              "key": "consciousness",
+              "label": "Consciência corporal",
+              "desc": "Perceber como o corpo se organiza e reage no cotidiano."
+            },
+            {
+              "key": "tension_relief",
+              "label": "Alívio de tensões",
+              "desc": "Liberar a sobrecarga acumulada ao longo da rotina diária."
+            },
+            {
+              "key": "mobility",
+              "label": "Mobilidade e equilíbrio",
+              "desc": "Recuperar a amplitude natural dos movimentos funcionais."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Atenção e Sustentabilidade",
+          "items": [
+            {
+              "key": "coordination",
+              "label": "Coordenação e percepção",
+              "desc": "Aprimorar a relação entre intenção, postura e movimento."
+            },
+            {
+              "key": "pause",
+              "label": "Pausa orientada",
+              "desc": "Criar intervalos conscientes que renovam a disposição física e mental."
+            },
+            {
+              "key": "presence",
+              "label": "Presença atenta",
+              "desc": "Cultivar a capacidade de estar inteiro em cada atividade."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Autocuidado e Clima Coletivo",
+          "items": [
+            {
+              "key": "overload",
+              "label": "Redução da sobrecarga",
+              "desc": "Interromper o ciclo de estresse antes que ele se instale."
+            },
+            {
+              "key": "selfcare",
+              "label": "Autocuidado contínuo",
+              "desc": "Desenvolver hábitos de preservação como parte da cultura de trabalho."
+            },
+            {
+              "key": "environment",
+              "label": "Ambiente harmonioso",
+              "desc": "Construir relações de trabalho mais saudáveis, sustentáveis e humanas."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "PARA EMPRESAS QUE VALORIZAM PESSOAS",
@@ -1038,5 +1103,101 @@
     "profileSuccess": "Cadastro atualizado com sucesso!",
     "profileError": "Erro ao atualizar cadastro. Tente novamente.",
     "readOnlyEmail": "O e-mail não pode ser alterado diretamente."
+  },
+  "btd_corporate": {
+    "kicker": "BE THE DANCE PARA EMPRESAS",
+    "title": "Relações humanas e vitalidade coletiva",
+    "subtitle": "Quando a organização proporciona momentos de espontaneidade e descontração aos seus profissionais, a confiança mútua transforma a convivência no ambiente corporativo.",
+    "hook": "A rotina semanal exige atenção constante às metas institucionais. Retirar a equipe desse contexto funcional e inseri-la em uma convivência artística revela a dimensão humana de cada profissional, consolidando a união do grupo de maneira perene.",
+    "body": {
+      "p1": "A promoção de valores como descontração, relaxamento e alegria no ambiente corporativo reflete a maturidade de uma liderança atenta às pessoas. A dança pertence à própria essência da nossa espécie. Desde as origens culturais da humanidade, mover-se em conjunto desperta satisfação íntima e renova o ânimo individual.",
+      "pullQuote": "A vivência compartilhada do movimento aproxima as pessoas com autenticidade.",
+      "p2": "Ao compartilharem uma atividade coletiva em uma atmosfera de acolhimento e horizontalidade, os colaboradores descobrem afinidades inéditas. O gesto em comum constrói pontes diretas de simpatia e respeito. Colegas que dividiam apenas demandas operacionais passam a se enxergar em sua totalidade, criando laços estreitos, francos e duradouros.",
+      "p3": "Proporcionar essa experiência de realização pessoal consolida a percepção de cuidado institucional. O investimento em períodos dedicados ao alívio das pressões diárias comprova o apreço da empresa pela saúde integral de suas equipes. O resultado surge na formação de um time coeso, motivado e consciente do valor de cada integrante."
+    },
+    "pillars_section": {
+      "kicker": "DIMENSÕES DA EXPERIÊNCIA",
+      "intro": "A prática artística do Be the Dance atua simultaneamente no bem-estar individual e na dinâmica coletiva, gerando impactos duradouros na cultura organizacional:",
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Vitalidade e Descontração",
+          "items": [
+            {
+              "label": "Relaxamento individual",
+              "desc": "Dissolução das tensões cotidianas por meio de ritmos musicais plurais e envolventes."
+            },
+            {
+              "label": "Satisfação pessoal",
+              "desc": "Estímulo à espontaneidade e à renovação do ânimo através da expressão criativa."
+            },
+            {
+              "label": "Leveza compartilhada",
+              "desc": "Celebração em grupo capaz de restabelecer o entusiasmo das pessoas no trabalho."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Vínculos e Confiança Coletiva",
+          "items": [
+            {
+              "label": "Aproximação autêntica",
+              "desc": "Conexão sincera entre colaboradores de diferentes setores e níveis organizacionais."
+            },
+            {
+              "label": "Comunicação espontânea",
+              "desc": "Abertura para o diálogo franco em um ambiente de escuta ativa e convivência segura."
+            },
+            {
+              "label": "Confiança mútua",
+              "desc": "Percepção ampliada das qualidades e da sensibilidade de cada colega."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Cultura e Cuidado Institucional",
+          "items": [
+            {
+              "label": "Coesão de equipe",
+              "desc": "Fortalecimento da união do grupo e do sentimento de pertencimento."
+            },
+            {
+              "label": "Valorização das pessoas",
+              "desc": "Demonstração palpável do compromisso corporativo com o cuidado humano."
+            },
+            {
+              "label": "Harmonia relacional",
+              "desc": "Ambiente corporativo mais colaborativo, resiliente e acolhedor."
+            }
+          ]
+        }
+      ]
+    },
+    "audience": {
+      "kicker": "CENÁRIOS E APLICAÇÕES",
+      "intro": "O Be the Dance Corporativo atende empresas que compreendem a relevância das relações interpessoais para a solidez e sustentabilidade dos negócios. Formatos desenhados para:",
+      "items": {
+        "intense_routines": "Organizações com rotinas intensas que necessitam de períodos estruturados de alívio e renovação",
+        "integration": "Equipes em processo de fusão, crescimento acelerado ou transição estrutural",
+        "leadership": "Encontros de diretoria e gestão estratégica focados em empatia e conexão interpessoal",
+        "remote_teams": "Empresas com equipes remotas ou híbridas que realizam encontros presenciais periódicos",
+        "conventions": "Convenções anuais, retiros corporativos e semanas de integração institucional",
+        "culture": "Organizações orientadas à retenção de talentos e à sustentabilidade emocional de seu quadro humano"
+      }
+    },
+    "workshops_section": {
+      "kicker": "A IMERSÃO DE FIM DE SEMANA",
+      "p1": "O modelo ideal do Be the Dance para empresas estrutura-se como um fim de semana de imersão dedicado à descontração e ao convívio. Ao afastar os participantes do ritmo operacional habitual, cria-se o cenário perfeito para uma reaproximação genuína.",
+      "p2": "A dinâmica do programa conduz os profissionais por uma jornada de músicas do mundo, exercícios lúdicos de sintonia corporal e momentos de livre celebração. A condução sensível permite que cada colaborador participe de acordo com suas próprias possibilidades, assegurando conforto e entusiasmo a todos.",
+      "p3": "A estrutura do encontro cuida de cada detalhe para que a equipe apenas usufrua da vivência. Deixe que a riqueza sonora, o movimento orientado e a convivência realizem o restante."
+    },
+    "closing": "Pessoas integradas em sua sensibilidade constroem organizações sólidas. Ao oferecer momentos de alegria, descontração e encontro verdadeiro, a empresa expressa respeito pelo presente e assegura o futuro de suas equipes.",
+    "cta": {
+      "title": "Planeje a imersão da sua equipe",
+      "text": "Entre em contato para desenharmos uma proposta personalizada para a sua organização.",
+      "button": "Conversar com a Equipe"
+    }
   }
 }
