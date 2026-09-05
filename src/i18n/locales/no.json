@@ -921,6 +921,8 @@
       "remove": "Fjern",
       "confirmPromote": "Flytte denne deltakeren fra venteliste til påmeldt?",
       "confirmRemove": "Er du sikker på at du vil fjerne denne deltakeren fra kurset?"
-    }
+    },
+    "addToInstructorCalendar": "Legg til i Instruktørens Kalender (Google Calendar)",
+    "instructorEmail": "Instruktørens E-post"
   }
 }

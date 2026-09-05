@@ -6,8 +6,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck } from 'lucide-react';
-import { getLocalizedEvent, getEventCategory } from '../utils/eventHelpers';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus } from 'lucide-react';
+import { getLocalizedEvent, getEventCategory, generateInstructorCalendarUrl } from '../utils/eventHelpers';
 
 export default function AdminDashboard() {
   const { t, i18n } = useTranslation();
@@ -23,6 +23,7 @@ export default function AdminDashboard() {
   const initialFormState = {
     category: 'bethedance',
     instructor: 'Safia',
+    instructorEmail: '',
     title_no: '',
     title_en: '',
     title_pt: '',
@@ -77,6 +78,7 @@ export default function AdminDashboard() {
       const payload = {
         category: formData.category || 'bethedance',
         instructor: (formData.instructor || 'Safia').trim(),
+        instructorEmail: (formData.instructorEmail || '').trim(),
         startDate: formData.startDate,
         startTime: formData.startTime || '',
         endTime: formData.endTime || '',
@@ -126,6 +128,7 @@ export default function AdminDashboard() {
     setFormData({
       category: event.category || getEventCategory(event),
       instructor: event.instructor || 'Safia',
+      instructorEmail: event.instructorEmail || '',
       title_no: event.title_no || event.title || '',
       title_en: event.title_en || event.title || '',
       title_pt: event.title_pt || event.title || '',
@@ -204,24 +207,39 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Campo de Instrutor (Multi-instrutor) */}
-                <div>
-                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                    {t("adminPage.instructor", "Instrutor / Professor")}
-                  </label>
-                  <input
-                    type="text"
-                    name="instructor"
-                    list="instructors-list"
-                    value={formData.instructor}
-                    onChange={handleChange}
-                    placeholder="Ex: Safia"
-                    required
-                    className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm"
-                  />
-                  <datalist id="instructors-list">
-                    <option value="Safia" />
-                  </datalist>
+                {/* Campos de Instrutor e E-mail */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t("adminPage.instructor", "Instrutor")}
+                    </label>
+                    <input
+                      type="text"
+                      name="instructor"
+                      list="instructors-list"
+                      value={formData.instructor}
+                      onChange={handleChange}
+                      placeholder="Ex: Safia"
+                      required
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm"
+                    />
+                    <datalist id="instructors-list">
+                      <option value="Safia" />
+                    </datalist>
+                  </div>
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t("adminPage.instructorEmail", "E-mail do Instrutor")}
+                    </label>
+                    <input
+                      type="email"
+                      name="instructorEmail"
+                      value={formData.instructorEmail || ''}
+                      onChange={handleChange}
+                      placeholder="safia@dance2dance.no"
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm"
+                    />
+                  </div>
                 </div>
 
                 {/* Abas de Idioma na ordem: NO -> EN -> PT */}
@@ -557,6 +575,17 @@ export default function AdminDashboard() {
 
                         {/* Ações por Ícones Elegantes com Tooltips */}
                         <div className="flex items-center gap-2">
+                          <a 
+                            href={generateInstructorCalendarUrl(event, i18n.language, event.instructorEmail)}
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}
+                            aria-label={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor")}
+                            className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center"
+                          >
+                            <CalendarPlus className="w-4 h-4" />
+                          </a>
+
                           <button 
                             onClick={() => setSelectedEventForStudents(event)}
                             title={t("adminPage.viewStudents")}

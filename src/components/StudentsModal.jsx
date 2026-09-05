@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, where, getDocs, doc, runTransaction, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useTranslation } from 'react-i18next';
-import { X, Copy, Check, Download, UserCheck, Trash2, ArrowUpRight, Phone, HeartPulse, Mail, Calendar } from 'lucide-react';
+import { X, Copy, Check, Download, UserCheck, Trash2, ArrowUpRight, Phone, HeartPulse, Mail, Calendar, CalendarPlus } from 'lucide-react';
+import { generateInstructorCalendarUrl } from '../utils/eventHelpers';
 
 export default function StudentsModal({ event, onClose, onEventUpdated }) {
   const { t } = useTranslation();
@@ -172,12 +173,24 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
             </p>
           </div>
 
-          <button 
-            onClick={onClose}
-            className="p-2 text-[#9A9A9A] hover:text-[#F0EDE8] rounded-[2px] hover:bg-white/5 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            <a 
+              href={generateInstructorCalendarUrl(event, 'en', event.instructorEmail)}
+              target="_blank" 
+              rel="noopener noreferrer"
+              title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}
+              className="px-3 py-1.5 border border-[#333333] hover:border-accent text-[#CFCFCF] hover:text-accent font-heading text-xs rounded-[2px] transition-colors flex items-center gap-1.5"
+            >
+              <CalendarPlus className="w-3.5 h-3.5 text-accent" />
+              <span className="hidden sm:inline">Google Calendar</span>
+            </a>
+            <button 
+              onClick={onClose}
+              className="p-2 text-[#9A9A9A] hover:text-[#F0EDE8] rounded-[2px] hover:bg-white/5 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Barra de Ocupação */}

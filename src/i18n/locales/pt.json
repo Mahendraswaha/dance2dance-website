@@ -921,6 +921,8 @@
       "remove": "Remover",
       "confirmPromote": "Mover este aluno da lista de espera para os inscritos?",
       "confirmRemove": "Tem certeza que deseja remover este aluno do evento?"
-    }
+    },
+    "addToInstructorCalendar": "Adicionar à Agenda do Instrutor (Google Calendar)",
+    "instructorEmail": "E-mail do Instrutor"
   }
 }

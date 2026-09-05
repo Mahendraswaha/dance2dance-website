@@ -921,6 +921,8 @@
       "remove": "Remove",
       "confirmPromote": "Move this student from the waitlist to enrolled?",
       "confirmRemove": "Are you sure you want to remove this student from the event?"
-    }
+    },
+    "addToInstructorCalendar": "Add to Instructor Calendar (Google Calendar)",
+    "instructorEmail": "Instructor Email"
   }
 }

@@ -135,3 +135,37 @@ export function generateGoogleCalendarUrl(event, lang = 'en') {
 
   return url.toString();
 }
+
+export function generateInstructorCalendarUrl(event, lang = 'en', instructorEmail = '') {
+  if (!event) return '';
+  const { title, scheduleDetails, location } = getLocalizedEvent(event, lang);
+
+  let datesParam = '';
+  if (event.startDate) {
+    const cleanStartDate = event.startDate.replace(/-/g, '');
+    const cleanEndDate = (event.endDate || event.startDate).replace(/-/g, '');
+    const startTimeClean = (event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (event.endTime || '20:00').replace(/:/g, '') + '00';
+    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanEndDate}T${endTimeClean}`;
+  }
+
+  const instructorName = event.instructor || 'Safia';
+  const fullDetails = [
+    `[Dance 2 Dance] Workshop: ${title}`,
+    `Instrutor(a): ${instructorName}`,
+    event.totalHours ? `Carga Horária: ${event.totalHours}h` : '',
+    `Vagas: ${event.totalSpots || 0} | Inscritos: ${event.enrolledCount || 0}`,
+    scheduleDetails ? `Detalhes: ${scheduleDetails}` : ''
+  ].filter(Boolean).join('\n');
+
+  const url = new URL('https://calendar.google.com/calendar/render');
+  url.searchParams.set('action', 'TEMPLATE');
+  url.searchParams.set('text', `[Ministrar] ${title} - Dance 2 Dance`);
+  if (datesParam) url.searchParams.set('dates', datesParam);
+  url.searchParams.set('details', fullDetails);
+  if (location) url.searchParams.set('location', location);
+  const emailToAdd = instructorEmail || event.instructorEmail;
+  if (emailToAdd) url.searchParams.set('add', emailToAdd);
+
+  return url.toString();
+}
