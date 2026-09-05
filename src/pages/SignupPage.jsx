@@ -70,14 +70,14 @@ export default function SignupPage() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
       
-      <main className="flex-grow flex items-center justify-center pt-32 pb-24 px-6 relative">
+      <main className="flex-grow pt-32 pb-24 px-6 relative">
         <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #222 0%, transparent 60%)' }} />
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="w-full max-w-2xl bg-[#0a0a0a] border border-[#222222] p-8 md:p-12 rounded-[2px] shadow-2xl relative z-10"
+          className="w-full max-w-2xl mx-auto bg-[#0a0a0a] border border-[#222222] p-8 md:p-12 rounded-[2px] shadow-2xl relative z-10"
         >
           <div className="text-center mb-10">
             <h1 className="font-batang text-3xl text-[#F0EDE8] mb-2">Criar Conta</h1>
