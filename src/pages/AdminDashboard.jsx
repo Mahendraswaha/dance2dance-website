@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus } from 'lucide-react';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check } from 'lucide-react';
 import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl } from '../utils/eventHelpers';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
@@ -126,6 +126,20 @@ export default function AdminDashboard() {
   };
 
   const [formData, setFormData] = useState(initialFormState);
+
+  const [isTitleDropdownOpen, setIsTitleDropdownOpen] = useState(false);
+  const titleDropdownRef = useRef(null);
+
+  // Fecha o dropdown de títulos ao clicar fora do componente
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (titleDropdownRef.current && !titleDropdownRef.current.contains(e.target)) {
+        setIsTitleDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   async function fetchEvents() {
     setLoading(true);
@@ -270,6 +284,7 @@ export default function AdminDashboard() {
   }
 
   function handleCategoryChange(newCategory) {
+    setIsTitleDropdownOpen(false);
     setFormData(prev => {
       if (prev.category === newCategory) return prev;
       const oldPresets = EVENT_PRESETS[prev.category] || {};
@@ -288,6 +303,20 @@ export default function AdminDashboard() {
         } : {})
       };
     });
+  }
+
+  function handleSelectPreset(idx) {
+    const cat = formData.category || 'bethedance';
+    const presets = EVENT_PRESETS[cat] || EVENT_PRESETS.bethedance;
+
+    setFormData(prev => ({
+      ...prev,
+      title_no: presets.no[idx] || '',
+      title_en: presets.en[idx] || '',
+      title_pt: presets.pt[idx] || '',
+      targetPath: presets.routes[idx] || ''
+    }));
+    setIsTitleDropdownOpen(false);
   }
 
   function handleTitleChange(e) {
@@ -421,28 +450,71 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Título do Evento no Idioma Ativo (Filtro por Categoria) */}
-                <div>
+                {/* Título do Evento no Idioma Ativo (Combobox estrito por Categoria) */}
+                <div ref={titleDropdownRef} className="relative">
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.eventTitle")} ({activeLangTab.toUpperCase()})
                   </label>
-                  <input 
-                    list="event-titles" 
-                    required={activeLangTab === 'en' || activeLangTab === 'no'} 
-                    type="text" 
-                    name={`title_${activeLangTab}`} 
-                    value={formData[`title_${activeLangTab}`] || ''} 
-                    onChange={handleTitleChange} 
-                    placeholder={t("adminPage.selectOrType")} 
-                    className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" 
-                  />
-                  
-                  {/* Lista de opções restrita estritamente à categoria selecionada */}
-                  <datalist id="event-titles">
-                    {(EVENT_PRESETS[formData.category]?.[activeLangTab] || []).map(titleOption => (
-                      <option key={titleOption} value={titleOption} />
-                    ))}
-                  </datalist>
+                  <div className="relative">
+                    <input 
+                      autoComplete="off"
+                      spellCheck="false"
+                      required={activeLangTab === 'en' || activeLangTab === 'no'} 
+                      type="text" 
+                      name={`title_${activeLangTab}`} 
+                      value={formData[`title_${activeLangTab}`] || ''} 
+                      onChange={handleTitleChange} 
+                      onFocus={() => setIsTitleDropdownOpen(true)}
+                      placeholder={t("adminPage.selectOrType")} 
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 pr-10 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
+                    />
+                    <button
+                      type="button"
+                      tabIndex={-1}
+                      onClick={() => setIsTitleDropdownOpen(prev => !prev)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-[#7A7A7A] hover:text-accent p-1.5 transition-colors"
+                      title="Alternar lista de workshops"
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isTitleDropdownOpen ? 'rotate-180 text-accent' : ''}`} />
+                    </button>
+                  </div>
+
+                  {/* Dropdown customizado contendo EXCLUSIVAMENTE os workshops da categoria selecionada */}
+                  <AnimatePresence>
+                    {isTitleDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 right-0 mt-1 bg-[#121214] border border-[#2A2A30] shadow-2xl rounded-[2px] z-50 max-h-64 overflow-y-auto py-1 divide-y divide-[#1E1E24]"
+                      >
+                        <div className="px-3 py-1.5 text-[9px] font-heading uppercase tracking-wider text-accent/80 font-bold bg-[#0A0A0C]">
+                          {formData.category === 'biostretch' ? 'Workshops Biostretch' : 'Workshops Be The Dance'}
+                        </div>
+                        {(EVENT_PRESETS[formData.category]?.[activeLangTab] || []).map((titleOption, idx) => {
+                          const isSelected = formData[`title_${activeLangTab}`] === titleOption;
+                          return (
+                            <button
+                              key={titleOption}
+                              type="button"
+                              onClick={() => handleSelectPreset(idx)}
+                              className={`w-full text-left px-4 py-2.5 text-xs font-heading transition-colors flex items-center justify-between group ${
+                                isSelected ? 'bg-accent/15 text-accent font-semibold' : 'text-[#D4D4D8] hover:text-accent hover:bg-[#1A1A20]'
+                              }`}
+                            >
+                              <span className="group-hover:translate-x-1 transition-transform">
+                                {titleOption}
+                              </span>
+                              {isSelected && (
+                                <Check className="w-3.5 h-3.5 text-accent shrink-0 ml-2" />
+                              )}
+                            </button>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 
                 {/* Data de Início e Total de Vagas */}
