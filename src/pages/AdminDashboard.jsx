@@ -141,7 +141,7 @@ export default function AdminDashboard() {
 
                 <div>
                   <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Ttulo do Evento ({activeLangTab.toUpperCase()})</label>
-                  <input required={activeLangTab === 'pt'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder="Ttulo..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+                  <input required={activeLangTab === 'en'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder="Ttulo..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
@@ -157,11 +157,11 @@ export default function AdminDashboard() {
 
                 <div>
                   <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Texto Visvel: Datas/Horǭrios ({activeLangTab.toUpperCase()})</label>
-                  <textarea required={activeLangTab === 'pt'} name={`scheduleDetails_${activeLangTab}`} value={formData[`scheduleDetails_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: 9 sextas-feiras..." rows="3" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light resize-none" />
+                  <textarea required={activeLangTab === 'en'} name={`scheduleDetails_${activeLangTab}`} value={formData[`scheduleDetails_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: 9 sextas-feiras..." rows="3" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light resize-none" />
                 </div>
                 <div>
                   <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Local / Estǧdio ({activeLangTab.toUpperCase()})</label>
-                  <input required={activeLangTab === 'pt'} type="text" name={`location_${activeLangTab}`} value={formData[`location_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: Rommen Skole" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+                  <input required={activeLangTab === 'en'} type="text" name={`location_${activeLangTab}`} value={formData[`location_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: Rommen Skole" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                 </div>
                 <div className="flex gap-2 mt-4">
                 <button type="submit" className="flex-1 bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px]">

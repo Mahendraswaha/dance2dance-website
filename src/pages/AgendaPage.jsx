@@ -236,13 +236,13 @@ export default function AgendaPage() {
           <div className="space-y-6">
             <AnimatePresence>
               {filteredEvents.map((event, index) => {
-                const category = getCategory(event.title || event.title_pt || '');
+                const category = getCategory(event.title_en || event.title || event.title_pt || '');
                 const badgeText = category === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH';
                 
-                const currentLang = i18n.language || 'pt';
-                const dispTitle = event[`title_${currentLang}`] || event.title_pt || event.title;
-                const dispSchedule = event[`scheduleDetails_${currentLang}`] || event.scheduleDetails_pt || event.scheduleDetails;
-                const dispLocation = event[`location_${currentLang}`] || event.location_pt || event.location;
+                const currentLang = i18n.language || 'en';
+                const dispTitle = event[`title_${currentLang}`] || event.title_en || event.title_pt || event.title;
+                const dispSchedule = event[`scheduleDetails_${currentLang}`] || event.scheduleDetails_en || event.scheduleDetails_pt || event.scheduleDetails;
+                const dispLocation = event[`location_${currentLang}`] || event.location_en || event.location_pt || event.location;
                 
                 // Formata data do evento (se existir)
                 let dateStr = t("agendaPage.comingSoon");
