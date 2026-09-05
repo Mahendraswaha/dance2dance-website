@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
@@ -11,20 +12,36 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, ArrowRight } from 'lucide-reac
 export default function ContactPage() {
   const { t, i18n } = useTranslation();
   const [searchParams] = useSearchParams();
+  const { currentUser } = useAuth();
 
   const isExecutiveMeeting = searchParams.get('subject') === 'reuniao-executiva';
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    zip: '',
-    country: '',
+    name: currentUser?.profile?.fullName || currentUser?.profile?.name || '',
+    email: currentUser?.email || '',
+    phone: currentUser?.profile?.phone || '',
+    address: currentUser?.profile?.address || '',
+    city: currentUser?.profile?.city || '',
+    zip: currentUser?.profile?.zip || '',
+    country: currentUser?.profile?.country || '',
     subject: isExecutiveMeeting ? 'reuniao-executiva' : 'geral',
     message: ''
   });
+
+  useEffect(() => {
+    if (currentUser) {
+      setFormData(prev => ({
+        ...prev,
+        name: prev.name || currentUser.profile?.fullName || currentUser.profile?.name || '',
+        email: prev.email || currentUser.email || '',
+        phone: prev.phone || currentUser.profile?.phone || '',
+        address: prev.address || currentUser.profile?.address || '',
+        city: prev.city || currentUser.profile?.city || '',
+        zip: prev.zip || currentUser.profile?.zip || '',
+        country: prev.country || currentUser.profile?.country || ''
+      }));
+    }
+  }, [currentUser]);
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
