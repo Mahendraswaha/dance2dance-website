@@ -22,7 +22,7 @@ export default function ContactPage() {
     city: '',
     zip: '',
     country: '',
-    subject: isExecutiveMeeting ? 'reuniao-executiva' : '',
+    subject: isExecutiveMeeting ? 'reuniao-executiva' : 'geral',
     message: ''
   });
 
@@ -255,7 +255,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm cursor-pointer"
                   >
-                    <option value="">{t('contactPage.subjectGeneral', 'Dúvidas Gerais / Informações')}</option>
+                    <option value="geral">{t('contactPage.subjectGeneral', 'Dúvidas Gerais / Informações')}</option>
                     <option value="reuniao-executiva">{t('contactPage.subjectExecutive', 'Reunião Executiva / Projeto Social')}</option>
                     <option value="biostretch-empresas">{t('contactPage.subjectCorporate', 'Biostretch para Empresas')}</option>
                     <option value="sessao-individual">{t('contactPage.subjectIndividual', 'Sessão Individual / Personal')}</option>
@@ -266,9 +266,10 @@ export default function ContactPage() {
                 {/* Mensagem */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                    {t('contactPage.messageLabel', 'Mensagem (Opcional)')}
+                    {t('contactPage.messageLabel', 'Mensagem *')}
                   </label>
                   <textarea
+                    required
                     name="message"
                     rows="4"
                     value={formData.message}

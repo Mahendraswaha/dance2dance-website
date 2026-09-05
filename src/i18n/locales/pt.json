@@ -943,7 +943,7 @@
     "subjectCorporate": "Biostretch para Empresas",
     "subjectIndividual": "Sessão Individual / Personal",
     "subjectPartnership": "Parcerias & Patrocínios",
-    "messageLabel": "Mensagem (Opcional)",
+    "messageLabel": "Mensagem *",
     "messagePlaceholder": "Como podemos te ajudar?",
     "submitBtn": "Enviar Mensagem",
     "sending": "Enviando...",
