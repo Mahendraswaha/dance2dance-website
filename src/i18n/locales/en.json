@@ -955,6 +955,14 @@
     "bannerKicker": "ACTIVE SCHEDULE",
     "bannerTitle": "Want to join a workshop?",
     "bannerDesc": "Check our upcoming dates and secure your spot directly in our official schedule.",
-    "bannerCta": "Explore Schedule"
+    "bannerCta": "Explore Schedule",
+    "addressLabel": "Address (Optional)",
+    "addressPlaceholder": "Street name, number",
+    "cityLabel": "City (Optional)",
+    "cityPlaceholder": "Your city",
+    "zipLabel": "ZIP / Postal Code (Optional)",
+    "zipPlaceholder": "00000",
+    "countryLabel": "Country (Optional)",
+    "countryPlaceholder": "Brazil, Norway..."
   }
 }

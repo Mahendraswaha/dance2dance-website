@@ -18,6 +18,10 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
+    address: '',
+    city: '',
+    zip: '',
+    country: '',
     subject: isExecutiveMeeting ? 'reuniao-executiva' : '',
     message: ''
   });
@@ -179,6 +183,66 @@ export default function ContactPage() {
                     />
                   </div>
                 </div>
+                {/* Endereço */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t('contactPage.addressLabel', 'Endereço (Opcional)')}
+                    </label>
+                    <input
+                      type="text"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      placeholder={t('contactPage.addressPlaceholder', 'Nome da rua, número')}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t('contactPage.cityLabel', 'Cidade (Opcional)')}
+                    </label>
+                    <input
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      placeholder={t('contactPage.cityPlaceholder', 'Sua cidade')}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t('contactPage.zipLabel', 'CEP / Código Postal (Opcional)')}
+                    </label>
+                    <input
+                      type="text"
+                      name="zip"
+                      value={formData.zip}
+                      onChange={handleChange}
+                      placeholder={t('contactPage.zipPlaceholder', '00000-000')}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t('contactPage.countryLabel', 'País (Opcional)')}
+                    </label>
+                    <input
+                      type="text"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      placeholder={t('contactPage.countryPlaceholder', 'Brasil, Noruega...')}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
+                    />
+                  </div>
+                </div>
 
                 {/* Assunto */}
                 <div>
@@ -242,15 +306,7 @@ export default function ContactPage() {
                   <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-[#F0EDE8]">Oslo, Norway</strong>
-                    <span className="text-[#7A7A7A]">Rommen Skole & Estúdios Parceiros</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-[#F0EDE8]">Porto Alegre, Brasil</strong>
-                    <span className="text-[#7A7A7A]">Poa Cia de Dança</span>
+                    
                   </div>
                 </div>
 

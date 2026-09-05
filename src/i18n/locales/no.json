@@ -955,6 +955,14 @@
     "bannerKicker": "AKTIV TIMEPLAN",
     "bannerTitle": "Vil du bli med på en workshop?",
     "bannerDesc": "Sjekk våre kommende datoer og sikre din plass direkte i vår offisielle timeplan.",
-    "bannerCta": "Utforsk Timeplan"
+    "bannerCta": "Utforsk Timeplan",
+    "addressLabel": "Adresse (Valgfritt)",
+    "addressPlaceholder": "Gatenavn, nummer",
+    "cityLabel": "By (Valgfritt)",
+    "cityPlaceholder": "Din by",
+    "zipLabel": "Postnummer (Valgfritt)",
+    "zipPlaceholder": "0000",
+    "countryLabel": "Land (Valgfritt)",
+    "countryPlaceholder": "Brasil, Norge..."
   }
 }

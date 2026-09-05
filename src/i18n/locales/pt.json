@@ -955,6 +955,14 @@
     "bannerKicker": "AGENDA ATIVA",
     "bannerTitle": "Quer participar de um workshop?",
     "bannerDesc": "Confira nossas próximas datas e garanta sua vaga diretamente na nossa programação oficial.",
-    "bannerCta": "Explorar Agenda"
+    "bannerCta": "Explorar Agenda",
+    "addressLabel": "Endereço (Opcional)",
+    "addressPlaceholder": "Nome da rua, número",
+    "cityLabel": "Cidade (Opcional)",
+    "cityPlaceholder": "Sua cidade",
+    "zipLabel": "CEP / Código Postal (Opcional)",
+    "zipPlaceholder": "00000-000",
+    "countryLabel": "País (Opcional)",
+    "countryPlaceholder": "Brasil, Noruega..."
   }
 }
