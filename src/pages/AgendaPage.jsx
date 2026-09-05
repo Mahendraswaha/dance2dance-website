@@ -276,10 +276,10 @@ export default function AgendaPage() {
                     </div>
 
                     {/* Bloco Central e Direito: Grade Alinhada */}
-                    <div className="flex-1 flex flex-col w-full relative">
+                    <div className="flex-1 flex flex-col w-full">
                       
-                      {/* Topo: Badge */}
-                      <div className="mb-4 md:absolute md:-top-8 md:left-0 md:mb-0">
+                      {/* Topo: Badge com translação Y para subir visualmente sem quebrar o layout */}
+                      <div className="mb-2 -translate-y-3">
                         <div className="inline-flex items-center justify-center bg-[#1E1E24] px-2 py-1 rounded-[2px] pr-[calc(0.5rem-2px)]">
                           <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] font-bold ml-[2px]">
                             {badgeText}
