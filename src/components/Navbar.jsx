@@ -84,6 +84,7 @@ const Navbar = () => {
                 <Link to="/#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</Link>
                 <Link to="/social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</Link>
                 <Link to="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</Link>
+                <Link to="/contato" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.contact')}</Link>
               </div>
             </div>
 
@@ -183,6 +184,9 @@ const Navbar = () => {
           </Link>
           <Link to="/agenda" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
             {t('nav.agenda')}
+          </Link>
+          <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
+            {t('nav.contact')}
           </Link>
         </div>
 

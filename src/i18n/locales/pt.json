@@ -7,7 +7,8 @@
     "login": "Entrar",
     "signup": "Cadastre-se",
     "hello": "Olá",
-    "logout": "Sair"
+    "logout": "Sair",
+    "contact": "Contato"
   },
   "hero": {
     "subtitle1": "O movimento encontra a",
@@ -924,5 +925,36 @@
     },
     "addToInstructorCalendar": "Adicionar à Agenda do Instrutor (Google Calendar)",
     "instructorEmail": "E-mail do Instrutor"
+  },
+  "contactPage": {
+    "kicker": "CONTATO & PARCERIAS",
+    "title": "Entre em Contato",
+    "subtitle": "Tem dúvidas sobre workshops, aulas regulares ou parcerias institucionais? Fale diretamente conosco.",
+    "executiveTitle": "Agendar Reunião Executiva",
+    "executiveSubtitle": "Conecte sua organização ou empresa com o Dance 2 Dance para projetos sociais, bem-estar corporativo ou parcerias.",
+    "emailLabel": "E-mail",
+    "emailRequired": "Por favor, insira um e-mail válido.",
+    "nameLabel": "Nome (Opcional)",
+    "namePlaceholder": "Seu nome ou empresa",
+    "phoneLabel": "Telefone / WhatsApp (Opcional)",
+    "subjectLabel": "Assunto",
+    "subjectGeneral": "Dúvidas Gerais / Informações",
+    "subjectExecutive": "Reunião Executiva / Projeto Social",
+    "subjectCorporate": "Biostretch para Empresas",
+    "subjectIndividual": "Sessão Individual / Personal",
+    "subjectPartnership": "Parcerias & Patrocínios",
+    "messageLabel": "Mensagem (Opcional)",
+    "messagePlaceholder": "Como podemos te ajudar?",
+    "submitBtn": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "successTitle": "Mensagem Enviada!",
+    "successDesc": "Recebemos sua mensagem com sucesso. Entraremos em contato o mais breve possível.",
+    "sendAnother": "Enviar Outra Mensagem",
+    "sendError": "Falha ao enviar mensagem. Tente novamente mais tarde.",
+    "infoDesc": "Espaço de encontro, movimento e transformação social através da arte da dança e do bem-estar corporal.",
+    "bannerKicker": "AGENDA ATIVA",
+    "bannerTitle": "Quer participar de um workshop?",
+    "bannerDesc": "Confira nossas próximas datas e garanta sua vaga diretamente na nossa programação oficial.",
+    "bannerCta": "Explorar Agenda"
   }
 }

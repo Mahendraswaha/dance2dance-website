@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown, ArrowRight, Users, Building2, Landmark, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SocialPillars from '../components/SocialPillars';
@@ -281,12 +282,18 @@ const SocialPage = () => {
             {t('social_page_b2b.cta.desc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-accent text-primary px-8 py-4 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(200,160,80,0.3)]">
+            <Link 
+              to="/contato?subject=reuniao-executiva" 
+              className="inline-flex items-center justify-center bg-accent text-primary px-8 py-4 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(200,160,80,0.3)] text-center"
+            >
               {t('social_page_b2b.cta.btn1')}
-            </button>
-            <button className="bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors">
+            </Link>
+            <Link 
+              to="/contato?subject=parcerias" 
+              className="inline-flex items-center justify-center bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors text-center"
+            >
               {t('social_page_b2b.cta.btn2')}
-            </button>
+            </Link>
           </div>
         </div>
       </section>

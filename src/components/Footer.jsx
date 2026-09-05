@@ -49,7 +49,7 @@ const Footer = () => {
               <a href="#" className="hover:text-accent transition-colors">Facebook</a>
               <a href="#" className="hover:text-accent transition-colors">YouTube</a>
               <a href="#" className="hover:text-accent transition-colors">TikTok</a>
-              <a href="#" className="hover:text-accent transition-colors">{t("footer.links.contact")}</a>
+              <Link to="/contato" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">{t("footer.links.contact")}</Link>
               <Link to="/termos" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">{t("footer.links.terms")}</Link>
               <Link to="/privacidade" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">{t("footer.links.privacy")}</Link>
             </div>

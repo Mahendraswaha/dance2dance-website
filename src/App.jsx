@@ -20,6 +20,7 @@ import AdminRoute from './components/AdminRoute';
 import './i18n';
 import TermsPage from './pages/TermsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
   return (
@@ -30,6 +31,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/agenda" element={<AgendaPage />} />
         <Route path="/social" element={<SocialPage />} />
+        <Route path="/contato" element={<ContactPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/biostretch/empresas" element={<CorporatePage />} />
         <Route path="/biostretch/individual" element={<IndividualPage />} />
         <Route path="/biostretch/aulas-regulares" element={<RegularClassesPage />} />
@@ -39,9 +42,9 @@ export default function App() {
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/:programId" element={<ProgramPage />} />
         <Route path="/:programId/:workshopId" element={<WorkshopPage />} />
-                <Route path="/termos" element={<TermsPage />} />
-          <Route path="/privacidade" element={<PrivacyPolicyPage />} />
-        </Routes>
+        <Route path="/termos" element={<TermsPage />} />
+        <Route path="/privacidade" element={<PrivacyPolicyPage />} />
+      </Routes>
     </BrowserRouter>
     </AuthProvider>
   );

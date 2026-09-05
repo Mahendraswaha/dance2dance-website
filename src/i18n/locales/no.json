@@ -7,7 +7,8 @@
     "login": "Logg inn",
     "signup": "Registrer deg",
     "hello": "Hei",
-    "logout": "Logg ut"
+    "logout": "Logg ut",
+    "contact": "Kontakt"
   },
   "hero": {
     "subtitle1": "Bevegelse møter",
@@ -924,5 +925,36 @@
     },
     "addToInstructorCalendar": "Legg til i Instruktørens Kalender (Google Calendar)",
     "instructorEmail": "Instruktørens E-post"
+  },
+  "contactPage": {
+    "kicker": "KONTAKT & SAMARBEID",
+    "title": "Ta Kontakt",
+    "subtitle": "Har du spørsmål om workshops, faste timer eller institusjonelle samarbeid? Ta direkte kontakt med oss.",
+    "executiveTitle": "Planlegg Ledermøte",
+    "executiveSubtitle": "Koble din organisasjon eller bedrift med Dance 2 Dance for sosiale prosjekter, bedriftsvelvære eller partnerskap.",
+    "emailLabel": "E-post",
+    "emailRequired": "Vennligst oppgi en gyldig e-postadresse.",
+    "nameLabel": "Navn (Valgfritt)",
+    "namePlaceholder": "Ditt navn eller bedrift",
+    "phoneLabel": "Telefon / WhatsApp (Valgfritt)",
+    "subjectLabel": "Emne",
+    "subjectGeneral": "Generelle henvendelser / Informasjon",
+    "subjectExecutive": "Ledermøte / Sosialt Prosjekt",
+    "subjectCorporate": "Biostretch for Bedrifter",
+    "subjectIndividual": "Individuell Økt / Personlig",
+    "subjectPartnership": "Samarbeid & Sponsorer",
+    "messageLabel": "Melding (Valgfritt)",
+    "messagePlaceholder": "Hvordan kan vi hjelpe deg?",
+    "submitBtn": "Send Melding",
+    "sending": "Sender...",
+    "successTitle": "Melding Sendt!",
+    "successDesc": "Vi har mottatt meldingen din. Vi tar kontakt med deg så snart som mulig.",
+    "sendAnother": "Send Ny Melding",
+    "sendError": "Kunne ikke sende melding. Vennligst prøv igjen senere.",
+    "infoDesc": "Et rom for møter, bevegelse og sosial transformasjon gjennom dansekunst og kroppslig velvære.",
+    "bannerKicker": "AKTIV TIMEPLAN",
+    "bannerTitle": "Vil du bli med på en workshop?",
+    "bannerDesc": "Sjekk våre kommende datoer og sikre din plass direkte i vår offisielle timeplan.",
+    "bannerCta": "Utforsk Timeplan"
   }
 }

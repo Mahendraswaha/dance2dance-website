@@ -7,7 +7,8 @@
     "login": "Login",
     "signup": "Sign Up",
     "hello": "Hello",
-    "logout": "Logout"
+    "logout": "Logout",
+    "contact": "Contact"
   },
   "hero": {
     "subtitle1": "Movement meets",
@@ -924,5 +925,36 @@
     },
     "addToInstructorCalendar": "Add to Instructor Calendar (Google Calendar)",
     "instructorEmail": "Instructor Email"
+  },
+  "contactPage": {
+    "kicker": "CONTACT & PARTNERSHIPS",
+    "title": "Get in Touch",
+    "subtitle": "Have questions about workshops, regular classes, or institutional partnerships? Talk directly to us.",
+    "executiveTitle": "Schedule Executive Meeting",
+    "executiveSubtitle": "Connect your organization or company with Dance 2 Dance for social projects, corporate wellness, or partnerships.",
+    "emailLabel": "Email",
+    "emailRequired": "Please enter a valid email address.",
+    "nameLabel": "Name (Optional)",
+    "namePlaceholder": "Your name or company",
+    "phoneLabel": "Phone / WhatsApp (Optional)",
+    "subjectLabel": "Subject",
+    "subjectGeneral": "General Inquiries / Information",
+    "subjectExecutive": "Executive Meeting / Social Project",
+    "subjectCorporate": "Biostretch for Companies",
+    "subjectIndividual": "Individual Session / Personal",
+    "subjectPartnership": "Partnerships & Sponsorships",
+    "messageLabel": "Message (Optional)",
+    "messagePlaceholder": "How can we help you?",
+    "submitBtn": "Send Message",
+    "sending": "Sending...",
+    "successTitle": "Message Sent!",
+    "successDesc": "We have received your message. We will get back to you as soon as possible.",
+    "sendAnother": "Send Another Message",
+    "sendError": "Failed to send message. Please try again later.",
+    "infoDesc": "A space for meeting, movement, and social transformation through dance art and bodily well-being.",
+    "bannerKicker": "ACTIVE SCHEDULE",
+    "bannerTitle": "Want to join a workshop?",
+    "bannerDesc": "Check our upcoming dates and secure your spot directly in our official schedule.",
+    "bannerCta": "Explore Schedule"
   }
 }
