@@ -107,20 +107,36 @@ const Navbar = () => {
               </button>
 
               {currentUser ? (
-                <div className="hidden md:flex items-center gap-3">
-                  <span className="font-heading text-xs text-[#9A9A9A]">
-                    {t("nav.hello")}, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
+                <div className="hidden md:flex items-center gap-2 ml-1">
+                  <span className="font-heading text-xs text-[#9A9A9A] max-w-[110px] truncate" title={currentUser.profile?.nome || 'Aluno'}>
+                    {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
                   </span>
                   <button 
                     onClick={() => { logout(); navigate('/'); }}
-                    className="border border-[#333333] text-background hover:border-accent hover:text-accent px-4 py-2 rounded-full font-heading font-bold text-[10px] whitespace-nowrap transition-colors"
-                  >{t("nav.logout")}</button>
+                    title={t("nav.logout")}
+                    aria-label={t("nav.logout")}
+                    className="p-2 rounded-full text-[#9A9A9A] hover:text-accent hover:bg-white/5 transition-all"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
                 </div>
               ) : (
-                <div className="hidden md:flex items-center gap-2">
-                  <Link to="/login" className="font-heading text-xs text-background hover:text-accent px-3 py-2 transition-colors">{t("nav.login")}</Link>
-                  <Link to="/cadastro" className="btn-magnetic bg-accent text-primary px-4 md:px-6 py-2.5 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
-                    <span className="relative z-10">{t("nav.signup")}</span>
+                <div className="hidden md:flex items-center gap-1 ml-1">
+                  <Link 
+                    to="/login" 
+                    title={t("nav.login")}
+                    aria-label={t("nav.login")}
+                    className="p-2 rounded-full text-[#9A9A9A] hover:text-accent hover:bg-white/5 transition-all"
+                  >
+                    <LogIn className="w-4 h-4" />
+                  </Link>
+                  <Link 
+                    to="/cadastro" 
+                    title={t("nav.signup")}
+                    aria-label={t("nav.signup")}
+                    className="p-2 rounded-full text-[#9A9A9A] hover:text-accent hover:bg-white/5 transition-all"
+                  >
+                    <UserPlus className="w-4 h-4" />
                   </Link>
                 </div>
               )}
@@ -181,7 +197,7 @@ const Navbar = () => {
           {currentUser ? (
             <div className="flex flex-col w-full gap-4">
               <span className="font-heading text-sm text-[#9A9A9A]">
-                Olá, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
+                {t("nav.hello")}, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
               </span>
               <button 
                 onClick={() => { logout(); setIsMobileMenuOpen(false); navigate('/'); }}

@@ -6,7 +6,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock, CalendarPlus } from 'lucide-react';
+import { getLocalizedEvent, getEventCategory, getEventRoute, generateGoogleCalendarUrl } from '../utils/eventHelpers';
 import { useTranslation } from 'react-i18next';
 
 export default function AgendaPage() {
@@ -47,40 +48,15 @@ export default function AgendaPage() {
     fetchData();
   }, [currentUser]);
 
-  // Função para inferir a categoria com base no título
   function getCategory(event) {
-    const titleStr = typeof event === 'string' ? event : (event.title_pt || event.title_en || event.title || '');
-    const t = titleStr.toLowerCase();
-    if (t.includes('biostretch') || t.includes('postura') || t.includes('relaxar') || t.includes('alongar') || t.includes('hábitos') || t.includes('stress') || t.includes('foco')) {
-      return 'biostretch';
-    }
-    return 'bethedance';
+    return getEventCategory(event);
   }
-
-  // Gera o link de detalhes baseado no título
-    function getDetailsLink(event) {
-    const titleStr = typeof event === 'string' ? event : (event.title_pt || event.title_en || event.title || '');
-    const category = getCategory(event);
-    const t = titleStr.toLowerCase();
-    
-    if (category === 'biostretch') {
-      if (t.includes('regular')) return '/biostretch/aulas-regulares';
-      if (t.includes('empresa') || t.includes('corporate')) return '/biostretch/empresas';
-      if (t.includes('individual') || t.includes('personal')) return '/biostretch/individual';
-      return '/biostretch/aulas-regulares'; // Fallback
-    }
-    if (t.includes('water')) return '/be-the-dance/be-water';
-    if (t.includes('balance')) return '/be-the-dance/be-balance';
-    if (t.includes('total')) return '/be-the-dance/be-total';
-    if (t.includes('stillness')) return '/be-the-dance/be-stillness';
-    if (t.includes('pro')) return '/be-the-dance/be-the-dance-pro';
-    if (t.includes('day')) return '/be-the-dance/be-the-dance-day';
-    
-    return '/be-the-dance';
+  function getDetailsLink(event) {
+    return getEventRoute(event);
   }
 
   async function handleCancelEnrollment(eventId) {
-    if (!window.confirm("Tem certeza que deseja cancelar sua inscrição/espera para este evento?")) return;
+    if (!window.confirm(t("agendaPage.confirmCancel", "Tem certeza que deseja cancelar sua inscrição/espera para este evento?"))) return;
     
     setActionLoading(eventId);
     try {
@@ -119,7 +95,7 @@ export default function AgendaPage() {
 
     } catch(err) {
       console.error(err);
-      alert("Erro ao cancelar: " + err.message);
+      alert(t("agendaPage.cancelError", "Erro ao cancelar: ") + err.message);
     }
     setActionLoading(null);
   }
@@ -240,13 +216,11 @@ export default function AgendaPage() {
           <div className="space-y-6">
             <AnimatePresence>
               {filteredEvents.map((event, index) => {
-                const category = getCategory(event);
+                const category = getEventCategory(event);
                 const badgeText = category === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH';
                 
                 const currentLang = i18n.language || 'en';
-                const dispTitle = event[`title_${currentLang}`] || event.title_en || event.title_pt || event.title;
-                const dispSchedule = event[`scheduleDetails_${currentLang}`] || event.scheduleDetails_en || event.scheduleDetails_pt || event.scheduleDetails;
-                const dispLocation = event[`location_${currentLang}`] || event.location_en || event.location_pt || event.location;
+                const { title: dispTitle, scheduleDetails: dispSchedule, location: dispLocation } = getLocalizedEvent(event, currentLang);
                 
                 // Formata data do evento (se existir)
                 let dateStr = t("agendaPage.comingSoon");
@@ -282,6 +256,17 @@ export default function AgendaPage() {
                           {dispSchedule || t("agendaPage.tbd")}
                         </span>
                       </div>
+                      
+                      <a 
+                        href={generateGoogleCalendarUrl(event, currentLang)}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-[10px] text-[#7A7A7A] hover:text-accent font-heading transition-colors mt-3"
+                        title={t("agendaPage.addToCalendar", "Adicionar ao Google Calendar")}
+                      >
+                        <CalendarPlus className="w-3 h-3 text-accent/70" />
+                        <span>{t("agendaPage.addToCalendar", "Adicionar ao Calendário")}</span>
+                      </a>
                     </div>
 
                     {/* Bloco Central e Direito */}
@@ -321,7 +306,7 @@ export default function AgendaPage() {
                             >
                               <span className="relative z-10 block text-center ml-[2px]">
                                 {actionLoading === event.id 
-                                  ? 'Aguarde...' 
+                                  ? t('agendaPage.loading') 
                                   : isFull ? t('agendaPage.joinWaitlist') : t('agendaPage.subscribe')}
                               </span>
                             </button>
@@ -337,16 +322,10 @@ export default function AgendaPage() {
                         </div>
                         
                         <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center">
-                          {(userStatus === 'enrolled' || userStatus === 'waitlist') ? (
+                          {(userStatus === 'enrolled' || userStatus === 'waitlist') && (
                             <button onClick={() => handleCancelEnrollment(event.id)} disabled={actionLoading === event.id} className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors mt-1">
-                              {actionLoading === event.id ? 'Aguarde...' : t('agendaPage.cancel')}
+                              {actionLoading === event.id ? t('agendaPage.loading') : t('agendaPage.cancel')}
                             </button>
-                          ) : (
-                            !isFull && (
-                              <span className="text-[10px] font-heading text-[#9A9A9A] uppercase tracking-wider text-center w-full inline-block">
-                                {spotsLeft === 1 ? t('agendaPage.spotsLeftOne') : t('agendaPage.spotsLeft', { count: spotsLeft })}
-                              </span>
-                            )
                           )}
                         </div>
                       </div>
