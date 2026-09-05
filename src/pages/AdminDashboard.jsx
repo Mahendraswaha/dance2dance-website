@@ -46,35 +46,49 @@ export default function AdminDashboard() {
     fetchEvents();
   }, []);
 
+    const initialFormState = {
+    title_pt: '', title_en: '', title_no: '',
+    startDate: '',
+    scheduleDetails_pt: '', scheduleDetails_en: '', scheduleDetails_no: '',
+    location_pt: '', location_en: '', location_no: '',
+    totalSpots: ''
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      const payload = {
+        title_pt: formData.title_pt || formData.title_en,
+        title_en: formData.title_en,
+        title_no: formData.title_no || formData.title_en,
+        startDate: formData.startDate,
+        scheduleDetails_pt: formData.scheduleDetails_pt || formData.scheduleDetails_en,
+        scheduleDetails_en: formData.scheduleDetails_en,
+        scheduleDetails_no: formData.scheduleDetails_no || formData.scheduleDetails_en,
+        location_pt: formData.location_pt || formData.location_en,
+        location_en: formData.location_en,
+        location_no: formData.location_no || formData.location_en,
+        totalSpots: Number(formData.totalSpots),
+        // Legacy fallbacks for safety
+        title: formData.title_en,
+        scheduleDetails: formData.scheduleDetails_en,
+        location: formData.location_en
+      };
+
       if (editingId) {
-        // Modo Edição
         const eventRef = doc(db, 'events', editingId);
-        await updateDoc(eventRef, {
-          title: formData.title,
-          startDate: formData.startDate,
-          scheduleDetails: formData.scheduleDetails,
-          location: formData.location,
-          totalSpots: Number(formData.totalSpots)
-        });
+        await updateDoc(eventRef, payload);
         setEditingId(null);
       } else {
-        // Modo Criação
         await addDoc(collection(db, 'events'), {
-          title: formData.title,
-          startDate: formData.startDate,
-          scheduleDetails: formData.scheduleDetails,
-          location: formData.location,
-          totalSpots: Number(formData.totalSpots),
+          ...payload,
           enrolledCount: 0,
           waitlistCount: 0,
           status: 'active',
           createdAt: new Date().toISOString()
         });
       }
-      setFormData({ title: '', startDate: '', scheduleDetails: '', location: '', totalSpots: '' });
+      setFormData(initialFormState);
       fetchEvents(); 
     } catch (err) {
       console.error("Erro ao salvar evento", err);
@@ -84,11 +98,17 @@ export default function AdminDashboard() {
 
   function handleEditClick(event) {
     setFormData({
-      title: event.title,
-      startDate: event.startDate,
-      scheduleDetails: event.scheduleDetails,
-      location: event.location,
-      totalSpots: event.totalSpots
+      title_pt: event.title_pt || event.title || '',
+      title_en: event.title_en || event.title || '',
+      title_no: event.title_no || event.title || '',
+      startDate: event.startDate || '',
+      scheduleDetails_pt: event.scheduleDetails_pt || event.scheduleDetails || '',
+      scheduleDetails_en: event.scheduleDetails_en || event.scheduleDetails || '',
+      scheduleDetails_no: event.scheduleDetails_no || event.scheduleDetails || '',
+      location_pt: event.location_pt || event.location || '',
+      location_en: event.location_en || event.location || '',
+      location_no: event.location_no || event.location || '',
+      totalSpots: event.totalSpots || ''
     });
     setEditingId(event.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -96,7 +116,7 @@ export default function AdminDashboard() {
 
   function handleCancelEdit() {
     setEditingId(null);
-    setFormData({ title: '', startDate: '', scheduleDetails: '', location: '', totalSpots: '' });
+    setFormData(initialFormState);
   }
 
   async function handleDelete(id) {
@@ -270,12 +290,8 @@ export default function AdminDashboard() {
                       <div className="flex flex-col gap-2">
                         <button className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[10px] uppercase tracking-[2px] font-semibold px-4 py-2 rounded-[2px] transition-colors">{t("adminPage.viewStudents")}</button>
                         <div className="flex gap-2">
-                          <button onClick={() => handleEditClick(event)} className="flex-1 bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">
-                            Editar
-                          </button>
-                          <button onClick={() => handleDelete(event.id)} className="flex-1 bg-[#1a1a1a] hover:bg-red-900/50 text-[#9A9A9A] hover:text-red-400 font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">
-                            Excluir
-                          </button>
+                          <button onClick={() => handleEditClick(event)} className="flex-1 bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">{t("adminPage.edit")}</button>
+                          <button onClick={() => handleDelete(event.id)} className="flex-1 bg-[#1a1a1a] hover:bg-red-900/50 text-[#9A9A9A] hover:text-red-400 font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">{t("adminPage.delete")}</button>
                         </div>
                       </div>
                     </div>
