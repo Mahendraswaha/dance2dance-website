@@ -10,7 +10,7 @@ import { MapPin, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function AgendaPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [events, setEvents] = useState([]);
   const [userEnrollments, setUserEnrollments] = useState({});
   const [loading, setLoading] = useState(true);
@@ -236,8 +236,13 @@ export default function AgendaPage() {
           <div className="space-y-6">
             <AnimatePresence>
               {filteredEvents.map((event, index) => {
-                const category = getCategory(event.title);
+                const category = getCategory(event.title || event.title_pt || '');
                 const badgeText = category === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH';
+                
+                const currentLang = i18n.language || 'pt';
+                const dispTitle = event[`title_${currentLang}`] || event.title_pt || event.title;
+                const dispSchedule = event[`scheduleDetails_${currentLang}`] || event.scheduleDetails_pt || event.scheduleDetails;
+                const dispLocation = event[`location_${currentLang}`] || event.location_pt || event.location;
                 
                 // Formata data do evento (se existir)
                 let dateStr = t("agendaPage.comingSoon");
@@ -270,7 +275,7 @@ export default function AgendaPage() {
                       <div className="flex items-start gap-2 text-[#9A9A9A] font-heading text-xs">
                         <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
                         <span className="whitespace-pre-wrap leading-relaxed">
-                          {event.scheduleDetails || t("agendaPage.tbd")}
+                          {dispSchedule || t("agendaPage.tbd")}
                         </span>
                       </div>
                     </div>
@@ -289,9 +294,9 @@ export default function AgendaPage() {
 
                       {/* Linha do Meio: Titulo (Esq) + Botao (Dir) */}
                       <div className="flex flex-col md:flex-row justify-between items-start gap-4 w-full">
-                        <Link to={getDetailsLink(event.title)} className="block group-hover:text-accent transition-colors">
+                        <Link to={getDetailsLink(event.title || event.title_pt)} className="block group-hover:text-accent transition-colors">
                           <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover:text-accent transition-colors">
-                            {event.title}
+                            {dispTitle}
                           </h2>
                         </Link>
                         
@@ -330,7 +335,7 @@ export default function AgendaPage() {
                       <div className="flex flex-col md:flex-row justify-between items-start gap-4 w-full mt-2">
                         <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm">
                           <MapPin className="w-4 h-4 text-accent shrink-0" />
-                          <span>{event.location}</span>
+                          <span>{dispLocation}</span>
                         </div>
                         
                         <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center">
