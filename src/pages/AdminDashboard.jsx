@@ -22,7 +22,7 @@ export default function AdminDashboard() {
 
   const initialFormState = {
     category: 'bethedance',
-    instructor: 'Safia Valente',
+    instructor: 'Safia',
     title_no: '',
     title_en: '',
     title_pt: '',
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
 
       const payload = {
         category: formData.category || 'bethedance',
-        instructor: (formData.instructor || 'Safia Valente').trim(),
+        instructor: (formData.instructor || 'Safia').trim(),
         startDate: formData.startDate,
         startTime: formData.startTime || '',
         endTime: formData.endTime || '',
@@ -125,7 +125,7 @@ export default function AdminDashboard() {
   function handleEditClick(event) {
     setFormData({
       category: event.category || getEventCategory(event),
-      instructor: event.instructor || 'Safia Valente',
+      instructor: event.instructor || 'Safia',
       title_no: event.title_no || event.title || '',
       title_en: event.title_en || event.title || '',
       title_pt: event.title_pt || event.title || '',
@@ -183,7 +183,7 @@ export default function AdminDashboard() {
                 
                 {/* Seleção de Categoria */}
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.category", "Categoria")}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
@@ -206,7 +206,7 @@ export default function AdminDashboard() {
 
                 {/* Campo de Instrutor (Multi-instrutor) */}
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.instructor", "Instrutor / Professor")}
                   </label>
                   <input
@@ -215,19 +215,19 @@ export default function AdminDashboard() {
                     list="instructors-list"
                     value={formData.instructor}
                     onChange={handleChange}
-                    placeholder="Ex: Safia Valente"
+                    placeholder="Ex: Safia"
                     required
                     className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm"
                   />
                   <datalist id="instructors-list">
-                    <option value="Safia Valente" />
+                    <option value="Safia" />
                   </datalist>
                 </div>
 
                 {/* Abas de Idioma na ordem: NO -> EN -> PT */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF]">
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF]">
                       {t("adminPage.languageTab", "Idioma do Formulário")}
                     </label>
                     <span className="text-[10px] font-heading text-accent uppercase tracking-wider">
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
 
                 {/* Título do Evento no Idioma Ativo */}
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.eventTitle")} ({activeLangTab.toUpperCase()})
                   </label>
                   <input 
@@ -339,7 +339,7 @@ export default function AdminDashboard() {
                 {/* Data de Início e Total de Vagas */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                       {t("adminPage.startDate")}
                     </label>
                     <input 
@@ -352,7 +352,7 @@ export default function AdminDashboard() {
                     />
                   </div>
                   <div>
-                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                       {t("adminPage.totalSpots")}
                     </label>
                     <input 
@@ -411,7 +411,7 @@ export default function AdminDashboard() {
 
                 {/* Texto Visível de Datas / Horários no Idioma Ativo */}
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.scheduleText")} ({activeLangTab.toUpperCase()})
                   </label>
                   <textarea 
@@ -426,7 +426,7 @@ export default function AdminDashboard() {
 
                 {/* Local / Estúdio no Idioma Ativo */}
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.location")} ({activeLangTab.toUpperCase()})
                   </label>
                   <input 

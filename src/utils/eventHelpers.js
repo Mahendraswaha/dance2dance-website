@@ -118,7 +118,7 @@ export function generateGoogleCalendarUrl(event, lang = 'en') {
     datesParam = `${cleanStartDate}T${startTimeClean}/${cleanEndDate}T${endTimeClean}`;
   }
 
-  const instructorText = event.instructor ? `Instructor: ${event.instructor}` : 'Instructor: Safia Valente';
+  const instructorText = event.instructor ? `Instructor: ${event.instructor}` : 'Instructor: Safia';
   const fullDetails = [
     `Dance 2 Dance - ${title}`,
     instructorText,
