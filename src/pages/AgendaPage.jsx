@@ -58,12 +58,12 @@ export default function AgendaPage() {
   }
 
   // Gera o link de detalhes baseado no título
-  function getDetailsLink(title) {
-    const category = getCategory(title);
-    if (category === 'biostretch') return '/biostretch'; // Rota base do biostretch
+    function getDetailsLink(event) {
+    const titleStr = typeof event === 'string' ? event : (event.title_pt || event.title_en || event.title || '');
+    const category = getCategory(event);
+    if (category === 'biostretch') return '/biostretch';
     
-    // Tenta achar qual workshop específico do Be The Dance
-    const t = title.toLowerCase();
+    const t = titleStr.toLowerCase();
     if (t.includes('water')) return '/be-the-dance/be-water';
     if (t.includes('balance')) return '/be-the-dance/be-balance';
     if (t.includes('total')) return '/be-the-dance/be-total';
