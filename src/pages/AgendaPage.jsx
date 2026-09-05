@@ -119,41 +119,43 @@ export default function AgendaPage() {
   }
 
   async function handleEnroll(eventId, isFull) {
-    if (!currentUser) {
-      navigate('/login');
-      return;
-    }
-
-    setActionLoading(eventId);
     try {
+      if (!currentUser) {
+        navigate('/login');
+        return;
+      }
+
+      setActionLoading(eventId);
+      
       const eventRef = doc(db, 'events', eventId);
       const newEnrollmentRef = doc(collection(db, 'enrollments'));
 
+      let finalStatus = '';
       await runTransaction(db, async (transaction) => {
         const eventDoc = await transaction.get(eventRef);
         if (!eventDoc.exists()) throw new Error("Evento não encontrado.");
 
         const eventData = eventDoc.data();
-        const currentlyFull = eventData.enrolledCount >= eventData.totalSpots;
-        const newStatus = currentlyFull ? 'waitlist' : 'enrolled';
+        const currentlyFull = (eventData.enrolledCount || 0) >= (eventData.totalSpots || 0);
+        finalStatus = currentlyFull ? 'waitlist' : 'enrolled';
 
         if (currentlyFull) {
-          transaction.update(eventRef, { waitlistCount: eventData.waitlistCount + 1 });
+          transaction.update(eventRef, { waitlistCount: (eventData.waitlistCount || 0) + 1 });
         } else {
-          transaction.update(eventRef, { enrolledCount: eventData.enrolledCount + 1 });
+          transaction.update(eventRef, { enrolledCount: (eventData.enrolledCount || 0) + 1 });
         }
 
         transaction.set(newEnrollmentRef, {
           eventId: eventId,
-          userId: currentUser.uid,
-          userName: currentUser.profile?.nome || currentUser.email,
-          userEmail: currentUser.email,
-          status: newStatus,
+          userId: currentUser.uid || 'unknown',
+          userName: currentUser.profile?.nome || currentUser.email || 'unknown',
+          userEmail: currentUser.email || 'unknown',
+          status: finalStatus,
           createdAt: new Date().toISOString()
         });
       });
 
-      setUserEnrollments(prev => ({ ...prev, [eventId]: { status: newStatus, id: newEnrollmentRef.id } }));
+      setUserEnrollments(prev => ({ ...prev, [eventId]: { status: finalStatus, id: newEnrollmentRef.id } }));
       setEvents(prev => prev.map(ev => {
         if (ev.id === eventId) {
           if (isFull) return { ...ev, waitlistCount: (ev.waitlistCount || 0) + 1 };
@@ -164,9 +166,10 @@ export default function AgendaPage() {
 
     } catch (err) {
       console.error(err);
-      alert("Erro ao processar inscrição.");
+      alert("ERRO DETALHADO: " + err.message + "\n" + err.stack);
+    } finally {
+      setActionLoading(null);
     }
-    setActionLoading(null);
   }
 
   const filteredEvents = events.filter(ev => {

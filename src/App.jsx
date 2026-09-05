@@ -1,5 +1,6 @@
 import React from 'react';
 import { AuthProvider } from './contexts/AuthContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AgendaPage from './pages/AgendaPage';
@@ -23,6 +24,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 export default function App() {
   return (
+    <ErrorBoundary>
     <AuthProvider>
       <BrowserRouter>
       <ScrollToTop />
@@ -44,5 +46,6 @@ export default function App() {
         </Routes>
     </BrowserRouter>
     </AuthProvider>
+    </ErrorBoundary>
   );
 }
