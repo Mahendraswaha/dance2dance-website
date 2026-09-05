@@ -314,8 +314,8 @@ export default function ContactPage() {
           {/* Card Lateral: Informações e Filosofia */}
           <div className="lg:col-span-5 space-y-8">
             <div className="bg-[#0d0d12] border border-[#22222a] p-8 rounded-[4px]">
-              <h3 className="font-drama text-2xl text-accent mb-4">
-                Dance 2 Dance
+              <h3 className="font-drama text-2xl text-[#F0EDE8] mb-4">
+                Dance<span className="text-accent">2</span>Dance
               </h3>
               <p className="font-heading text-sm text-[#9A9A9A] leading-relaxed mb-6 font-light">
                 {t('contactPage.infoDesc', 'Espaço de encontro, movimento e transformação social através da arte da dança e do bem-estar corporal.')}
