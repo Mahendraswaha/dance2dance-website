@@ -61,9 +61,14 @@ export default function AgendaPage() {
     function getDetailsLink(event) {
     const titleStr = typeof event === 'string' ? event : (event.title_pt || event.title_en || event.title || '');
     const category = getCategory(event);
-    if (category === 'biostretch') return '/biostretch';
-    
     const t = titleStr.toLowerCase();
+    
+    if (category === 'biostretch') {
+      if (t.includes('regular')) return '/biostretch/aulas-regulares';
+      if (t.includes('empresa') || t.includes('corporate')) return '/biostretch/empresas';
+      if (t.includes('individual') || t.includes('personal')) return '/biostretch/individual';
+      return '/biostretch/aulas-regulares'; // Fallback
+    }
     if (t.includes('water')) return '/be-the-dance/be-water';
     if (t.includes('balance')) return '/be-the-dance/be-balance';
     if (t.includes('total')) return '/be-the-dance/be-total';
