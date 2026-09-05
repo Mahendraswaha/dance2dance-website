@@ -130,9 +130,16 @@ export default function AgendaPage() {
         transaction.set(newEnrollmentRef, {
           eventId: eventId,
           userId: currentUser.uid || 'unknown',
-          userName: currentUser.profile?.nome || currentUser.email || 'unknown',
+          userName: currentUser.profile?.fullName || currentUser.profile?.nome || currentUser.email || 'unknown',
           userEmail: currentUser.email || 'unknown',
-          userPhone: currentUser.profile?.telefone || '',
+          userPhone: currentUser.profile?.phone || currentUser.profile?.telefone || '',
+          userBirthDate: currentUser.profile?.birthDate || '',
+          userAddress: currentUser.profile?.address || currentUser.profile?.endereco || '',
+          userNeighborhood: currentUser.profile?.neighborhood || '',
+          userCity: currentUser.profile?.city || '',
+          userZip: currentUser.profile?.zip || currentUser.profile?.cep || '',
+          userCountry: currentUser.profile?.country || '',
+          userExperience: currentUser.profile?.experiencia || '',
           userRestrictions: currentUser.profile?.restricoes || '',
           status: finalStatus,
           createdAt: new Date().toISOString()

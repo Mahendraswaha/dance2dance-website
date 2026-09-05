@@ -10,6 +10,7 @@ export default function SignupPage() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     nome: '',
+    birthDate: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -47,6 +48,7 @@ export default function SignupPage() {
       const userData = {
         fullName: formData.nome,
         nome: formData.nome, // fallback for legacy
+        birthDate: formData.birthDate,
         phone: formData.phone,
         address: formData.address,
         city: formData.city,
@@ -96,6 +98,7 @@ export default function SignupPage() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Nome Completo */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.fullNameLabel', 'Nome Completo *')}
@@ -110,6 +113,23 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
+
+              {/* Data de Nascimento */}
+              <div>
+                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  {t('auth.birthDateLabel', 'Data de Nascimento *')}
+                </label>
+                <input 
+                  required 
+                  type="date" 
+                  name="birthDate" 
+                  value={formData.birthDate} 
+                  onChange={handleChange} 
+                  className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light [color-scheme:dark]" 
+                />
+              </div>
+
+              {/* E-mail */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.emailLabel', 'E-mail *')}
@@ -124,34 +144,8 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
-              <div>
-                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
-                  {t('auth.passwordLabel', 'Senha *')}
-                </label>
-                <input 
-                  required 
-                  type="password" 
-                  name="password" 
-                  value={formData.password} 
-                  onChange={handleChange} 
-                  placeholder={t('auth.passwordPlaceholder', '••••••••')}
-                  className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
-                />
-              </div>
-              <div>
-                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
-                  {t('auth.confirmPasswordLabel', 'Confirmar Senha *')}
-                </label>
-                <input 
-                  required 
-                  type="password" 
-                  name="confirmPassword" 
-                  value={formData.confirmPassword} 
-                  onChange={handleChange} 
-                  placeholder={t('auth.confirmPasswordPlaceholder', '••••••••')}
-                  className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
-                />
-              </div>
+
+              {/* Telefone / WhatsApp */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.phoneLabel', 'Telefone / WhatsApp *')}
@@ -166,6 +160,40 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
+
+              {/* Senha */}
+              <div>
+                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  {t('auth.passwordLabel', 'Senha *')}
+                </label>
+                <input 
+                  required 
+                  type="password" 
+                  name="password" 
+                  value={formData.password} 
+                  onChange={handleChange} 
+                  placeholder={t('auth.passwordPlaceholder', '••••••••')}
+                  className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
+                />
+              </div>
+
+              {/* Confirmar Senha */}
+              <div>
+                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                  {t('auth.confirmPasswordLabel', 'Confirmar Senha *')}
+                </label>
+                <input 
+                  required 
+                  type="password" 
+                  name="confirmPassword" 
+                  value={formData.confirmPassword} 
+                  onChange={handleChange} 
+                  placeholder={t('auth.confirmPasswordPlaceholder', '••••••••')}
+                  className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
+                />
+              </div>
+
+              {/* Endereço */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.addressLabel', 'Endereço *')}
@@ -180,6 +208,8 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
+
+              {/* Bairro */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.neighborhoodLabel', 'Bairro *')}
@@ -194,6 +224,8 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
+
+              {/* Cidade */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.cityLabel', 'Cidade *')}
@@ -208,6 +240,8 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
+
+              {/* CEP / Código Postal */}
               <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.zipLabel', 'CEP / Código Postal *')}
@@ -222,7 +256,9 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light placeholder:text-[#555555]" 
                 />
               </div>
-              <div>
+
+              {/* País */}
+              <div className="md:col-span-2">
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.countryLabel', 'País *')}
                 </label>
@@ -237,9 +273,10 @@ export default function SignupPage() {
                 />
               </div>
               
+              {/* Experiência Prévia */}
               <div className="md:col-span-2">
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
-                  {t('auth.experienceLabel', 'Experiência prévia com dança?')}
+                  {t('auth.experienceLabel', 'Experiência prévia com dança ou trabalho corporal?')}
                 </label>
                 <textarea 
                   name="experiencia" 
@@ -250,6 +287,8 @@ export default function SignupPage() {
                   className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light resize-none placeholder:text-[#555555]" 
                 />
               </div>
+
+              {/* Restrições */}
               <div className="md:col-span-2">
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
                   {t('auth.restrictionsLabel', 'Restrições físicas ou de saúde?')}

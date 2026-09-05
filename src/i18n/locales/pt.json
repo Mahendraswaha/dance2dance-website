@@ -8,7 +8,9 @@
     "signup": "Cadastre-se",
     "hello": "Olá",
     "logout": "Sair",
-    "contact": "Contato"
+    "contact": "Contato",
+    "editProfile": "Editar Cadastro",
+    "myProfile": "Meu Perfil"
   },
   "hero": {
     "subtitle1": "O movimento encontra a",
@@ -853,7 +855,7 @@
       "A dança entrou na minha vida por orientação médica. Aos sete anos, o ballet clássico surgiu para corrigir a postura dos pés. A obrigação inicial transformou-se em fascínio. A disciplina das barras e o entusiasmo do mestre João Luiz Rolla definiram o início de uma trajetória guiada pelo movimento.",
       "O rigor técnico me levou cedo para além do Brasil. Em 1988, recebi uma bolsa na Escola Estatal de Ballet Clássico de Kiev, mergulhando por dois anos no método Vaganova na antiga União Soviética. Em Cuba, atuei no Ballet de Camaguey e no Ballet Nacional, onde a precisão técnica convivia com a intensidade de artistas de diferentes linguagens.",
       "A necessidade de transcender as formas codificadas do ballet me aproximou da dança contemporânea na Companhia Terpsí. Mais tarde, uma bolsa em Nova York abriu caminho para estudar a técnica Release na Trisha Brown Company e na Movement Research. Foi o primeiro contato com a Educação Somática, descobrindo que o movimento podia nascer do alinhamento ósseo e da escuta, poupando esforço desnecessário.",
-      "Essa investigação expandiu-se em diversas direções. Atuei nos bastidores como assistente de coreografia no Teatro Castro Alves, na Bahia. Formei-me em Letras pela UFRGS, aprofundando o diálogo com a literatura. Tornei-me instrutora de Gyrotonic e educadora pelo Teatro Escola Brincante. Em 2007, cofundei a Porto Alegre Cia de Dança, assumindo a direção artística.",
+      "Essa investigação expandiu-se em diversas direções. Atuei nos bastidores como assistente de coreografia no Teatro Castro Alves, na Bahia. Formei-me em Letras pela UFRGS, aprofundando o diálogo com a literatura. Tornei-me instrutora de Gyrotonic e educadora pelo Teatro Escola Brincante. Trabalhei em diferentes projetos sociais. Em 2007, cofundei a Porto Alegre Cia de Dança, assumindo a direção artística.",
       "A partir de 2011, a prática diária da meditação redefiniu a minha relação com o corpo. O foco deslocou-se da forma externa para a qualidade da presença. A respiração consciente e o silêncio tornaram-se matérias do próprio gesto. Dessa convergência entre dança, educação somática e meditação nasceram os métodos Biostretch e Be The Dance.",
       "Atualmente na Noruega, busco atuar como uma ponte artística com o Brasil. Dessa travessia nasce Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance, projeto central que sintetiza décadas de pesquisa corporal, experiência pedagógica e investigação sobre a relação entre técnica, presença e expressão. Sediada na Noruega, a iniciativa é um espaço de encontro e transformação, voltada tanto para bailarinos e artistas quanto para pessoas que desejam aprofundar a relação com o próprio corpo."
     ]
@@ -921,7 +923,17 @@
       "promote": "Promover",
       "remove": "Remover",
       "confirmPromote": "Mover este aluno da lista de espera para os inscritos?",
-      "confirmRemove": "Tem certeza que deseja remover este aluno do evento?"
+      "confirmRemove": "Tem certeza que deseja remover este aluno do evento?",
+      "simpleView": "Simplificada",
+      "completeView": "Completa",
+      "birthDateAndAge": "Nascimento / Idade",
+      "yearsOld": "anos",
+      "address": "Endereço",
+      "experience": "Experiência",
+      "restrictions": "Restrições",
+      "notInformed": "Não informado",
+      "none": "Nenhuma",
+      "exportCompleteCsv": "Exportar Completo (CSV)"
     },
     "addToInstructorCalendar": "Adicionar à Agenda do Instrutor (Google Calendar)",
     "instructorEmail": "E-mail do Instrutor"
@@ -994,7 +1006,7 @@
     "zipPlaceholder": "00000-000",
     "countryLabel": "País *",
     "countryPlaceholder": "Brasil, Noruega...",
-    "experienceLabel": "Experiência prévia com dança?",
+    "experienceLabel": "Experiência prévia com dança ou trabalho corporal?",
     "experiencePlaceholder": "Conte-nos brevemente sobre sua experiência...",
     "restrictionsLabel": "Restrições físicas ou de saúde?",
     "restrictionsPlaceholder": "Alguma lesão ou condição que o professor deva saber?",
@@ -1012,6 +1024,15 @@
     "loginError": "Falha ao fazer login. Verifique seu email e senha.",
     "resetEnterEmail": "Digite seu e-mail acima para redefinir a senha.",
     "resetSuccess": "Verifique sua caixa de entrada para redefinir a senha.",
-    "resetError": "Falha ao redefinir a senha. Verifique o e-mail digitado."
+    "resetError": "Falha ao redefinir a senha. Verifique o e-mail digitado.",
+    "birthDateLabel": "Data de Nascimento *",
+    "birthDatePlaceholder": "DD/MM/AAAA",
+    "profileTitle": "Meu Perfil",
+    "profileSubtitle": "Mantenha seus dados cadastrais atualizados.",
+    "saveProfile": "Salvar Alterações",
+    "savingProfile": "Salvando...",
+    "profileSuccess": "Cadastro atualizado com sucesso!",
+    "profileError": "Erro ao atualizar cadastro. Tente novamente.",
+    "readOnlyEmail": "O e-mail não pode ser alterado diretamente."
   }
 }

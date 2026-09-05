@@ -21,6 +21,7 @@ import './i18n';
 import TermsPage from './pages/TermsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import ContactPage from './pages/ContactPage';
+import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
   return (
@@ -39,6 +40,8 @@ export default function App() {
         <Route path="/safia" element={<CurriculumPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<SignupPage />} />
+        <Route path="/perfil" element={<ProfilePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/:programId" element={<ProgramPage />} />
         <Route path="/:programId/:workshopId" element={<WorkshopPage />} />

@@ -8,7 +8,9 @@
     "signup": "Sign Up",
     "hello": "Hello",
     "logout": "Logout",
-    "contact": "Contact"
+    "contact": "Contact",
+    "editProfile": "Edit Profile",
+    "myProfile": "My Profile"
   },
   "hero": {
     "subtitle1": "Movement meets",
@@ -853,9 +855,9 @@
       "Dance entered my life through medical advice. At seven, classical ballet was recommended to align my foot posture. The initial obligation became a fascination. The discipline of the barres and the enthusiasm of master João Luiz Rolla marked the beginning of a journey guided by movement.",
       "Technical rigor took me abroad early on. In 1988, I was awarded a scholarship to the Kiev State Classical Ballet School, immersing myself for two years in the Vaganova method in the former Soviet Union. In Cuba, I performed with the Ballet de Camaguey and the National Ballet, where technical precision lived alongside artists from diverse disciplines.",
       "The urge to transcend the codified forms of ballet led me toward contemporary dance with Companhia Terpsí. Later, a grant in New York opened the door to study Release Technique at the Trisha Brown Company and Movement Research. It was my first encounter with Somatic Education, realizing that movement could emerge from skeletal alignment and listening, sparing unnecessary effort.",
-      "This exploration broadened across several fields. I worked backstage as an assistant choreographer at Teatro Castro Alves in Bahia. I earned a degree in Literature from UFRGS, deepening my connection with language. I became a certified Gyrotonic trainer and an educator through Teatro Escola Brincante. In 2007, I co-founded Porto Alegre Cia de Dança, taking on its artistic direction.",
+      "This exploration broadened across several fields. I worked backstage as an assistant choreographer at Teatro Castro Alves in Bahia. I earned a degree in Literature from UFRGS, deepening my connection with language. I became a certified Gyrotonic trainer and an educator through Teatro Escola Brincante. I worked on various social projects. In 2007, I co-founded Porto Alegre Cia de Dança, taking on its artistic direction.",
       "Beginning in 2011, daily meditation practice redefined my relationship with the body. The focus shifted from external form to the quality of presence. Conscious breathing and silence became components of movement itself. From this convergence of dance, somatic education, and meditation, Biostretch and Be The Dance emerged.",
-      "Living in Norway, I act as an artistic bridge with Brazil. From this crossing, Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance was born, a central initiative that synthesizes decades of somatic and choreographic research. Based in Norway, Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance develops workshops, retreats, and educational processes uniting technical precision and expressive freedom, welcoming dancers and anyone seeking to inhabit their body with presence."
+      "Currently living in Norway, I act as an artistic bridge with Brazil. From this crossing, Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance was born, a central project that synthesizes decades of bodily research, pedagogical experience, and investigation into the relationship between technique, presence, and expression. Based in Norway, the initiative is a space for meeting and transformation, dedicated both to dancers and artists as well as anyone seeking to deepen their relationship with their own body."
     ]
   },
   "agendaPage": {
@@ -921,7 +923,17 @@
       "promote": "Promote",
       "remove": "Remove",
       "confirmPromote": "Move this student from the waitlist to enrolled?",
-      "confirmRemove": "Are you sure you want to remove this student from the event?"
+      "confirmRemove": "Are you sure you want to remove this student from the event?",
+      "simpleView": "Simplified",
+      "completeView": "Complete",
+      "birthDateAndAge": "Birth / Age",
+      "yearsOld": "years old",
+      "address": "Address",
+      "experience": "Experience",
+      "restrictions": "Restrictions",
+      "notInformed": "Not specified",
+      "none": "None",
+      "exportCompleteCsv": "Export Full CSV"
     },
     "addToInstructorCalendar": "Add to Instructor Calendar (Google Calendar)",
     "instructorEmail": "Instructor Email"
@@ -994,7 +1006,7 @@
     "zipPlaceholder": "Postal / ZIP code (e.g. 0190)",
     "countryLabel": "Country *",
     "countryPlaceholder": "Norway...",
-    "experienceLabel": "Previous dance experience?",
+    "experienceLabel": "Previous experience with dance or bodywork?",
     "experiencePlaceholder": "Tell us briefly about your dance experience...",
     "restrictionsLabel": "Physical or health restrictions?",
     "restrictionsPlaceholder": "Any injury or condition the instructor should know about?",
@@ -1012,6 +1024,15 @@
     "loginError": "Failed to log in. Please check your email and password.",
     "resetEnterEmail": "Enter your email above to reset your password.",
     "resetSuccess": "Check your inbox for password reset instructions.",
-    "resetError": "Failed to reset password. Please check the entered email."
+    "resetError": "Failed to reset password. Please check the entered email.",
+    "birthDateLabel": "Date of Birth *",
+    "birthDatePlaceholder": "YYYY-MM-DD",
+    "profileTitle": "My Profile",
+    "profileSubtitle": "Keep your registration details up to date.",
+    "saveProfile": "Save Changes",
+    "savingProfile": "Saving...",
+    "profileSuccess": "Profile updated successfully!",
+    "profileError": "Failed to update profile. Please try again.",
+    "readOnlyEmail": "Email address cannot be changed directly."
   }
 }

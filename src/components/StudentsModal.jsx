@@ -1,14 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, query, where, getDocs, doc, runTransaction, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, runTransaction, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useTranslation } from 'react-i18next';
-import { X, Copy, Check, Download, UserCheck, Trash2, ArrowUpRight, Phone, HeartPulse, Mail, Calendar, CalendarPlus } from 'lucide-react';
+import { 
+  X, Copy, Check, Download, UserCheck, Trash2, Phone, HeartPulse, 
+  Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid 
+} from 'lucide-react';
 import { generateInstructorCalendarUrl } from '../utils/eventHelpers';
+
+// Helper para formatar a data de nascimento e calcular a idade
+function formatBirthDateAndAge(birthDateStr, yearsOldLabel = 'anos') {
+  if (!birthDateStr) return null;
+
+  let year, month, day;
+  let formattedDate = birthDateStr;
+
+  if (birthDateStr.includes('-')) {
+    const parts = birthDateStr.split('-');
+    if (parts.length === 3) {
+      if (parts[0].length === 4) {
+        // YYYY-MM-DD
+        [year, month, day] = parts.map(Number);
+        formattedDate = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+      } else {
+        // DD-MM-YYYY
+        [day, month, year] = parts.map(Number);
+        formattedDate = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+      }
+    }
+  } else if (birthDateStr.includes('/')) {
+    const parts = birthDateStr.split('/');
+    if (parts.length === 3) {
+      [day, month, year] = parts.map(Number);
+      formattedDate = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+    }
+  }
+
+  if (!year || !month || !day) {
+    const d = new Date(birthDateStr);
+    if (!isNaN(d.getTime())) {
+      year = d.getFullYear();
+      month = d.getMonth() + 1;
+      day = d.getDate();
+      formattedDate = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+    }
+  }
+
+  if (year && month && day) {
+    const today = new Date();
+    let age = today.getFullYear() - year;
+    const m = (today.getMonth() + 1) - month;
+    if (m < 0 || (m === 0 && today.getDate() < day)) {
+      age--;
+    }
+    if (age >= 0 && age < 130) {
+      return {
+        formattedDate,
+        age,
+        display: `${formattedDate} (${age} ${yearsOldLabel})`
+      };
+    }
+  }
+
+  return {
+    formattedDate,
+    age: null,
+    display: formattedDate
+  };
+}
 
 export default function StudentsModal({ event, onClose, onEventUpdated }) {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('enrolled'); // 'enrolled' or 'waitlist'
+  const [viewMode, setViewMode] = useState('simple'); // 'simple' or 'complete'
   const [enrollments, setEnrollments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -25,9 +90,45 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
         );
         const snap = await getDocs(q);
         const list = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        // Busca perfis dos usuários na coleção 'users' para garantir que os dados estejam 100% completos e atualizados
+        const uniqueUserIds = [...new Set(list.map(e => e.userId).filter(Boolean))];
+        const userProfiles = {};
+        await Promise.all(
+          uniqueUserIds.map(async (uid) => {
+            try {
+              const uDoc = await getDoc(doc(db, 'users', uid));
+              if (uDoc.exists()) {
+                userProfiles[uid] = uDoc.data();
+              }
+            } catch (err) {
+              console.error("Erro ao buscar perfil do aluno:", uid, err);
+            }
+          })
+        );
+
+        // Mescla dados cadastrais mais recentes
+        const enrichedList = list.map(e => {
+          const prof = userProfiles[e.userId] || {};
+          return {
+            ...e,
+            userName: e.userName || prof.fullName || prof.nome || 'Aluno sem nome',
+            userEmail: e.userEmail || prof.email || '',
+            userPhone: e.userPhone || prof.phone || prof.telefone || '',
+            userBirthDate: e.userBirthDate || prof.birthDate || '',
+            userAddress: e.userAddress || prof.address || prof.endereco || '',
+            userNeighborhood: e.userNeighborhood || prof.neighborhood || prof.bairro || '',
+            userCity: e.userCity || prof.city || prof.cidade || '',
+            userZip: e.userZip || prof.zip || prof.cep || '',
+            userCountry: e.userCountry || prof.country || prof.pais || '',
+            userExperience: e.userExperience || prof.experiencia || '',
+            userRestrictions: e.userRestrictions || prof.restricoes || ''
+          };
+        });
+
         // Ordena por data de criação
-        list.sort((a, b) => new Date(a.createdAt || 0) - new Date(b.createdAt || 0));
-        setEnrollments(list);
+        enrichedList.sort((a, b) => new Date(a.createdAt || 0) - new Date(b.createdAt || 0));
+        setEnrollments(enrichedList);
       } catch (err) {
         console.error("Erro ao carregar alunos:", err);
       }
@@ -52,22 +153,69 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
   // 2. Exportar CSV
   function handleExportCsv() {
     if (currentList.length === 0) return;
-    const headers = ["#", "Nome", "Email", "Telefone", "Status", "Data de Inscricao", "Restricoes de Saude"];
-    const rows = currentList.map((e, idx) => [
-      idx + 1,
-      `"${(e.userName || '').replace(/"/g, '""')}"`,
-      `"${(e.userEmail || '').replace(/"/g, '""')}"`,
-      `"${(e.userPhone || '').replace(/"/g, '""')}"`,
-      e.status,
-      e.createdAt ? new Date(e.createdAt).toLocaleString() : '',
-      `"${(e.userRestrictions || 'Nenhuma').replace(/"/g, '""')}"`
-    ]);
+
+    let headers = [];
+    let rows = [];
+
+    const yearsLabel = t("adminPage.studentsModal.yearsOld", "anos");
+
+    if (viewMode === 'complete') {
+      headers = [
+        "#", 
+        "Nome", 
+        "Status", 
+        "Data de Nascimento", 
+        "Idade", 
+        "Email", 
+        "Telefone", 
+        "Endereco", 
+        "Bairro", 
+        "Cidade", 
+        "CEP", 
+        "Pais", 
+        "Experiencia Previa", 
+        "Restricoes de Saude", 
+        "Data de Inscricao"
+      ];
+
+      rows = currentList.map((e, idx) => {
+        const birthInfo = formatBirthDateAndAge(e.userBirthDate, yearsLabel);
+        return [
+          idx + 1,
+          `"${(e.userName || '').replace(/"/g, '""')}"`,
+          e.status,
+          `"${(birthInfo?.formattedDate || '').replace(/"/g, '""')}"`,
+          birthInfo?.age !== null ? birthInfo.age : '',
+          `"${(e.userEmail || '').replace(/"/g, '""')}"`,
+          `"${(e.userPhone || '').replace(/"/g, '""')}"`,
+          `"${(e.userAddress || '').replace(/"/g, '""')}"`,
+          `"${(e.userNeighborhood || '').replace(/"/g, '""')}"`,
+          `"${(e.userCity || '').replace(/"/g, '""')}"`,
+          `"${(e.userZip || '').replace(/"/g, '""')}"`,
+          `"${(e.userCountry || '').replace(/"/g, '""')}"`,
+          `"${(e.userExperience || 'Nenhuma').replace(/"/g, '""')}"`,
+          `"${(e.userRestrictions || 'Nenhuma').replace(/"/g, '""')}"`,
+          e.createdAt ? new Date(e.createdAt).toLocaleString() : ''
+        ];
+      });
+    } else {
+      headers = ["#", "Nome", "Email", "Telefone", "Status", "Data de Inscricao", "Restricoes de Saude"];
+      rows = currentList.map((e, idx) => [
+        idx + 1,
+        `"${(e.userName || '').replace(/"/g, '""')}"`,
+        `"${(e.userEmail || '').replace(/"/g, '""')}"`,
+        `"${(e.userPhone || '').replace(/"/g, '""')}"`,
+        e.status,
+        e.createdAt ? new Date(e.createdAt).toLocaleString() : '',
+        `"${(e.userRestrictions || 'Nenhuma').replace(/"/g, '""')}"`
+      ]);
+    }
 
     const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `alunos-${event.title || 'workshop'}-${activeTab}.csv`);
+    link.setAttribute('download', `alunos-${event.title || 'workshop'}-${activeTab}-${viewMode}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -133,6 +281,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
   }
 
   const occupancyPercent = Math.min(100, Math.round(((enrolledStudents.length) / (event.totalSpots || 1)) * 100));
+  const yearsLabel = t("adminPage.studentsModal.yearsOld", "anos");
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -147,7 +296,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
         initial={{ opacity: 0, scale: 0.96, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: 15 }}
-        className="bg-[#0e0e11] border border-[#2A2A35] w-full max-w-4xl max-h-[90vh] rounded-[4px] shadow-2xl flex flex-col z-10 overflow-hidden relative"
+        className="bg-[#0e0e11] border border-[#2A2A35] w-full max-w-5xl max-h-[92vh] rounded-[4px] shadow-2xl flex flex-col z-10 overflow-hidden relative"
       >
         {/* Header do Modal */}
         <div className="p-6 md:p-8 border-b border-[#1A1A24] flex items-start justify-between gap-4">
@@ -216,10 +365,10 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
           </div>
         </div>
 
-        {/* Barra de Abas e Ferramentas */}
+        {/* Barra de Abas, Alternância de Visualização e Ferramentas */}
         <div className="px-6 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4 border-b border-[#1A1A24]">
-          {/* Abas */}
-          <div className="flex gap-2">
+          {/* Abas Inscritos / Espera */}
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab('enrolled')}
               className={`px-4 py-2 font-heading text-xs uppercase tracking-wider font-semibold rounded-[2px] transition-colors ${activeTab === 'enrolled' ? 'bg-accent text-primary' : 'bg-transparent text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
@@ -231,6 +380,35 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
               className={`px-4 py-2 font-heading text-xs uppercase tracking-wider font-semibold rounded-[2px] transition-colors ${activeTab === 'waitlist' ? 'bg-accent text-primary' : 'bg-transparent text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
             >
               {t("adminPage.studentsModal.waitlistTab", "Lista de Espera")} ({waitlistStudents.length})
+            </button>
+          </div>
+
+          {/* Seletor de Modo de Visualização: Simplificada vs Completa */}
+          <div className="flex items-center bg-[#141418] p-1 border border-[#262633] rounded-[4px]">
+            <button
+              onClick={() => setViewMode('simple')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-heading font-medium rounded-[2px] transition-all ${
+                viewMode === 'simple'
+                  ? 'bg-accent text-primary font-semibold shadow-sm'
+                  : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
+              }`}
+              title={t("adminPage.studentsModal.simpleView", "Visualização Simplificada")}
+            >
+              <List className="w-3.5 h-3.5" />
+              <span>{t("adminPage.studentsModal.simpleView", "Simplificada")}</span>
+            </button>
+
+            <button
+              onClick={() => setViewMode('complete')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-heading font-medium rounded-[2px] transition-all ${
+                viewMode === 'complete'
+                  ? 'bg-accent text-primary font-semibold shadow-sm'
+                  : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
+              }`}
+              title={t("adminPage.studentsModal.completeView", "Visualização Completa (Todos os dados cadastrais)")}
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span>{t("adminPage.studentsModal.completeView", "Completa")}</span>
             </button>
           </div>
 
@@ -253,7 +431,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
               title="Baixar lista em formato CSV"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>{t("adminPage.studentsModal.exportCsv", "Exportar CSV")}</span>
+              <span>{viewMode === 'complete' ? t("adminPage.studentsModal.exportCompleteCsv", "Exportar Completo (CSV)") : t("adminPage.studentsModal.exportCsv", "Exportar CSV")}</span>
             </button>
           </div>
         </div>
@@ -270,7 +448,8 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
                 ? t("adminPage.studentsModal.noEnrolled", "Nenhum aluno inscrito ainda neste workshop.")
                 : t("adminPage.studentsModal.noWaitlist", "Ninguém na lista de espera no momento.")}
             </div>
-          ) : (
+          ) : viewMode === 'simple' ? (
+            /* ================= VISUALIZAÇÃO SIMPLIFICADA ================= */
             currentList.map((student, idx) => {
               const enrolledDate = student.createdAt ? new Date(student.createdAt).toLocaleDateString() : '-';
 
@@ -337,6 +516,161 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            /* ================= VISUALIZAÇÃO COMPLETA (TODOS OS CAMPOS) ================= */
+            currentList.map((student, idx) => {
+              const enrolledDate = student.createdAt ? new Date(student.createdAt).toLocaleString() : '-';
+              const birthInfo = formatBirthDateAndAge(student.userBirthDate, yearsLabel);
+
+              const fullAddress = [
+                student.userAddress,
+                student.userNeighborhood,
+                student.userCity,
+                student.userZip,
+                student.userCountry
+              ].filter(Boolean).join(', ');
+
+              return (
+                <div key={student.id} className="py-6 first:pt-2">
+                  <div className="bg-[#121217] border border-[#22222e] rounded-[4px] p-5 md:p-6 transition-all hover:border-accent/30 shadow-lg">
+                    {/* Top Row: Nome, Status e Ações */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#1E1E28]">
+                      <div className="flex items-center gap-3">
+                        <span className="w-7 h-7 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs flex items-center justify-center font-bold">
+                          #{idx + 1}
+                        </span>
+                        <div>
+                          <h4 className="font-heading font-semibold text-[#F0EDE8] text-lg leading-tight">
+                            {student.userName || 'Aluno sem nome'}
+                          </h4>
+                          <span className="text-[11px] font-heading text-[#7A7A7A]">
+                            Inscrito em: {enrolledDate}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 self-end sm:self-center">
+                        <span className={`text-[10px] font-heading uppercase tracking-wider font-bold px-2.5 py-1 rounded-[2px] border ${
+                          student.status === 'enrolled'
+                            ? 'bg-emerald-950/30 text-emerald-400 border-emerald-800/30'
+                            : 'bg-yellow-950/30 text-yellow-400 border-yellow-800/30'
+                        }`}>
+                          {student.status === 'enrolled' 
+                            ? t("adminPage.studentsModal.enrolledTab", "Inscrito") 
+                            : t("adminPage.studentsModal.waitlistTab", "Espera")}
+                        </span>
+
+                        {student.status === 'waitlist' && (
+                          <button
+                            onClick={() => handlePromote(student.id)}
+                            disabled={actionLoading === student.id}
+                            className="px-3 py-1 bg-accent text-primary hover:bg-[#F0EDE8] font-heading text-[11px] uppercase tracking-wider font-bold rounded-[2px] transition-colors flex items-center gap-1"
+                            title={t("adminPage.studentsModal.promote", "Promover para Inscrito")}
+                          >
+                            <UserCheck className="w-3 h-3" />
+                            <span>{t("adminPage.studentsModal.promote", "Promover")}</span>
+                          </button>
+                        )}
+
+                        <button
+                          onClick={() => handleRemove(student.id, student.status)}
+                          disabled={actionLoading === student.id}
+                          className="p-1.5 rounded-[2px] text-[#7A7A7A] hover:text-red-400 hover:bg-red-950/20 transition-colors"
+                          title={t("adminPage.studentsModal.remove", "Remover do Evento")}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Grid com Todos os Campos do Cadastro */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 text-xs font-heading">
+                      {/* Data de Nascimento com Idade Calculada */}
+                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <Cake className="w-3.5 h-3.5 text-accent" />
+                          {t("adminPage.studentsModal.birthDateAndAge", "Nascimento / Idade")}
+                        </span>
+                        <div className="text-[#F0EDE8] font-medium">
+                          {birthInfo ? (
+                            <span>
+                              {birthInfo.display}
+                            </span>
+                          ) : (
+                            <span className="text-[#555555] italic">
+                              {t("adminPage.studentsModal.notInformed", "Não informado")}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* E-mail */}
+                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <Mail className="w-3.5 h-3.5 text-accent" />
+                          E-mail
+                        </span>
+                        <a href={`mailto:${student.userEmail}`} className="text-[#F0EDE8] hover:text-accent transition-colors truncate block">
+                          {student.userEmail || '-'}
+                        </a>
+                      </div>
+
+                      {/* Telefone / WhatsApp */}
+                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <Phone className="w-3.5 h-3.5 text-accent" />
+                          Telefone / WhatsApp
+                        </span>
+                        {student.userPhone ? (
+                          <a href={`tel:${student.userPhone}`} className="text-[#F0EDE8] hover:text-accent transition-colors">
+                            {student.userPhone}
+                          </a>
+                        ) : (
+                          <span className="text-[#555555] italic">{t("adminPage.studentsModal.notInformed", "Não informado")}</span>
+                        )}
+                      </div>
+
+                      {/* Endereço Completo */}
+                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px] md:col-span-2 lg:col-span-3">
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-accent" />
+                          {t("adminPage.studentsModal.address", "Endereço Completo")}
+                        </span>
+                        <p className="text-[#F0EDE8] leading-relaxed">
+                          {fullAddress || <span className="text-[#555555] italic">{t("adminPage.studentsModal.notInformed", "Não informado")}</span>}
+                        </p>
+                      </div>
+
+                      {/* Experiência Prévia */}
+                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px] md:col-span-2 lg:col-span-3">
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-accent" />
+                          {t("adminPage.studentsModal.experience", "Experiência prévia com dança ou trabalho corporal")}
+                        </span>
+                        <p className="text-[#CFCFCF] font-light leading-relaxed whitespace-pre-line">
+                          {student.userExperience || <span className="text-[#555555] italic">{t("adminPage.studentsModal.none", "Nenhuma informada")}</span>}
+                        </p>
+                      </div>
+
+                      {/* Restrições de Saúde / Físicas */}
+                      <div className={`p-3 rounded-[2px] md:col-span-2 lg:col-span-3 border ${
+                        student.userRestrictions 
+                          ? 'bg-red-950/20 border-red-900/40 text-red-200' 
+                          : 'bg-[#0d0d12] border-[#1c1c24] text-[#CFCFCF]'
+                      }`}>
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <HeartPulse className={`w-3.5 h-3.5 ${student.userRestrictions ? 'text-red-400' : 'text-accent'}`} />
+                          {t("adminPage.studentsModal.restrictions", "Restrições físicas ou de saúde")}
+                        </span>
+                        <p className="font-light leading-relaxed whitespace-pre-line">
+                          {student.userRestrictions || <span className="text-[#555555] italic">{t("adminPage.studentsModal.none", "Nenhuma")}</span>}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );

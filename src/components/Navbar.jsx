@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2, LogIn, UserPlus, LogOut } from 'lucide-react';
+import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2, LogIn, UserPlus, LogOut, User } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -109,9 +109,16 @@ const Navbar = () => {
 
               {currentUser ? (
                 <div className="hidden md:flex items-center gap-2 ml-1">
-                  <span className="font-heading text-xs text-[#9A9A9A] max-w-[110px] truncate" title={currentUser.profile?.nome || 'Aluno'}>
-                    {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
-                  </span>
+                  <Link 
+                    to="/perfil"
+                    title={t("nav.editProfile", "Editar Cadastro")}
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-white/5 hover:bg-white/10 text-[#CFCFCF] hover:text-accent transition-colors group"
+                  >
+                    <User className="w-3.5 h-3.5 text-accent/80 group-hover:text-accent transition-colors" />
+                    <span className="font-heading text-xs max-w-[110px] truncate" title={currentUser.profile?.nome || 'Aluno'}>
+                      {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
+                    </span>
+                  </Link>
                   <button 
                     onClick={() => { logout(); navigate('/'); }}
                     title={t("nav.logout")}
@@ -199,13 +206,21 @@ const Navbar = () => {
             <button onClick={() => { i18n.changeLanguage('pt'); setIsMobileMenuOpen(false); }} className={`hover:text-accent transition-colors ${i18n.resolvedLanguage === 'pt' ? 'text-accent' : ''}`}>PT</button>
           </div>
           {currentUser ? (
-            <div className="flex flex-col w-full gap-4">
+            <div className="flex flex-col w-full gap-3">
               <span className="font-heading text-sm text-[#9A9A9A]">
                 {t("nav.hello")}, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
               </span>
+              <Link 
+                to="/perfil"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="bg-accent/10 border border-accent/30 text-accent hover:bg-accent hover:text-primary px-6 py-3.5 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2"
+              >
+                <User size={16} />
+                <span>{t("nav.editProfile", "Editar Cadastro")}</span>
+              </Link>
               <button 
                 onClick={() => { logout(); setIsMobileMenuOpen(false); navigate('/'); }}
-                className="bg-transparent border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
+                className="bg-transparent border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-3.5 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
               >{t("nav.logout")}</button>
             </div>
           ) : (

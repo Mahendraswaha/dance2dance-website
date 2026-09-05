@@ -61,12 +61,26 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
+  async function updateProfileData(userData) {
+    if (!currentUser?.uid) throw new Error("Usuário não autenticado.");
+    const userRef = doc(db, 'users', currentUser.uid);
+    await setDoc(userRef, userData, { merge: true });
+    setCurrentUser(prev => ({
+      ...prev,
+      profile: {
+        ...(prev?.profile || {}),
+        ...userData
+      }
+    }));
+  }
+
   const value = {
     currentUser,
     signup,
     login,
     logout,
-    resetPassword
+    resetPassword,
+    updateProfileData
   };
 
   return (

@@ -8,7 +8,9 @@
     "signup": "Registrer deg",
     "hello": "Hei",
     "logout": "Logg ut",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "editProfile": "Rediger Profil",
+    "myProfile": "Min Profil"
   },
   "hero": {
     "subtitle1": "Bevegelse møter",
@@ -853,9 +855,9 @@
       "Dans kom inn i livet mitt etter råd fra lege. Som syvåring ble klassisk ballett anbefalt for å rette opp fotstillingen min. Den opprinnelige plikten ble raskt til en fascinasjon. Disiplinen ved barren og entusiasmen til læremester João Luiz Rolla markerte begynnelsen på en reise ledet av bevegelse.",
       "Teknisk disiplin førte meg tidlig ut i verden. I 1988 mottok jeg et stipend til statens ballettskole i Kiev, og fordypet meg i to år i Vaganova-metoden i det tidligere Sovjetunionen. På Cuba danset jeg med Ballet de Camaguey og Nasjonalballetten, der teknisk presisjon levde side om side med kunstnere fra ulike disipliner.",
       "Behovet for å gå utover ballettens kodifiserte former førte meg til samtidsdans i Companhia Terpsí. Senere åpnet et stipend i New York døren til å studere Release-teknikk ved Trisha Brown Company og Movement Research. Det ble mitt første møte med somatisk utdanning, der jeg oppdaget at bevegelse kan springe ut fra skjelettets linjer og oppmerksom lytting, uten unødig anstrengelse.",
-      "Denne utforskningen utvidet seg på flere felt. Jeg arbeidet bak scenen som assistentkoreograf ved Teatro Castro Alves i Bahia. Jeg tok en grad i litteratur ved UFRGS og fordypet dialogen med språket. Jeg ble sertifisert Gyrotonic-instruktør og pedagog ved Teatro Escola Brincante. I 2007 var jeg med på å grunnlegge Porto Alegre Cia de Dança, og overtok den kunstneriske ledelsen.",
+      "Denne utforskningen utvidet seg på flere felt. Jeg arbeidet bak scenen som assistentkoreograf ved Teatro Castro Alves i Bahia. Jeg tok en grad i litteratur ved UFRGS og fordypet dialogen med språket. Jeg ble sertifisert Gyrotonic-instruktør og pedagog ved Teatro Escola Brincante. Jeg arbeidet med ulike sosiale prosjekter. I 2007 var jeg med på å grunnlegge Porto Alegre Cia de Dança, og overtok den kunstneriske ledelsen.",
       "Fra 2011 omdefinerte daglig meditasjonspraksis mitt forhold til kroppen. Fokuset flyttet seg fra den ytre formen til kvaliteten på tilstedeværelsen. Bevisst pust og stillhet ble bestanddeler i selve bevegelsen. Ut fra dette møtet mellom dans, somatisk utdanning og meditasjon ble metodene Biostretch og Be The Dance skapt.",
-      "Med base i Norge fungerer jeg som en kunstnerisk bro til Brasil. Fra denne kryssingen oppsto Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance, et sentralt prosjekt som samler tiår med kroppslig og koreografisk forskning. Med base i Norge skaper Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance workshops, retreater og pedagogiske prosesser som forener teknisk presisjon og uttrykksfrihet, og ønsker velkommen både dansere og alle som ønsker å bebo sin egen kropp med nærvær."
+      "Nå med base i Norge jobber jeg som en kunstnerisk bro til Brasil. Fra denne kryssingen oppsto Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance, et sentralt prosjekt som samler tiår med kroppsforskning, pedagogisk erfaring og undersøkelser av forholdet mellom teknikk, tilstedeværelse og uttrykk. Med base i Norge er initiativet en møteplass og en arena for transformasjon, rettet både mot dansere og kunstnere, så vel som alle som ønsker å fordype forholdet til sin egen kropp."
     ]
   },
   "agendaPage": {
@@ -921,7 +923,17 @@
       "promote": "Flytt til Påmeldte",
       "remove": "Fjern",
       "confirmPromote": "Flytte denne deltakeren fra venteliste til påmeldt?",
-      "confirmRemove": "Er du sikker på at du vil fjerne denne deltakeren fra kurset?"
+      "confirmRemove": "Er du sikker på at du vil fjerne denne deltakeren fra kurset?",
+      "simpleView": "Forenklet",
+      "completeView": "Fullstendig",
+      "birthDateAndAge": "Fødsel / Alder",
+      "yearsOld": "år",
+      "address": "Adresse",
+      "experience": "Erfaring",
+      "restrictions": "Begrensninger",
+      "notInformed": "Ikke oppgitt",
+      "none": "Ingen",
+      "exportCompleteCsv": "Eksporter Fullstendig (CSV)"
     },
     "addToInstructorCalendar": "Legg til i Instruktørens Kalender (Google Calendar)",
     "instructorEmail": "Instruktørens E-post"
@@ -994,7 +1006,7 @@
     "zipPlaceholder": "Postnummer (f.eks. 0190)",
     "countryLabel": "Land *",
     "countryPlaceholder": "Norge...",
-    "experienceLabel": "Tidligere danseerfaring?",
+    "experienceLabel": "Tidligere erfaring med dans eller kroppsarbeid?",
     "experiencePlaceholder": "Fortell oss kort om din erfaring...",
     "restrictionsLabel": "Fysiske eller helsemessige hensyn?",
     "restrictionsPlaceholder": "Skader eller tilstander læreren bør vite om?",
@@ -1012,6 +1024,15 @@
     "loginError": "Kunne ikke logge inn. Vennligst sjekk e-post og passord.",
     "resetEnterEmail": "Skriv inn e-posten din ovenfor for å tilbakestille passordet.",
     "resetSuccess": "Sjekk innboksen din for å tilbakestille passordet.",
-    "resetError": "Kunne ikke tilbakestille passordet. Sjekk oppgitt e-post."
+    "resetError": "Kunne ikke tilbakestille passordet. Sjekk oppgitt e-post.",
+    "birthDateLabel": "Fødselsdato *",
+    "birthDatePlaceholder": "ÅÅÅÅ-MM-DD",
+    "profileTitle": "Min Profil",
+    "profileSubtitle": "Hold registreringsopplysningene dine oppdatert.",
+    "saveProfile": "Lagre Endringer",
+    "savingProfile": "Lagrer...",
+    "profileSuccess": "Profilen ble oppdatert!",
+    "profileError": "Kunne ikke oppdatere profilen. Vennligst prøv igjen.",
+    "readOnlyEmail": "E-postadressen kan ikke endres direkte."
   }
 }
