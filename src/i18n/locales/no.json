@@ -963,10 +963,10 @@
     "zipLabel": "Postnummer (Valgfritt)",
     "zipPlaceholder": "Postnummer (f.eks. 0190)",
     "countryLabel": "Land (Valgfritt)",
-    "countryPlaceholder": "Norge, Brasil...",
+    "countryPlaceholder": "Norge...",
     "neighborhoodLabel": "Nabolag (Valgfritt)",
     "neighborhoodPlaceholder": "Ditt nabolag",
     "emailPlaceholder": "din.epost@eksempel.no",
-    "phonePlaceholder": "+47 ... / +55 ..."
+    "phonePlaceholder": "+47 ..."
   }
 }

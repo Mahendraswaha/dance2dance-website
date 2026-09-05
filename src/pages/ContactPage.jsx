@@ -197,7 +197,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder={t('contactPage.phonePlaceholder', '+47 ... / +55 ...')}
+                      placeholder={t('contactPage.phonePlaceholder', '+47 ...')}
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
                     />
                   </div>
@@ -257,7 +257,7 @@ export default function ContactPage() {
                       name="country"
                       value={formData.country}
                       onChange={handleChange}
-                      placeholder={t('contactPage.countryPlaceholder', 'Brasil, Noruega...')}
+                      placeholder={t('contactPage.countryPlaceholder', 'Norway...')}
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
                     />
                   </div>

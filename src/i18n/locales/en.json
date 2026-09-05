@@ -963,10 +963,10 @@
     "zipLabel": "ZIP / Postal Code (Optional)",
     "zipPlaceholder": "Postal / ZIP code (e.g. 0190)",
     "countryLabel": "Country (Optional)",
-    "countryPlaceholder": "Norway, Brazil...",
+    "countryPlaceholder": "Norway...",
     "neighborhoodLabel": "Neighborhood (Optional)",
     "neighborhoodPlaceholder": "Your neighborhood",
     "emailPlaceholder": "your.email@example.com",
-    "phonePlaceholder": "+47 ... / +55 ..."
+    "phonePlaceholder": "+47 ..."
   }
 }
