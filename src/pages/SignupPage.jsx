@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Turnstile } from '@marsidev/react-turnstile';
+import { TURNSTILE_SITE_KEY } from '../utils/constants';
 
 export default function SignupPage() {
   const { t } = useTranslation();
@@ -25,6 +27,7 @@ export default function SignupPage() {
   });
   
   const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
@@ -39,6 +42,10 @@ export default function SignupPage() {
     
     if (formData.password !== formData.confirmPassword) {
       return setError(t('auth.passwordMismatch', 'As senhas não coincidem.'));
+    }
+
+    if (!turnstileToken) {
+      return setError(t('auth.captchaRequired', 'Por favor, aguarde a verificação de segurança.'));
     }
     
     try {
@@ -304,8 +311,16 @@ export default function SignupPage() {
               </div>
             </div>
 
+            <Turnstile
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={(token) => setTurnstileToken(token)}
+              options={{
+                theme: 'dark'
+              }}
+            />
+
             <button 
-              disabled={loading}
+              disabled={loading || !turnstileToken}
               type="submit"
               className="w-full bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px] mt-8 disabled:opacity-50"
             >

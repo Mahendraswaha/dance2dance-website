@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.6.1",
     "firebase": "^12.18.0",
     "framer-motion": "^13.1.0",
     "gsap": "^3.12.5",

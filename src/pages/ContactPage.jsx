@@ -8,6 +8,8 @@ import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Mail, Phone, MapPin, Send, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Turnstile } from '@marsidev/react-turnstile';
+import { TURNSTILE_SITE_KEY } from '../utils/constants';
 
 export default function ContactPage() {
   const { t, i18n } = useTranslation();
@@ -48,6 +50,7 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
 
   useEffect(() => {
     if (isExecutiveMeeting) {
@@ -67,6 +70,11 @@ export default function ContactPage() {
       return;
     }
 
+    if (!turnstileToken) {
+      setError(t('contactPage.captchaRequired', 'Por favor, aguarde a verificação de segurança.'));
+      return;
+    }
+
     setLoading(true);
     setError('');
 
@@ -77,6 +85,7 @@ export default function ContactPage() {
         phone: formData.phone.trim(),
         subject: formData.subject || 'geral',
         message: formData.message.trim(),
+        turnstileToken, // Save token for future backend validation if needed
         status: 'unread',
         createdAt: new Date().toISOString()
       });
@@ -298,10 +307,18 @@ export default function ContactPage() {
                   />
                 </div>
 
+                <Turnstile
+                  siteKey={TURNSTILE_SITE_KEY}
+                  onSuccess={(token) => setTurnstileToken(token)}
+                  options={{
+                    theme: 'dark'
+                  }}
+                />
+
                 {/* Botão de Enviar */}
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || !turnstileToken}
                   className="w-full btn-magnetic bg-accent text-primary font-heading text-xs uppercase tracking-[3px] font-bold py-4 rounded-full hover:bg-[#F0EDE8] transition-colors duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(200,160,80,0.2)] disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
