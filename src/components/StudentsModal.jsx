@@ -107,22 +107,22 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
           })
         );
 
-        // Mescla dados cadastrais mais recentes
+        // Mescla dados cadastrais mais recentes (perfil atualizado em users tem prioridade)
         const enrichedList = list.map(e => {
           const prof = userProfiles[e.userId] || {};
           return {
             ...e,
-            userName: e.userName || prof.fullName || prof.nome || 'Aluno sem nome',
-            userEmail: e.userEmail || prof.email || '',
-            userPhone: e.userPhone || prof.phone || prof.telefone || '',
-            userBirthDate: e.userBirthDate || prof.birthDate || '',
-            userAddress: e.userAddress || prof.address || prof.endereco || '',
-            userNeighborhood: e.userNeighborhood || prof.neighborhood || prof.bairro || '',
-            userCity: e.userCity || prof.city || prof.cidade || '',
-            userZip: e.userZip || prof.zip || prof.cep || '',
-            userCountry: e.userCountry || prof.country || prof.pais || '',
-            userExperience: e.userExperience || prof.experiencia || '',
-            userRestrictions: e.userRestrictions || prof.restricoes || ''
+            userName: prof.fullName || prof.nome || e.userName || 'Aluno sem nome',
+            userEmail: prof.email || e.userEmail || '',
+            userPhone: prof.phone || prof.telefone || e.userPhone || '',
+            userBirthDate: prof.birthDate || prof.birthdate || prof.dataNascimento || prof.nascimento || e.userBirthDate || '',
+            userAddress: prof.address || prof.endereco || e.userAddress || '',
+            userNeighborhood: prof.neighborhood || prof.bairro || e.userNeighborhood || '',
+            userCity: prof.city || prof.cidade || e.userCity || '',
+            userZip: prof.zip || prof.cep || e.userZip || '',
+            userCountry: prof.country || prof.pais || e.userCountry || '',
+            userExperience: prof.experiencia || prof.experience || e.userExperience || '',
+            userRestrictions: prof.restricoes || prof.restrictions || e.userRestrictions || ''
           };
         });
 
@@ -150,7 +150,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
     setTimeout(() => setCopied(false), 2500);
   }
 
-  // 2. Exportar CSV
+  // 2. Exportar CSV (Sempre inclui todos os dados cadastrais)
   function handleExportCsv() {
     if (currentList.length === 0) {
       alert(t("adminPage.studentsModal.noStudentsToExport", "Não há alunos na lista atual para exportar."));
@@ -158,66 +158,57 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
     }
 
     const yearsLabel = t("adminPage.studentsModal.yearsOld", "anos");
-    let headers = [];
-    let rows = [];
 
     const escapeCsv = (val) => {
       if (val === null || val === undefined) return '""';
-      const clean = String(val).replace(/"/g, '""');
+      // Limpa aspas e quebras de linha para evitar corromper as linhas da planilha
+      const clean = String(val)
+        .replace(/"/g, '""')
+        .replace(/\r\n/g, ' ')
+        .replace(/[\r\n]/g, ' ')
+        .trim();
       return `"${clean}"`;
     };
 
-    if (viewMode === 'complete') {
-      headers = [
-        "#", 
-        "Nome", 
-        "Status", 
-        "Data de Nascimento", 
-        "Idade", 
-        "Email", 
-        "Telefone", 
-        "Endereco", 
-        "Bairro", 
-        "Cidade", 
-        "CEP", 
-        "Pais", 
-        "Experiencia Previa", 
-        "Restricoes de Saude", 
-        "Data de Inscricao"
-      ];
+    // Sempre exporta todas as colunas cadastrais completas
+    const headers = [
+      "#", 
+      "Nome", 
+      "Status", 
+      "Data de Nascimento", 
+      "Idade", 
+      "Email", 
+      "Telefone", 
+      "Endereco", 
+      "Bairro", 
+      "Cidade", 
+      "CEP", 
+      "Pais", 
+      "Experiencia Previa", 
+      "Restricoes de Saude", 
+      "Data de Inscricao"
+    ];
 
-      rows = currentList.map((e, idx) => {
-        const birthInfo = formatBirthDateAndAge(e.userBirthDate, yearsLabel);
-        return [
-          idx + 1,
-          escapeCsv(e.userName || ''),
-          escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
-          escapeCsv(birthInfo?.formattedDate || ''),
-          birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
-          escapeCsv(e.userEmail || ''),
-          escapeCsv(e.userPhone || ''),
-          escapeCsv(e.userAddress || ''),
-          escapeCsv(e.userNeighborhood || ''),
-          escapeCsv(e.userCity || ''),
-          escapeCsv(e.userZip || ''),
-          escapeCsv(e.userCountry || ''),
-          escapeCsv(e.userExperience || 'Nenhuma'),
-          escapeCsv(e.userRestrictions || 'Nenhuma'),
-          escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : '')
-        ];
-      });
-    } else {
-      headers = ["#", "Nome", "Email", "Telefone", "Status", "Data de Inscricao", "Restricoes de Saude"];
-      rows = currentList.map((e, idx) => [
+    const rows = currentList.map((e, idx) => {
+      const birthInfo = formatBirthDateAndAge(e.userBirthDate, yearsLabel);
+      return [
         idx + 1,
         escapeCsv(e.userName || ''),
+        escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+        escapeCsv(birthInfo?.formattedDate || e.userBirthDate || ''),
+        birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
         escapeCsv(e.userEmail || ''),
         escapeCsv(e.userPhone || ''),
-        escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
-        escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : ''),
-        escapeCsv(e.userRestrictions || 'Nenhuma')
-      ]);
-    }
+        escapeCsv(e.userAddress || ''),
+        escapeCsv(e.userNeighborhood || ''),
+        escapeCsv(e.userCity || ''),
+        escapeCsv(e.userZip || ''),
+        escapeCsv(e.userCountry || ''),
+        escapeCsv(e.userExperience || 'Nenhuma'),
+        escapeCsv(e.userRestrictions || 'Nenhuma'),
+        escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : '')
+      ];
+    });
 
     // Configura o separador e o conteúdo com sep=, para compatibilidade universal
     const csvContent = "sep=,\r\n" + [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
@@ -234,7 +225,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
       .replace(/[^a-zA-Z0-9_-]/g, '_')
       .replace(/_+/g, '_');
 
-    const filename = `alunos_${safeTitle}_${activeTab}_${viewMode}.csv`;
+    const filename = `alunos_${safeTitle}_${activeTab}.csv`;
 
     const link = document.createElement('a');
     link.href = url;
@@ -456,10 +447,10 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
               onClick={handleExportCsv}
               disabled={currentList.length === 0}
               className="px-3 py-1.5 border border-[#333333] hover:border-accent text-[#CFCFCF] hover:text-accent font-heading text-xs rounded-[2px] transition-colors flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none"
-              title="Baixar lista em formato CSV"
+              title="Baixar lista completa com todos os dados cadastrais em formato CSV"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>{viewMode === 'complete' ? t("adminPage.studentsModal.exportCompleteCsv", "Exportar Completo (CSV)") : t("adminPage.studentsModal.exportCsv", "Exportar CSV")}</span>
+              <span>{t("adminPage.studentsModal.exportCsv", "Exportar CSV")}</span>
             </button>
           </div>
         </div>
