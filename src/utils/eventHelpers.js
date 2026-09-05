@@ -57,11 +57,25 @@ export function getEventCategory(event) {
     event.title_no,
     event.title_en,
     event.title_pt,
-    event.title
-  ].filter(Boolean).join(' ').toLowerCase();
+    event.title,
+    event.workshopId,
+    event.slug
+  ].filter(Boolean).join(' ');
 
-  const bioKeywords = ['biostretch', 'postura', 'holdning', 'posture', 'relax', 'slappe', 'alongar', 'strekk', 'stretching', 'stress', 'foco', 'fokus', 'focus'];
-  if (bioKeywords.some(k => combinedTitles.includes(k))) {
+  const normalized = combinedTitles
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+
+  const bioKeywords = [
+    'biostretch', 'postura', 'holdning', 'posture', 'relax', 'slappe', 
+    'alongar', 'strekk', 'stretching', 'stress', 'estresse', 'foco', 'fokus', 'focus',
+    'habito', 'habit', 'vane', 'vaner', 'diario', 'daglig', 'daily',
+    'medit', 'breathe', 'pust', 'respirar', 'sessao', 'session', 'okt',
+    'faste', 'bedrift', 'regular'
+  ];
+
+  if (bioKeywords.some(k => normalized.includes(k))) {
     return 'biostretch';
   }
   return 'bethedance';
@@ -76,29 +90,80 @@ export function getEventRoute(event) {
     event.title_no,
     event.title_en,
     event.title_pt,
-    event.title
-  ].filter(Boolean).join(' ').toLowerCase();
+    event.title,
+    event.workshopId,
+    event.slug
+  ].filter(Boolean).join(' ');
+
+  const normalized = combined
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
 
   if (category === 'biostretch') {
-    if (combined.includes('regular') || combined.includes('regulares') || combined.includes('faste')) {
+    // 1. Postura: "A Better Posture" / "Uma Melhor Postura" / "En Bedre Holdning"
+    if (normalized.includes('postura') || normalized.includes('posture') || normalized.includes('holdning')) {
+      return '/biostretch/uma-melhor-postura';
+    }
+    // 2. Relaxar: "Learning to Relax" / "Aprendendo a Relaxar" / "Lære å Slappe Av"
+    if (normalized.includes('relax') || normalized.includes('slappe')) {
+      return '/biostretch/aprendendo-a-relaxar';
+    }
+    // 3. Alongar, Respirar e Meditar: "Stretch, Breathe and Meditate" / "Alongar, Respirar e Meditar" / "Strekk, Pust og Mediter"
+    if (
+      normalized.includes('alongar') || 
+      normalized.includes('respirar') || 
+      normalized.includes('breathe') || 
+      normalized.includes('medit') || 
+      normalized.includes('pust') || 
+      normalized.includes('strekk')
+    ) {
+      return '/biostretch/alongar-respirar-e-meditar';
+    }
+    // 4. Transformando Hábitos: "Transforming Habits" / "Transformando Hábitos" / "Transformere Vaner"
+    if (normalized.includes('habito') || normalized.includes('habit') || normalized.includes('vane')) {
+      return '/biostretch/transformando-habitos';
+    }
+    // 5. Movimentos Diários / Prevenção de Stress: "Daily Movements to Prevent Stress" / "Movimentos Diários para Prevenir o Stress" / "Daglige Bevegelser for å Forhindre Stress"
+    if (
+      normalized.includes('movimento') || 
+      normalized.includes('diario') || 
+      normalized.includes('daily') || 
+      normalized.includes('daglig') || 
+      normalized.includes('stress') || 
+      normalized.includes('estresse')
+    ) {
+      return '/biostretch/movimentos-diarios-para-prevenir-o-stress';
+    }
+    // 6. Recuperando o Foco: "Regaining Focus" / "Recuperando o Foco" / "Gjenvinne Fokus"
+    if (normalized.includes('foco') || normalized.includes('focus') || normalized.includes('fokus')) {
+      return '/biostretch/recuperando-o-foco';
+    }
+    // 7. Aulas Regulares
+    if (normalized.includes('regular') || normalized.includes('faste')) {
       return '/biostretch/aulas-regulares';
     }
-    if (combined.includes('empresa') || combined.includes('corporate') || combined.includes('bedrift')) {
+    // 8. Empresas / Corporate / Bedrift
+    if (normalized.includes('empresa') || normalized.includes('corporate') || normalized.includes('bedrift')) {
       return '/biostretch/empresas';
     }
-    if (combined.includes('individual') || combined.includes('personal') || combined.includes('individuell')) {
+    // 9. Individual / Personal / Individuell
+    if (normalized.includes('individual') || normalized.includes('personal') || normalized.includes('individuell')) {
       return '/biostretch/individual';
     }
-    return '/biostretch/aulas-regulares';
+    // Fallback: se o workshop não existir especificamente, salta para a página da tag Biostretch
+    return '/biostretch';
   }
 
-  if (combined.includes('water') || combined.includes('vann')) return '/be-the-dance/be-water';
-  if (combined.includes('balance') || combined.includes('balanse')) return '/be-the-dance/be-balance';
-  if (combined.includes('total')) return '/be-the-dance/be-total';
-  if (combined.includes('stillness') || combined.includes('ro')) return '/be-the-dance/be-stillness';
-  if (combined.includes('pro')) return '/be-the-dance/be-the-dance-pro';
-  if (combined.includes('day') || combined.includes('dag')) return '/be-the-dance/be-the-dance-day';
+  // Be The Dance
+  if (normalized.includes('water') || normalized.includes('vann')) return '/be-the-dance/be-water';
+  if (normalized.includes('balance') || normalized.includes('balanse')) return '/be-the-dance/be-balance';
+  if (normalized.includes('total')) return '/be-the-dance/be-total';
+  if (normalized.includes('pro')) return '/be-the-dance/be-the-dance-pro';
+  if (normalized.includes('day') || normalized.includes('dag')) return '/be-the-dance/be-the-dance-day';
+  if (normalized.includes('stillness') || /\bro\b/.test(normalized)) return '/be-the-dance/be-stillness';
 
+  // Fallback: se o workshop não existir especificamente, salta para a página da tag Be The Dance
   return '/be-the-dance';
 }
 

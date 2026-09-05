@@ -280,11 +280,16 @@ export default function AgendaPage() {
 
                     {/* Coluna Central: Informações do Evento */}
                     <div className="flex-1 flex flex-col justify-center min-w-0 w-full space-y-2">
-                      <div className="inline-flex items-center justify-center bg-[#1E1E24] px-2 py-1 rounded-[2px] w-fit">
-                        <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] font-bold">
+                      {/* Tag clicável que salta para a página correspondente */}
+                      <Link 
+                        to={category === 'biostretch' ? '/biostretch' : '/be-the-dance'}
+                        className="inline-flex items-center justify-center bg-[#1E1E24] hover:bg-[#282830] border border-transparent hover:border-accent/40 px-2.5 py-1 rounded-[2px] w-fit transition-all duration-200 group/tag cursor-pointer"
+                        title={category === 'biostretch' ? 'Biostretch' : 'Be The Dance'}
+                      >
+                        <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] group-hover/tag:text-accent font-bold transition-colors">
                           {badgeText}
                         </span>
-                      </div>
+                      </Link>
 
                       <Link to={getDetailsLink(event)} className="block group-hover:text-accent transition-colors">
                         <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover:text-accent transition-colors">
@@ -301,9 +306,13 @@ export default function AgendaPage() {
                     {/* Coluna Direita: Instrutor + Ações (Perfeitamente Centralizados na Vertical) */}
                     <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center">
                       {event.instructor && (
-                        <span className="font-heading text-[9px] text-[#7A7A7A] uppercase tracking-wider mb-2 text-center w-full block">
-                          {t("agendaPage.instructor", "Instrutor")}: <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
-                        </span>
+                        <Link 
+                          to="/safia"
+                          className="font-heading text-[9px] text-[#7A7A7A] hover:text-accent uppercase tracking-wider mb-2 text-center w-full block transition-colors group/inst"
+                          title={t("agendaPage.viewInstructorProfile", "Ver perfil de Safia")}
+                        >
+                          {t("agendaPage.instructor", "Instrutor")}: <span className="text-[#CFCFCF] group-hover/inst:text-accent font-semibold transition-colors underline decoration-dotted underline-offset-2">{event.instructor}</span>
+                        </Link>
                       )}
 
                       {userStatus === 'enrolled' ? (

@@ -7,7 +7,91 @@ import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
 import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus } from 'lucide-react';
-import { getLocalizedEvent, getEventCategory, generateInstructorCalendarUrl } from '../utils/eventHelpers';
+import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl } from '../utils/eventHelpers';
+
+// Presets estruturados por categoria e idioma com suas respectivas rotas
+const EVENT_PRESETS = {
+  bethedance: {
+    no: [
+      "Be Water",
+      "Be Balance",
+      "Be Total",
+      "Be Stillness",
+      "Be The Dance PRO",
+      "Be The Dance DAY"
+    ],
+    en: [
+      "Be Water",
+      "Be Balance",
+      "Be Total",
+      "Be Stillness",
+      "Be The Dance PRO",
+      "Be The Dance DAY"
+    ],
+    pt: [
+      "Be Water",
+      "Be Balance",
+      "Be Total",
+      "Be Stillness",
+      "Be The Dance PRO",
+      "Be The Dance DAY"
+    ],
+    routes: [
+      "/be-the-dance/be-water",
+      "/be-the-dance/be-balance",
+      "/be-the-dance/be-total",
+      "/be-the-dance/be-stillness",
+      "/be-the-dance/be-the-dance-pro",
+      "/be-the-dance/be-the-dance-day"
+    ]
+  },
+  biostretch: {
+    no: [
+      "En Bedre Holdning",
+      "Lære å Slappe Av",
+      "Strekk, Pust og Mediter",
+      "Transformere Vaner",
+      "Daglige Bevegelser for å Forhindre Stress",
+      "Gjenvinne Fokus",
+      "Biostretch: Individuell Økt",
+      "Biostretch: Faste Klasser",
+      "Biostretch: Bedrift"
+    ],
+    en: [
+      "A Better Posture",
+      "Learning to Relax",
+      "Stretch, Breathe and Meditate",
+      "Transforming Habits",
+      "Daily Movements to Prevent Stress",
+      "Regaining Focus",
+      "Biostretch: Individual Session",
+      "Biostretch: Regular Classes",
+      "Biostretch: Corporate"
+    ],
+    pt: [
+      "Uma Melhor Postura",
+      "Aprendendo a Relaxar",
+      "Alongar, Respirar e Meditar",
+      "Transformando Hábitos",
+      "Movimentos Diários para Prevenir o Stress",
+      "Recuperando o Foco",
+      "Biostretch: Sessão Individual",
+      "Biostretch: Aulas Regulares",
+      "Biostretch: Corporate"
+    ],
+    routes: [
+      "/biostretch/uma-melhor-postura",
+      "/biostretch/aprendendo-a-relaxar",
+      "/biostretch/alongar-respirar-e-meditar",
+      "/biostretch/transformando-habitos",
+      "/biostretch/movimentos-diarios-para-prevenir-o-stress",
+      "/biostretch/recuperando-o-foco",
+      "/biostretch/individual",
+      "/biostretch/aulas-regulares",
+      "/biostretch/empresas"
+    ]
+  }
+};
 
 export default function AdminDashboard() {
   const { t, i18n } = useTranslation();
@@ -24,6 +108,7 @@ export default function AdminDashboard() {
     category: 'bethedance',
     instructor: 'Safia',
     instructorEmail: '',
+    targetPath: '',
     title_no: '',
     title_en: '',
     title_pt: '',
@@ -75,6 +160,18 @@ export default function AdminDashboard() {
       const primarySchedule = (formData[`scheduleDetails_${activeLangTab}`] || formData.scheduleDetails_no || formData.scheduleDetails_en || formData.scheduleDetails_pt || '').trim();
       const primaryLocation = (formData[`location_${activeLangTab}`] || formData.location_no || formData.location_en || formData.location_pt || '').trim();
 
+      const title_no = (formData.title_no || primaryTitle).trim();
+      const title_en = (formData.title_en || primaryTitle).trim();
+      const title_pt = (formData.title_pt || primaryTitle).trim();
+
+      const calculatedTargetPath = formData.targetPath || getEventRoute({
+        category: formData.category,
+        title_no,
+        title_en,
+        title_pt,
+        title: primaryTitle
+      });
+
       const payload = {
         category: formData.category || 'bethedance',
         instructor: (formData.instructor || 'Safia').trim(),
@@ -85,17 +182,19 @@ export default function AdminDashboard() {
         totalHours: formData.totalHours ? Number(formData.totalHours) : null,
         totalSpots: Number(formData.totalSpots),
 
-        title_no: primaryTitle,
-        title_en: primaryTitle,
-        title_pt: primaryTitle,
+        title_no,
+        title_en,
+        title_pt,
 
-        scheduleDetails_no: primarySchedule,
-        scheduleDetails_en: primarySchedule,
-        scheduleDetails_pt: primarySchedule,
+        scheduleDetails_no: (formData.scheduleDetails_no || primarySchedule).trim(),
+        scheduleDetails_en: (formData.scheduleDetails_en || primarySchedule).trim(),
+        scheduleDetails_pt: (formData.scheduleDetails_pt || primarySchedule).trim(),
 
-        location_no: primaryLocation,
-        location_en: primaryLocation,
-        location_pt: primaryLocation,
+        location_no: (formData.location_no || primaryLocation).trim(),
+        location_en: (formData.location_en || primaryLocation).trim(),
+        location_pt: (formData.location_pt || primaryLocation).trim(),
+
+        targetPath: calculatedTargetPath,
 
         // Backward compatibility
         title: primaryTitle,
@@ -129,6 +228,7 @@ export default function AdminDashboard() {
       category: event.category || getEventCategory(event),
       instructor: event.instructor || 'Safia',
       instructorEmail: event.instructorEmail || '',
+      targetPath: event.targetPath || getEventRoute(event),
       title_no: event.title_no || event.title || '',
       title_en: event.title_en || event.title || '',
       title_pt: event.title_pt || event.title || '',
@@ -169,6 +269,55 @@ export default function AdminDashboard() {
     setFormData(prev => ({ ...prev, [name]: value }));
   }
 
+  function handleCategoryChange(newCategory) {
+    setFormData(prev => {
+      if (prev.category === newCategory) return prev;
+      const oldPresets = EVENT_PRESETS[prev.category] || {};
+      const allOldTitles = Object.values(oldPresets).flatMap(arr => Array.isArray(arr) ? arr : []);
+      const currentTitle = prev[`title_${activeLangTab}`];
+      const shouldReset = allOldTitles.includes(currentTitle);
+
+      return {
+        ...prev,
+        category: newCategory,
+        ...(shouldReset ? {
+          title_no: '',
+          title_en: '',
+          title_pt: '',
+          targetPath: ''
+        } : {})
+      };
+    });
+  }
+
+  function handleTitleChange(e) {
+    const val = e.target.value;
+    const cat = formData.category || 'bethedance';
+    const presets = EVENT_PRESETS[cat] || EVENT_PRESETS.bethedance;
+
+    // Procura se o valor digitado/selecionado corresponde a um dos presets no idioma ativo
+    const listForLang = presets[activeLangTab] || [];
+    const matchIdx = listForLang.findIndex(t => t.toLowerCase() === val.trim().toLowerCase());
+
+    if (matchIdx !== -1) {
+      // Auto-preenche as traduções dos 3 idiomas e a rota específica
+      setFormData(prev => ({
+        ...prev,
+        title_no: presets.no[matchIdx],
+        title_en: presets.en[matchIdx],
+        title_pt: presets.pt[matchIdx],
+        targetPath: presets.routes[matchIdx]
+      }));
+    } else {
+      // Digitação livre
+      setFormData(prev => ({
+        ...prev,
+        [`title_${activeLangTab}`]: val,
+        targetPath: ''
+      }));
+    }
+  }
+
   return (
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
@@ -192,14 +341,14 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
-                      onClick={() => setFormData(prev => ({ ...prev, category: 'bethedance' }))}
+                      onClick={() => handleCategoryChange('bethedance')}
                       className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'bethedance' ? 'bg-accent text-primary border-accent' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
                     >
                       Be The Dance
                     </button>
                     <button
                       type="button"
-                      onClick={() => setFormData(prev => ({ ...prev, category: 'biostretch' }))}
+                      onClick={() => handleCategoryChange('biostretch')}
                       className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'biostretch' ? 'bg-accent text-primary border-accent' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
                     >
                       Biostretch
@@ -272,7 +421,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Título do Evento no Idioma Ativo */}
+                {/* Título do Evento no Idioma Ativo (Filtro por Categoria) */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.eventTitle")} ({activeLangTab.toUpperCase()})
@@ -283,69 +432,16 @@ export default function AdminDashboard() {
                     type="text" 
                     name={`title_${activeLangTab}`} 
                     value={formData[`title_${activeLangTab}`] || ''} 
-                    onChange={handleChange} 
+                    onChange={handleTitleChange} 
                     placeholder={t("adminPage.selectOrType")} 
                     className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" 
                   />
                   
+                  {/* Lista de opções restrita estritamente à categoria selecionada */}
                   <datalist id="event-titles">
-                    {activeLangTab === 'no' && (
-                      <>
-                        <option value="Be Water" />
-                        <option value="Be Balance" />
-                        <option value="Be Total" />
-                        <option value="Be Stillness" />
-                        <option value="Be The Dance PRO" />
-                        <option value="Be The Dance DAY" />
-                        <option value="En Bedre Holdning" />
-                        <option value="Lære å Slappe Av" />
-                        <option value="Strekk, Pust og Mediter" />
-                        <option value="Transformere Vaner" />
-                        <option value="Daglige Bevegelser for å Forhindre Stress" />
-                        <option value="Gjenvinne Fokus" />
-                        <option value="Biostretch: Individuell Økt" />
-                        <option value="Biostretch: Faste Klasser" />
-                        <option value="Biostretch: Bedrift" />
-                      </>
-                    )}
-                    {activeLangTab === 'en' && (
-                      <>
-                        <option value="Be Water" />
-                        <option value="Be Balance" />
-                        <option value="Be Total" />
-                        <option value="Be Stillness" />
-                        <option value="Be The Dance PRO" />
-                        <option value="Be The Dance DAY" />
-                        <option value="A Better Posture" />
-                        <option value="Learning to Relax" />
-                        <option value="Stretch, Breathe and Meditate" />
-                        <option value="Transforming Habits" />
-                        <option value="Daily Movements to Prevent Stress" />
-                        <option value="Regaining Focus" />
-                        <option value="Biostretch: Individual Session" />
-                        <option value="Biostretch: Regular Classes" />
-                        <option value="Biostretch: Corporate" />
-                      </>
-                    )}
-                    {activeLangTab === 'pt' && (
-                      <>
-                        <option value="Be Water" />
-                        <option value="Be Balance" />
-                        <option value="Be Total" />
-                        <option value="Be Stillness" />
-                        <option value="Be The Dance PRO" />
-                        <option value="Be The Dance DAY" />
-                        <option value="Uma Melhor Postura" />
-                        <option value="Aprendendo a Relaxar" />
-                        <option value="Alongar, Respirar e Meditar" />
-                        <option value="Transformando Hábitos" />
-                        <option value="Movimentos Diários para Prevenir o Stress" />
-                        <option value="Recuperando o Foco" />
-                        <option value="Biostretch: Sessão Individual" />
-                        <option value="Biostretch: Aulas Regulares" />
-                        <option value="Biostretch: Corporate" />
-                      </>
-                    )}
+                    {(EVENT_PRESETS[formData.category]?.[activeLangTab] || []).map(titleOption => (
+                      <option key={titleOption} value={titleOption} />
+                    ))}
                   </datalist>
                 </div>
                 
