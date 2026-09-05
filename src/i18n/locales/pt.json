@@ -3,7 +3,9 @@
     "workshops": "Workshops",
     "social": "Projeto Social",
     "agenda": "Agenda",
-    "subscribe": "Inscreva-se"
+    "subscribe": "Inscreva-se",
+    "login": "Entrar",
+    "signup": "Cadastre-se"
   },
   "hero": {
     "subtitle1": "O movimento encontra a",

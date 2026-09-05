@@ -120,11 +120,9 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div className="hidden md:flex items-center gap-2">
-                  <Link to="/login" className="font-heading text-xs text-background hover:text-accent px-3 py-2 transition-colors">
-                    Entrar
-                  </Link>
+                  <Link to="/login" className="font-heading text-xs text-background hover:text-accent px-3 py-2 transition-colors">{t("nav.login")}</Link>
                   <Link to="/cadastro" className="btn-magnetic bg-accent text-primary px-4 md:px-6 py-2.5 rounded-full font-heading font-bold text-[10px] md:text-sm whitespace-nowrap">
-                    <span className="relative z-10">Cadastre-se</span>
+                    <span className="relative z-10">{t("nav.signup")}</span>
                   </Link>
                 </div>
               )}
@@ -200,16 +198,12 @@ const Navbar = () => {
                 to="/login" 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
-              >
-                Entrar
-              </Link>
+              >{t("nav.login")}</Link>
               <Link 
                 to="/cadastro" 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-accent text-primary px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center"
-              >
-                Cadastre-se
-              </Link>
+              >{t("nav.signup")}</Link>
             </div>
           )}
         </div>

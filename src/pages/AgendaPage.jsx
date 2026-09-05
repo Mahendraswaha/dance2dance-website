@@ -317,9 +317,7 @@ export default function AgendaPage() {
                               <span className="relative z-10 block text-center ml-[2px]">
                                 {actionLoading === event.id 
                                   ? 'Aguarde...' 
-                                  : isFull 
-                                    ? 'Entrar na Espera' 
-                                    : 'Inscreva-se'}
+                                  : isFull ? t('agendaPage.joinWaitlist') : t('agendaPage.subscribe')}
                               </span>
                             </button>
                           )}

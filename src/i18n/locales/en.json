@@ -3,7 +3,9 @@
     "workshops": "Workshops",
     "social": "Social Project",
     "agenda": "Schedule",
-    "subscribe": "Subscribe"
+    "subscribe": "Subscribe",
+    "login": "Login",
+    "signup": "Sign Up"
   },
   "hero": {
     "subtitle1": "Movement meets",

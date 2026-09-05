@@ -3,7 +3,9 @@
     "workshops": "Workshops",
     "social": "Sosialt Prosjekt",
     "agenda": "Timeplan",
-    "subscribe": "Meld deg på"
+    "subscribe": "Meld deg på",
+    "login": "Logg inn",
+    "signup": "Registrer deg"
   },
   "hero": {
     "subtitle1": "Bevegelse møter",
