@@ -279,7 +279,7 @@ export default function AgendaPage() {
                     <div className="flex-1 flex flex-col w-full">
                       
                       {/* Topo: Badge */}
-                      <div className="mb-2">
+                      <div className="mb-6">
                         <div className="inline-flex items-center justify-center bg-[#1E1E24] px-2 py-1 rounded-[2px] pr-[calc(0.5rem-2px)]">
                           <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] font-bold ml-[2px]">
                             {badgeText}
