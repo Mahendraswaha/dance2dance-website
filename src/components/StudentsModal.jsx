@@ -152,12 +152,20 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
 
   // 2. Exportar CSV
   function handleExportCsv() {
-    if (currentList.length === 0) return;
+    if (currentList.length === 0) {
+      alert(t("adminPage.studentsModal.noStudentsToExport", "Não há alunos na lista atual para exportar."));
+      return;
+    }
 
+    const yearsLabel = t("adminPage.studentsModal.yearsOld", "anos");
     let headers = [];
     let rows = [];
 
-    const yearsLabel = t("adminPage.studentsModal.yearsOld", "anos");
+    const escapeCsv = (val) => {
+      if (val === null || val === undefined) return '""';
+      const clean = String(val).replace(/"/g, '""');
+      return `"${clean}"`;
+    };
 
     if (viewMode === 'complete') {
       headers = [
@@ -182,43 +190,63 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
         const birthInfo = formatBirthDateAndAge(e.userBirthDate, yearsLabel);
         return [
           idx + 1,
-          `"${(e.userName || '').replace(/"/g, '""')}"`,
-          e.status,
-          `"${(birthInfo?.formattedDate || '').replace(/"/g, '""')}"`,
-          birthInfo?.age !== null ? birthInfo.age : '',
-          `"${(e.userEmail || '').replace(/"/g, '""')}"`,
-          `"${(e.userPhone || '').replace(/"/g, '""')}"`,
-          `"${(e.userAddress || '').replace(/"/g, '""')}"`,
-          `"${(e.userNeighborhood || '').replace(/"/g, '""')}"`,
-          `"${(e.userCity || '').replace(/"/g, '""')}"`,
-          `"${(e.userZip || '').replace(/"/g, '""')}"`,
-          `"${(e.userCountry || '').replace(/"/g, '""')}"`,
-          `"${(e.userExperience || 'Nenhuma').replace(/"/g, '""')}"`,
-          `"${(e.userRestrictions || 'Nenhuma').replace(/"/g, '""')}"`,
-          e.createdAt ? new Date(e.createdAt).toLocaleString() : ''
+          escapeCsv(e.userName || ''),
+          escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+          escapeCsv(birthInfo?.formattedDate || ''),
+          birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
+          escapeCsv(e.userEmail || ''),
+          escapeCsv(e.userPhone || ''),
+          escapeCsv(e.userAddress || ''),
+          escapeCsv(e.userNeighborhood || ''),
+          escapeCsv(e.userCity || ''),
+          escapeCsv(e.userZip || ''),
+          escapeCsv(e.userCountry || ''),
+          escapeCsv(e.userExperience || 'Nenhuma'),
+          escapeCsv(e.userRestrictions || 'Nenhuma'),
+          escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : '')
         ];
       });
     } else {
       headers = ["#", "Nome", "Email", "Telefone", "Status", "Data de Inscricao", "Restricoes de Saude"];
       rows = currentList.map((e, idx) => [
         idx + 1,
-        `"${(e.userName || '').replace(/"/g, '""')}"`,
-        `"${(e.userEmail || '').replace(/"/g, '""')}"`,
-        `"${(e.userPhone || '').replace(/"/g, '""')}"`,
-        e.status,
-        e.createdAt ? new Date(e.createdAt).toLocaleString() : '',
-        `"${(e.userRestrictions || 'Nenhuma').replace(/"/g, '""')}"`
+        escapeCsv(e.userName || ''),
+        escapeCsv(e.userEmail || ''),
+        escapeCsv(e.userPhone || ''),
+        escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+        escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : ''),
+        escapeCsv(e.userRestrictions || 'Nenhuma')
       ]);
     }
 
-    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
-    const encodedUri = encodeURI(csvContent);
+    // Configura o separador e o conteúdo com sep=, para compatibilidade universal
+    const csvContent = "sep=,\r\n" + [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+
+    // UTF-8 BOM (\uFEFF) para garantir suporte correto a acentos no Excel
+    const BOM = '\uFEFF';
+    const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+
+    const eventName = event.title_pt || event.title_en || event.title_no || event.title || 'workshop';
+    const safeTitle = eventName
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9_-]/g, '_')
+      .replace(/_+/g, '_');
+
+    const filename = `alunos_${safeTitle}_${activeTab}_${viewMode}.csv`;
+
     const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `alunos-${event.title || 'workshop'}-${activeTab}-${viewMode}.csv`);
+    link.href = url;
+    link.setAttribute('download', filename);
+    link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
+
+    setTimeout(() => {
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }, 200);
   }
 
   // 3. Promover da espera para inscrito
