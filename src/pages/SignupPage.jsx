@@ -70,7 +70,7 @@ export default function SignupPage() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
       
-      <main className="flex-grow pt-32 pb-24 px-6 relative">
+      <main className="flex-grow pt-44 md:pt-52 pb-24 px-6 relative">
         <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #222 0%, transparent 60%)' }} />
         
         <motion.div 
