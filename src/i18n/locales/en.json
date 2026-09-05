@@ -852,5 +852,21 @@
       "Beginning in 2011, daily meditation practice redefined my relationship with the body. The focus shifted from external form to the quality of presence. Conscious breathing and silence became components of movement itself. From this convergence of dance, somatic education, and meditation, Biostretch and Be The Dance emerged.",
       "Living in Norway, I act as an artistic bridge with Brazil. From this crossing, Dance2Dance was born, a central initiative that synthesizes decades of somatic and choreographic research. Based in Norway, Dance2Dance develops workshops, retreats, and educational processes uniting technical precision and expressive freedom, welcoming dancers and anyone seeking to inhabit their body with presence."
     ]
+  },
+  "agendaPage": {
+    "title": "Full Schedule",
+    "subtitle": "Follow our upcoming dates for workshops, regular sessions and experiences of Be The Dance and Biostretch.",
+    "filterAll": "ALL",
+    "comingSoon": "COMING SOON",
+    "tbd": "TBD",
+    "enrolled": "Enrolled",
+    "waitlist": "Waitlist",
+    "joinWaitlist": "Join Waitlist",
+    "subscribe": "Subscribe",
+    "cancel": "Cancel Enrollment",
+    "spotsLeft": "{{count}} spots left",
+    "spotsLeftOne": "1 spot left",
+    "loading": "LOADING SCHEDULE...",
+    "empty": "No dates registered in this category at the moment."
   }
 }

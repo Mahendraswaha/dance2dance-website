@@ -852,5 +852,21 @@
       "A partir de 2011, a prática diária da meditação redefiniu a minha relação com o corpo. O foco deslocou-se da forma externa para a qualidade da presença. A respiração consciente e o silêncio tornaram-se matérias do próprio gesto. Dessa convergência entre dança, educação somática e meditação nasceram os métodos Biostretch e Be The Dance.",
       "Atualmente na Noruega, busco atuar como uma ponte artística com o Brasil. Dessa travessia nasce Dance<span class='text-accent text-[1.2em] font-normal'>2</span>Dance, projeto central que sintetiza décadas de pesquisa corporal, experiência pedagógica e investigação sobre a relação entre técnica, presença e expressão. Sediada na Noruega, a iniciativa é um espaço de encontro e transformação, voltada tanto para bailarinos e artistas quanto para pessoas que desejam aprofundar a relação com o próprio corpo."
     ]
+  },
+  "agendaPage": {
+    "title": "Agenda Completa",
+    "subtitle": "Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.",
+    "filterAll": "TODOS",
+    "comingSoon": "EM BREVE",
+    "tbd": "A definir",
+    "enrolled": "Inscrito",
+    "waitlist": "Lista de Espera",
+    "joinWaitlist": "Entrar na Espera",
+    "subscribe": "Inscreva-se",
+    "cancel": "Cancelar Inscrição",
+    "spotsLeft": "Restam {{count}} vagas",
+    "spotsLeftOne": "Resta 1 vaga",
+    "loading": "CARREGANDO AGENDA...",
+    "empty": "Nenhuma data cadastrada nesta categoria no momento."
   }
 }

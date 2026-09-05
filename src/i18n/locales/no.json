@@ -852,5 +852,21 @@
       "Fra 2011 omdefinerte daglig meditasjonspraksis mitt forhold til kroppen. Fokuset flyttet seg fra den ytre formen til kvaliteten på tilstedeværelsen. Bevisst pust og stillhet ble bestanddeler i selve bevegelsen. Ut fra dette møtet mellom dans, somatisk utdanning og meditasjon ble metodene Biostretch og Be The Dance skapt.",
       "Med base i Norge fungerer jeg som en kunstnerisk bro til Brasil. Fra denne kryssingen oppsto Dance2Dance, et sentralt prosjekt som samler tiår med kroppslig og koreografisk forskning. Med base i Norge skaper Dance2Dance workshops, retreater og pedagogiske prosesser som forener teknisk presisjon og uttrykksfrihet, og ønsker velkommen både dansere og alle som ønsker å bebo sin egen kropp med nærvær."
     ]
+  },
+  "agendaPage": {
+    "title": "Fullstendig Tidsplan",
+    "subtitle": "Følg våre kommende datoer for workshops, faste økter og opplevelser av Be The Dance og Biostretch.",
+    "filterAll": "ALLE",
+    "comingSoon": "KOMMER SNART",
+    "tbd": "TBD",
+    "enrolled": "Påmeldt",
+    "waitlist": "Venteliste",
+    "joinWaitlist": "Bli med på venteliste",
+    "subscribe": "Meld deg på",
+    "cancel": "Avbryt Påmelding",
+    "spotsLeft": "{{count}} plasser igjen",
+    "spotsLeftOne": "1 plass igjen",
+    "loading": "LASTER INN TIDSPLAN...",
+    "empty": "Ingen datoer registrert i denne kategorien for øyeblikket."
   }
 }

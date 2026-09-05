@@ -192,7 +192,7 @@ export default function AgendaPage() {
           <span className="font-heading text-xs uppercase tracking-[4px] text-accent font-semibold block mb-4">
             CALENDÁRIO
           </span>
-          <h1 className="font-drama text-5xl md:text-7xl text-[#F0EDE8] mb-6">Agenda Completa</h1>
+          <h1 className="font-drama text-5xl md:text-7xl text-[#F0EDE8] mb-6">{t("agendaPage.title")}</h1>
           <p className="font-heading text-[#9A9A9A] max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
             Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.
           </p>
@@ -227,10 +227,10 @@ export default function AgendaPage() {
 
         {/* Lista de Eventos */}
         {loading ? (
-          <div className="text-center text-accent font-heading tracking-widest animate-pulse mt-20">CARREGANDO AGENDA...</div>
+          <div className="text-center text-accent font-heading tracking-widest animate-pulse mt-20">{t("agendaPage.loading")}</div>
         ) : filteredEvents.length === 0 ? (
           <div className="text-center py-20 bg-[#0a0a0a] border border-[#222222] rounded-[2px]">
-            <p className="text-[#9A9A9A] font-heading">Nenhuma data cadastrada nesta categoria no momento.</p>
+            <p className="text-[#9A9A9A] font-heading">{t("agendaPage.empty")}</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -240,7 +240,7 @@ export default function AgendaPage() {
                 const badgeText = category === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH';
                 
                 // Formata data do evento (se existir)
-                let dateStr = "EM BREVE";
+                let dateStr = t("agendaPage.comingSoon");
                 if (event.startDate) {
                    const [y, m, d] = event.startDate.split('-');
                    dateStr = `${d}/${m}/${y}`;
@@ -270,7 +270,7 @@ export default function AgendaPage() {
                       <div className="flex items-start gap-2 text-[#9A9A9A] font-heading text-xs">
                         <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
                         <span className="whitespace-pre-wrap leading-relaxed">
-                          {event.scheduleDetails || "A definir"}
+                          {event.scheduleDetails || t("agendaPage.tbd")}
                         </span>
                       </div>
                     </div>
@@ -336,12 +336,12 @@ export default function AgendaPage() {
                         <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center">
                           {(userStatus === 'enrolled' || userStatus === 'waitlist') ? (
                             <button onClick={() => handleCancelEnrollment(event.id)} disabled={actionLoading === event.id} className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors mt-1">
-                              {actionLoading === event.id ? 'Aguarde...' : 'Cancelar Inscrição'}
+                              {actionLoading === event.id ? 'Aguarde...' : t('agendaPage.cancel')}
                             </button>
                           ) : (
                             !isFull && (
                               <span className="text-[10px] font-heading text-[#9A9A9A] uppercase tracking-wider text-center w-full inline-block">
-                                Restam {spotsLeft} {spotsLeft === 1 ? 'vaga' : 'vagas'}
+                                {spotsLeft === 1 ? t('agendaPage.spotsLeftOne') : t('agendaPage.spotsLeft', { count: spotsLeft })}
                               </span>
                             )
                           )}
