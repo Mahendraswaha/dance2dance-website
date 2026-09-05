@@ -905,7 +905,7 @@
     "confirmDelete": "Are you sure you want to permanently delete this event?",
     "deleteError": "Error deleting.",
     "saveError": "Error saving event.",
-    "instructor": "Instructor / Teacher",
+    "instructor": "Instructor",
     "startTime": "Start Time",
     "endTime": "End Time",
     "totalHours": "Hours (h)",

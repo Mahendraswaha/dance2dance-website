@@ -905,7 +905,7 @@
     "confirmDelete": "Er du sikker på at du vil slette dette arrangementet permanent?",
     "deleteError": "Feil ved sletting.",
     "saveError": "Feil ved lagring av arrangement.",
-    "instructor": "Instruktør / Lærer",
+    "instructor": "Instruktør",
     "startTime": "Starttid",
     "endTime": "Sluttid",
     "totalHours": "Timer (t)",

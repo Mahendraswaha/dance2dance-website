@@ -207,10 +207,10 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Campos de Instrutor e E-mail */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {/* Campos de Instrutor e E-mail com alinhamento perfeito */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
                   <div>
-                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2 truncate">
                       {t("adminPage.instructor", "Instrutor")}
                     </label>
                     <input
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
                     </datalist>
                   </div>
                   <div>
-                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2 truncate">
                       {t("adminPage.instructorEmail", "E-mail do Instrutor")}
                     </label>
                     <input
@@ -244,14 +244,9 @@ export default function AdminDashboard() {
 
                 {/* Abas de Idioma na ordem: NO -> EN -> PT */}
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF]">
-                      {t("adminPage.languageTab", "Idioma do Formulário")}
-                    </label>
-                    <span className="text-[10px] font-heading text-accent uppercase tracking-wider">
-                      {activeLangTab.toUpperCase()}
-                    </span>
-                  </div>
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                    {t("adminPage.languageTab", "Idioma do Formulário")}
+                  </label>
                   <div className="flex gap-2 p-1 bg-[#141414] rounded-[2px] w-full border border-[#333333]">
                     <button 
                       type="button" 
