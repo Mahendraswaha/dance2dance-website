@@ -191,11 +191,11 @@ export default function AgendaPage() {
           className="text-center mb-16"
         >
           <span className="font-heading text-xs uppercase tracking-[4px] text-accent font-semibold block mb-4">
-            CALENDÁRIO
+            {t("nav.agenda").toUpperCase()}
           </span>
           <h1 className="font-drama text-5xl md:text-7xl text-[#F0EDE8] mb-6">{t("agendaPage.title")}</h1>
           <p className="font-heading text-[#9A9A9A] max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            Acompanhe nossas próximas datas para os workshops, sessões regulares e vivências do Be The Dance e Biostretch.
+            {t("agendaPage.subtitle")}
           </p>
         </motion.div>
 
@@ -209,9 +209,7 @@ export default function AgendaPage() {
           <button 
             onClick={() => setFilter('all')}
             className={`px-6 py-2 rounded-full font-heading text-xs uppercase tracking-[2px] font-semibold transition-colors duration-300 ${filter === 'all' ? 'bg-accent text-primary' : 'bg-transparent border border-[#333333] text-[#9A9A9A] hover:border-accent hover:text-accent'}`}
-          >
-            Todos
-          </button>
+          >{t("agendaPage.filterAll")}</button>
           <button 
             onClick={() => setFilter('bethedance')}
             className={`px-6 py-2 rounded-full font-heading text-xs uppercase tracking-[2px] font-semibold transition-colors duration-300 ${filter === 'bethedance' ? 'bg-accent text-primary' : 'bg-transparent border border-[#333333] text-[#9A9A9A] hover:border-accent hover:text-accent'}`}
@@ -303,13 +301,9 @@ export default function AgendaPage() {
                         
                         <div className="shrink-0 w-full md:w-auto md:min-w-[180px]">
                           {userStatus === 'enrolled' ? (
-                            <div className="py-2.5 px-6 border border-green-500/30 bg-green-900/10 text-green-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">
-                              Inscrito
-                            </div>
+                            <div className="py-2.5 px-6 border border-green-500/30 bg-green-900/10 text-green-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">{t("agendaPage.enrolled")}</div>
                           ) : userStatus === 'waitlist' ? (
-                            <div className="py-2.5 px-6 border border-yellow-500/30 bg-yellow-900/10 text-yellow-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">
-                              Lista de Espera
-                            </div>
+                            <div className="py-2.5 px-6 border border-yellow-500/30 bg-yellow-900/10 text-yellow-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">{t("agendaPage.waitlist")}</div>
                           ) : (
                             <button 
                               onClick={() => handleEnroll(event.id, isFull)}
