@@ -260,11 +260,11 @@ export default function AgendaPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ delay: index * 0.05 }}
-                    className="bg-[#121214] border border-transparent hover:bg-[#161618] transition-colors rounded-[2px] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-8"
+                    className="bg-[#121214] border border-transparent hover:bg-[#161618] transition-colors rounded-[2px] p-6 md:p-8 flex flex-col md:flex-row items-start gap-8"
                   >
-                    {/* Coluna Esquerda: Datas */}
-                    <div className="w-full md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-[#1A1A24] pb-6 md:pb-0 pr-6">
-                      <div className="font-heading text-sm font-semibold text-accent uppercase tracking-wider mb-2">
+                    {/* Coluna Esquerda: Datas (com padding top para alinhar com o Titulo) */}
+                    <div className="w-full md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-[#1A1A24] pb-6 md:pb-0 pr-6 md:pt-[32px]">
+                      <div className="font-heading text-sm font-semibold text-accent uppercase tracking-wider mb-2 mt-1">
                         {dateStr}
                       </div>
                       <div className="flex items-start gap-2 text-[#9A9A9A] font-heading text-xs">
@@ -275,11 +275,11 @@ export default function AgendaPage() {
                       </div>
                     </div>
 
-                    {/* Bloco Central e Direito: Grade Alinhada */}
+                    {/* Bloco Central e Direito */}
                     <div className="flex-1 flex flex-col w-full">
                       
-                      {/* Topo: Badge com translação Y para subir visualmente sem quebrar o layout */}
-                      <div className="mb-2 -translate-y-3">
+                      {/* Topo: Badge (ocupa exatos 32px de altura para empurrar o Titulo) */}
+                      <div className="h-[32px] flex items-start">
                         <div className="inline-flex items-center justify-center bg-[#1E1E24] px-2 py-1 rounded-[2px] pr-[calc(0.5rem-2px)]">
                           <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] font-bold ml-[2px]">
                             {badgeText}
@@ -288,7 +288,7 @@ export default function AgendaPage() {
                       </div>
 
                       {/* Linha do Meio: Titulo (Esq) + Botao (Dir) */}
-                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full">
+                      <div className="flex flex-col md:flex-row justify-between items-start gap-4 w-full">
                         <Link to={getDetailsLink(event.title)} className="block group-hover:text-accent transition-colors">
                           <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover:text-accent transition-colors">
                             {event.title}
@@ -327,7 +327,7 @@ export default function AgendaPage() {
                       </div>
 
                       {/* Linha Inferior: Local (Esq) + Infos extras (Dir) */}
-                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full mt-2">
+                      <div className="flex flex-col md:flex-row justify-between items-start gap-4 w-full mt-2">
                         <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm">
                           <MapPin className="w-4 h-4 text-accent shrink-0" />
                           <span>{event.location}</span>
