@@ -156,8 +156,8 @@ export default function AgendaPage() {
       setUserEnrollments(prev => ({ ...prev, [eventId]: { status: newStatus, id: newEnrollmentRef.id } }));
       setEvents(prev => prev.map(ev => {
         if (ev.id === eventId) {
-          if (isFull) return { ...ev, waitlistCount: ev.waitlistCount + 1 };
-          return { ...ev, enrolledCount: ev.enrolledCount + 1 };
+          if (isFull) return { ...ev, waitlistCount: (ev.waitlistCount || 0) + 1 };
+          return { ...ev, enrolledCount: (ev.enrolledCount || 0) + 1 };
         }
         return ev;
       }));
@@ -243,8 +243,9 @@ export default function AgendaPage() {
                    dateStr = `${d}/${m}/${y}`;
                 }
 
-                const isFull = event.enrolledCount >= event.totalSpots;
-                const spotsLeft = event.totalSpots - event.enrolledCount;
+                const currentEnrolled = event.enrolledCount || 0;
+                const isFull = currentEnrolled >= event.totalSpots;
+                const spotsLeft = event.totalSpots - currentEnrolled;
                 const userEnrollmentData = userEnrollments[event.id];
                 const userStatus = userEnrollmentData ? userEnrollmentData.status : null;
 
