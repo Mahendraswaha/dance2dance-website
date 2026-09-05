@@ -35,7 +35,7 @@ export default function AgendaPage() {
           const enrollMap = {};
           enrollSnap.forEach(doc => {
             const data = doc.data();
-            enrollMap[data.eventId] = data.status;
+            enrollMap[data.eventId] = { status: data.status, id: doc.id };
           });
           setUserEnrollments(enrollMap);
         }
@@ -73,6 +73,51 @@ export default function AgendaPage() {
     return '/be-the-dance';
   }
 
+  async function handleCancelEnrollment(eventId) {
+    if (!window.confirm("Tem certeza que deseja cancelar sua inscrição/espera para este evento?")) return;
+    
+    setActionLoading(eventId);
+    try {
+      const enrollmentData = userEnrollments[eventId];
+      if (!enrollmentData) return;
+
+      const eventRef = doc(db, 'events', eventId);
+      const enrollmentRef = doc(db, 'enrollments', enrollmentData.id);
+
+      await runTransaction(db, async (transaction) => {
+        const eventDoc = await transaction.get(eventRef);
+        if (!eventDoc.exists()) throw new Error("Evento não encontrado.");
+        
+        const eventData = eventDoc.data();
+        
+        if (enrollmentData.status === 'waitlist') {
+          transaction.update(eventRef, { waitlistCount: Math.max(0, eventData.waitlistCount - 1) });
+        } else {
+          transaction.update(eventRef, { enrolledCount: Math.max(0, eventData.enrolledCount - 1) });
+        }
+
+        transaction.delete(enrollmentRef);
+      });
+
+      const newUserEnrollments = { ...userEnrollments };
+      delete newUserEnrollments[eventId];
+      setUserEnrollments(newUserEnrollments);
+      
+      setEvents(prev => prev.map(ev => {
+        if (ev.id === eventId) {
+          if (enrollmentData.status === 'waitlist') return { ...ev, waitlistCount: Math.max(0, ev.waitlistCount - 1) };
+          return { ...ev, enrolledCount: Math.max(0, ev.enrolledCount - 1) };
+        }
+        return ev;
+      }));
+
+    } catch(err) {
+      console.error(err);
+      alert("Erro ao cancelar: " + err.message);
+    }
+    setActionLoading(null);
+  }
+
   async function handleEnroll(eventId, isFull) {
     if (!currentUser) {
       navigate('/login');
@@ -108,7 +153,7 @@ export default function AgendaPage() {
         });
       });
 
-      setUserEnrollments(prev => ({ ...prev, [eventId]: isFull ? 'waitlist' : 'enrolled' }));
+      setUserEnrollments(prev => ({ ...prev, [eventId]: { status: newStatus, id: newEnrollmentRef.id } }));
       setEvents(prev => prev.map(ev => {
         if (ev.id === eventId) {
           if (isFull) return { ...ev, waitlistCount: ev.waitlistCount + 1 };
@@ -200,7 +245,8 @@ export default function AgendaPage() {
 
                 const isFull = event.enrolledCount >= event.totalSpots;
                 const spotsLeft = event.totalSpots - event.enrolledCount;
-                const userStatus = userEnrollments[event.id];
+                const userEnrollmentData = userEnrollments[event.id];
+                const userStatus = userEnrollmentData ? userEnrollmentData.status : null;
 
                 return (
                   <motion.div 
@@ -251,12 +297,22 @@ export default function AgendaPage() {
                       </Link>
 
                       {userStatus === 'enrolled' ? (
-                        <div className="py-2.5 px-6 border border-green-500/30 bg-green-900/10 text-green-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px]">
-                          Inscrito
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="py-2.5 px-6 border border-green-500/30 bg-green-900/10 text-green-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px]">
+                            Inscrito
+                          </div>
+                          <button onClick={() => handleCancelEnrollment(event.id)} disabled={actionLoading === event.id} className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors">
+                            {actionLoading === event.id ? 'Cancelando...' : 'Cancelar Inscrição'}
+                          </button>
                         </div>
                       ) : userStatus === 'waitlist' ? (
-                        <div className="py-2.5 px-6 border border-yellow-500/30 bg-yellow-900/10 text-yellow-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px]">
-                          Lista de Espera
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="py-2.5 px-6 border border-yellow-500/30 bg-yellow-900/10 text-yellow-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px]">
+                            Lista de Espera
+                          </div>
+                          <button onClick={() => handleCancelEnrollment(event.id)} disabled={actionLoading === event.id} className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors">
+                            {actionLoading === event.id ? 'Cancelando...' : 'Sair da Lista'}
+                          </button>
                         </div>
                       ) : (
                         <div className="flex flex-col items-start md:items-end gap-2 w-full">
