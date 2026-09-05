@@ -874,7 +874,8 @@
     "empty": "Nenhum evento encontrado no momento.",
     "addToCalendar": "Adicionar ao Calendário",
     "confirmCancel": "Tem certeza que deseja cancelar sua inscrição/espera para este evento?",
-    "cancelError": "Erro ao cancelar: "
+    "cancelError": "Erro ao cancelar: ",
+    "instructor": "Instrutor"
   },
   "adminPage": {
     "adminTitle": "Painel Administrativo",
@@ -903,6 +904,23 @@
     "empty": "Nenhum evento criado ainda.",
     "confirmDelete": "Tem certeza que deseja apagar este evento permanentemente?",
     "deleteError": "Erro ao deletar.",
-    "saveError": "Erro ao salvar evento."
+    "saveError": "Erro ao salvar evento.",
+    "instructor": "Instrutor / Professor",
+    "startTime": "Início",
+    "endTime": "Término",
+    "totalHours": "Horas (h)",
+    "studentsModal": {
+      "enrolledTab": "Inscritos",
+      "waitlistTab": "Lista de Espera",
+      "noEnrolled": "Nenhum aluno inscrito ainda neste workshop.",
+      "noWaitlist": "Ninguém na lista de espera no momento.",
+      "copyEmails": "Copiar E-mails",
+      "emailsCopied": "E-mails copiados!",
+      "exportCsv": "Exportar CSV",
+      "promote": "Promover",
+      "remove": "Remover",
+      "confirmPromote": "Mover este aluno da lista de espera para os inscritos?",
+      "confirmRemove": "Tem certeza que deseja remover este aluno do evento?"
+    }
   }
 }

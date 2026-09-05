@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock } from 'lucide-react';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck } from 'lucide-react';
 import { getLocalizedEvent, getEventCategory } from '../utils/eventHelpers';
 
 export default function AdminDashboard() {
@@ -13,6 +14,7 @@ export default function AdminDashboard() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
+  const [selectedEventForStudents, setSelectedEventForStudents] = useState(null);
 
   // Tab order: NO -> EN -> PT
   const currentInitialTab = i18n.language === 'pt' ? 'pt' : (i18n.language === 'en' ? 'en' : 'no');
@@ -20,10 +22,14 @@ export default function AdminDashboard() {
 
   const initialFormState = {
     category: 'bethedance',
+    instructor: 'Safia Valente',
     title_no: '',
     title_en: '',
     title_pt: '',
     startDate: '',
+    startTime: '18:00',
+    endTime: '20:00',
+    totalHours: '',
     scheduleDetails_no: '',
     scheduleDetails_en: '',
     scheduleDetails_pt: '',
@@ -45,6 +51,12 @@ export default function AdminDashboard() {
         ...doc.data()
       }));
       setEvents(fetchedEvents);
+
+      // Se o modal estiver aberto, atualiza os dados do evento nele também
+      if (selectedEventForStudents) {
+        const updatedSelected = fetchedEvents.find(e => e.id === selectedEventForStudents.id);
+        if (updatedSelected) setSelectedEventForStudents(updatedSelected);
+      }
     } catch (err) {
       console.error("Erro ao buscar eventos", err);
     }
@@ -64,7 +76,11 @@ export default function AdminDashboard() {
 
       const payload = {
         category: formData.category || 'bethedance',
+        instructor: (formData.instructor || 'Safia Valente').trim(),
         startDate: formData.startDate,
+        startTime: formData.startTime || '',
+        endTime: formData.endTime || '',
+        totalHours: formData.totalHours ? Number(formData.totalHours) : null,
         totalSpots: Number(formData.totalSpots),
 
         title_no: (formData.title_no || primaryTitle).trim(),
@@ -109,10 +125,14 @@ export default function AdminDashboard() {
   function handleEditClick(event) {
     setFormData({
       category: event.category || getEventCategory(event),
+      instructor: event.instructor || 'Safia Valente',
       title_no: event.title_no || event.title || '',
       title_en: event.title_en || event.title || '',
       title_pt: event.title_pt || event.title || '',
       startDate: event.startDate || '',
+      startTime: event.startTime || '18:00',
+      endTime: event.endTime || '20:00',
+      totalHours: event.totalHours || '',
       scheduleDetails_no: event.scheduleDetails_no || event.scheduleDetails || '',
       scheduleDetails_en: event.scheduleDetails_en || event.scheduleDetails || '',
       scheduleDetails_pt: event.scheduleDetails_pt || event.scheduleDetails || '',
@@ -182,6 +202,26 @@ export default function AdminDashboard() {
                       Biostretch
                     </button>
                   </div>
+                </div>
+
+                {/* Campo de Instrutor (Multi-instrutor) */}
+                <div>
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
+                    {t("adminPage.instructor", "Instrutor / Professor")}
+                  </label>
+                  <input
+                    type="text"
+                    name="instructor"
+                    list="instructors-list"
+                    value={formData.instructor}
+                    onChange={handleChange}
+                    placeholder="Ex: Safia Valente"
+                    required
+                    className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm"
+                  />
+                  <datalist id="instructors-list">
+                    <option value="Safia Valente" />
+                  </datalist>
                 </div>
 
                 {/* Abas de Idioma na ordem: NO -> EN -> PT */}
@@ -296,7 +336,7 @@ export default function AdminDashboard() {
                   </datalist>
                 </div>
                 
-                {/* Data de Início e Total de Vagas (Globais) */}
+                {/* Data de Início e Total de Vagas */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">
@@ -323,6 +363,48 @@ export default function AdminDashboard() {
                       onChange={handleChange} 
                       min="1" 
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
+                    />
+                  </div>
+                </div>
+
+                {/* Horários Estruturados (Início / Término) e Carga Horária */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t("adminPage.startTime", "Início")}
+                    </label>
+                    <input
+                      type="time"
+                      name="startTime"
+                      value={formData.startTime}
+                      onChange={handleChange}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-2 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-xs text-center"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t("adminPage.endTime", "Término")}
+                    </label>
+                    <input
+                      type="time"
+                      name="endTime"
+                      value={formData.endTime}
+                      onChange={handleChange}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-2 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-xs text-center"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t("adminPage.totalHours", "Horas (h)")}
+                    </label>
+                    <input
+                      type="number"
+                      name="totalHours"
+                      placeholder="Ex: 18"
+                      value={formData.totalHours}
+                      onChange={handleChange}
+                      min="0"
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-2 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-xs text-center"
                     />
                   </div>
                 </div>
@@ -408,12 +490,20 @@ export default function AdminDashboard() {
                           <span className="text-[9px] uppercase tracking-[2px] font-bold px-2 py-0.5 rounded-[2px] bg-[#1a1a1a] text-accent">
                             {cat === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH'}
                           </span>
-                          {/* Badges indicando quais línguas estão cadastradas */}
+                          
+                          {/* Badges de Idiomas */}
                           <div className="flex items-center gap-1">
                             {event.title_no && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">NO</span>}
                             {event.title_en && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">EN</span>}
                             {event.title_pt && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">PT</span>}
                           </div>
+
+                          {/* Instrutor */}
+                          {event.instructor && (
+                            <span className="text-[10px] font-heading text-[#9A9A9A] ml-2">
+                              • <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
+                            </span>
+                          )}
                         </div>
 
                         <h3 className="font-drama text-2xl text-accent mb-2">{dispTitle}</h3>
@@ -422,6 +512,16 @@ export default function AdminDashboard() {
                           <div className="flex items-center gap-1.5">
                             <strong className="text-[#CFCFCF]">{t("adminPage.startDate")}:</strong> 
                             <span>{dateStr || '-'}</span>
+                            {event.startTime && (
+                              <span className="text-[#7A7A7A] ml-1">
+                                ({event.startTime} - {event.endTime || ''})
+                              </span>
+                            )}
+                            {event.totalHours && (
+                              <span className="text-accent/80 font-mono text-[11px] ml-1">
+                                [{event.totalHours}h]
+                              </span>
+                            )}
                           </div>
                           <div className="flex items-start gap-1.5">
                             <strong className="text-[#CFCFCF] shrink-0">{t("adminPage.scheduleText")}:</strong> 
@@ -458,11 +558,17 @@ export default function AdminDashboard() {
                         {/* Ações por Ícones Elegantes com Tooltips */}
                         <div className="flex items-center gap-2">
                           <button 
+                            onClick={() => setSelectedEventForStudents(event)}
                             title={t("adminPage.viewStudents")}
                             aria-label={t("adminPage.viewStudents")}
-                            className="p-2.5 rounded-[2px] border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent transition-colors flex items-center justify-center"
+                            className="p-2.5 rounded-[2px] border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent transition-colors flex items-center justify-center relative group"
                           >
                             <Users className="w-4 h-4" />
+                            {event.enrolledCount > 0 && (
+                              <span className="absolute -top-1.5 -right-1.5 bg-accent text-primary text-[9px] font-bold font-mono px-1 rounded-full">
+                                {event.enrolledCount}
+                              </span>
+                            )}
                           </button>
 
                           <button 
@@ -492,6 +598,17 @@ export default function AdminDashboard() {
           </div>
         </div>
       </main>
+
+      {/* Modal de Gestão de Alunos */}
+      <AnimatePresence>
+        {selectedEventForStudents && (
+          <StudentsModal 
+            event={selectedEventForStudents} 
+            onClose={() => setSelectedEventForStudents(null)} 
+            onEventUpdated={fetchEvents} 
+          />
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>

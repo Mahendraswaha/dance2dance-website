@@ -132,6 +132,8 @@ export default function AgendaPage() {
           userId: currentUser.uid || 'unknown',
           userName: currentUser.profile?.nome || currentUser.email || 'unknown',
           userEmail: currentUser.email || 'unknown',
+          userPhone: currentUser.profile?.telefone || '',
+          userRestrictions: currentUser.profile?.restricoes || '',
           status: finalStatus,
           createdAt: new Date().toISOString()
         });
@@ -273,12 +275,17 @@ export default function AgendaPage() {
                     <div className="flex-1 flex flex-col w-full">
                       
                       {/* Topo: Badge (ocupa exatos 32px de altura para empurrar o Titulo) */}
-                      <div className="h-[32px] flex items-start">
+                      <div className="h-[32px] flex items-center justify-between">
                         <div className="inline-flex items-center justify-center bg-[#1E1E24] px-2 py-1 rounded-[2px] pr-[calc(0.5rem-2px)]">
                           <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] font-bold ml-[2px]">
                             {badgeText}
                           </span>
                         </div>
+                        {event.instructor && (
+                          <span className="font-heading text-[10px] text-[#7A7A7A] uppercase tracking-wider">
+                            {t("agendaPage.instructor", "Instrutor")}: <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
+                          </span>
+                        )}
                       </div>
 
                       {/* Linha do Meio: Titulo (Esq) + Botao (Dir) */}

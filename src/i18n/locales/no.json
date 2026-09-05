@@ -874,7 +874,8 @@
     "empty": "Ingen arrangementer funnet for øyeblikket.",
     "addToCalendar": "Legg til i kalender",
     "confirmCancel": "Er du sikker på at du vil avbryte påmeldingen/ventelisten for dette arrangementet?",
-    "cancelError": "Feil ved avbestilling: "
+    "cancelError": "Feil ved avbestilling: ",
+    "instructor": "Instruktør"
   },
   "adminPage": {
     "adminTitle": "Administrasjonspanel",
@@ -903,6 +904,23 @@
     "empty": "Ingen arrangementer opprettet ennå.",
     "confirmDelete": "Er du sikker på at du vil slette dette arrangementet permanent?",
     "deleteError": "Feil ved sletting.",
-    "saveError": "Feil ved lagring av arrangement."
+    "saveError": "Feil ved lagring av arrangement.",
+    "instructor": "Instruktør / Lærer",
+    "startTime": "Starttid",
+    "endTime": "Sluttid",
+    "totalHours": "Timer (t)",
+    "studentsModal": {
+      "enrolledTab": "Påmeldte",
+      "waitlistTab": "Venteliste",
+      "noEnrolled": "Ingen påmeldte deltakere ennå på dette kurset.",
+      "noWaitlist": "Ingen på venteliste for øyeblikket.",
+      "copyEmails": "Kopier E-poster",
+      "emailsCopied": "E-poster kopiert!",
+      "exportCsv": "Eksporter CSV",
+      "promote": "Flytt til Påmeldte",
+      "remove": "Fjern",
+      "confirmPromote": "Flytte denne deltakeren fra venteliste til påmeldt?",
+      "confirmRemove": "Er du sikker på at du vil fjerne denne deltakeren fra kurset?"
+    }
   }
 }

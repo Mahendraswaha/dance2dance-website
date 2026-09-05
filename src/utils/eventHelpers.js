@@ -1,9 +1,8 @@
 /**
  * eventHelpers.js
- * Centralized utility functions for localized event handling and routing.
+ * Centralized utility functions for localized event handling, routing, and calendar generation.
  */
 
-// Fallback chain based on requested language
 const FALLBACK_CHAINS = {
   no: ['no', 'en', 'pt'],
   en: ['en', 'no', 'pt'],
@@ -54,7 +53,6 @@ export function getEventCategory(event) {
     return event.category;
   }
 
-  // Fallback: check all available title strings
   const combinedTitles = [
     event.title_no,
     event.title_en,
@@ -94,7 +92,6 @@ export function getEventRoute(event) {
     return '/biostretch/aulas-regulares';
   }
 
-  // Be The Dance routes
   if (combined.includes('water') || combined.includes('vann')) return '/be-the-dance/be-water';
   if (combined.includes('balance') || combined.includes('balanse')) return '/be-the-dance/be-balance';
   if (combined.includes('total')) return '/be-the-dance/be-total';
@@ -111,17 +108,29 @@ export function generateGoogleCalendarUrl(event, lang = 'en') {
 
   let datesParam = '';
   if (event.startDate) {
-    // Standard format YYYYMMDD
-    const cleanDate = event.startDate.replace(/-/g, '');
-    // Default 10:00 to 12:00 if not specified
-    datesParam = `${cleanDate}T100000Z/${cleanDate}T120000Z`;
+    const cleanStartDate = event.startDate.replace(/-/g, '');
+    const cleanEndDate = (event.endDate || event.startDate).replace(/-/g, '');
+    
+    // Format start and end time (default to 18:00 to 20:00 if not specified)
+    const startTimeClean = (event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (event.endTime || '20:00').replace(/:/g, '') + '00';
+    
+    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanEndDate}T${endTimeClean}`;
   }
+
+  const instructorText = event.instructor ? `Instructor: ${event.instructor}` : 'Instructor: Safia Valente';
+  const fullDetails = [
+    `Dance 2 Dance - ${title}`,
+    instructorText,
+    event.totalHours ? `Total Workload: ${event.totalHours}h` : '',
+    scheduleDetails
+  ].filter(Boolean).join('\n');
 
   const url = new URL('https://calendar.google.com/calendar/render');
   url.searchParams.set('action', 'TEMPLATE');
-  url.searchParams.set('text', `Dance 2 Dance - ${title}`);
+  url.searchParams.set('text', `Dance 2 Dance: ${title}`);
   if (datesParam) url.searchParams.set('dates', datesParam);
-  url.searchParams.set('details', scheduleDetails || 'Workshop Dance 2 Dance');
+  url.searchParams.set('details', fullDetails);
   if (location) url.searchParams.set('location', location);
 
   return url.toString();
