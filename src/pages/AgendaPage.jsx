@@ -278,9 +278,11 @@ export default function AgendaPage() {
                           {badgeText}
                         </span>
                       </div>
-                      <h2 className="font-drama text-3xl md:text-4xl text-[#F0EDE8]">
-                        {event.title}
-                      </h2>
+                      <Link to={getDetailsLink(event.title)} className="inline-block group-hover:text-accent transition-colors">
+                        <h2 className="font-drama text-3xl md:text-4xl text-[#F0EDE8] group-hover:text-accent transition-colors">
+                          {event.title}
+                        </h2>
+                      </Link>
                       <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm">
                         <MapPin className="w-4 h-4 text-accent shrink-0" />
                         <span>{event.location}</span>
@@ -288,13 +290,7 @@ export default function AgendaPage() {
                     </div>
 
                     {/* Coluna Direita: Vagas e Inscrição */}
-                    <div className="w-full md:w-auto shrink-0 flex flex-col items-start md:items-end gap-4 border-t md:border-t-0 border-[#1A1A24] pt-6 md:pt-0 pl-0 md:pl-6">
-                      <Link 
-                        to={getDetailsLink(event.title)}
-                        className="font-heading text-[10px] uppercase tracking-[2px] font-semibold text-accent hover:text-[#F0EDE8] transition-colors border-b border-accent/30 pb-0.5"
-                      >
-                        DETALHES
-                      </Link>
+                    <div className="w-full md:w-auto shrink-0 flex flex-col items-center justify-center gap-3 border-t md:border-t-0 border-[#1A1A24] pt-6 md:pt-0 md:pl-6 min-w-[200px]">
 
                       {userStatus === 'enrolled' ? (
                         <div className="flex flex-col items-center gap-2">
@@ -315,11 +311,11 @@ export default function AgendaPage() {
                           </button>
                         </div>
                       ) : (
-                        <div className="flex flex-col items-start md:items-end gap-2 w-full">
+                        <div className="flex flex-col items-center gap-2 w-full">
                           <button 
                             onClick={() => handleEnroll(event.id, isFull)}
                             disabled={actionLoading === event.id}
-                            className={`w-full md:w-auto btn-magnetic font-heading text-[10px] uppercase tracking-[2px] font-semibold py-2.5 px-6 transition-colors duration-300 rounded-full ${
+                            className={`w-full btn-magnetic font-heading text-[10px] uppercase tracking-[2px] font-semibold py-3 px-8 transition-colors duration-300 rounded-full ${
                               isFull 
                                 ? 'border border-[#333333] text-[#F0EDE8] hover:border-accent hover:text-accent' 
                                 : 'bg-accent text-primary hover:bg-[#F0EDE8]'
