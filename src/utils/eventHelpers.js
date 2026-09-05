@@ -156,6 +156,7 @@ export function getEventRoute(event) {
   }
 
   // Be The Dance
+  if (normalized.includes('company') || normalized.includes('empresa') || normalized.includes('corporate') || normalized.includes('bedrift')) return '/be-the-dance/empresas';
   if (normalized.includes('water') || normalized.includes('vann')) return '/be-the-dance/be-water';
   if (normalized.includes('balance') || normalized.includes('balanse')) return '/be-the-dance/be-balance';
   if (normalized.includes('total')) return '/be-the-dance/be-total';

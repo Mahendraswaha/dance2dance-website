@@ -18,7 +18,8 @@ const EVENT_PRESETS = {
       "Be Total",
       "Be Stillness",
       "Be The Dance PRO",
-      "Be The Dance DAY"
+      "Be The Dance DAY",
+      "Be the Dance in Company"
     ],
     en: [
       "Be Water",
@@ -26,7 +27,8 @@ const EVENT_PRESETS = {
       "Be Total",
       "Be Stillness",
       "Be The Dance PRO",
-      "Be The Dance DAY"
+      "Be The Dance DAY",
+      "Be the Dance in Company"
     ],
     pt: [
       "Be Water",
@@ -34,7 +36,8 @@ const EVENT_PRESETS = {
       "Be Total",
       "Be Stillness",
       "Be The Dance PRO",
-      "Be The Dance DAY"
+      "Be The Dance DAY",
+      "Be the Dance in Company"
     ],
     routes: [
       "/be-the-dance/be-water",
@@ -42,7 +45,8 @@ const EVENT_PRESETS = {
       "/be-the-dance/be-total",
       "/be-the-dance/be-stillness",
       "/be-the-dance/be-the-dance-pro",
-      "/be-the-dance/be-the-dance-day"
+      "/be-the-dance/be-the-dance-day",
+      "/be-the-dance/empresas"
     ]
   },
   biostretch: {

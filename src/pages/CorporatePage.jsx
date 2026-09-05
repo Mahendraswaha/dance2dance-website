@@ -186,9 +186,11 @@ export default function CorporatePage() {
                       </span>
                     </div>
 
-                    <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] mb-4 tracking-tight leading-snug group-hover:text-accent transition-colors duration-500">
-                      {pillar.title}
-                    </h3>
+                    <div className="min-h-[3.75rem] md:min-h-[4.75rem] flex flex-col justify-start mb-4">
+                      <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] tracking-tight leading-snug group-hover:text-accent transition-colors duration-500">
+                        {pillar.title}
+                      </h3>
+                    </div>
 
                     <div className="w-10 h-[1px] bg-accent/40 mb-8 group-hover:w-16 transition-all duration-500" />
 
