@@ -256,7 +256,7 @@ export default function AgendaPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ delay: index * 0.05 }}
-                    className="bg-[#0D0D12] border border-[#1A1A24] hover:border-[#2A2A35] transition-colors rounded-[2px] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-8"
+                    className="bg-[#121214] border border-transparent hover:bg-[#161618] transition-colors rounded-[2px] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-8"
                   >
                     {/* Coluna Esquerda: Datas */}
                     <div className="w-full md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-[#1A1A24] pb-6 md:pb-0 pr-6">
@@ -272,18 +272,18 @@ export default function AgendaPage() {
                     </div>
 
                     {/* Coluna Central: Info */}
-                    <div className="flex-1 space-y-3">
-                      <div className="inline-block bg-[#16161D] px-2 py-1 rounded-[2px]">
-                        <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#CFCFCF] font-bold">
+                    <div className="flex-1 flex flex-col items-start gap-2">
+                      <div className="inline-block bg-[#1E1E24] px-2 py-1 rounded-[2px] mb-1">
+                        <span className="font-heading text-[9px] uppercase tracking-[2px] text-[#9A9A9A] font-bold">
                           {badgeText}
                         </span>
                       </div>
-                      <Link to={getDetailsLink(event.title)} className="inline-block group-hover:text-accent transition-colors">
-                        <h2 className="font-drama text-3xl md:text-4xl text-[#F0EDE8] group-hover:text-accent transition-colors">
+                      <Link to={getDetailsLink(event.title)} className="block group-hover:text-accent transition-colors">
+                        <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover:text-accent transition-colors">
                           {event.title}
                         </h2>
                       </Link>
-                      <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm">
+                      <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm mt-1">
                         <MapPin className="w-4 h-4 text-accent shrink-0" />
                         <span>{event.location}</span>
                       </div>
