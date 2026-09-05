@@ -23,6 +23,8 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
 
+import CookieBanner from './components/CookieBanner';
+
 export default function App() {
   return (
     <AuthProvider>
@@ -48,6 +50,7 @@ export default function App() {
         <Route path="/termos" element={<TermsPage />} />
         <Route path="/privacidade" element={<PrivacyPolicyPage />} />
       </Routes>
+      <CookieBanner />
     </BrowserRouter>
     </AuthProvider>
   );

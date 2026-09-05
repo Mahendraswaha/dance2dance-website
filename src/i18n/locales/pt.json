@@ -814,6 +814,10 @@
         {
           "title": "7. Seus Direitos",
           "content": "<p>Você possui diversos direitos em relação aos seus dados, incluindo: direito de acesso, retificação, exclusão de dados sob nossa posse, e direito de retirar o consentimento. Para exercer esses direitos, entre em contato conosco.</p>"
+        },
+        {
+          "title": "8. Prevenção de Spam e Serviços de Terceiros",
+          "content": "<p>Para proteger nossos formulários e evitar mensagens de spam geradas por robôs, utilizamos o serviço Cloudflare Turnstile. Ao navegar e utilizar nosso site, você reconhece e concorda que a operação deste serviço de proteção invisível está sujeita ao <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Adendo de Privacidade do Cloudflare Turnstile</a>.</p>"
         }
       ]
     },

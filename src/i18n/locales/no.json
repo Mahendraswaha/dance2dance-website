@@ -814,6 +814,10 @@
         {
           "title": "7. Dine Rettigheter",
           "content": "<p>Du har rett til innsyn, retting, sletting, og til å trekke tilbake samtykke. Kontakt oss for å utøve disse rettighetene.</p>"
+        },
+        {
+          "title": "8. Spamforebygging og tredjepartstjenester",
+          "content": "<p>For å beskytte skjemaene våre og forhindre spam-meldinger generert av roboter, bruker vi Cloudflare Turnstile-tjenesten. Ved å surfe og bruke nettstedet vårt, anerkjenner og godtar du at driften av denne usynlige beskyttelsestjenesten er underlagt <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Cloudflare Turnstile Privacy Addendum</a>.</p>"
         }
       ]
     },
