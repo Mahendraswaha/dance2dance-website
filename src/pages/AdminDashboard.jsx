@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function AdminDashboard() {
+  const { t } = useTranslation();
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
@@ -118,7 +119,7 @@ export default function AdminDashboard() {
       <Navbar />
       
       <main className="flex-grow pt-32 pb-24 px-6 max-w-6xl mx-auto w-full relative z-10">
-        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-12">Painel Administrativo</h1>
+        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-12">{t("adminPage.adminTitle")}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Coluna 1: Formulário de Criação */}
@@ -141,53 +142,92 @@ export default function AdminDashboard() {
 
                 <div>
                   <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Título do Evento ({activeLangTab.toUpperCase()})</label>
-                  <input list="event-titles" required={activeLangTab === 'en'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder="Selecione ou digite..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+                  <input list="event-titles" required={activeLangTab === 'en'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder={t("adminPage.selectOrType")} className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                   
                   <datalist id="event-titles">
-                    {/* Be the Dance */}
-                    <option value="Be Water" />
-                    <option value="Be Balance" />
-                    <option value="Be Total" />
-                    <option value="Be Stillness" />
-                    <option value="Be The Dance PRO" />
-                    <option value="Be The Dance DAY" />
-                    
-                    {/* Biostretch */}
-                    <option value="Uma Melhor Postura" />
-                    <option value="Aprendendo a Relaxar" />
-                    <option value="Alongar, Respirar e Meditar" />
-                    <option value="Transformando Hábitos" />
-                    <option value="Movimentos Diários para Prevenir o Stress" />
-                    <option value="Recuperando o Foco" />
-                    <option value="Biostretch: Sessão Individual" />
-                    <option value="Biostretch: Aulas Regulares" />
-                    <option value="Biostretch: Corporate" />
+                    {activeLangTab === 'pt' && (
+                      <>
+                        <option value="Be Water" />
+                        <option value="Be Balance" />
+                        <option value="Be Total" />
+                        <option value="Be Stillness" />
+                        <option value="Be The Dance PRO" />
+                        <option value="Be The Dance DAY" />
+                        <option value="Uma Melhor Postura" />
+                        <option value="Aprendendo a Relaxar" />
+                        <option value="Alongar, Respirar e Meditar" />
+                        <option value="Transformando H\u00E1bitos" />
+                        <option value="Movimentos Di\u00E1rios para Prevenir o Stress" />
+                        <option value="Recuperando o Foco" />
+                        <option value="Biostretch: Sess\u00E3o Individual" />
+                        <option value="Biostretch: Aulas Regulares" />
+                        <option value="Biostretch: Corporate" />
+                      </>
+                    )}
+                    {activeLangTab === 'en' && (
+                      <>
+                        <option value="Be Water" />
+                        <option value="Be Balance" />
+                        <option value="Be Total" />
+                        <option value="Be Stillness" />
+                        <option value="Be The Dance PRO" />
+                        <option value="Be The Dance DAY" />
+                        <option value="A Better Posture" />
+                        <option value="Learning to Relax" />
+                        <option value="Stretch, Breathe and Meditate" />
+                        <option value="Transforming Habits" />
+                        <option value="Daily Movements to Prevent Stress" />
+                        <option value="Regaining Focus" />
+                        <option value="Biostretch: Individual Session" />
+                        <option value="Biostretch: Regular Classes" />
+                        <option value="Biostretch: Corporate" />
+                      </>
+                    )}
+                    {activeLangTab === 'no' && (
+                      <>
+                        <option value="Be Water" />
+                        <option value="Be Balance" />
+                        <option value="Be Total" />
+                        <option value="Be Stillness" />
+                        <option value="Be The Dance PRO" />
+                        <option value="Be The Dance DAY" />
+                        <option value="En Bedre Holdning" />
+                        <option value="L\u00E6re \u00E5 Slappe Av" />
+                        <option value="Strekk, Pust og Mediter" />
+                        <option value="Transformere Vaner" />
+                        <option value="Daglige Bevegelser for \u00E5 Forhindre Stress" />
+                        <option value="Gjenvinne Fokus" />
+                        <option value="Biostretch: Individuell \u00D8kt" />
+                        <option value="Biostretch: Faste Klasser" />
+                        <option value="Biostretch: Bedrift" />
+                      </>
+                    )}
                   </datalist>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Data de Início (Global)</label>
+                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">{t("adminPage.startDate")} {t("adminPage.global")}</label>
                     <input required type="date" name="startDate" value={formData.startDate} onChange={handleChange} className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                   </div>
                   <div>
-                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Total Vagas (Global)</label>
+                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">{t("adminPage.totalSpots")} {t("adminPage.global")}</label>
                     <input required type="number" name="totalSpots" value={formData.totalSpots} onChange={handleChange} min="1" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Texto Visível: Datas / Horários ({activeLangTab.toUpperCase()})</label>
-                  <textarea required={activeLangTab === 'en'} name={`scheduleDetails_${activeLangTab}`} value={formData[`scheduleDetails_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: 9 sextas-feiras..." rows="3" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light resize-none" />
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">{t("adminPage.scheduleText")} ({activeLangTab.toUpperCase()})</label>
+                  <textarea required={activeLangTab === 'en'} name={`scheduleDetails_${activeLangTab}`} value={formData[`scheduleDetails_${activeLangTab}`]} onChange={handleChange} placeholder={t("adminPage.exDates")} rows="3" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light resize-none" />
                 </div>
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Local / Estúdio ({activeLangTab.toUpperCase()})</label>
-                  <input required={activeLangTab === 'en'} type="text" name={`location_${activeLangTab}`} value={formData[`location_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: Rommen Skole" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">{t("adminPage.location")} ({activeLangTab.toUpperCase()})</label>
+                  <input required={activeLangTab === 'en'} type="text" name={`location_${activeLangTab}`} value={formData[`location_${activeLangTab}`]} onChange={handleChange} placeholder={t("adminPage.exLocation")} className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                 </div>
 
                 <div className="flex gap-2 mt-4">
                 <button type="submit" className="flex-1 bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px]">
-                  {editingId ? 'Salvar Alterações' : 'Publicar Evento'}
+                  {editingId ? '{t("adminPage.save")}' : '{t("adminPage.publish")}'}
                 </button>
                 {editingId && (
                   <button type="button" onClick={handleCancelEdit} className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[11px] uppercase tracking-[3px] font-semibold px-4 rounded-[2px] transition-colors">
@@ -200,7 +240,7 @@ export default function AdminDashboard() {
 
           {/* Coluna 2: Lista de Eventos */}
           <div className="lg:col-span-2">
-            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">Agenda Ativa</h2>
+            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">{t("adminPage.activeAgenda")}</h2>
             {loading ? (
               <p className="text-[#9A9A9A]">Carregando...</p>
             ) : events.length === 0 ? (

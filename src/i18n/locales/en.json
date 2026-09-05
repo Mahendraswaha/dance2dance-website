@@ -868,5 +868,27 @@
     "spotsLeftOne": "1 spot left",
     "loading": "LOADING SCHEDULE...",
     "empty": "No dates registered in this category at the moment."
+  },
+  "adminPage": {
+    "adminTitle": "Administrative Panel",
+    "activeAgenda": "Active Agenda",
+    "createNew": "Create New Event",
+    "eventTitle": "EVENT TITLE",
+    "startDate": "START DATE",
+    "global": "(GLOBAL)",
+    "totalSpots": "TOTAL SPOTS",
+    "scheduleText": "VISIBLE TEXT: DATES / TIMES",
+    "location": "LOCATION / STUDIO",
+    "publish": "PUBLISH EVENT",
+    "save": "SAVE CHANGES",
+    "cancel": "CANCEL",
+    "viewStudents": "VIEW STUDENTS",
+    "edit": "EDIT",
+    "delete": "DELETE",
+    "spots": "SPOTS",
+    "waitlist": "WAITLIST",
+    "selectOrType": "Select or type...",
+    "exDates": "Ex: 9 fridays...",
+    "exLocation": "Ex: Rommen Skole"
   }
 }

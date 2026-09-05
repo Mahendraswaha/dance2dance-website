@@ -868,5 +868,27 @@
     "spotsLeftOne": "Resta 1 vaga",
     "loading": "CARREGANDO AGENDA...",
     "empty": "Nenhuma data cadastrada nesta categoria no momento."
+  },
+  "adminPage": {
+    "adminTitle": "Painel Administrativo",
+    "activeAgenda": "Agenda Ativa",
+    "createNew": "Criar Novo Evento",
+    "eventTitle": "TÍTULO DO EVENTO",
+    "startDate": "DATA DE INÍCIO",
+    "global": "(GLOBAL)",
+    "totalSpots": "TOTAL VAGAS",
+    "scheduleText": "TEXTO VISÍVEL: DATAS / HORÁRIOS",
+    "location": "LOCAL / ESTÚDIO",
+    "publish": "PUBLICAR EVENTO",
+    "save": "SALVAR ALTERAÇÕES",
+    "cancel": "CANCELAR",
+    "viewStudents": "VER ALUNOS",
+    "edit": "EDITAR",
+    "delete": "EXCLUIR",
+    "spots": "VAGAS",
+    "waitlist": "ESPERA",
+    "selectOrType": "Selecione ou digite...",
+    "exDates": "Ex: 9 sextas-feiras...",
+    "exLocation": "Ex: Rommen Skole"
   }
 }

@@ -868,5 +868,27 @@
     "spotsLeftOne": "1 plass igjen",
     "loading": "LASTER INN TIDSPLAN...",
     "empty": "Ingen datoer registrert i denne kategorien for øyeblikket."
+  },
+  "adminPage": {
+    "adminTitle": "Administrativt Panel",
+    "activeAgenda": "Aktiv Agenda",
+    "createNew": "Opprett Ny Hendelse",
+    "eventTitle": "HENDELSE TITTEL",
+    "startDate": "STARTDATO",
+    "global": "(GLOBAL)",
+    "totalSpots": "TOTALT ANTALL PLASSER",
+    "scheduleText": "SYNLIG TEKST: DATOER / TIDER",
+    "location": "STED / STUDIO",
+    "publish": "PUBLISER HENDELSE",
+    "save": "LAGRE ENDRINGER",
+    "cancel": "AVBRYT",
+    "viewStudents": "SE ELEVER",
+    "edit": "REDIGER",
+    "delete": "SLETT",
+    "spots": "PLASSER",
+    "waitlist": "VENTELISTE",
+    "selectOrType": "Velg eller skriv...",
+    "exDates": "Eks: 9 fredager...",
+    "exLocation": "Eks: Rommen Skole"
   }
 }

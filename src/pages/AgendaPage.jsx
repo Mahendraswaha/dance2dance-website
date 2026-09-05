@@ -48,8 +48,9 @@ export default function AgendaPage() {
   }, [currentUser]);
 
   // Função para inferir a categoria com base no título
-  function getCategory(title) {
-    const t = title.toLowerCase();
+  function getCategory(event) {
+    const titleStr = typeof event === 'string' ? event : (event.title_pt || event.title_en || event.title || '');
+    const t = titleStr.toLowerCase();
     if (t.includes('biostretch') || t.includes('postura') || t.includes('relaxar') || t.includes('alongar') || t.includes('hábitos') || t.includes('stress') || t.includes('foco')) {
       return 'biostretch';
     }
@@ -174,7 +175,7 @@ export default function AgendaPage() {
 
   const filteredEvents = events.filter(ev => {
     if (filter === 'all') return true;
-    return getCategory(ev.title) === filter;
+    return getCategory(ev) === filter;
   });
 
   return (
@@ -236,7 +237,7 @@ export default function AgendaPage() {
           <div className="space-y-6">
             <AnimatePresence>
               {filteredEvents.map((event, index) => {
-                const category = getCategory(event.title_en || event.title || event.title_pt || '');
+                const category = getCategory(event);
                 const badgeText = category === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH';
                 
                 const currentLang = i18n.language || 'en';
@@ -294,7 +295,7 @@ export default function AgendaPage() {
 
                       {/* Linha do Meio: Titulo (Esq) + Botao (Dir) */}
                       <div className="flex flex-col md:flex-row justify-between items-start gap-4 w-full">
-                        <Link to={getDetailsLink(event.title || event.title_pt)} className="block group-hover:text-accent transition-colors">
+                        <Link to={getDetailsLink(event)} className="block group-hover:text-accent transition-colors">
                           <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover:text-accent transition-colors">
                             {dispTitle}
                           </h2>
