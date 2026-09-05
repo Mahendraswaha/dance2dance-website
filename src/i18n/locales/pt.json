@@ -965,6 +965,8 @@
     "countryLabel": "País (Opcional)",
     "countryPlaceholder": "Brasil, Noruega...",
     "neighborhoodLabel": "Bairro (Opcional)",
-    "neighborhoodPlaceholder": "Seu bairro"
+    "neighborhoodPlaceholder": "Seu bairro",
+    "emailPlaceholder": "seuemail@exemplo.com",
+    "phonePlaceholder": "+55 ... / +47 ..."
   }
 }

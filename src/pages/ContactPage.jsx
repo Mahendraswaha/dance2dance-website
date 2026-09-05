@@ -167,7 +167,7 @@ export default function ContactPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="seuemail@exemplo.com"
+                    placeholder={t('contactPage.emailPlaceholder', 'seuemail@exemplo.com')}
                     className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
                   />
                 </div>
@@ -197,12 +197,12 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+47 ... / +55 ..."
+                      placeholder={t('contactPage.phonePlaceholder', '+47 ... / +55 ...')}
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
                     />
                   </div>
                 </div>
-                {/* Endereço */}
+                {/* Endereço e Cidade (Lado a Lado) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
@@ -217,11 +217,7 @@ export default function ContactPage() {
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
                     />
                   </div>
-                  
-                  
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                       {t('contactPage.cityLabel', 'Cidade (Opcional)')}

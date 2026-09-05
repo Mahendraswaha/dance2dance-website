@@ -961,10 +961,12 @@
     "cityLabel": "City (Optional)",
     "cityPlaceholder": "Your city",
     "zipLabel": "ZIP / Postal Code (Optional)",
-    "zipPlaceholder": "00000",
+    "zipPlaceholder": "Postal / ZIP code (e.g. 0190)",
     "countryLabel": "Country (Optional)",
-    "countryPlaceholder": "Brazil, Norway...",
+    "countryPlaceholder": "Norway, Brazil...",
     "neighborhoodLabel": "Neighborhood (Optional)",
-    "neighborhoodPlaceholder": "Your neighborhood"
+    "neighborhoodPlaceholder": "Your neighborhood",
+    "emailPlaceholder": "your.email@example.com",
+    "phonePlaceholder": "+47 ... / +55 ..."
   }
 }

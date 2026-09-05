@@ -957,14 +957,16 @@
     "bannerDesc": "Sjekk våre kommende datoer og sikre din plass direkte i vår offisielle timeplan.",
     "bannerCta": "Utforsk Timeplan",
     "addressLabel": "Adresse (Valgfritt)",
-    "addressPlaceholder": "Gatenavn, nummer",
+    "addressPlaceholder": "Gatenavn, husnummer",
     "cityLabel": "By (Valgfritt)",
     "cityPlaceholder": "Din by",
     "zipLabel": "Postnummer (Valgfritt)",
-    "zipPlaceholder": "0000",
+    "zipPlaceholder": "Postnummer (f.eks. 0190)",
     "countryLabel": "Land (Valgfritt)",
-    "countryPlaceholder": "Brasil, Norge...",
+    "countryPlaceholder": "Norge, Brasil...",
     "neighborhoodLabel": "Nabolag (Valgfritt)",
-    "neighborhoodPlaceholder": "Ditt nabolag"
+    "neighborhoodPlaceholder": "Ditt nabolag",
+    "emailPlaceholder": "din.epost@eksempel.no",
+    "phonePlaceholder": "+47 ... / +55 ..."
   }
 }
