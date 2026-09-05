@@ -140,13 +140,34 @@ export default function AdminDashboard() {
                 </div>
 
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Ttulo do Evento ({activeLangTab.toUpperCase()})</label>
-                  <input required={activeLangTab === 'en'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder="Ttulo..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Título do Evento ({activeLangTab.toUpperCase()})</label>
+                  <input list="event-titles" required={activeLangTab === 'en'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder="Selecione ou digite..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+                  
+                  <datalist id="event-titles">
+                    {/* Be the Dance */}
+                    <option value="Be Water" />
+                    <option value="Be Balance" />
+                    <option value="Be Total" />
+                    <option value="Be Stillness" />
+                    <option value="Be The Dance PRO" />
+                    <option value="Be The Dance DAY" />
+                    
+                    {/* Biostretch */}
+                    <option value="Uma Melhor Postura" />
+                    <option value="Aprendendo a Relaxar" />
+                    <option value="Alongar, Respirar e Meditar" />
+                    <option value="Transformando Hábitos" />
+                    <option value="Movimentos Diários para Prevenir o Stress" />
+                    <option value="Recuperando o Foco" />
+                    <option value="Biostretch: Sessão Individual" />
+                    <option value="Biostretch: Aulas Regulares" />
+                    <option value="Biostretch: Corporate" />
+                  </datalist>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Data de Incio (Global)</label>
+                    <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Data de Início (Global)</label>
                     <input required type="date" name="startDate" value={formData.startDate} onChange={handleChange} className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                   </div>
                   <div>
@@ -156,13 +177,14 @@ export default function AdminDashboard() {
                 </div>
 
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Texto Visvel: Datas/Horǭrios ({activeLangTab.toUpperCase()})</label>
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Texto Visível: Datas / Horários ({activeLangTab.toUpperCase()})</label>
                   <textarea required={activeLangTab === 'en'} name={`scheduleDetails_${activeLangTab}`} value={formData[`scheduleDetails_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: 9 sextas-feiras..." rows="3" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light resize-none" />
                 </div>
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Local / Estǧdio ({activeLangTab.toUpperCase()})</label>
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Local / Estúdio ({activeLangTab.toUpperCase()})</label>
                   <input required={activeLangTab === 'en'} type="text" name={`location_${activeLangTab}`} value={formData[`location_${activeLangTab}`]} onChange={handleChange} placeholder="Ex: Rommen Skole" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                 </div>
+
                 <div className="flex gap-2 mt-4">
                 <button type="submit" className="flex-1 bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px]">
                   {editingId ? 'Salvar Alterações' : 'Publicar Evento'}
