@@ -1,3 +1,10 @@
+
+function formatCvText(text) {
+  if (typeof text !== 'string') return text;
+  return text
+    .replace(/text-\[1\.2em\]/g, 'text-[1.28em]')
+    .replace(/Dance2Dance/g, 'Dance<span class="text-accent text-[1.28em] font-normal">2</span>Dance');
+}
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -115,7 +122,7 @@ export default function CurriculumPage() {
                   >
                     <p 
                       className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}
-                      dangerouslySetInnerHTML={{ __html: p }}
+                      dangerouslySetInnerHTML={{ __html: formatCvText(p) }}
                     />
                   </div>
                 </div>
