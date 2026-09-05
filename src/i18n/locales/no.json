@@ -963,6 +963,8 @@
     "zipLabel": "Postnummer (Valgfritt)",
     "zipPlaceholder": "0000",
     "countryLabel": "Land (Valgfritt)",
-    "countryPlaceholder": "Brasil, Norge..."
+    "countryPlaceholder": "Brasil, Norge...",
+    "neighborhoodLabel": "Nabolag (Valgfritt)",
+    "neighborhoodPlaceholder": "Ditt nabolag"
   }
 }

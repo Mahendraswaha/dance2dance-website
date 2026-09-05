@@ -963,6 +963,8 @@
     "zipLabel": "CEP / Código Postal (Opcional)",
     "zipPlaceholder": "00000-000",
     "countryLabel": "País (Opcional)",
-    "countryPlaceholder": "Brasil, Noruega..."
+    "countryPlaceholder": "Brasil, Noruega...",
+    "neighborhoodLabel": "Bairro (Opcional)",
+    "neighborhoodPlaceholder": "Seu bairro"
   }
 }

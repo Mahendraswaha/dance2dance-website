@@ -14,6 +14,7 @@ export default function SignupPage() {
     phone: '',
     address: '',
     city: '',
+    neighborhood: '',
     zip: '',
     country: '',
     experiencia: '',
@@ -47,6 +48,7 @@ export default function SignupPage() {
         phone: formData.phone,
         address: formData.address,
         city: formData.city,
+        neighborhood: formData.neighborhood,
         zip: formData.zip,
         country: formData.country,
         telefone: formData.phone, // fallback
@@ -117,16 +119,20 @@ export default function SignupPage() {
                 <input required type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Nome da rua, número" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
               </div>
               <div>
+                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Bairro *</label>
+                <input required type="text" name="neighborhood" value={formData.neighborhood} onChange={handleChange} placeholder="Seu bairro" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+              </div>
+              <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Cidade *</label>
                 <input required type="text" name="city" value={formData.city} onChange={handleChange} placeholder="Sua cidade" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
               </div>
               <div>
-                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">País *</label>
-                <input required type="text" name="country" value={formData.country} onChange={handleChange} placeholder="Brasil, Noruega..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
-              </div>
-              <div>
                 <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">CEP / Código Postal *</label>
                 <input required type="text" name="zip" value={formData.zip} onChange={handleChange} placeholder="Ex: 0190 (Tøyen)" className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
+              </div>
+              <div>
+                <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">País *</label>
+                <input required type="text" name="country" value={formData.country} onChange={handleChange} placeholder="Brasil, Noruega..." className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
               </div>
               
               <div className="md:col-span-2">

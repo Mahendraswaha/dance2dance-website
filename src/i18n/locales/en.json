@@ -963,6 +963,8 @@
     "zipLabel": "ZIP / Postal Code (Optional)",
     "zipPlaceholder": "00000",
     "countryLabel": "Country (Optional)",
-    "countryPlaceholder": "Brazil, Norway..."
+    "countryPlaceholder": "Brazil, Norway...",
+    "neighborhoodLabel": "Neighborhood (Optional)",
+    "neighborhoodPlaceholder": "Your neighborhood"
   }
 }

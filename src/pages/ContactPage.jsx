@@ -22,6 +22,7 @@ export default function ContactPage() {
     phone: currentUser?.profile?.phone || '',
     address: currentUser?.profile?.address || '',
     city: currentUser?.profile?.city || '',
+    neighborhood: currentUser?.profile?.neighborhood || '',
     zip: currentUser?.profile?.zip || '',
     country: currentUser?.profile?.country || '',
     subject: isExecutiveMeeting ? 'reuniao-executiva' : 'geral',
@@ -37,6 +38,7 @@ export default function ContactPage() {
         phone: prev.phone || currentUser.profile?.phone || '',
         address: prev.address || currentUser.profile?.address || '',
         city: prev.city || currentUser.profile?.city || '',
+        neighborhood: prev.neighborhood || currentUser.profile?.neighborhood || '',
         zip: prev.zip || currentUser.profile?.zip || '',
         country: prev.country || currentUser.profile?.country || ''
       }));
@@ -216,6 +218,22 @@ export default function ContactPage() {
                     />
                   </div>
                   
+                  <div>
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                      {t('contactPage.neighborhoodLabel', 'Bairro (Opcional)')}
+                    </label>
+                    <input
+                      type="text"
+                      name="neighborhood"
+                      value={formData.neighborhood}
+                      onChange={handleChange}
+                      placeholder={t('contactPage.neighborhoodPlaceholder', 'Seu bairro')}
+                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm placeholder:text-[#555555]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                       {t('contactPage.cityLabel', 'Cidade (Opcional)')}
