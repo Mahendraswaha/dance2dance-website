@@ -5,7 +5,9 @@
     "agenda": "Agenda",
     "subscribe": "Inscreva-se",
     "login": "Entrar",
-    "signup": "Cadastre-se"
+    "signup": "Cadastre-se",
+    "hello": "Olá",
+    "logout": "Sair"
   },
   "hero": {
     "subtitle1": "O movimento encontra a",

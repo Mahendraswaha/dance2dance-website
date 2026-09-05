@@ -125,7 +125,7 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Coluna 1: Formulário de Criação */}
           <div className="lg:col-span-1 bg-[#0a0a0a] border border-[#222222] p-8 rounded-[2px]">
-            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">{editingId ? 'Editar Evento' : 'Criar Novo Evento'}</h2>
+            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">{editingId ? t('adminPage.edit') : t('adminPage.createNew')}</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 
                 {/* Abas de Idioma */}
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                 </div>
 
                 <div>
-                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">Título do Evento ({activeLangTab.toUpperCase()})</label>
+                  <label className="block font-heading text-xs uppercase tracking-[2px] text-[#CFCFCF] mb-2">{t("adminPage.eventTitle")} ({activeLangTab.toUpperCase()})</label>
                   <input list="event-titles" required={activeLangTab === 'en'} type="text" name={`title_${activeLangTab}`} value={formData[`title_${activeLangTab}`]} onChange={handleChange} placeholder={t("adminPage.selectOrType")} className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light" />
                   
                   <datalist id="event-titles">
@@ -228,12 +228,10 @@ export default function AdminDashboard() {
 
                 <div className="flex gap-2 mt-4">
                 <button type="submit" className="flex-1 bg-accent text-primary font-heading text-[11px] uppercase tracking-[3px] font-semibold py-4 hover:bg-[#F0EDE8] transition-colors duration-300 rounded-[2px]">
-                  {editingId ? '{t("adminPage.save")}' : '{t("adminPage.publish")}'}
+                  {editingId ? t("adminPage.save") : t("adminPage.publish")}
                 </button>
                 {editingId && (
-                  <button type="button" onClick={handleCancelEdit} className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[11px] uppercase tracking-[3px] font-semibold px-4 rounded-[2px] transition-colors">
-                    Cancelar
-                  </button>
+                  <button type="button" onClick={handleCancelEdit} className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[11px] uppercase tracking-[3px] font-semibold px-4 rounded-[2px] transition-colors">{t("adminPage.cancel")}</button>
                 )}
               </div>
             </form>
@@ -270,9 +268,7 @@ export default function AdminDashboard() {
                         <span className="font-sans text-xl text-[#F0EDE8]">{event.waitlistCount}</span>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <button className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[10px] uppercase tracking-[2px] font-semibold px-4 py-2 rounded-[2px] transition-colors">
-                          Ver Alunos
-                        </button>
+                        <button className="bg-transparent border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent font-heading text-[10px] uppercase tracking-[2px] font-semibold px-4 py-2 rounded-[2px] transition-colors">{t("adminPage.viewStudents")}</button>
                         <div className="flex gap-2">
                           <button onClick={() => handleEditClick(event)} className="flex-1 bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] font-heading text-[10px] uppercase tracking-[1px] font-semibold px-2 py-2 rounded-[2px] transition-colors">
                             Editar

@@ -109,14 +109,12 @@ const Navbar = () => {
               {currentUser ? (
                 <div className="hidden md:flex items-center gap-3">
                   <span className="font-heading text-xs text-[#9A9A9A]">
-                    Olá, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
+                    {t("nav.hello")}, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
                   </span>
                   <button 
                     onClick={() => { logout(); navigate('/'); }}
                     className="border border-[#333333] text-background hover:border-accent hover:text-accent px-4 py-2 rounded-full font-heading font-bold text-[10px] whitespace-nowrap transition-colors"
-                  >
-                    Sair
-                  </button>
+                  >{t("nav.logout")}</button>
                 </div>
               ) : (
                 <div className="hidden md:flex items-center gap-2">
@@ -188,9 +186,7 @@ const Navbar = () => {
               <button 
                 onClick={() => { logout(); setIsMobileMenuOpen(false); navigate('/'); }}
                 className="bg-transparent border border-[#333333] text-background hover:border-accent hover:text-accent px-6 py-4 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors"
-              >
-                Sair
-              </button>
+              >{t("nav.logout")}</button>
             </div>
           ) : (
             <div className="flex flex-col w-full gap-4">

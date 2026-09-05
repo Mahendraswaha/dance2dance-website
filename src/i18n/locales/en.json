@@ -5,7 +5,9 @@
     "agenda": "Schedule",
     "subscribe": "Subscribe",
     "login": "Login",
-    "signup": "Sign Up"
+    "signup": "Sign Up",
+    "hello": "Hello",
+    "logout": "Logout"
   },
   "hero": {
     "subtitle1": "Movement meets",

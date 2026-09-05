@@ -5,7 +5,9 @@
     "agenda": "Timeplan",
     "subscribe": "Meld deg på",
     "login": "Logg inn",
-    "signup": "Registrer deg"
+    "signup": "Registrer deg",
+    "hello": "Hei",
+    "logout": "Logg ut"
   },
   "hero": {
     "subtitle1": "Bevegelse møter",
