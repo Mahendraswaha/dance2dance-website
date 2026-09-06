@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download } from 'lucide-react';
 import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, downloadEventIcs, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
+import RegisteredUsersManager from '../components/admin/RegisteredUsersManager';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
 const EVENT_PRESETS = {
@@ -135,6 +136,7 @@ export default function AdminDashboard() {
   const [editingId, setEditingId] = useState(null);
   const [selectedEventForStudents, setSelectedEventForStudents] = useState(null);
   const [adminTab, setAdminTab] = useState('upcoming'); // 'upcoming' | 'past'
+  const [masterTab, setMasterTab] = useState('events'); // 'events' | 'users'
 
   // Tab order: NO -> EN -> PT
   const currentInitialTab = i18n.language === 'pt' ? 'pt' : (i18n.language === 'en' ? 'en' : 'no');
@@ -406,9 +408,44 @@ export default function AdminDashboard() {
       <Navbar />
       
       <main className="flex-grow pt-44 md:pt-48 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10">
-        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-8">{t("adminPage.adminTitle")}</h1>
+        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-6">{t("adminPage.adminTitle")}</h1>
 
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
+        {/* Abas Mestras do Painel: Eventos & Agenda vs Alunos & Usuários */}
+        <div className="flex items-center gap-3 mb-8 border-b border-[#222222] pb-4">
+          <button
+            type="button"
+            onClick={() => setMasterTab('events')}
+            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
+              masterTab === 'events'
+                ? 'bg-accent text-primary shadow-sm font-bold'
+                : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span>{t('adminPage.masterTabEvents', 'Eventos & Agenda')}</span>
+            <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+              masterTab === 'events' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#1A1A22] text-[#CFCFCF]'
+            }`}>
+              {events.length}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMasterTab('users')}
+            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
+              masterTab === 'users'
+                ? 'bg-accent text-primary shadow-sm font-bold'
+                : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
+            }`}
+          >
+            <Users className="w-4 h-4" />
+            <span>{t('adminPage.masterTabUsers', 'Alunos & Usuários Cadastrados')}</span>
+          </button>
+        </div>
+
+        {masterTab === 'events' ? (
+          <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
           {/* Coluna 1: Formulário de Criação / Edição */}
           <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-6 sm:p-8 rounded-[4px] h-fit">
             <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">
@@ -949,8 +986,11 @@ export default function AdminDashboard() {
                 </div>
               );
             })()}
+            </div>
           </div>
-        </div>
+        ) : (
+          <RegisteredUsersManager events={events} />
+        )}
       </main>
 
       {/* Modal de Gestão de Alunos */}
