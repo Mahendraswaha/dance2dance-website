@@ -19,7 +19,7 @@ const EVENT_PRESETS = {
       "Be Stillness",
       "Be The Dance PRO",
       "Be The Dance DAY",
-      "Be the Dance in Company"
+      "Be the Dance: Bedrift"
     ],
     en: [
       "Be Water",
@@ -28,7 +28,7 @@ const EVENT_PRESETS = {
       "Be Stillness",
       "Be The Dance PRO",
       "Be The Dance DAY",
-      "Be the Dance in Company"
+      "Be the Dance: Corporate"
     ],
     pt: [
       "Be Water",
@@ -37,7 +37,7 @@ const EVENT_PRESETS = {
       "Be Stillness",
       "Be The Dance PRO",
       "Be The Dance DAY",
-      "Be the Dance in Company"
+      "Be the Dance: Corporate"
     ],
     routes: [
       "/be-the-dance/be-water",

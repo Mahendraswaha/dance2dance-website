@@ -196,14 +196,14 @@ export default function CorporatePage() {
 
                     <div className="space-y-6">
                       {pillar.items?.map((item, iIndex) => (
-                        <div key={iIndex} className="group/item">
+                        <div key={iIndex} className="group/item transition-all duration-300">
                           <div className="flex items-start gap-3 mb-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0 group-hover/item:bg-accent transition-colors" />
-                            <h4 className="font-heading text-[12px] uppercase tracking-[1.5px] text-[#E2C366] font-medium leading-snug">
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0 group-hover/item:bg-accent group-hover/item:shadow-[0_0_8px_rgba(226,195,102,0.7)] transition-all duration-300" />
+                            <h4 className="font-heading text-[12px] uppercase tracking-[1.5px] text-[#E2C366] group-hover/item:text-[#F0EDE8] font-medium leading-snug transition-colors duration-300">
                               {item.label}
                             </h4>
                           </div>
-                          <p className="font-heading text-[13px] text-[#9A9A9A] font-light leading-relaxed pl-4">
+                          <p className="font-heading text-[13px] text-[#9A9A9A] group-hover/item:text-[#DCD8D0] font-light leading-relaxed pl-4 transition-colors duration-300">
                             {item.desc}
                           </p>
                         </div>
