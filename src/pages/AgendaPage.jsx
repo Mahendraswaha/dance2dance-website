@@ -642,21 +642,21 @@ export default function AgendaPage() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
       
-      <main className="flex-grow pt-44 md:pt-52 pb-28 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
+      <main className="flex-grow pt-28 md:pt-36 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
         
-        {/* Cabeçalho */}
+        {/* Cabeçalho mais compacto para caber na altura da tela */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-6 md:mb-8"
         >
-          <span className="font-heading text-xs uppercase tracking-[4px] text-accent font-semibold block mb-4">
+          <span className="font-heading text-[10px] md:text-xs uppercase tracking-[3px] text-accent font-semibold block mb-2">
             {t("nav.agenda").toUpperCase()}
           </span>
-          <h1 className="font-drama text-5xl md:text-7xl text-[#F0EDE8] mb-6">
+          <h1 className="font-drama text-3xl md:text-5xl text-[#F0EDE8] mb-3">
             {t("agendaPage.title")}
           </h1>
-          <p className="font-heading text-[#9A9A9A] max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+          <p className="font-heading text-[#9A9A9A] max-w-xl mx-auto text-xs md:text-sm leading-relaxed">
             {t("agendaPage.subtitle")}
           </p>
         </motion.div>
@@ -666,13 +666,13 @@ export default function AgendaPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.15 }}
-          className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 bg-[#101014] border border-[#1E1E26] p-3 md:p-4 rounded-[2rem]"
+          className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 md:mb-8 bg-[#101014] border border-[#1E1E26] p-2.5 sm:p-3 rounded-[2px]"
         >
-          {/* Alternador de Modo */}
-          <div className="flex items-center p-1 bg-[#0A0A0D] border border-[#22222B] rounded-full">
+          {/* Alternador de Modo com bordas retangulares finas rounded-[2px] */}
+          <div className="flex items-center p-1 bg-[#0A0A0D] border border-[#22222B] rounded-[2px]">
             <button
               onClick={() => setViewMode('list')}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-300 cursor-pointer ${
                 viewMode === 'list'
                   ? 'bg-accent text-primary shadow-sm'
                   : 'text-[#8A8A96] hover:text-[#F0EDE8]'
@@ -683,7 +683,7 @@ export default function AgendaPage() {
             </button>
             <button
               onClick={() => setViewMode('calendar')}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-300 cursor-pointer ${
                 viewMode === 'calendar'
                   ? 'bg-accent text-primary shadow-sm'
                   : 'text-[#8A8A96] hover:text-[#F0EDE8]'
@@ -694,11 +694,11 @@ export default function AgendaPage() {
             </button>
           </div>
 
-          {/* Filtros de Categoria */}
+          {/* Filtros de Categoria com bordas rounded-[2px] */}
           <div className="flex flex-wrap justify-center gap-2">
             <button 
               onClick={() => setFilter('all')}
-              className={`px-4 py-1.5 rounded-full font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
                 filter === 'all' 
                   ? 'bg-[#2A2A36] text-[#F0EDE8] border border-accent/40' 
                   : 'bg-transparent text-[#8A8A96] hover:text-[#F0EDE8]'
@@ -708,7 +708,7 @@ export default function AgendaPage() {
             </button>
             <button 
               onClick={() => setFilter('bethedance')}
-              className={`px-4 py-1.5 rounded-full font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
                 filter === 'bethedance' 
                   ? 'bg-accent/20 text-accent border border-accent/50' 
                   : 'bg-transparent text-[#8A8A96] hover:text-accent'
@@ -718,7 +718,7 @@ export default function AgendaPage() {
             </button>
             <button 
               onClick={() => setFilter('biostretch')}
-              className={`px-4 py-1.5 rounded-full font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
                 filter === 'biostretch' 
                   ? 'bg-white/15 text-[#FAF8F5] border border-white/40' 
                   : 'bg-transparent text-[#8A8A96] hover:text-[#FAF8F5]'
@@ -728,7 +728,7 @@ export default function AgendaPage() {
             </button>
             <button 
               onClick={() => setFilter('kroppsskole')}
-              className={`px-4 py-1.5 rounded-full font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
                 filter === 'kroppsskole' 
                   ? 'bg-[#4A9B8E]/20 text-[#4A9B8E] border border-[#4A9B8E]/50' 
                   : 'bg-transparent text-[#8A8A96] hover:text-[#4A9B8E]'
@@ -805,47 +805,47 @@ export default function AgendaPage() {
              2. MODO CALENDÁRIO (Monthly Interactive Calendar)
              Passado, presente e futuro navegáveis com visual luxuoso
              ============================================================ */
-          <div className="space-y-10">
-            <div className="bg-[#101014] border border-[#1E1E26] rounded-[2rem] p-6 md:p-8 shadow-2xl">
+          <div className="space-y-8">
+            <div className="bg-[#101014] border border-[#1E1E26] rounded-[2px] p-4 sm:p-5 md:p-6 shadow-xl">
               
               {/* Barra de Navegação do Calendário */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#1C1C24] mb-6">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-[#1C1C24] mb-3">
                 <div>
-                  <h2 className="font-drama text-3xl md:text-5xl text-[#F0EDE8]">
+                  <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8]">
                     {monthTitle}
                   </h2>
                 </div>
 
                 {/* Legenda de Categorias */}
-                <div className="flex flex-wrap items-center gap-4 text-xs font-heading">
+                <div className="flex flex-wrap items-center gap-3 text-xs font-heading">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="text-zinc-400">Be The Dance</span>
+                    <span className="text-zinc-400 text-[11px]">Be The Dance</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#FAF8F5]" />
-                    <span className="text-zinc-400">Biostretch</span>
+                    <span className="text-zinc-400 text-[11px]">Biostretch</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#4A9B8E]" />
-                    <span className="text-zinc-400">Kroppsskole</span>
+                    <span className="text-zinc-400 text-[11px]">Kroppsskole</span>
                   </div>
                 </div>
 
-                {/* Botões Mês Anterior, Ir para Hoje e Próximo */}
-                <div className="flex items-center gap-2">
+                {/* Botões Mês Anterior, Ir para Hoje e Próximo com rounded-[2px] */}
+                <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrevMonth}
-                    className="p-2 rounded-full bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+                    className="p-1.5 rounded-[2px] bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
                     aria-label="Mês Anterior"
                     title={t("adminPage.schedulePicker.prevMonth", "Mês Anterior")}
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-4 h-4" />
                   </button>
 
                   <button
                     onClick={handleToday}
-                    className="px-3.5 py-1.5 rounded-full bg-[#181822] hover:bg-accent hover:text-primary border border-zinc-800 text-[11px] font-heading uppercase tracking-wider text-zinc-300 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="px-3 py-1 rounded-[2px] bg-[#181822] hover:bg-accent hover:text-primary border border-zinc-800 text-[10px] font-heading uppercase tracking-wider text-zinc-300 transition-colors flex items-center gap-1.5 cursor-pointer"
                     title={t("agendaPage.goToToday", "Ir para a data atual")}
                   >
                     <RotateCcw className="w-3 h-3 text-accent" />
@@ -854,26 +854,26 @@ export default function AgendaPage() {
 
                   <button
                     onClick={handleNextMonth}
-                    className="p-2 rounded-full bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+                    className="p-1.5 rounded-[2px] bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
                     aria-label="Próximo Mês"
                     title={t("adminPage.schedulePicker.nextMonth", "Próximo Mês")}
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
               {/* Grid dos Dias da Semana */}
-              <div className="grid grid-cols-7 gap-1 md:gap-2 mb-2 text-center">
+              <div className="grid grid-cols-7 gap-1 md:gap-1.5 mb-1 text-center">
                 {weekdayNames.map((name, idx) => (
-                  <div key={idx} className="font-heading text-[11px] md:text-xs uppercase tracking-[2px] font-semibold text-zinc-500 py-2">
+                  <div key={idx} className="font-heading text-[10px] uppercase tracking-[1.5px] font-semibold text-zinc-500 py-1">
                     {name}
                   </div>
                 ))}
               </div>
 
-              {/* Grid dos Dias do Mês */}
-              <div className="grid grid-cols-7 gap-1 md:gap-2">
+              {/* Grid dos Dias do Mês com altura compacta e cantos rounded-[2px] */}
+              <div className="grid grid-cols-7 gap-1 md:gap-1.5">
                 {calendarCells.map((cell, idx) => {
                   const dayEvents = eventsByDate[cell.dateStr] || [];
                   const hasEvents = dayEvents.length > 0;
@@ -885,11 +885,11 @@ export default function AgendaPage() {
                     <button
                       key={idx}
                       onClick={() => handleSelectDay(cell.dateStr)}
-                      className={`min-h-[70px] md:min-h-[105px] p-1.5 md:p-2.5 rounded-[1rem] flex flex-col justify-between text-left transition-all duration-200 relative group cursor-pointer ${
+                      className={`min-h-[50px] md:min-h-[66px] p-1 md:p-1.5 rounded-[2px] flex flex-col justify-between text-left transition-all duration-200 relative group cursor-pointer ${
                         !cell.isCurrentMonth 
                           ? 'bg-[#0A0A0C]/50 text-zinc-600 border border-transparent' 
                           : isSelected 
-                            ? 'bg-[#181822] border-accent shadow-[0_0_15px_rgba(201,168,76,0.15)] ring-1 ring-accent' 
+                            ? 'bg-[#181822] border-accent shadow-[0_0_12px_rgba(201,168,76,0.12)] ring-1 ring-accent' 
                             : hasEvents
                               ? 'bg-[#14141A] border-zinc-800/80 hover:border-zinc-700 hover:bg-[#181820]'
                               : 'bg-[#0E0E12] border-transparent hover:bg-[#141418]'
@@ -897,9 +897,9 @@ export default function AgendaPage() {
                     >
                       {/* Topo da Célula: Número do Dia */}
                       <div className="flex items-center justify-between w-full">
-                        <span className={`text-xs md:text-sm font-heading font-semibold ${
+                        <span className={`text-xs font-heading font-semibold ${
                           isToday 
-                            ? 'w-6 h-6 rounded-full bg-accent text-primary flex items-center justify-center font-bold' 
+                            ? 'w-5 h-5 rounded-[2px] bg-accent text-primary flex items-center justify-center font-bold text-[11px]' 
                             : isSelected 
                               ? 'text-accent' 
                               : cell.isCurrentMonth 
@@ -911,7 +911,7 @@ export default function AgendaPage() {
 
                         {/* Indicador de Quantidade em Telas Maiores */}
                         {hasEvents && (
-                          <span className="hidden md:inline-block text-[9px] font-mono px-1.5 py-0.2 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">
+                          <span className="hidden md:inline-block text-[8px] font-mono px-1 py-0.2 bg-zinc-900 border border-zinc-800 rounded-[2px] text-zinc-400">
                             {dayEvents.length}
                           </span>
                         )}
@@ -986,7 +986,7 @@ export default function AgendaPage() {
               </div>
 
               {selectedDaySessions.length === 0 ? (
-                <div className="p-8 md:p-12 text-center bg-[#0E0E12] border border-[#1E1E24] rounded-[2rem]">
+                <div className="p-8 md:p-12 text-center bg-[#0E0E12] border border-[#1E1E24] rounded-[2px]">
                   <p className="text-zinc-400 font-heading text-sm mb-2">
                     {t("agendaPage.noEventsOnDay", "Nenhuma atividade programada para este dia.")}
                   </p>
