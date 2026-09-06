@@ -642,7 +642,7 @@ export default function AgendaPage() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
       
-      <main className="flex-grow pt-28 md:pt-36 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
+      <main className="flex-grow pt-44 md:pt-48 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
         
         {/* Cabeçalho mais compacto para caber na altura da tela */}
         <motion.div
