@@ -6,8 +6,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles } from 'lucide-react';
-import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download } from 'lucide-react';
+import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, downloadEventIcs, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
@@ -881,6 +881,16 @@ export default function AdminDashboard() {
                             >
                               <CalendarPlus className="w-4 h-4" />
                             </a>
+
+                            <button 
+                              type="button"
+                              onClick={() => downloadEventIcs(event, i18n.language)}
+                              title={t("agendaPage.downloadIcs", "Baixar arquivo (.ics) de todos os encontros")}
+                              aria-label="Download .ics"
+                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center cursor-pointer"
+                            >
+                              <Download className="w-4 h-4" />
+                            </button>
 
                             <button 
                               onClick={() => setSelectedEventForStudents(event)}

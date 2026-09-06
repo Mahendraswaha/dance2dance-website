@@ -20,13 +20,15 @@ import {
   Sparkles,
   CalendarDays,
   ChevronDown,
-  RotateCcw
+  RotateCcw,
+  Download
 } from 'lucide-react';
 import { 
   getLocalizedEvent, 
   getEventCategory, 
   getEventRoute, 
   generateGoogleCalendarUrl, 
+  downloadEventIcs,
   isEventPast, 
   isEventOngoing, 
   formatEventDate, 
@@ -469,17 +471,33 @@ export default function AgendaPage() {
             )}
             
             {!isPast && (
-              <div className="mt-3">
+              <div className="mt-3 flex flex-wrap items-center gap-3">
                 <a 
-                  href={generateGoogleCalendarUrl(event, currentLang)}
+                  href={generateGoogleCalendarUrl(event, currentLang, sessionInfo)}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-[10px] text-[#7A7A7A] hover:text-accent font-heading transition-colors"
-                  title={t("agendaPage.addToCalendar", "Adicionar ao Google Calendar")}
+                  title={sessionInfo ? t("agendaPage.addSessionToCalendar", "Adicionar Encontro ao Calendário") : t("agendaPage.addToCalendar", "Adicionar ao Google Calendar")}
                 >
                   <CalendarPlus className="w-3 h-3 text-accent/70" />
-                  <span>{t("agendaPage.addToCalendar", "Adicionar ao Calendário")}</span>
+                  <span>
+                    {sessionInfo 
+                      ? t("agendaPage.addSessionToCalendar", "Adicionar Encontro ao Calendário")
+                      : t("agendaPage.addToCalendar", "Adicionar ao Calendário")}
+                  </span>
                 </a>
+
+                {hasMultiSessions && !sessionInfo && (
+                  <button
+                    type="button"
+                    onClick={() => downloadEventIcs(event, currentLang)}
+                    className="inline-flex items-center gap-1.5 text-[10px] text-[#7A7A7A] hover:text-accent font-heading transition-colors cursor-pointer"
+                    title={t("agendaPage.downloadIcs", "Baixar arquivo (.ics) para todos os calendários")}
+                  >
+                    <Download className="w-3 h-3 text-accent/70" />
+                    <span>{t("agendaPage.downloadIcsShort", "Exportar (.ics)")}</span>
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -580,11 +598,22 @@ export default function AgendaPage() {
                     <CalendarDays className="w-3.5 h-3.5 text-accent" />
                     {t("agendaPage.scheduleBreakdown", "Cronograma Completo das Sessões")}
                   </span>
-                  {sessionCount > 0 && (
-                    <span className="text-[10px] font-mono text-zinc-400">
-                      {sessionCount} {t("agendaPage.sessionsCount", { count: sessionCount, defaultValue: `${sessionCount} encontros` })}
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2.5">
+                    {sessionCount > 0 && (
+                      <span className="text-[10px] font-mono text-zinc-400">
+                        {sessionCount} {t("agendaPage.sessionsCount", { count: sessionCount, defaultValue: `${sessionCount} encontros` })}
+                      </span>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => downloadEventIcs(event, currentLang)}
+                      className="inline-flex items-center gap-1 text-[10px] font-heading uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-[#161622] hover:bg-[#202030] text-accent border border-accent/30 transition-colors cursor-pointer"
+                      title={t("agendaPage.downloadIcs", "Baixar arquivo (.ics) com todos os encontros")}
+                    >
+                      <Download className="w-3 h-3" />
+                      <span>.ICS</span>
+                    </button>
+                  </div>
                 </div>
 
                 {Array.isArray(event.sessions) && event.sessions.length > 0 ? (
@@ -602,25 +631,38 @@ export default function AgendaPage() {
                               : 'bg-[#14141B] border-[#22222E] hover:border-accent/40'
                           }`}
                         >
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-2.5 min-w-0">
                             <span className="w-5 h-5 rounded-full bg-accent/15 text-accent font-mono text-[10px] font-bold flex items-center justify-center shrink-0">
                               #{sIdx + 1}
                             </span>
-                            <div>
-                              <div className="text-xs font-heading font-semibold text-[#F0EDE8]">
+                            <div className="min-w-0">
+                              <div className="text-xs font-heading font-semibold text-[#F0EDE8] truncate">
                                 {wd}, {sd}/{sm}/{sy}
                               </div>
                               <div className="text-[11px] font-mono text-[#9A9A9A] flex items-center gap-1.5 mt-0.5">
-                                <Clock className="w-3 h-3 text-accent/70" />
+                                <Clock className="w-3 h-3 text-accent/70 shrink-0" />
                                 <span>{sess.startTime} – {sess.endTime}</span>
                               </div>
                             </div>
                           </div>
-                          {sessIsPast && (
-                            <span className="text-[8px] font-mono uppercase px-1.5 py-0.5 bg-zinc-900 text-zinc-500 border border-zinc-800 rounded">
-                              {t("agendaPage.pastBadge", "Realizado")}
-                            </span>
-                          )}
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            {!sessIsPast && (
+                              <a
+                                href={generateGoogleCalendarUrl(event, currentLang, sess)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-1.5 rounded-[2px] bg-[#1A1A24] hover:bg-accent hover:text-primary text-zinc-400 transition-colors"
+                                title={t("agendaPage.addSessionToCalendar", "Adicionar este encontro ao Google Calendar")}
+                              >
+                                <CalendarPlus className="w-3.5 h-3.5" />
+                              </a>
+                            )}
+                            {sessIsPast && (
+                              <span className="text-[8px] font-mono uppercase px-1.5 py-0.5 bg-zinc-900 text-zinc-500 border border-zinc-800 rounded">
+                                {t("agendaPage.pastBadge", "Realizado")}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       );
                     })}

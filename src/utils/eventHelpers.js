@@ -176,20 +176,70 @@ export function getEventRoute(event) {
   return '/be-the-dance';
 }
 
-export function generateGoogleCalendarUrl(event, lang = 'en') {
+const RRULE_DAYS = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+
+function getRruleDay(dateStr) {
+  if (!dateStr) return 'MO';
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  return RRULE_DAYS[dt.getDay()];
+}
+
+function escapeIcs(str = '') {
+  return String(str)
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\n/g, '\\n');
+}
+
+export function generateGoogleCalendarUrl(event, lang = 'en', sessionInfo = null) {
   if (!event) return '';
   const { title, scheduleDetails, location } = getLocalizedEvent(event, lang);
 
   let datesParam = '';
-  if (event.startDate) {
+  let recurParam = '';
+  let eventText = `Dance 2 Dance: ${title}`;
+
+  if (sessionInfo && sessionInfo.date) {
+    // Single session specific link
+    const cleanDate = sessionInfo.date.replace(/-/g, '');
+    const startTimeClean = (sessionInfo.startTime || event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (sessionInfo.endTime || event.endTime || '20:00').replace(/:/g, '') + '00';
+    datesParam = `${cleanDate}T${startTimeClean}/${cleanDate}T${endTimeClean}`;
+    if (sessionInfo.startTime) {
+      eventText = `Dance 2 Dance: ${title} (${sessionInfo.startTime})`;
+    }
+  } else if (Array.isArray(event.sessions) && event.sessions.length > 0) {
+    const sorted = [...event.sessions].sort((a, b) => a.date.localeCompare(b.date));
+    const first = sorted[0];
+    const last = sorted[sorted.length - 1];
+
+    const cleanStartDate = first.date.replace(/-/g, '');
+    const startTimeClean = (first.startTime || event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (first.endTime || event.endTime || '20:00').replace(/:/g, '') + '00';
+
+    // OCCURRENCE MUST BE ON THE SAME DAY (not stretching across weeks!)
+    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanStartDate}T${endTimeClean}`;
+
+    if (sorted.length > 1 && first.date !== last.date) {
+      const uniqueDays = [...new Set(sorted.map(s => getRruleDay(s.date)))].join(',');
+      const cleanUntilDate = last.date.replace(/-/g, '');
+      recurParam = `RRULE:FREQ=WEEKLY;BYDAY=${uniqueDays};UNTIL=${cleanUntilDate}T235959Z`;
+    }
+  } else if (event.startDate) {
     const cleanStartDate = event.startDate.replace(/-/g, '');
-    const cleanEndDate = (event.endDate || event.startDate).replace(/-/g, '');
-    
-    // Format start and end time (default to 18:00 to 20:00 if not specified)
     const startTimeClean = (event.startTime || '18:00').replace(/:/g, '') + '00';
     const endTimeClean = (event.endTime || '20:00').replace(/:/g, '') + '00';
-    
-    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanEndDate}T${endTimeClean}`;
+
+    // Occurrence on the same day
+    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanStartDate}T${endTimeClean}`;
+
+    if (event.endDate && event.endDate !== event.startDate) {
+      const cleanUntilDate = event.endDate.replace(/-/g, '');
+      const dayCode = getRruleDay(event.startDate);
+      recurParam = `RRULE:FREQ=WEEKLY;BYDAY=${dayCode};UNTIL=${cleanUntilDate}T235959Z`;
+    }
   }
 
   const instructorText = event.instructor ? `Instructor: ${event.instructor}` : 'Instructor: Safia';
@@ -202,25 +252,59 @@ export function generateGoogleCalendarUrl(event, lang = 'en') {
 
   const url = new URL('https://calendar.google.com/calendar/render');
   url.searchParams.set('action', 'TEMPLATE');
-  url.searchParams.set('text', `Dance 2 Dance: ${title}`);
+  url.searchParams.set('text', eventText);
   if (datesParam) url.searchParams.set('dates', datesParam);
+  if (recurParam) url.searchParams.set('recur', recurParam);
   url.searchParams.set('details', fullDetails);
   if (location) url.searchParams.set('location', location);
 
   return url.toString();
 }
 
-export function generateInstructorCalendarUrl(event, lang = 'en', instructorEmail = '') {
+export function generateInstructorCalendarUrl(event, lang = 'en', instructorEmail = '', sessionInfo = null) {
   if (!event) return '';
   const { title, scheduleDetails, location } = getLocalizedEvent(event, lang);
 
   let datesParam = '';
-  if (event.startDate) {
+  let recurParam = '';
+  let eventText = `[Ministrar] ${title} - Dance 2 Dance`;
+
+  if (sessionInfo && sessionInfo.date) {
+    const cleanDate = sessionInfo.date.replace(/-/g, '');
+    const startTimeClean = (sessionInfo.startTime || event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (sessionInfo.endTime || event.endTime || '20:00').replace(/:/g, '') + '00';
+    datesParam = `${cleanDate}T${startTimeClean}/${cleanDate}T${endTimeClean}`;
+    if (sessionInfo.startTime) {
+      eventText = `[Ministrar] ${title} (${sessionInfo.startTime})`;
+    }
+  } else if (Array.isArray(event.sessions) && event.sessions.length > 0) {
+    const sorted = [...event.sessions].sort((a, b) => a.date.localeCompare(b.date));
+    const first = sorted[0];
+    const last = sorted[sorted.length - 1];
+
+    const cleanStartDate = first.date.replace(/-/g, '');
+    const startTimeClean = (first.startTime || event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (first.endTime || event.endTime || '20:00').replace(/:/g, '') + '00';
+
+    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanStartDate}T${endTimeClean}`;
+
+    if (sorted.length > 1 && first.date !== last.date) {
+      const uniqueDays = [...new Set(sorted.map(s => getRruleDay(s.date)))].join(',');
+      const cleanUntilDate = last.date.replace(/-/g, '');
+      recurParam = `RRULE:FREQ=WEEKLY;BYDAY=${uniqueDays};UNTIL=${cleanUntilDate}T235959Z`;
+    }
+  } else if (event.startDate) {
     const cleanStartDate = event.startDate.replace(/-/g, '');
-    const cleanEndDate = (event.endDate || event.startDate).replace(/-/g, '');
     const startTimeClean = (event.startTime || '18:00').replace(/:/g, '') + '00';
     const endTimeClean = (event.endTime || '20:00').replace(/:/g, '') + '00';
-    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanEndDate}T${endTimeClean}`;
+
+    datesParam = `${cleanStartDate}T${startTimeClean}/${cleanStartDate}T${endTimeClean}`;
+
+    if (event.endDate && event.endDate !== event.startDate) {
+      const cleanUntilDate = event.endDate.replace(/-/g, '');
+      const dayCode = getRruleDay(event.startDate);
+      recurParam = `RRULE:FREQ=WEEKLY;BYDAY=${dayCode};UNTIL=${cleanUntilDate}T235959Z`;
+    }
   }
 
   const instructorName = event.instructor || 'Safia';
@@ -234,14 +318,97 @@ export function generateInstructorCalendarUrl(event, lang = 'en', instructorEmai
 
   const url = new URL('https://calendar.google.com/calendar/render');
   url.searchParams.set('action', 'TEMPLATE');
-  url.searchParams.set('text', `[Ministrar] ${title} - Dance 2 Dance`);
+  url.searchParams.set('text', eventText);
   if (datesParam) url.searchParams.set('dates', datesParam);
+  if (recurParam) url.searchParams.set('recur', recurParam);
   url.searchParams.set('details', fullDetails);
   if (location) url.searchParams.set('location', location);
   const emailToAdd = instructorEmail || event.instructorEmail;
   if (emailToAdd) url.searchParams.set('add', emailToAdd);
 
   return url.toString();
+}
+
+/**
+ * Generates an RFC 5545 compliant .ics file content containing all sessions as individual VEVENTs.
+ */
+export function generateIcsContent(event, lang = 'en') {
+  if (!event) return '';
+  const { title, scheduleDetails, location } = getLocalizedEvent(event, lang);
+  const now = new Date();
+  const dtstamp = now.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+  const instructorText = event.instructor ? `Instrutor: ${event.instructor}` : '';
+  const description = [
+    `Dance 2 Dance - ${title}`,
+    instructorText,
+    event.totalHours ? `Carga Horaria: ${event.totalHours}h` : '',
+    scheduleDetails
+  ].filter(Boolean).join('\n');
+
+  let sessions = [];
+  if (Array.isArray(event.sessions) && event.sessions.length > 0) {
+    sessions = event.sessions;
+  } else if (event.startDate) {
+    sessions = [{
+      date: event.startDate,
+      startTime: event.startTime || '18:00',
+      endTime: event.endTime || '20:00'
+    }];
+  }
+
+  const vevents = sessions.map((sess, idx) => {
+    const cleanDate = sess.date.replace(/-/g, '');
+    const startTimeClean = (sess.startTime || event.startTime || '18:00').replace(/:/g, '') + '00';
+    const endTimeClean = (sess.endTime || event.endTime || '20:00').replace(/:/g, '') + '00';
+    const uid = `${event.id || 'd2d'}-${sess.date}-${idx}@dance2dance.no`;
+    const summary = sessions.length > 1 
+      ? `Dance 2 Dance: ${title} (#${idx + 1})`
+      : `Dance 2 Dance: ${title}`;
+
+    return [
+      'BEGIN:VEVENT',
+      `UID:${uid}`,
+      `DTSTAMP:${dtstamp}`,
+      `DTSTART:${cleanDate}T${startTimeClean}`,
+      `DTEND:${cleanDate}T${endTimeClean}`,
+      `SUMMARY:${escapeIcs(summary)}`,
+      `DESCRIPTION:${escapeIcs(description)}`,
+      location ? `LOCATION:${escapeIcs(location)}` : '',
+      'STATUS:CONFIRMED',
+      'END:VEVENT'
+    ].filter(Boolean).join('\r\n');
+  });
+
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Dance 2 Dance//Agenda//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    ...vevents,
+    'END:VCALENDAR'
+  ].join('\r\n');
+}
+
+/**
+ * Triggers a client-side download of the event's .ics calendar file.
+ */
+export function downloadEventIcs(event, lang = 'en') {
+  if (!event) return;
+  const ics = generateIcsContent(event, lang);
+  if (!ics) return;
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  const safeTitle = (event.title || 'workshop').toLowerCase().replace(/[^a-z0-9]/g, '_');
+  link.href = url;
+  link.download = `${safeTitle}.ics`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }
 
 /**
