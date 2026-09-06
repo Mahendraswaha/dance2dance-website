@@ -708,16 +708,16 @@ export default function AgendaPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.15 }}
-          className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 md:mb-8 bg-[#101014] border border-[#1E1E26] p-2.5 sm:p-3 rounded-[2px]"
+          className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 md:mb-8 bg-[#0C0C11] border border-[#20202C] p-2.5 sm:p-3 rounded-[2px] shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
         >
           {/* Alternador de Modo com bordas retangulares finas rounded-[2px] */}
-          <div className="flex items-center p-1 bg-[#0A0A0D] border border-[#22222B] rounded-[2px]">
+          <div className="flex items-center p-1 bg-[#13131C] border border-white/[0.06] rounded-[2px]">
             <button
               onClick={() => setViewMode('list')}
               className={`flex items-center gap-2 px-4 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-300 cursor-pointer ${
                 viewMode === 'list'
-                  ? 'bg-accent text-primary shadow-sm'
-                  : 'text-[#8A8A96] hover:text-[#F0EDE8]'
+                  ? 'bg-accent text-primary shadow-sm font-bold'
+                  : 'text-[#9E9EAA] hover:text-[#FAF8F5]'
               }`}
             >
               <List className="w-3.5 h-3.5" />
@@ -727,8 +727,8 @@ export default function AgendaPage() {
               onClick={() => setViewMode('calendar')}
               className={`flex items-center gap-2 px-4 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-300 cursor-pointer ${
                 viewMode === 'calendar'
-                  ? 'bg-accent text-primary shadow-sm'
-                  : 'text-[#8A8A96] hover:text-[#F0EDE8]'
+                  ? 'bg-accent text-primary shadow-sm font-bold'
+                  : 'text-[#9E9EAA] hover:text-[#FAF8F5]'
               }`}
             >
               <Calendar className="w-3.5 h-3.5" />
@@ -740,40 +740,40 @@ export default function AgendaPage() {
           <div className="flex flex-wrap justify-center gap-2">
             <button 
               onClick={() => setFilter('all')}
-              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-200 cursor-pointer ${
                 filter === 'all' 
-                  ? 'bg-[#2A2A36] text-[#F0EDE8] border border-accent/40' 
-                  : 'bg-transparent text-[#8A8A96] hover:text-[#F0EDE8]'
+                  ? 'bg-[#1E1E2C] text-[#FAF8F5] border border-white/20 shadow-sm' 
+                  : 'bg-transparent text-[#9E9EAA] hover:text-[#FAF8F5]'
               }`}
             >
               {t("agendaPage.filterAll")}
             </button>
             <button 
               onClick={() => setFilter('bethedance')}
-              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-200 cursor-pointer ${
                 filter === 'bethedance' 
-                  ? 'bg-accent/20 text-accent border border-accent/50' 
-                  : 'bg-transparent text-[#8A8A96] hover:text-accent'
+                  ? 'bg-accent/20 text-accent border border-accent/60 shadow-sm' 
+                  : 'bg-transparent text-[#9E9EAA] hover:text-accent'
               }`}
             >
               Be The Dance
             </button>
             <button 
               onClick={() => setFilter('biostretch')}
-              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-200 cursor-pointer ${
                 filter === 'biostretch' 
-                  ? 'bg-white/15 text-[#FAF8F5] border border-white/40' 
-                  : 'bg-transparent text-[#8A8A96] hover:text-[#FAF8F5]'
+                  ? 'bg-white/15 text-[#FAF8F5] border border-white/40 shadow-sm' 
+                  : 'bg-transparent text-[#9E9EAA] hover:text-[#FAF8F5]'
               }`}
             >
               Biostretch
             </button>
             <button 
               onClick={() => setFilter('kroppsskole')}
-              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-colors duration-200 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-200 cursor-pointer ${
                 filter === 'kroppsskole' 
-                  ? 'bg-[#4A9B8E]/20 text-[#4A9B8E] border border-[#4A9B8E]/50' 
-                  : 'bg-transparent text-[#8A8A96] hover:text-[#4A9B8E]'
+                  ? 'bg-[#4A9B8E]/20 text-[#4A9B8E] border border-[#4A9B8E]/60 shadow-sm' 
+                  : 'bg-transparent text-[#9E9EAA] hover:text-[#4A9B8E]'
               }`}
             >
               Kroppsskole
@@ -848,37 +848,39 @@ export default function AgendaPage() {
              Passado, presente e futuro navegáveis com visual luxuoso
              ============================================================ */
           <div className="space-y-8">
-            <div className="bg-[#101014] border border-[#1E1E26] rounded-[2px] p-4 sm:p-5 md:p-6 shadow-xl">
+            <div className="bg-[#0C0C11] border border-[#20202C] rounded-[2px] p-4 sm:p-6 md:p-7 shadow-[0_16px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
+              {/* Brilho ambiente sutil no topo do painel */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
               
               {/* Barra de Navegação do Calendário */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-[#1C1C24] mb-3">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-white/[0.07] mb-4">
                 <div>
-                  <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8]">
+                  <h2 className="font-drama text-2xl md:text-3xl text-[#FAF8F5] tracking-wide">
                     {monthTitle}
                   </h2>
                 </div>
 
-                {/* Legenda de Categorias */}
-                <div className="flex flex-wrap items-center gap-3 text-xs font-heading">
+                {/* Legenda de Categorias em cápsula requintada */}
+                <div className="flex flex-wrap items-center gap-3.5 px-3 py-1.5 rounded-[2px] bg-[#12121A] border border-white/[0.05] text-xs font-heading">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="text-zinc-400 text-[11px]">Be The Dance</span>
+                    <span className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(201,168,76,0.4)]" />
+                    <span className="text-[#D0CFC8] text-[11px] font-medium tracking-wide">Be The Dance</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#FAF8F5]" />
-                    <span className="text-zinc-400 text-[11px]">Biostretch</span>
+                    <span className="w-2 h-2 rounded-full bg-[#FAF8F5] shadow-[0_0_8px_rgba(250,248,245,0.3)]" />
+                    <span className="text-[#D0CFC8] text-[11px] font-medium tracking-wide">Biostretch</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#4A9B8E]" />
-                    <span className="text-zinc-400 text-[11px]">Kroppsskole</span>
+                    <span className="w-2 h-2 rounded-full bg-[#4A9B8E] shadow-[0_0_8px_rgba(74,155,142,0.4)]" />
+                    <span className="text-[#D0CFC8] text-[11px] font-medium tracking-wide">Kroppsskole</span>
                   </div>
                 </div>
 
-                {/* Botões Mês Anterior, Ir para Hoje e Próximo com rounded-[2px] */}
+                {/* Botões Mês Anterior, Ir para Hoje e Próximo */}
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrevMonth}
-                    className="p-1.5 rounded-[2px] bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+                    className="p-2 rounded-[2px] bg-[#14141E] hover:bg-[#1D1D2C] border border-white/[0.08] text-zinc-300 hover:text-white transition-all cursor-pointer"
                     aria-label="Mês Anterior"
                     title={t("adminPage.schedulePicker.prevMonth", "Mês Anterior")}
                   >
@@ -887,7 +889,7 @@ export default function AgendaPage() {
 
                   <button
                     onClick={handleToday}
-                    className="px-3 py-1 rounded-[2px] bg-[#181822] hover:bg-accent hover:text-primary border border-zinc-800 text-[10px] font-heading uppercase tracking-wider text-zinc-300 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-[2px] bg-[#151522] hover:bg-accent hover:text-primary border border-accent/40 text-[10px] font-heading font-semibold uppercase tracking-wider text-accent transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
                     title={t("agendaPage.goToToday", "Ir para a data atual")}
                   >
                     <RotateCcw className="w-3 h-3 text-accent" />
@@ -896,7 +898,7 @@ export default function AgendaPage() {
 
                   <button
                     onClick={handleNextMonth}
-                    className="p-1.5 rounded-[2px] bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+                    className="p-2 rounded-[2px] bg-[#14141E] hover:bg-[#1D1D2C] border border-white/[0.08] text-zinc-300 hover:text-white transition-all cursor-pointer"
                     aria-label="Próximo Mês"
                     title={t("adminPage.schedulePicker.nextMonth", "Próximo Mês")}
                   >
@@ -905,16 +907,24 @@ export default function AgendaPage() {
                 </div>
               </div>
 
-              {/* Grid dos Dias da Semana */}
-              <div className="grid grid-cols-7 gap-1 md:gap-1.5 mb-1 text-center">
-                {weekdayNames.map((name, idx) => (
-                  <div key={idx} className="font-heading text-[10px] uppercase tracking-[1.5px] font-semibold text-zinc-500 py-1">
-                    {name}
-                  </div>
-                ))}
+              {/* Grid dos Dias da Semana com destaque sutil de colunas */}
+              <div className="grid grid-cols-7 gap-1 md:gap-1.5 mb-2 text-center">
+                {weekdayNames.map((name, idx) => {
+                  const isWeekend = idx === 5 || idx === 6;
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`font-mono text-[10px] md:text-[11px] uppercase tracking-[1.5px] font-semibold py-1.5 rounded-[2px] ${
+                        isWeekend ? 'text-accent/80 bg-white/[0.02]' : 'text-zinc-400 bg-white/[0.01]'
+                      }`}
+                    >
+                      {name}
+                    </div>
+                  );
+                })}
               </div>
 
-              {/* Grid dos Dias do Mês com altura compacta e cantos rounded-[2px] */}
+              {/* Grid dos Dias do Mês com relevo sutil de superfície e cantos rounded-[2px] */}
               <div className="grid grid-cols-7 gap-1 md:gap-1.5">
                 {calendarCells.map((cell, idx) => {
                   const dayEvents = eventsByDate[cell.dateStr] || [];
@@ -922,38 +932,43 @@ export default function AgendaPage() {
                   const isToday = cell.dateStr === todayStr;
                   const isSelected = cell.dateStr === selectedDate;
                   const isPast = cell.dateStr < todayStr;
+                  const isCurrentMonth = cell.isCurrentMonth;
 
                   return (
                     <button
                       key={idx}
                       onClick={() => handleSelectDay(cell.dateStr)}
-                      className={`min-h-[50px] md:min-h-[66px] p-1 md:p-1.5 rounded-[2px] flex flex-col justify-between text-left transition-all duration-200 relative group cursor-pointer ${
-                        !cell.isCurrentMonth 
-                          ? 'bg-[#0A0A0C]/50 text-zinc-600 border border-transparent' 
+                      className={`min-h-[54px] md:min-h-[70px] p-1.5 md:p-2 rounded-[2px] flex flex-col justify-between text-left transition-all duration-200 relative group cursor-pointer ${
+                        !isCurrentMonth 
+                          ? 'bg-[#09090D]/50 text-zinc-600/40 border border-transparent opacity-40 hover:opacity-60' 
                           : isSelected 
-                            ? 'bg-[#181822] border-accent shadow-[0_0_12px_rgba(201,168,76,0.12)] ring-1 ring-accent' 
-                            : hasEvents
-                              ? 'bg-[#14141A] border-zinc-800/80 hover:border-zinc-700 hover:bg-[#181820]'
-                              : 'bg-[#0E0E12] border-transparent hover:bg-[#141418]'
-                      } ${isPast && cell.isCurrentMonth && !isSelected ? 'opacity-70' : ''}`}
+                            ? 'bg-[#1C1B28] border-accent ring-1 ring-accent shadow-[0_0_20px_rgba(201,168,76,0.18)]' 
+                            : isToday 
+                              ? 'bg-[#181722] border-accent/70 ring-1 ring-accent/40 shadow-[0_0_15px_rgba(201,168,76,0.1)]' 
+                              : hasEvents
+                                ? 'bg-[#161622] border border-[#2A2A3C] hover:border-accent/40 hover:bg-[#1B1B2A] shadow-sm'
+                                : 'bg-[#12121A] border border-white/[0.04] hover:border-white/[0.1] hover:bg-[#161622]'
+                      } ${isPast && isCurrentMonth && !isSelected && !isToday ? 'opacity-75' : ''}`}
                     >
-                      {/* Topo da Célula: Número do Dia */}
+                      {/* Topo da Célula: Número do Dia com alta legibilidade */}
                       <div className="flex items-center justify-between w-full">
-                        <span className={`text-xs font-heading font-semibold ${
+                        <span className={`font-heading ${
                           isToday 
-                            ? 'w-5 h-5 rounded-[2px] bg-accent text-primary flex items-center justify-center font-bold text-[11px]' 
+                            ? 'w-5 h-5 rounded-[2px] bg-accent text-primary flex items-center justify-center font-bold text-[11px] shadow-sm' 
                             : isSelected 
-                              ? 'text-accent' 
-                              : cell.isCurrentMonth 
-                                ? 'text-zinc-300' 
-                                : 'text-zinc-600'
+                              ? 'text-accent font-bold text-xs md:text-sm' 
+                              : isCurrentMonth 
+                                ? hasEvents 
+                                  ? 'text-[#FAF8F5] font-bold text-xs md:text-sm' 
+                                  : 'text-[#D0CDC5] font-medium text-xs md:text-sm' 
+                                : 'text-zinc-600/50 text-xs'
                         }`}>
                           {cell.dayNumber}
                         </span>
 
                         {/* Indicador de Quantidade em Telas Maiores */}
                         {hasEvents && (
-                          <span className="hidden md:inline-block text-[8px] font-mono px-1 py-0.2 bg-zinc-900 border border-zinc-800 rounded-[2px] text-zinc-400">
+                          <span className="hidden md:inline-flex items-center text-[9px] font-mono px-1.5 py-0.2 bg-[#1F1F2E] border border-white/[0.08] rounded-[2px] text-accent/90 font-medium">
                             {dayEvents.length}
                           </span>
                         )}
@@ -962,42 +977,48 @@ export default function AgendaPage() {
                       {/* Eventos dentro do dia */}
                       <div className="w-full space-y-1 mt-1">
                         {/* Mobile: Dots coloridos */}
-                        <div className="flex md:hidden items-center gap-1 justify-center flex-wrap pt-1">
+                        <div className="flex md:hidden items-center gap-1.5 justify-center flex-wrap pt-1">
                           {dayEvents.slice(0, 3).map((item, i) => {
                             const cat = getEventCategory(item.event);
                             const t = getCategoryTheme(cat);
                             return (
                               <span 
                                 key={i} 
-                                className={`w-1.5 h-1.5 rounded-full ${t.dotColor}`} 
+                                className={`w-1.5 h-1.5 rounded-full ${t.dotColor} shadow-[0_0_5px_currentColor]`} 
                               />
                             );
                           })}
                           {dayEvents.length > 3 && (
-                            <span className="text-[8px] font-mono text-zinc-500">+</span>
+                            <span className="text-[8px] font-mono text-zinc-400 font-bold">+</span>
                           )}
                         </div>
 
-                        {/* Desktop: Mini cartões de evento */}
-                        <div className="hidden md:flex flex-col gap-1">
+                        {/* Desktop: Mini cartões de evento refinados com contraste requintado */}
+                        <div className="hidden md:flex flex-col gap-1 w-full">
                           {dayEvents.slice(0, 2).map((item, i) => {
                             const cat = getEventCategory(item.event);
                             const t = getCategoryTheme(cat);
                             const { title } = getLocalizedEvent(item.event, currentLang);
 
+                            const chipStyles = {
+                              bethedance: 'bg-[#1C1812] border-accent/40 text-[#F5E8CB] hover:border-accent/80',
+                              biostretch: 'bg-[#16171E] border-white/20 text-[#FAF8F5] hover:border-white/40',
+                              kroppsskole: 'bg-[#101A18] border-[#4A9B8E]/40 text-[#A2E2D7] hover:border-[#4A9B8E]/80'
+                            };
+
                             return (
                               <div 
                                 key={i} 
-                                className={`px-1.5 py-0.5 rounded-[4px] text-[10px] truncate flex items-center gap-1 border ${t.badgeBg}`}
+                                className={`px-1.5 py-0.8 rounded-[2px] text-[10px] truncate flex items-center gap-1.5 border transition-all duration-200 ${chipStyles[cat] || chipStyles.bethedance}`}
                                 title={`${title} (${item.startTime || ''})`}
                               >
-                                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${t.dotColor}`} />
-                                <span className="truncate font-heading">{title}</span>
+                                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${t.dotColor} shadow-[0_0_6px_currentColor]`} />
+                                <span className="truncate font-heading font-medium tracking-wide">{title}</span>
                               </div>
                             );
                           })}
                           {dayEvents.length > 2 && (
-                            <span className="text-[9px] font-mono text-zinc-500 pl-1">
+                            <span className="text-[9px] font-mono text-accent/80 pl-1 font-medium">
                               +{dayEvents.length - 2} mais
                             </span>
                           )}
@@ -1014,25 +1035,25 @@ export default function AgendaPage() {
                Mostra os detalhes de todas as atividades naquele dia
                ============================================================ */}
             <div ref={dayInspectionRef} className="pt-4 scroll-mt-24">
-              <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#1E1E26]">
+              <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#20202C]">
                 <div className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-                  <h3 className="font-drama text-2xl md:text-3xl text-[#F0EDE8]">
+                  <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(201,168,76,0.6)] animate-pulse" />
+                  <h3 className="font-drama text-2xl md:text-3xl text-[#FAF8F5]">
                     {t("agendaPage.selectedDay", { date: selectedDayFormatted, defaultValue: `Atividades em ${selectedDayFormatted}` })}
                   </h3>
                 </div>
 
-                <span className="font-mono text-xs text-zinc-400">
+                <span className="font-mono text-xs px-2.5 py-1 rounded-[2px] bg-[#14141E] border border-white/[0.06] text-zinc-300">
                   {selectedDaySessions.length} {selectedDaySessions.length === 1 ? 'atividade' : 'atividades'}
                 </span>
               </div>
 
               {selectedDaySessions.length === 0 ? (
-                <div className="p-8 md:p-12 text-center bg-[#0E0E12] border border-[#1E1E24] rounded-[2px]">
-                  <p className="text-zinc-400 font-heading text-sm mb-2">
+                <div className="p-8 md:p-12 text-center bg-[#0E0E14] border border-[#20202C] rounded-[2px]">
+                  <p className="text-[#D0CDC5] font-heading text-sm mb-2">
                     {t("agendaPage.noEventsOnDay", "Nenhuma atividade programada para este dia.")}
                   </p>
-                  <p className="text-zinc-600 font-heading text-xs">
+                  <p className="text-zinc-500 font-heading text-xs">
                     {t("agendaPage.exploreDayHint", "Selecione uma data marcada no calendário para ver os detalhes da sessão.")}
                   </p>
                 </div>
