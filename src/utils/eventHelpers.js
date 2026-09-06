@@ -49,7 +49,7 @@ export function getLocalizedEvent(event, lang = 'en') {
 
 export function getEventCategory(event) {
   if (!event) return 'bethedance';
-  if (event.category === 'bethedance' || event.category === 'biostretch') {
+  if (event.category === 'bethedance' || event.category === 'biostretch' || event.category === 'kroppsskole') {
     return event.category;
   }
 
@@ -66,6 +66,10 @@ export function getEventCategory(event) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
+
+  if (normalized.includes('kroppsskole') || normalized.includes('kropp')) {
+    return 'kroppsskole';
+  }
 
   const bioKeywords = [
     'biostretch', 'postura', 'holdning', 'posture', 'relax', 'slappe', 
@@ -99,6 +103,10 @@ export function getEventRoute(event) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
+
+  if (category === 'kroppsskole') {
+    return '/kroppsskole';
+  }
 
   if (category === 'biostretch') {
     // 1. Postura: "A Better Posture" / "Uma Melhor Postura" / "En Bedre Holdning"
@@ -235,3 +243,161 @@ export function generateInstructorCalendarUrl(event, lang = 'en', instructorEmai
 
   return url.toString();
 }
+
+/**
+ * Checks whether an event has already ended.
+ * An event is considered past if current time is strictly after its completion timestamp.
+ * If endDate is not provided, defaults to startDate.
+ * If endTime is not provided, defaults to endTime || startTime || 23:59:59.
+ */
+export function isEventPast(event) {
+  if (!event) return false;
+  const finalDate = event.endDate || event.startDate;
+  if (!finalDate) return false;
+
+  const finalTime = event.endTime || event.startTime || '23:59';
+
+  try {
+    const [year, month, day] = finalDate.split('-').map(Number);
+    const [hours, minutes] = finalTime.split(':').map(Number);
+
+    const eventEnd = new Date(year, month - 1, day, hours || 23, minutes || 59, 59, 999);
+    return new Date() > eventEnd;
+  } catch (err) {
+    return false;
+  }
+}
+
+/**
+ * Checks whether an event is currently ongoing.
+ */
+export function isEventOngoing(event) {
+  if (!event || !event.startDate) return false;
+  const finalDate = event.endDate || event.startDate;
+  const startTime = event.startTime || '00:00';
+  const finalTime = event.endTime || event.startTime || '23:59';
+
+  try {
+    const [y1, m1, d1] = event.startDate.split('-').map(Number);
+    const [h1, min1] = startTime.split(':').map(Number);
+    const start = new Date(y1, m1 - 1, d1, h1 || 0, min1 || 0, 0);
+
+    const [y2, m2, d2] = finalDate.split('-').map(Number);
+    const [h2, min2] = finalTime.split(':').map(Number);
+    const end = new Date(y2, m2 - 1, d2, h2 || 23, min2 || 59, 59, 999);
+
+    const now = new Date();
+    return now >= start && now <= end;
+  } catch (err) {
+    return false;
+  }
+}
+
+/**
+ * Formats start and optional end date in DD/MM/YYYY format.
+ * If multi-day/course, returns "DD/MM/YYYY – DD/MM/YYYY".
+ */
+export function formatEventDate(startDate, endDate) {
+  if (!startDate) return '';
+  const [y1, m1, d1] = startDate.split('-');
+  const startStr = `${d1}/${m1}/${y1}`;
+  if (!endDate || endDate === startDate) {
+    return startStr;
+  }
+  const [y2, m2, d2] = endDate.split('-');
+  return `${startStr} – ${d2}/${m2}/${y2}`;
+}
+
+/**
+ * Computes total hours summed across all individual sessions.
+ * Returns a number (e.g. 18 or 14.5).
+ */
+export function calculateTotalHoursFromSessions(sessions = []) {
+  if (!Array.isArray(sessions) || sessions.length === 0) return 0;
+  
+  let totalMinutes = 0;
+  for (const s of sessions) {
+    if (!s.startTime || !s.endTime) continue;
+    const [h1, m1] = s.startTime.split(':').map(Number);
+    const [h2, m2] = s.endTime.split(':').map(Number);
+    const startMins = h1 * 60 + m1;
+    const endMins = h2 * 60 + m2;
+    if (endMins > startMins) {
+      totalMinutes += (endMins - startMins);
+    }
+  }
+  const hours = totalMinutes / 60;
+  return Number.isInteger(hours) ? hours : Number(hours.toFixed(1));
+}
+
+/**
+ * Returns all individual date occurrences for an event to render in calendar views.
+ */
+export function getEventAllDates(event) {
+  if (!event) return [];
+  if (Array.isArray(event.sessions) && event.sessions.length > 0) {
+    return event.sessions.map(s => ({
+      date: s.date,
+      startTime: s.startTime || event.startTime || '',
+      endTime: s.endTime || event.endTime || '',
+      event
+    }));
+  }
+
+  // Fallback for events without a sessions array
+  if (event.startDate) {
+    if (!event.endDate || event.endDate === event.startDate) {
+      return [{
+        date: event.startDate,
+        startTime: event.startTime || '',
+        endTime: event.endTime || '',
+        event
+      }];
+    }
+    return [
+      { date: event.startDate, startTime: event.startTime || '', endTime: event.endTime || '', event },
+      { date: event.endDate, startTime: event.startTime || '', endTime: event.endTime || '', event }
+    ];
+  }
+  return [];
+}
+
+/**
+ * Returns consistent styling tokens for each program category.
+ */
+export function getCategoryTheme(category) {
+  switch (category) {
+    case 'kroppsskole':
+      return {
+        id: 'kroppsskole',
+        label: 'KROPPSSKOLE',
+        badgeBg: 'bg-[#4A9B8E]/15 text-[#4A9B8E] border border-[#4A9B8E]/30',
+        dotColor: 'bg-[#4A9B8E]',
+        textColor: 'text-[#4A9B8E]',
+        borderHover: 'hover:border-[#4A9B8E]/50',
+        glow: 'shadow-[0_0_12px_rgba(74,155,142,0.4)]'
+      };
+    case 'biostretch':
+      return {
+        id: 'biostretch',
+        label: 'BIOSTRETCH',
+        badgeBg: 'bg-white/10 text-[#FAF8F5] border border-white/20',
+        dotColor: 'bg-[#FAF8F5]',
+        textColor: 'text-[#FAF8F5]',
+        borderHover: 'hover:border-white/50',
+        glow: 'shadow-[0_0_12px_rgba(250,248,245,0.4)]'
+      };
+    case 'bethedance':
+    default:
+      return {
+        id: 'bethedance',
+        label: 'BE THE DANCE',
+        badgeBg: 'bg-accent/15 text-accent border border-accent/30',
+        dotColor: 'bg-accent',
+        textColor: 'text-accent',
+        borderHover: 'hover:border-accent/50',
+        glow: 'shadow-[0_0_12px_rgba(201,168,76,0.4)]'
+      };
+  }
+}
+

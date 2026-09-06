@@ -7,7 +7,8 @@ import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
 import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check } from 'lucide-react';
-import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl } from '../utils/eventHelpers';
+import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme } from '../utils/eventHelpers';
+import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
 const EVENT_PRESETS = {
@@ -94,6 +95,36 @@ const EVENT_PRESETS = {
       "/biostretch/aulas-regulares",
       "/biostretch/empresas"
     ]
+  },
+  kroppsskole: {
+    no: [
+      "Kroppsskole: Grunnkurs",
+      "Kroppens Intelligens",
+      "Pust og Nærvær",
+      "Holdning og Bevegelse",
+      "Kroppsskole: Fordypning"
+    ],
+    en: [
+      "Kroppsskole: Foundation",
+      "Body Intelligence",
+      "Breath and Presence",
+      "Posture and Movement",
+      "Kroppsskole: Immersion"
+    ],
+    pt: [
+      "Kroppsskole: Fundamentos",
+      "A Inteligência do Corpo",
+      "Respiração e Presença",
+      "Postura e Movimento",
+      "Kroppsskole: Imersão"
+    ],
+    routes: [
+      "/kroppsskole",
+      "/kroppsskole",
+      "/kroppsskole",
+      "/kroppsskole",
+      "/kroppsskole"
+    ]
   }
 };
 
@@ -103,6 +134,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
   const [selectedEventForStudents, setSelectedEventForStudents] = useState(null);
+  const [adminTab, setAdminTab] = useState('upcoming'); // 'upcoming' | 'past'
 
   // Tab order: NO -> EN -> PT
   const currentInitialTab = i18n.language === 'pt' ? 'pt' : (i18n.language === 'en' ? 'en' : 'no');
@@ -117,9 +149,11 @@ export default function AdminDashboard() {
     title_en: '',
     title_pt: '',
     startDate: '',
+    endDate: '',
     startTime: '18:00',
     endTime: '20:00',
     totalHours: '',
+    sessions: [],
     scheduleDetails_no: '',
     scheduleDetails_en: '',
     scheduleDetails_pt: '',
@@ -190,15 +224,22 @@ export default function AdminDashboard() {
         title: primaryTitle
       });
 
+      if (formData.endDate && formData.startDate && formData.endDate < formData.startDate) {
+        alert(t('adminPage.invalidEndDate', 'A data de término não pode ser anterior à data de início.'));
+        return;
+      }
+
       const payload = {
         category: formData.category || 'bethedance',
         instructor: (formData.instructor || 'Safia').trim(),
         instructorEmail: (formData.instructorEmail || '').trim(),
         startDate: formData.startDate,
+        endDate: formData.endDate || formData.startDate,
         startTime: formData.startTime || '',
         endTime: formData.endTime || '',
         totalHours: formData.totalHours ? Number(formData.totalHours) : null,
         totalSpots: Number(formData.totalSpots),
+        sessions: formData.sessions || [],
 
         title_no,
         title_en,
@@ -242,6 +283,10 @@ export default function AdminDashboard() {
   }
 
   function handleEditClick(event) {
+    const existingSessions = Array.isArray(event.sessions) && event.sessions.length > 0 
+      ? event.sessions 
+      : (event.startDate ? [{ date: event.startDate, startTime: event.startTime || '18:00', endTime: event.endTime || '20:00' }] : []);
+
     setFormData({
       category: event.category || getEventCategory(event),
       instructor: event.instructor || 'Safia',
@@ -251,9 +296,11 @@ export default function AdminDashboard() {
       title_en: event.title_en || event.title || '',
       title_pt: event.title_pt || event.title || '',
       startDate: event.startDate || '',
+      endDate: event.endDate || '',
       startTime: event.startTime || '18:00',
       endTime: event.endTime || '20:00',
       totalHours: event.totalHours || '',
+      sessions: existingSessions,
       scheduleDetails_no: event.scheduleDetails_no || event.scheduleDetails || '',
       scheduleDetails_en: event.scheduleDetails_en || event.scheduleDetails || '',
       scheduleDetails_pt: event.scheduleDetails_pt || event.scheduleDetails || '',
@@ -371,7 +418,7 @@ export default function AdminDashboard() {
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.category", "Categoria")}
                   </label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-3 gap-2">
                     <button
                       type="button"
                       onClick={() => handleCategoryChange('bethedance')}
@@ -382,9 +429,16 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       onClick={() => handleCategoryChange('biostretch')}
-                      className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'biostretch' ? 'bg-accent text-primary border-accent' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
+                      className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'biostretch' ? 'bg-[#FAF8F5] text-primary border-[#FAF8F5]' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
                     >
                       Biostretch
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleCategoryChange('kroppsskole')}
+                      className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'kroppsskole' ? 'bg-[#4A9B8E] text-primary border-[#4A9B8E]' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
+                    >
+                      Kroppsskole
                     </button>
                   </div>
                 </div>
@@ -494,7 +548,7 @@ export default function AdminDashboard() {
                         className="absolute left-0 right-0 mt-1 bg-[#121214] border border-[#2A2A30] shadow-2xl rounded-[2px] z-50 max-h-64 overflow-y-auto py-1 divide-y divide-[#1E1E24]"
                       >
                         <div className="px-3 py-1.5 text-[9px] font-heading uppercase tracking-wider text-accent/80 font-bold bg-[#0A0A0C]">
-                          {formData.category === 'biostretch' ? 'Workshops Biostretch' : 'Workshops Be The Dance'}
+                          {formData.category === 'kroppsskole' ? 'Cursos Kroppsskole' : formData.category === 'biostretch' ? 'Workshops Biostretch' : 'Workshops Be The Dance'}
                         </div>
                         {(EVENT_PRESETS[formData.category]?.[activeLangTab] || []).map((titleOption, idx) => {
                           const isSelected = formData[`title_${activeLangTab}`] === titleOption;
@@ -521,24 +575,46 @@ export default function AdminDashboard() {
                   </AnimatePresence>
                 </div>
                 
-                {/* Data de Início e Total de Vagas */}
+                {/* Seletor Visual de Calendário Multi-Sessões */}
+                <div>
+                  <ScheduleCalendarPicker
+                    sessions={formData.sessions || []}
+                    onChange={(newSessions, summary) => {
+                      setFormData(prev => ({
+                        ...prev,
+                        sessions: newSessions,
+                        startDate: summary.startDate || prev.startDate,
+                        endDate: summary.endDate || prev.endDate,
+                        startTime: summary.startTime || prev.startTime,
+                        endTime: summary.endTime || prev.endTime,
+                        totalHours: summary.totalHours || prev.totalHours
+                      }));
+                    }}
+                    defaultStartTime={formData.startTime || '18:00'}
+                    defaultEndTime={formData.endTime || '20:00'}
+                    category={formData.category}
+                  />
+                </div>
+
+                {/* Carga Horária e Total de Vagas */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                      {t("adminPage.startDate")}
+                      {t("adminPage.totalHours", "Carga Horária (h)")}
                     </label>
-                    <input 
-                      required 
-                      type="date" 
-                      name="startDate" 
-                      value={formData.startDate} 
-                      onChange={handleChange} 
-                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
+                    <input
+                      type="number"
+                      name="totalHours"
+                      placeholder="Calculado automaticamente"
+                      value={formData.totalHours}
+                      onChange={handleChange}
+                      min="0"
+                      className="w-full bg-[#141414] border border-[#333333] text-accent font-mono font-bold px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] text-sm"
                     />
                   </div>
                   <div>
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                      {t("adminPage.totalSpots")}
+                      {t("adminPage.totalSpots", "Total de Vagas")}
                     </label>
                     <input 
                       required 
@@ -548,48 +624,6 @@ export default function AdminDashboard() {
                       onChange={handleChange} 
                       min="1" 
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
-                    />
-                  </div>
-                </div>
-
-                {/* Horários Estruturados (Início / Término) e Carga Horária */}
-                <div className="grid grid-cols-3 gap-3">
-                  <div>
-                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                      {t("adminPage.startTime", "Início")}
-                    </label>
-                    <input
-                      type="time"
-                      name="startTime"
-                      value={formData.startTime}
-                      onChange={handleChange}
-                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-2 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-xs text-center"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                      {t("adminPage.endTime", "Término")}
-                    </label>
-                    <input
-                      type="time"
-                      name="endTime"
-                      value={formData.endTime}
-                      onChange={handleChange}
-                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-2 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-xs text-center"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                      {t("adminPage.totalHours", "Horas (h)")}
-                    </label>
-                    <input
-                      type="number"
-                      name="totalHours"
-                      placeholder="Ex: 18"
-                      value={formData.totalHours}
-                      onChange={handleChange}
-                      min="0"
-                      className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-2 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-xs text-center"
                     />
                   </div>
                 </div>
@@ -645,152 +679,225 @@ export default function AdminDashboard() {
             </form>
           </div>
 
-          {/* Coluna 2: Lista de Eventos Ativos */}
+          {/* Coluna 2: Lista de Eventos */}
           <div className="lg:col-span-2">
-            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">{t("adminPage.activeAgenda")}</h2>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <h2 className="font-heading text-xl text-[#F0EDE8]">{t("adminPage.activeAgenda")}</h2>
+
+              {/* Abas: Próximos & Ativos vs Encerrados / Histórico */}
+              <div className="flex items-center gap-1.5 p-1 bg-[#121214] border border-[#222222] rounded-[2px] self-start sm:self-auto">
+                <button
+                  type="button"
+                  onClick={() => setAdminTab('upcoming')}
+                  className={`px-3 py-1.5 rounded-[2px] font-heading text-xs tracking-wider uppercase transition-all flex items-center gap-2 ${
+                    adminTab === 'upcoming' 
+                      ? 'bg-accent text-primary font-semibold shadow' 
+                      : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
+                  }`}
+                >
+                  <span>{t("adminPage.tabUpcoming", "Próximos & Ativos")}</span>
+                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                    adminTab === 'upcoming' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#222222] text-[#CFCFCF]'
+                  }`}>
+                    {events.filter(e => !isEventPast(e)).length}
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setAdminTab('past')}
+                  className={`px-3 py-1.5 rounded-[2px] font-heading text-xs tracking-wider uppercase transition-all flex items-center gap-2 ${
+                    adminTab === 'past' 
+                      ? 'bg-accent text-primary font-semibold shadow' 
+                      : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
+                  }`}
+                >
+                  <span>{t("adminPage.tabPast", "Passados / Histórico")}</span>
+                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                    adminTab === 'past' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#222222] text-[#CFCFCF]'
+                  }`}>
+                    {events.filter(e => isEventPast(e)).length}
+                  </span>
+                </button>
+              </div>
+            </div>
+
             {loading ? (
               <p className="text-[#9A9A9A] font-heading">{t("adminPage.loading", "Carregando...")}</p>
-            ) : events.length === 0 ? (
-              <div className="p-8 border border-[#222222] bg-[#0a0a0a] rounded-[2px] text-center text-[#9A9A9A] font-heading">
-                {t("adminPage.empty", "Nenhum evento criado ainda.")}
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {events.map(event => {
-                  const { title: dispTitle, scheduleDetails: dispSchedule, location: dispLocation } = getLocalizedEvent(event, i18n.language);
-                  const cat = getEventCategory(event);
+            ) : (() => {
+              const upcomingEvents = events.filter(e => !isEventPast(e));
+              const pastEvents = events.filter(e => isEventPast(e));
+              const displayedEvents = adminTab === 'past' ? pastEvents : upcomingEvents;
 
-                  let dateStr = '';
-                  if (event.startDate) {
-                    const [y, m, d] = event.startDate.split('-');
-                    dateStr = `${d}/${m}/${y}`;
-                  }
+              if (displayedEvents.length === 0) {
+                return (
+                  <div className="p-8 border border-[#222222] bg-[#0a0a0a] rounded-[2px] text-center text-[#9A9A9A] font-heading">
+                    {adminTab === 'past' 
+                      ? t("adminPage.emptyPast", "Nenhum evento encerrado no histórico.") 
+                      : t("adminPage.emptyUpcoming", "Nenhum evento ativo ou futuro no momento.")}
+                  </div>
+                );
+              }
 
-                  const spotsLeft = (event.totalSpots || 0) - (event.enrolledCount || 0);
+              return (
+                <div className="space-y-4">
+                  {displayedEvents.map(event => {
+                    const { title: dispTitle, scheduleDetails: dispSchedule, location: dispLocation } = getLocalizedEvent(event, i18n.language);
+                    const cat = getEventCategory(event);
+                    const dateStr = formatEventDate(event.startDate, event.endDate);
+                    const isPast = isEventPast(event);
+                    const isOngoing = isEventOngoing(event);
+                    const spotsLeft = (event.totalSpots || 0) - (event.enrolledCount || 0);
 
-                  return (
-                    <div key={event.id} className="p-6 border border-[#222222] bg-[#0a0a0a] rounded-[2px] flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-[9px] uppercase tracking-[2px] font-bold px-2 py-0.5 rounded-[2px] bg-[#1a1a1a] text-accent">
-                            {cat === 'bethedance' ? 'BE THE DANCE' : 'BIOSTRETCH'}
-                          </span>
-                          
-                          {/* Badges de Idiomas */}
-                          <div className="flex items-center gap-1">
-                            {event.title_no && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">NO</span>}
-                            {event.title_en && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">EN</span>}
-                            {event.title_pt && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">PT</span>}
-                          </div>
-
-                          {/* Instrutor */}
-                          {event.instructor && (
-                            <span className="text-[10px] font-heading text-[#9A9A9A] ml-2">
-                              • <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
+                    return (
+                      <div 
+                        key={event.id} 
+                        className={`p-6 border rounded-[2px] flex flex-col md:flex-row justify-between items-start md:items-center gap-6 transition-colors ${
+                          isPast 
+                            ? 'border-[#222222] bg-[#08080a] opacity-85 hover:opacity-100' 
+                            : 'border-[#222222] bg-[#0a0a0a]'
+                        }`}
+                      >
+                        <div className="flex-1">
+                          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span className={`text-[9px] uppercase tracking-[2px] font-bold px-2 py-0.5 rounded-[2px] ${getCategoryTheme(cat).badgeBg}`}>
+                              {getCategoryTheme(cat).label}
                             </span>
-                          )}
+
+                            {Array.isArray(event.sessions) && event.sessions.length > 1 && (
+                              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-[#9A9A9A] border border-white/5">
+                                {event.sessions.length} {t("adminPage.sessionsCount", "encontros")}
+                              </span>
+                            )}
+
+                            {/* Status Badge */}
+                            {isPast && (
+                              <span className="text-[9px] uppercase tracking-[1px] font-mono px-2 py-0.5 rounded-[2px] bg-red-950/40 text-red-400 border border-red-800/30">
+                                {t("adminPage.statusPast", "Encerrado")}
+                              </span>
+                            )}
+                            {isOngoing && !isPast && (
+                              <span className="text-[9px] uppercase tracking-[1px] font-mono px-2 py-0.5 rounded-[2px] bg-amber-950/40 text-amber-400 border border-amber-800/30">
+                                {t("adminPage.statusOngoing", "Em Andamento")}
+                              </span>
+                            )}
+                            
+                            {/* Badges de Idiomas */}
+                            <div className="flex items-center gap-1">
+                              {event.title_no && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">NO</span>}
+                              {event.title_en && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">EN</span>}
+                              {event.title_pt && <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-white/5 text-[#9A9A9A]">PT</span>}
+                            </div>
+
+                            {/* Instrutor */}
+                            {event.instructor && (
+                              <span className="text-[10px] font-heading text-[#9A9A9A] ml-2">
+                                • <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
+                              </span>
+                            )}
+                          </div>
+
+                          <h3 className={`font-drama text-2xl mb-2 ${isPast ? 'text-[#D0D0D4]' : 'text-accent'}`}>{dispTitle}</h3>
+                          
+                          <div className="font-heading text-xs text-[#9A9A9A] space-y-1">
+                            <div className="flex items-center gap-1.5">
+                              <strong className="text-[#CFCFCF]">{t("adminPage.eventDates", "Período")}:</strong> 
+                              <span>{dateStr || '-'}</span>
+                              {event.startTime && (
+                                <span className="text-[#7A7A7A] ml-1">
+                                  ({event.startTime} - {event.endTime || ''})
+                                </span>
+                              )}
+                              {event.totalHours && (
+                                <span className="text-accent/80 font-mono text-[11px] ml-1">
+                                  [{event.totalHours}h]
+                                </span>
+                              )}
+                            </div>
+                            <div className="flex items-start gap-1.5">
+                              <strong className="text-[#CFCFCF] shrink-0">{t("adminPage.scheduleText")}:</strong> 
+                              <span className="whitespace-pre-wrap">{dispSchedule || '-'}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                              <strong className="text-[#CFCFCF]">{t("adminPage.location")}:</strong> 
+                              <span>{dispLocation || '-'}</span>
+                            </div>
+                          </div>
                         </div>
 
-                        <h3 className="font-drama text-2xl text-accent mb-2">{dispTitle}</h3>
-                        
-                        <div className="font-heading text-xs text-[#9A9A9A] space-y-1">
-                          <div className="flex items-center gap-1.5">
-                            <strong className="text-[#CFCFCF]">{t("adminPage.startDate")}:</strong> 
-                            <span>{dateStr || '-'}</span>
-                            {event.startTime && (
-                              <span className="text-[#7A7A7A] ml-1">
-                                ({event.startTime} - {event.endTime || ''})
-                              </span>
-                            )}
-                            {event.totalHours && (
-                              <span className="text-accent/80 font-mono text-[11px] ml-1">
-                                [{event.totalHours}h]
-                              </span>
-                            )}
+                        <div className="flex items-center gap-5 shrink-0">
+                          {/* Contador de Vagas exclusivo do Admin */}
+                          <div className="text-center min-w-[50px]">
+                            <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
+                              {t("adminPage.spots", "Vagas")}
+                            </span>
+                            <span className="font-sans text-lg text-[#F0EDE8] font-semibold">
+                              {spotsLeft} <span className="text-[#9A9A9A] text-xs font-normal">/ {event.totalSpots}</span>
+                            </span>
                           </div>
-                          <div className="flex items-start gap-1.5">
-                            <strong className="text-[#CFCFCF] shrink-0">{t("adminPage.scheduleText")}:</strong> 
-                            <span className="whitespace-pre-wrap">{dispSchedule || '-'}</span>
+
+                          {/* Contador de Espera exclusivo do Admin */}
+                          <div className="text-center min-w-[45px]">
+                            <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
+                              {t("adminPage.waitlist", "Espera")}
+                            </span>
+                            <span className="font-sans text-lg text-[#F0EDE8] font-semibold">
+                              {event.waitlistCount || 0}
+                            </span>
                           </div>
-                          <div className="flex items-center gap-1.5">
-                            <strong className="text-[#CFCFCF]">{t("adminPage.location")}:</strong> 
-                            <span>{dispLocation || '-'}</span>
+
+                          {/* Ações por Ícones Elegantes com Tooltips */}
+                          <div className="flex items-center gap-2">
+                            <a 
+                              href={generateInstructorCalendarUrl(event, i18n.language, event.instructorEmail)}
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}
+                              aria-label={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor")}
+                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center"
+                            >
+                              <CalendarPlus className="w-4 h-4" />
+                            </a>
+
+                            <button 
+                              onClick={() => setSelectedEventForStudents(event)}
+                              title={t("adminPage.viewStudents")}
+                              aria-label={t("adminPage.viewStudents")}
+                              className="p-2.5 rounded-[2px] border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent transition-colors flex items-center justify-center relative group"
+                            >
+                              <Users className="w-4 h-4" />
+                              {event.enrolledCount > 0 && (
+                                <span className="absolute -top-1.5 -right-1.5 bg-accent text-primary text-[9px] font-bold font-mono px-1 rounded-full">
+                                  {event.enrolledCount}
+                                </span>
+                              )}
+                            </button>
+
+                            <button 
+                              onClick={() => handleEditClick(event)} 
+                              title={t("adminPage.edit")}
+                              aria-label={t("adminPage.edit")}
+                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] transition-colors flex items-center justify-center"
+                            >
+                              <Pencil className="w-4 h-4" />
+                            </button>
+
+                            <button 
+                              onClick={() => handleDelete(event.id)} 
+                              title={t("adminPage.delete")}
+                              aria-label={t("adminPage.delete")}
+                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-red-900/40 text-[#9A9A9A] hover:text-red-400 transition-colors flex items-center justify-center"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
                           </div>
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-5 shrink-0">
-                        {/* Contador de Vagas exclusivo do Admin */}
-                        <div className="text-center min-w-[50px]">
-                          <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
-                            {t("adminPage.spots", "Vagas")}
-                          </span>
-                          <span className="font-sans text-lg text-[#F0EDE8] font-semibold">
-                            {spotsLeft} <span className="text-[#9A9A9A] text-xs font-normal">/ {event.totalSpots}</span>
-                          </span>
-                        </div>
-
-                        {/* Contador de Espera exclusivo do Admin */}
-                        <div className="text-center min-w-[45px]">
-                          <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
-                            {t("adminPage.waitlist", "Espera")}
-                          </span>
-                          <span className="font-sans text-lg text-[#F0EDE8] font-semibold">
-                            {event.waitlistCount || 0}
-                          </span>
-                        </div>
-
-                        {/* Ações por Ícones Elegantes com Tooltips */}
-                        <div className="flex items-center gap-2">
-                          <a 
-                            href={generateInstructorCalendarUrl(event, i18n.language, event.instructorEmail)}
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}
-                            aria-label={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor")}
-                            className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center"
-                          >
-                            <CalendarPlus className="w-4 h-4" />
-                          </a>
-
-                          <button 
-                            onClick={() => setSelectedEventForStudents(event)}
-                            title={t("adminPage.viewStudents")}
-                            aria-label={t("adminPage.viewStudents")}
-                            className="p-2.5 rounded-[2px] border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent transition-colors flex items-center justify-center relative group"
-                          >
-                            <Users className="w-4 h-4" />
-                            {event.enrolledCount > 0 && (
-                              <span className="absolute -top-1.5 -right-1.5 bg-accent text-primary text-[9px] font-bold font-mono px-1 rounded-full">
-                                {event.enrolledCount}
-                              </span>
-                            )}
-                          </button>
-
-                          <button 
-                            onClick={() => handleEditClick(event)} 
-                            title={t("adminPage.edit")}
-                            aria-label={t("adminPage.edit")}
-                            className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] transition-colors flex items-center justify-center"
-                          >
-                            <Pencil className="w-4 h-4" />
-                          </button>
-
-                          <button 
-                            onClick={() => handleDelete(event.id)} 
-                            title={t("adminPage.delete")}
-                            aria-label={t("adminPage.delete")}
-                            className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-red-900/40 text-[#9A9A9A] hover:text-red-400 transition-colors flex items-center justify-center"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+                    );
+                  })}
+                </div>
+              );
+            })()}
           </div>
         </div>
       </main>

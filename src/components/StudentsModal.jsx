@@ -7,7 +7,7 @@ import {
   X, Copy, Check, Download, UserCheck, Trash2, Phone, HeartPulse, 
   Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid 
 } from 'lucide-react';
-import { generateInstructorCalendarUrl } from '../utils/eventHelpers';
+import { generateInstructorCalendarUrl, formatEventDate } from '../utils/eventHelpers';
 
 // Helper para formatar a data de nascimento e calcular a idade
 function formatBirthDateAndAge(birthDateStr, yearsOldLabel = 'anos') {
@@ -334,7 +334,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
               {event.title_no || event.title_en || event.title_pt || event.title}
             </h2>
             <p className="font-heading text-xs text-[#9A9A9A] mt-1">
-              {event.startDate ? event.startDate.split('-').reverse().join('/') : ''} 
+              {formatEventDate(event.startDate, event.endDate)} 
               {event.startTime && ` • ${event.startTime} - ${event.endTime || ''}`}
               {event.totalHours ? ` (${event.totalHours}h)` : ''}
               {event.location ? ` | ${event.location}` : ''}
