@@ -253,6 +253,7 @@ export default function AdminDashboard() {
         location_no: (formData.location_no || primaryLocation).trim(),
         location_en: (formData.location_en || primaryLocation).trim(),
         location_pt: (formData.location_pt || primaryLocation).trim(),
+        address: (formData.address || '').trim(),
 
         targetPath: calculatedTargetPath,
 
@@ -308,6 +309,7 @@ export default function AdminDashboard() {
       location_no: event.location_no || event.location || '',
       location_en: event.location_en || event.location || '',
       location_pt: event.location_pt || event.location || '',
+      address: event.address || '',
       totalSpots: event.totalSpots || ''
     });
     setEditingId(event.id);
