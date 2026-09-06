@@ -59,6 +59,8 @@ export default function AgendaPage() {
 
   // Referência para rolagem suave ao selecionar um dia
   const dayInspectionRef = useRef(null);
+  // Referência para rolagem suave ao expandir o cronograma de um evento
+  const scheduleRefs = useRef({});
 
   // Estado do Calendário Mensal
   const today = new Date();
@@ -105,10 +107,21 @@ export default function AgendaPage() {
   }
 
   const toggleSchedule = (eventId) => {
-    setExpandedSchedules(prev => ({
-      ...prev,
-      [eventId]: !prev[eventId]
-    }));
+    setExpandedSchedules(prev => {
+      const willExpand = !prev[eventId];
+      if (willExpand) {
+        setTimeout(() => {
+          const el = scheduleRefs.current[eventId];
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 150);
+      }
+      return {
+        ...prev,
+        [eventId]: willExpand
+      };
+    });
   };
 
   async function handleCancelEnrollment(eventId) {
@@ -247,6 +260,14 @@ export default function AgendaPage() {
         map[d.date].push(d);
       });
     });
+    // Ordena as sessões de cada dia em ordem cronológica (horário mais cedo acima)
+    Object.keys(map).forEach(dateKey => {
+      map[dateKey].sort((a, b) => {
+        const timeA = a.startTime || a.event?.startTime || '99:99';
+        const timeB = b.startTime || b.event?.startTime || '99:99';
+        return timeA.localeCompare(timeB);
+      });
+    });
     return map;
   }, [categoryFilteredEvents]);
 
@@ -353,10 +374,15 @@ export default function AgendaPage() {
     return mStr.charAt(0).toUpperCase() + mStr.slice(1);
   }, [currentYear, currentMonth, currentLang]);
 
-  // Eventos do dia selecionado
+  // Eventos do dia selecionado ordenados cronologicamente por horário de início (mais cedo primeiro)
   const selectedDaySessions = useMemo(() => {
     if (!selectedDate) return [];
-    return eventsByDate[selectedDate] || [];
+    const sessions = eventsByDate[selectedDate] || [];
+    return [...sessions].sort((a, b) => {
+      const timeA = a.startTime || a.event?.startTime || '99:99';
+      const timeB = b.startTime || b.event?.startTime || '99:99';
+      return timeA.localeCompare(timeB);
+    });
   }, [selectedDate, eventsByDate]);
 
   // Data formatada para o cabeçalho de inspeção do dia
@@ -599,10 +625,11 @@ export default function AgendaPage() {
         <AnimatePresence>
           {isExpanded && (
             <motion.div
+              ref={el => { if (el) scheduleRefs.current[event.id] = el; }}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="w-full pt-4 border-t border-[#1C1C24] overflow-hidden"
+              className="w-full pt-4 border-t border-[#1C1C24] overflow-hidden scroll-mt-32"
             >
               <div className="bg-[#0A0A0E] border border-[#20202A] rounded-[4px] p-4">
                 <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#1A1A22]">
@@ -860,12 +887,12 @@ export default function AgendaPage() {
              Passado, presente e futuro navegáveis com visual luxuoso
              ============================================================ */
           <div className="space-y-8">
-            <div className="bg-[#0C0C11] border border-[#20202C] rounded-[2px] p-4 sm:p-6 md:p-7 shadow-[0_16px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
+            <div className="bg-[#0A0A0E] border border-[#1C1C24] rounded-[2px] p-4 sm:p-6 md:p-7 shadow-[0_16px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
               {/* Brilho ambiente sutil no topo do painel */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
               
               {/* Barra de Navegação do Calendário */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-white/[0.07] mb-4">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-[#1C1C24] mb-4">
                 <div>
                   <h2 className="font-drama text-2xl md:text-3xl text-[#FAF8F5] tracking-wide">
                     {monthTitle}
@@ -873,7 +900,7 @@ export default function AgendaPage() {
                 </div>
 
                 {/* Legenda de Categorias em cápsula requintada */}
-                <div className="flex flex-wrap items-center gap-3.5 px-3 py-1.5 rounded-[2px] bg-[#12121A] border border-white/[0.05] text-xs font-heading">
+                <div className="flex flex-wrap items-center gap-3.5 px-3 py-1.5 rounded-[2px] bg-[#121214] border border-[#1E1E24] text-xs font-heading">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(201,168,76,0.4)]" />
                     <span className="text-[#D0CFC8] text-[11px] font-medium tracking-wide">Be The Dance</span>
@@ -892,7 +919,7 @@ export default function AgendaPage() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrevMonth}
-                    className="p-2 rounded-[2px] bg-[#14141E] hover:bg-[#1D1D2C] border border-white/[0.08] text-zinc-300 hover:text-white transition-all cursor-pointer"
+                    className="p-2 rounded-[2px] bg-[#121214] hover:bg-[#161619] border border-[#1E1E24] text-zinc-300 hover:text-white transition-all cursor-pointer"
                     aria-label="Mês Anterior"
                     title={t("adminPage.schedulePicker.prevMonth", "Mês Anterior")}
                   >
@@ -901,7 +928,7 @@ export default function AgendaPage() {
 
                   <button
                     onClick={handleToday}
-                    className="px-3.5 py-1.5 rounded-[2px] bg-[#151522] hover:bg-accent hover:text-primary border border-accent/40 text-[10px] font-heading font-semibold uppercase tracking-wider text-accent transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                    className="px-3.5 py-1.5 rounded-[2px] bg-[#121214] hover:bg-accent hover:text-primary border border-accent/40 text-[10px] font-heading font-semibold uppercase tracking-wider text-accent transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
                     title={t("agendaPage.goToToday", "Ir para a data atual")}
                   >
                     <RotateCcw className="w-3 h-3 text-accent" />
@@ -910,7 +937,7 @@ export default function AgendaPage() {
 
                   <button
                     onClick={handleNextMonth}
-                    className="p-2 rounded-[2px] bg-[#14141E] hover:bg-[#1D1D2C] border border-white/[0.08] text-zinc-300 hover:text-white transition-all cursor-pointer"
+                    className="p-2 rounded-[2px] bg-[#121214] hover:bg-[#161619] border border-[#1E1E24] text-zinc-300 hover:text-white transition-all cursor-pointer"
                     aria-label="Próximo Mês"
                     title={t("adminPage.schedulePicker.nextMonth", "Próximo Mês")}
                   >
@@ -952,14 +979,14 @@ export default function AgendaPage() {
                       onClick={() => handleSelectDay(cell.dateStr)}
                       className={`min-h-[54px] md:min-h-[70px] p-1.5 md:p-2 rounded-[2px] flex flex-col justify-between text-left transition-all duration-200 relative group cursor-pointer ${
                         !isCurrentMonth 
-                          ? 'bg-[#09090D]/50 text-zinc-600/40 border border-transparent opacity-40 hover:opacity-60' 
+                          ? 'bg-[#0B0B0D]/50 text-zinc-600/40 border border-transparent opacity-35 hover:opacity-55' 
                           : isSelected 
-                            ? 'bg-[#1C1B28] border-accent ring-1 ring-accent shadow-[0_0_20px_rgba(201,168,76,0.18)]' 
+                            ? 'bg-[#161619] border-accent ring-1 ring-accent shadow-[0_0_20px_rgba(201,168,76,0.18)]' 
                             : isToday 
-                              ? 'bg-[#181722] border-accent/70 ring-1 ring-accent/40 shadow-[0_0_15px_rgba(201,168,76,0.1)]' 
+                              ? 'bg-[#151518] border-accent/70 ring-1 ring-accent/40 shadow-[0_0_15px_rgba(201,168,76,0.1)]' 
                               : hasEvents
-                                ? 'bg-[#161622] border border-[#2A2A3C] hover:border-accent/40 hover:bg-[#1B1B2A] shadow-sm'
-                                : 'bg-[#12121A] border border-white/[0.04] hover:border-white/[0.1] hover:bg-[#161622]'
+                                ? 'bg-[#121214] border border-[#2A2A35] hover:border-accent/50 hover:bg-[#161619] shadow-sm'
+                                : 'bg-[#121214] border border-[#1E1E24] hover:border-[#2A2A35] hover:bg-[#161619]'
                       } ${isPast && isCurrentMonth && !isSelected && !isToday ? 'opacity-75' : ''}`}
                     >
                       {/* Topo da Célula: Número do Dia com alta legibilidade */}
@@ -1047,7 +1074,7 @@ export default function AgendaPage() {
                Mostra os detalhes de todas as atividades naquele dia
                ============================================================ */}
             <div ref={dayInspectionRef} className="pt-4 scroll-mt-24">
-              <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#20202C]">
+              <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#1E1E24]">
                 <div className="flex items-center gap-3">
                   <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_10px_rgba(201,168,76,0.6)] animate-pulse" />
                   <h3 className="font-drama text-2xl md:text-3xl text-[#FAF8F5]">
@@ -1055,13 +1082,13 @@ export default function AgendaPage() {
                   </h3>
                 </div>
 
-                <span className="font-mono text-xs px-2.5 py-1 rounded-[2px] bg-[#14141E] border border-white/[0.06] text-zinc-300">
+                <span className="font-mono text-xs px-2.5 py-1 rounded-[2px] bg-[#121214] border border-[#1E1E24] text-zinc-300">
                   {selectedDaySessions.length} {selectedDaySessions.length === 1 ? 'atividade' : 'atividades'}
                 </span>
               </div>
 
               {selectedDaySessions.length === 0 ? (
-                <div className="p-8 md:p-12 text-center bg-[#0E0E14] border border-[#20202C] rounded-[2px]">
+                <div className="p-8 md:p-12 text-center bg-[#121214] border border-[#1E1E24] rounded-[2px]">
                   <p className="text-[#D0CDC5] font-heading text-sm mb-2">
                     {t("agendaPage.noEventsOnDay", "Nenhuma atividade programada para este dia.")}
                   </p>

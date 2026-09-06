@@ -783,7 +783,7 @@
     "cta": {
       "title": "Skal vi skape en opplevelse for teamet ditt?",
       "text": "Ta kontakt for å lære om mulighetene for Biostretch-workshops og opplevelser utviklet for ditt bedriftsmiljø.",
-      "button": "Kontakt Oss"
+      "button": "Snakk med teamet vårt"
     }
   },
   "individual": {
@@ -1077,6 +1077,7 @@
     "subtitle": "Har du spørsmål om workshops, faste timer eller institusjonelle samarbeid? Ta direkte kontakt med oss.",
     "executiveTitle": "Planlegg Ledermøte",
     "executiveSubtitle": "Koble din organisasjon eller bedrift med Dance 2 Dance for sosiale prosjekter, bedriftsvelvære eller partnerskap.",
+    "corporateSubtitle": "Ta kontakt for å skreddersy en opplevelse tilpasset din organisasjon.",
     "emailLabel": "E-post",
     "emailRequired": "Vennligst oppgi en gyldig e-postadresse.",
     "nameLabel": "Navn (Valgfritt)",
@@ -1084,8 +1085,10 @@
     "phoneLabel": "Telefon / WhatsApp (Valgfritt)",
     "subjectLabel": "Emne",
     "subjectGeneral": "Generelle henvendelser / Informasjon",
+    "subjectBtdInCompany": "Be the Dance in Company",
+    "subjectBiostretchInCompany": "Biostretch in Company",
     "subjectExecutive": "Ledermøte / Sosialt Prosjekt",
-    "subjectCorporate": "Biostretch for Bedrifter",
+    "subjectCorporate": "Biostretch in Company",
     "subjectIndividual": "Individuell Økt / Personlig",
     "subjectPartnership": "Samarbeid & Sponsorer",
     "messageLabel": "Melding *",

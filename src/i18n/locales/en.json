@@ -783,7 +783,7 @@
     "cta": {
       "title": "Shall we create an experience for your team?",
       "text": "Get in touch to learn about the possibilities of Biostretch workshops and experiences designed for your corporate environment.",
-      "button": "Contact Us"
+      "button": "Talk to Our Team"
     }
   },
   "individual": {
@@ -1077,6 +1077,7 @@
     "subtitle": "Have questions about workshops, regular classes, or institutional partnerships? Talk directly to us.",
     "executiveTitle": "Schedule Executive Meeting",
     "executiveSubtitle": "Connect your organization or company with Dance 2 Dance for social projects, corporate wellness, or partnerships.",
+    "corporateSubtitle": "Get in touch to create a customized experience tailored to your organization.",
     "emailLabel": "Email",
     "emailRequired": "Please enter a valid email address.",
     "nameLabel": "Name (Optional)",
@@ -1084,8 +1085,10 @@
     "phoneLabel": "Phone / WhatsApp (Optional)",
     "subjectLabel": "Subject",
     "subjectGeneral": "General Inquiries / Information",
+    "subjectBtdInCompany": "Be the Dance in Company",
+    "subjectBiostretchInCompany": "Biostretch in Company",
     "subjectExecutive": "Executive Meeting / Social Project",
-    "subjectCorporate": "Biostretch for Companies",
+    "subjectCorporate": "Biostretch in Company",
     "subjectIndividual": "Individual Session / Personal",
     "subjectPartnership": "Partnerships & Sponsorships",
     "messageLabel": "Message *",

@@ -16,6 +16,16 @@ export default function ContactPage() {
   const [searchParams] = useSearchParams();
   const { currentUser } = useAuth();
 
+  const resolveSubjectParam = (param) => {
+    if (!param) return 'geral';
+    if (param === 'btd-in-company' || param === 'be-the-dance-in-company' || param === 'btd-empresas') return 'btd-in-company';
+    if (param === 'biostretch-in-company' || param === 'biostretch-empresas') return 'biostretch-in-company';
+    if (param === 'reuniao-executiva') return 'reuniao-executiva';
+    if (param === 'sessao-individual') return 'sessao-individual';
+    if (param === 'parcerias') return 'parcerias';
+    return 'geral';
+  };
+
   const isExecutiveMeeting = searchParams.get('subject') === 'reuniao-executiva';
 
   const [formData, setFormData] = useState({
@@ -27,7 +37,7 @@ export default function ContactPage() {
     neighborhood: currentUser?.profile?.neighborhood || '',
     zip: currentUser?.profile?.zip || '',
     country: currentUser?.profile?.country || '',
-    subject: isExecutiveMeeting ? 'reuniao-executiva' : 'geral',
+    subject: resolveSubjectParam(searchParams.get('subject')),
     message: ''
   });
 
@@ -53,10 +63,11 @@ export default function ContactPage() {
   const [turnstileToken, setTurnstileToken] = useState('');
 
   useEffect(() => {
-    if (isExecutiveMeeting) {
-      setFormData(prev => ({ ...prev, subject: 'reuniao-executiva' }));
+    const rawParam = searchParams.get('subject');
+    if (rawParam) {
+      setFormData(prev => ({ ...prev, subject: resolveSubjectParam(rawParam) }));
     }
-  }, [isExecutiveMeeting]);
+  }, [searchParams]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -114,14 +125,20 @@ export default function ContactPage() {
             {t('contactPage.kicker', 'CONTATO & PARCERIAS')}
           </span>
           <h1 className="font-drama text-5xl md:text-7xl text-[#F0EDE8] mb-6">
-            {isExecutiveMeeting 
+            {formData.subject === 'reuniao-executiva' 
               ? t('contactPage.executiveTitle', 'Agendar Reunião Executiva')
-              : t('contactPage.title', 'Entre em Contato')}
+              : formData.subject === 'btd-in-company'
+                ? 'Be the Dance in Company'
+                : formData.subject === 'biostretch-in-company'
+                  ? 'Biostretch in Company'
+                  : t('contactPage.title', 'Entre em Contato')}
           </h1>
           <p className="font-heading text-[#9A9A9A] max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            {isExecutiveMeeting
+            {formData.subject === 'reuniao-executiva'
               ? t('contactPage.executiveSubtitle', 'Conecte sua organização ou empresa com o Dance 2 Dance para projetos sociais, bem-estar corporativo ou parcerias.')
-              : t('contactPage.subtitle', 'Tem dúvidas sobre workshops, aulas regulares ou parcerias institucionais? Fale diretamente conosco.')}
+              : (formData.subject === 'btd-in-company' || formData.subject === 'biostretch-in-company')
+                ? t('contactPage.corporateSubtitle', 'Fale conosco para desenharmos uma proposta personalizada para a sua organização.')
+                : t('contactPage.subtitle', 'Tem dúvidas sobre workshops, aulas regulares ou parcerias institucionais? Fale diretamente conosco.')}
           </p>
         </motion.div>
 
@@ -284,8 +301,9 @@ export default function ContactPage() {
                     className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3.5 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm cursor-pointer"
                   >
                     <option value="geral">{t('contactPage.subjectGeneral', 'Dúvidas Gerais / Informações')}</option>
+                    <option value="btd-in-company">{t('contactPage.subjectBtdInCompany', 'Be the Dance in Company')}</option>
+                    <option value="biostretch-in-company">{t('contactPage.subjectBiostretchInCompany', 'Biostretch in Company')}</option>
                     <option value="reuniao-executiva">{t('contactPage.subjectExecutive', 'Reunião Executiva / Projeto Social')}</option>
-                    <option value="biostretch-empresas">{t('contactPage.subjectCorporate', 'Biostretch para Empresas')}</option>
                     <option value="sessao-individual">{t('contactPage.subjectIndividual', 'Sessão Individual / Personal')}</option>
                     <option value="parcerias">{t('contactPage.subjectPartnership', 'Parcerias & Patrocínios')}</option>
                   </select>

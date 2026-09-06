@@ -321,7 +321,7 @@ export default function CorporatePage() {
             </p>
 
             <Link
-              to="/contato?subject=biostretch-empresas"
+              to="/contato?subject=biostretch-in-company"
               className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-10 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-full mb-12"
             >
               {t('corporate.cta.button')}
