@@ -402,7 +402,7 @@ export default function AdminDashboard() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
       
-      <main className="flex-grow pt-28 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10">
+      <main className="flex-grow pt-44 md:pt-48 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10">
         <h1 className="font-batang text-4xl text-[#F0EDE8] mb-8">{t("adminPage.adminTitle")}</h1>
 
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
