@@ -6,8 +6,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check } from 'lucide-react';
-import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme } from '../utils/eventHelpers';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles } from 'lucide-react';
+import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
@@ -402,12 +402,12 @@ export default function AdminDashboard() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
       
-      <main className="flex-grow pt-32 pb-24 px-6 max-w-6xl mx-auto w-full relative z-10">
-        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-12">{t("adminPage.adminTitle")}</h1>
+      <main className="flex-grow pt-28 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10">
+        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-8">{t("adminPage.adminTitle")}</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
           {/* Coluna 1: Formulário de Criação / Edição */}
-          <div className="lg:col-span-1 bg-[#0a0a0a] border border-[#222222] p-8 rounded-[2px] h-fit">
+          <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-6 sm:p-8 rounded-[4px] h-fit">
             <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">
               {editingId ? t('adminPage.edit') : t('adminPage.createNew')}
             </h2>
@@ -630,9 +630,32 @@ export default function AdminDashboard() {
 
                 {/* Texto Visível de Datas / Horários no Idioma Ativo */}
                 <div>
-                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                    {t("adminPage.scheduleText")} ({activeLangTab.toUpperCase()})
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF]">
+                      {t("adminPage.scheduleText")} ({activeLangTab.toUpperCase()})
+                    </label>
+                    {formData.sessions && formData.sessions.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const ptText = generateScheduleSummary(formData.sessions, 'pt');
+                          const enText = generateScheduleSummary(formData.sessions, 'en');
+                          const noText = generateScheduleSummary(formData.sessions, 'no');
+                          setFormData(prev => ({
+                            ...prev,
+                            scheduleDetails_pt: ptText,
+                            scheduleDetails_en: enText,
+                            scheduleDetails_no: noText
+                          }));
+                        }}
+                        className="text-[10px] font-heading uppercase tracking-wider text-accent hover:text-white transition-colors flex items-center gap-1 bg-accent/10 px-2 py-0.5 rounded border border-accent/30"
+                        title={t("adminPage.autoGenerateSchedule", "Gerar Resumo da Programação")}
+                      >
+                        <Sparkles className="w-3 h-3 text-accent" />
+                        <span>{t("adminPage.autoGenerateSchedule", "Gerar Resumo da Programação")}</span>
+                      </button>
+                    )}
+                  </div>
                   <textarea 
                     name={`scheduleDetails_${activeLangTab}`} 
                     value={formData[`scheduleDetails_${activeLangTab}`] || ''} 
@@ -680,7 +703,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Coluna 2: Lista de Eventos */}
-          <div className="lg:col-span-2">
+          <div className="xl:col-span-7 2xl:col-span-7">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <h2 className="font-heading text-xl text-[#F0EDE8]">{t("adminPage.activeAgenda")}</h2>
 

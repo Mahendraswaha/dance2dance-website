@@ -294,18 +294,60 @@ export function isEventOngoing(event) {
 }
 
 /**
- * Formats start and optional end date in DD/MM/YYYY format.
- * If multi-day/course, returns "DD/MM/YYYY – DD/MM/YYYY".
+ * Returns abbreviated weekday name for a YYYY-MM-DD date string (e.g. 'Seg', 'Mon', 'Man').
  */
-export function formatEventDate(startDate, endDate) {
+export function getWeekdayAbbrev(dateStr, lang = 'pt') {
+  if (!dateStr) return '';
+  try {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const dt = new Date(y, m - 1, d);
+    const wd = dt.toLocaleDateString(lang || 'pt', { weekday: 'short' });
+    return wd.charAt(0).toUpperCase() + wd.slice(1).replace('.', '');
+  } catch (e) {
+    return '';
+  }
+}
+
+/**
+ * Formats start and optional end date in DD/MM/YYYY format with localized weekday.
+ * Single day: "Seg, 07/09/2026"
+ * Multi-day/course: "Seg, 07/09/2026 – Seg, 26/10/2026"
+ */
+export function formatEventDate(startDate, endDate, lang = 'pt', withWeekday = true) {
   if (!startDate) return '';
   const [y1, m1, d1] = startDate.split('-');
-  const startStr = `${d1}/${m1}/${y1}`;
+  const wd1 = withWeekday ? `${getWeekdayAbbrev(startDate, lang)}, ` : '';
+  const startStr = `${wd1}${d1}/${m1}/${y1}`;
   if (!endDate || endDate === startDate) {
     return startStr;
   }
   const [y2, m2, d2] = endDate.split('-');
-  return `${startStr} – ${d2}/${m2}/${y2}`;
+  const wd2 = withWeekday ? `${getWeekdayAbbrev(endDate, lang)}, ` : '';
+  return `${startStr} – ${wd2}${d2}/${m2}/${y2}`;
+}
+
+/**
+ * Automatically generates a structured readable summary of all sessions.
+ */
+export function generateScheduleSummary(sessions = [], lang = 'pt') {
+  if (!Array.isArray(sessions) || sessions.length === 0) return '';
+  
+  const labels = {
+    pt: { session: 'Encontro', of: 'de', from: 'das', to: 'às' },
+    en: { session: 'Session', of: 'of', from: 'from', to: 'to' },
+    no: { session: 'Økt', of: 'av', from: 'kl.', to: '–' }
+  };
+  const l = labels[lang] || labels.pt;
+
+  return sessions.map((s, idx) => {
+    const wd = getWeekdayAbbrev(s.date, lang);
+    const [y, m, d] = s.date.split('-');
+    const dateFormatted = `${d}/${m}/${y}`;
+    const timeStr = s.startTime && s.endTime 
+      ? (lang === 'no' ? `${l.from} ${s.startTime}–${s.endTime}` : `${l.from} ${s.startTime} ${l.to} ${s.endTime}`)
+      : '';
+    return `${l.session} ${idx + 1}: ${wd}, ${dateFormatted} ${timeStr}`.trim();
+  }).join('\n');
 }
 
 /**

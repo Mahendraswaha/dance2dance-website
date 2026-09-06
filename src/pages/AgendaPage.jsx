@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, orderBy, getDocs, doc, runTransaction, where } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -17,7 +17,10 @@ import {
   CheckCircle2, 
   ArrowUpRight, 
   History,
-  Sparkles
+  Sparkles,
+  CalendarDays,
+  ChevronDown,
+  RotateCcw
 } from 'lucide-react';
 import { 
   getLocalizedEvent, 
@@ -28,7 +31,8 @@ import {
   isEventOngoing, 
   formatEventDate, 
   getEventAllDates, 
-  getCategoryTheme 
+  getCategoryTheme,
+  getWeekdayAbbrev
 } from '../utils/eventHelpers';
 import { useTranslation } from 'react-i18next';
 
@@ -38,6 +42,8 @@ function getIsoDate(year, month, day) {
 
 export default function AgendaPage() {
   const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'pt';
+
   const [events, setEvents] = useState([]);
   const [userEnrollments, setUserEnrollments] = useState({});
   const [loading, setLoading] = useState(true);
@@ -47,6 +53,10 @@ export default function AgendaPage() {
   const [filter, setFilter] = useState('all'); // 'all', 'bethedance', 'biostretch', 'kroppsskole'
   const [viewMode, setViewMode] = useState('list'); // 'list' | 'calendar'
   const [showPastList, setShowPastList] = useState(false);
+  const [expandedSchedules, setExpandedSchedules] = useState({});
+
+  // Referência para rolagem suave ao selecionar um dia
+  const dayInspectionRef = useRef(null);
 
   // Estado do Calendário Mensal
   const today = new Date();
@@ -91,6 +101,13 @@ export default function AgendaPage() {
   function getDetailsLink(event) {
     return getEventRoute(event);
   }
+
+  const toggleSchedule = (eventId) => {
+    setExpandedSchedules(prev => ({
+      ...prev,
+      [eventId]: !prev[eventId]
+    }));
+  };
 
   async function handleCancelEnrollment(eventId) {
     if (!window.confirm(t("agendaPage.confirmCancel", "Tem certeza que deseja cancelar sua inscrição/espera para este evento?"))) return;
@@ -254,7 +271,19 @@ export default function AgendaPage() {
     const now = new Date();
     setCurrentYear(now.getFullYear());
     setCurrentMonth(now.getMonth());
-    setSelectedDate(getIsoDate(now.getFullYear(), now.getMonth(), now.getDate()));
+    const iso = getIsoDate(now.getFullYear(), now.getMonth(), now.getDate());
+    setSelectedDate(iso);
+    setTimeout(() => {
+      dayInspectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
+  }
+
+  function handleSelectDay(dateStr) {
+    setSelectedDate(dateStr);
+    // Rola suavemente para baixo para mostrar os detalhes do dia selecionado
+    setTimeout(() => {
+      dayInspectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
   }
 
   // Gera dias do mês em grid de 7 colunas (Segunda a Domingo)
@@ -303,14 +332,14 @@ export default function AgendaPage() {
   }, [currentYear, currentMonth]);
 
   // Nomes dos dias da semana internacionalizados
-  const currentLang = i18n.language || 'en';
   const weekdayNames = useMemo(() => {
     const baseDate = new Date(2026, 0, 5); // 05/01/2026 é Segunda-feira
     const names = [];
     for (let i = 0; i < 7; i++) {
       const d = new Date(baseDate);
       d.setDate(baseDate.getDate() + i);
-      names.push(d.toLocaleDateString(currentLang, { weekday: 'short' }));
+      const str = d.toLocaleDateString(currentLang, { weekday: 'short' });
+      names.push(str.charAt(0).toUpperCase() + str.slice(1).replace('.', ''));
     }
     return names;
   }, [currentLang]);
@@ -334,7 +363,8 @@ export default function AgendaPage() {
     try {
       const [y, m, d] = selectedDate.split('-').map(Number);
       const dt = new Date(y, m - 1, d);
-      return dt.toLocaleDateString(currentLang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      const formatted = dt.toLocaleDateString(currentLang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      return formatted.charAt(0).toUpperCase() + formatted.slice(1);
     } catch (e) {
       return selectedDate;
     }
@@ -349,10 +379,10 @@ export default function AgendaPage() {
     
     const { title: dispTitle, scheduleDetails: dispSchedule, location: dispLocation } = getLocalizedEvent(event, currentLang);
     
-    // Período ou horário específico da sessão
+    // Período ou horário específico da sessão com dia da semana abreviado
     const dateStr = sessionInfo 
-      ? formatEventDate(sessionInfo.date)
-      : formatEventDate(event.startDate, event.endDate) || t("agendaPage.comingSoon");
+      ? formatEventDate(sessionInfo.date, null, currentLang)
+      : formatEventDate(event.startDate, event.endDate, currentLang) || t("agendaPage.comingSoon");
       
     const sessionTime = sessionInfo && sessionInfo.startTime && sessionInfo.endTime
       ? `${sessionInfo.startTime} - ${sessionInfo.endTime}`
@@ -364,6 +394,8 @@ export default function AgendaPage() {
     const userEnrollmentData = userEnrollments[event.id];
     const userStatus = userEnrollmentData ? userEnrollmentData.status : null;
     const sessionCount = Array.isArray(event.sessions) ? event.sessions.length : 0;
+    const hasMultiSessions = sessionCount > 1 || (!sessionCount && dispSchedule && dispSchedule.length > 30);
+    const isExpanded = !!expandedSchedules[event.id];
 
     return (
       <motion.div 
@@ -372,142 +404,236 @@ export default function AgendaPage() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96 }}
-        className={`border transition-all duration-300 rounded-[2px] p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 ${
+        className={`border transition-all duration-300 rounded-[2px] p-6 md:p-8 flex flex-col items-stretch gap-6 ${
           isPast 
             ? 'bg-[#0E0E10] border-[#1C1C22] opacity-75 hover:opacity-100' 
             : 'bg-[#121214] border-[#1E1E24] hover:border-[#2A2A35] hover:bg-[#161619]'
         }`}
       >
-        {/* Coluna Esquerda: Datas e Horários */}
-        <div className="w-full md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-[#1A1A24] pb-6 md:pb-0 pr-6">
-          <div className="font-heading text-sm font-semibold uppercase tracking-wider mb-2 mt-1 flex flex-wrap items-center gap-2">
-            <span className={theme.textColor}>{dateStr}</span>
-            {isOngoing && (
-              <span className="text-[9px] uppercase tracking-[1px] font-mono px-2 py-0.5 rounded-[2px] bg-amber-950/40 text-amber-400 border border-amber-800/30 font-normal">
-                {t("agendaPage.ongoing", "Em Andamento")}
+        <div className="flex flex-col md:flex-row items-center gap-8 w-full">
+          {/* Coluna Esquerda: Datas e Horários */}
+          <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#1A1A24] pb-6 md:pb-0 pr-6">
+            <div className="font-heading text-sm font-semibold uppercase tracking-wider mb-2 mt-1 flex flex-wrap items-center gap-2">
+              <span className={theme.textColor}>{dateStr}</span>
+              {isOngoing && (
+                <span className="text-[9px] uppercase tracking-[1px] font-mono px-2 py-0.5 rounded-[2px] bg-amber-950/40 text-amber-400 border border-amber-800/30 font-normal">
+                  {t("agendaPage.ongoing", "Em Andamento")}
+                </span>
+              )}
+              {isPast && (
+                <span className="text-[9px] uppercase tracking-[1px] font-mono px-2 py-0.5 rounded-[2px] bg-zinc-800/60 text-zinc-400 border border-zinc-700/50 font-normal">
+                  {t("agendaPage.pastBadge", "Realizado")}
+                </span>
+              )}
+            </div>
+            
+            <div className="flex items-start gap-2 text-[#9A9A9A] font-heading text-xs">
+              <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0 text-accent/70" />
+              <span className="whitespace-pre-wrap leading-relaxed">
+                {sessionTime ? `${sessionTime} ${dispSchedule && !sessionCount ? `• ${dispSchedule}` : ''}` : (dispSchedule || t("agendaPage.tbd"))}
               </span>
+            </div>
+
+            {/* Badges de Carga Horária e Encontros */}
+            <div className="flex flex-wrap items-center gap-2 mt-3">
+              {sessionCount > 1 && (
+                <span className="text-[10px] font-mono px-2 py-0.5 bg-[#181820] text-zinc-300 border border-zinc-800 rounded-[2px]">
+                  {t("agendaPage.sessionsCount", { count: sessionCount, defaultValue: `${sessionCount} encontros` })}
+                </span>
+              )}
+              {event.totalHours && (
+                <span className="text-[10px] font-mono px-2 py-0.5 bg-[#181820] text-zinc-300 border border-zinc-800 rounded-[2px]">
+                  {t("agendaPage.totalWorkload", { hours: event.totalHours, defaultValue: `${event.totalHours}h` })}
+                </span>
+              )}
+            </div>
+
+            {/* Botão de Expansão do Cronograma Detalhado (Para cursos com múltiplos encontros) */}
+            {hasMultiSessions && (
+              <button
+                type="button"
+                onClick={() => toggleSchedule(event.id)}
+                className="inline-flex items-center gap-1.5 mt-3 px-2.5 py-1 rounded-[2px] bg-[#181822] hover:bg-[#22222E] border border-[#2A2A38] text-[10px] font-heading uppercase tracking-wider text-accent transition-all duration-200 group/sched cursor-pointer"
+                title={isExpanded ? t("agendaPage.hideFullSchedule", "Ocultar Cronograma") : t("agendaPage.viewFullSchedule", { count: sessionCount || '', defaultValue: "Ver todos os encontros" })}
+              >
+                <CalendarDays className="w-3.5 h-3.5 text-accent group-hover/sched:scale-110 transition-transform" />
+                <span>
+                  {isExpanded 
+                    ? t("agendaPage.hideFullSchedule", "Ocultar Cronograma") 
+                    : (sessionCount > 0 
+                        ? t("agendaPage.viewFullSchedule", { count: sessionCount, defaultValue: `Ver ${sessionCount} Encontros` }) 
+                        : t("agendaPage.viewFullSchedule", { count: '', defaultValue: "Ver Cronograma Completo" }))}
+                </span>
+                <ChevronDown className={`w-3 h-3 text-accent transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+              </button>
             )}
-            {isPast && (
-              <span className="text-[9px] uppercase tracking-[1px] font-mono px-2 py-0.5 rounded-[2px] bg-zinc-800/60 text-zinc-400 border border-zinc-700/50 font-normal">
+            
+            {!isPast && (
+              <div className="mt-3">
+                <a 
+                  href={generateGoogleCalendarUrl(event, currentLang)}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[10px] text-[#7A7A7A] hover:text-accent font-heading transition-colors"
+                  title={t("agendaPage.addToCalendar", "Adicionar ao Google Calendar")}
+                >
+                  <CalendarPlus className="w-3 h-3 text-accent/70" />
+                  <span>{t("agendaPage.addToCalendar", "Adicionar ao Calendário")}</span>
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* Coluna Central: Informações do Evento */}
+          <div className="flex-1 flex flex-col justify-center min-w-0 w-full space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Link 
+                to={getDetailsLink(event)}
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] w-fit transition-all duration-200 cursor-pointer ${theme.badgeBg}`}
+                title={theme.label}
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor}`} />
+                <span className="font-heading text-[9px] uppercase tracking-[2px] font-bold">
+                  {theme.label}
+                </span>
+              </Link>
+            </div>
+
+            <Link to={getDetailsLink(event)} className="block group/title">
+              <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover/title:text-accent transition-colors">
+                {dispTitle}
+              </h2>
+            </Link>
+
+            <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm pt-1">
+              <MapPin className="w-4 h-4 text-accent shrink-0" />
+              <span>{dispLocation}</span>
+            </div>
+          </div>
+
+          {/* Coluna Direita: Instrutor + Ações */}
+          <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center">
+            {event.instructor && (
+              <Link 
+                to="/safia"
+                className="font-heading text-[9px] text-[#7A7A7A] hover:text-accent uppercase tracking-wider mb-2 text-center w-full block transition-colors group/inst"
+                title={t("agendaPage.viewInstructorProfile", "Ver perfil de Safia")}
+              >
+                {t("agendaPage.instructor", "Instrutor")}: <span className="text-[#CFCFCF] group-hover/inst:text-accent font-semibold transition-colors underline decoration-dotted underline-offset-2">{event.instructor}</span>
+              </Link>
+            )}
+
+            {isPast ? (
+              <div className="py-2 px-5 border border-zinc-800 bg-zinc-900/40 text-zinc-500 rounded-full font-heading text-xs font-semibold uppercase tracking-[1px] text-center w-full">
                 {t("agendaPage.pastBadge", "Realizado")}
-              </span>
+              </div>
+            ) : userStatus === 'enrolled' ? (
+              <div className="py-2.5 px-6 border border-green-500/30 bg-green-900/10 text-green-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">
+                {t("agendaPage.enrolled")}
+              </div>
+            ) : userStatus === 'waitlist' ? (
+              <div className="py-2.5 px-6 border border-yellow-500/30 bg-yellow-900/10 text-yellow-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">
+                {t("agendaPage.waitlist")}
+              </div>
+            ) : (
+              <button 
+                onClick={() => handleEnroll(event.id, isFull)}
+                disabled={actionLoading === event.id}
+                className={`w-full btn-magnetic font-heading text-[10px] uppercase tracking-[2px] font-semibold py-3 px-8 transition-colors duration-300 rounded-full ${
+                  isFull 
+                    ? 'border border-[#333333] text-[#F0EDE8] hover:border-accent hover:text-accent' 
+                    : 'bg-accent text-primary hover:bg-[#F0EDE8]'
+                }`}
+              >
+                <span className="relative z-10 block text-center ml-[2px]">
+                  {actionLoading === event.id 
+                    ? t('agendaPage.loading') 
+                    : isFull ? t('agendaPage.joinWaitlist') : t('agendaPage.subscribe')}
+                </span>
+              </button>
             )}
-          </div>
-          
-          <div className="flex items-start gap-2 text-[#9A9A9A] font-heading text-xs">
-            <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0 text-accent/70" />
-            <span className="whitespace-pre-wrap leading-relaxed">
-              {sessionTime ? `${sessionTime} ${dispSchedule ? `• ${dispSchedule}` : ''}` : (dispSchedule || t("agendaPage.tbd"))}
-            </span>
-          </div>
 
-          {/* Badges de Carga Horária e Encontros */}
-          <div className="flex flex-wrap items-center gap-2 mt-3">
-            {sessionCount > 1 && (
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#181820] text-zinc-300 border border-zinc-800 rounded-[2px]">
-                {t("agendaPage.sessionsCount", { count: sessionCount, defaultValue: `${sessionCount} encontros` })}
-              </span>
+            {!isPast && (userStatus === 'enrolled' || userStatus === 'waitlist') && (
+              <button 
+                onClick={() => handleCancelEnrollment(event.id)} 
+                disabled={actionLoading === event.id} 
+                className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors mt-2 text-center block"
+              >
+                {actionLoading === event.id ? t('agendaPage.loading') : t('agendaPage.cancel')}
+              </button>
             )}
-            {event.totalHours && (
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#181820] text-zinc-300 border border-zinc-800 rounded-[2px]">
-                {t("agendaPage.totalWorkload", { hours: event.totalHours, defaultValue: `${event.totalHours}h` })}
-              </span>
-            )}
-          </div>
-          
-          {!isPast && (
-            <a 
-              href={generateGoogleCalendarUrl(event, currentLang)}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[10px] text-[#7A7A7A] hover:text-accent font-heading transition-colors mt-3"
-              title={t("agendaPage.addToCalendar", "Adicionar ao Google Calendar")}
-            >
-              <CalendarPlus className="w-3 h-3 text-accent/70" />
-              <span>{t("agendaPage.addToCalendar", "Adicionar ao Calendário")}</span>
-            </a>
-          )}
-        </div>
-
-        {/* Coluna Central: Informações do Evento */}
-        <div className="flex-1 flex flex-col justify-center min-w-0 w-full space-y-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <Link 
-              to={getDetailsLink(event)}
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] w-fit transition-all duration-200 cursor-pointer ${theme.badgeBg}`}
-              title={theme.label}
-            >
-              <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor}`} />
-              <span className="font-heading text-[9px] uppercase tracking-[2px] font-bold">
-                {theme.label}
-              </span>
-            </Link>
-          </div>
-
-          <Link to={getDetailsLink(event)} className="block group/title">
-            <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8] group-hover/title:text-accent transition-colors">
-              {dispTitle}
-            </h2>
-          </Link>
-
-          <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm pt-1">
-            <MapPin className="w-4 h-4 text-accent shrink-0" />
-            <span>{dispLocation}</span>
           </div>
         </div>
 
-        {/* Coluna Direita: Instrutor + Ações */}
-        <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center">
-          {event.instructor && (
-            <Link 
-              to="/safia"
-              className="font-heading text-[9px] text-[#7A7A7A] hover:text-accent uppercase tracking-wider mb-2 text-center w-full block transition-colors group/inst"
-              title={t("agendaPage.viewInstructorProfile", "Ver perfil de Safia")}
+        {/* Linha Expansível: Visão Completa de Todos os Dias do Curso */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="w-full pt-4 border-t border-[#1C1C24] overflow-hidden"
             >
-              {t("agendaPage.instructor", "Instrutor")}: <span className="text-[#CFCFCF] group-hover/inst:text-accent font-semibold transition-colors underline decoration-dotted underline-offset-2">{event.instructor}</span>
-            </Link>
-          )}
+              <div className="bg-[#0A0A0E] border border-[#20202A] rounded-[4px] p-4">
+                <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#1A1A22]">
+                  <span className="font-heading text-[11px] uppercase tracking-[1.5px] text-accent font-semibold flex items-center gap-2">
+                    <CalendarDays className="w-3.5 h-3.5 text-accent" />
+                    {t("agendaPage.scheduleBreakdown", "Cronograma Completo das Sessões")}
+                  </span>
+                  {sessionCount > 0 && (
+                    <span className="text-[10px] font-mono text-zinc-400">
+                      {sessionCount} {t("agendaPage.sessionsCount", { count: sessionCount, defaultValue: `${sessionCount} encontros` })}
+                    </span>
+                  )}
+                </div>
 
-          {isPast ? (
-            <div className="py-2 px-5 border border-zinc-800 bg-zinc-900/40 text-zinc-500 rounded-full font-heading text-xs font-semibold uppercase tracking-[1px] text-center w-full">
-              {t("agendaPage.pastBadge", "Realizado")}
-            </div>
-          ) : userStatus === 'enrolled' ? (
-            <div className="py-2.5 px-6 border border-green-500/30 bg-green-900/10 text-green-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">
-              {t("agendaPage.enrolled")}
-            </div>
-          ) : userStatus === 'waitlist' ? (
-            <div className="py-2.5 px-6 border border-yellow-500/30 bg-yellow-900/10 text-yellow-400 rounded-full font-heading text-xs font-bold uppercase tracking-[1px] text-center w-full">
-              {t("agendaPage.waitlist")}
-            </div>
-          ) : (
-            <button 
-              onClick={() => handleEnroll(event.id, isFull)}
-              disabled={actionLoading === event.id}
-              className={`w-full btn-magnetic font-heading text-[10px] uppercase tracking-[2px] font-semibold py-3 px-8 transition-colors duration-300 rounded-full ${
-                isFull 
-                  ? 'border border-[#333333] text-[#F0EDE8] hover:border-accent hover:text-accent' 
-                  : 'bg-accent text-primary hover:bg-[#F0EDE8]'
-              }`}
-            >
-              <span className="relative z-10 block text-center ml-[2px]">
-                {actionLoading === event.id 
-                  ? t('agendaPage.loading') 
-                  : isFull ? t('agendaPage.joinWaitlist') : t('agendaPage.subscribe')}
-              </span>
-            </button>
+                {Array.isArray(event.sessions) && event.sessions.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                    {event.sessions.map((sess, sIdx) => {
+                      const wd = getWeekdayAbbrev(sess.date, currentLang);
+                      const [sy, sm, sd] = sess.date.split('-');
+                      const sessIsPast = sess.date < todayStr;
+                      return (
+                        <div 
+                          key={sIdx}
+                          className={`p-3 rounded-[3px] border flex items-center justify-between gap-2.5 transition-colors ${
+                            sessIsPast 
+                              ? 'bg-[#0D0D11] border-[#181820] opacity-60' 
+                              : 'bg-[#14141B] border-[#22222E] hover:border-accent/40'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="w-5 h-5 rounded-full bg-accent/15 text-accent font-mono text-[10px] font-bold flex items-center justify-center shrink-0">
+                              #{sIdx + 1}
+                            </span>
+                            <div>
+                              <div className="text-xs font-heading font-semibold text-[#F0EDE8]">
+                                {wd}, {sd}/{sm}/{sy}
+                              </div>
+                              <div className="text-[11px] font-mono text-[#9A9A9A] flex items-center gap-1.5 mt-0.5">
+                                <Clock className="w-3 h-3 text-accent/70" />
+                                <span>{sess.startTime} – {sess.endTime}</span>
+                              </div>
+                            </div>
+                          </div>
+                          {sessIsPast && (
+                            <span className="text-[8px] font-mono uppercase px-1.5 py-0.5 bg-zinc-900 text-zinc-500 border border-zinc-800 rounded">
+                              {t("agendaPage.pastBadge", "Realizado")}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="text-xs text-zinc-300 whitespace-pre-wrap font-sans leading-relaxed">
+                    {dispSchedule}
+                  </div>
+                )}
+              </div>
+            </motion.div>
           )}
-
-          {!isPast && (userStatus === 'enrolled' || userStatus === 'waitlist') && (
-            <button 
-              onClick={() => handleCancelEnrollment(event.id)} 
-              disabled={actionLoading === event.id} 
-              className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors mt-2 text-center block"
-            >
-              {actionLoading === event.id ? t('agendaPage.loading') : t('agendaPage.cancel')}
-            </button>
-          )}
-        </div>
+        </AnimatePresence>
       </motion.div>
     );
   }
@@ -651,7 +777,7 @@ export default function AgendaPage() {
 
                   <button
                     onClick={() => setShowPastList(prev => !prev)}
-                    className="text-xs font-heading uppercase tracking-[1.5px] text-accent/80 hover:text-accent transition-colors underline decoration-dotted underline-offset-4"
+                    className="text-xs font-heading uppercase tracking-[1.5px] text-accent/80 hover:text-accent transition-colors underline decoration-dotted underline-offset-4 cursor-pointer"
                   >
                     {showPastList 
                       ? t("agendaPage.hidePastEvents", "Ocultar eventos anteriores")
@@ -684,16 +810,10 @@ export default function AgendaPage() {
               
               {/* Barra de Navegação do Calendário */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#1C1C24] mb-6">
-                <div className="flex items-center gap-3">
-                  <h2 className="font-drama text-2xl md:text-4xl text-[#F0EDE8]">
+                <div>
+                  <h2 className="font-drama text-3xl md:text-5xl text-[#F0EDE8]">
                     {monthTitle}
                   </h2>
-                  <button
-                    onClick={handleToday}
-                    className="px-3 py-1 rounded-full bg-[#181820] hover:bg-[#22222E] border border-zinc-800 text-[10px] font-heading uppercase tracking-wider text-zinc-300 transition-colors"
-                  >
-                    {t("agendaPage.today", "Hoje")}
-                  </button>
                 </div>
 
                 {/* Legenda de Categorias */}
@@ -712,19 +832,31 @@ export default function AgendaPage() {
                   </div>
                 </div>
 
-                {/* Botões Mês Anterior / Próximo */}
+                {/* Botões Mês Anterior, Ir para Hoje e Próximo */}
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handlePrevMonth}
-                    className="p-2 rounded-full bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors"
+                    className="p-2 rounded-full bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
                     aria-label="Mês Anterior"
+                    title={t("adminPage.schedulePicker.prevMonth", "Mês Anterior")}
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
+
+                  <button
+                    onClick={handleToday}
+                    className="px-3.5 py-1.5 rounded-full bg-[#181822] hover:bg-accent hover:text-primary border border-zinc-800 text-[11px] font-heading uppercase tracking-wider text-zinc-300 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    title={t("agendaPage.goToToday", "Ir para a data atual")}
+                  >
+                    <RotateCcw className="w-3 h-3 text-accent" />
+                    <span>{t("agendaPage.today", "Hoje")}</span>
+                  </button>
+
                   <button
                     onClick={handleNextMonth}
-                    className="p-2 rounded-full bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors"
+                    className="p-2 rounded-full bg-[#16161C] hover:bg-[#202028] border border-zinc-800 text-zinc-300 hover:text-white transition-colors cursor-pointer"
                     aria-label="Próximo Mês"
+                    title={t("adminPage.schedulePicker.nextMonth", "Próximo Mês")}
                   >
                     <ChevronRight className="w-5 h-5" />
                   </button>
@@ -752,8 +884,8 @@ export default function AgendaPage() {
                   return (
                     <button
                       key={idx}
-                      onClick={() => setSelectedDate(cell.dateStr)}
-                      className={`min-h-[70px] md:min-h-[105px] p-1.5 md:p-2.5 rounded-[1rem] flex flex-col justify-between text-left transition-all duration-200 relative group ${
+                      onClick={() => handleSelectDay(cell.dateStr)}
+                      className={`min-h-[70px] md:min-h-[105px] p-1.5 md:p-2.5 rounded-[1rem] flex flex-col justify-between text-left transition-all duration-200 relative group cursor-pointer ${
                         !cell.isCurrentMonth 
                           ? 'bg-[#0A0A0C]/50 text-zinc-600 border border-transparent' 
                           : isSelected 
@@ -839,7 +971,7 @@ export default function AgendaPage() {
                Painel de Inspeção do Dia Selecionado
                Mostra os detalhes de todas as atividades naquele dia
                ============================================================ */}
-            <div className="pt-2">
+            <div ref={dayInspectionRef} className="pt-4 scroll-mt-24">
               <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#1E1E26]">
                 <div className="flex items-center gap-3">
                   <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />

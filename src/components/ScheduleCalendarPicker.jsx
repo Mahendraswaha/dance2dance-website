@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, Plus, Trash2, Clock, Sparkles, Calendar as CalendarIcon, Check } from 'lucide-react';
-import { calculateTotalHoursFromSessions, getCategoryTheme } from '../utils/eventHelpers';
+import { calculateTotalHoursFromSessions, getCategoryTheme, getWeekdayAbbrev } from '../utils/eventHelpers';
 import { useTranslation } from 'react-i18next';
 
 export default function ScheduleCalendarPicker({
@@ -11,6 +11,8 @@ export default function ScheduleCalendarPicker({
   category = 'bethedance'
 }) {
   const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'pt';
+
   const [currentMonth, setCurrentMonth] = useState(() => {
     if (sessions.length > 0 && sessions[0].date) {
       const [y, m] = sessions[0].date.split('-').map(Number);
@@ -19,10 +21,11 @@ export default function ScheduleCalendarPicker({
     return new Date();
   });
 
+  // Permite qualquer número customizado de semanas
   const [repeatCount, setRepeatCount] = useState(8);
   const theme = getCategoryTheme(category);
 
-  // Month navigation
+  // Navegação do mês
   const prevMonth = () => {
     setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
   };
@@ -30,7 +33,7 @@ export default function ScheduleCalendarPicker({
     setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));
   };
 
-  // Map sessions for fast lookup
+  // Mapeamento de sessões para consulta O(1)
   const sessionMap = useMemo(() => {
     const map = new Map();
     sessions.forEach((s, index) => {
@@ -39,27 +42,27 @@ export default function ScheduleCalendarPicker({
     return map;
   }, [sessions]);
 
-  // Calendar matrix calculation
+  // Cálculo da matriz do calendário
   const calendarDays = useMemo(() => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
 
-    // First day of month
+    // Primeiro dia do mês
     const firstDay = new Date(year, month, 1);
-    // 0 = Sunday, 1 = Monday... We'll start Monday as index 0 for European style (NO/PT)
-    let startDayOfWeek = firstDay.getDay(); // 0(Sun) - 6(Sat)
+    // Segunda-feira como índice 0 no padrão europeu (NO/PT)
+    let startDayOfWeek = firstDay.getDay(); // 0(Dom) - 6(Sáb)
     startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1;
 
-    // Days in current month
+    // Total de dias no mês atual
     const lastDay = new Date(year, month + 1, 0);
     const totalDays = lastDay.getDate();
 
-    // Days in previous month
+    // Dias no mês anterior
     const prevMonthLastDay = new Date(year, month, 0).getDate();
 
     const days = [];
 
-    // Prev month padding
+    // Preenchimento do mês anterior
     for (let i = startDayOfWeek - 1; i >= 0; i--) {
       const dayNum = prevMonthLastDay - i;
       const prevDate = new Date(year, month - 1, dayNum);
@@ -67,13 +70,13 @@ export default function ScheduleCalendarPicker({
       days.push({ dayNum, iso, isCurrentMonth: false });
     }
 
-    // Current month days
+    // Dias do mês atual
     for (let d = 1; d <= totalDays; d++) {
       const iso = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
       days.push({ dayNum: d, iso, isCurrentMonth: true });
     }
 
-    // Next month padding to fill complete grid of 35 or 42 cells
+    // Preenchimento do próximo mês para fechar o grid em múltiplos de 7
     const remaining = (7 - (days.length % 7)) % 7;
     for (let n = 1; n <= remaining; n++) {
       const nextDate = new Date(year, month + 1, n);
@@ -84,9 +87,8 @@ export default function ScheduleCalendarPicker({
     return days;
   }, [currentMonth]);
 
-  // Notify parent of updates
+  // Notifica componente pai sobre atualizações
   const updateSessions = (newSessions) => {
-    // Sort chronologically
     const sorted = [...newSessions].sort((a, b) => a.date.localeCompare(b.date));
     const totalHours = calculateTotalHoursFromSessions(sorted);
     const startDate = sorted.length > 0 ? sorted[0].date : '';
@@ -108,11 +110,9 @@ export default function ScheduleCalendarPicker({
 
   const handleToggleDay = (iso) => {
     if (sessionMap.has(iso)) {
-      // Remove day
       const next = sessions.filter(s => s.date !== iso);
       updateSessions(next);
     } else {
-      // Add day with default or previous session times
       const lastSession = sessions[sessions.length - 1];
       const newSession = {
         date: iso,
@@ -136,6 +136,7 @@ export default function ScheduleCalendarPicker({
 
   const handleRepeatWeekly = (baseIso) => {
     if (!baseIso) return;
+    const count = Math.max(1, parseInt(repeatCount) || 1);
     const [y, m, d] = baseIso.split('-').map(Number);
     const baseDate = new Date(y, m - 1, d);
     const baseSession = sessionMap.get(baseIso) || {
@@ -145,7 +146,7 @@ export default function ScheduleCalendarPicker({
 
     const newSessionsMap = new Map(sessions.map(s => [s.date, s]));
 
-    for (let i = 1; i <= repeatCount; i++) {
+    for (let i = 1; i <= count; i++) {
       const nextDate = new Date(baseDate);
       nextDate.setDate(baseDate.getDate() + i * 7);
       const iso = `${nextDate.getFullYear()}-${String(nextDate.getMonth() + 1).padStart(2, '0')}-${String(nextDate.getDate()).padStart(2, '0')}`;
@@ -167,9 +168,24 @@ export default function ScheduleCalendarPicker({
     }
   };
 
-  // Locale month display
-  const monthName = currentMonth.toLocaleDateString(i18n.language || 'pt', { month: 'long', year: 'numeric' });
-  const weekDays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+  // Nome do mês sensível ao idioma do site
+  const monthName = useMemo(() => {
+    const str = currentMonth.toLocaleDateString(currentLang, { month: 'long', year: 'numeric' });
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }, [currentMonth, currentLang]);
+
+  // Dias da semana internacionalizados
+  const weekDays = useMemo(() => {
+    const baseDate = new Date(2026, 0, 5); // 05/01/2026 é Segunda-feira
+    const list = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(baseDate);
+      d.setDate(baseDate.getDate() + i);
+      const str = d.toLocaleDateString(currentLang, { weekday: 'short' });
+      list.push(str.charAt(0).toUpperCase() + str.slice(1).replace('.', ''));
+    }
+    return list;
+  }, [currentLang]);
 
   const totalCalculatedHours = useMemo(() => calculateTotalHoursFromSessions(sessions), [sessions]);
 
@@ -185,7 +201,7 @@ export default function ScheduleCalendarPicker({
         </div>
 
         <div className="flex items-center justify-between sm:justify-end gap-3">
-          <span className="capitalize font-batang text-base text-[#F0EDE8]">
+          <span className="font-drama text-lg text-[#F0EDE8]">
             {monthName}
           </span>
           <div className="flex items-center gap-1">
@@ -211,7 +227,7 @@ export default function ScheduleCalendarPicker({
 
       {/* Grid do Calendário */}
       <div className="select-none">
-        {/* Dias da semana */}
+        {/* Dias da semana internacionalizados */}
         <div className="grid grid-cols-7 gap-1.5 mb-2 text-center">
           {weekDays.map(wd => (
             <span key={wd} className="font-heading text-[10px] uppercase tracking-wider text-[#7A7A85] font-semibold py-1">
@@ -262,24 +278,47 @@ export default function ScheduleCalendarPicker({
         </div>
       </div>
 
-      {/* Atalhos Rápidos & Resumo do Cálculo */}
+      {/* Atalhos Rápidos & Repetição Customizada com Input Livre e Chips */}
       <div className="bg-[#16161C] border border-[#262630] rounded-[3px] p-3 flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
           <span className="text-[#9A9A9A] font-heading text-[11px] uppercase tracking-wider">
             {t("adminPage.schedulePicker.quickRepeat", "Repetir dia selecionado:")}
           </span>
-          <div className="flex items-center gap-1.5">
-            <select
-              value={repeatCount}
-              onChange={(e) => setRepeatCount(Number(e.target.value))}
-              className="bg-[#121216] border border-[#33333E] text-[#F0EDE8] px-2 py-1 rounded text-xs focus:outline-none focus:border-accent"
-            >
-              <option value="4">4 semanas</option>
-              <option value="6">6 semanas</option>
-              <option value="8">8 semanas</option>
-              <option value="9">9 semanas</option>
-              <option value="12">12 semanas</option>
-            </select>
+          <div className="flex items-center gap-2">
+            {/* Input de número livre para qualquer quantidade de semanas */}
+            <div className="flex items-center bg-[#101014] border border-[#33333E] rounded px-2 py-1 focus-within:border-accent">
+              <input
+                type="number"
+                min="1"
+                max="52"
+                value={repeatCount}
+                onChange={(e) => setRepeatCount(Math.max(1, Math.min(52, parseInt(e.target.value) || 1)))}
+                className="w-10 bg-transparent text-[#F0EDE8] font-mono text-xs text-center focus:outline-none"
+              />
+              <span className="text-[10px] text-zinc-500 font-heading pl-1">
+                {t("adminPage.schedulePicker.weeks", "sem.")}
+              </span>
+            </div>
+
+            {/* Chips de atalhos rápidos para números frequentes */}
+            <div className="hidden sm:flex items-center gap-1">
+              {[2, 4, 6, 8, 12].map(n => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => setRepeatCount(n)}
+                  className={`px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                    repeatCount === n 
+                      ? 'bg-accent text-primary font-bold' 
+                      : 'bg-[#181822] text-zinc-400 hover:text-white border border-[#2A2A35]'
+                  }`}
+                  title={`${n} ${t("adminPage.schedulePicker.weeks", "semanas")}`}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+
             <button
               type="button"
               disabled={sessions.length === 0}
@@ -318,7 +357,8 @@ export default function ScheduleCalendarPicker({
             {sessions.map((session, idx) => {
               const [y, m, d] = session.date.split('-').map(Number);
               const dateObj = new Date(y, m - 1, d);
-              const dayOfWeek = dateObj.toLocaleDateString(i18n.language || 'pt', { weekday: 'short' });
+              const dayOfWeek = dateObj.toLocaleDateString(currentLang, { weekday: 'short' });
+              const dayOfWeekCapitalized = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1).replace('.', '');
               const dateFormatted = `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}/${y}`;
 
               return (
@@ -331,7 +371,7 @@ export default function ScheduleCalendarPicker({
                       #{idx + 1}
                     </span>
                     <span className="font-heading text-xs uppercase text-[#CFCFCF] font-semibold">
-                      {dayOfWeek}, {dateFormatted}
+                      {dayOfWeekCapitalized}, {dateFormatted}
                     </span>
                   </div>
 
@@ -344,7 +384,9 @@ export default function ScheduleCalendarPicker({
                         onChange={(e) => handleSessionTimeChange(idx, 'startTime', e.target.value)}
                         className="bg-[#101014] border border-[#33333E] text-[#F0EDE8] px-2 py-1 rounded text-xs text-center font-mono focus:outline-none focus:border-accent"
                       />
-                      <span className="text-[#666675] text-xs">até</span>
+                      <span className="text-[#666675] text-xs">
+                        {t("adminPage.schedulePicker.to", "até")}
+                      </span>
                       <input
                         type="time"
                         value={session.endTime}
