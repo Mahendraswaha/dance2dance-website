@@ -160,6 +160,7 @@ export default function AdminDashboard() {
     location_no: '',
     location_en: '',
     location_pt: '',
+    address: '',
     totalSpots: ''
   };
 
@@ -677,6 +678,21 @@ export default function AdminDashboard() {
                     value={formData[`location_${activeLangTab}`] || ''} 
                     onChange={handleChange} 
                     placeholder={t("adminPage.exLocation")} 
+                    className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
+                  />
+                </div>
+
+                {/* Endereço Completo (Usado para o Google Maps) */}
+                <div>
+                  <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
+                    {t("adminPage.address", "Endereço Completo (Para Google Maps)")}
+                  </label>
+                  <input 
+                    type="text" 
+                    name="address" 
+                    value={formData.address || ''} 
+                    onChange={handleChange} 
+                    placeholder="Ex: Storgata 12, 0155 Oslo, Norway" 
                     className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-4 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
                   />
                 </div>

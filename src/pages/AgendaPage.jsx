@@ -525,7 +525,19 @@ export default function AgendaPage() {
 
             <div className="flex items-center gap-2 text-[#9A9A9A] font-heading text-sm pt-1">
               <MapPin className="w-4 h-4 text-accent shrink-0" />
-              <span>{dispLocation}</span>
+              {event.address ? (
+                <a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address)}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-accent hover:underline decoration-dotted underline-offset-4 transition-colors cursor-pointer"
+                  title={event.address}
+                >
+                  {dispLocation}
+                </a>
+              ) : (
+                <span>{dispLocation}</span>
+              )}
             </div>
           </div>
 
