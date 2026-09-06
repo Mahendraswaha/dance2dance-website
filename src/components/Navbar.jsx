@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2, LogIn, UserPlus, LogOut, User } from 'lucide-react';
+import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2, LogIn, UserPlus, LogOut, User, Shield } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -17,6 +17,12 @@ const Navbar = () => {
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const isAdmin = currentUser && (
+    currentUser.email === 'mahendra.swaha@gmail.com' || 
+    currentUser.email === 'contato@dance2dance.no' || 
+    currentUser.profile?.role === 'admin'
+  );
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -109,6 +115,17 @@ const Navbar = () => {
 
               {currentUser ? (
                 <div className="hidden md:flex items-center gap-2 ml-1">
+                  {isAdmin && (
+                    <Link 
+                      to="/admin"
+                      title="Painel Administrativo"
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-accent/20 hover:bg-accent hover:text-primary text-accent border border-accent/40 font-heading text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+                    >
+                      <Shield className="w-3.5 h-3.5" />
+                      <span>Admin</span>
+                    </Link>
+                  )}
+
                   <Link 
                     to="/perfil"
                     title={t("nav.editProfile", "Editar Cadastro")}
@@ -210,6 +227,16 @@ const Navbar = () => {
               <span className="font-heading text-sm text-[#9A9A9A]">
                 {t("nav.hello")}, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
               </span>
+              {isAdmin && (
+                <Link 
+                  to="/admin"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="bg-accent text-primary px-6 py-3.5 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2 shadow-sm"
+                >
+                  <Shield size={16} />
+                  <span>Painel Administrativo</span>
+                </Link>
+              )}
               <Link 
                 to="/perfil"
                 onClick={() => setIsMobileMenuOpen(false)}
