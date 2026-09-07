@@ -27,7 +27,7 @@ const Footer = () => {
                 <img 
                   src="/logo-dance2dance.png" 
                   alt="Dance2Dance Logo" 
-                  className="h-12 object-contain transition-opacity duration-300 group-hover:opacity-75 transform-gpu [backface-visibility:hidden]" 
+                  className="h-12 object-contain transition-opacity duration-300 group-hover:opacity-75" 
                 />
               </button>
             </div>

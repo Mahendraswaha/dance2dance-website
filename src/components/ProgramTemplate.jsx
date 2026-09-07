@@ -34,9 +34,11 @@ export default function ProgramTemplate({ program }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const targetPlaybackRate = program?.playbackRate || 0.6;
+
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
+      videoRef.current.playbackRate = targetPlaybackRate;
       
       const handleTimeUpdate = () => {
         const video = videoRef.current;
@@ -59,7 +61,7 @@ export default function ProgramTemplate({ program }) {
         }
       };
     }
-  }, [program]);
+  }, [program, targetPlaybackRate]);
   
   if (!program) return <div>Program not found</div>;
 
@@ -90,14 +92,14 @@ export default function ProgramTemplate({ program }) {
             muted 
             playsInline
             onLoadedData={(e) => {
-              e.currentTarget.playbackRate = 0.5;
+              e.currentTarget.playbackRate = targetPlaybackRate;
               setTimeout(() => setIsVideoPlaying(true), 100);
             }}
             onLoadedMetadata={(e) => {
-              e.currentTarget.playbackRate = 0.5;
+              e.currentTarget.playbackRate = targetPlaybackRate;
             }}
             onPlay={(e) => {
-              e.currentTarget.playbackRate = 0.5;
+              e.currentTarget.playbackRate = targetPlaybackRate;
             }}
             className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0 duration-1000' : 'opacity-60 duration-[3000ms]'}`}
           ></video>
