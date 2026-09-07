@@ -10,9 +10,9 @@ import {
   CheckCircle2, User, Save, ArrowLeft, Calendar, Clock, 
   MapPin, Sparkles, ExternalLink, CalendarPlus, ShieldCheck, 
   Star, MessageSquare, AlertCircle, Loader2, Award, ChevronRight,
-  GraduationCap, Download
+  GraduationCap, Download, Trash2
 } from 'lucide-react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { 
   getCategoryTheme, 
@@ -192,6 +192,47 @@ export default function ProfilePage() {
 
     return { upcomingList: upcoming, pastList: past };
   }, [enrollments, eventsMap]);
+
+  // Cursos passados disponíveis no sistema em que este usuário ainda não está inscrito
+  const unEnrolledPastEvents = useMemo(() => {
+    const enrolledIds = new Set(enrollments.map(e => e.eventId));
+    return Object.values(eventsMap)
+      .filter(ev => isEventPast(ev) && !enrolledIds.has(ev.id));
+  }, [eventsMap, enrollments]);
+
+  const [enrollingPastId, setEnrollingPastId] = useState(null);
+
+  async function handleAdminSelfEnroll(eventId) {
+    if (!currentUser) return;
+    setEnrollingPastId(eventId);
+    try {
+      const newEnrollmentRef = doc(collection(db, 'enrollments'));
+      await setDoc(newEnrollmentRef, {
+        eventId: eventId,
+        userId: currentUser.uid || 'admin',
+        userName: currentUser.profile?.fullName || currentUser.profile?.nome || currentUser.email || 'Admin',
+        userEmail: currentUser.email || '',
+        userPhone: currentUser.profile?.phone || currentUser.profile?.telefone || '',
+        status: 'enrolled',
+        createdAt: new Date().toISOString()
+      });
+      await fetchUserCoursesAndReviews();
+    } catch (err) {
+      console.error("Erro ao vincular inscrição de teste:", err);
+    } finally {
+      setEnrollingPastId(null);
+    }
+  }
+
+  async function handleRemoveTestEnrollment(enrollmentId) {
+    if (!window.confirm("Deseja remover esta inscrição de teste?")) return;
+    try {
+      await deleteDoc(doc(db, 'enrollments', enrollmentId));
+      await fetchUserCoursesAndReviews();
+    } catch (err) {
+      console.error("Erro ao remover inscrição de teste:", err);
+    }
+  }
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -552,6 +593,37 @@ export default function ProfilePage() {
                       </span>
                     </div>
 
+                    {/* Banner de Teste para Administrador */}
+                    {isAdmin && unEnrolledPastEvents.length > 0 && (
+                      <div className="p-4 sm:p-5 bg-[#14141E] border border-accent/30 rounded-[2px] space-y-3">
+                        <div className="flex items-center gap-2 text-accent text-xs font-heading font-semibold uppercase tracking-wider">
+                          <Sparkles className="w-4 h-4 text-accent" />
+                          <span>Modo de Teste (Admin): Cursos Realizados Disponíveis</span>
+                        </div>
+                        <p className="text-xs text-zinc-300 font-heading leading-relaxed">
+                          Para que um curso apareça em <em>Cursos Realizados</em> para avaliação, o aluno precisa ter a inscrição registrada.
+                          Como Administrador, você pode se vincular a qualquer um dos cursos passados abaixo com 1 clique para testar a experiência de avaliação:
+                        </p>
+                        <div className="flex flex-wrap gap-2.5 pt-1">
+                          {unEnrolledPastEvents.map(ev => {
+                            const { title } = getLocalizedEvent(ev, currentLang);
+                            return (
+                              <button
+                                key={ev.id}
+                                type="button"
+                                onClick={() => handleAdminSelfEnroll(ev.id)}
+                                disabled={enrollingPastId === ev.id}
+                                className="px-3.5 py-2 bg-accent/15 hover:bg-accent hover:text-primary text-accent border border-accent/40 rounded-[2px] text-xs font-heading font-semibold tracking-wide transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                              >
+                                <CalendarPlus className="w-3.5 h-3.5" />
+                                <span>{enrollingPastId === ev.id ? 'Vinculando...' : `Testar Avaliação em: ${title}`}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
                     {pastList.length === 0 ? (
                       <div className="p-6 bg-[#0E0E14] border border-[#1A1A22] rounded-[2px] text-center">
                         <p className="text-xs text-zinc-400 font-heading">
@@ -586,10 +658,24 @@ export default function ProfilePage() {
                                   </span>
                                 </div>
 
-                                <span className="text-xs text-zinc-400 font-heading flex items-center gap-1.5">
-                                  <Calendar className="w-3.5 h-3.5 text-accent/70" />
-                                  {dateRange}
-                                </span>
+                                <div className="flex items-center gap-3">
+                                  <span className="text-xs text-zinc-400 font-heading flex items-center gap-1.5">
+                                    <Calendar className="w-3.5 h-3.5 text-accent/70" />
+                                    {dateRange}
+                                  </span>
+
+                                  {isAdmin && (
+                                    <button
+                                      type="button"
+                                      onClick={() => handleRemoveTestEnrollment(item.id)}
+                                      className="text-[10px] text-zinc-500 hover:text-red-400 font-heading flex items-center gap-1 transition-colors ml-1 cursor-pointer"
+                                      title="Remover esta inscrição de teste"
+                                    >
+                                      <Trash2 className="w-3 h-3" />
+                                      <span className="hidden sm:inline">Desvincular</span>
+                                    </button>
+                                  )}
+                                </div>
                               </div>
 
                               {/* Título */}
