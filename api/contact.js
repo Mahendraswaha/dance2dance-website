@@ -105,7 +105,7 @@ export default async function handler(req, res) {
     const smtpHost = process.env.SMTP_HOST || 'smtp.proisp.no';
     const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
     const smtpUser = process.env.SMTP_USER || 'contact@dance2dance.no';
-    const smtpPass = process.env.SMTP_PASS || 'r_dQ&Dj4cyTZ';
+    const smtpPass = process.env.SMTP_PASS;
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
