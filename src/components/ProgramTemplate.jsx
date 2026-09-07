@@ -36,7 +36,7 @@ export default function ProgramTemplate({ program }) {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.7;
+      videoRef.current.playbackRate = 0.5;
       
       const handleTimeUpdate = () => {
         const video = videoRef.current;
@@ -89,8 +89,15 @@ export default function ProgramTemplate({ program }) {
             loop 
             muted 
             playsInline
-            onLoadedData={() => {
+            onLoadedData={(e) => {
+              e.currentTarget.playbackRate = 0.5;
               setTimeout(() => setIsVideoPlaying(true), 100);
+            }}
+            onLoadedMetadata={(e) => {
+              e.currentTarget.playbackRate = 0.5;
+            }}
+            onPlay={(e) => {
+              e.currentTarget.playbackRate = 0.5;
             }}
             className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity ease-in-out ${(isFading || !isVideoPlaying) ? 'opacity-0 duration-1000' : 'opacity-60 duration-[3000ms]'}`}
           ></video>

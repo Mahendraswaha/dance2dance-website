@@ -19,8 +19,16 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between gap-12">
           <div className="max-w-sm flex flex-col h-full">
             <div className="flex items-center gap-4 mb-6">
-              <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="cursor-pointer hover:opacity-80 transition-opacity">
-                <img src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-12 object-contain" />
+              <button 
+                onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
+                className="cursor-pointer group flex items-center focus:outline-none"
+                title="Dance2Dance"
+              >
+                <img 
+                  src="/logo-dance2dance.png" 
+                  alt="Dance2Dance Logo" 
+                  className="h-12 object-contain transition-opacity duration-300 group-hover:opacity-75 transform-gpu [backface-visibility:hidden]" 
+                />
               </button>
             </div>
             <p className="font-heading text-background/60 text-sm">{t("footer.desc")}</p>
