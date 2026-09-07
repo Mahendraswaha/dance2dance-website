@@ -28,9 +28,18 @@ export default function SignupPage() {
   
   const [error, setError] = useState('');
   const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileError, setTurnstileError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
+
+  // Fallback de segurança para não travar o cadastro caso o Turnstile falhe ou seja bloqueado
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTurnstileError(true);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -44,7 +53,7 @@ export default function SignupPage() {
       return setError(t('auth.passwordMismatch', 'As senhas não coincidem.'));
     }
 
-    if (!turnstileToken) {
+    if (!turnstileToken && !turnstileError) {
       return setError(t('auth.captchaRequired', 'Por favor, aguarde a verificação de segurança.'));
     }
     
@@ -313,7 +322,15 @@ export default function SignupPage() {
 
             <Turnstile
               siteKey={TURNSTILE_SITE_KEY}
-              onSuccess={(token) => setTurnstileToken(token)}
+              onSuccess={(token) => {
+                setTurnstileToken(token);
+                setTurnstileError(false);
+              }}
+              onError={(err) => {
+                console.warn('Turnstile indisponível ou bloqueado:', err);
+                setTurnstileError(true);
+              }}
+              onExpire={() => setTurnstileToken('')}
               options={{
                 theme: 'dark'
               }}

@@ -60,7 +60,22 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState(currentUser ? 'authenticated-user' : '');
+  const [turnstileError, setTurnstileError] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      setTurnstileToken('authenticated-user');
+    }
+  }, [currentUser]);
+
+  // Fallback de segurança: se o Turnstile for bloqueado por adblocker ou restrição de domínio, não travar o formulário
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTurnstileError(true);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const rawParam = searchParams.get('subject');
@@ -81,7 +96,7 @@ export default function ContactPage() {
       return;
     }
 
-    if (!turnstileToken) {
+    if (!currentUser && !turnstileToken && !turnstileError) {
       setError(t('contactPage.captchaRequired', 'Por favor, aguarde a verificação de segurança.'));
       return;
     }
@@ -346,13 +361,25 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <Turnstile
-                  siteKey={TURNSTILE_SITE_KEY}
-                  onSuccess={(token) => setTurnstileToken(token)}
-                  options={{
-                    theme: 'dark'
-                  }}
-                />
+                {!currentUser && (
+                  <Turnstile
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onSuccess={(token) => {
+                      setTurnstileToken(token);
+                      setTurnstileError(false);
+                    }}
+                    onError={(err) => {
+                      console.warn('Turnstile indisponível ou bloqueado:', err);
+                      setTurnstileError(true);
+                    }}
+                    onExpire={() => {
+                      if (!currentUser) setTurnstileToken('');
+                    }}
+                    options={{
+                      theme: 'dark'
+                    }}
+                  />
+                )}
 
                 {/* Botão de Enviar */}
                 <button
