@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 import { 
   X, Mail, Phone, Calendar, MapPin, HeartPulse, Sparkles, 
   Cake, CheckCircle2, Clock, MessageSquare, AlertTriangle, 
-  Compass, ExternalLink, CalendarDays
+  Compass, ExternalLink, CalendarDays, Star, Shield, Award
 } from 'lucide-react';
 import { getCategoryTheme, formatEventDate, getLocalizedEvent, isEventPast } from '../../utils/eventHelpers';
 
@@ -63,9 +65,34 @@ function cleanPhoneForWhatsApp(phone) {
   return phone.replace(/[^\d+]/g, '').replace('+', '');
 }
 
-export default function UserDetailModal({ user, userEnrollments = [], onClose }) {
+export default function UserDetailModal({ user, userEnrollments = [], onClose, onRoleChange }) {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'pt';
+
+  const [currentRole, setCurrentRole] = useState(user?.role || 'student');
+  const [updatingRole, setUpdatingRole] = useState(false);
+  const [roleSuccess, setRoleSuccess] = useState(false);
+
+  useEffect(() => {
+    if (user?.role) setCurrentRole(user.role);
+  }, [user?.role]);
+
+  async function handleRoleChange(e) {
+    const newRole = e.target.value;
+    setCurrentRole(newRole);
+    setUpdatingRole(true);
+    try {
+      await updateDoc(doc(db, 'users', user.id || user.uid), { role: newRole });
+      if (onRoleChange) onRoleChange(user.id || user.uid, newRole);
+      setRoleSuccess(true);
+      setTimeout(() => setRoleSuccess(false), 3000);
+    } catch (err) {
+      console.error("Erro ao atualizar perfil:", err);
+      alert(t('adminPage.usersManager.roleError', 'Erro ao atualizar perfil do usuário.'));
+    } finally {
+      setUpdatingRole(false);
+    }
+  }
 
   // Fecha no ESC
   useEffect(() => {
@@ -149,9 +176,14 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose })
                 <h2 className="font-drama text-2xl sm:text-3xl text-[#FAF8F5] truncate">
                   {fullName}
                 </h2>
-                {user.role === 'admin' ? (
-                  <span className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-red-950/40 text-red-400 border border-red-800/40">
+                {currentRole === 'admin' ? (
+                  <span className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-red-950/40 text-red-400 border border-red-800/40 font-semibold">
                     Admin
+                  </span>
+                ) : currentRole === 'instructor' ? (
+                  <span className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-amber-950/40 text-amber-300 border border-amber-800/40 font-semibold flex items-center gap-1">
+                    <Sparkles className="w-2.5 h-2.5 text-amber-400" />
+                    {t('adminPage.usersManager.instructorRole', 'Instrutor')}
                   </span>
                 ) : (
                   <span className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-zinc-900 text-zinc-400 border border-zinc-800">
@@ -159,6 +191,29 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose })
                   </span>
                 )}
               </div>
+
+              {/* Seletor de Perfil do Usuário */}
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-heading uppercase tracking-wider text-zinc-500">
+                  {t('adminPage.usersManager.roleSelectorLabel', 'Alterar Perfil')}:
+                </span>
+                <select
+                  value={currentRole}
+                  onChange={handleRoleChange}
+                  disabled={updatingRole}
+                  className="bg-[#14141A] text-xs font-heading text-[#FAF8F5] border border-zinc-700/80 rounded-[2px] px-2 py-0.5 focus:outline-none focus:border-accent cursor-pointer hover:border-zinc-500 transition-colors"
+                >
+                  <option value="student">🎓 {t('adminPage.usersManager.studentRole', 'Aluno (Padrão)')}</option>
+                  <option value="instructor">🎭 {t('adminPage.usersManager.instructorRole', 'Instrutor')}</option>
+                  <option value="admin">👑 {t('adminPage.usersManager.adminRole', 'Administrador')}</option>
+                </select>
+                {roleSuccess && (
+                  <span className="text-[10px] font-heading font-semibold text-emerald-400">
+                    ✓ {t('adminPage.usersManager.roleUpdated', 'Perfil salvo!')}
+                  </span>
+                )}
+              </div>
+
               <p className="font-heading text-xs text-[#9A9A9A] flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-accent/70 shrink-0" />
                 <span className="truncate">{email}</span>
@@ -429,6 +484,40 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose })
                             </span>
                           )}
                         </div>
+
+                        {/* Anotação Interna de CRM / Avaliação do Instrutor */}
+                        {enr.evaluation && (
+                          <div className="mt-3 pt-2.5 border-t border-white/[0.06] w-full">
+                            <div className="flex items-center justify-between gap-2 mb-1">
+                              <span className="text-[10px] font-heading uppercase tracking-wider text-accent font-semibold flex items-center gap-1">
+                                <Star className="w-3 h-3 fill-accent text-accent" />
+                                {t('adminPage.usersManager.crmNoteTitle', 'CRM • Avaliação do Instrutor')}
+                              </span>
+                              <div className="flex items-center gap-1.5">
+                                {enr.evaluation.rating > 0 && (
+                                  <div className="flex items-center gap-0.5">
+                                    {[1, 2, 3, 4, 5].map((s) => (
+                                      <Star 
+                                        key={s} 
+                                        className={`w-3 h-3 ${s <= enr.evaluation.rating ? 'fill-accent text-accent' : 'text-zinc-700'}`} 
+                                      />
+                                    ))}
+                                  </div>
+                                )}
+                                {enr.evaluation.instructorName && (
+                                  <span className="text-[10px] font-heading text-zinc-400">
+                                    ({enr.evaluation.instructorName})
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            {enr.evaluation.notes && (
+                              <p className="text-xs font-heading italic text-zinc-300 bg-[#161620] p-2.5 rounded-[2px] border border-[#22222E] whitespace-pre-wrap leading-relaxed">
+                                "{enr.evaluation.notes}"
+                              </p>
+                            )}
+                          </div>
+                        )}
                       </div>
 
                       {/* Coluna Direita: Data da Inscrição */}

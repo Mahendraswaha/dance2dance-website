@@ -8,10 +8,16 @@ export default function AdminRoute({ children }) {
   // Por enquanto, vamos permitir acesso a qualquer pessoa logada (ou podemos validar o email da Safia)
   // if (!currentUser || currentUser.email !== 'seuemail@gmail.com') return <Navigate to="/" />;
   
-  // Lista de emails que podem acessar o admin
+  // Lista de emails mestres que sempre têm acesso admin
   const adminEmails = ['mahendra.swaha@gmail.com', 'contato@dance2dance.no'];
   
-  if (!currentUser || !adminEmails.includes(currentUser.email)) {
+  const isAuthorized = currentUser && (
+    adminEmails.includes(currentUser.email) ||
+    currentUser.profile?.role === 'admin' ||
+    currentUser.profile?.role === 'instructor'
+  );
+
+  if (!isAuthorized) {
     return <Navigate to="/login" />;
   }
 

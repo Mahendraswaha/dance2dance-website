@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, query, where, getDocs, doc, runTransaction, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, runTransaction, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/AuthContext';
 import { 
   X, Copy, Check, Download, UserCheck, Trash2, Phone, HeartPulse, 
-  Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid 
+  Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid,
+  Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock
 } from 'lucide-react';
 import { generateInstructorCalendarUrl, formatEventDate } from '../utils/eventHelpers';
 
@@ -70,14 +72,153 @@ function formatBirthDateAndAge(birthDateStr, yearsOldLabel = 'anos') {
   };
 }
 
+// Subcomponente elegante para Avaliação e Anotações Internas de CRM por Aluno
+function StudentCrmCard({ student, currentUser, onSave, isSaving, isSavedSuccess }) {
+  const { t } = useTranslation();
+  const [rating, setRating] = useState(student.evaluation?.rating || 0);
+  const [notes, setNotes] = useState(student.evaluation?.notes || '');
+  const [hoverRating, setHoverRating] = useState(0);
+
+  useEffect(() => {
+    setRating(student.evaluation?.rating || 0);
+    setNotes(student.evaluation?.notes || '');
+  }, [student.evaluation]);
+
+  const hasChanges = 
+    (student.evaluation?.rating || 0) !== rating || 
+    (student.evaluation?.notes || '') !== notes;
+
+  const ratingDescriptions = {
+    1: t("adminPage.studentsModal.rating1", "1★ Iniciante / Básico"),
+    2: t("adminPage.studentsModal.rating2", "2★ Em Desenvolvimento"),
+    3: t("adminPage.studentsModal.rating3", "3★ Bom Desempenho"),
+    4: t("adminPage.studentsModal.rating4", "4★ Excelente Evolução"),
+    5: t("adminPage.studentsModal.rating5", "5★ Excepcional / Destaque"),
+  };
+
+  const activeRating = hoverRating || rating;
+
+  return (
+    <div className="bg-[#0B0B0F] border border-[#232330] rounded-[3px] p-4 text-xs font-heading">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-[#1A1A24]">
+        <div className="flex items-center gap-2">
+          <div className="w-5 h-5 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+            <Star className="w-3 h-3 fill-accent text-accent" />
+          </div>
+          <span className="font-semibold text-[#F0EDE8] uppercase tracking-wider text-[11px]">
+            {t("adminPage.studentsModal.crmTitle", "CRM • Avaliação e Acompanhamento")}
+          </span>
+          <span className="inline-flex items-center gap-1 text-[10px] text-zinc-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]">
+            <Lock className="w-2.5 h-2.5 text-zinc-400" />
+            {t("adminPage.studentsModal.internalOnly", "Interno • O aluno não vê")}
+          </span>
+        </div>
+
+        {student.evaluation?.updatedAt && (
+          <span className="text-[10px] text-[#7A7A7A] italic">
+            {t("adminPage.studentsModal.lastUpdated", "Salvo em")} {new Date(student.evaluation.updatedAt).toLocaleDateString()}
+            {student.evaluation.instructorName ? ` • ${student.evaluation.instructorName}` : ''}
+          </span>
+        )}
+      </div>
+
+      {/* Avaliação por Estrelas */}
+      <div className="mt-3 flex flex-wrap items-center gap-4">
+        <div className="flex items-center gap-1">
+          <span className="text-[#9A9A9A] text-[11px] mr-1">
+            {t("adminPage.studentsModal.ratingLabel", "Nível / Avaliação:")}
+          </span>
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              type="button"
+              onClick={() => setRating(prev => (prev === star ? 0 : star))}
+              onMouseEnter={() => setHoverRating(star)}
+              onMouseLeave={() => setHoverRating(0)}
+              className="p-1 text-zinc-600 hover:scale-110 transition-transform focus:outline-none"
+              title={`${star} estrelas`}
+            >
+              <Star
+                className={`w-4 h-4 transition-colors ${
+                  star <= activeRating
+                    ? 'fill-accent text-accent'
+                    : 'text-zinc-600'
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+
+        {activeRating > 0 && (
+          <span className="text-[11px] font-mono text-accent font-semibold">
+            {ratingDescriptions[activeRating]}
+          </span>
+        )}
+      </div>
+
+      {/* Textarea de Observações e Jornada CRM */}
+      <div className="mt-3">
+        <textarea
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          rows={2}
+          placeholder={t("adminPage.studentsModal.notesPlaceholder", "Anotações internas sobre participação, evolução do aluno, presença e recomendações para a jornada...")}
+          className="w-full bg-[#121218] border border-[#262636] focus:border-accent rounded-[2px] p-2.5 text-xs text-[#F0EDE8] placeholder-[#555566] transition-colors focus:outline-none resize-y min-h-[58px]"
+        />
+      </div>
+
+      {/* Barra de Ação */}
+      <div className="mt-2.5 flex items-center justify-between gap-2">
+        <span className="text-[10px] text-[#666677]">
+          {hasChanges ? t("adminPage.studentsModal.unsavedChanges", "Alterações não salvas") : ""}
+        </span>
+
+        <button
+          type="button"
+          onClick={() => onSave(rating, notes)}
+          disabled={isSaving || (!hasChanges && !isSavedSuccess)}
+          className={`px-3 py-1.5 rounded-[2px] font-heading text-[11px] uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+            isSavedSuccess
+              ? 'bg-green-600 text-white'
+              : hasChanges
+              ? 'bg-accent text-primary hover:bg-[#F0EDE8] shadow-md'
+              : 'bg-[#1C1C24] text-[#A0A0B0] hover:bg-[#252532]'
+          }`}
+        >
+          {isSaving ? (
+            <>
+              <span className="inline-block w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <span>{t("adminPage.studentsModal.saving", "Salvando...")}</span>
+            </>
+          ) : isSavedSuccess ? (
+            <>
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>{t("adminPage.studentsModal.saved", "Avaliação Salva!")}</span>
+            </>
+          ) : (
+            <>
+              <Save className="w-3.5 h-3.5" />
+              <span>{t("adminPage.studentsModal.saveEvaluation", "Salvar Avaliação")}</span>
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function StudentsModal({ event, onClose, onEventUpdated }) {
   const { t } = useTranslation();
+  const { currentUser } = useAuth();
   const [activeTab, setActiveTab] = useState('enrolled'); // 'enrolled' or 'waitlist'
   const [viewMode, setViewMode] = useState('simple'); // 'simple' or 'complete'
   const [enrollments, setEnrollments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [actionLoading, setActionLoading] = useState(null);
+  const [savingEvalId, setSavingEvalId] = useState(null);
+  const [savedSuccessId, setSavedSuccessId] = useState(null);
+  const [expandedCrm, setExpandedCrm] = useState({});
 
   useEffect(() => {
     async function fetchEnrollments() {
@@ -150,7 +291,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
     setTimeout(() => setCopied(false), 2500);
   }
 
-  // 2. Exportar CSV (Sempre inclui todos os dados cadastrais)
+  // 2. Exportar CSV (Sempre inclui todos os dados cadastrais e CRM)
   function handleExportCsv() {
     if (currentList.length === 0) {
       alert(t("adminPage.studentsModal.noStudentsToExport", "Não há alunos na lista atual para exportar."));
@@ -186,7 +327,10 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
       "Pais", 
       "Experiencia Previa", 
       "Restricoes de Saude", 
-      "Data de Inscricao"
+      "Data de Inscricao",
+      "CRM Nota (1-5)",
+      "CRM Observacoes",
+      "CRM Avaliador"
     ];
 
     const rows = currentList.map((e, idx) => {
@@ -206,7 +350,10 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
         escapeCsv(e.userCountry || ''),
         escapeCsv(e.userExperience || 'Nenhuma'),
         escapeCsv(e.userRestrictions || 'Nenhuma'),
-        escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : '')
+        escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : ''),
+        e.evaluation?.rating || '',
+        escapeCsv(e.evaluation?.notes || ''),
+        escapeCsv(e.evaluation?.instructorName || '')
       ];
     });
 
@@ -297,6 +444,34 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
       alert("Erro ao remover: " + err.message);
     }
     setActionLoading(null);
+  }
+
+  // Salvar Avaliação e Anotações de CRM do Aluno
+  async function handleSaveEvaluation(studentId, rating, notes) {
+    setSavingEvalId(studentId);
+    try {
+      const instructorName = currentUser?.displayName || currentUser?.profile?.nome || currentUser?.email || 'Instrutor';
+      const evaluationData = {
+        rating: Number(rating) || 0,
+        notes: (notes || '').trim(),
+        instructorName,
+        updatedAt: new Date().toISOString()
+      };
+
+      await updateDoc(doc(db, 'enrollments', studentId), {
+        evaluation: evaluationData
+      });
+
+      // Atualiza estado local imediatamente
+      setEnrollments(prev => prev.map(e => e.id === studentId ? { ...e, evaluation: evaluationData } : e));
+      setSavedSuccessId(studentId);
+      setTimeout(() => setSavedSuccessId(null), 3000);
+    } catch (err) {
+      console.error("Erro ao salvar avaliação do CRM:", err);
+      alert("Erro ao salvar avaliação: " + err.message);
+    } finally {
+      setSavingEvalId(null);
+    }
   }
 
   const occupancyPercent = Math.min(100, Math.round(((enrolledStudents.length) / (event.totalSpots || 1)) * 100));
@@ -473,69 +648,121 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
               const enrolledDate = student.createdAt ? new Date(student.createdAt).toLocaleDateString() : '-';
 
               return (
-                <div key={student.id} className="py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="flex items-start gap-4">
-                    <span className="font-mono text-sm text-[#7A7A7A] w-6 shrink-0 mt-0.5">
-                      #{idx + 1}
-                    </span>
-                    <div>
-                      <h4 className="font-heading font-semibold text-[#F0EDE8] text-base">
-                        {student.userName || 'Aluno sem nome'}
-                      </h4>
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-xs text-[#9A9A9A] font-heading">
-                        <span className="flex items-center gap-1">
-                          <Mail className="w-3 h-3 text-accent/70" />
-                          <a href={`mailto:${student.userEmail}`} className="hover:text-accent transition-colors">
-                            {student.userEmail}
-                          </a>
-                        </span>
-                        {student.userPhone && (
+                <div key={student.id} className="py-4">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <span className="font-mono text-sm text-[#7A7A7A] w-6 shrink-0 mt-0.5">
+                        #{idx + 1}
+                      </span>
+                      <div>
+                        <h4 className="font-heading font-semibold text-[#F0EDE8] text-base">
+                          {student.userName || 'Aluno sem nome'}
+                        </h4>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-xs text-[#9A9A9A] font-heading">
                           <span className="flex items-center gap-1">
-                            <Phone className="w-3 h-3 text-accent/70" />
-                            <a href={`tel:${student.userPhone}`} className="hover:text-accent transition-colors">
-                              {student.userPhone}
+                            <Mail className="w-3 h-3 text-accent/70" />
+                            <a href={`mailto:${student.userEmail}`} className="hover:text-accent transition-colors">
+                              {student.userEmail}
                             </a>
                           </span>
-                        )}
-                        <span className="flex items-center gap-1 text-[#7A7A7A]">
-                          <Calendar className="w-3 h-3" />
-                          {enrolledDate}
-                        </span>
-                      </div>
-
-                      {/* Restrições corporais / Observações de Saúde */}
-                      {student.userRestrictions && (
-                        <div className="mt-2 inline-flex items-start gap-1.5 px-2.5 py-1 rounded bg-red-950/30 border border-red-900/40 text-red-300 text-xs">
-                          <HeartPulse className="w-3.5 h-3.5 mt-0.5 shrink-0 text-red-400" />
-                          <span><strong>Atenção:</strong> {student.userRestrictions}</span>
+                          {student.userPhone && (
+                            <span className="flex items-center gap-1">
+                              <Phone className="w-3 h-3 text-accent/70" />
+                              <a href={`tel:${student.userPhone}`} className="hover:text-accent transition-colors">
+                                {student.userPhone}
+                              </a>
+                            </span>
+                          )}
+                          <span className="flex items-center gap-1 text-[#7A7A7A]">
+                            <Calendar className="w-3 h-3" />
+                            {enrolledDate}
+                          </span>
                         </div>
+
+                        {/* Exibição resumida de CRM se houver e não estiver expandido */}
+                        {student.evaluation && !expandedCrm[student.id] && (
+                          <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs">
+                            {student.evaluation.rating > 0 && (
+                              <span className="inline-flex items-center gap-1 text-accent font-mono font-bold bg-accent/10 px-2 py-0.5 rounded-[2px] border border-accent/20 text-[11px]">
+                                <Star className="w-3 h-3 fill-accent text-accent" />
+                                {student.evaluation.rating}/5
+                              </span>
+                            )}
+                            {student.evaluation.notes && (
+                              <span className="text-zinc-400 italic text-[11px] truncate max-w-[320px]">
+                                "{student.evaluation.notes}"
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Restrições corporais / Observações de Saúde */}
+                        {student.userRestrictions && (
+                          <div className="mt-2 inline-flex items-start gap-1.5 px-2.5 py-1 rounded bg-red-950/30 border border-red-900/40 text-red-300 text-xs">
+                            <HeartPulse className="w-3.5 h-3.5 mt-0.5 shrink-0 text-red-400" />
+                            <span><strong>Atenção:</strong> {student.userRestrictions}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Ações por Aluno */}
+                    <div className="flex items-center gap-2 shrink-0 self-end md:self-center">
+                      {/* Botão de Toggle CRM */}
+                      <button
+                        type="button"
+                        onClick={() => setExpandedCrm(prev => ({ ...prev, [student.id]: !prev[student.id] }))}
+                        className={`px-2.5 py-1.5 text-xs font-heading rounded-[2px] border transition-colors flex items-center gap-1.5 cursor-pointer ${
+                          student.evaluation?.rating || student.evaluation?.notes
+                            ? 'border-accent/40 bg-accent/10 text-accent hover:bg-accent/20 font-semibold'
+                            : 'border-[#2D2D3B] text-[#9A9A9A] hover:text-[#F0EDE8] hover:border-[#444455]'
+                        }`}
+                        title={t("adminPage.studentsModal.crmBtnTooltip", "Avaliação e Anotações Internas de CRM")}
+                      >
+                        <Star className={`w-3.5 h-3.5 ${student.evaluation?.rating ? 'fill-accent text-accent' : ''}`} />
+                        <span>
+                          {student.evaluation?.rating 
+                            ? `${student.evaluation.rating}★ CRM` 
+                            : t("adminPage.studentsModal.crmBtn", "CRM")}
+                        </span>
+                        {expandedCrm[student.id] ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                      </button>
+
+                      {student.status === 'waitlist' && (
+                        <button
+                          onClick={() => handlePromote(student.id)}
+                          disabled={actionLoading === student.id}
+                          className="px-3 py-1.5 bg-accent text-primary hover:bg-[#F0EDE8] font-heading text-[11px] uppercase tracking-wider font-bold rounded-[2px] transition-colors flex items-center gap-1"
+                          title={t("adminPage.studentsModal.promote", "Promover para Inscrito")}
+                        >
+                          <UserCheck className="w-3.5 h-3.5" />
+                          <span>{t("adminPage.studentsModal.promote", "Promover")}</span>
+                        </button>
                       )}
+
+                      <button
+                        onClick={() => handleRemove(student.id, student.status)}
+                        disabled={actionLoading === student.id}
+                        className="p-2 rounded-[2px] text-[#7A7A7A] hover:text-red-400 hover:bg-red-950/20 transition-colors"
+                        title={t("adminPage.studentsModal.remove", "Remover do Evento")}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </div>
                   </div>
 
-                  {/* Ações por Aluno */}
-                  <div className="flex items-center gap-2 shrink-0 self-end md:self-center">
-                    {student.status === 'waitlist' && (
-                      <button
-                        onClick={() => handlePromote(student.id)}
-                        disabled={actionLoading === student.id}
-                        className="px-3 py-1.5 bg-accent text-primary hover:bg-[#F0EDE8] font-heading text-[11px] uppercase tracking-wider font-bold rounded-[2px] transition-colors flex items-center gap-1"
-                        title={t("adminPage.studentsModal.promote", "Promover para Inscrito")}
-                      >
-                        <UserCheck className="w-3.5 h-3.5" />
-                        <span>{t("adminPage.studentsModal.promote", "Promover")}</span>
-                      </button>
-                    )}
-
-                    <button
-                      onClick={() => handleRemove(student.id, student.status)}
-                      disabled={actionLoading === student.id}
-                      className="p-2 rounded-[2px] text-[#7A7A7A] hover:text-red-400 hover:bg-red-950/20 transition-colors"
-                      title={t("adminPage.studentsModal.remove", "Remover do Evento")}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
+                  {/* Painel Expansível de CRM */}
+                  {expandedCrm[student.id] && (
+                    <div className="mt-3 pl-0 sm:pl-10">
+                      <StudentCrmCard
+                        student={student}
+                        currentUser={currentUser}
+                        onSave={(rating, notes) => handleSaveEvaluation(student.id, rating, notes)}
+                        isSaving={savingEvalId === student.id}
+                        isSavedSuccess={savedSuccessId === student.id}
+                      />
+                    </div>
+                  )}
                 </div>
               );
             })
@@ -689,6 +916,17 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
                           {student.userRestrictions || <span className="text-[#555555] italic">{t("adminPage.studentsModal.none", "Nenhuma")}</span>}
                         </p>
                       </div>
+                    </div>
+
+                    {/* CRM • Avaliação e Observações do Instrutor */}
+                    <div className="mt-4 pt-4 border-t border-[#1E1E28]">
+                      <StudentCrmCard
+                        student={student}
+                        currentUser={currentUser}
+                        onSave={(rating, notes) => handleSaveEvaluation(student.id, rating, notes)}
+                        isSaving={savingEvalId === student.id}
+                        isSavedSuccess={savedSuccessId === student.id}
+                      />
                     </div>
                   </div>
                 </div>

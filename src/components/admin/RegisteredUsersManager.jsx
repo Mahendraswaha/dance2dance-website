@@ -21,6 +21,7 @@ export default function RegisteredUsersManager({ events = [] }) {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [enrollmentFilter, setEnrollmentFilter] = useState('all'); // 'all' | 'with_enrollments' | 'no_enrollments'
+  const [roleFilter, setRoleFilter] = useState('all'); // 'all' | 'student' | 'instructor' | 'admin'
   const [sortBy, setSortBy] = useState('recent_created'); // 'recent_created' | 'name_asc' | 'most_courses'
   const [selectedUserForModal, setSelectedUserForModal] = useState(null);
 
@@ -140,6 +141,12 @@ export default function RegisteredUsersManager({ events = [] }) {
         if (enrollmentFilter === 'with_enrollments' && userEnrs.length === 0) return false;
         if (enrollmentFilter === 'no_enrollments' && userEnrs.length > 0) return false;
 
+        // Filtro por Perfil
+        const userRole = u.role || 'student';
+        if (roleFilter === 'student' && userRole !== 'student') return false;
+        if (roleFilter === 'instructor' && userRole !== 'instructor') return false;
+        if (roleFilter === 'admin' && userRole !== 'admin') return false;
+
         return true;
       })
       .sort((a, b) => {
@@ -161,7 +168,7 @@ export default function RegisteredUsersManager({ events = [] }) {
         const dateB = b.createdAt || '';
         return dateB.localeCompare(dateA);
       });
-  }, [users, searchQuery, enrollmentFilter, sortBy, enrollmentsByUserId]);
+  }, [users, searchQuery, enrollmentFilter, roleFilter, sortBy, enrollmentsByUserId]);
 
   // Função para Exportar Lista Completa em CSV (Excel UTF-8 compatível)
   function handleExportCsv() {
@@ -317,6 +324,46 @@ export default function RegisteredUsersManager({ events = [] }) {
 
         {/* Filtros e Ordenação */}
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+          {/* Filtro de Perfil (Role) */}
+          <div className="flex items-center p-1 rounded-[2px] bg-[#141418] border border-[#22222C]">
+            <button
+              type="button"
+              onClick={() => setRoleFilter('all')}
+              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+                roleFilter === 'all' ? 'bg-accent text-primary' : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              {t('adminPage.usersManager.filterRoleAll', 'Todos Perfis')}
+            </button>
+            <button
+              type="button"
+              onClick={() => setRoleFilter('student')}
+              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+                roleFilter === 'student' ? 'bg-accent text-primary' : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              {t('adminPage.usersManager.studentRole', 'Alunos')}
+            </button>
+            <button
+              type="button"
+              onClick={() => setRoleFilter('instructor')}
+              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+                roleFilter === 'instructor' ? 'bg-amber-500 text-primary font-bold shadow-sm' : 'text-zinc-400 hover:text-amber-300'
+              }`}
+            >
+              {t('adminPage.usersManager.instructorRole', 'Instrutores')}
+            </button>
+            <button
+              type="button"
+              onClick={() => setRoleFilter('admin')}
+              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+                roleFilter === 'admin' ? 'bg-red-500 text-white font-bold shadow-sm' : 'text-zinc-400 hover:text-red-300'
+              }`}
+            >
+              Admins
+            </button>
+          </div>
+
           {/* Filtro de Inscrição */}
           <div className="flex items-center p-1 rounded-[2px] bg-[#141418] border border-[#22222C]">
             <button
@@ -437,11 +484,16 @@ export default function RegisteredUsersManager({ events = [] }) {
                         </span>
                       )}
 
-                      {u.role === 'admin' && (
-                        <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.2 rounded-[2px] bg-red-950/40 text-red-400 border border-red-800/40">
+                      {u.role === 'admin' ? (
+                        <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.2 rounded-[2px] bg-red-950/40 text-red-400 border border-red-800/40 font-semibold">
                           Admin
                         </span>
-                      )}
+                      ) : u.role === 'instructor' ? (
+                        <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.2 rounded-[2px] bg-amber-950/40 text-amber-300 border border-amber-800/40 font-semibold flex items-center gap-1">
+                          <Sparkles className="w-2.5 h-2.5 text-amber-400" />
+                          {t('adminPage.usersManager.instructorRole', 'Instrutor')}
+                        </span>
+                      ) : null}
                     </div>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#9A9A9A] font-heading">
@@ -551,6 +603,10 @@ export default function RegisteredUsersManager({ events = [] }) {
             user={selectedUserForModal}
             userEnrollments={activeModalEnrollments}
             onClose={() => setSelectedUserForModal(null)}
+            onRoleChange={(userId, newRole) => {
+              setUsers(prev => prev.map(u => (u.id === userId || u.uid === userId) ? { ...u, role: newRole } : u));
+              setSelectedUserForModal(prev => prev ? { ...prev, role: newRole } : null);
+            }}
           />
         )}
       </AnimatePresence>

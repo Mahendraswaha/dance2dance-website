@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2, LogIn, UserPlus, LogOut, User, Shield } from 'lucide-react';
+import { Menu, X, ArrowRight, Play, HeartPulse, Check, MousePointer2, LogIn, UserPlus, LogOut, User, Shield, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -18,11 +18,13 @@ const Navbar = () => {
   const logoRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const isInstructor = currentUser?.profile?.role === 'instructor';
   const isAdmin = currentUser && (
     currentUser.email === 'mahendra.swaha@gmail.com' || 
     currentUser.email === 'contato@dance2dance.no' || 
     currentUser.profile?.role === 'admin'
   );
+  const canAccessPanel = isAdmin || isInstructor;
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -115,7 +117,7 @@ const Navbar = () => {
 
               {currentUser ? (
                 <div className="hidden md:flex items-center gap-2 ml-1">
-                  {isAdmin && (
+                  {isAdmin ? (
                     <Link 
                       to="/admin"
                       title="Painel Administrativo"
@@ -124,7 +126,16 @@ const Navbar = () => {
                       <Shield className="w-3.5 h-3.5" />
                       <span>Admin</span>
                     </Link>
-                  )}
+                  ) : isInstructor ? (
+                    <Link 
+                      to="/admin"
+                      title={t("nav.instructorPortal", "Portal do Instrutor")}
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-amber-500/20 hover:bg-amber-500 hover:text-primary text-amber-300 border border-amber-500/40 font-heading text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{t("nav.instructor", "Instrutor")}</span>
+                    </Link>
+                  ) : null}
 
                   <Link 
                     to="/perfil"
@@ -227,7 +238,7 @@ const Navbar = () => {
               <span className="font-heading text-sm text-[#9A9A9A]">
                 {t("nav.hello")}, {currentUser.profile?.nome?.split(' ')[0] || 'Aluno'}
               </span>
-              {isAdmin && (
+              {isAdmin ? (
                 <Link 
                   to="/admin"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -236,7 +247,16 @@ const Navbar = () => {
                   <Shield size={16} />
                   <span>Painel Administrativo</span>
                 </Link>
-              )}
+              ) : isInstructor ? (
+                <Link 
+                  to="/admin"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500 hover:text-primary px-6 py-3.5 rounded-full font-heading font-bold text-xs w-full uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2 shadow-sm"
+                >
+                  <Sparkles size={16} />
+                  <span>{t("nav.instructorPortal", "Portal do Instrutor")}</span>
+                </Link>
+              ) : null}
               <Link 
                 to="/perfil"
                 onClick={() => setIsMobileMenuOpen(false)}

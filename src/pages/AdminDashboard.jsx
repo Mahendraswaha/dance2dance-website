@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
@@ -131,12 +132,39 @@ const EVENT_PRESETS = {
 
 export default function AdminDashboard() {
   const { t, i18n } = useTranslation();
+  const { currentUser } = useAuth();
+  
+  const userRole = currentUser?.profile?.role || 'student';
+  const isInstructor = userRole === 'instructor';
+  const isAdmin = currentUser && (
+    currentUser.email === 'mahendra.swaha@gmail.com' || 
+    currentUser.email === 'contato@dance2dance.no' || 
+    userRole === 'admin'
+  );
+
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
   const [selectedEventForStudents, setSelectedEventForStudents] = useState(null);
   const [adminTab, setAdminTab] = useState('upcoming'); // 'upcoming' | 'past'
   const [masterTab, setMasterTab] = useState('events'); // 'events' | 'users'
+
+  const userEmail = (currentUser?.email || '').toLowerCase().trim();
+  const userName = (currentUser?.profile?.nome || currentUser?.displayName || '').toLowerCase().trim();
+
+  // Se for instrutor, filtra apenas os eventos onde ele é o instrutor
+  const myEvents = isInstructor
+    ? events.filter(e => {
+        const evEmail = (e.instructorEmail || '').toLowerCase().trim();
+        const evName = (e.instructor || '').toLowerCase().trim();
+        return (
+          (userEmail && evEmail === userEmail) ||
+          (userName && evName === userName) ||
+          (userName && evName && userName.includes(evName)) ||
+          (userName && evName && evName.includes(userName))
+        );
+      })
+    : events;
 
   // Tab order: NO -> EN -> PT
   const currentInitialTab = i18n.language === 'pt' ? 'pt' : (i18n.language === 'en' ? 'en' : 'no');
@@ -408,50 +436,65 @@ export default function AdminDashboard() {
       <Navbar />
       
       <main className="flex-grow pt-44 md:pt-48 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10">
-        <h1 className="font-batang text-4xl text-[#F0EDE8] mb-6">{t("adminPage.adminTitle")}</h1>
-
-        {/* Abas Mestras do Painel: Eventos & Agenda vs Alunos & Usuários */}
-        <div className="flex items-center gap-3 mb-8 border-b border-[#222222] pb-4">
-          <button
-            type="button"
-            onClick={() => setMasterTab('events')}
-            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
-              masterTab === 'events'
-                ? 'bg-accent text-primary shadow-sm font-bold'
-                : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
-            }`}
-          >
-            <Calendar className="w-4 h-4" />
-            <span>{t('adminPage.masterTabEvents', 'Eventos & Agenda')}</span>
-            <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
-              masterTab === 'events' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#1A1A22] text-[#CFCFCF]'
-            }`}>
-              {events.length}
-            </span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setMasterTab('users')}
-            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
-              masterTab === 'users'
-                ? 'bg-accent text-primary shadow-sm font-bold'
-                : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
-            }`}
-          >
-            <Users className="w-4 h-4" />
-            <span>{t('adminPage.masterTabUsers', 'Alunos & Usuários Cadastrados')}</span>
-          </button>
+        {/* Título do Painel */}
+        <div className="mb-6">
+          <h1 className="font-batang text-4xl text-[#F0EDE8]">
+            {isInstructor 
+              ? `${t("adminPage.instructorPortalTitle", "Portal do Instrutor")} • ${currentUser?.profile?.nome || currentUser?.displayName || 'Instrutor'}`
+              : t("adminPage.adminTitle")}
+          </h1>
+          {isInstructor && (
+            <p className="font-heading text-xs text-[#9A9A9A] mt-1.5">
+              {t("adminPage.instructorSubtitle", "Acesse seus cursos, consulte os alunos inscritos e registre notas de participação e acompanhamento CRM.")}
+            </p>
+          )}
         </div>
 
-        {masterTab === 'events' ? (
+        {/* Abas Mestras do Painel: Apenas para Admin Geral */}
+        {!isInstructor && (
+          <div className="flex items-center gap-3 mb-8 border-b border-[#222222] pb-4">
+            <button
+              type="button"
+              onClick={() => setMasterTab('events')}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
+                masterTab === 'events'
+                  ? 'bg-accent text-primary shadow-sm font-bold'
+                  : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
+              }`}
+            >
+              <Calendar className="w-4 h-4" />
+              <span>{t('adminPage.masterTabEvents', 'Eventos & Agenda')}</span>
+              <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                masterTab === 'events' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#1A1A22] text-[#CFCFCF]'
+              }`}>
+                {events.length}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setMasterTab('users')}
+              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
+                masterTab === 'users'
+                  ? 'bg-accent text-primary shadow-sm font-bold'
+                  : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
+              }`}
+            >
+              <Users className="w-4 h-4" />
+              <span>{t('adminPage.masterTabUsers', 'Alunos & Usuários Cadastrados')}</span>
+            </button>
+          </div>
+        )}
+
+        {(masterTab === 'events' || isInstructor) ? (
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
-          {/* Coluna 1: Formulário de Criação / Edição */}
-          <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-6 sm:p-8 rounded-[4px] h-fit">
-            <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">
-              {editingId ? t('adminPage.edit') : t('adminPage.createNew')}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Coluna 1: Formulário de Criação / Edição (Apenas Admin Geral) */}
+          {!isInstructor && (
+            <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-6 sm:p-8 rounded-[4px] h-fit">
+              <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">
+                {editingId ? t('adminPage.edit') : t('adminPage.createNew')}
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-5">
                 
                 {/* Seleção de Categoria */}
                 <div>
@@ -756,11 +799,14 @@ export default function AdminDashboard() {
                 </div>
             </form>
           </div>
+          )}
 
           {/* Coluna 2: Lista de Eventos */}
-          <div className="xl:col-span-7 2xl:col-span-7">
+          <div className={isInstructor ? "col-span-12 xl:col-span-12" : "xl:col-span-7 2xl:col-span-7"}>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-              <h2 className="font-heading text-xl text-[#F0EDE8]">{t("adminPage.activeAgenda")}</h2>
+              <h2 className="font-heading text-xl text-[#F0EDE8]">
+                {isInstructor ? t("adminPage.myCoursesTitle", "Meus Cursos & Workshops") : t("adminPage.activeAgenda")}
+              </h2>
 
               {/* Abas: Próximos & Ativos vs Encerrados / Histórico */}
               <div className="flex items-center gap-1.5 p-1 bg-[#121214] border border-[#222222] rounded-[2px] self-start sm:self-auto">
@@ -777,7 +823,7 @@ export default function AdminDashboard() {
                   <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                     adminTab === 'upcoming' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#222222] text-[#CFCFCF]'
                   }`}>
-                    {events.filter(e => !isEventPast(e)).length}
+                    {myEvents.filter(e => !isEventPast(e)).length}
                   </span>
                 </button>
 
@@ -794,7 +840,7 @@ export default function AdminDashboard() {
                   <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                     adminTab === 'past' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#222222] text-[#CFCFCF]'
                   }`}>
-                    {events.filter(e => isEventPast(e)).length}
+                    {myEvents.filter(e => isEventPast(e)).length}
                   </span>
                 </button>
               </div>
@@ -803,8 +849,8 @@ export default function AdminDashboard() {
             {loading ? (
               <p className="text-[#9A9A9A] font-heading">{t("adminPage.loading", "Carregando...")}</p>
             ) : (() => {
-              const upcomingEvents = events.filter(e => !isEventPast(e));
-              const pastEvents = events.filter(e => isEventPast(e));
+              const upcomingEvents = myEvents.filter(e => !isEventPast(e));
+              const pastEvents = myEvents.filter(e => isEventPast(e));
               const displayedEvents = adminTab === 'past' ? pastEvents : upcomingEvents;
 
               if (displayedEvents.length === 0) {
@@ -949,35 +995,44 @@ export default function AdminDashboard() {
 
                             <button 
                               onClick={() => setSelectedEventForStudents(event)}
-                              title={t("adminPage.viewStudents")}
-                              aria-label={t("adminPage.viewStudents")}
-                              className="p-2.5 rounded-[2px] border border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent transition-colors flex items-center justify-center relative group"
+                              title={isInstructor ? t("adminPage.studentsAndCrm", "Alunos & CRM") : t("adminPage.viewStudents")}
+                              aria-label={isInstructor ? t("adminPage.studentsAndCrm", "Alunos & CRM") : t("adminPage.viewStudents")}
+                              className={`p-2.5 rounded-[2px] border transition-colors flex items-center gap-1.5 justify-center relative group ${
+                                isInstructor 
+                                  ? "bg-accent/10 border-accent/60 text-accent hover:bg-accent hover:text-primary font-medium px-3 text-xs" 
+                                  : "border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent"
+                              }`}
                             >
                               <Users className="w-4 h-4" />
+                              {isInstructor && <span className="font-heading font-semibold">{t("adminPage.studentsAndCrm", "Alunos & CRM")}</span>}
                               {event.enrolledCount > 0 && (
-                                <span className="absolute -top-1.5 -right-1.5 bg-accent text-primary text-[9px] font-bold font-mono px-1 rounded-full">
+                                <span className={isInstructor ? "bg-accent text-primary text-[10px] font-bold font-mono px-1.5 py-0.5 rounded-full ml-1" : "absolute -top-1.5 -right-1.5 bg-accent text-primary text-[9px] font-bold font-mono px-1 rounded-full"}>
                                   {event.enrolledCount}
                                 </span>
                               )}
                             </button>
 
-                            <button 
-                              onClick={() => handleEditClick(event)} 
-                              title={t("adminPage.edit")}
-                              aria-label={t("adminPage.edit")}
-                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] transition-colors flex items-center justify-center"
-                            >
-                              <Pencil className="w-4 h-4" />
-                            </button>
+                            {!isInstructor && (
+                              <>
+                                <button 
+                                  onClick={() => handleEditClick(event)} 
+                                  title={t("adminPage.edit")}
+                                  aria-label={t("adminPage.edit")}
+                                  className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] transition-colors flex items-center justify-center"
+                                >
+                                  <Pencil className="w-4 h-4" />
+                                </button>
 
-                            <button 
-                              onClick={() => handleDelete(event.id)} 
-                              title={t("adminPage.delete")}
-                              aria-label={t("adminPage.delete")}
-                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-red-900/40 text-[#9A9A9A] hover:text-red-400 transition-colors flex items-center justify-center"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
+                                <button 
+                                  onClick={() => handleDelete(event.id)} 
+                                  title={t("adminPage.delete")}
+                                  aria-label={t("adminPage.delete")}
+                                  className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-red-900/40 text-[#9A9A9A] hover:text-red-400 transition-colors flex items-center justify-center"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </>
+                            )}
                           </div>
                         </div>
                       </div>
