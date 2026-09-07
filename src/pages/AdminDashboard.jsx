@@ -248,9 +248,9 @@ export default function AdminDashboard() {
         title_en,
         title_pt,
 
-        scheduleDetails_no: (formData.scheduleDetails_no || primarySchedule).trim(),
-        scheduleDetails_en: (formData.scheduleDetails_en || primarySchedule).trim(),
-        scheduleDetails_pt: (formData.scheduleDetails_pt || primarySchedule).trim(),
+        scheduleDetails_no: (formData.scheduleDetails_no || '').trim(),
+        scheduleDetails_en: (formData.scheduleDetails_en || '').trim(),
+        scheduleDetails_pt: (formData.scheduleDetails_pt || '').trim(),
 
         location_no: (formData.location_no || primaryLocation).trim(),
         location_en: (formData.location_en || primaryLocation).trim(),
