@@ -458,7 +458,7 @@ export default function ProfilePage() {
                           const ev = item.event;
                           const category = ev.category || 'bethedance';
                           const theme = getCategoryTheme(category);
-                          const { title: eventTitle, location: eventLocation } = getLocalizedEvent(ev, currentLang);
+                          const { title: eventTitle, location: eventLocation, scheduleDetails: dispSchedule } = getLocalizedEvent(ev, currentLang);
                           const dateRange = formatEventDate(ev.startDate, ev.endDate, currentLang);
                           const timeRange = ev.startTime && ev.endTime ? `${ev.startTime} – ${ev.endTime}` : '';
                           const isWaitlist = item.status === 'waitlist';
@@ -510,6 +510,12 @@ export default function ProfilePage() {
                                     <span className="flex items-center gap-1.5 text-zinc-300 font-mono">
                                       <Clock className="w-4 h-4 text-accent" />
                                       {timeRange}
+                                    </span>
+                                  )}
+
+                                  {dispSchedule && (
+                                    <span className="text-[11px] font-heading font-semibold px-2 py-0.5 rounded-[2px] bg-accent/15 text-accent border border-accent/30 tracking-wide">
+                                      {dispSchedule}
                                     </span>
                                   )}
 
@@ -636,7 +642,7 @@ export default function ProfilePage() {
                           const ev = item.event;
                           const category = ev.category || 'bethedance';
                           const theme = getCategoryTheme(category);
-                          const { title: eventTitle, location: eventLocation } = getLocalizedEvent(ev, currentLang);
+                          const { title: eventTitle, location: eventLocation, scheduleDetails: dispSchedule } = getLocalizedEvent(ev, currentLang);
                           const dateRange = formatEventDate(ev.startDate, ev.endDate, currentLang);
                           const existingReview = reviewsMap[ev.id] || null;
 
@@ -683,12 +689,19 @@ export default function ProfilePage() {
                                 <h3 className="font-heading font-semibold text-base sm:text-lg text-[#FAF8F5]">
                                   {eventTitle}
                                 </h3>
-                                {eventLocation && (
-                                  <span className="text-xs text-zinc-500 font-heading flex items-center gap-1 mt-0.5">
-                                    <MapPin className="w-3 h-3 text-accent/60" />
-                                    {eventLocation}
-                                  </span>
-                                )}
+                                <div className="flex flex-wrap items-center gap-3 mt-1">
+                                  {eventLocation && (
+                                    <span className="text-xs text-zinc-500 font-heading flex items-center gap-1">
+                                      <MapPin className="w-3 h-3 text-accent/60" />
+                                      {eventLocation}
+                                    </span>
+                                  )}
+                                  {dispSchedule && (
+                                    <span className="text-[11px] font-heading font-semibold px-2 py-0.5 rounded-[2px] bg-accent/15 text-accent border border-accent/30 tracking-wide">
+                                      {dispSchedule}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
 
                               {/* ÁREA DE AVALIAÇÃO / DEPOIMENTO */}

@@ -457,9 +457,29 @@ export default function AgendaPage() {
             
             <div className="flex items-start gap-2 text-[#9A9A9A] font-heading text-xs">
               <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0 text-accent/70" />
-              <span className="whitespace-pre-wrap leading-relaxed">
-                {sessionTime ? `${sessionTime} ${dispSchedule && !sessionCount ? `• ${dispSchedule}` : ''}` : (dispSchedule || t("agendaPage.tbd"))}
-              </span>
+              <div className="flex flex-col gap-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  {sessionTime && (
+                    <span className="font-mono text-zinc-300 font-medium">
+                      {sessionTime}
+                    </span>
+                  )}
+                  {!sessionTime && !dispSchedule && (
+                    <span>{t("agendaPage.tbd")}</span>
+                  )}
+                  {dispSchedule && !dispSchedule.includes('\n') && (
+                    <span className="text-[11px] font-heading font-semibold px-2 py-0.5 rounded-[2px] bg-accent/15 text-accent border border-accent/30 tracking-wide">
+                      {dispSchedule}
+                    </span>
+                  )}
+                </div>
+
+                {dispSchedule && dispSchedule.includes('\n') && (
+                  <div className="text-xs text-zinc-300 font-heading whitespace-pre-wrap leading-relaxed pt-0.5">
+                    {dispSchedule}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Badges de Carga Horária e Encontros */}
@@ -654,6 +674,12 @@ export default function AgendaPage() {
                     </button>
                   </div>
                 </div>
+
+                {dispSchedule && dispSchedule.includes('\n') && (
+                  <div className="mb-3.5 p-3 rounded-[2px] bg-[#14141B] border border-[#22222E] text-xs text-zinc-300 font-heading whitespace-pre-wrap leading-relaxed">
+                    {dispSchedule}
+                  </div>
+                )}
 
                 {Array.isArray(event.sessions) && event.sessions.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
