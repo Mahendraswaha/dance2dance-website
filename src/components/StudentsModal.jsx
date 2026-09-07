@@ -9,7 +9,7 @@ import {
   Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid,
   Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock
 } from 'lucide-react';
-import { generateInstructorCalendarUrl, formatEventDate } from '../utils/eventHelpers';
+import { generateInstructorCalendarUrl, formatEventDate, getLocalizedEvent } from '../utils/eventHelpers';
 
 // Helper para formatar a data de nascimento e calcular a idade
 function formatBirthDateAndAge(birthDateStr, yearsOldLabel = 'anos') {
@@ -208,8 +208,10 @@ function StudentCrmCard({ student, currentUser, onSave, isSaving, isSavedSuccess
 }
 
 export default function StudentsModal({ event, onClose, onEventUpdated }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'pt';
   const { currentUser } = useAuth();
+  const { title: localizedTitle, location: localizedLocation } = getLocalizedEvent(event, currentLang);
   const [activeTab, setActiveTab] = useState('enrolled'); // 'enrolled' or 'waitlist'
   const [viewMode, setViewMode] = useState('simple'); // 'simple' or 'complete'
   const [enrollments, setEnrollments] = useState([]);
@@ -365,7 +367,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
     const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
 
-    const eventName = event.title_pt || event.title_en || event.title_no || event.title || 'workshop';
+    const eventName = localizedTitle || event.title || 'workshop';
     const safeTitle = eventName
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
@@ -497,28 +499,28 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[9px] uppercase tracking-[2px] font-bold px-2 py-0.5 rounded-[2px] bg-accent/10 text-accent border border-accent/20">
-                {event.category === 'biostretch' ? 'BIOSTRETCH' : 'BE THE DANCE'}
+                {event.category === 'biostretch' ? 'BIOSTRETCH' : event.category === 'kroppsskole' ? 'KROPPSSKOLE' : 'BE THE DANCE'}
               </span>
               {event.instructor && (
                 <span className="text-xs font-heading text-[#9A9A9A]">
-                  Instrutor: <strong className="text-[#F0EDE8]">{event.instructor}</strong>
+                  {t("adminPage.instructor", "Instrutor")}: <strong className="text-[#F0EDE8]">{event.instructor}</strong>
                 </span>
               )}
             </div>
             <h2 className="font-drama text-2xl md:text-3xl text-[#F0EDE8]">
-              {event.title_no || event.title_en || event.title_pt || event.title}
+              {localizedTitle || event.title}
             </h2>
             <p className="font-heading text-xs text-[#9A9A9A] mt-1">
-              {formatEventDate(event.startDate, event.endDate)} 
+              {formatEventDate(event.startDate, event.endDate, currentLang)} 
               {event.startTime && ` • ${event.startTime} - ${event.endTime || ''}`}
               {event.totalHours ? ` (${event.totalHours}h)` : ''}
-              {event.location ? ` | ${event.location}` : ''}
+              {localizedLocation ? ` | ${localizedLocation}` : ''}
             </p>
           </div>
 
           <div className="flex items-center gap-2">
             <a 
-              href={generateInstructorCalendarUrl(event, 'en', event.instructorEmail)}
+              href={generateInstructorCalendarUrl(event, currentLang, event.instructorEmail)}
               target="_blank" 
               rel="noopener noreferrer"
               title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}

@@ -195,9 +195,10 @@ export default function RegisteredUsersManager({ events = [] }) {
       const userEnrs = enrollmentsByUserId[u.id] || enrollmentsByUserId[u.uid] || [];
       const coursesSummary = userEnrs.map(e => {
         const ev = e.event;
-        const title = ev?.title_pt || ev?.title_en || ev?.title_no || ev?.title || 'Workshop';
+        const { title } = getLocalizedEvent(ev, currentLang);
+        const eventTitle = title || 'Workshop';
         const dates = ev?.startDate ? `${ev.startDate}${ev.endDate && ev.endDate !== ev.startDate ? ` a ${ev.endDate}` : ''}` : '';
-        return `${title} (${dates} - ${e.status === 'waitlist' ? 'Espera' : 'Confirmado'})`;
+        return `${eventTitle} (${dates} - ${e.status === 'waitlist' ? 'Espera' : 'Confirmado'})`;
       }).join(' | ');
 
       return [
