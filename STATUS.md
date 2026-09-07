@@ -68,12 +68,16 @@
 
 ---
 
-## 📂 Arquivos de Histórico de Conversas (Backups Salvos)
-Localizados em `C:\Renas\Antigravity\`:
+## 📂 Arquivos de Histórico de Conversas & Planilhas
+Localizados em `C:\Renas\Antigravity\` e na Área de Trabalho:
 * `toda conversa com Antigravity até o windows resetar.docx` (Parte 1: início até 04/09).
 * `toda conversa com Antigravity - parte 2.docx` (Parte 2: de 04/09 até 07/09).
 * `toda conversa com Antigravity - parte 2.md` (Versão Markdown da parte 2).
 * `Fazer_Backup_Conversa.bat` e atalho na Área de Trabalho para gerar backup a qualquer momento com 1 duplo clique.
+* **Planilha de Revisão de Traduções (935 chaves completas):**
+  * `Dance2Dance_Traducoes_Revisao.xlsx` (Excel formatado, com filtros, cores e congelamento de painel).
+  * `Dance2Dance_Traducoes_Revisao.csv` (CSV com UTF-8 BOM).
+  * Disponível em `C:\Renas\Antigravity\`, dentro do repositório `Website-builder/` e na **Área de Trabalho**.
 
 ---
 
