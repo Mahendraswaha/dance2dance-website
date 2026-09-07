@@ -90,16 +90,37 @@ export default function ContactPage() {
     setError('');
 
     try {
-      await addDoc(collection(db, 'contacts'), {
+      const contactPayload = {
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
+        address: formData.address.trim(),
+        city: formData.city.trim(),
+        neighborhood: formData.neighborhood.trim(),
+        zip: formData.zip.trim(),
+        country: formData.country.trim(),
         subject: formData.subject || 'geral',
-        message: formData.message.trim(),
+        message: formData.message.trim()
+      };
+
+      // 1. Grava no Firestore para manter o histórico no painel administrativo
+      await addDoc(collection(db, 'contacts'), {
+        ...contactPayload,
         turnstileToken, // Save token for future backend validation if needed
         status: 'unread',
         createdAt: new Date().toISOString()
       });
+
+      // 2. Dispara e-mail de notificação para a equipe e confirmação para o visitante
+      try {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(contactPayload)
+        });
+      } catch (mailErr) {
+        console.warn('Aviso: falha no envio de e-mail em segundo plano:', mailErr);
+      }
 
       setSubmitted(true);
     } catch (err) {
