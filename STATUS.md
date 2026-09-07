@@ -65,6 +65,14 @@
      * Exibição do histórico de CRM na ficha do aluno (`UserDetailModal.jsx`) para supervisão e acompanhamento.
      * Exportação CSV com as colunas de CRM incluídas.
      * Internacionalização completa em 3 idiomas (Português, Inglês e Norueguês).
+7. **Otimização & Compactação Geral de Mídias (Imagens & Vídeos):**
+   * Redução drástica de **28.39 MB (-42.2%)** no peso total de mídia da pasta `public/` (de 67.27 MB para 38.88 MB).
+   * **Vídeos (MP4):** Redução de 64.9% (de 17.62 MB para 6.19 MB) com flag `+faststart` aplicada em todos os vídeos para streaming instantâneo em conexões 4G/mobile. Remoção segura do arquivo duplicado `hero-social-project.mp4` (~8 MB).
+   * **Galeria de Workshops (JPG):** Redução de 86.7% (de 8.18 MB para 1.08 MB).
+   * **Fotos de Currículo (JPG):** Redução de 81.0% (de 3.93 MB para 0.75 MB).
+   * **Sequência Hero Canvas:** Compressão seletiva e inteligente nos 240 frames, economizando 6.55 MB nos frames pesados e preservando a leveza dos frames originais.
+   * **Segurança Total:** Cópia 100% íntegra de todos os 300 arquivos originais preservada em `C:\Renas\Antigravity\Website-builder_Media_Backup_Original\`.
+   * `npm run build` executado e aprovado com 0 erros.
 
 ---
 
@@ -82,5 +90,6 @@ Localizados em `C:\Renas\Antigravity\` e na Área de Trabalho:
 ---
 
 ## 🎯 Próximos Passos Imediatos
-* Testar fluxos na prática pelo navegador com uma conta de instrutor e uma conta de aluno.
-* Ajustes finos adicionais que o usuário desejar para o fluxo pedagógico.
+* Subir as alterações pelo GitHub Desktop / git commit & push para publicação na Vercel.
+* Testar carregamento real no navegador / mobile.
+
