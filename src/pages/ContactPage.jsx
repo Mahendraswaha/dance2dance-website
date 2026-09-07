@@ -115,7 +115,8 @@ export default function ContactPage() {
         zip: formData.zip.trim(),
         country: formData.country.trim(),
         subject: formData.subject || 'geral',
-        message: formData.message.trim()
+        message: formData.message.trim(),
+        language: (i18n.language || 'pt').slice(0, 2).toLowerCase()
       };
 
       // 1. Grava no Firestore para manter o histórico no painel administrativo
