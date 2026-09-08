@@ -268,7 +268,7 @@ export default function WorkshopTemplate({ workshop, program }) {
 
             {(program.id === 'be-the-dance' || program.id === 'biostretch') && (
               <Link
-                to={`/${program.id}`}
+                to={`/${program.id}#origem`}
                 className="inline-flex items-center gap-3 font-heading text-[12px] tracking-[3px] uppercase border border-white/70 text-white/80 px-10 py-4 hover:border-white hover:text-white transition-colors duration-300 font-semibold rounded-full"
               >
                 {t('actions.discover_program', program.id === 'be-the-dance' ? 'A origem do Be The Dance' : 'A origem do Biostretch')}

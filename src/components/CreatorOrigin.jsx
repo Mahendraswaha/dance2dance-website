@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
@@ -66,7 +66,7 @@ export default function CreatorOrigin({ programId }) {
   };
 
   return (
-    <section ref={sectionRef} className="py-24 border-t border-white/5 relative z-10">
+    <section id="origem" ref={sectionRef} className="py-24 border-t border-white/5 relative z-10">
       <div className="max-w-[1000px] mx-auto px-8">
         
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-start">
