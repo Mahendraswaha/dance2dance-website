@@ -257,13 +257,24 @@ export default function WorkshopTemplate({ workshop, program }) {
         >
           <h3 className="font-batang text-2xl text-[#F0EDE8] mb-8">{t('actions.ready_to_start', 'Pronto para começar?')}</h3>
           
-          <Link 
-            to="/agenda" 
-            className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-10 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-full mb-12"
-          >
-            {t('actions.view_dates', 'Ver datas disponíveis')}
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
+            <Link 
+              to="/agenda" 
+              className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-10 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-full"
+            >
+              {t('actions.view_dates', 'Ver datas disponíveis')}
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+            {(program.id === 'be-the-dance' || program.id === 'biostretch') && (
+              <Link
+                to={`/${program.id}`}
+                className="inline-flex items-center gap-3 font-heading text-[12px] tracking-[3px] uppercase border border-white/70 text-white/80 px-10 py-4 hover:border-white hover:text-white transition-colors duration-300 font-semibold rounded-full"
+              >
+                {t('actions.discover_program', program.id === 'be-the-dance' ? 'A origem do Be The Dance' : 'A origem do Biostretch')}
+              </Link>
+            )}
+          </div>
           
           <button 
             onClick={() => navigate(-1)}
