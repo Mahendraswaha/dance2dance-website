@@ -617,7 +617,9 @@
     "contact_us": "Fale Conosco",
     "book": "Agendar",
     "back": "Voltar",
-    "details": "Detalhes"
+    "details": "Detalhes",
+    "discover_origin_btd": "A origem do Be The Dance",
+    "discover_origin_bio": "A origem do Biostretch"
   },
   "labels": {
     "program": "Programa",
