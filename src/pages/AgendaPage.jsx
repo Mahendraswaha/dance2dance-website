@@ -37,6 +37,7 @@ import {
   getWeekdayAbbrev
 } from '../utils/eventHelpers';
 import { useTranslation } from 'react-i18next';
+import SEOHead from '../components/SEOHead';
 
 function getIsoDate(year, month, day) {
   return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -747,6 +748,11 @@ export default function AgendaPage() {
 
   return (
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
+      <SEOHead
+        title="Schedule & Events"
+        description="Browse upcoming Dance2Dance workshops, classes and events in Oslo. Reserve your spot for Be The Dance, Biostretch and Kroppsskole sessions."
+        url="/agenda"
+      />
       <Navbar />
       
       <main className="flex-grow pt-44 md:pt-48 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">

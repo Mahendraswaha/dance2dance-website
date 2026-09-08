@@ -11,6 +11,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, ArrowRight } from 'lucide-reac
 import { Turnstile } from '@marsidev/react-turnstile';
 import { TURNSTILE_SITE_KEY } from '../utils/constants';
 
+import SEOHead from '../components/SEOHead';
+
 export default function ContactPage() {
   const { t, i18n } = useTranslation();
   const [searchParams] = useSearchParams();
@@ -148,6 +150,11 @@ export default function ContactPage() {
 
   return (
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
+      <SEOHead
+        title="Contact & Partnerships"
+        description="Get in touch with Dance2Dance for workshops, corporate wellness sessions, partnerships or individual bookings in Oslo."
+        url="/contato"
+      />
       <Navbar />
 
       <main className="flex-grow pt-44 md:pt-52 pb-24 px-6 max-w-6xl mx-auto w-full relative z-10">

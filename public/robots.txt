@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin
+Disallow: /login
+Disallow: /cadastro
+Disallow: /perfil
+Disallow: /profile
+
+Allow: /
+
+Sitemap: https://dance2dance.no/sitemap.xml

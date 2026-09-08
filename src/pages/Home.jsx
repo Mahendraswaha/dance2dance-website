@@ -6,10 +6,14 @@ import Philosophy from '../components/Philosophy';
 import Protocol from '../components/Protocol';
 import Action from '../components/Action';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 
 const Home = () => {
   return (
     <div className="bg-primary text-background min-h-[100dvh] overflow-x-hidden">
+      <SEOHead
+        url="/"
+      />
       <Navbar />
       <HeroSequence />
       <Activities />

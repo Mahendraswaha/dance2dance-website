@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SocialPillars from '../components/SocialPillars';
+import SEOHead from '../components/SEOHead';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,6 +75,11 @@ const SocialPage = () => {
 
   return (
     <div className="bg-primary text-background min-h-[100dvh] overflow-x-hidden">
+      <SEOHead
+        title="Social Impact"
+        description="Dance2Dance's social project brings movement, inclusion and wellbeing to communities in Oslo and beyond. Discover our partnerships and impact."
+        url="/social"
+      />
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
