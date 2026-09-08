@@ -21,13 +21,13 @@ const Footer = () => {
             <div className="flex items-center gap-4 mb-6">
               <button 
                 onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
-                className="cursor-pointer group flex items-center focus:outline-none"
+                className="cursor-pointer flex items-center focus:outline-none transition-opacity duration-300 hover:opacity-75"
                 title="Dance2Dance"
               >
                 <img 
                   src="/logo-dance2dance.png" 
                   alt="Dance2Dance Logo" 
-                  className="h-12 object-contain transition-opacity duration-300 group-hover:opacity-75" 
+                  className="h-10 md:h-16 object-contain" 
                 />
               </button>
             </div>
