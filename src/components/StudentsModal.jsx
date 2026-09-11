@@ -671,14 +671,6 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
           </div>
         </div>
 
-        {/* Aviso de Privacidade e Sigilo para o Portal do Instrutor */}
-        {isInstructorUser && (
-          <div className="mx-6 md:mx-8 mt-4 p-3 rounded-[2px] bg-[#121218] border border-[#232330] flex items-center gap-2.5 text-xs text-[#9A9A9A] font-heading">
-            <Lock className="w-3.5 h-3.5 text-accent shrink-0" />
-            <span>{t("adminPage.studentsModal.instructorPrivacyNotice", "Portal do Instrutor: Dados de contato pessoais (e-mail, telefone e endereço) são confidenciais e restritos à administração.")}</span>
-          </div>
-        )}
-
         {/* Conteúdo da Lista de Alunos */}
         <div className="flex-1 overflow-y-auto p-6 md:p-8 divide-y divide-[#1A1A24]">
           {loading ? (

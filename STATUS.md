@@ -83,7 +83,6 @@
    * Higienização de estado em memória: dados de contato não são sequer injetados no estado do componente quando aberto por instrutores.
    * Ocultação do botão "Copiar E-mails" para instrutores (exclusivo para administração).
    * Exportação CSV adaptada: instrutores exportam apenas dados pedagógicos, idade, restrições corporais e notas de CRM (sem colunas de contato).
-   * Banner informativo de privacidade exibido no modal do instrutor.
 
 ---
 
