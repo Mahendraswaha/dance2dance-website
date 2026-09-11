@@ -97,6 +97,16 @@
        * Botão de cópia rápida do link do workshop com feedback visual.
    * **Internacionalização Completa:** Suporte total nos 3 idiomas (Português, Inglês e Norueguês) nos arquivos de tradução `pt.json`, `en.json` e `no.json`.
    * `npm run build` testado e aprovado com 0 erros.
+11. **Gestão de Wishlists & Demandas no Painel Administrativo (`WishlistManager.jsx`):**
+    * **Nova Aba Mestra no Painel:** Adicionada a aba *"Wishlists & Demandas"* exclusiva para administração geral (`!isInstructor`), preservando a privacidade dos alunos em relação a instrutores.
+    * **Badge Dinâmico nas Abas:** Exibe a quantidade de workshops com demanda e aciona badge animado em destaque (ouro/âmbar) quando há turmas com meta atingida (`X pronta(s)!`).
+    * **Banner de Alerta com Ação Direta:** Quando 10 ou mais pessoas demonstram interesse em um workshop, o painel exibe alerta imediato no topo com botão *"Ver Prontos para Agendar"*.
+    * **Quadro de Métricas Estratégicas:** Total de desejos registrados, total de workshops com demanda, metas batidas (10+) e captações em andamento (< 10).
+    * **Cards Visuais de Workshop com Barra de Progresso:** Cada workshop possui card estilizado com tag de categoria, rota, contagem de interessados, barra de progresso (0% a 100%+) e selo vibrante de meta atingida.
+    * **Atalho de Agendamento Imediato:** Botão *"Agendar Workshop"* que direciona para a aba de eventos, seleciona a categoria certa e auto-preenche o formulário com o título e a rota do workshop.
+    * **Comunicação Facilitada:** Botão *"Copiar E-mails"* (copia todos os contatos em lote para envio de comunicado de lançamento) e botão *"Exportar CSV"* com dados completos.
+    * **Lista Retrátil de Inscritos:** Permite expandir o card para visualizar nome do aluno, e-mail clicável (`mailto:`), telefone com link direto para WhatsApp (`wa.me`) e data/hora do pedido, com opção de remoção de testes.
+    * **Internacionalização e Build:** Suporte completo em PT, EN e NO.
 
 ---
 

@@ -1420,5 +1420,41 @@
     "copyLink": "Kopier Workshop-lenke",
     "linkCopied": "Lenke kopiert!",
     "whatsappMessage": "Hei! Jeg har lyst til å delta på workshopen «{{title}}» hos Dance2Dance i Oslo. Når 10 personer melder interesse, åpner de en ny gruppe! Bli med her: {{url}}"
+  },
+  "adminPage": {
+    "masterTabWishlist": "Ønskelister & Etterspørsel",
+    "ready": "klare",
+    "wishlistManager": {
+      "alertReadyDesc": "Det er bekreftet etterspørsel for oppstart av nye workshop-grupper.",
+      "viewReadyOnly": "Se Klare til Oppsetting",
+      "totalWishes": "Registrerte Ønsker",
+      "workshopsWithDemand": "Workshoper med Etterspørsel",
+      "goalsReached": "Nådde Mål (10+)",
+      "inProgress": "Under Innsamling (< 10)",
+      "searchPlaceholder": "Søk etter workshop eller elevens navn/e-post...",
+      "filterAllStatus": "Alle Statuser",
+      "filterGoalReached": "Nådde Mål (10+)",
+      "filterInProgress": "Underveis (< 10)",
+      "filterAllCategories": "Alle Kategorier",
+      "sortMostWished": "Mest Populære",
+      "sortRecent": "Nyeste",
+      "sortName": "Workshop-navn",
+      "noResultsTitle": "Ingen etterspørsler funnet",
+      "noResultsFilter": "Prøv å justere filtrene eller søket ovenfor.",
+      "noWishesYet": "Så snart elever melder interesse for workshoper uten oppsatt dato, vil ønskene vises her.",
+      "goalReachedTag": "Målet er Nådd!",
+      "interested": "interesserte",
+      "viewWorkshopPage": "Vis workshop-side",
+      "progressToGoal": "Fremgang mot gruppeoppstart",
+      "scheduleTooltip": "Åpne skjema og sett opp denne workshopen",
+      "scheduleBtn": "Sett opp Workshop",
+      "copyEmailsTooltip": "Kopier e-postene til alle interesserte",
+      "copyEmails": "Kopier E-poster",
+      "exportCsvTooltip": "Last ned regneark (.csv) med interesserte elevers data",
+      "viewStudents": "Elever",
+      "interestedStudentsList": "Elever på Venteliste",
+      "removeEntry": "Fjern oppføring",
+      "confirmDelete": "Er du sikker på at du vil fjerne denne oppføringen?"
+    }
   }
 }

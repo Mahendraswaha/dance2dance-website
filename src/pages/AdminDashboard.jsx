@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download } from 'lucide-react';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download, Heart } from 'lucide-react';
 import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, downloadEventIcs, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 import RegisteredUsersManager from '../components/admin/RegisteredUsersManager';
+import WishlistManager from '../components/admin/WishlistManager';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
 const EVENT_PRESETS = {
@@ -147,7 +148,8 @@ export default function AdminDashboard() {
   const [editingId, setEditingId] = useState(null);
   const [selectedEventForStudents, setSelectedEventForStudents] = useState(null);
   const [adminTab, setAdminTab] = useState('upcoming'); // 'upcoming' | 'past'
-  const [masterTab, setMasterTab] = useState('events'); // 'events' | 'users'
+  const [masterTab, setMasterTab] = useState('events'); // 'events' | 'users' | 'wishlists'
+  const [wishlistStats, setWishlistStats] = useState({ totalWorkshops: 0, goalsReached: 0 });
 
   const userEmail = (currentUser?.email || '').toLowerCase().trim();
   const userName = (currentUser?.profile?.nome || currentUser?.displayName || '').toLowerCase().trim();
@@ -235,6 +237,61 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetchEvents();
   }, []);
+
+  // Monitora estatísticas das Wishlists para exibir badge no topo das abas
+  useEffect(() => {
+    if (isInstructor) return;
+    const unsub = onSnapshot(collection(db, 'wishlists'), (snapshot) => {
+      const docs = snapshot.docs.map(d => d.data());
+      const grouped = {};
+      docs.forEach(d => {
+        const key = d.workshopKey || d.targetPath || 'item';
+        grouped[key] = (grouped[key] || 0) + 1;
+      });
+      const totalWorkshops = Object.keys(grouped).length;
+      const goalsReached = Object.values(grouped).filter(count => count >= 10).length;
+      setWishlistStats({ totalWorkshops, goalsReached });
+    }, (err) => {
+      console.error("Erro ao carregar estatísticas de wishlist:", err);
+    });
+
+    return () => unsub();
+  }, [isInstructor]);
+
+  // Função acionada pelo WishlistManager para pré-preencher o formulário de evento
+  function handleScheduleFromWishlist(workshopData) {
+    setMasterTab('events');
+    setEditingId(null);
+
+    const cat = workshopData.category || 'bethedance';
+    const presets = EVENT_PRESETS[cat] || EVENT_PRESETS.bethedance;
+
+    // Busca se a rota informada corresponde a um dos presets conhecidos
+    const matchIdx = presets.routes.findIndex(r => r === workshopData.targetPath);
+
+    if (matchIdx !== -1) {
+      setFormData(prev => ({
+        ...prev,
+        category: cat,
+        title_no: presets.no[matchIdx],
+        title_en: presets.en[matchIdx],
+        title_pt: presets.pt[matchIdx],
+        targetPath: presets.routes[matchIdx]
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        category: cat,
+        title_no: workshopData.title_no || workshopData.title || '',
+        title_en: workshopData.title_en || workshopData.title || '',
+        title_pt: workshopData.title_pt || workshopData.title || '',
+        targetPath: workshopData.targetPath || ''
+      }));
+    }
+
+    // Rola suavemente até o topo onde fica o formulário
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -482,6 +539,30 @@ export default function AdminDashboard() {
             >
               <Users className="w-4 h-4 shrink-0" />
               <span className="truncate">{t('adminPage.masterTabUsers', 'Alunos & Usuários Cadastrados')}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setMasterTab('wishlists')}
+              className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer relative ${
+                masterTab === 'wishlists'
+                  ? 'bg-accent text-primary shadow-sm font-bold'
+                  : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
+              }`}
+            >
+              <Heart className="w-4 h-4 shrink-0" />
+              <span className="truncate">{t('adminPage.masterTabWishlist', 'Wishlists & Demandas')}</span>
+              {wishlistStats.goalsReached > 0 ? (
+                <span className="bg-amber-400 text-primary text-[10px] font-bold font-mono px-2 py-0.5 rounded-full shrink-0 shadow-sm animate-pulse">
+                  {wishlistStats.goalsReached} {t('adminPage.ready', 'pronta(s)')}!
+                </span>
+              ) : (
+                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${
+                  masterTab === 'wishlists' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#1A1A22] text-[#CFCFCF]'
+                }`}>
+                  {wishlistStats.totalWorkshops}
+                </span>
+              )}
             </button>
           </div>
         )}
@@ -1045,8 +1126,10 @@ export default function AdminDashboard() {
             })()}
             </div>
           </div>
-        ) : (
+        ) : masterTab === 'users' ? (
           <RegisteredUsersManager events={events} />
+        ) : (
+          <WishlistManager onScheduleWorkshop={handleScheduleFromWishlist} />
         )}
       </main>
 
