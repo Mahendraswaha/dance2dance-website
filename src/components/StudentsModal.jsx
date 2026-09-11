@@ -207,10 +207,12 @@ function StudentCrmCard({ student, currentUser, onSave, isSaving, isSavedSuccess
   );
 }
 
-export default function StudentsModal({ event, onClose, onEventUpdated }) {
+export default function StudentsModal({ event, isInstructor = false, onClose, onEventUpdated }) {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'pt';
   const { currentUser } = useAuth();
+  const userRole = currentUser?.profile?.role || 'student';
+  const isInstructorUser = isInstructor || userRole === 'instructor';
   const { title: localizedTitle, location: localizedLocation } = getLocalizedEvent(event, currentLang);
   const [activeTab, setActiveTab] = useState('enrolled'); // 'enrolled' or 'waitlist'
   const [viewMode, setViewMode] = useState('simple'); // 'simple' or 'complete'
@@ -250,20 +252,22 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
           })
         );
 
-        // Mescla dados cadastrais mais recentes (perfil atualizado em users tem prioridade)
+        // Mescla dados cadastrais mais recentes (blindando dados de contato contra acesso por instrutores)
         const enrichedList = list.map(e => {
           const prof = userProfiles[e.userId] || {};
           return {
             ...e,
             userName: prof.fullName || prof.nome || e.userName || 'Aluno sem nome',
-            userEmail: prof.email || e.userEmail || '',
-            userPhone: prof.phone || prof.telefone || e.userPhone || '',
+            // Dados de contato protegidos: NUNCA carregados no estado do instrutor
+            userEmail: isInstructorUser ? '' : (prof.email || e.userEmail || ''),
+            userPhone: isInstructorUser ? '' : (prof.phone || prof.telefone || e.userPhone || ''),
+            userAddress: isInstructorUser ? '' : (prof.address || prof.endereco || e.userAddress || ''),
+            userNeighborhood: isInstructorUser ? '' : (prof.neighborhood || prof.bairro || e.userNeighborhood || ''),
+            userCity: isInstructorUser ? '' : (prof.city || prof.cidade || e.userCity || ''),
+            userZip: isInstructorUser ? '' : (prof.zip || prof.cep || e.userZip || ''),
+            userCountry: isInstructorUser ? '' : (prof.country || prof.pais || e.userCountry || ''),
+            // Dados pedagógicos e de saúde (essenciais para a condução segura do workshop)
             userBirthDate: prof.birthDate || prof.birthdate || prof.dataNascimento || prof.nascimento || e.userBirthDate || '',
-            userAddress: prof.address || prof.endereco || e.userAddress || '',
-            userNeighborhood: prof.neighborhood || prof.bairro || e.userNeighborhood || '',
-            userCity: prof.city || prof.cidade || e.userCity || '',
-            userZip: prof.zip || prof.cep || e.userZip || '',
-            userCountry: prof.country || prof.pais || e.userCountry || '',
             userExperience: prof.experiencia || prof.experience || e.userExperience || '',
             userRestrictions: prof.restricoes || prof.restrictions || e.userRestrictions || ''
           };
@@ -278,14 +282,15 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
       setLoading(false);
     }
     fetchEnrollments();
-  }, [event]);
+  }, [event, isInstructorUser]);
 
   const enrolledStudents = enrollments.filter(e => e.status === 'enrolled');
   const waitlistStudents = enrollments.filter(e => e.status === 'waitlist');
   const currentList = activeTab === 'enrolled' ? enrolledStudents : waitlistStudents;
 
-  // 1. Copiar e-mails
+  // 1. Copiar e-mails (Apenas Administrador Geral)
   function handleCopyEmails() {
+    if (isInstructorUser) return;
     const emails = currentList.map(e => e.userEmail).filter(Boolean).join(', ');
     if (!emails) return;
     navigator.clipboard.writeText(emails);
@@ -293,7 +298,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
     setTimeout(() => setCopied(false), 2500);
   }
 
-  // 2. Exportar CSV (Sempre inclui todos os dados cadastrais e CRM)
+  // 2. Exportar CSV (Respeita a privacidade: instrutor recebe apenas dados pedagógicos/CRM)
   function handleExportCsv() {
     if (currentList.length === 0) {
       alert(t("adminPage.studentsModal.noStudentsToExport", "Não há alunos na lista atual para exportar."));
@@ -304,7 +309,6 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
 
     const escapeCsv = (val) => {
       if (val === null || val === undefined) return '""';
-      // Limpa aspas e quebras de linha para evitar corromper as linhas da planilha
       const clean = String(val)
         .replace(/"/g, '""')
         .replace(/\r\n/g, ' ')
@@ -313,8 +317,8 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
       return `"${clean}"`;
     };
 
-    // Sempre exporta todas as colunas cadastrais completas
-    const headers = [
+    // Cabeçalhos diferenciados por perfil
+    const adminHeaders = [
       "#", 
       "Nome", 
       "Status", 
@@ -335,8 +339,41 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
       "CRM Avaliador"
     ];
 
+    const instructorHeaders = [
+      "#", 
+      "Nome", 
+      "Status", 
+      "Data de Nascimento", 
+      "Idade", 
+      "Experiencia Previa", 
+      "Restricoes de Saude", 
+      "Data de Inscricao",
+      "CRM Nota (1-5)",
+      "CRM Observacoes",
+      "CRM Avaliador"
+    ];
+
+    const headers = isInstructorUser ? instructorHeaders : adminHeaders;
+
     const rows = currentList.map((e, idx) => {
       const birthInfo = formatBirthDateAndAge(e.userBirthDate, yearsLabel);
+
+      if (isInstructorUser) {
+        return [
+          idx + 1,
+          escapeCsv(e.userName || ''),
+          escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+          escapeCsv(birthInfo?.formattedDate || e.userBirthDate || ''),
+          birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
+          escapeCsv(e.userExperience || 'Nenhuma'),
+          escapeCsv(e.userRestrictions || 'Nenhuma'),
+          escapeCsv(e.createdAt ? new Date(e.createdAt).toLocaleString() : ''),
+          e.evaluation?.rating || '',
+          escapeCsv(e.evaluation?.notes || ''),
+          escapeCsv(e.evaluation?.instructorName || '')
+        ];
+      }
+
       return [
         idx + 1,
         escapeCsv(e.userName || ''),
@@ -610,27 +647,37 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
 
           {/* Botões Utilitários */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleCopyEmails}
-              disabled={currentList.length === 0}
-              className="px-3 py-1.5 border border-[#333333] hover:border-accent text-[#CFCFCF] hover:text-accent font-heading text-xs rounded-[2px] transition-colors flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none"
-              title="Copiar e-mails dos alunos listados"
-            >
-              {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? t("adminPage.studentsModal.emailsCopied", "Copiados!") : t("adminPage.studentsModal.copyEmails", "Copiar E-mails")}</span>
-            </button>
+            {!isInstructorUser && (
+              <button
+                onClick={handleCopyEmails}
+                disabled={currentList.length === 0}
+                className="px-3 py-1.5 border border-[#333333] hover:border-accent text-[#CFCFCF] hover:text-accent font-heading text-xs rounded-[2px] transition-colors flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none"
+                title="Copiar e-mails dos alunos listados"
+              >
+                {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copied ? t("adminPage.studentsModal.emailsCopied", "Copiados!") : t("adminPage.studentsModal.copyEmails", "Copiar E-mails")}</span>
+              </button>
+            )}
 
             <button
               onClick={handleExportCsv}
               disabled={currentList.length === 0}
               className="px-3 py-1.5 border border-[#333333] hover:border-accent text-[#CFCFCF] hover:text-accent font-heading text-xs rounded-[2px] transition-colors flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none"
-              title="Baixar lista completa com todos os dados cadastrais em formato CSV"
+              title={isInstructorUser ? "Baixar lista de alunos com dados pedagógicos em CSV" : "Baixar lista completa com todos os dados cadastrais em formato CSV"}
             >
               <Download className="w-3.5 h-3.5" />
               <span>{t("adminPage.studentsModal.exportCsv", "Exportar CSV")}</span>
             </button>
           </div>
         </div>
+
+        {/* Aviso de Privacidade e Sigilo para o Portal do Instrutor */}
+        {isInstructorUser && (
+          <div className="mx-6 md:mx-8 mt-4 p-3 rounded-[2px] bg-[#121218] border border-[#232330] flex items-center gap-2.5 text-xs text-[#9A9A9A] font-heading">
+            <Lock className="w-3.5 h-3.5 text-accent shrink-0" />
+            <span>{t("adminPage.studentsModal.instructorPrivacyNotice", "Portal do Instrutor: Dados de contato pessoais (e-mail, telefone e endereço) são confidenciais e restritos à administração.")}</span>
+          </div>
+        )}
 
         {/* Conteúdo da Lista de Alunos */}
         <div className="flex-1 overflow-y-auto p-6 md:p-8 divide-y divide-[#1A1A24]">
@@ -648,6 +695,7 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
             /* ================= VISUALIZAÇÃO SIMPLIFICADA ================= */
             currentList.map((student, idx) => {
               const enrolledDate = student.createdAt ? new Date(student.createdAt).toLocaleDateString() : '-';
+              const birthInfo = formatBirthDateAndAge(student.userBirthDate, yearsLabel);
 
               return (
                 <div key={student.id} className="py-4">
@@ -661,18 +709,26 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
                           {student.userName || 'Aluno sem nome'}
                         </h4>
                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-xs text-[#9A9A9A] font-heading">
-                          <span className="flex items-center gap-1">
-                            <Mail className="w-3 h-3 text-accent/70" />
-                            <a href={`mailto:${student.userEmail}`} className="hover:text-accent transition-colors">
-                              {student.userEmail}
-                            </a>
-                          </span>
-                          {student.userPhone && (
+                          {!isInstructorUser && student.userEmail && (
+                            <span className="flex items-center gap-1">
+                              <Mail className="w-3 h-3 text-accent/70" />
+                              <a href={`mailto:${student.userEmail}`} className="hover:text-accent transition-colors">
+                                {student.userEmail}
+                              </a>
+                            </span>
+                          )}
+                          {!isInstructorUser && student.userPhone && (
                             <span className="flex items-center gap-1">
                               <Phone className="w-3 h-3 text-accent/70" />
                               <a href={`tel:${student.userPhone}`} className="hover:text-accent transition-colors">
                                 {student.userPhone}
                               </a>
+                            </span>
+                          )}
+                          {isInstructorUser && birthInfo && (
+                            <span className="flex items-center gap-1 text-[#CFCFCF]">
+                              <Cake className="w-3 h-3 text-accent/70" />
+                              {birthInfo.display}
                             </span>
                           )}
                           <span className="flex items-center gap-1 text-[#7A7A7A]">
@@ -856,42 +912,48 @@ export default function StudentsModal({ event, onClose, onEventUpdated }) {
                         </div>
                       </div>
 
-                      {/* E-mail */}
-                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
-                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
-                          <Mail className="w-3.5 h-3.5 text-accent" />
-                          E-mail
-                        </span>
-                        <a href={`mailto:${student.userEmail}`} className="text-[#F0EDE8] hover:text-accent transition-colors truncate block">
-                          {student.userEmail || '-'}
-                        </a>
-                      </div>
-
-                      {/* Telefone / WhatsApp */}
-                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
-                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
-                          <Phone className="w-3.5 h-3.5 text-accent" />
-                          Telefone / WhatsApp
-                        </span>
-                        {student.userPhone ? (
-                          <a href={`tel:${student.userPhone}`} className="text-[#F0EDE8] hover:text-accent transition-colors">
-                            {student.userPhone}
+                      {/* E-mail (Apenas Administrador) */}
+                      {!isInstructorUser && (
+                        <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
+                          <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                            <Mail className="w-3.5 h-3.5 text-accent" />
+                            E-mail
+                          </span>
+                          <a href={`mailto:${student.userEmail}`} className="text-[#F0EDE8] hover:text-accent transition-colors truncate block">
+                            {student.userEmail || '-'}
                           </a>
-                        ) : (
-                          <span className="text-[#555555] italic">{t("adminPage.studentsModal.notInformed", "Não informado")}</span>
-                        )}
-                      </div>
+                        </div>
+                      )}
 
-                      {/* Endereço Completo */}
-                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px] md:col-span-2 lg:col-span-3">
-                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 text-accent" />
-                          {t("adminPage.studentsModal.address", "Endereço Completo")}
-                        </span>
-                        <p className="text-[#F0EDE8] leading-relaxed">
-                          {fullAddress || <span className="text-[#555555] italic">{t("adminPage.studentsModal.notInformed", "Não informado")}</span>}
-                        </p>
-                      </div>
+                      {/* Telefone / WhatsApp (Apenas Administrador) */}
+                      {!isInstructorUser && (
+                        <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px]">
+                          <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                            <Phone className="w-3.5 h-3.5 text-accent" />
+                            Telefone / WhatsApp
+                          </span>
+                          {student.userPhone ? (
+                            <a href={`tel:${student.userPhone}`} className="text-[#F0EDE8] hover:text-accent transition-colors">
+                              {student.userPhone}
+                            </a>
+                          ) : (
+                            <span className="text-[#555555] italic">{t("adminPage.studentsModal.notInformed", "Não informado")}</span>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Endereço Completo (Apenas Administrador) */}
+                      {!isInstructorUser && (
+                        <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px] md:col-span-2 lg:col-span-3">
+                          <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                            <MapPin className="w-3.5 h-3.5 text-accent" />
+                            {t("adminPage.studentsModal.address", "Endereço Completo")}
+                          </span>
+                          <p className="text-[#F0EDE8] leading-relaxed">
+                            {fullAddress || <span className="text-[#555555] italic">{t("adminPage.studentsModal.notInformed", "Não informado")}</span>}
+                          </p>
+                        </div>
+                      )}
 
                       {/* Experiência Prévia */}
                       <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px] md:col-span-2 lg:col-span-3">

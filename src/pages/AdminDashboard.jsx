@@ -1055,6 +1055,7 @@ export default function AdminDashboard() {
         {selectedEventForStudents && (
           <StudentsModal 
             event={selectedEventForStudents} 
+            isInstructor={isInstructor}
             onClose={() => setSelectedEventForStudents(null)} 
             onEventUpdated={fetchEvents} 
           />

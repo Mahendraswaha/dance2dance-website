@@ -78,6 +78,12 @@
    * Abas mestras ("Eventos & Agenda" e "Alunos & Usuários Cadastrados") adaptadas com `flex-wrap` e textos truncados para não forçar largura superior à tela.
    * Linha de ações dos cards de eventos (vagas, espera e botões de ação) reestruturada para quebrar fluidamente em telas estreitas sem usar `shrink-0`.
    * Calendário de sessões (`ScheduleCalendarPicker.jsx`) e filtros de alunos ajustados com layouts flexíveis para mobile.
+9. **Privacidade e Proteção de Dados de Alunos no Portal do Instrutor (`StudentsModal.jsx`):**
+   * Ocultação e blindagem total dos dados pessoais de contato dos participantes (e-mail, telefone/WhatsApp e endereço completo) para usuários com perfil de instrutor (`instructor`).
+   * Higienização de estado em memória: dados de contato não são sequer injetados no estado do componente quando aberto por instrutores.
+   * Ocultação do botão "Copiar E-mails" para instrutores (exclusivo para administração).
+   * Exportação CSV adaptada: instrutores exportam apenas dados pedagógicos, idade, restrições corporais e notas de CRM (sem colunas de contato).
+   * Banner informativo de privacidade exibido no modal do instrutor.
 
 ---
 
