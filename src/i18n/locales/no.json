@@ -613,7 +613,9 @@
   "actions": {
     "learn_more": "Les mer",
     "ready_to_start": "Klar til å begynne?",
+    "ready_to_start_sub": "Meld deg på en av datoene nedenfor eller bli med på ønskelisten for nye grupper.",
     "view_dates": "Se ledige datoer",
+    "view_full_agenda": "Se fullstendig agenda",
     "contact_us": "Kontakt oss",
     "book": "Bestill",
     "back": "Tilbake",

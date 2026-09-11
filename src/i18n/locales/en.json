@@ -613,7 +613,9 @@
   "actions": {
     "learn_more": "Learn more",
     "ready_to_start": "Ready to start?",
+    "ready_to_start_sub": "Register for one of the dates below or join the wishlist for upcoming cohorts.",
     "view_dates": "View available dates",
+    "view_full_agenda": "View full schedule",
     "contact_us": "Contact Us",
     "book": "Book now",
     "back": "Back",

@@ -251,45 +251,55 @@ export default function WorkshopTemplate({ workshop, program }) {
           </motion.div>
         )}
 
+      </div>
+
+      {/* ─── CALL TO ACTION & WORKSHOP AGENDA (SAME WIDTH AS AGENDA PAGE: max-w-6xl) ─── */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 mt-24 pt-16 border-t border-[#222222] flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }}
+          className="text-center mb-6 max-w-2xl mx-auto"
+        >
+          <h3 className="font-batang text-3xl md:text-5xl text-[#F0EDE8] mb-3">
+            {t('actions.ready_to_start', 'Pronto para começar?')}
+          </h3>
+          <p className="font-heading font-light text-[#9A9A9A] text-xs md:text-sm leading-relaxed">
+            {t('actions.ready_to_start_sub', 'Inscreva-se em uma das datas abaixo ou entre na lista de interesse para novas turmas.')}
+          </p>
+        </motion.div>
+
         {/* ─── WORKSHOP AGENDA / WISHLIST ───────── */}
         <WorkshopAgendaSection program={program} workshop={workshop} />
 
-        {/* ─── CALL TO ACTION ─────────────────────── */}
-        <motion.div 
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          className="mt-24 pt-16 border-t border-[#222222] flex flex-col items-center"
-        >
-          <h3 className="font-batang text-2xl text-[#F0EDE8] mb-8">{t('actions.ready_to_start', 'Pronto para começar?')}</h3>
-          
-          <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
-            <Link 
-              to="/agenda" 
-              className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-10 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-full"
-            >
-              {t('actions.view_dates', 'Ver datas disponíveis')}
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            {(program.id === 'be-the-dance' || program.id === 'biostretch') && (
-              <Link
-                to={`/${program.id}#origem`}
-                className="inline-flex items-center gap-3 font-heading text-[12px] tracking-[3px] uppercase border border-white/70 text-white/80 px-10 py-4 hover:border-white hover:text-white transition-colors duration-300 font-semibold rounded-full"
-              >
-                {program.id === 'be-the-dance'
-                  ? t('actions.discover_origin_btd', 'The origin of Be The Dance')
-                  : t('actions.discover_origin_bio', 'The origin of Biostretch')}
-              </Link>
-            )}
-          </div>
-          
-          <button 
-            onClick={() => navigate(-1)}
-            className="font-heading text-[10px] tracking-[4px] uppercase text-[#CFCFCF] hover:text-accent flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1"
+        {/* ─── ACTION BUTTONS ─────────────────────── */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 mb-12">
+          <Link 
+            to="/agenda" 
+            className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-9 py-4 hover:bg-white hover:text-primary transition-colors duration-300 font-bold rounded-full shadow-lg"
           >
-            <span className="mr-2">&larr;</span> {t('actions.back', 'Voltar')}
-          </button>
-        </motion.div>
+            {t('actions.view_full_agenda', 'Ver agenda completa')}
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
 
+          {(program.id === 'be-the-dance' || program.id === 'biostretch') && (
+            <Link
+              to={`/${program.id}#origem`}
+              className="inline-flex items-center gap-3 font-heading text-[12px] tracking-[3px] uppercase border border-white/70 text-white/80 px-9 py-4 hover:border-white hover:text-white transition-colors duration-300 font-semibold rounded-full"
+            >
+              {program.id === 'be-the-dance'
+                ? t('actions.discover_origin_btd', 'The origin of Be The Dance')
+                : t('actions.discover_origin_bio', 'The origin of Biostretch')}
+            </Link>
+          )}
+        </div>
+        
+        <button 
+          onClick={() => navigate(-1)}
+          className="font-heading text-[10px] tracking-[4px] uppercase text-[#CFCFCF] hover:text-accent flex items-center transition-colors border-b border-transparent hover:border-accent/30 pb-1 cursor-pointer"
+        >
+          <span className="mr-2">&larr;</span> {t('actions.back', 'Voltar')}
+        </button>
       </div>
     </div>
   );

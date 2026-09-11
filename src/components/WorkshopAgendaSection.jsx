@@ -232,26 +232,20 @@ export default function WorkshopAgendaSection({ program, workshop }) {
 
   return (
     <motion.section 
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="w-full my-16 pt-12 border-t border-[#22222A]"
+      transition={{ duration: 0.6 }}
+      className="w-full mt-4 mb-8"
     >
-      <div className="mb-8 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent font-heading text-[10px] uppercase tracking-[2px] mb-3">
+      <div className="mb-6 text-center">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent font-heading text-[10px] uppercase tracking-[2px]">
           <Sparkles className="w-3.5 h-3.5 text-accent" />
           <span>{t('workshopAgenda.badge', 'Datas Confirmadas')}</span>
         </div>
-        <h3 className="font-batang text-2xl md:text-3xl text-[#F0EDE8] mb-2">
-          {t('workshopAgenda.title', 'Próximas Turmas & Inscrições')}
-        </h3>
-        <p className="font-heading font-light text-[#A0A0A0] text-sm md:text-base max-w-xl mx-auto">
-          {t('workshopAgenda.subtitle', 'Confira as datas programadas para este workshop e garanta sua vaga diretamente abaixo.')}
-        </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-6 w-full">
         {matchingUpcomingEvents.map(event => {
           const category = getEventCategory(event);
           const theme = getCategoryTheme(category);

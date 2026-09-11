@@ -613,7 +613,9 @@
   "actions": {
     "learn_more": "Saiba mais",
     "ready_to_start": "Pronto para começar?",
+    "ready_to_start_sub": "Inscreva-se em uma das datas abaixo ou entre na lista de interesse para novas turmas.",
     "view_dates": "Ver datas disponíveis",
+    "view_full_agenda": "Ver agenda completa",
     "contact_us": "Fale Conosco",
     "book": "Agendar",
     "back": "Voltar",
