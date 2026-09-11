@@ -432,13 +432,13 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
+    <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30 w-full overflow-x-hidden">
       <Navbar />
       
-      <main className="flex-grow pt-44 md:pt-48 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10">
+      <main className="flex-grow pt-44 md:pt-48 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10 overflow-x-hidden">
         {/* Título do Painel */}
         <div className="mb-6">
-          <h1 className="font-batang text-4xl text-[#F0EDE8]">
+          <h1 className="font-batang text-3xl sm:text-4xl text-[#F0EDE8]">
             {isInstructor 
               ? `${t("adminPage.instructorPortalTitle", "Portal do Instrutor")} • ${currentUser?.profile?.nome || currentUser?.displayName || 'Instrutor'}`
               : t("adminPage.adminTitle")}
@@ -452,19 +452,19 @@ export default function AdminDashboard() {
 
         {/* Abas Mestras do Painel: Apenas para Admin Geral */}
         {!isInstructor && (
-          <div className="flex items-center gap-3 mb-8 border-b border-[#222222] pb-4">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 mb-8 border-b border-[#222222] pb-4">
             <button
               type="button"
               onClick={() => setMasterTab('events')}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
                 masterTab === 'events'
                   ? 'bg-accent text-primary shadow-sm font-bold'
                   : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
               }`}
             >
-              <Calendar className="w-4 h-4" />
-              <span>{t('adminPage.masterTabEvents', 'Eventos & Agenda')}</span>
-              <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+              <Calendar className="w-4 h-4 shrink-0" />
+              <span className="truncate">{t('adminPage.masterTabEvents', 'Eventos & Agenda')}</span>
+              <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${
                 masterTab === 'events' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#1A1A22] text-[#CFCFCF]'
               }`}>
                 {events.length}
@@ -474,14 +474,14 @@ export default function AdminDashboard() {
             <button
               type="button"
               onClick={() => setMasterTab('users')}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${
                 masterTab === 'users'
                   ? 'bg-accent text-primary shadow-sm font-bold'
                   : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'
               }`}
             >
-              <Users className="w-4 h-4" />
-              <span>{t('adminPage.masterTabUsers', 'Alunos & Usuários Cadastrados')}</span>
+              <Users className="w-4 h-4 shrink-0" />
+              <span className="truncate">{t('adminPage.masterTabUsers', 'Alunos & Usuários Cadastrados')}</span>
             </button>
           </div>
         )}
@@ -490,7 +490,7 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
           {/* Coluna 1: Formulário de Criação / Edição (Apenas Admin Geral) */}
           {!isInstructor && (
-            <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-6 sm:p-8 rounded-[4px] h-fit">
+            <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-4 sm:p-8 rounded-[4px] h-fit">
               <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">
                 {editingId ? t('adminPage.edit') : t('adminPage.createNew')}
               </h2>
@@ -505,21 +505,21 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       onClick={() => handleCategoryChange('bethedance')}
-                      className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'bethedance' ? 'bg-accent text-primary border-accent' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
+                      className={`py-2 px-1 text-center font-heading text-[9px] sm:text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors truncate ${formData.category === 'bethedance' ? 'bg-accent text-primary border-accent' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
                     >
                       Be The Dance
                     </button>
                     <button
                       type="button"
                       onClick={() => handleCategoryChange('biostretch')}
-                      className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'biostretch' ? 'bg-[#FAF8F5] text-primary border-[#FAF8F5]' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
+                      className={`py-2 px-1 text-center font-heading text-[9px] sm:text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors truncate ${formData.category === 'biostretch' ? 'bg-[#FAF8F5] text-primary border-[#FAF8F5]' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
                     >
                       Biostretch
                     </button>
                     <button
                       type="button"
                       onClick={() => handleCategoryChange('kroppsskole')}
-                      className={`py-2 text-center font-heading text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors ${formData.category === 'kroppsskole' ? 'bg-[#4A9B8E] text-primary border-[#4A9B8E]' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
+                      className={`py-2 px-1 text-center font-heading text-[9px] sm:text-[10px] uppercase tracking-wider font-bold rounded-[2px] border transition-colors truncate ${formData.category === 'kroppsskole' ? 'bg-[#4A9B8E] text-primary border-[#4A9B8E]' : 'border-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8]'}`}
                     >
                       Kroppsskole
                     </button>
@@ -713,7 +713,7 @@ export default function AdminDashboard() {
 
                 {/* Texto Visível de Datas / Horários no Idioma Ativo */}
                 <div>
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF]">
                       {t("adminPage.scheduleText")} ({activeLangTab.toUpperCase()})
                     </label>
@@ -809,11 +809,11 @@ export default function AdminDashboard() {
               </h2>
 
               {/* Abas: Próximos & Ativos vs Encerrados / Histórico */}
-              <div className="flex items-center gap-1.5 p-1 bg-[#121214] border border-[#222222] rounded-[2px] self-start sm:self-auto">
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 p-1 bg-[#121214] border border-[#222222] rounded-[2px] w-full sm:w-auto">
                 <button
                   type="button"
                   onClick={() => setAdminTab('upcoming')}
-                  className={`px-3 py-1.5 rounded-[2px] font-heading text-xs tracking-wider uppercase transition-all flex items-center gap-2 ${
+                  className={`flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-[2px] font-heading text-[11px] sm:text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 ${
                     adminTab === 'upcoming' 
                       ? 'bg-accent text-primary font-semibold shadow' 
                       : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
@@ -830,7 +830,7 @@ export default function AdminDashboard() {
                 <button
                   type="button"
                   onClick={() => setAdminTab('past')}
-                  className={`px-3 py-1.5 rounded-[2px] font-heading text-xs tracking-wider uppercase transition-all flex items-center gap-2 ${
+                  className={`flex-1 sm:flex-initial px-2.5 sm:px-3 py-1.5 rounded-[2px] font-heading text-[11px] sm:text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 ${
                     adminTab === 'past' 
                       ? 'bg-accent text-primary font-semibold shadow' 
                       : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
@@ -876,13 +876,13 @@ export default function AdminDashboard() {
                     return (
                       <div 
                         key={event.id} 
-                        className={`p-6 border rounded-[2px] flex flex-col md:flex-row justify-between items-start md:items-center gap-6 transition-colors ${
+                        className={`p-4 sm:p-6 border rounded-[2px] flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:gap-6 transition-colors overflow-hidden ${
                           isPast 
                             ? 'border-[#222222] bg-[#08080a] opacity-85 hover:opacity-100' 
                             : 'border-[#222222] bg-[#0a0a0a]'
                         }`}
                       >
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0 w-full">
                           <div className="flex flex-wrap items-center gap-2 mb-1.5">
                             <span className={`text-[9px] uppercase tracking-[2px] font-bold px-2 py-0.5 rounded-[2px] ${getCategoryTheme(cat).badgeBg}`}>
                               {getCategoryTheme(cat).label}
@@ -924,11 +924,11 @@ export default function AdminDashboard() {
                           <h3 className={`font-drama text-2xl mb-2 ${isPast ? 'text-[#D0D0D4]' : 'text-accent'}`}>{dispTitle}</h3>
                           
                           <div className="font-heading text-xs text-[#9A9A9A] space-y-1">
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1.5 flex-wrap">
                               <strong className="text-[#CFCFCF]">{t("adminPage.eventDates", "Período")}:</strong> 
                               <span>{dateStr || '-'}</span>
                               {event.startTime && (
-                                <span className="text-[#7A7A7A] ml-1">
+                                <span className="text-[#7A7A85] ml-1">
                                   ({event.startTime} - {event.endTime || ''})
                                 </span>
                               )}
@@ -942,43 +942,45 @@ export default function AdminDashboard() {
                               <strong className="text-[#CFCFCF] shrink-0">{t("adminPage.scheduleText")}:</strong> 
                               <span className="whitespace-pre-wrap">{dispSchedule || '-'}</span>
                             </div>
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1.5 flex-wrap">
                               <strong className="text-[#CFCFCF]">{t("adminPage.location")}:</strong> 
                               <span>{dispLocation || '-'}</span>
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-5 shrink-0">
-                          {/* Contador de Vagas exclusivo do Admin */}
-                          <div className="text-center min-w-[50px]">
-                            <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
-                              {t("adminPage.spots", "Vagas")}
-                            </span>
-                            <span className="font-sans text-lg text-[#F0EDE8] font-semibold">
-                              {spotsLeft} <span className="text-[#9A9A9A] text-xs font-normal">/ {event.totalSpots}</span>
-                            </span>
-                          </div>
+                        <div className="w-full md:w-auto flex flex-wrap sm:flex-nowrap items-center justify-between md:justify-end gap-3 sm:gap-5 pt-3 md:pt-0 border-t md:border-t-0 border-white/[0.06]">
+                          <div className="flex items-center gap-4 sm:gap-5">
+                            {/* Contador de Vagas exclusivo do Admin */}
+                            <div className="text-center min-w-[45px]">
+                              <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
+                                {t("adminPage.spots", "Vagas")}
+                              </span>
+                              <span className="font-sans text-base sm:text-lg text-[#F0EDE8] font-semibold">
+                                {spotsLeft} <span className="text-[#9A9A9A] text-xs font-normal">/ {event.totalSpots}</span>
+                              </span>
+                            </div>
 
-                          {/* Contador de Espera exclusivo do Admin */}
-                          <div className="text-center min-w-[45px]">
-                            <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
-                              {t("adminPage.waitlist", "Espera")}
-                            </span>
-                            <span className="font-sans text-lg text-[#F0EDE8] font-semibold">
-                              {event.waitlistCount || 0}
-                            </span>
+                            {/* Contador de Espera exclusivo do Admin */}
+                            <div className="text-center min-w-[40px]">
+                              <span className="block font-heading text-[10px] uppercase tracking-widest text-[#CFCFCF]">
+                                {t("adminPage.waitlist", "Espera")}
+                              </span>
+                              <span className="font-sans text-base sm:text-lg text-[#F0EDE8] font-semibold">
+                                {event.waitlistCount || 0}
+                              </span>
+                            </div>
                           </div>
 
                           {/* Ações por Ícones Elegantes com Tooltips */}
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                             <a 
                               href={generateInstructorCalendarUrl(event, i18n.language, event.instructorEmail)}
                               target="_blank" 
                               rel="noopener noreferrer"
                               title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}
                               aria-label={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor")}
-                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center"
+                              className="p-2 sm:p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center"
                             >
                               <CalendarPlus className="w-4 h-4" />
                             </a>
@@ -988,7 +990,7 @@ export default function AdminDashboard() {
                               onClick={() => downloadEventIcs(event, i18n.language)}
                               title={t("agendaPage.downloadIcs", "Baixar arquivo (.ics) de todos os encontros")}
                               aria-label="Download .ics"
-                              className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center cursor-pointer"
+                              className="p-2 sm:p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center cursor-pointer"
                             >
                               <Download className="w-4 h-4" />
                             </button>
@@ -997,7 +999,7 @@ export default function AdminDashboard() {
                               onClick={() => setSelectedEventForStudents(event)}
                               title={isInstructor ? t("adminPage.studentsAndCrm", "Alunos & CRM") : t("adminPage.viewStudents")}
                               aria-label={isInstructor ? t("adminPage.studentsAndCrm", "Alunos & CRM") : t("adminPage.viewStudents")}
-                              className={`p-2.5 rounded-[2px] border transition-colors flex items-center gap-1.5 justify-center relative group ${
+                              className={`p-2 sm:p-2.5 rounded-[2px] border transition-colors flex items-center gap-1.5 justify-center relative group ${
                                 isInstructor 
                                   ? "bg-accent/10 border-accent/60 text-accent hover:bg-accent hover:text-primary font-medium px-3 text-xs" 
                                   : "border-[#333333] hover:border-accent text-[#F0EDE8] hover:text-accent"
@@ -1018,7 +1020,7 @@ export default function AdminDashboard() {
                                   onClick={() => handleEditClick(event)} 
                                   title={t("adminPage.edit")}
                                   aria-label={t("adminPage.edit")}
-                                  className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] transition-colors flex items-center justify-center"
+                                  className="p-2 sm:p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-[#333333] text-[#9A9A9A] hover:text-[#F0EDE8] transition-colors flex items-center justify-center"
                                 >
                                   <Pencil className="w-4 h-4" />
                                 </button>
@@ -1027,7 +1029,7 @@ export default function AdminDashboard() {
                                   onClick={() => handleDelete(event.id)} 
                                   title={t("adminPage.delete")}
                                   aria-label={t("adminPage.delete")}
-                                  className="p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-red-900/40 text-[#9A9A9A] hover:text-red-400 transition-colors flex items-center justify-center"
+                                  className="p-2 sm:p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-red-900/40 text-[#9A9A9A] hover:text-red-400 transition-colors flex items-center justify-center"
                                 >
                                   <Trash2 className="w-4 h-4" />
                                 </button>

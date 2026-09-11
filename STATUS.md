@@ -73,6 +73,11 @@
    * **Sequência Hero Canvas:** Compressão seletiva e inteligente nos 240 frames, economizando 6.55 MB nos frames pesados e preservando a leveza dos frames originais.
    * **Segurança Total:** Cópia 100% íntegra de todos os 300 arquivos originais preservada em `C:\Renas\Antigravity\Website-builder_Media_Backup_Original\`.
    * `npm run build` executado e aprovado com 0 erros.
+8. **Correção de Responsividade & Scroll Horizontal no Painel Admin (`/admin`):**
+   * Corrigido o vazamento de margem direita no mobile (Brave/Chrome): `html`, `body` e `#root` com `overflow-x-hidden` e `max-width: 100vw`.
+   * Abas mestras ("Eventos & Agenda" e "Alunos & Usuários Cadastrados") adaptadas com `flex-wrap` e textos truncados para não forçar largura superior à tela.
+   * Linha de ações dos cards de eventos (vagas, espera e botões de ação) reestruturada para quebrar fluidamente em telas estreitas sem usar `shrink-0`.
+   * Calendário de sessões (`ScheduleCalendarPicker.jsx`) e filtros de alunos ajustados com layouts flexíveis para mobile.
 
 ---
 

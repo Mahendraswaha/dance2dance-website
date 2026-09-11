@@ -190,12 +190,12 @@ export default function ScheduleCalendarPicker({
   const totalCalculatedHours = useMemo(() => calculateTotalHoursFromSessions(sessions), [sessions]);
 
   return (
-    <div className="bg-[#121216] border border-[#2A2A35] rounded-[4px] p-5 text-[#F0EDE8] space-y-5">
+    <div className="bg-[#121216] border border-[#2A2A35] rounded-[4px] p-3.5 sm:p-5 text-[#F0EDE8] space-y-4 sm:space-y-5 overflow-hidden">
       {/* Header do Calendário */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#22222A]">
         <div className="flex items-center gap-2.5">
-          <CalendarIcon className="w-4 h-4 text-accent" />
-          <h4 className="font-heading text-xs uppercase tracking-[2px] font-semibold text-[#F0EDE8]">
+          <CalendarIcon className="w-4 h-4 text-accent shrink-0" />
+          <h4 className="font-heading text-xs uppercase tracking-[2px] font-semibold text-[#F0EDE8] truncate">
             {t("adminPage.schedulePicker.title", "Calendário de Sessões e Horários")}
           </h4>
         </div>
@@ -228,16 +228,16 @@ export default function ScheduleCalendarPicker({
       {/* Grid do Calendário */}
       <div className="select-none">
         {/* Dias da semana internacionalizados */}
-        <div className="grid grid-cols-7 gap-1.5 mb-2 text-center">
+        <div className="grid grid-cols-7 gap-1 sm:gap-1.5 mb-2 text-center">
           {weekDays.map(wd => (
-            <span key={wd} className="font-heading text-[10px] uppercase tracking-wider text-[#7A7A85] font-semibold py-1">
+            <span key={wd} className="font-heading text-[9px] sm:text-[10px] uppercase tracking-wider text-[#7A7A85] font-semibold py-1">
               {wd}
             </span>
           ))}
         </div>
 
         {/* Células dos dias */}
-        <div className="grid grid-cols-7 gap-1.5">
+        <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
           {calendarDays.map((item, idx) => {
             const isSelected = sessionMap.has(item.iso);
             const session = sessionMap.get(item.iso);
@@ -248,7 +248,7 @@ export default function ScheduleCalendarPicker({
                 key={item.iso + idx}
                 type="button"
                 onClick={() => handleToggleDay(item.iso)}
-                className={`min-h-[50px] p-1.5 rounded-[3px] border transition-all flex flex-col justify-between items-start text-left relative group ${
+                className={`min-h-[44px] sm:min-h-[50px] p-1 sm:p-1.5 rounded-[3px] border transition-all flex flex-col justify-between items-start text-left relative group ${
                   isSelected
                     ? `${theme.badgeBg} ${theme.glow} font-semibold scale-[1.02] z-10`
                     : item.isCurrentMonth
@@ -257,17 +257,17 @@ export default function ScheduleCalendarPicker({
                 } ${isToday && !isSelected ? 'ring-1 ring-accent/50' : ''}`}
               >
                 <div className="flex items-center justify-between w-full">
-                  <span className={`text-xs font-mono ${isSelected ? theme.textColor : ''}`}>
+                  <span className={`text-[11px] sm:text-xs font-mono ${isSelected ? theme.textColor : ''}`}>
                     {item.dayNum}
                   </span>
                   {isSelected && (
-                    <Check className={`w-3 h-3 ${theme.textColor}`} />
+                    <Check className={`w-2.5 sm:w-3 h-2.5 sm:h-3 ${theme.textColor}`} />
                   )}
                 </div>
 
                 {isSelected && (
-                  <div className="w-full mt-1">
-                    <span className="text-[9px] font-mono leading-tight block truncate opacity-90 text-[#E0E0E6]">
+                  <div className="w-full mt-0.5 sm:mt-1">
+                    <span className="text-[8px] sm:text-[9px] font-mono leading-tight block truncate opacity-90 text-[#E0E0E6]">
                       {session.startTime}
                     </span>
                   </div>
@@ -279,7 +279,7 @@ export default function ScheduleCalendarPicker({
       </div>
 
       {/* Atalhos Rápidos & Repetição Customizada com Input Livre e Chips */}
-      <div className="bg-[#16161C] border border-[#262630] rounded-[3px] p-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="bg-[#16161C] border border-[#262630] rounded-[3px] p-2.5 sm:p-3 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="text-[#9A9A9A] font-heading text-[11px] uppercase tracking-wider">
             {t("adminPage.schedulePicker.quickRepeat", "Repetir dia selecionado:")}
@@ -364,9 +364,9 @@ export default function ScheduleCalendarPicker({
               return (
                 <div 
                   key={session.date} 
-                  className="bg-[#16161E] border border-[#242430] p-2.5 rounded-[2px] flex items-center justify-between gap-3 hover:border-[#3A3A4A] transition-colors"
+                  className="bg-[#16161E] border border-[#242430] p-2.5 rounded-[2px] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 hover:border-[#3A3A4A] transition-colors"
                 >
-                  <div className="flex items-center gap-2.5 min-w-[150px]">
+                  <div className="flex items-center gap-2.5">
                     <span className="font-mono text-accent text-xs font-bold w-5 text-center">
                       #{idx + 1}
                     </span>
@@ -375,30 +375,30 @@ export default function ScheduleCalendarPicker({
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3 h-3 text-[#7A7A85]" />
+                  <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+                    <div className="flex items-center gap-1 sm:gap-1.5 flex-1 sm:flex-initial">
+                      <Clock className="w-3 h-3 text-[#7A7A85] shrink-0" />
                       <input
                         type="time"
                         value={session.startTime}
                         onChange={(e) => handleSessionTimeChange(idx, 'startTime', e.target.value)}
-                        className="bg-[#101014] border border-[#33333E] text-[#F0EDE8] px-2 py-1 rounded text-xs text-center font-mono focus:outline-none focus:border-accent"
+                        className="bg-[#101014] border border-[#33333E] text-[#F0EDE8] px-1.5 sm:px-2 py-1 rounded text-[11px] sm:text-xs text-center font-mono focus:outline-none focus:border-accent w-20 sm:w-auto"
                       />
-                      <span className="text-[#666675] text-xs">
+                      <span className="text-[#666675] text-[10px] sm:text-xs">
                         {t("adminPage.schedulePicker.to", "até")}
                       </span>
                       <input
                         type="time"
                         value={session.endTime}
                         onChange={(e) => handleSessionTimeChange(idx, 'endTime', e.target.value)}
-                        className="bg-[#101014] border border-[#33333E] text-[#F0EDE8] px-2 py-1 rounded text-xs text-center font-mono focus:outline-none focus:border-accent"
+                        className="bg-[#101014] border border-[#33333E] text-[#F0EDE8] px-1.5 sm:px-2 py-1 rounded text-[11px] sm:text-xs text-center font-mono focus:outline-none focus:border-accent w-20 sm:w-auto"
                       />
                     </div>
 
                     <button
                       type="button"
                       onClick={() => handleRemoveSession(idx)}
-                      className="p-1.5 text-[#7A7A85] hover:text-red-400 hover:bg-red-900/20 rounded transition-colors"
+                      className="p-1.5 text-[#7A7A85] hover:text-red-400 hover:bg-red-900/20 rounded transition-colors shrink-0"
                       title={t("adminPage.schedulePicker.removeSession", "Remover sessão")}
                     >
                       <Trash2 className="w-3.5 h-3.5" />

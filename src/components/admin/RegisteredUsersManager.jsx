@@ -324,13 +324,13 @@ export default function RegisteredUsersManager({ events = [] }) {
         </div>
 
         {/* Filtros e Ordenação */}
-        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full md:w-auto justify-start md:justify-end">
           {/* Filtro de Perfil (Role) */}
-          <div className="flex items-center p-1 rounded-[2px] bg-[#141418] border border-[#22222C]">
+          <div className="flex flex-wrap items-center p-1 rounded-[2px] bg-[#141418] border border-[#22222C] max-w-full">
             <button
               type="button"
               onClick={() => setRoleFilter('all')}
-              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
                 roleFilter === 'all' ? 'bg-accent text-primary' : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -339,7 +339,7 @@ export default function RegisteredUsersManager({ events = [] }) {
             <button
               type="button"
               onClick={() => setRoleFilter('student')}
-              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
                 roleFilter === 'student' ? 'bg-accent text-primary' : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -348,7 +348,7 @@ export default function RegisteredUsersManager({ events = [] }) {
             <button
               type="button"
               onClick={() => setRoleFilter('instructor')}
-              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
                 roleFilter === 'instructor' ? 'bg-amber-500 text-primary font-bold shadow-sm' : 'text-zinc-400 hover:text-amber-300'
               }`}
             >
@@ -357,7 +357,7 @@ export default function RegisteredUsersManager({ events = [] }) {
             <button
               type="button"
               onClick={() => setRoleFilter('admin')}
-              className={`px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1.5 rounded-[2px] text-[10px] font-heading font-semibold uppercase tracking-wider transition-colors cursor-pointer ${
                 roleFilter === 'admin' ? 'bg-red-500 text-white font-bold shadow-sm' : 'text-zinc-400 hover:text-red-300'
               }`}
             >
@@ -366,7 +366,7 @@ export default function RegisteredUsersManager({ events = [] }) {
           </div>
 
           {/* Filtro de Inscrição */}
-          <div className="flex items-center p-1 rounded-[2px] bg-[#141418] border border-[#22222C]">
+          <div className="flex flex-wrap items-center p-1 rounded-[2px] bg-[#141418] border border-[#22222C] max-w-full">
             <button
               type="button"
               onClick={() => setEnrollmentFilter('all')}
