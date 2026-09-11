@@ -1393,5 +1393,30 @@
     "reviewPendingBadge": "Under Moderering",
     "reviewApprovedBadge": "Tilbakemelding Publisert",
     "loading": "Laster inn dine kurs..."
+  },
+  "workshopAgenda": {
+    "badge": "Bekreftede Datoer",
+    "title": "Kommende Datoer & Påmelding",
+    "subtitle": "Se de oppsatte datoene for denne workshopen og sikre deg plass direkte nedenfor.",
+    "loading": "Laster inn workshop-datoer..."
+  },
+  "workshopWishlist": {
+    "badge": "Ønskeliste • Mål om 10 Personer",
+    "title": "Neste Gruppe på Forespørsel",
+    "description": "Det er for øyeblikket ingen oppsatte datoer for denne workshopen. Så snart 10 personer melder sin interesse, vil en ny gruppe opprettes med fortrinnsrett for de på ønskelisten!",
+    "progressLabel": "{{count}} av 10 personer interesserte for å åpne gruppe",
+    "goalReached": "Målet er nådd! ({{count}} interesserte) Vårt team forbereder ny oppstart.",
+    "people": "personer",
+    "openCohort": "(Gruppeoppstart)",
+    "btnJoin": "Jeg er interessert i denne workshopen",
+    "btnJoinLogin": "Bli med på ønskelisten",
+    "btnLeave": "Fjern min interesse",
+    "alreadyJoined": "Du er på ønskelisten! Vi gir deg beskjed så snart datoer er klare.",
+    "loginPrompt": "Logg inn eller registrer deg for å melde din interesse.",
+    "inviteTitle": "Inviter vennene dine så vi når målet raskere!",
+    "shareWhatsapp": "Inviter via WhatsApp",
+    "copyLink": "Kopier Workshop-lenke",
+    "linkCopied": "Lenke kopiert!",
+    "whatsappMessage": "Hei! Jeg har lyst til å delta på workshopen «{{title}}» hos Dance2Dance i Oslo. Når 10 personer melder interesse, åpner de en ny gruppe! Bli med her: {{url}}"
   }
 }

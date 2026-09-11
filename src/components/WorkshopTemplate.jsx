@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Clock, Tag, Users } from 'lucide-react';
+import WorkshopAgendaSection from './WorkshopAgendaSection';
 
 export default function WorkshopTemplate({ workshop, program }) {
   const navigate = useNavigate();
@@ -249,6 +250,9 @@ export default function WorkshopTemplate({ workshop, program }) {
             )}
           </motion.div>
         )}
+
+        {/* ─── WORKSHOP AGENDA / WISHLIST ───────── */}
+        <WorkshopAgendaSection program={program} workshop={workshop} />
 
         {/* ─── CALL TO ACTION ─────────────────────── */}
         <motion.div 

@@ -83,6 +83,17 @@
    * Higienização de estado em memória: dados de contato não são sequer injetados no estado do componente quando aberto por instrutores.
    * Ocultação do botão "Copiar E-mails" para instrutores (exclusivo para administração).
    * Exportação CSV adaptada: instrutores exportam apenas dados pedagógicos, idade, restrições corporais e notas de CRM (sem colunas de contato).
+10. **Agenda Integrada & Wishlist com Meta de 10 Pessoas nas Páginas dos Workshops:**
+   * **Cards da Agenda (`WorkshopAgendaSection.jsx`):** Em cada página de workshop (`WorkshopTemplate.jsx`), se houver turmas ou eventos futuros cadastrados para aquele workshop, exibe automaticamente os cards da agenda correspondentes com data, horários, local, instrutor, carga horária e botão direto de inscrição (`handleEnroll`) ou lista de espera integrado ao Firestore.
+   * **Wishlist / Lista de Interesse sob Demanda (`WorkshopWishlist.jsx`):** Caso o workshop não possua nenhuma data agendada no momento, exibe um componente elegante e interativo:
+     * Barra de progresso visual com contagem de interessados rumo à meta de 10 pessoas para abertura de nova turma.
+     * Botão "Tenho Interesse neste Workshop" sincronizado em tempo real com a coleção `wishlists` no Firestore (`workshopKey_userId`).
+     * Permite ao aluno registrar ou cancelar seu interesse a qualquer momento com atualização instantânea.
+     * Ferramentas de convite social para amigos:
+       * Botão de compartilhamento direto no WhatsApp com mensagem personalizada contendo o nome do workshop e link nos 3 idiomas (PT, EN, NO).
+       * Botão de cópia rápida do link do workshop com feedback visual.
+   * **Internacionalização Completa:** Suporte total nos 3 idiomas (Português, Inglês e Norueguês) nos arquivos de tradução `pt.json`, `en.json` e `no.json`.
+   * `npm run build` testado e aprovado com 0 erros.
 
 ---
 

@@ -1393,5 +1393,30 @@
     "reviewPendingBadge": "Under Moderation",
     "reviewApprovedBadge": "Testimonial Published",
     "loading": "Loading your courses..."
+  },
+  "workshopAgenda": {
+    "badge": "Confirmed Dates",
+    "title": "Upcoming Dates & Enrollment",
+    "subtitle": "Check the scheduled dates for this workshop and secure your spot directly below.",
+    "loading": "Loading workshop dates..."
+  },
+  "workshopWishlist": {
+    "badge": "Wishlist • Goal of 10 People",
+    "title": "Next Cohort on Demand",
+    "description": "There are currently no dates scheduled for this workshop. As soon as 10 people express interest, a new cohort will be scheduled with priority access for those on the wishlist!",
+    "progressLabel": "{{count}} of 10 people interested to open a cohort",
+    "goalReached": "Goal reached! ({{count}} interested) Our team is preparing the new schedule.",
+    "people": "people",
+    "openCohort": "(Cohort Launch)",
+    "btnJoin": "I'm Interested in this Workshop",
+    "btnJoinLogin": "Join the Wishlist",
+    "btnLeave": "Remove my interest",
+    "alreadyJoined": "You are on the wishlist! We will notify you first.",
+    "loginPrompt": "Sign in or register to add your name to the wishlist.",
+    "inviteTitle": "Invite your friends to reach the goal faster!",
+    "shareWhatsapp": "Invite via WhatsApp",
+    "copyLink": "Copy Workshop Link",
+    "linkCopied": "Link copied!",
+    "whatsappMessage": "Hi! I'd love to take the \"{{title}}\" workshop at Dance2Dance in Oslo. Once 10 people express interest, a new cohort will open! Check it out and click 'I'm Interested' so we can do it together: {{url}}"
   }
 }

@@ -1393,5 +1393,30 @@
     "reviewPendingBadge": "Em Moderação",
     "reviewApprovedBadge": "Depoimento Publicado",
     "loading": "Carregando seus cursos..."
+  },
+  "workshopAgenda": {
+    "badge": "Datas Confirmadas",
+    "title": "Próximas Turmas & Inscrições",
+    "subtitle": "Confira as datas programadas para este workshop e garanta sua vaga diretamente abaixo.",
+    "loading": "Carregando agenda do workshop..."
+  },
+  "workshopWishlist": {
+    "badge": "Lista de Interesse • Meta de 10 Pessoas",
+    "title": "Próxima Turma sob Demanda",
+    "description": "No momento não há nenhuma data agendada para este workshop. Assim que 10 pessoas manifestarem interesse, uma nova turma será aberta com datas e horários prioritários para quem estiver na lista!",
+    "progressLabel": "{{count}} de 10 pessoas interessadas para abrir turma",
+    "goalReached": "Meta atingida! ({{count}} interessados) Nossa equipe está preparando a nova turma.",
+    "people": "pessoas",
+    "openCohort": "(Abertura da Turma)",
+    "btnJoin": "Tenho Interesse neste Workshop",
+    "btnJoinLogin": "Entrar na Lista de Desejos",
+    "btnLeave": "Remover meu interesse",
+    "alreadyJoined": "Você está na lista de interessados! Avisaremos você em primeira mão.",
+    "loginPrompt": "Faça login ou cadastre-se para registrar seu interesse.",
+    "inviteTitle": "Convide seus amigos para atingirmos a meta mais rápido!",
+    "shareWhatsapp": "Convidar via WhatsApp",
+    "copyLink": "Copiar Link do Workshop",
+    "linkCopied": "Link copiado!",
+    "whatsappMessage": "Oi! Quero participar do workshop \"{{title}}\" na Dance2Dance em Oslo. Quando 10 pessoas demonstrarem interesse, eles abrem uma nova turma! Dá uma olhada e clica em 'Tenho Interesse' pra gente fazer juntos: {{url}}"
   }
 }
