@@ -106,7 +106,8 @@
     * **Atalho de Agendamento Imediato:** Botão *"Agendar Workshop"* que direciona para a aba de eventos, seleciona a categoria certa e auto-preenche o formulário com o título e a rota do workshop.
     * **Comunicação Facilitada:** Botão *"Copiar E-mails"* (copia todos os contatos em lote para envio de comunicado de lançamento) e botão *"Exportar CSV"* com dados completos.
     * **Lista Retrátil de Inscritos:** Permite expandir o card para visualizar nome do aluno, e-mail clicável (`mailto:`), telefone com link direto para WhatsApp (`wa.me`) e data/hora do pedido, com opção de remoção de testes.
-    * **Internacionalização e Build:** Suporte completo em PT, EN e NO.
+    * **Internacionalização e Build:** Suporte completo em PT, EN e NO. Unificação da seção `adminPage` nos arquivos de tradução (`pt.json`, `en.json`, `no.json`), restaurando os títulos e textos originais do painel que haviam sido ofuscados por chave duplicada.
+    * `npm run build` testado e aprovado com 0 erros.
 
 ---
 
