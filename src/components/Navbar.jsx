@@ -111,6 +111,7 @@ const Navbar = () => {
               <button 
                 className="flex md:hidden text-background/80 hover:text-accent transition-colors p-2"
                 onClick={() => setIsMobileMenuOpen(true)}
+                aria-label={t('nav.openMenu', 'Abrir menu')}
               >
                 <Menu size={24} strokeWidth={1.5} />
               </button>
@@ -204,6 +205,7 @@ const Navbar = () => {
           <button 
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-background/80 hover:text-accent transition-colors rounded-full bg-white/5"
+            aria-label={t('nav.closeMenu', 'Fechar menu')}
           >
             <X size={24} strokeWidth={1.5} />
           </button>
