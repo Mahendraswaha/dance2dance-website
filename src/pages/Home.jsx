@@ -15,11 +15,13 @@ const Home = () => {
         url="/"
       />
       <Navbar />
-      <HeroSequence />
-      <Activities />
-      <Philosophy />
-      <Protocol />
-      <Action />
+      <main>
+        <HeroSequence />
+        <Activities />
+        <Philosophy />
+        <Protocol />
+        <Action />
+      </main>
       <Footer />
     </div>
   );
