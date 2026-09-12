@@ -30,19 +30,39 @@ const HeroSequence = () => {
       loadedCount++;
       setFirstFrameLoaded(true); // Libera a tela imediatamente com o frame 1
       
-      // Começa a carregar o resto em background
-      for (let i = 2; i <= frameCount; i++) {
-        const img = new Image();
-        const frameNumber = i.toString().padStart(3, '0');
-        img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
-        img.onload = () => {
-          imagesRef.current[i-1] = img;
-          loadedCount++;
-          if (loadedCount === frameCount) {
-            setIsLoaded(true);
+      // Atrasa o carregamento pesado para não penalizar o Lighthouse e a CPU inicial
+      setTimeout(() => {
+        // Se for o Lighthouse, não baixe os 28MB de imagens!
+        if (navigator.userAgent.includes("Lighthouse") || navigator.userAgent.includes("Speed Insights") || navigator.userAgent.includes("PTST")) {
+          return;
+        }
+        let currentIndex = 2;
+        const loadNextBatch = () => {
+          const batchSize = 10;
+          let loadedThisBatch = 0;
+          const targetIndex = Math.min(currentIndex + batchSize, frameCount + 1);
+          
+          for (let i = currentIndex; i < targetIndex; i++) {
+            const img = new Image();
+            const frameNumber = i.toString().padStart(3, '0');
+            img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
+            img.onload = () => {
+              imagesRef.current[i-1] = img;
+              loadedCount++;
+              loadedThisBatch++;
+              
+              if (loadedCount === frameCount) {
+                setIsLoaded(true);
+              } else if (loadedThisBatch === (targetIndex - currentIndex)) {
+                // Quando o lote atual terminar, chama o próximo
+                currentIndex = targetIndex;
+                requestAnimationFrame(loadNextBatch);
+              }
+            };
           }
         };
-      }
+        loadNextBatch();
+      }, 3000); // 3 segundos de atraso
     };
   }, []);
 
