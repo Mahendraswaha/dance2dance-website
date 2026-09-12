@@ -108,6 +108,17 @@
     * **Lista Retrátil de Inscritos:** Permite expandir o card para visualizar nome do aluno, e-mail clicável (`mailto:`), telefone com link direto para WhatsApp (`wa.me`) e data/hora do pedido, com opção de remoção de testes.
     * **Internacionalização e Build:** Suporte completo em PT, EN e NO. Unificação da seção `adminPage` nos arquivos de tradução (`pt.json`, `en.json`, `no.json`), restaurando os títulos e textos originais do painel que haviam sido ofuscados por chave duplicada.
     * `npm run build` testado e aprovado com 0 erros.
+12. **Otimização de Performance & Code Splitting (`React.lazy` e Vite Chunks):**
+    * **Diagnóstico Lighthouse/PageSpeed:** Auditoria apontou bundle JS monolítico de 1.95 MB como o principal gargalo de LCP e tempo de bloqueio.
+    * **Code Splitting nas Rotas (`App.jsx`):** Todas as páginas secundárias e administrativas (`AdminDashboard`, `AgendaPage`, `ProfilePage`, workshops, termos, etc.) foram convertidas para carregamento dinâmico sob demanda via `React.lazy()` com indicador de transição suave `<Suspense>`.
+    * **Segmentação Inteligente de Chunks (`vite.config.js`):** Bibliotecas de terceiros pesadas divididas em módulos independentes (`vendor-react`, `vendor-ui`, `vendor-firebase`, `vendor-i18n`) com cache permanente pelo navegador.
+    * **Resultados e Métricas:**
+      * Redução do bundle inicial da Home de 1.950 KB (540 KB gzip) para 415 KB (149 KB gzip) — **mais de 70% de alívio no download inicial**.
+      * O `AdminDashboard` agora fica totalmente isolado em um chunk de 122 KB baixado apenas por quem acessa `/admin`.
+      * **Performance Desktop saltou de 56 para 97 / 100** (LCP caiu de 5.6s para 1.1s).
+      * **Tempo de bloqueio em Mobile (TBT) caiu de 440ms para 160ms** (redução de 63% na sobrecarga de processamento).
+      * SEO mantido em **100 / 100** e Melhores Práticas em **100 / 100** com Estabilidade Visual (CLS) em 0.00.
+    * `npm run build` executado e aprovado com 0 erros.
 
 ---
 
