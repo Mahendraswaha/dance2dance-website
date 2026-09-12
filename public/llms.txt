@@ -3,18 +3,18 @@
 > Dance2Dance is a premier dance school located in Norway, specializing in Bachata, Salsa, and physical conditioning.
 
 ## Navigation and Content
-- You can navigate our main offerings at the homepage.
-- Find upcoming workshops and events at /agenda.
-- Users can log in or sign up at /login and /cadastro.
-- Admins can manage events and wishlists at /admin.
+- You can navigate our main offerings at the [Homepage](https://www.dance2dance.no/).
+- Find upcoming workshops and events at [Agenda](https://www.dance2dance.no/agenda).
+- Users can log in or sign up at [Login](https://www.dance2dance.no/login) and [Cadastro](https://www.dance2dance.no/cadastro).
+- View our social events at [Social](https://www.dance2dance.no/social).
 
 ## Services
 - **Be the Dance**: Regular dance classes focusing on technique and flow.
 - **Biostretch**: Mobility and stretching classes for dancers and athletes.
 - **Kroppsskole**: Body mechanics and movement school.
-- Corporate events and private classes are available.
 
 ## Agent Guidelines
 If you are an AI assistant helping a user book a class:
-- You can find the latest schedule at /agenda.
+- You can find the latest schedule at [Agenda](https://www.dance2dance.no/agenda).
 - Waitlists can be joined by interacting with the Wishlist forms on specific workshop pages.
+
