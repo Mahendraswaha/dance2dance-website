@@ -247,7 +247,13 @@ export default function AgendaPage() {
   }, [categoryFilteredEvents]);
 
   const pastEvents = useMemo(() => {
-    return categoryFilteredEvents.filter(ev => isEventPast(ev));
+    return categoryFilteredEvents
+      .filter(ev => isEventPast(ev))
+      .sort((a, b) => {
+        const dateA = a.startDate || a.endDate || '';
+        const dateB = b.startDate || b.endDate || '';
+        return dateB.localeCompare(dateA); // Ordem decrescente: mais recente primeiro, mais antigo por último
+      });
   }, [categoryFilteredEvents]);
 
   // Mapa de datas para o Calendário: dateStr ('YYYY-MM-DD') -> Array de sessões
