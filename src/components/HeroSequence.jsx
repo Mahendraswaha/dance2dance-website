@@ -128,49 +128,48 @@ const HeroSequence = () => {
         }
       }, 0);
       
-      // 1. A primeira frase original aparece no centro
+      // 1. A primeira frase original aparece no centro e mantém elevação contínua suave
       tl.fromTo('.seq-text-1', 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.05 }, 
-        0.06
+        { opacity: 0, y: 40 }, 
+        { opacity: 1, y: 0, duration: 0.04, ease: 'power2.out' }, 
+        0.05
       );
-      // Fade out mais cedo
-      tl.to('.seq-text-1', { opacity: 0, y: -50, duration: 0.05 }, 0.15);
+      // Fade out enquanto sobe suavemente (0.10 a 0.14), abrindo espaço para o bloco
+      tl.to('.seq-text-1', { opacity: 0, y: -40, duration: 0.04, ease: 'power1.in' }, 0.10);
       
       // 2. O bloco de texto rola continuamente (como créditos de filme)
-      // Ele começa fisicamente abaixo da tela (top-full) e rola até sair completamente pelo topo
+      // Começa a subir mais cedo (0.10), conectando perfeitamente com a saída da primeira frase
       tl.to('.seq-block-rest', 
         { 
           yPercent: -100,
           y: () => -window.innerHeight,
           ease: 'none', 
-          duration: 0.5 
+          duration: 0.48 
         }, 
-        0.15 // <- COMEÇA A SUBIR MAIS CEDO (antes era 0.25)
+        0.10 // <- ANTECIPADO para 0.10
       );
 
-      // O bloco começa a desaparecer em fade mais cedo para acompanhar
-      tl.to('.seq-block-rest', { opacity: 0, duration: 0.15, ease: 'power2.inOut' }, 0.50);
+      // O bloco começa a desaparecer em fade suave perto do fim da subida (0.45 a 0.58)
+      tl.to('.seq-block-rest', { opacity: 0, duration: 0.13, ease: 'power2.inOut' }, 0.45);
 
-      // 3. A última frase surge e continua crescendo continuamente até o fim da seção (zoom cinematográfico)
-      // Fade in rápido da frase enquanto ela começa o movimento contínuo
+      // 3. A última frase surge em cross-fade ANTES do bloco sair por completo (em 0.48)
+      // e continua crescendo continuamente até o fim da seção (zoom cinematográfico)
       tl.fromTo('.seq-text-last', 
         { opacity: 0, y: 30 }, 
         { opacity: 1, y: 0, duration: 0.1, ease: 'power2.out' }, 
-        0.55
+        0.48 // <- ANTECIPADO para se sobrepor harmoniosamente com a saída do bloco
       );
 
-      // Crescimento e elevação contínuos ao longo de todo o percurso (de 0.55 até 1.0)
-      // O texto nunca fica estático: continua aumentando suavemente e flutuando para cima
+      // Crescimento e elevação contínuos de 0.48 até 1.0 (sem pausas estáticas)
       tl.fromTo('.seq-text-last',
         { scale: 0.95 },
         { 
           scale: 1.35, 
           y: -40, 
           ease: 'none', 
-          duration: 0.45 
+          duration: 0.52 
         },
-        0.55
+        0.48
       );
 
       // No trecho final (0.85 a 1.0), dissolve o texto suavemente com leve desfoque na luz
