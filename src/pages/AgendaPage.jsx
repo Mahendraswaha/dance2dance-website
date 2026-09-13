@@ -439,15 +439,15 @@ export default function AgendaPage() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96 }}
-        className={`border transition-all duration-300 rounded-[2px] p-6 md:p-8 flex flex-col items-stretch gap-6 ${
+        className={`border transition-all duration-300 rounded-[3px] p-6 md:p-8 flex flex-col items-stretch gap-6 ${
           isPast 
-            ? 'bg-[#121215] border-[#22222B] opacity-75 hover:opacity-100' 
-            : 'bg-[#151518] border-[#2A2A34] hover:border-[#3E3E4E] hover:bg-[#1A1A1E] shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
+            ? 'bg-[#141418] border-[#262632] opacity-75 hover:opacity-100' 
+            : 'bg-[#18181D] border-[#363645] hover:border-accent/40 hover:bg-[#1E1E24] shadow-[0_8px_30px_rgba(0,0,0,0.55)]'
         }`}
       >
         <div className="flex flex-col md:flex-row items-center gap-8 w-full">
           {/* Coluna Esquerda: Datas e Horários */}
-          <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#242430] pb-6 md:pb-0 pr-6">
+          <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#2C2C3A] pb-6 md:pb-0 pr-6">
             <div className="font-heading text-sm font-semibold uppercase tracking-wider mb-2 mt-1 flex flex-wrap items-center gap-2">
               <span className={theme.textColor}>{dateStr}</span>
               {isOngoing && (
