@@ -37,15 +37,15 @@
     "kicker": "What we do",
     "title": "Our Activities",
     "card1": {
-      "desc": "Every body holds a dance it hasn't yet dared to release. These workshops are a space where movement, presence, and expression bring it to light."
+      "desc": "Every body carries a dance it hasn't yet dared to step into. These workshops are the space where movement, presence and expression bring it to light."
     },
     "card2": {
-      "desc": "Conscious movement practices that expand perception, encourage bodily reorganization, and transform how we inhabit our bodies."
+      "desc": "Conscious movement practices that broaden perception, stimulate body reorganization and transform the way we inhabit the body."
     },
     "card3": {
-      "desc": "Community projects that reach across streets and neighborhoods—weaving connections, building bonds, and sparking transformation."
+      "desc": "Community projects that cross streets and neighborhoods, weaving ties, creating bonds and transforming."
     },
-    "cta": "EXPLORE OUR SCHEDULE"
+    "cta": "SEE OUR SCHEDULE"
   },
   "phil": {
     "line1": {
@@ -71,7 +71,7 @@
     "3": {
       "kicker": "What the body invents",
       "title": "Creation",
-      "desc": "Movement is raw material. From dance, choreography is born; from silence, the gesture is born; from the encounter, the work is born. Art is what happens when the body has the freedom to express itself."
+      "desc": "Movement is raw material. From dance choreography is born, from silence the gesture is born, from the encounter the work is born. Art is what happens when the body has the freedom to express itself."
     },
     "4": {
       "kicker": "What remains in the community",
@@ -86,7 +86,7 @@
       "p2": "move."
     },
     "desc": "Find a workshop, a class, your place. The body knows the way, just start.",
-    "btn1": "View Schedule",
+    "btn1": "See Schedule",
     "btn2": "I want to support the project"
   },
   "footer": {
@@ -238,55 +238,55 @@
   "programs": {
     "be-the-dance": {
       "title": "Be the Dance",
-      "subtitle": "Discover the dance that exists within you.",
-      "description": "Philosophy and concept of Be the Dance...",
+      "subtitle": "Descubra a dança que existe em você.",
+      "description": "Filosofia e conceito do Be the Dance...",
       "philosophy": [
         {
           "title": "BE THE DANCE",
           "content": [
-            "is a program consisting of four dance workshops.",
-            "It was designed for you to explore movement as a path to presence, expression, and self-discovery, awakening something essential and unique that already exists within you: your very own dance."
+            "é um programa de quatro workshops de dança.",
+            "Foi desenhado para você explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando algo essencial e único que já existe em você: sua própria dança."
           ]
         },
         {
-          "title": "BE THE DANCE IS FOR EVERYONE",
+          "title": "BE THE DANCE É PARA TODOS",
           "content": [
-            "Dance can be born in the body of anyone who allows themselves to move.",
-            "There are no prerequisites.",
-            "You just need to feel and allow the movement to express itself.",
-            "At any age or physical condition, it is possible to discover your own way of dancing."
+            "A dança pode nascer no corpo de qualquer pessoa que se permita mover.",
+            "Não há exigências.",
+            "Basta sentir e permitir que o movimento se expresse.",
+            "Em qualquer idade ou condição física, é possível descobrir uma forma própria de dançar."
           ]
         },
         {
-          "title": "WHERE IS THE DANCE?",
+          "title": "ONDE ESTÁ A DANÇA?",
           "content": [
-            "It is not restricted to a technique, a predefined style, or a special talent.",
-            "It exists in everyone, as an inherent creativity ready to take shape through the body."
+            "Não está restrita a uma técnica, a um estilo pré-definido ou a um talento especial.",
+            "Ela existe em cada pessoa, como uma criatividade inerente pronta para ganhar forma por meio do corpo."
           ]
         },
         {
-          "title": "HOW DOES DANCE HAPPEN?",
+          "title": "COMO ACONTECE A DANÇA?",
           "content": [
-            "Dance has accompanied us for millennia, as ritual, celebration, and artistic expression. Even if you don't remember, there is a memory of movement in the body, an ability to feel, create, and dance.",
-            "By creating a sensitive dialogue between music and body, we open up the possibility of exploring new paths of movement. Going beyond the known allows new forms of expression to emerge.",
-            "Dance happens beyond control and the search for an ideal form. When we allow ourselves to be present, a more authentic and unique expression can emerge from the body."
+            "A dança nos acompanha há milênios, como ritual, celebração e expressão artística. Ainda que você não lembre, há no corpo uma memória de movimento, uma capacidade de sentir, criar e dançar.",
+            "Ao criar um diálogo sensível entre música e corpo, abrimos a possibilidade de explorar novos caminhos de movimento. Ir além do conhecido permite que novas formas de expressão possam emergir.",
+            "A dança acontece para além do controle e da busca por uma forma ideal. Quando nos permitimos estar presentes, uma expressão mais autêntica e única pode emergir do corpo."
           ]
         },
         {
-          "title": "WHAT ARE THE BENEFITS?",
+          "title": "QUAIS OS BENEFÍCIOS?",
           "content": [
-            "• Promotes deep relaxation and contributes to stress reduction.",
-            "• Increases energy, physical readiness, and the fluidity of movements.",
-            "• Recognizes natural movements and expands body awareness, creating space for a more authentic expression.",
-            "• Develops attention, awakening the senses and deepening presence.",
-            "• Explores the relationship between breath and movement, discovering new ways to dance with more freedom.",
-            "• Expands perception by recognizing the different parts of the body and the relationships between them."
+            "• Favorecer o relaxamento profundo e contribuir para a redução do estresse.",
+            "• Ampliar a energia, a disponibilidade corporal e a fluidez dos movimentos.",
+            "• Reconhecer movimentos naturais e ampliar a consciência corporal, criando espaço para uma expressão mais autêntica.",
+            "• Desenvolver a atenção, despertando os sentidos e aprofundando a presença.",
+            "• Explorar a relação entre respiração e movimento, descobrindo novas formas de dançar com mais liberdade.",
+            "• Ampliar a percepção reconhecendo as diferentes partes do corpo e as relações entre elas."
           ]
         },
         {
           "title": "BE THE DANCE",
           "content": [
-            "Workshops that integrate movement awareness with dance and meditation practices, so you can discover and express the dance that already exists within you."
+            "Workshops que integram a consciência do movimento com práticas de dança e meditação, para você descobrir e expressar a dança que já existe em você."
           ]
         }
       ],
@@ -344,7 +344,7 @@
           "[SILVER]That stayed with me.",
           "Years later, when I was already directing my own dance company, I created, along with choreographer Mark Sieczkarek, an event in a park, open to everyone. And then something very simple and, at the same time, transformative happened.",
           "[GOLD]People started to dance.",
-          "People who might never have imagined doing so in public were there, moving their bodies, meeting others, laughing, playing, experimenting. Dance stepped off the stage and came alive.",
+          "People who might never have imagined doing so in public were there, moving their bodies, meeting others, laughing, playing, experimenting. Dance left the stage. And found life.",
           "It was there that I understood, in a very concrete way, how much dance can bring people together, create encounters, and awaken joy. It didn't need to be confined to a classroom, a company, or a stage. Dance could happen anywhere there was a body willing to move.",
           "Then the pandemic came. The world stopped. Doors closed. We were isolated in our homes, separated from each other, and, in a way, from our own bodies.",
           "It was in this silence that Be The Dance began to emerge. The inspiration came from a documentary about Bruce Lee and an idea that struck me: Be Water.",
@@ -352,15 +352,15 @@
           "And I thought: what if we could do the same with dance? Thus the idea of a series of workshops for people who are not dancers was born. Not to teach steps. Not to prepare anyone for a stage. Not to turn anyone into a professional. But to dance, play, explore, and discover.",
           "[GOLD]To discover what moves us. To discover how we move.",
           "To discover what happens when we stop trying to control the body and start listening to it. And above all, to discover where the dance is in each of us.",
-          "Because I believe dance is not a privilege of those born flexible, those who started at age four, or those who learned to count in eights. Dance is in our genes. It is in the impulse to sway when we hear music. In the body that moves when we are happy. In the spontaneous gesture. In the breath. In the rhythm. In the desire to celebrate, to seduce, to play, and to be free. Perhaps we all have the dance inside us and it just needs a spark to emerge.",
+          "Because I believe dance is not a privilege of those born flexible, those who started at age four, or those who learned to count eight beats. Dance is in our genes. It is in the impulse to sway when we hear music. In the body that moves when we are happy. In the spontaneous gesture. In the breath. In the rhythm. In the desire to celebrate, seduce, play, and be free. Perhaps we all have the dance inside us and it just needs a stimulus to appear.",
           "By that time, I had been practicing meditation for a few years, and my relationship with dance had profoundly transformed. Aesthetics and technique still had their place, but they were no longer enough.",
-          "[SILVER]I began to see the body as a vessel.",
-          "A place of listening. A landscape of discovery. An instrument through which we can push past our own boundaries and find a form of expression that is unique, personal, and genuine. That is how Be The Dance began to take shape.",
-          "But I soon realized that this investigation could also be profoundly transformative for professional dancers. Because I know this journey intimately. I know how a dancer can dedicate years to perfecting their technique. The correct position. The highest jump. The perfect line. Absolute control of the body.",
+          "[SILVER]I started to see the body as a passage.",
+          "A place of listening. A territory of discovery. An instrument through which we can cross our own borders and find a form of expression that is unique, personal, and genuine. That is how Be The Dance began to take shape.",
+          "But I soon realized that this investigation could also be profoundly transformative for professional dancers. Because I know this path from the inside. I know how much a dancer can dedicate years to perfecting technique. The correct position. The highest jump. The perfect line. Absolute control of the body.",
           "But who teaches us to be present? Who teaches us to find our own movement within a choreography? Who talks about charisma, presence, authenticity? Who shows us ways to know the body beyond its appearance? Who helps us discover who we are when we dance?",
           "Be The Dance is born precisely from this place. Between technique and freedom, body and emotion, movement and presence. Between what we learn and what already exists inside us.",
           "It is an invitation to experiment and let the body think, feel, and speak. For the dancer who wishes to go beyond technique. And for those who always believed they “can't dance”.",
-          "Because maybe you don't need to know how. Maybe you just need to start. And then discover that the dance was already there. Waiting for you.",
+          "Because maybe you don't need to know. Maybe you just need to start. And then discover that the dance was already there. Waiting for you.",
           "[GOLD]Be The Dance. Don't just dance.\nBe the dance.",
           "[SIGNATURE]Safia"
         ],
@@ -373,41 +373,41 @@
     "biostretch": {
       "title": "Biostretch",
       "subtitle": "Four decades of research into movement.",
-      "description": "Biostretch is an exercise system...",
+      "description": "Biostretch é um sistema de exercícios...",
       "philosophy": [
         {
-          "title": "WHAT IS BIOSTRETCH?",
+          "title": "O QUE É O BIOSTRETCH?",
           "content": [
-            "Biostretch is an exercise system that promotes reconnection with the body through movement awareness.",
-            "The method uses attention as its main tool: a simple, powerful resource accessible to everyone. By directing it to the experience of movement, we expand the perception of the body and open space for new possibilities of bodily organization.",
-            "Inspired by more than four decades of studies in dance, Somatic Education, and meditation, the method recognizes the body as an intelligent, integrated system in constant transformation. Instead of seeking performance or correction, it proposes a subtle investigation of the bodily experience, where what is done matters less than how it is done.",
-            "It is from this experience of presence that a new way of perceiving and inhabiting the body emerges. But how does this transformation happen in practice?"
+            "Biostretch é um sistema de exercícios que promove a reconexão com o corpo por meio da consciência do movimento.",
+            "O método utiliza a atenção como sua principal ferramenta: um recurso simples, poderoso e acessível a todos. Ao direcioná-la para a experiência do movimento, ampliamos a percepção do corpo e abrimos espaço para novas possibilidades de organização corporal.",
+            "Inspirado em mais de quatro décadas de estudos em dança, Educação Somática e meditação, o método reconhece o corpo como um sistema inteligente, integrado e em constante transformação. Em vez de buscar desempenho ou correção, propõe uma investigação sutil da experiência corporal, na qual importa menos o que se faz e mais como se faz.",
+            "É dessa experiência de presença que nasce uma nova forma de perceber e habitar o corpo. Mas como essa transformação acontece na prática?"
           ]
         },
         {
-          "title": "HOW DOES IT WORK?",
+          "title": "COMO ATUA?",
           "content": [
-            "The practice of Biostretch invites you to slow down, relax your body, and direct your attention to simple movements and the sensations they awaken.",
-            "In this exploration, it becomes possible to recognize tension patterns, movement habits, and forms of bodily organization that usually remain outside our perception because they operate automatically and unconsciously. The apparent simplicity of the practice reveals a profound work of listening, perception, and reorganization.",
-            "When performed slowly, gently, and effortlessly, the exercises promote a state of balance in the nervous system, responsible for coordinating communication between body and mind and regulating bodily functions. In this state, the body finds space to release tension, reorganize itself, and recover the natural fluidity of movement.",
-            "More than teaching new movements, Biostretch strengthens trust in the body's innate intelligence and invites you to rediscover the pleasure of moving with freedom, presence, and awareness. The best part is that this experience is within anyone's reach."
+            "A prática do Biostretch convida você a desacelerar, relaxar o corpo e direcionar a atenção para movimentos simples e para as sensações que eles despertam.",
+            "Nessa exploração, torna-se possível reconhecer padrões de tensão, hábitos de movimento e formas de organização corporal que costumam permanecer fora da nossa percepção por operarem de forma automática e inconsciente. A aparente simplicidade da prática revela um trabalho profundo de escuta, percepção e reorganização.",
+            "Ao serem realizados de forma lenta, suave e sem esforço, os exercícios favorecem um estado de equilíbrio no sistema nervoso, responsável por coordenar a comunicação entre corpo e mente e regular as funções do organismo. Nesse estado, o corpo encontra espaço para liberar tensões, reorganizar-se e recuperar a fluidez natural do movimento.",
+            "Mais do que ensinar novos movimentos, o Biostretch fortalece a confiança na inteligência inata do corpo e convida a redescobrir o prazer de mover-se com liberdade, presença e consciência. O melhor é que essa experiência está ao alcance de qualquer pessoa."
           ]
         },
         {
-          "title": "WHO CAN PRACTICE?",
+          "title": "QUEM PODE PRATICAR?",
           "content": [
-            "Biostretch can be practiced by people of all ages and different levels of experience, physical conditioning, or mobility.",
-            "The practice respects the individuality of each body. There is no ideal movement to be achieved, nor an external standard to be followed. Each person explores the sequences within their own limits and possibilities, at their own pace.",
-            "Instead of adapting the body to a model, Biostretch values what each person already has: their ability to perceive, learn, and find more comfortable and functional paths for movement. Thus, the practice strengthens autonomy, confidence, and the pleasure of inhabiting one's own body.",
-            "And what can this practice transform in daily life?"
+            "O Biostretch pode ser praticado por pessoas de todas as idades e diferentes níveis de experiência, condicionamento físico ou mobilidade.",
+            "A prática respeita a individualidade de cada corpo. Não existe um movimento ideal a ser alcançado nem um padrão externo a ser seguido. Cada pessoa explora as sequências dentro de seus próprios limites e possibilidades, no seu próprio ritmo.",
+            "Em vez de adaptar o corpo a um modelo, o Biostretch valoriza aquilo que cada pessoa já possui: sua capacidade de perceber, aprender e encontrar caminhos mais confortáveis e funcionais para o movimento. Assim, a prática fortalece a autonomia, a confiança e o prazer de habitar o próprio corpo.",
+            "E o que essa prática pode transformar no dia a dia?"
           ]
         },
         {
-          "title": "WHAT ARE THE BENEFITS?",
+          "title": "QUAIS OS BENEFÍCIOS?",
           "content": [
-            "Regular practice of Biostretch helps to relieve tension, increase mobility, improve posture, and make movements lighter, coordinated, and comfortable. Over time, the body recovers fluidity and efficiency, making daily activities easier and more pleasant.",
-            "By promoting balance in the nervous system, the practice also helps reduce the effects of stress, improve breathing quality, and relieve pain and discomfort associated with muscle tension, especially in areas like the neck, shoulders, and back. Additionally, it contributes to preventing injuries related to repetitive patterns and overuse of the body.",
-            "Over time, these changes extend beyond the practice and become part of how we move, perceive, and use our bodies in everyday life."
+            "A prática regular do Biostretch contribui para aliviar tensões, ampliar a mobilidade, melhorar a postura e tornar os movimentos mais leves, coordenados e confortáveis. Com o tempo, o corpo recupera a fluidez e eficiência, tornando as atividades do dia a dia mais fáceis e prazerosas.",
+            "Ao favorecer o equilíbrio do sistema nervoso, a prática também ajuda a reduzir os efeitos do estresse, melhorar a qualidade da respiração e aliviar dores e desconfortos associados à tensão muscular, especialmente em regiões como pescoço, ombros e costas. Além disso, contribui para prevenir lesões relacionadas a padrões repetitivos e ao uso excessivo do corpo.",
+            "Com o tempo, essas mudanças se estendem para além da prática e passam a fazer parte da maneira como nos movemos, percebemos e utilizamos o corpo no dia a dia."
           ]
         }
       ],
@@ -494,7 +494,7 @@
     "kroppsskole": {
       "title": "Kroppsskole",
       "subtitle": "",
-      "description": "An integrated approach to the body and movement.",
+      "description": "Uma abordagem integrada para o corpo e o movimento.",
       "philosophy": [],
       "workshops": {},
       "philosophy_data": {
@@ -514,7 +514,7 @@
   },
   "biostretch_philosophy": {
     "m1": {
-      "l1": "Your body already knows where it holds tension.",
+      "l1": "Your body already knows what is tense.",
       "l2": "You just stopped listening to it."
     },
     "m2": {
@@ -523,8 +523,8 @@
     },
     "m3": {
       "kicker": "The principle",
-      "p1": "Simple movements. Focused attention.",
-      "p2": "Biostretch uses the most accessible tool you have—your attention—to transform how your body organizes itself.",
+      "p1": "Simple movements. Precise attention.",
+      "p2": "Biostretch uses the most accessible tool there is, your attention, to transform how the body organizes itself.",
       "p3": "It matters less what you do",
       "p4": "and more how you do it."
     },
@@ -567,7 +567,7 @@
     },
     "m3": {
       "kicker": "THE POTENTIAL",
-      "p1": "A possibility of dance exists within every body.",
+      "p1": "There is a possibility of dance in every body.",
       "p2": "Not a dance you learn, but one you discover.",
       "p3": "Rhythm, impulse, pause. The body already knows this",
       "p4": "vocabulary. Each workshop creates the conditions for it",
@@ -602,11 +602,11 @@
     },
     "m6": {
       "l1": "Dance doesn't need to be learned.",
-      "l2": "It needs to be allowed."
+      "l2": "It needs to be permitted."
     },
     "m7": {
       "kicker": "The paths",
-      "l1": "Each workshop explores new territory.",
+      "l1": "Each workshop explores a territory.",
       "l2": "Choose what calls you first."
     }
   },
@@ -635,7 +635,7 @@
     "all": "All"
   },
   "agenda": {
-    "subtitle": "Stay updated on our upcoming workshops, regular sessions, and immersive experiences by Be The Dance and Biostretch.",
+    "subtitle": "Follow our upcoming dates for workshops, regular sessions, and experiences from Be The Dance and Biostretch.",
     "no_events": "No events found for this filter at the moment.",
     "coming_soon": "Coming soon",
     "tbd": "TBD",
@@ -656,10 +656,10 @@
     "subtitle": "When there is space for pause and care, work gains a different quality.",
     "hook": "Biostretch brings movement and body awareness experiences into companies, creating moments of pause, reconnection, and care, integrating well-being into the work routine in a simple, accessible, and profound way.",
     "body": {
-      "p1": "Through practices that combine movement, stretching, breathwork, and body awareness, employees are invited to step out of autopilot and develop a more conscious relationship with their posture, movements, and overall well-being.",
+      "p1": "Through practices that combine movement, stretching, breathing, and attention to the body, employees are invited to step out of automatic mode and develop a more conscious relationship with their posture, movements, and well-being.",
       "pullQuote": "An experience designed for each environment.",
-      "p2": "Every company has its own dynamics. Every team faces different physical and mental challenges throughout the workday. Long hours at the computer, repetitive tasks, many hours standing, pressure for results, and an intense routine can generate wear and tear, and accumulated tension that goes unnoticed—until the body sends its signals.",
-      "p3": "That is why Biostretch is always adapted to the characteristics and needs of each organization. The practices are built to offer an inclusive and meaningful experience, respecting different ages, profiles, and fitness levels. It is not just workplace stretching. It is consciousness in movement."
+      "p2": "Every company has its own dynamics. Every team faces different physical and mental challenges throughout the workday. Long hours at the computer, repetitive tasks, many hours standing, pressure for results, and an intense routine can generate wear and accumulated tension that goes unnoticed, until the body sends its signals.",
+      "p3": "That is why Biostretch is always adapted to the characteristics and needs of each organization. The practices are built to offer an inclusive and meaningful experience, respecting different ages, profiles, and fitness levels. It is not workplace gymnastics. It is consciousness in movement."
     },
     "benefits": {
       "kicker": "MOVEMENT WITH PURPOSE",
@@ -762,7 +762,7 @@
             {
               "key": "environment",
               "label": "Harmonious environment",
-              "desc": "Build healthier, more sustainable, and deeply human workplace relationships."
+              "desc": "Foster healthier, more sustainable, and deeply humane workplace relations."
             }
           ]
         }
@@ -770,7 +770,7 @@
     },
     "audience": {
       "kicker": "FOR COMPANIES THAT VALUE PEOPLE",
-      "intro": "Biostretch Corporate is designed for organizations that wish to create spaces for guided pauses, active listening, and strengthening physical and emotional well-being within the corporate environment. Especially recommended for:",
+      "intro": "Biostretch Corporate is designed for organizations that wish to create spaces of guided pause, active listening, and strengthening of physical and emotional well-being within the institutional environment. Especially recommended for:",
       "items": {
         "seated": "People who spend long periods seated in front of screens",
         "standing": "Employees who spend many hours standing or in constant movement",
@@ -903,7 +903,7 @@
         },
         {
           "title": "2. Nature of Practice and Disclaimer",
-          "content": "<p>The methodologies taught (Biostretch and Be The Dance) are practices focused on movement, breathing, and body awareness. <strong>They do not replace medical, physical therapy, or psychological diagnoses or treatments.</strong> You assume the responsibility to respect your body's limits and seek medical clearance if you have pre-existing conditions.</p>"
+          "content": "<p>The methodologies taught (Biostretch and Be The Dance) are practices focused on movement, breathing, and body awareness. <strong>They do not replace medical, physiotherapeutic, or psychological diagnoses or treatments.</strong> You assume the responsibility to respect your body's limits and seek medical clearance if you have pre-existing conditions.</p>"
         },
         {
           "title": "3. Registration and Cancellations",
@@ -928,7 +928,7 @@
     "title": "Safia",
     "subtitle": "Artistic Director & Creator",
     "paragraphs": [
-      "Dance entered my life through medical advice. At seven, classical ballet was recommended to correct my foot posture. The initial obligation soon became a fascination. The discipline of the barre and the enthusiasm of master João Luiz Rolla marked the beginning of a journey guided by movement.",
+      "Dance entered my life through medical advice. At seven, classical ballet was recommended to align my foot posture. The initial obligation became a fascination. The discipline of the barres and the enthusiasm of master João Luiz Rolla marked the beginning of a journey guided by movement.",
       "Technical rigor took me abroad early on. In 1988, I was awarded a scholarship to the Kiev State Classical Ballet School, immersing myself for two years in the Vaganova method in the former Soviet Union. In Cuba, I performed with the Ballet de Camaguey and the National Ballet, where technical precision lived alongside artists from diverse disciplines.",
       "The urge to transcend the codified forms of ballet led me toward contemporary dance with Companhia Terpsí. Later, a grant in New York opened the door to study Release Technique at the Trisha Brown Company and Movement Research. It was my first encounter with Somatic Education, realizing that movement could emerge from skeletal alignment and listening, sparing unnecessary effort.",
       "This exploration broadened across several fields. I worked backstage as an assistant choreographer at Teatro Castro Alves in Bahia. I earned a degree in Literature from UFRGS, deepening my connection with language. I became a certified Gyrotonic trainer and an educator through Teatro Escola Brincante. I worked on various social projects. In 2007, I co-founded Porto Alegre Cia de Dança, taking on its artistic direction.",
@@ -947,17 +947,17 @@
     "selectedDay": "Activities on {{date}}",
     "noEventsOnDay": "No activities scheduled for this day.",
     "exploreDayHint": "Select a highlighted date on the calendar to view session details.",
-    "pastEventsTitle": "Completed Events (History)",
+    "pastEventsTitle": "Past Events (Archive)",
     "showPastEvents": "Show past events ({{count}})",
     "hidePastEvents": "Hide past events",
     "pastBadge": "Completed",
     "sessionsCount": "{{count}} sessions",
     "totalWorkload": "Workload: {{hours}}h",
     "viewProgram": "View Program",
-    "viewFullSchedule": "View all sessions",
-    "hideFullSchedule": "Hide Schedule",
+    "viewFullSchedule": "View All Sessions ({{count}})",
+    "hideFullSchedule": "Hide Sessions",
     "scheduleBreakdown": "Full Session Schedule",
-    "goToToday": "Go to current date",
+    "goToToday": "Go to Today",
     "comingSoon": "Coming soon",
     "tbd": "Schedule to be confirmed",
     "enrolled": "Enrolled",
@@ -973,6 +973,22 @@
     "addSessionToCalendar": "Add Session to Calendar",
     "downloadIcs": "Download (.ics) file for all sessions",
     "downloadIcsShort": "Export (.ics)",
+    "scheduleBreakdown": "Full Session Schedule",
+    "hideFullSchedule": "Hide Schedule",
+    "viewFullSchedule": "View all sessions",
+    "sessionsCount": "{{count}} sessions",
+    "totalWorkload": "Workload: {{hours}}h",
+    "pastBadge": "Completed",
+    "pastEventsTitle": "Completed Events (History)",
+    "hidePastEvents": "Hide past events",
+    "showPastEvents": "Show past events ({{count}})",
+    "viewList": "List View",
+    "viewCalendar": "Calendar View",
+    "today": "Today",
+    "goToToday": "Go to current date",
+    "selectedDay": "Activities on {{date}}",
+    "noEventsOnDay": "No activities scheduled for this day.",
+    "exploreDayHint": "Select a highlighted date on the calendar to view session details.",
     "viewInstructorProfile": "View instructor profile",
     "confirmCancel": "Are you sure you want to cancel your enrollment/waitlist for this event?",
     "cancelError": "Error canceling: ",
@@ -1039,7 +1055,7 @@
       "enrolledOn": "Enrolled on",
       "hasRestrictionsHint": "Has registered health restrictions"
     },
-    "autoGenerateSchedule": "Generate Schedule Summary",
+    "autoGenerateSchedule": "Auto Generate Schedule",
     "schedulePicker": {
       "title": "Session & Schedule Calendar",
       "prevMonth": "Previous Month",
@@ -1065,7 +1081,7 @@
     "tabPast": "Past / Archive",
     "statusPast": "Ended",
     "statusOngoing": "Ongoing",
-    "invalidEndDate": "End date cannot be before the start date.",
+    "invalidEndDate": "End date cannot be prior to start date.",
     "global": "(GLOBAL)",
     "totalSpots": "Total Spots",
     "scheduleText": "Visible Text: Dates / Times",
@@ -1133,7 +1149,7 @@
       "crmBtn": "CRM",
       "crmBtnTooltip": "Student Evaluation & Internal CRM Notes"
     },
-    "addToInstructorCalendar": "Add to Instructor's Calendar (Google Calendar)",
+    "addToInstructorCalendar": "Add to Instructor Calendar (Google Calendar)",
     "instructorEmail": "Instructor Email",
     "masterTabWishlist": "Wishlists & Demands",
     "ready": "ready",
@@ -1188,7 +1204,7 @@
     "subjectBiostretchInCompany": "Biostretch in Company",
     "subjectExecutive": "Executive Meeting / Social Project",
     "subjectCorporate": "Biostretch in Company",
-    "subjectIndividual": "Private Session / Personal",
+    "subjectIndividual": "Individual Session / Personal",
     "subjectPartnership": "Partnerships & Sponsorships",
     "messageLabel": "Message *",
     "messagePlaceholder": "How can we help you?",
@@ -1198,7 +1214,7 @@
     "successDesc": "We have received your message. We will get back to you as soon as possible.",
     "sendAnother": "Send Another Message",
     "sendError": "Failed to send message. Please try again later.",
-    "infoDesc": "A space for connection, movement, and social transformation through the art of dance and physical well-being.",
+    "infoDesc": "A space for meeting, movement, and social transformation through dance art and bodily well-being.",
     "bannerKicker": "ACTIVE SCHEDULE",
     "bannerTitle": "Want to join a workshop?",
     "bannerDesc": "Check our upcoming dates and secure your spot directly in our official schedule.",
@@ -1242,7 +1258,7 @@
     "countryLabel": "Country *",
     "countryPlaceholder": "Norway...",
     "experienceLabel": "Previous experience with dance or bodywork?",
-    "experiencePlaceholder": "Tell us briefly about your experience...",
+    "experiencePlaceholder": "Tell us briefly about your dance experience...",
     "restrictionsLabel": "Physical or health restrictions?",
     "restrictionsPlaceholder": "Any injury or condition the instructor should know about?",
     "signupBtn": "Create Account",

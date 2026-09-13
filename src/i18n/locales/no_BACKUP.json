@@ -1,7 +1,7 @@
 {
   "nav": {
     "workshops": "Workshops",
-    "social": "Sosialt prosjekt",
+    "social": "Sosialt Prosjekt",
     "agenda": "Timeplan",
     "subscribe": "Meld deg på",
     "login": "Logg inn",
@@ -16,13 +16,13 @@
     "subtitle1": "Bevegelse møter",
     "subtitle2": "Transformasjon.",
     "desc": "Dans og bevegelse som verktøy for uttrykk og velvære. Kunst som en vei til sosial transformasjon.",
-    "cta": "Utforsk workshops",
+    "cta": "Utforsk Workshops",
     "seq1": {
       "p1": "Det er steder som ikke finnes på kartet.",
       "p2": "Bare i kroppen."
     },
     "seq2": {
-      "p1": "er en sosial organisasjon som ble skapt for å bygge disse stedene. Rom hvor dans ikke bare er opptreden, men fremfor alt er tilstedeværelse. Hvor bevegelse er mer enn trening eller tøying, det er lytting og uttrykk. Hvor kunst ikke er et mål, men begynnelsen på et møte.",
+      "p1": "er en sosial organisasjon som ble født for å bygge disse stedene. Rom hvor dans ikke bare er opptreden, men fremfor alt er tilstedeværelse. Hvor bevegelse er mer enn trening eller tøying, det er lytting og uttrykk. Hvor kunst ikke er et mål, men begynnelsen på et møte.",
       "p2": "Møtet med seg selv og møtet som skjer når folk puster og beveger seg i samme rytme.",
       "p3": "Endring begynner i huden, når en person gjenoppdager sin egen styrke, sin kreativitet, sin egen stemme. Og når dette skjer i en gruppe, åpnes en vei for",
       "p4": "sosial transformasjon",
@@ -37,10 +37,10 @@
     "kicker": "Hva vi gjør",
     "title": "Våre Aktiviteter",
     "card1": {
-      "desc": "Hver kropp bærer på en dans den ennå ikke har våget å slippe fri. Disse workshopene er rommet hvor bevegelse, tilstedeværelse og uttrykk bringer den frem i lyset."
+      "desc": "Hver kropp bærer en dans den ennå ikke har våget å slippe ut. Disse verkstedene er rommet der bevegelse, tilstedeværelse og uttrykk bringer den frem i lyset."
     },
     "card2": {
-      "desc": "Bevisste bevegelsespraksiser som utvider sanseopplevelsen, stimulerer kroppslig omorganisering og forvandler måten vi er i egen kropp på."
+      "desc": "Bevisste bevegelsespraksiser som utvider oppfatningen, stimulerer kroppslig omorganisering og forvandler måten vi bor i kroppen på."
     },
     "card3": {
       "desc": "Samfunnsprosjekter som krysser gater og nabolag, vever bånd, skaper forbindelser og transformerer."
@@ -71,7 +71,7 @@
     "3": {
       "kicker": "Hva kroppen finner opp",
       "title": "Skapelse",
-      "desc": "Bevegelse er råmateriale. Fra dansen fødes koreografien, fra stillheten fødes gesten, fra møtet fødes verket. Kunst er det som skjer når kroppen har frihet til å uttrykke seg."
+      "desc": "Bevegelse er råmateriale. Fra dans blir koreografi født, fra stillhet blir gesten født, fra møtet blir verket født. Kunst er det som skjer når kroppen har frihet til å uttrykke seg."
     },
     "4": {
       "kicker": "Hva som forblir i samfunnet",
@@ -104,20 +104,20 @@
       "kicker": "Sosialt Prosjekt",
       "title_line1": "Kunst som",
       "title_line2": "tilhører alle.",
-      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Gamle Oslo — båret av flere finansieringskilder.",
+      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Gamle Oslo — bæret av flere finansieringskilder.",
       "scroll": "Rull ned for å utforske"
     },
     "context": {
       "kicker": "Forslaget",
       "title": "Hvorfor Gamle Oslo?",
-      "p1": "Gamle Oslo er et nabolag fylt av kontraster — mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne virkeligheten som kaller oss til handling.",
-      "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvære ikke skal være et privilegium for dem som kan betale. Hver workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon — uavhengig av hvem som er i rommet.",
+      "p1": "Gamle Oslo er et nabolag fylt av kontraster — mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne sammenhengen som kaller oss til handling.",
+      "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvtære ikke skal være et privilegium for dem som kan betale. Hvert workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon — uavhengig av hvem som er i rommet.",
       "quote": "Samme produkt. Samme kvalitet. Samme verdi. For alle."
     },
     "value": {
       "kicker": "Verdien av det vi tilbyr",
       "title": "Gratis betyr ikke uten verdi.",
-      "subtitle": "De som mottar det gratis, mottar nøyaktig det samme som de som betaler. Vi gjør den reelle prisen synlig fordi opplevd verdi betyr noe — både for støttespillere og deltakere.",
+      "subtitle": "De som mottar det gratis, mottar nøyaktig det samme som de som betaler. Vi gjør den reelle prisen synlig fordi opplevd verdi betyr noe — for støttespillere og deltakere alike.",
       "paid": {
         "label": "Eksterne deltakere",
         "price": "[XXX] NOK",
@@ -133,7 +133,7 @@
     "model": {
       "kicker": "Hvordan vi finansierer oss",
       "title": "Et økosystem av støtte.",
-      "intro": "Dance2Dance er designet for å ikke stole på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer — hver enkelt essensiell, ingen tilstrekkelig alene.",
+      "intro": "Dance2Dance er designet for å ikke støle på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer — hver enkelt essensiell, ingen tilstrekkelig alene.",
       "pillar1": {
         "title": "Betalende deltakere",
         "desc": "De som kommer fra utenfor Gamle Oslo betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
@@ -186,7 +186,7 @@
     "value": {
       "kicker": "B2B Transparens",
       "title": "Oppfattet verdi. Reell innvirkning.",
-      "subtitle": "Våre gratis plasser er ikke veldedighet, de er fullfinansierte stipender finansiert av vårt økosystem. Ved å prise workshopen for eksterne deltakere, beviser vi den høye verdien som leveres til lokale innbyggere og våre investorer.",
+      "subtitle": "Våre gratis plasser er ikke veldedighet, de er fullstendige stipender finansiert av vårt økosystem. Ved å prise workshopen for eksterne deltakere, beviser vi den høye verdien levert til lokale innbyggere og våre investorer.",
       "paid": {
         "label": "Betalende deltakere",
         "price": "Markedsverdi",
@@ -202,7 +202,7 @@
     "model": {
       "kicker": "Styring og Bærekraft",
       "title": "Økonomisk Økosystem.",
-      "intro": "Investorer unngår prosjekter som er avhengige av én enkelt donor. Dance2Dance ble bygget på 4 inntektspilarer som garanterer lang levetid, økonomisk sikkerhet og risikoreduksjon for alle interessenter.",
+      "intro": "Investorer unngår prosjekter som er avhengige av én enkelt donor. Dance2Dance ble bygget på 4 inntekts-pilarer som garanterer lang levetid, økonomisk sikkerhet og risikoreduksjon for alle interessenter.",
       "pillar1": {
         "title": "Egeninntekt",
         "desc": "Billettsalg til deltakere utenfor innvirkningssonen dekker grunnleggende kostnader og bekrefter etterspørselen etter produktet."
@@ -238,55 +238,55 @@
   "programs": {
     "be-the-dance": {
       "title": "Be the Dance",
-      "subtitle": "Oppdag dansen som finnes i deg.",
-      "description": "Filosofi og konsept bak Be the Dance...",
+      "subtitle": "Descubra a dança que existe em você.",
+      "description": "Filosofia e conceito do Be the Dance...",
       "philosophy": [
         {
           "title": "BE THE DANCE",
           "content": [
-            "er et program bestående av fire danseworkshops.",
-            "Det er designet for at du skal kunne utforske bevegelse som en vei til tilstedeværelse, uttrykk og selvinnsikt, og vekke noe essensielt og unikt som allerede finnes i deg: din egen dans."
+            "é um programa de quatro workshops de dança.",
+            "Foi desenhado para você explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando algo essencial e único que já existe em você: sua própria dança."
           ]
         },
         {
-          "title": "BE THE DANCE ER FOR ALLE",
+          "title": "BE THE DANCE É PARA TODOS",
           "content": [
-            "Dans kan oppstå i kroppen til enhver person som tillater seg å bevege seg.",
-            "Det stilles ingen krav.",
-            "Det handler bare om å føle og la bevegelsen uttrykke seg.",
-            "Uansett alder eller fysisk form er det mulig å oppdage sin egen måte å danse på."
+            "A dança pode nascer no corpo de qualquer pessoa que se permita mover.",
+            "Não há exigências.",
+            "Basta sentir e permitir que o movimento se expresse.",
+            "Em qualquer idade ou condição física, é possível descobrir uma forma própria de dançar."
           ]
         },
         {
-          "title": "HVOR ER DANSEN?",
+          "title": "ONDE ESTÁ A DANÇA?",
           "content": [
-            "Den er ikke begrenset til en bestemt teknikk, en forhåndsdefinert stil eller et spesielt talent.",
-            "Den finnes i hver og en av oss, som en iboende kreativitet klar til å ta form gjennom kroppen."
+            "Não está restrita a uma técnica, a um estilo pré-definido ou a um talento especial.",
+            "Ela existe em cada pessoa, como uma criatividade inerente pronta para ganhar forma por meio do corpo."
           ]
         },
         {
-          "title": "HVORDAN SKJER DANSEN?",
+          "title": "COMO ACONTECE A DANÇA?",
           "content": [
-            "Dansen har fulgt oss i årtusener, som ritual, feiring og kunstnerisk uttrykk. Selv om du kanskje ikke husker det, bærer kroppen på et bevegelsesminne, en evne til å føle, skape og danse.",
-            "Ved å skape en sensitiv dialog mellom musikk og kropp, åpner vi muligheten for å utforske nye bevegelsesveier. Å gå utover det kjente lar nye uttrykksformer vokse frem.",
-            "Dansen skjer forbi kontroll og jakten på en ideell form. Når vi tillater oss å være til stede, kan et mer autentisk og unikt uttrykk vokse frem fra kroppen."
+            "A dança nos acompanha há milênios, como ritual, celebração e expressão artística. Ainda que você não lembre, há no corpo uma memória de movimento, uma capacidade de sentir, criar e dançar.",
+            "Ao criar um diálogo sensível entre música e corpo, abrimos a possibilidade de explorar novos caminhos de movimento. Ir além do conhecido permite que novas formas de expressão possam emergir.",
+            "A dança acontece para além do controle e da busca por uma forma ideal. Quando nos permitimos estar presentes, uma expressão mais autêntica e única pode emergir do corpo."
           ]
         },
         {
-          "title": "HVILKE ER FORDELENE?",
+          "title": "QUAIS OS BENEFÍCIOS?",
           "content": [
-            "• Fremme dyp avspenning og bidra til å redusere stress.",
-            "• Øke energien, kroppens tilgjengelighet og flyten i bevegelsene.",
-            "• Gjenkjenne naturlige bevegelser og øke kroppsbevisstheten, og dermed skape rom for et mer autentisk uttrykk.",
-            "• Utvikle oppmerksomheten, vekke sansene og utdype tilstedeværelsen.",
-            "• Utforske forholdet mellom pust og bevegelse, og oppdage nye måter å danse på med større frihet.",
-            "• Utvide persepsjonen ved å anerkjenne kroppens ulike deler og forholdet mellom dem."
+            "• Favorecer o relaxamento profundo e contribuir para a redução do estresse.",
+            "• Ampliar a energia, a disponibilidade corporal e a fluidez dos movimentos.",
+            "• Reconhecer movimentos naturais e ampliar a consciência corporal, criando espaço para uma expressão mais autêntica.",
+            "• Desenvolver a atenção, despertando os sentidos e aprofundando a presença.",
+            "• Explorar a relação entre respiração e movimento, descobrindo novas formas de dançar com mais liberdade.",
+            "• Ampliar a percepção reconhecendo as diferentes partes do corpo e as relações entre elas."
           ]
         },
         {
           "title": "BE THE DANCE",
           "content": [
-            "Workshops som integrerer bevissthet om bevegelse med praksiser innen dans og meditasjon, slik at du kan oppdage og uttrykke den dansen som allerede finnes i deg."
+            "Workshops que integram a consciência do movimento com práticas de dança e meditação, para você descobrir e expressar a dança que já existe em você."
           ]
         }
       ],
@@ -352,11 +352,11 @@
           "Og jeg tenkte: Hva om vi kunne gjøre det samme med dans? Slik ble ideen om en rekke workshops for folk som ikke er dansere, født. Ikke for å lære trinn. Ikke for å forberede noen for en scene. Ikke for å gjøre noen til profesjonelle. Men for å danse, leke, utforske og oppdage.",
           "[GOLD]Oppdage hva som beveger oss. Oppdage hvordan vi beveger oss.",
           "Oppdage hva som skjer når vi slutter å prøve å kontrollere kroppen og begynner å lytte til den. Og fremfor alt, oppdage hvor dansen er i hver og en av oss.",
-          "For jeg tror at dans ikke er et privilegium for dem som er født fleksible, dem som begynte som fireåringer, eller dem som lærte å telle åtte slag. Dansen ligger i genene våre. Den ligger i impulsen til å gynge når vi hører musikk. I kroppen som beveger seg når vi er glade. I den spontane gesten. I pusten. I rytmen. I ønsket om å feire, forføre, leke og frigjøre seg. Kanskje vi alle har dansen inni oss, og at det bare trengs en stimulans for å la den komme frem.",
+          "For jeg tror at dans ikke er et privilegium for dem som er født fleksible, dem som begynte som fireåringer, eller dem som lærte å telle åtte slag. Dansen ligger i genene våre. Den ligger i impulsen til å gynge når vi hører musikk. I kroppen som beveger seg når vi er glade. I den spontane gesten. I pusten. I rytmen. I ønsket om å feire, forføre, leke og frigjøre seg. Kanskje vi alle har dansen inni oss, og det trengs bare et stimuli for å la den komme frem.",
           "På den tiden hadde jeg allerede praktisert meditasjon i noen år, og mitt forhold til dans hadde endret seg dyptgående. Estetikk og teknikk hadde fortsatt sin plass, men det var ikke lenger nok.",
           "[SILVER]Jeg begynte å se på kroppen som en passasje.",
           "Et sted for å lytte. Et territorium for oppdagelser. Et instrument vi kan bruke til å krysse våre egne grenser og finne en uttrykksform som er unik, personlig og ekte. Det var slik Be The Dance begynte å ta form.",
-          "Men jeg innså snart at denne utforskningen også kunne være dypt transformerende for profesjonelle dansere. For jeg kjenner denne veien fra innsiden. Jeg vet hvor mange år en danser kan vie til å perfeksjonere teknikken. Den riktige posisjonen. Det høyeste hoppet. Den perfekte linjen. Den absolutte kontrollen over kroppen.",
+          "Men jeg innså snart at denne utforskningen også kunne være dypt transformerende for profesjonelle dansere. For jeg kjenner denne veien fra innsiden. Jeg vet hvor mye en danser kan dedikere av år for å perfeksjonere teknikken. Den riktige posisjonen. Det høyeste hoppet. Den perfekte linjen. Den absolutte kontrollen over kroppen.",
           "Men hvem lærer oss å være til stede? Hvem lærer oss å finne vår egen bevegelse i en koreografi? Hvem snakker om karisma, tilstedeværelse, autentisitet? Hvem viser oss veier til å kjenne kroppen utover dens utseende? Hvem hjelper oss å oppdage hvem vi er når vi danser?",
           "Be The Dance er født nettopp fra dette stedet. Mellom teknikk og frihet, kropp og følelse, bevegelse og tilstedeværelse. Mellom det vi har lært og det som allerede finnes inni oss.",
           "Det er en invitasjon til å eksperimentere og la kroppen tenke, føle og snakke. For danseren som ønsker å gå utover teknikken. Og for den som alltid har trodd at de “ikke kan danse”.",
@@ -373,41 +373,41 @@
     "biostretch": {
       "title": "Biostretch",
       "subtitle": "Fire tiår med forskning på bevegelse.",
-      "description": "Biostretch er et treningssystem...",
+      "description": "Biostretch é um sistema de exercícios...",
       "philosophy": [
         {
-          "title": "HVA ER BIOSTRETCH?",
+          "title": "O QUE É O BIOSTRETCH?",
           "content": [
-            "Biostretch er et treningssystem som fremmer en gjenforening med kroppen gjennom bevissthet om bevegelse.",
-            "Metoden bruker oppmerksomhet som sitt viktigste verktøy: en enkel, kraftfull ressurs som er tilgjengelig for alle. Ved å rette den mot bevegelsesopplevelsen, utvider vi oppfatningen av kroppen og åpner rom for nye muligheter for kroppslig organisering.",
-            "Inspirert av over fire tiår med fordypning i dans, somatisk bevegelseslære og meditasjon, anerkjenner metoden kroppen som et intelligent, helhetlig system i kontinuerlig endring. I stedet for å jage etter prestasjon eller perfeksjon, inviterer den til en nennsom utforskning av den kroppslige opplevelsen – hvor det betyr mindre hva du gjør, og mer hvordan du gjør det.",
-            "Det er ut fra denne opplevelsen av tilstedeværelse at en ny måte å sanse og bebo egen kropp på vokser frem. Men hvordan foregår egentlig denne forvandlingen i praksis?"
+            "Biostretch é um sistema de exercícios que promove a reconexão com o corpo por meio da consciência do movimento.",
+            "O método utiliza a atenção como sua principal ferramenta: um recurso simples, poderoso e acessível a todos. Ao direcioná-la para a experiência do movimento, ampliamos a percepção do corpo e abrimos espaço para novas possibilidades de organização corporal.",
+            "Inspirado em mais de quatro décadas de estudos em dança, Educação Somática e meditação, o método reconhece o corpo como um sistema inteligente, integrado e em constante transformação. Em vez de buscar desempenho ou correção, propõe uma investigação sutil da experiência corporal, na qual importa menos o que se faz e mais como se faz.",
+            "É dessa experiência de presença que nasce uma nova forma de perceber e habitar o corpo. Mas como essa transformação acontece na prática?"
           ]
         },
         {
-          "title": "HVORDAN FUNGERER DET?",
+          "title": "COMO ATUA?",
           "content": [
-            "Biostretch inviterer deg til å gire ned, gi slipp på spenninger i kroppen og rette oppmerksomheten mot enkle bevegelser og følelsene de vekker.",
-            "Gjennom denne utforskningen blir det mulig å legge merke til spenningsmønstre, bevegelsesvaner og måter kroppen organiserer seg på, som vanligvis unnslipper oppmerksomheten vår fordi de foregår automatisk og ubevisst. Den tilsynelatende enkelheten i øvelsene åpner opp for en dyp prosess av lytting, sansing og kroppslig reorganisering.",
-            "Når bevegelsene utføres rolig, mykt og uten anstrengelse, stimuleres en tilstand av balanse i nervesystemet – bindeleddet som koordinerer samspillet mellom kropp og sinn og regulerer kroppens funksjoner. I denne modusen finner kroppen rom til å slippe tak i spenninger, finne tilbake til likevekt og gjenvinne en naturlig, fri bevegelsesflyt.",
-            "Mer enn å lære bort nye bevegelser, styrker Biostretch tilliten til kroppens medfødte intelligens og inviterer til å gjenoppdage gleden ved å bevege seg med frihet, tilstedeværelse og bevissthet. Det beste av alt er at denne opplevelsen er tilgjengelig for alle."
+            "A prática do Biostretch convida você a desacelerar, relaxar o corpo e direcionar a atenção para movimentos simples e para as sensações que eles despertam.",
+            "Nessa exploração, torna-se possível reconhecer padrões de tensão, hábitos de movimento e formas de organização corporal que costumam permanecer fora da nossa percepção por operarem de forma automática e inconsciente. A aparente simplicidade da prática revela um trabalho profundo de escuta, percepção e reorganização.",
+            "Ao serem realizados de forma lenta, suave e sem esforço, os exercícios favorecem um estado de equilíbrio no sistema nervoso, responsável por coordenar a comunicação entre corpo e mente e regular as funções do organismo. Nesse estado, o corpo encontra espaço para liberar tensões, reorganizar-se e recuperar a fluidez natural do movimento.",
+            "Mais do que ensinar novos movimentos, o Biostretch fortalece a confiança na inteligência inata do corpo e convida a redescobrir o prazer de mover-se com liberdade, presença e consciência. O melhor é que essa experiência está ao alcance de qualquer pessoa."
           ]
         },
         {
-          "title": "HVEM KAN DELTA?",
+          "title": "QUEM PODE PRATICAR?",
           "content": [
-            "Biostretch passer for mennesker i alle aldre og med ulik erfaring, fysisk form eller bevegelighet.",
-            "Praksisen respekterer hver enkelt kropps unike forutsetninger. Det finnes ingen fasit eller ideell bevegelse man må strekke seg etter, og ingen ytre mal å følge. Hver deltaker utforsker øvelsene ut fra sine egne grenser og muligheter, i sitt eget tempo.",
-            "I stedet for å tvinge kroppen inn i en gitt form, bygger Biostretch på ressursene du allerede bærer i deg: evnen til å sanse, lære og finne mer behagelige og funksjonelle bevegelsesmønstre. Slik fremmer metoden autonomi, trygghet og gleden ved å finne seg til rette i egen kropp.",
-            "Og hva kan denne praksisen tilføre hverdagen din?"
+            "O Biostretch pode ser praticado por pessoas de todas as idades e diferentes níveis de experiência, condicionamento físico ou mobilidade.",
+            "A prática respeita a individualidade de cada corpo. Não existe um movimento ideal a ser alcançado nem um padrão externo a ser seguido. Cada pessoa explora as sequências dentro de seus próprios limites e possibilidades, no seu próprio ritmo.",
+            "Em vez de adaptar o corpo a um modelo, o Biostretch valoriza aquilo que cada pessoa já possui: sua capacidade de perceber, aprender e encontrar caminhos mais confortáveis e funcionais para o movimento. Assim, a prática fortalece a autonomia, a confiança e o prazer de habitar o próprio corpo.",
+            "E o que essa prática pode transformar no dia a dia?"
           ]
         },
         {
-          "title": "HVA ER FORDELENE?",
+          "title": "QUAIS OS BENEFÍCIOS?",
           "content": [
-            "Regelmessig praksis av Biostretch bidrar til å løse opp spenninger, øke bevegeligheten, forbedre holdningen og gjøre bevegelsene lettere, mer samkjørte og behagelige. Over tid gjenvinner kroppen sin smidighet og funksjonalitet, slik at hverdagens gjøremål oppleves lettere og mer lystbetont.",
-            "Ved å fremme balanse i nervesystemet bidrar praksisen også til å dempe stress, forbedre pustekvaliteten og lindre ubehag forbundet med muskelspenninger – særlig i nakke, skuldre og rygg. I tillegg virker den forebyggende mot belastningsskader forårsaket av ensformige bevegelsesmønstre og overbelastning.",
-            "Over tid forplanter disse endringene seg utover selve timene, og blir en naturlig del av hvordan vi beveger oss, sanser og bruker kroppen i det daglige."
+            "A prática regular do Biostretch contribui para aliviar tensões, ampliar a mobilidade, melhorar a postura e tornar os movimentos mais leves, coordenados e confortáveis. Com o tempo, o corpo recupera a fluidez e eficiência, tornando as atividades do dia a dia mais fáceis e prazerosas.",
+            "Ao favorecer o equilíbrio do sistema nervoso, a prática também ajuda a reduzir os efeitos do estresse, melhorar a qualidade da respiração e aliviar dores e desconfortos associados à tensão muscular, especialmente em regiões como pescoço, ombros e costas. Além disso, contribui para prevenir lesões relacionadas a padrões repetitivos e ao uso excessivo do corpo.",
+            "Com o tempo, essas mudanças se estendem para além da prática e passam a fazer parte da maneira como nos movemos, percebemos e utilizamos o corpo no dia a dia."
           ]
         }
       ],
@@ -494,7 +494,7 @@
     "kroppsskole": {
       "title": "Kroppsskole",
       "subtitle": "",
-      "description": "En integrert tilnærming til kropp og bevegelse.",
+      "description": "Uma abordagem integrada para o corpo e o movimento.",
       "philosophy": [],
       "workshops": {},
       "philosophy_data": {
@@ -503,12 +503,12 @@
         "b1_p1": "Før vi tenker, føler kroppen allerede. Før vi snakker, kommuniserer den allerede. Før vi forstår, vet den allerede.",
         "b1_p2": "Kroppsskole er født ut av denne oppfatningen. En skole for å lære med kroppen, om kroppen, gjennom kroppen. Her utforsker vi en intelligens som bor i bevegelse, holdning og pust. Den føler, oppfatter, justerer og husker.",
         "quote1": "\"Det er en kunnskap som kroppen bærer, og som sinnet ennå ikke har oversatt.\"",
-        "b2_p1": "Vi inviterer forskjellige tilretteleggere, praksiser og kunnskap for å skape opplevelser som kobler oss tilbake til denne intelligensen. Klasser, kurs, opplevelser og samlinger som utforsker bevegelse, berøring, pust, uttrykk og tilstedeværelse.",
+        "b2_p1": "Vi inviterer forskjellige tilretteleggere, praksiser og kunnskap for å skape opplevelser som kobler oss tilbake til denne intelligensen. Klasser, kurs, innlevelser og samlinger som utforsker bevegelse, berøring, pust, uttrykk og tilstedeværelse.",
         "b2_p2": "Vi ønsker mangfoldige kropper, historier og uttrykksformer velkommen. Jo mer mangfoldig perspektivet på kroppen er, desto flere muligheter har vi til å forstå den.",
         "quote2": "\"Kroppen er grunnlaget. Fra den oppstår balanse, tilstedeværelse og transformasjon.\"",
         "b3_p1": "Emosjonell helse og dyp velvære modnes når vi tar vare på grunnlaget. Når vi puster bedre, går annerledes og føler med mer klarhet, endres noe i hvordan vi er i verden. Forandringen starter i kroppen og stråler ut til alt vi er.",
         "b3_p2": "Kroppsskole er et rom for denne prosessen. Et sted der kunnskap og erfaring møtes. Hvor vi kan eksperimentere uten å måtte ha rett. Hvor en liten endring i kroppen kan forandre hvordan vi lever.",
-        "closing": "\"Gjennom kroppen forbereder vi oss på å gå utover det kjente.\""
+        "closing": "\"Gjennom kroppen forbereder vi oss på å gå videre.\""
       }
     }
   },
@@ -557,7 +557,7 @@
     },
     "m7": {
       "kicker": "Seks praksiser",
-      "l1": "Hver workshop jobber med ett lag.",
+      "l1": "Hvert workshop jobber med ett lag.",
       "l2": "Start med det kroppen din ber om."
     }
   },
@@ -606,7 +606,7 @@
     },
     "m7": {
       "kicker": "Veiene",
-      "l1": "Hver workshop utforsker et landskap.",
+      "l1": "Hvert workshop utforsker et territorium.",
       "l2": "Velg det som kaller på deg først."
     }
   },
@@ -658,7 +658,7 @@
     "body": {
       "p1": "Gjennom praksiser som kombinerer bevegelse, strekking, pust og oppmerksomhet på kroppen, inviteres medarbeiderne til å gå ut av automatmodus og utvikle en mer bevisst relasjon til sin holdning, sine bevegelser og sitt eget velvære.",
       "pullQuote": "En opplevelse designet for hvert miljø.",
-      "p2": "Hver bedrift har sin egen dynamikk. Hvert team møter ulike fysiske og mentale utfordringer gjennom arbeidsdagen. Lange perioder foran datamaskinen, repetitive oppgaver, mange timer stående, press for resultater og en intens rutine kan generere slitasje og oppsamlet spenning som går ubemerket hen, helt til kroppen sier ifra.",
+      "p2": "Hver bedrift har sin egen dynamikk. Hvert team møter ulike fysiske og mentale utfordringer gjennom arbeidsdagen. Lange perioder foran datamaskinen, repetitive oppgaver, mange timer stående, press for resultater og en intens rutine kan generere slitasje og oppsamlet spenning som går ubemerket hen, helt til kroppen gir sine signaler.",
       "p3": "Derfor tilpasses Biostretch alltid til egenskapene og behovene til hver organisasjon. Praksisene er bygget for å tilby en inkluderende og meningsfull opplevelse, som respekterer ulike aldre, profiler og kondisjonsnivåer. Det er ikke arbeidsplassgymnastikk. Det er bevissthet i bevegelse."
     },
     "benefits": {
@@ -705,7 +705,7 @@
       "pillars": [
         {
           "number": "01",
-          "title": "Fysiologi og bevissthet",
+          "title": "Fysiologi og Bevissthet",
           "items": [
             {
               "key": "consciousness",
@@ -726,7 +726,7 @@
         },
         {
           "number": "02",
-          "title": "Tilstedeværelse og bærekraft",
+          "title": "Tilsteværelse og Bærekraft",
           "items": [
             {
               "key": "coordination",
@@ -747,7 +747,7 @@
         },
         {
           "number": "03",
-          "title": "Egenomsorg og arbeidsmiljø",
+          "title": "Egenomsorg og Arbeidsmiljø",
           "items": [
             {
               "key": "overload",
@@ -844,7 +844,7 @@
     "pullQuote2": "En time kan vekke. Kontinuiteten lar oss gå i dybden.",
     "block3": {
       "kicker": "KROPPENS SAMTALE",
-      "p1": "Hvert møte er en del av en samtale kroppen fører med seg selv.",
+      "p1": "Hvert møte er en del av en samtale kroppen bygger med seg selv.",
       "p2": "Og kanskje er det nettopp der Biostretch har sin virkelige styrke: ikke i en brå forandring over natten, men i de små justeringene som, gjentatt og integrert over tid, forandrer måten vi bebor vår egen kropp på."
     },
     "closing": "Fordi kroppen ikke bare trenger stimulering.\nDen trenger tid til å lære.",
@@ -946,18 +946,18 @@
     "today": "I dag",
     "selectedDay": "Aktiviteter den {{date}}",
     "noEventsOnDay": "Ingen aktiviteter planlagt for denne dagen.",
-    "exploreDayHint": "Velg en markert dato i kalenderen for å se detaljer om økten.",
-    "pastEventsTitle": "Tidligere arrangementer (Historikk)",
+    "exploreDayHint": "Velg en markert dato i kalenderen for å se øktdetaljer.",
+    "pastEventsTitle": "Tidligere Arrangementer (Arkiv)",
     "showPastEvents": "Vis tidligere arrangementer ({{count}})",
     "hidePastEvents": "Skjul tidligere arrangementer",
-    "pastBadge": "Gjennomført",
+    "pastBadge": "Fullført",
     "sessionsCount": "{{count}} økter",
     "totalWorkload": "Omfang: {{hours}}t",
     "viewProgram": "Se Program",
-    "viewFullSchedule": "Se alle økter",
-    "hideFullSchedule": "Skjul timeplan",
-    "scheduleBreakdown": "Fullstendig øktoversikt",
-    "goToToday": "Gå til dagens dato",
+    "viewFullSchedule": "Se Alle Økter ({{count}})",
+    "hideFullSchedule": "Skjul Økter",
+    "scheduleBreakdown": "Fullstendig Øktplan",
+    "goToToday": "Gå til i dag",
     "comingSoon": "Kommer snart",
     "tbd": "Tidspunkt bekreftes snart",
     "enrolled": "Påmeldt",
@@ -973,6 +973,22 @@
     "addSessionToCalendar": "Legg til denne økten i kalender",
     "downloadIcs": "Last ned (.ics) fil for alle økter",
     "downloadIcsShort": "Eksporter (.ics)",
+    "scheduleBreakdown": "Fullstendig øktoversikt",
+    "hideFullSchedule": "Skjul timeplan",
+    "viewFullSchedule": "Se alle økter",
+    "sessionsCount": "{{count}} økter",
+    "totalWorkload": "Omfang: {{hours}}t",
+    "pastBadge": "Gjennomført",
+    "pastEventsTitle": "Tidligere arrangementer (Historikk)",
+    "hidePastEvents": "Skjul tidligere arrangementer",
+    "showPastEvents": "Vis tidligere arrangementer ({{count}})",
+    "viewList": "Listevisning",
+    "viewCalendar": "Kalendervisning",
+    "today": "I dag",
+    "goToToday": "Gå til dagens dato",
+    "selectedDay": "Aktiviteter den {{date}}",
+    "noEventsOnDay": "Ingen aktiviteter planlagt for denne dagen.",
+    "exploreDayHint": "Velg en markert dato i kalenderen for å se detaljer om økten.",
     "viewInstructorProfile": "Se instruktørens profil",
     "confirmCancel": "Er du sikker på at du vil avbryte påmeldingen/ventelisten for dette arrangementet?",
     "cancelError": "Feil ved avbestilling: ",
@@ -1000,7 +1016,7 @@
       "filterNoEnrollments": "Uten Kurs",
       "sortRecent": "Nyeste Først",
       "sortName": "Alfabetisk (A-Å)",
-      "sortCourses": "Flest gjennomførte kurs",
+      "sortCourses": "Flest Kurs Gjennomført",
       "noResultsTitle": "Ingen brukere funnet",
       "noResultsHintSearch": "Prøv å justere søkeordene dine.",
       "noResultsHintGeneral": "Nye elever vil vises her etter hvert som de registrerer seg.",
@@ -1172,7 +1188,7 @@
   },
   "contactPage": {
     "kicker": "KONTAKT & SAMARBEID",
-    "title": "Ta kontakt",
+    "title": "Ta Kontakt",
     "subtitle": "Har du spørsmål om workshops, faste timer eller institusjonelle samarbeid? Ta direkte kontakt med oss.",
     "executiveTitle": "Planlegg Ledermøte",
     "executiveSubtitle": "Koble din organisasjon eller bedrift med Dance 2 Dance for sosiale prosjekter, bedriftsvelvære eller partnerskap.",
@@ -1362,7 +1378,7 @@
     "closing": "Mennesker som møtes med åpenhet skaper solide organisasjoner. Ved å tilby stunder med glede, letthet og ekte fellesskap viser bedriften respekt for nåtiden og trygger sin egen fremtid.",
     "cta": {
       "title": "Planlegg en opplevelse for ditt team",
-      "text": "Ta kontakt for å skreddersy et opplegg tilpasset din organisasjon.",
+      "text": "Ta kontakt for å skreddersy en samling tilpasset din organisasjon.",
       "button": "Snakk med teamet vårt"
     }
   },
@@ -1372,9 +1388,9 @@
     "rate2": "Bra",
     "rate3": "Veldig Bra",
     "rate4": "Utmerket",
-    "rate5": "Transformerende & Uforglemmelig",
+    "rate5": "Transformativt & Uforglemmelig",
     "ratingPrompt": "Hvordan vil du vurdere denne workshop-opplevelsen?",
-    "commentLabel": "Din Omtale / Opplevelse",
+    "commentLabel": "Din Uttalelse / Opplevelse",
     "commentPlaceholder": "Del hva du følte i kroppen, flyten i timen, fellesskapet i gruppen eller endringene du merket...",
     "commentHint": "Din erfaring hjelper nye deltakere å oppdage Dance 2 Dance.",
     "displayNameLabel": "Signatur på uttalelse:",
