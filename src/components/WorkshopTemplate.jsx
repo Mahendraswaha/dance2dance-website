@@ -49,6 +49,8 @@ export default function WorkshopTemplate({ workshop, program }) {
     visible: (i) => ({ opacity: 1, y: 0, transition: { delay: 0.1 + i * 0.06, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } })
   };
 
+  const levelKey = workshop.level === 'advanced_pro' ? 'workshop_info.advanced_pro' : 'workshop_info.all_levels';
+
   // Estado contextual da agenda do workshop (datas programadas e disponibilidade de vagas)
   const [agendaState, setAgendaState] = useState({ loaded: false, hasDates: false, hasSpots: false });
 
