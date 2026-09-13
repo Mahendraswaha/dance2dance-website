@@ -152,15 +152,34 @@ const HeroSequence = () => {
       // O bloco começa a desaparecer em fade mais cedo para acompanhar
       tl.to('.seq-block-rest', { opacity: 0, duration: 0.15, ease: 'power2.inOut' }, 0.50);
 
-      // 3. A última frase aparece no centro em cross-fade acompanhando a saída do bloco
+      // 3. A última frase surge e continua crescendo continuamente até o fim da seção (zoom cinematográfico)
+      // Fade in rápido da frase enquanto ela começa o movimento contínuo
       tl.fromTo('.seq-text-last', 
-        { opacity: 0, scale: 0.95 }, 
-        { opacity: 1, scale: 1, ease: 'power2.out', duration: 0.1 }, 
-        0.55 // <- Aparece um pouco antes também
+        { opacity: 0, y: 30 }, 
+        { opacity: 1, y: 0, duration: 0.1, ease: 'power2.out' }, 
+        0.55
       );
 
-      // Desaparece com a última frase no final, para deixar o palco limpo para o background iluminado
-      tl.to('.seq-text-last', { opacity: 0, scale: 1.05, duration: 0.15, ease: 'power2.in' }, 0.85);
+      // Crescimento e elevação contínuos ao longo de todo o percurso (de 0.55 até 1.0)
+      // O texto nunca fica estático: continua aumentando suavemente e flutuando para cima
+      tl.fromTo('.seq-text-last',
+        { scale: 0.95 },
+        { 
+          scale: 1.35, 
+          y: -40, 
+          ease: 'none', 
+          duration: 0.45 
+        },
+        0.55
+      );
+
+      // No trecho final (0.85 a 1.0), dissolve o texto suavemente com leve desfoque na luz
+      tl.to('.seq-text-last', { 
+        opacity: 0, 
+        filter: 'blur(10px)', 
+        duration: 0.15, 
+        ease: 'power2.in' 
+      }, 0.85);
       
       // Clareia o filtro escuro gradativamente a partir do meio da rolagem (0.4)
       tl.to('.dark-overlay', { opacity: 0, duration: 0.4, ease: 'power1.inOut' }, 0.4);
