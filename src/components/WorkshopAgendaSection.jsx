@@ -272,11 +272,11 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             <motion.div 
               key={event.id}
               layout
-              className="border rounded-[2px] p-6 md:p-8 flex flex-col items-stretch gap-6 bg-[#121214] border-[#1E1E24] hover:border-[#2A2A35] hover:bg-[#161619] transition-all duration-300"
+              className="border rounded-[2px] p-6 md:p-8 flex flex-col items-stretch gap-6 bg-[#151518] border-[#2A2A34] hover:border-[#3E3E4E] hover:bg-[#1A1A1E] shadow-[0_4px_24px_rgba(0,0,0,0.4)] transition-all duration-300"
             >
               <div className="flex flex-col md:flex-row items-center gap-8 w-full">
                 {/* Left Column: Dates & Schedule */}
-                <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#1A1A24] pb-6 md:pb-0 pr-6">
+                <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#242430] pb-6 md:pb-0 pr-6">
                   <div className="font-heading text-sm font-semibold uppercase tracking-wider mb-2 mt-1 flex flex-wrap items-center gap-2">
                     <span className={theme.textColor}>{dateStr}</span>
                     {isOngoing && (
