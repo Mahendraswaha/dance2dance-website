@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +49,29 @@ export default function WorkshopTemplate({ workshop, program }) {
     visible: (i) => ({ opacity: 1, y: 0, transition: { delay: 0.1 + i * 0.06, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } })
   };
 
-  const levelKey = workshop.level === 'advanced_pro' ? 'workshop_info.advanced_pro' : 'workshop_info.all_levels';
+  // Estado contextual da agenda do workshop (datas programadas e disponibilidade de vagas)
+  const [agendaState, setAgendaState] = useState({ loaded: false, hasDates: false, hasSpots: false });
+
+  const handleEventsLoaded = useCallback((matchingEvents) => {
+    if (!matchingEvents || matchingEvents.length === 0) {
+      setAgendaState({ loaded: true, hasDates: false, hasSpots: false });
+    } else {
+      const anySpotAvailable = matchingEvents.some(ev => (ev.enrolledCount || 0) < (ev.totalSpots || 0));
+      setAgendaState({ loaded: true, hasDates: true, hasSpots: anySpotAvailable });
+    }
+  }, []);
+
+  // Frase contextual:
+  // 1. Há data e vaga disponível: 'Inscreva-se agora e garanta sua vaga.'
+  // 2. Há data e não há vaga disponível: 'Inscreva-se na lista de espera.'
+  // 3. Não há data programada: 'Inscreva-se na lista de interesse para novas turmas.'
+  const contextualSubtitle = !agendaState.loaded
+    ? t('actions.ready_to_start_sub', 'Inscreva-se em uma das datas abaixo ou entre na lista de interesse para novas turmas.')
+    : agendaState.hasDates
+      ? (agendaState.hasSpots 
+          ? t('actions.ready_to_start_has_spots', 'Inscreva-se agora e garanta sua vaga.')
+          : t('actions.ready_to_start_waitlist', 'Inscreva-se na lista de espera.'))
+      : t('actions.ready_to_start_wishlist', 'Inscreva-se na lista de interesse para novas turmas.');
 
   return (
     <div className="pt-40 md:pt-52 pb-24 bg-primary min-h-screen font-sans text-background relative">
@@ -265,12 +287,16 @@ export default function WorkshopTemplate({ workshop, program }) {
             {t('actions.ready_to_start', 'Pronto para começar?')}
           </h3>
           <p className="font-heading font-light text-[#9A9A9A] text-xs md:text-sm leading-relaxed">
-            {t('actions.ready_to_start_sub', 'Inscreva-se em uma das datas abaixo ou entre na lista de interesse para novas turmas.')}
+            {contextualSubtitle}
           </p>
         </motion.div>
 
         {/* ─── WORKSHOP AGENDA / WISHLIST ───────── */}
-        <WorkshopAgendaSection program={program} workshop={workshop} />
+        <WorkshopAgendaSection 
+          program={program} 
+          workshop={workshop} 
+          onEventsLoaded={handleEventsLoaded}
+        />
 
         {/* ─── ACTION BUTTONS ─────────────────────── */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 mb-12">

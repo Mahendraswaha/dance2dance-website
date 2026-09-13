@@ -28,7 +28,7 @@ import {
 } from '../utils/eventHelpers';
 import WorkshopWishlist from './WorkshopWishlist';
 
-export default function WorkshopAgendaSection({ program, workshop }) {
+export default function WorkshopAgendaSection({ program, workshop, onEventsLoaded }) {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'pt';
   const { currentUser } = useAuth();
@@ -83,6 +83,12 @@ export default function WorkshopAgendaSection({ program, workshop }) {
       return false;
     });
   }, [events, workshopRoute, workshopSlug]);
+
+  useEffect(() => {
+    if (!loading && onEventsLoaded) {
+      onEventsLoaded(matchingUpcomingEvents);
+    }
+  }, [loading, matchingUpcomingEvents, onEventsLoaded]);
 
   const toggleSchedule = (eventId) => {
     setExpandedSchedules(prev => {
