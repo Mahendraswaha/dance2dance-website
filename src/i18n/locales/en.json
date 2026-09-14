@@ -1509,7 +1509,7 @@
     "badge": "Tøyen & Grønland • Community Access",
     "question": "Would you like to request a full scholarship for this workshop?",
     "description": "We noticed that your registered address is in {{neighborhood}}. Residents of Tøyen and Grønland are eligible for 100% full scholarships funded through our social sustainability model.",
-    "solidarityNote": "If you have the financial means to pay the standard tuition, your contribution helps keep this opportunity open for those who need it most.",
+    "solidarityNote": "If you have the financial means to pay the standard fee, your contribution helps keep this opportunity open for those who need it most.",
     "declineBtn": "No, I have the means to pay",
     "confirmBtn": "Yes, I request a full scholarship"
   }
