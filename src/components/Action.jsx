@@ -109,7 +109,7 @@ const Action = () => {
       }, 1000 / 15);
     };
 
-    // Loop fixo a 15fps — suave e consistente
+    // Loop fixo a 15fps: suave e consistente
     const interval = setInterval(() => {
       if (fadingRef.current) return;
 

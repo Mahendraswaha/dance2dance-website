@@ -38,7 +38,7 @@ const Navbar = () => {
             gsap.to(logoRef.current, { height: '2.5rem', duration: 0.3, ease: 'power2.out' });
           } else if (self.progress === 0) {
             gsap.to(navRef.current, { backgroundColor: 'transparent', borderColor: 'transparent', duration: 0.3, backdropFilter: 'blur(0px)' });
-            gsap.to(logoRef.current, { height: '4rem', duration: 0.3, ease: 'power2.out' });
+            gsap.to(logoRef.current, { height: '5rem', duration: 0.3, ease: 'power2.out' });
           }
         }
       });
@@ -50,10 +50,10 @@ const Navbar = () => {
         onUpdate: (self) => {
           if (self.direction === 1) {
             gsap.to(navRef.current, { backgroundColor: 'rgba(13, 13, 18, 0.8)', borderColor: '#2A2A35', duration: 0.3, backdropFilter: 'blur(16px)' });
-            gsap.to(logoRef.current, { height: '2rem', duration: 0.3, ease: 'power2.out' });
+            gsap.to(logoRef.current, { height: '2.25rem', duration: 0.3, ease: 'power2.out' });
           } else if (self.progress === 0) {
             gsap.to(navRef.current, { backgroundColor: 'transparent', borderColor: 'transparent', duration: 0.3, backdropFilter: 'blur(0px)' });
-            gsap.to(logoRef.current, { height: '2.5rem', duration: 0.3, ease: 'power2.out' });
+            gsap.to(logoRef.current, { height: '3rem', duration: 0.3, ease: 'power2.out' });
           }
         }
       });
@@ -81,7 +81,13 @@ const Navbar = () => {
             {/* Logo (Esquerda) */}
             <div className="flex items-center justify-start flex-1 z-20">
               <Link to="/">
-                <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-10 sm:h-12 lg:h-16 object-contain" />
+                <img 
+                  ref={logoRef} 
+                  src="/logo-dance2dance.png" 
+                  alt="Dance2Dance Logo" 
+                  className="h-12 lg:h-20 object-contain" 
+                  style={{ imageRendering: 'auto' }}
+                />
               </Link>
             </div>
 

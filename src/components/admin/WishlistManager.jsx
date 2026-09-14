@@ -535,7 +535,7 @@ export default function WishlistManager({ onScheduleWorkshop }) {
                           const cleanPhone = (student.userPhone || '').replace(/\D/g, '');
                           const dateFormatted = student.createdAt 
                             ? new Date(student.createdAt).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) 
-                            : '—';
+                            : '-';
 
                           return (
                             <div key={student.id} className="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">

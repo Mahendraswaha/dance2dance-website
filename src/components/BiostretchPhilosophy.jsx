@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * BIOSTRETCH — Direção A: "Camadas de Percepção"
+ * BIOSTRETCH - Direção A: "Camadas de Percepção"
  * 
  * Conceito: Descida vertical através de camadas. 
  * Começa na superfície do corpo e aprofunda pelo sutil.

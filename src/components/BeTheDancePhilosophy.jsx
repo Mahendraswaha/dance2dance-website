@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * BE THE DANCE — Direção B: "A Margem e o Centro"
+ * BE THE DANCE - Direcao B: "A Margem e o Centro"
  * 
  * Conceito: A tensão entre margem e centro da página como metáfora. 
  * As ideias começam na margem esquerda (fragmentos, provocações) e gradualmente migram 
