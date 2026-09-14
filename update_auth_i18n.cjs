@@ -109,7 +109,7 @@ const authTranslations = {
     phonePlaceholder: "+47 ...",
     addressLabel: "Adresse *",
     addressPlaceholder: "Gatenavn, husnummer",
-    neighborhoodLabel: "Nabolag / Bydel *",
+    neighborhoodLabel: "Nabolag *",
     neighborhoodPlaceholder: "Ditt nabolag",
     cityLabel: "By *",
     cityPlaceholder: "Din by",
@@ -589,3 +589,4 @@ export default function LoginPage() {
 
 fs.writeFileSync('src/pages/LoginPage.jsx', loginCode, 'utf8');
 console.log('LoginPage.jsx updated');
+

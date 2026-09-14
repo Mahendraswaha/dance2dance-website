@@ -1,4 +1,4 @@
-# 📋 STATUS & DIÁRIO DE BORDO — Dance2Dance Website
+# 📋 STATUS & DIÁRIO DE BORDO  -  Dance2Dance Website
 
 > **Instrução para a IA ao iniciar qualquer nova sessão:**  
 > Se o sistema foi reiniciado ou uma nova conversa foi aberta, leia este arquivo antes de qualquer ação. Ele contém o estado atualizado do projeto, evitando perda de contexto.
@@ -113,7 +113,7 @@
     * **Code Splitting nas Rotas (`App.jsx`):** Todas as páginas secundárias e administrativas (`AdminDashboard`, `AgendaPage`, `ProfilePage`, workshops, termos, etc.) foram convertidas para carregamento dinâmico sob demanda via `React.lazy()` com indicador de transição suave `<Suspense>`.
     * **Segmentação Inteligente de Chunks (`vite.config.js`):** Bibliotecas de terceiros pesadas divididas em módulos independentes (`vendor-react`, `vendor-ui`, `vendor-firebase`, `vendor-i18n`) com cache permanente pelo navegador.
     * **Resultados e Métricas:**
-      * Redução do bundle inicial da Home de 1.950 KB (540 KB gzip) para 415 KB (149 KB gzip) — **mais de 70% de alívio no download inicial**.
+      * Redução do bundle inicial da Home de 1.950 KB (540 KB gzip) para 415 KB (149 KB gzip)  -  **mais de 70% de alívio no download inicial**.
       * O `AdminDashboard` agora fica totalmente isolado em um chunk de 122 KB baixado apenas por quem acessa `/admin`.
       * **Performance Desktop saltou de 56 para 97 / 100** (LCP caiu de 5.6s para 1.1s).
       * **Tempo de bloqueio em Mobile (TBT) caiu de 440ms para 160ms** (redução de 63% na sobrecarga de processamento).
@@ -139,3 +139,11 @@ Localizados em `C:\Renas\Antigravity\` e na Área de Trabalho:
 * Subir as alterações pelo GitHub Desktop / git commit & push para publicação na Vercel.
 * Testar carregamento real no navegador / mobile.
 
+
+---
+
+## Diretrizes Criticas de Conteudo e Manutencao
+* **Sincronizacao de Traducoes:** Sempre que novos textos forem adicionados ou alterados, e obrigatorio atualizar simultaneamente o arquivo 	ranslations Dance2Dance Ultima versao.xlsx (alem dos arquivos JSON em src/i18n/locales/ e 	raducoes_revisao.csv).
+* **Bairros Elegiveis para Bolsa:** Estritamente apenas **Tøyen e Grønland**. Gamle Oslo foi descontinuado e nao deve ser reinserido.
+* **Rotulo de Bairro (Noruegues):** Utilizar Nabolag * (nunca Nabolag / Bydel *).
+* **Pontuacao:** Proibido o uso de m-dash (travessao longo). Utilizar apenas hifen (-) ou dois pontos (:).
