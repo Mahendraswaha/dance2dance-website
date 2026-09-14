@@ -46,6 +46,7 @@
       {
         "id": "be-the-dance-pro",
         "slug": "be-the-dance-pro",
+        "title": "Be the Dance Pro",
         "logo": "/logo-bethedance-pro.png",
         "titleKey": "programs.be-the-dance.workshops.btd_pro.title",
         "subtitleKey": "programs.be-the-dance.workshops.btd_pro.subtitle",
@@ -69,6 +70,7 @@
       {
         "id": "be-the-dance-day",
         "slug": "be-the-dance-day",
+        "title": "Be the Dance Day",
         "logo": "/logo-bethedance-DAY.png",
         "titleKey": "programs.be-the-dance.workshops.btd_day.title",
         "subtitleKey": "programs.be-the-dance.workshops.btd_day.subtitle",

@@ -24,6 +24,13 @@ export function getLocalizedEvent(event, lang = 'en') {
   }
   if (!title && event.title) title = event.title;
 
+  // Padronização rigorosa da grafia solicitada
+  if (/^be\s+the\s+dance\s+day$/i.test(title)) {
+    title = 'Be the Dance Day';
+  } else if (/^be\s+the\s+dance\s+pro$/i.test(title)) {
+    title = 'Be the Dance Pro';
+  }
+
   // 2. Resolve Schedule / Dates
   let scheduleDetails = '';
   for (const l of chain) {

@@ -21,8 +21,8 @@ const EVENT_PRESETS = {
       "Be Balance",
       "Be Total",
       "Be Stillness",
-      "Be The Dance PRO",
-      "Be The Dance DAY",
+      "Be the Dance Pro",
+      "Be the Dance Day",
       "Be the Dance: Bedrift"
     ],
     en: [
@@ -30,8 +30,8 @@ const EVENT_PRESETS = {
       "Be Balance",
       "Be Total",
       "Be Stillness",
-      "Be The Dance PRO",
-      "Be The Dance DAY",
+      "Be the Dance Pro",
+      "Be the Dance Day",
       "Be the Dance: Corporate"
     ],
     pt: [
@@ -39,8 +39,8 @@ const EVENT_PRESETS = {
       "Be Balance",
       "Be Total",
       "Be Stillness",
-      "Be The Dance PRO",
-      "Be The Dance DAY",
+      "Be the Dance Pro",
+      "Be the Dance Day",
       "Be the Dance: Corporate"
     ],
     routes: [
