@@ -25,6 +25,7 @@ const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 
 // Indicador discreto de transição entre páginas
@@ -45,6 +46,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/agenda" element={<AgendaPage />} />
+            <Route path="/valores" element={<PricingPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/priser" element={<PricingPage />} />
             <Route path="/social" element={<SocialPage />} />
             <Route path="/contato" element={<ContactPage />} />
             <Route path="/contact" element={<ContactPage />} />

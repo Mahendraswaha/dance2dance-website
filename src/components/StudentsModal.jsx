@@ -322,6 +322,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
       "#", 
       "Nome", 
       "Status", 
+      "Bolsa Solicitada",
       "Data de Nascimento", 
       "Idade", 
       "Email", 
@@ -343,6 +344,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
       "#", 
       "Nome", 
       "Status", 
+      "Bolsa Solicitada",
       "Data de Nascimento", 
       "Idade", 
       "Experiencia Previa", 
@@ -363,6 +365,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
           idx + 1,
           escapeCsv(e.userName || ''),
           escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+          escapeCsv(e.scholarshipRequested ? 'Sim (Bolsa 100%)' : 'Não'),
           escapeCsv(birthInfo?.formattedDate || e.userBirthDate || ''),
           birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
           escapeCsv(e.userExperience || 'Nenhuma'),
@@ -378,6 +381,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
         idx + 1,
         escapeCsv(e.userName || ''),
         escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+        escapeCsv(e.scholarshipRequested ? 'Sim (Bolsa 100%)' : 'Não'),
         escapeCsv(birthInfo?.formattedDate || e.userBirthDate || ''),
         birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
         escapeCsv(e.userEmail || ''),
@@ -697,9 +701,17 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
                         #{idx + 1}
                       </span>
                       <div>
-                        <h4 className="font-heading font-semibold text-[#F0EDE8] text-base">
-                          {student.userName || 'Aluno sem nome'}
-                        </h4>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h4 className="font-heading font-semibold text-[#F0EDE8] text-base">
+                            {student.userName || 'Aluno sem nome'}
+                          </h4>
+                          {student.scholarshipRequested && (
+                            <span className="text-[9px] font-heading uppercase tracking-wider font-bold px-2 py-0.5 rounded-[2px] border bg-accent/15 text-accent border-accent/40 inline-flex items-center gap-1" title="Bolsa Integral 100% Solicitada (Tøyen / Grønland)">
+                              <Sparkles className="w-3 h-3 text-accent" />
+                              <span>Bolsa 100%</span>
+                            </span>
+                          )}
+                        </div>
                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-xs text-[#9A9A9A] font-heading">
                           {!isInstructorUser && student.userEmail && (
                             <span className="flex items-center gap-1">
@@ -849,7 +861,14 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 self-end sm:self-center">
+                      <div className="flex items-center gap-2 self-end sm:self-center flex-wrap">
+                        {student.scholarshipRequested && (
+                          <span className="text-[10px] font-heading uppercase tracking-wider font-bold px-2.5 py-1 rounded-[2px] border bg-accent/15 text-accent border-accent/40 inline-flex items-center gap-1" title="Bolsa Integral 100% Solicitada (Tøyen / Grønland)">
+                            <Sparkles className="w-3 h-3 text-accent" />
+                            <span>Bolsa 100%</span>
+                          </span>
+                        )}
+
                         <span className={`text-[10px] font-heading uppercase tracking-wider font-bold px-2.5 py-1 rounded-[2px] border ${
                           student.status === 'enrolled'
                             ? 'bg-emerald-950/30 text-emerald-400 border-emerald-800/30'

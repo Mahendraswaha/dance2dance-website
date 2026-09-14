@@ -947,17 +947,17 @@
     "selectedDay": "Atividades em {{date}}",
     "noEventsOnDay": "Nenhuma atividade programada para este dia.",
     "exploreDayHint": "Selecione uma data marcada no calendário para ver os detalhes da sessão.",
-    "pastEventsTitle": "Eventos Anteriores (Histórico)",
+    "pastEventsTitle": "Eventos Realizados (Histórico)",
     "showPastEvents": "Exibir eventos anteriores ({{count}})",
     "hidePastEvents": "Ocultar eventos anteriores",
     "pastBadge": "Realizado",
     "sessionsCount": "{{count}} encontros",
-    "totalWorkload": "Carga horária: {{hours}}h",
+    "totalWorkload": "Carga: {{hours}}h",
     "viewProgram": "Ver Programa",
-    "viewFullSchedule": "Ver Todos os Encontros ({{count}})",
-    "hideFullSchedule": "Ocultar Encontros",
+    "viewFullSchedule": "Ver todos os encontros",
+    "hideFullSchedule": "Ocultar Cronograma",
     "scheduleBreakdown": "Cronograma Completo das Sessões",
-    "goToToday": "Ir para Hoje",
+    "goToToday": "Ir para a data atual",
     "comingSoon": "Em breve",
     "tbd": "Horários a definir",
     "enrolled": "Inscrito",
@@ -973,22 +973,6 @@
     "addSessionToCalendar": "Adicionar Encontro ao Calendário",
     "downloadIcs": "Baixar arquivo (.ics) de todos os encontros",
     "downloadIcsShort": "Exportar (.ics)",
-    "scheduleBreakdown": "Cronograma Completo das Sessões",
-    "hideFullSchedule": "Ocultar Cronograma",
-    "viewFullSchedule": "Ver todos os encontros",
-    "sessionsCount": "{{count}} encontros",
-    "totalWorkload": "Carga: {{hours}}h",
-    "pastBadge": "Realizado",
-    "pastEventsTitle": "Eventos Realizados (Histórico)",
-    "hidePastEvents": "Ocultar eventos anteriores",
-    "showPastEvents": "Exibir eventos anteriores ({{count}})",
-    "viewList": "Modo Lista",
-    "viewCalendar": "Modo Calendário",
-    "today": "Hoje",
-    "goToToday": "Ir para a data atual",
-    "selectedDay": "Atividades em {{date}}",
-    "noEventsOnDay": "Nenhuma atividade programada para este dia.",
-    "exploreDayHint": "Selecione uma data marcada no calendário para ver os detalhes da sessão.",
     "viewInstructorProfile": "Ver perfil do instrutor",
     "confirmCancel": "Tem certeza que deseja cancelar sua inscrição/espera para este evento?",
     "cancelError": "Erro ao cancelar: ",
@@ -1457,5 +1441,79 @@
     "copyLink": "Copiar Link do Workshop",
     "linkCopied": "Link copiado!",
     "whatsappMessage": "Oi! Quero participar do workshop \"{{title}}\" na Dance2Dance em Oslo. Quando 10 pessoas demonstrarem interesse, eles abrem uma nova turma! Dá uma olhada e clica em 'Tenho Interesse' pra gente fazer juntos: {{url}}"
+  },
+  "pricingPage": {
+    "seoTitle": "Valores & Acesso",
+    "seoDesc": "Transparência financeira e acesso comunitário. Conheça nossos valores por workshop e o programa de bolsas integrais para Tøyen e Grønland.",
+    "hero": {
+      "kicker": "Organização Social Sem Fins Lucrativos",
+      "title": "Valores & Acesso",
+      "subtitle": "O Dance2Dance é uma organização social sem fins lucrativos sediada em Oslo. Nossos valores são estruturados em um modelo de solidariedade: a receita gerada por quem pode investir viabiliza o acesso integral e gratuito para a comunidade local."
+    },
+    "payerCard": {
+      "kicker": "Desenvolvimento Pessoal & Solidariedade",
+      "title": "Valores Justos de Mercado",
+      "subtitle": "Para quem participa investindo",
+      "item1Title": "Saúde e Expressão",
+      "item1Desc": "Investimento direto em bem-estar físico e mental, criatividade e desenvolvimento artístico com orientação profissional de excelência.",
+      "item2Title": "Conexões Reais",
+      "item2Desc": "Encontros humanos autênticos em um espaço acolhedor, com a oportunidade de explorar novas vocações e potenciais.",
+      "item3Title": "Impacto Social Coletivo",
+      "item3Desc": "Para quem tem condições financeiras, a taxa de inscrição reflete um valor justo de mercado. Esse valor cobre a infraestrutura de alto nível e co-financia diretamente as bolsas comunitárias."
+    },
+    "communityCard": {
+      "kicker": "Impacto Local & Equidade",
+      "title": "Bolsas Integrais de 100%",
+      "subtitle": "Para quem participa por bolsa",
+      "item1Title": "Gratuidade Total",
+      "item1Desc": "Moradores de Tøyen e Grønland têm acesso gratuito a qualquer uma de nossas atividades abertas por meio de bolsas integrais.",
+      "item2Title": "A Mesma Excelência",
+      "item2Desc": "O mesmo estúdio, os mesmos instrutores e o mesmo rigor técnico. Sem distinções, rótulos ou concessões.",
+      "item3Title": "Direito à Cultura",
+      "item3Desc": "Uma porta aberta para a prática corporal e o desenvolvimento artístico no coração do próprio bairro."
+    },
+    "manifesto": {
+      "quote": "Acreditamos na transparência absoluta. Quem investe financeiramente sabe com clareza o valor do que recebe e o impacto social do seu recurso. E quem ingressa por bolsa integral tem assegurado um ambiente de respeito mútuo e dignidade.",
+      "subtext": "A receita própria de workshops é apenas o primeiro dos quatro pilares de sustentabilidade do Dance2Dance.",
+      "linkText": "Conheça nosso ecossistema financeiro completo no Projeto Social"
+    },
+    "rates": {
+      "kicker": "Transparência Objetiva",
+      "title": "Workshops & Formações",
+      "subtitle": "Informações diretas sobre carga horária e valores de participação.",
+      "allFilter": "Todos",
+      "hoursUnit": "horas",
+      "spotsInfo": "Vagas limitadas por turma",
+      "viewScheduleBtn": "Ver Datas na Agenda",
+      "viewDetailsBtn": "Ver Detalhes",
+      "includedTitle": "O que está incluído:",
+      "includedDesc": "Acesso às sessões presenciais, acompanhamento individual e materiais de apoio."
+    },
+    "scholarshipCallout": {
+      "badge": "Acesso Comunitário",
+      "title": "Mora em Tøyen ou Grønland?",
+      "description": "Se você reside na nossa área de impacto prioritário, solicite sua bolsa de estudos integral de 100% sem custos no momento da inscrição.",
+      "btn": "Ver Próximos Workshops na Agenda",
+      "contactBtn": "Falar Conosco Sobre Bolsas"
+    },
+    "corporateCard": {
+      "kicker": "Parcerias & Organizações",
+      "title": "In Company e Programas Corporativos",
+      "description": "Desenvolvemos workshops customizados de ergonomia, consciência corporal e saúde mental para empresas e equipes. Valores sob medida de acordo com o escopo.",
+      "btn": "Solicitar Proposta Corporativa"
+    },
+    "finalCta": {
+      "title": "Dance2Dance oferece cursos originais e exclusivos.",
+      "subtitle": "Descubra a programação completa dos nossos próximos encontros e garanta o seu lugar.",
+      "btn": "Ver agenda completa"
+    }
+  },
+  "scholarshipModal": {
+    "badge": "Tøyen & Grønland • Acesso Comunitário",
+    "question": "Você deseja solicitar bolsa integral para esse workshop?",
+    "description": "Identificamos que seu endereço registrado é em {{neighborhood}}. Moradores de Tøyen e Grønland têm direito a bolsas de 100% financiadas pelo nosso ecossistema social de sustentabilidade.",
+    "solidarityNote": "Se você tem condições financeiras de investir no valor da vaga, sua taxa ajuda a manter essa oportunidade aberta para quem mais precisa.",
+    "declineBtn": "Não, tenho condições de pagar",
+    "confirmBtn": "Sim, solicito bolsa integral"
   }
 }

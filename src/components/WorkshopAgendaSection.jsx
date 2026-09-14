@@ -27,6 +27,8 @@ import {
   getWeekdayAbbrev 
 } from '../utils/eventHelpers';
 import WorkshopWishlist from './WorkshopWishlist';
+import ScholarshipModal from './ScholarshipModal';
+import { isScholarshipEligibleNeighborhood } from '../utils/neighborhoodHelpers';
 
 export default function WorkshopAgendaSection({ program, workshop, onEventsLoaded }) {
   const { t, i18n } = useTranslation();
@@ -40,6 +42,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
   const [actionLoading, setActionLoading] = useState(null);
   const [expandedSchedules, setExpandedSchedules] = useState({});
   const scheduleRefs = useRef({});
+
+  // Modal de Solicitação de Bolsa Comunitária (Tøyen / Grønland)
+  const [scholarshipModalOpen, setScholarshipModalOpen] = useState(false);
+  const [pendingEnrollment, setPendingEnrollment] = useState(null);
 
   const workshopSlug = workshop?.slug || workshop?.id;
   const workshopRoute = `/${program?.id}/${workshopSlug}`;
@@ -108,15 +114,32 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
     });
   };
 
-  async function handleEnroll(eventId, isFull) {
+  async function handleEnroll(eventId, isFull, scholarshipDecision = null) {
     try {
       if (!currentUser) {
         navigate('/login', { state: { from: window.location.pathname } });
         return;
       }
 
+      const userNeighborhood = currentUser.profile?.neighborhood || currentUser.profile?.bairro || '';
+
+      // Se o usuário reside em Tøyen ou Grønland e ainda não decidiu sobre a bolsa:
+      if (scholarshipDecision === null && isScholarshipEligibleNeighborhood(userNeighborhood)) {
+        const ev = events.find(e => e.id === eventId);
+        const { title: evTitle } = ev ? getLocalizedEvent(ev, currentLang) : { title: '' };
+        setPendingEnrollment({
+          eventId,
+          isFull,
+          workshopTitle: evTitle,
+          neighborhood: userNeighborhood
+        });
+        setScholarshipModalOpen(true);
+        return;
+      }
+
       setActionLoading(eventId);
       
+      const isScholarship = scholarshipDecision === true;
       const eventRef = doc(db, 'events', eventId);
       const newEnrollmentRef = doc(collection(db, 'enrollments'));
 
@@ -143,13 +166,16 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
           userPhone: currentUser.profile?.phone || currentUser.profile?.telefone || '',
           userBirthDate: currentUser.profile?.birthDate || '',
           userAddress: currentUser.profile?.address || currentUser.profile?.endereco || '',
-          userNeighborhood: currentUser.profile?.neighborhood || '',
+          userNeighborhood: userNeighborhood,
           userCity: currentUser.profile?.city || '',
           userZip: currentUser.profile?.zip || currentUser.profile?.cep || '',
           userCountry: currentUser.profile?.country || '',
           userExperience: currentUser.profile?.experiencia || '',
           userRestrictions: currentUser.profile?.restricoes || '',
           status: finalStatus,
+          scholarshipRequested: isScholarship,
+          scholarshipStatus: isScholarship ? 'requested' : 'none',
+          scholarshipNeighborhood: isScholarship ? userNeighborhood : '',
           createdAt: new Date().toISOString()
         });
       });
@@ -168,7 +194,21 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
       alert("ERRO: " + err.message);
     } finally {
       setActionLoading(null);
+      setScholarshipModalOpen(false);
+      setPendingEnrollment(null);
     }
+  }
+
+  function handleConfirmScholarship() {
+    if (!pendingEnrollment) return;
+    const { eventId, isFull } = pendingEnrollment;
+    handleEnroll(eventId, isFull, true);
+  }
+
+  function handleDeclineScholarship() {
+    if (!pendingEnrollment) return;
+    const { eventId, isFull } = pendingEnrollment;
+    handleEnroll(eventId, isFull, false);
   }
 
   async function handleCancelEnrollment(eventId) {
@@ -546,6 +586,17 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
           );
         })}
       </div>
+
+      {/* Modal Inteligente de Solicitação de Bolsa (Tøyen / Grønland) */}
+      <ScholarshipModal
+        isOpen={scholarshipModalOpen}
+        onClose={() => { setScholarshipModalOpen(false); setPendingEnrollment(null); }}
+        onConfirmScholarship={handleConfirmScholarship}
+        onDeclineScholarship={handleDeclineScholarship}
+        workshopTitle={pendingEnrollment?.workshopTitle || ''}
+        neighborhood={pendingEnrollment?.neighborhood || ''}
+        loading={actionLoading !== null}
+      />
     </motion.section>
   );
 }
