@@ -104,39 +104,39 @@
       "kicker": "Sosialt Prosjekt",
       "title_line1": "Kunst som",
       "title_line2": "tilhører alle.",
-      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Gamle Oslo — båret av flere finansieringskilder.",
+      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Tøyen og Grønland  -  båret av flere finansieringskilder.",
       "scroll": "Rull ned for å utforske"
     },
     "context": {
       "kicker": "Forslaget",
-      "title": "Hvorfor Gamle Oslo?",
-      "p1": "Gamle Oslo er et nabolag fylt av kontraster — mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne virkeligheten som kaller oss til handling.",
-      "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvære ikke skal være et privilegium for dem som kan betale. Hver workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon — uavhengig av hvem som er i rommet.",
+      "title": "Hvorfor Tøyen og Grønland?",
+      "p1": "Tøyen og Grønland er et nabolag fylt av kontraster  -  mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne virkeligheten som kaller oss til handling.",
+      "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvære ikke skal være et privilegium for dem som kan betale. Hver workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon  -  uavhengig av hvem som er i rommet.",
       "quote": "Samme produkt. Samme kvalitet. Samme verdi. For alle."
     },
     "value": {
       "kicker": "Verdien av det vi tilbyr",
       "title": "Gratis betyr ikke uten verdi.",
-      "subtitle": "De som mottar det gratis, mottar nøyaktig det samme som de som betaler. Vi gjør den reelle prisen synlig fordi opplevd verdi betyr noe — både for støttespillere og deltakere.",
+      "subtitle": "De som mottar det gratis, mottar nøyaktig det samme som de som betaler. Vi gjør den reelle prisen synlig fordi opplevd verdi betyr noe  -  både for støttespillere og deltakere.",
       "paid": {
         "label": "Eksterne deltakere",
         "price": "[XXX] NOK",
-        "desc": "Beboere utenfor Gamle Oslo deltar til vanlig pris, med tilgang til den samme premium-opplevelsen."
+        "desc": "Beboere utenfor Tøyen og Grønland deltar til vanlig pris, med tilgang til den samme premium-opplevelsen."
       },
       "free": {
-        "label": "Beboere i Gamle Oslo",
+        "label": "Beboere i Tøyen og Grønland",
         "price": "Gratis",
         "desc": "Lokale beboere har garantert, gratis tilgang til alle workshops. Ingen ventelister, ingen skiller, ingen lavere kvalitet."
       },
-      "insight": "“Gratis tilgang med pristransparens skaper verdighet. Personen mottar ikke veldedighet — de mottar muligheten til å være en del av noe med ekte verdi.”"
+      "insight": "“Gratis tilgang med pristransparens skaper verdighet. Personen mottar ikke veldedighet  -  de mottar muligheten til å være en del av noe med ekte verdi.”"
     },
     "model": {
       "kicker": "Hvordan vi finansierer oss",
       "title": "Et økosystem av støtte.",
-      "intro": "Dance2Dance er designet for å ikke stole på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer — hver enkelt essensiell, ingen tilstrekkelig alene.",
+      "intro": "Dance2Dance er designet for å ikke stole på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer  -  hver enkelt essensiell, ingen tilstrekkelig alene.",
       "pillar1": {
         "title": "Betalende deltakere",
-        "desc": "De som kommer fra utenfor Gamle Oslo betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
+        "desc": "De som kommer fra utenfor Tøyen og Grønland betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
       },
       "pillar2": {
         "title": "Bedrifter og sponsorer",
@@ -161,7 +161,7 @@
     "cta": {
       "kicker": "Bli med oss",
       "title": "Støtt det som ennå er i ferd med å bli til.",
-      "desc": "Fond, bedrifter og partnere som kommer nå er en del av grunnlaget — og historien — til dette prosjektet. Ta kontakt og finn ut hvordan du kan være en del av det.",
+      "desc": "Fond, bedrifter og partnere som kommer nå er en del av grunnlaget  -  og historien  -  til dette prosjektet. Ta kontakt og finn ut hvordan du kan være en del av det.",
       "btn1": "Jeg vil bli partner",
       "btn2": "Snakk med teamet"
     }
@@ -399,7 +399,7 @@
       },
       "c2": {
         "title": "Under overflaten avsløres mønstre.",
-        "desc": "Automatiske bevegelsesvaner — som aldri ble valgt — blir synlige for første gang."
+        "desc": "Automatiske bevegelsesvaner  -  som aldri ble valgt  -  blir synlige for første gang."
       },
       "c3": {
         "title": "Dypere nede endres rytmen.",

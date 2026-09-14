@@ -25,17 +25,13 @@ export function isScholarshipEligibleNeighborhood(neighborhood) {
     rawLower.includes('grønland') || 
     normalized.includes('gronland');
 
-  // Moradores de Gamle Oslo (bydel oficial que abrange Toyen e Gronland)
-  const matchesGamleOslo = 
-    rawLower.includes('gamle oslo') || 
-    normalized.includes('gamle oslo');
-
-  return matchesToyen || matchesGronland || matchesGamleOslo;
+  return matchesToyen || matchesGronland;
 }
 
 /**
  * Inspeciona todos os campos cadastrais relevantes do usuario
  * (bairro, endereco, cidade) para determinar elegibilidade a bolsa integral.
+ * Apenas residentes de Toyen e Gronland sao elegiveis.
  */
 export function checkUserScholarshipEligibility(userProfile) {
   if (!userProfile) return { isEligible: false, neighborhood: '' };
@@ -43,7 +39,6 @@ export function checkUserScholarshipEligibility(userProfile) {
   const candidateFields = [
     userProfile.neighborhood,
     userProfile.bairro,
-    userProfile.bydel,
     userProfile.address,
     userProfile.endereco,
     userProfile.city,
@@ -52,7 +47,7 @@ export function checkUserScholarshipEligibility(userProfile) {
 
   for (const val of candidateFields) {
     if (isScholarshipEligibleNeighborhood(val)) {
-      const displayNeighborhood = userProfile.neighborhood || userProfile.bairro || userProfile.bydel || 'Tøyen / Grønland';
+      const displayNeighborhood = userProfile.neighborhood || userProfile.bairro || 'Tøyen / Grønland';
       return { isEligible: true, neighborhood: displayNeighborhood };
     }
   }

@@ -53,7 +53,7 @@ const Navbar = () => {
             gsap.to(logoRef.current, { height: '2rem', duration: 0.3, ease: 'power2.out' });
           } else if (self.progress === 0) {
             gsap.to(navRef.current, { backgroundColor: 'transparent', borderColor: 'transparent', duration: 0.3, backdropFilter: 'blur(0px)' });
-            gsap.to(logoRef.current, { height: '2.5rem', duration: 0.3, ease: 'power2.out' });
+            gsap.to(logoRef.current, { height: '3rem', duration: 0.3, ease: 'power2.out' });
           }
         }
       });
@@ -81,7 +81,14 @@ const Navbar = () => {
             {/* Logo (Esquerda) */}
             <div className="flex items-center justify-start flex-1 z-20">
               <Link to="/">
-                <img ref={logoRef} src="/logo-dance2dance.png" alt="Dance2Dance Logo" className="h-12 md:h-20 object-contain" />
+                <img 
+                  ref={logoRef} 
+                  src="/logo-dance2dance.png" 
+                  srcSet="/logo-dance2dance-250.png 250w, /logo-dance2dance-500.png 500w, /logo-dance2dance.png 985w"
+                  sizes="(max-width: 768px) 100px, 200px"
+                  alt="Dance2Dance Logo" 
+                  className="h-12 md:h-20 object-contain" 
+                />
               </Link>
             </div>
 
@@ -201,7 +208,13 @@ const Navbar = () => {
         {/* Header do Menu */}
         <div className="flex items-center justify-between px-8 py-8 border-b border-white/5">
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/logo-dance2dance.png" alt="Dance2Dance" className="h-8 object-contain" />
+            <img 
+              src="/logo-dance2dance.png" 
+              srcSet="/logo-dance2dance-250.png 250w, /logo-dance2dance-500.png 500w, /logo-dance2dance.png 985w"
+              sizes="80px"
+              alt="Dance2Dance" 
+              className="h-8 object-contain" 
+            />
           </Link>
           <button 
             onClick={() => setIsMobileMenuOpen(false)}

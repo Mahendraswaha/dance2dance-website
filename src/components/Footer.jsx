@@ -26,6 +26,8 @@ const Footer = () => {
               >
                 <img 
                   src="/logo-dance2dance.png" 
+                  srcSet="/logo-dance2dance-250.png 250w, /logo-dance2dance-500.png 500w, /logo-dance2dance.png 985w"
+                  sizes="(max-width: 768px) 100px, 170px"
                   alt="Dance2Dance Logo" 
                   className="h-10 md:h-16 object-contain" 
                 />

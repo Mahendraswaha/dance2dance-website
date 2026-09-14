@@ -105,13 +105,13 @@
       "kicker": "Sosialt Prosjekt",
       "title_line1": "Kunst som",
       "title_line2": "tilhører alle.",
-      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Gamle Oslo - båret av flere finansieringskilder.",
+      "subtitle": "En modell for universell tilgang til kultur og bevegelse. Premium workshops, gratis for beboere i Tøyen og Grønland - båret av flere finansieringskilder.",
       "scroll": "Rull ned for å utforske"
     },
     "context": {
       "kicker": "Forslaget",
-      "title": "Hvorfor Gamle Oslo?",
-      "p1": "Gamle Oslo er et nabolag fylt av kontraster - mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne virkeligheten som kaller oss til handling.",
+      "title": "Hvorfor Tøyen og Grønland?",
+      "p1": "Tøyen og Grønland er nabolag fylt av kontraster - mangfold, historie og kulturell rikdom eksisterer side om side med ulikhet i tilgang til kvalitetstjenester og aktiviteter. Det er nettopp denne virkeligheten som kaller oss til handling.",
       "p2": "Dance2Dance fødes i dette territoriet med et tydelig oppdrag: at dans, kroppsuttrykk og velvære ikke skal være et privilegium for dem som kan betale. Hver workshop vi utvikler har samme kvalitet, samme omsorg og samme intensjon - uavhengig av hvem som er i rommet.",
       "quote": "Samme produkt. Samme kvalitet. Samme verdi. For alle."
     },
@@ -122,10 +122,10 @@
       "paid": {
         "label": "Eksterne deltakere",
         "price": "[XXX] NOK",
-        "desc": "Beboere utenfor Gamle Oslo deltar til vanlig pris, med tilgang til den samme premium-opplevelsen."
+        "desc": "Beboere utenfor Tøyen og Grønland deltar til vanlig pris, med tilgang til den samme premium-opplevelsen."
       },
       "free": {
-        "label": "Beboere i Gamle Oslo",
+        "label": "Beboere i Tøyen og Grønland",
         "price": "Gratis",
         "desc": "Lokale beboere har garantert, gratis tilgang til alle workshops. Ingen ventelister, ingen skiller, ingen lavere kvalitet."
       },
@@ -137,7 +137,7 @@
       "intro": "Dance2Dance er designet for å ikke stole på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer - hver enkelt essensiell, ingen tilstrekkelig alene.",
       "pillar1": {
         "title": "Betalende deltakere",
-        "desc": "De som kommer fra utenfor Gamle Oslo betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
+        "desc": "De som kommer fra utenfor Tøyen og Grønland betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
       },
       "pillar2": {
         "title": "Bedrifter og sponsorer",
