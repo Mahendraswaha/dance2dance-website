@@ -241,7 +241,56 @@
       "title": "Be the Dance",
       "subtitle": "Discover the dance that exists within you.",
       "description": "Philosophy and concept of Be the Dance...",
-      "philosophy": "[{'title': 'BE THE DANCE', 'content': ['is a program consisting of four dance workshops.', 'It was designed for you to explore movement as a path to presence, expression, and self-discovery, awakening something essential and unique that already exists within you: your very own dance.']}, {'title': 'BE THE DANCE IS FOR EVERYONE', 'content': ['Dance can be born in the body of anyone who allows themselves to move.', 'There are no prerequisites.', 'You just need to feel and allow the movement to express itself.', 'At any age or physical condition, it is possible to discover your own way of dancing.']}, {'title': 'WHERE IS THE DANCE?', 'content': ['It is not restricted to a technique, a predefined style, or a special talent.', 'It exists in everyone, as an inherent creativity ready to take shape through the body.']}, {'title': 'HOW DOES DANCE HAPPEN?', 'content': [\"Dance has accompanied us for millennia, as ritual, celebration, and artistic expression. Even if you don't remember, there is a memory of movement in the body, an ability to feel, create, and dance.\", 'By creating a sensitive dialogue between music and body, we open up the possibility of exploring new paths of movement. Going beyond the known allows new forms of expression to emerge.', 'Dance happens beyond control and the search for an ideal form. When we allow ourselves to be present, a more authentic and unique expression can emerge from the body.']}, {'title': 'WHAT ARE THE BENEFITS?', 'content': ['• Promotes deep relaxation and contributes to stress reduction.', '• Increases energy, physical readiness, and the fluidity of movements.', '• Recognizes natural movements and expands body awareness, creating space for a more authentic expression.', '• Develops attention, awakening the senses and deepening presence.', '• Explores the relationship between breath and movement, discovering new ways to dance with more freedom.', '• Expands perception by recognizing the different parts of the body and the relationships between them.']}, {'title': 'BE THE DANCE', 'content': ['Workshops that integrate movement awareness with dance and meditation practices, so you can discover and express the dance that already exists within you.']}]",
+      "philosophy": [
+        {
+          "title": "BE THE DANCE",
+          "content": [
+            "is a program consisting of four dance workshops.",
+            "It was designed for you to explore movement as a path to presence, expression, and self-discovery, awakening something essential and unique that already exists within you: your very own dance."
+          ]
+        },
+        {
+          "title": "BE THE DANCE IS FOR EVERYONE",
+          "content": [
+            "Dance can be born in the body of anyone who allows themselves to move.",
+            "There are no prerequisites.",
+            "You just need to feel and allow the movement to express itself.",
+            "At any age or physical condition, it is possible to discover your own way of dancing."
+          ]
+        },
+        {
+          "title": "WHERE IS THE DANCE?",
+          "content": [
+            "It is not restricted to a technique, a predefined style, or a special talent.",
+            "It exists in everyone, as an inherent creativity ready to take shape through the body."
+          ]
+        },
+        {
+          "title": "HOW DOES DANCE HAPPEN?",
+          "content": [
+            "Dance has accompanied us for millennia, as ritual, celebration, and artistic expression. Even if you don't remember, there is a memory of movement in the body, an ability to feel, create, and dance.",
+            "By creating a sensitive dialogue between music and body, we open up the possibility of exploring new paths of movement. Going beyond the known allows new forms of expression to emerge.",
+            "Dance happens beyond control and the search for an ideal form. When we allow ourselves to be present, a more authentic and unique expression can emerge from the body."
+          ]
+        },
+        {
+          "title": "WHAT ARE THE BENEFITS?",
+          "content": [
+            "• Promotes deep relaxation and contributes to stress reduction.",
+            "• Increases energy, physical readiness, and the fluidity of movements.",
+            "• Recognizes natural movements and expands body awareness, creating space for a more authentic expression.",
+            "• Develops attention, awakening the senses and deepening presence.",
+            "• Explores the relationship between breath and movement, discovering new ways to dance with more freedom.",
+            "• Expands perception by recognizing the different parts of the body and the relationships between them."
+          ]
+        },
+        {
+          "title": "BE THE DANCE",
+          "content": [
+            "Workshops that integrate movement awareness with dance and meditation practices, so you can discover and express the dance that already exists within you."
+          ]
+        }
+      ],
       "workshops": {
         "be-water": {
           "title": "Be Water",
@@ -286,7 +335,36 @@
       },
       "origin": {
         "title": "The Origin of Be The Dance",
-        "paragraphs": "['My history with dance started early. At seven years old, between barres, mirrors, precise positions, and rigorous discipline, I entered a ballet school. It was a universe of rules, codified movements, repetition, and demands. The body had to obey. The search for the perfect movement.', '[SILVER]And yet, I fell in love.', 'Dance took me far. As a classical ballerina, I traveled to different parts of the world to refine my technique, drink from different sources, and get closer to that idea of perfection that ballet teaches us to pursue.', 'But, at some point, something began to change. My body was tired. And inside me, a growing desire to express dance in other ways was born. That was when I found modern dance.', 'There, other doors opened. I discovered freer, more natural, and organic movements. I discovered that the body could also create, improvise, investigate. That an emotion could transform a gesture. That not every movement needed to be beautiful, precise, correct, or planned. And I began to realize that perhaps dance could be much more than technique.', \"Throughout this journey, one phrase kept coming up repeatedly: “I would love to dance… but I don't want to be a dancer.” People who didn't want to go on stage or audition. Who didn't want to spend years inside a dance school. People who simply felt the urge to dance, but believed dance belonged to a place they had no access to.\", '[SILVER]That stayed with me.', 'Years later, when I was already directing my own dance company, I created, along with choreographer Mark Sieczkarek, an event in a park, open to everyone. And then something very simple and, at the same time, transformative happened.', '[GOLD]People started to dance.', 'People who might never have imagined doing so in public were there, moving their bodies, meeting others, laughing, playing, experimenting. Dance stepped off the stage and came alive.', \"It was there that I understood, in a very concrete way, how much dance can bring people together, create encounters, and awaken joy. It didn't need to be confined to a classroom, a company, or a stage. Dance could happen anywhere there was a body willing to move.\", 'Then the pandemic came. The world stopped. Doors closed. We were isolated in our homes, separated from each other, and, in a way, from our own bodies.', 'It was in this silence that Be The Dance began to emerge. The inspiration came from a documentary about Bruce Lee and an idea that struck me: Be Water.', '[SILVER]To be water. To move. To adapt. To flow. To find paths.', 'And I thought: what if we could do the same with dance? Thus the idea of a series of workshops for people who are not dancers was born. Not to teach steps. Not to prepare anyone for a stage. Not to turn anyone into a professional. But to dance, play, explore, and discover.', '[GOLD]To discover what moves us. To discover how we move.', 'To discover what happens when we stop trying to control the body and start listening to it. And above all, to discover where the dance is in each of us.', 'Because I believe dance is not a privilege of those born flexible, those who started at age four, or those who learned to count in eights. Dance is in our genes. It is in the impulse to sway when we hear music. In the body that moves when we are happy. In the spontaneous gesture. In the breath. In the rhythm. In the desire to celebrate, to seduce, to play, and to be free. Perhaps we all have the dance inside us and it just needs a spark to emerge.', 'By that time, I had been practicing meditation for a few years, and my relationship with dance had profoundly transformed. Aesthetics and technique still had their place, but they were no longer enough.', '[SILVER]I began to see the body as a vessel.', 'A place of listening. A landscape of discovery. An instrument through which we can push past our own boundaries and find a form of expression that is unique, personal, and genuine. That is how Be The Dance began to take shape.', 'But I soon realized that this investigation could also be profoundly transformative for professional dancers. Because I know this journey intimately. I know how a dancer can dedicate years to perfecting their technique. The correct position. The highest jump. The perfect line. Absolute control of the body.', 'But who teaches us to be present? Who teaches us to find our own movement within a choreography? Who talks about charisma, presence, authenticity? Who shows us ways to know the body beyond its appearance? Who helps us discover who we are when we dance?', 'Be The Dance is born precisely from this place. Between technique and freedom, body and emotion, movement and presence. Between what we learn and what already exists inside us.', \"It is an invitation to experiment and let the body think, feel, and speak. For the dancer who wishes to go beyond technique. And for those who always believed they “can't dance”.\", \"Because maybe you don't need to know how. Maybe you just need to start. And then discover that the dance was already there. Waiting for you.\", \"[GOLD]Be The Dance. Don't just dance.\\nBe the dance.\", '[SIGNATURE]Safia']",
+        "paragraphs": [
+          "My history with dance started early. At seven years old, between barres, mirrors, precise positions, and rigorous discipline, I entered a ballet school. It was a universe of rules, codified movements, repetition, and demands. The body had to obey. The search for the perfect movement.",
+          "[SILVER]And yet, I fell in love.",
+          "Dance took me far. As a classical ballerina, I traveled to different parts of the world to refine my technique, drink from different sources, and get closer to that idea of perfection that ballet teaches us to pursue.",
+          "But, at some point, something began to change. My body was tired. And inside me, a growing desire to express dance in other ways was born. That was when I found modern dance.",
+          "There, other doors opened. I discovered freer, more natural, and organic movements. I discovered that the body could also create, improvise, investigate. That an emotion could transform a gesture. That not every movement needed to be beautiful, precise, correct, or planned. And I began to realize that perhaps dance could be much more than technique.",
+          "Throughout this journey, one phrase kept coming up repeatedly: “I would love to dance… but I don't want to be a dancer.” People who didn't want to go on stage or audition. Who didn't want to spend years inside a dance school. People who simply felt the urge to dance, but believed dance belonged to a place they had no access to.",
+          "[SILVER]That stayed with me.",
+          "Years later, when I was already directing my own dance company, I created, along with choreographer Mark Sieczkarek, an event in a park, open to everyone. And then something very simple and, at the same time, transformative happened.",
+          "[GOLD]People started to dance.",
+          "People who might never have imagined doing so in public were there, moving their bodies, meeting others, laughing, playing, experimenting. Dance stepped off the stage and came alive.",
+          "It was there that I understood, in a very concrete way, how much dance can bring people together, create encounters, and awaken joy. It didn't need to be confined to a classroom, a company, or a stage. Dance could happen anywhere there was a body willing to move.",
+          "Then the pandemic came. The world stopped. Doors closed. We were isolated in our homes, separated from each other, and, in a way, from our own bodies.",
+          "It was in this silence that Be The Dance began to emerge. The inspiration came from a documentary about Bruce Lee and an idea that struck me: Be Water.",
+          "[SILVER]To be water. To move. To adapt. To flow. To find paths.",
+          "And I thought: what if we could do the same with dance? Thus the idea of a series of workshops for people who are not dancers was born. Not to teach steps. Not to prepare anyone for a stage. Not to turn anyone into a professional. But to dance, play, explore, and discover.",
+          "[GOLD]To discover what moves us. To discover how we move.",
+          "To discover what happens when we stop trying to control the body and start listening to it. And above all, to discover where the dance is in each of us.",
+          "Because I believe dance is not a privilege of those born flexible, those who started at age four, or those who learned to count in eights. Dance is in our genes. It is in the impulse to sway when we hear music. In the body that moves when we are happy. In the spontaneous gesture. In the breath. In the rhythm. In the desire to celebrate, to seduce, to play, and to be free. Perhaps we all have the dance inside us and it just needs a spark to emerge.",
+          "By that time, I had been practicing meditation for a few years, and my relationship with dance had profoundly transformed. Aesthetics and technique still had their place, but they were no longer enough.",
+          "[SILVER]I began to see the body as a vessel.",
+          "A place of listening. A landscape of discovery. An instrument through which we can push past our own boundaries and find a form of expression that is unique, personal, and genuine. That is how Be The Dance began to take shape.",
+          "But I soon realized that this investigation could also be profoundly transformative for professional dancers. Because I know this journey intimately. I know how a dancer can dedicate years to perfecting their technique. The correct position. The highest jump. The perfect line. Absolute control of the body.",
+          "But who teaches us to be present? Who teaches us to find our own movement within a choreography? Who talks about charisma, presence, authenticity? Who shows us ways to know the body beyond its appearance? Who helps us discover who we are when we dance?",
+          "Be The Dance is born precisely from this place. Between technique and freedom, body and emotion, movement and presence. Between what we learn and what already exists inside us.",
+          "It is an invitation to experiment and let the body think, feel, and speak. For the dancer who wishes to go beyond technique. And for those who always believed they “can't dance”.",
+          "Because maybe you don't need to know how. Maybe you just need to start. And then discover that the dance was already there. Waiting for you.",
+          "[GOLD]Be The Dance. Don't just dance.\nBe the dance.",
+          "[SIGNATURE]Safia"
+        ],
         "read_more": "Read full story",
         "read_less": "Show less",
         "cv_link_text": "Creator's CV",
@@ -297,7 +375,43 @@
       "title": "Biostretch",
       "subtitle": "Four decades of research into movement.",
       "description": "Biostretch is an exercise system...",
-      "philosophy": "[{'title': 'WHAT IS BIOSTRETCH?', 'content': ['Biostretch is an exercise system that promotes reconnection with the body through movement awareness.', 'The method uses attention as its main tool: a simple, powerful resource accessible to everyone. By directing it to the experience of movement, we expand the perception of the body and open space for new possibilities of bodily organization.', 'Inspired by more than four decades of studies in dance, Somatic Education, and meditation, the method recognizes the body as an intelligent, integrated system in constant transformation. Instead of seeking performance or correction, it proposes a subtle investigation of the bodily experience, where what is done matters less than how it is done.', 'It is from this experience of presence that a new way of perceiving and inhabiting the body emerges. But how does this transformation happen in practice?']}, {'title': 'HOW DOES IT WORK?', 'content': ['The practice of Biostretch invites you to slow down, relax your body, and direct your attention to simple movements and the sensations they awaken.', 'In this exploration, it becomes possible to recognize tension patterns, movement habits, and forms of bodily organization that usually remain outside our perception because they operate automatically and unconsciously. The apparent simplicity of the practice reveals a profound work of listening, perception, and reorganization.', 'When performed slowly, gently, and effortlessly, the exercises promote a state of balance in the nervous system, responsible for coordinating communication between body and mind and regulating bodily functions. In this state, the body finds space to release tension, reorganize itself, and recover the natural fluidity of movement.', \"More than teaching new movements, Biostretch strengthens trust in the body's innate intelligence and invites you to rediscover the pleasure of moving with freedom, presence, and awareness. The best part is that this experience is within anyone's reach.\"]}, {'title': 'WHO CAN PRACTICE?', 'content': ['Biostretch can be practiced by people of all ages and different levels of experience, physical conditioning, or mobility.', 'The practice respects the individuality of each body. There is no ideal movement to be achieved, nor an external standard to be followed. Each person explores the sequences within their own limits and possibilities, at their own pace.', \"Instead of adapting the body to a model, Biostretch values what each person already has: their ability to perceive, learn, and find more comfortable and functional paths for movement. Thus, the practice strengthens autonomy, confidence, and the pleasure of inhabiting one's own body.\", 'And what can this practice transform in daily life?']}, {'title': 'WHAT ARE THE BENEFITS?', 'content': ['Regular practice of Biostretch helps to relieve tension, increase mobility, improve posture, and make movements lighter, coordinated, and comfortable. Over time, the body recovers fluidity and efficiency, making daily activities easier and more pleasant.', 'By promoting balance in the nervous system, the practice also helps reduce the effects of stress, improve breathing quality, and relieve pain and discomfort associated with muscle tension, especially in areas like the neck, shoulders, and back. Additionally, it contributes to preventing injuries related to repetitive patterns and overuse of the body.', 'Over time, these changes extend beyond the practice and become part of how we move, perceive, and use our bodies in everyday life.']}]",
+      "philosophy": [
+        {
+          "title": "WHAT IS BIOSTRETCH?",
+          "content": [
+            "Biostretch is an exercise system that promotes reconnection with the body through movement awareness.",
+            "The method uses attention as its main tool: a simple, powerful resource accessible to everyone. By directing it to the experience of movement, we expand the perception of the body and open space for new possibilities of bodily organization.",
+            "Inspired by more than four decades of studies in dance, Somatic Education, and meditation, the method recognizes the body as an intelligent, integrated system in constant transformation. Instead of seeking performance or correction, it proposes a subtle investigation of the bodily experience, where what is done matters less than how it is done.",
+            "It is from this experience of presence that a new way of perceiving and inhabiting the body emerges. But how does this transformation happen in practice?"
+          ]
+        },
+        {
+          "title": "HOW DOES IT WORK?",
+          "content": [
+            "The practice of Biostretch invites you to slow down, relax your body, and direct your attention to simple movements and the sensations they awaken.",
+            "In this exploration, it becomes possible to recognize tension patterns, movement habits, and forms of bodily organization that usually remain outside our perception because they operate automatically and unconsciously. The apparent simplicity of the practice reveals a profound work of listening, perception, and reorganization.",
+            "When performed slowly, gently, and effortlessly, the exercises promote a state of balance in the nervous system, responsible for coordinating communication between body and mind and regulating bodily functions. In this state, the body finds space to release tension, reorganize itself, and recover the natural fluidity of movement.",
+            "More than teaching new movements, Biostretch strengthens trust in the body's innate intelligence and invites you to rediscover the pleasure of moving with freedom, presence, and awareness. The best part is that this experience is within anyone's reach."
+          ]
+        },
+        {
+          "title": "WHO CAN PRACTICE?",
+          "content": [
+            "Biostretch can be practiced by people of all ages and different levels of experience, physical conditioning, or mobility.",
+            "The practice respects the individuality of each body. There is no ideal movement to be achieved, nor an external standard to be followed. Each person explores the sequences within their own limits and possibilities, at their own pace.",
+            "Instead of adapting the body to a model, Biostretch values what each person already has: their ability to perceive, learn, and find more comfortable and functional paths for movement. Thus, the practice strengthens autonomy, confidence, and the pleasure of inhabiting one's own body.",
+            "And what can this practice transform in daily life?"
+          ]
+        },
+        {
+          "title": "WHAT ARE THE BENEFITS?",
+          "content": [
+            "Regular practice of Biostretch helps to relieve tension, increase mobility, improve posture, and make movements lighter, coordinated, and comfortable. Over time, the body recovers fluidity and efficiency, making daily activities easier and more pleasant.",
+            "By promoting balance in the nervous system, the practice also helps reduce the effects of stress, improve breathing quality, and relieve pain and discomfort associated with muscle tension, especially in areas like the neck, shoulders, and back. Additionally, it contributes to preventing injuries related to repetitive patterns and overuse of the body.",
+            "Over time, these changes extend beyond the practice and become part of how we move, perceive, and use our bodies in everyday life."
+          ]
+        }
+      ],
       "workshops": {
         "uma-melhor-postura": {
           "title": "A Better Posture",
@@ -349,7 +463,33 @@
         "cv_link_text": "View full resume",
         "read_more": "Read full story",
         "read_less": "Collapse",
-        "paragraphs": "['It all started in New York.', \"I was looking for new ways to express dance. I wanted to go beyond what I already knew, to cross the borders of the body I had learned to master. And that's how I arrived in the Big Apple. I went to study modern dance, specifically an approach called Release Technique.\", '[SILVER]And then, everything I knew about dance began to crumble.', \"I came from classical ballet, a universe of precise forms, codified movements, carefully constructed lines, muscles trained to obey. In Release, it was almost the opposite. Movement didn't need to be imposed on the body. It could be born within it.\", 'A small impulse, a shift in weight, a breath, a relationship with gravity, and something would begin to move. The body seemed to find its own paths. The skeleton, our most basic and profound structure, became the starting point for endless possibilities.', 'It was difficult. And deeply thought-provoking.', 'My body was still trapped in ballet. It took me months just to be able to release my stomach. To breathe more naturally. To allow the body to stop being permanently prepared to execute and simply begin to feel. It was a deconstruction.', '[GOLD]A dive into the unknown.', 'It was during this period that I was introduced to different methods of Somatic Education. I fell in love immediately.', \"I began seeking out these practices everywhere, in every class I could find. And little by little, I started to realize something that would forever change my relationship with movement: maybe the body didn't need more effort. Maybe it needed more listening.\", 'These practices, usually gentle with the body, start from a powerful idea: there is an inherent bodily intelligence within us. And when we learn to listen to it, when we develop movement awareness, we open paths to more health, freedom, and presence.', 'First, I realized how essential this was for dancers. Then, I realized it was essential for everyone. For those who spend hours in front of a computer. For those who work standing up. For those who practice sports. For those who feel pain, tension, or limitations. For those who simply wish to know their own body better and discover a freer way to move through life.', '[SILVER]But there was yet another discovery.', \"The more I practiced, the more I realized that this work wasn't just about the body. It challenged some of the pillars upon which we build modern life: effort, competence, productivity, efficiency, and control. We live in a culture that teaches us to do more, faster, better. To control. To overcome. To conquer.\", 'What if, for a few moments, we did the opposite? What if, instead of demanding a response from the body, we learned to listen to it? What if, instead of seeking the perfection of movement, we investigated the experience of being in motion?', 'For me, this practice became a kind of moving meditation. A space of encountering oneself. A moment to suspend, for an instant, everything we learned about how a body should be, how it should move, how it should function. And to begin an investigation. Not to arrive at a right movement. But to discover what is possible.', 'It was then I realized I could bring together three worlds that had crossed my life: dance, meditative practice, and Somatic Education. From this intersection, Biostretch was born. A living method.', \"[SILVER]Living because it doesn't end when the practice ends.\", \"What we perceive during a session can cross the room's door and accompany us into life. It can transform the way we walk, sit, breathe, work, dance, rest. It can bring more comfort, ease, and efficiency to the simplest movements, precisely those we repeat every day without even noticing.\", '[GOLD]In Biostretch, awareness is key.', \"Because it's not just the movement we make that matters. It's the quality with which it happens. It's what happens before the movement. It's what we perceive while it happens. It's what changes when we stop fighting against the body and start conversing with it.\", \"Perhaps you've spent your entire life trying to make your body obey.\\nWhat if now was the moment to listen to it? That is the investigation I propose in Biostretch classes. An invitation to slow down, to feel, to breathe. To release what no longer needs to be held. To discover paths that were there all along, just waiting for you to pay attention.\", \"Come and try it. Perhaps you won't just discover a new way to move.\", '[GOLD]Perhaps you will discover a new way to be in your own body.', '[SIGNATURE]Safia']"
+        "paragraphs": [
+          "It all started in New York.",
+          "I was looking for new ways to express dance. I wanted to go beyond what I already knew, to cross the borders of the body I had learned to master. And that's how I arrived in the Big Apple. I went to study modern dance, specifically an approach called Release Technique.",
+          "[SILVER]And then, everything I knew about dance began to crumble.",
+          "I came from classical ballet, a universe of precise forms, codified movements, carefully constructed lines, muscles trained to obey. In Release, it was almost the opposite. Movement didn't need to be imposed on the body. It could be born within it.",
+          "A small impulse, a shift in weight, a breath, a relationship with gravity, and something would begin to move. The body seemed to find its own paths. The skeleton, our most basic and profound structure, became the starting point for endless possibilities.",
+          "It was difficult. And deeply thought-provoking.",
+          "My body was still trapped in ballet. It took me months just to be able to release my stomach. To breathe more naturally. To allow the body to stop being permanently prepared to execute and simply begin to feel. It was a deconstruction.",
+          "[GOLD]A dive into the unknown.",
+          "It was during this period that I was introduced to different methods of Somatic Education. I fell in love immediately.",
+          "I began seeking out these practices everywhere, in every class I could find. And little by little, I started to realize something that would forever change my relationship with movement: maybe the body didn't need more effort. Maybe it needed more listening.",
+          "These practices, usually gentle with the body, start from a powerful idea: there is an inherent bodily intelligence within us. And when we learn to listen to it, when we develop movement awareness, we open paths to more health, freedom, and presence.",
+          "First, I realized how essential this was for dancers. Then, I realized it was essential for everyone. For those who spend hours in front of a computer. For those who work standing up. For those who practice sports. For those who feel pain, tension, or limitations. For those who simply wish to know their own body better and discover a freer way to move through life.",
+          "[SILVER]But there was yet another discovery.",
+          "The more I practiced, the more I realized that this work wasn't just about the body. It challenged some of the pillars upon which we build modern life: effort, competence, productivity, efficiency, and control. We live in a culture that teaches us to do more, faster, better. To control. To overcome. To conquer.",
+          "What if, for a few moments, we did the opposite? What if, instead of demanding a response from the body, we learned to listen to it? What if, instead of seeking the perfection of movement, we investigated the experience of being in motion?",
+          "For me, this practice became a kind of moving meditation. A space of encountering oneself. A moment to suspend, for an instant, everything we learned about how a body should be, how it should move, how it should function. And to begin an investigation. Not to arrive at a right movement. But to discover what is possible.",
+          "It was then I realized I could bring together three worlds that had crossed my life: dance, meditative practice, and Somatic Education. From this intersection, Biostretch was born. A living method.",
+          "[SILVER]Living because it doesn't end when the practice ends.",
+          "What we perceive during a session can cross the room's door and accompany us into life. It can transform the way we walk, sit, breathe, work, dance, rest. It can bring more comfort, ease, and efficiency to the simplest movements, precisely those we repeat every day without even noticing.",
+          "[GOLD]In Biostretch, awareness is key.",
+          "Because it's not just the movement we make that matters. It's the quality with which it happens. It's what happens before the movement. It's what we perceive while it happens. It's what changes when we stop fighting against the body and start conversing with it.",
+          "Perhaps you've spent your entire life trying to make your body obey.\nWhat if now was the moment to listen to it? That is the investigation I propose in Biostretch classes. An invitation to slow down, to feel, to breathe. To release what no longer needs to be held. To discover paths that were there all along, just waiting for you to pay attention.",
+          "Come and try it. Perhaps you won't just discover a new way to move.",
+          "[GOLD]Perhaps you will discover a new way to be in your own body.",
+          "[SIGNATURE]Safia"
+        ]
       }
     },
     "kroppsskole": {
@@ -563,7 +703,71 @@
           "desc": "Contributing to healthier and more sustainable workplace relationships"
         }
       },
-      "pillars": "[{'number': '01', 'title': 'Physiology & Awareness', 'items': [{'key': 'consciousness', 'label': 'Body awareness', 'desc': 'Notice how the body organizes and responds throughout the workday.'}, {'key': 'tension_relief', 'label': 'Tension release', 'desc': 'Discharge accumulated stress and physical overload from daily routines.'}, {'key': 'mobility', 'label': 'Mobility & balance', 'desc': 'Restore natural movement freedom and postural equilibrium.'}]}, {'number': '02', 'title': 'Focus & Sustainability', 'items': [{'key': 'coordination', 'label': 'Coordination & perception', 'desc': 'Refine alignment between intention, posture, and conscious motion.'}, {'key': 'pause', 'label': 'Mindful pauses', 'desc': 'Create structured intervals that replenish physical and cognitive energy.'}, {'key': 'presence', 'label': 'Attentive presence', 'desc': 'Cultivate the ability to remain fully engaged in every task.'}]}, {'number': '03', 'title': 'Self-Care & Work Climate', 'items': [{'key': 'overload', 'label': 'Strain reduction', 'desc': 'Interrupt the cycle of strain before it becomes chronic tension.'}, {'key': 'selfcare', 'label': 'Continuous self-care', 'desc': 'Embed habits of personal wellness into company culture.'}, {'key': 'environment', 'label': 'Harmonious environment', 'desc': 'Build healthier, more sustainable, and deeply human workplace relationships.'}]}]"
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Physiology & Awareness",
+          "items": [
+            {
+              "key": "consciousness",
+              "label": "Body awareness",
+              "desc": "Notice how the body organizes and responds throughout the workday."
+            },
+            {
+              "key": "tension_relief",
+              "label": "Tension release",
+              "desc": "Discharge accumulated stress and physical overload from daily routines."
+            },
+            {
+              "key": "mobility",
+              "label": "Mobility & balance",
+              "desc": "Restore natural movement freedom and postural equilibrium."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Focus & Sustainability",
+          "items": [
+            {
+              "key": "coordination",
+              "label": "Coordination & perception",
+              "desc": "Refine alignment between intention, posture, and conscious motion."
+            },
+            {
+              "key": "pause",
+              "label": "Mindful pauses",
+              "desc": "Create structured intervals that replenish physical and cognitive energy."
+            },
+            {
+              "key": "presence",
+              "label": "Attentive presence",
+              "desc": "Cultivate the ability to remain fully engaged in every task."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Self-Care & Work Climate",
+          "items": [
+            {
+              "key": "overload",
+              "label": "Strain reduction",
+              "desc": "Interrupt the cycle of strain before it becomes chronic tension."
+            },
+            {
+              "key": "selfcare",
+              "label": "Continuous self-care",
+              "desc": "Embed habits of personal wellness into company culture."
+            },
+            {
+              "key": "environment",
+              "label": "Harmonious environment",
+              "desc": "Build healthier, more sustainable, and deeply human workplace relationships."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "FOR COMPANIES THAT VALUE PEOPLE",
@@ -655,18 +859,83 @@
     "privacy": {
       "title": "Privacy Policy",
       "lastUpdated": "Last updated: September 2026",
-      "sections": "[{'title': '1. Introduction', 'content': '<p>Welcome to the <strong>Dance2Dance</strong> website (including Biostretch and Be The Dance). We are committed to the integrity and security of the personal data of our users and students. This Privacy Policy applies to all digital interactions on our website, associated services, and platforms under our control.</p><p>By accessing our platforms, you acknowledge and agree to the practices described herein. We process your data responsibly, transparently, and securely, in accordance with applicable laws (such as GDPR and LGPD).</p>'}, {'title': '2. Definitions', 'content': '<p><strong>Personal Data:</strong> Information that identifies or can identify a natural person.</p><p><strong>Sensitive Personal Data:</strong> Information revealing intimate personal characteristics. We only request essential information required for our activities.</p><p><strong>Data Processing:</strong> Any operation involving Personal Data, such as collection, storage, use, or deletion.</p>'}, {'title': '3. Collected Data', 'content': \"<p>We collect and process:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Information Provided by You:</strong> Name, surname, email address, info provided during workshop registration or contact forms.</li><li><strong>Automatically Collected Information:</strong> Anonymized data about your device, location, and interaction for statistical and functional purposes.</li></ul>\"}, {'title': '4. Use of Cookies', 'content': '<p>We use cookies to improve user experience, understand usage patterns, and ensure site functionality. You can configure your browser to refuse cookies, though some site features may be affected.</p>'}, {'title': '5. Processing Purposes', 'content': \"<p>The data is used to:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Provide and improve our services, classes, and workshops;</li><li>Personalize your experience;</li><li>Communicate important information about classes and events;</li><li>Comply with legal obligations.</li></ul>\"}, {'title': '6. Data Sharing', 'content': '<p>Your data is confidential. We only share it with strictly necessary service providers for site operation and class management, requiring the same data protection guarantees. We do not sell your information.</p>'}, {'title': '7. Your Rights', 'content': '<p>You have rights regarding your data, including the right to access, rectify, delete, and withdraw consent. To exercise these rights, please contact us.</p>'}, {'title': '8. Spam Prevention and Third-Party Services', 'content': \"<p>To protect our forms and prevent spam messages generated by bots, we use the Cloudflare Turnstile service. By browsing and using our website, you acknowledge and agree that the operation of this invisible protection service is subject to the <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Cloudflare Turnstile Privacy Addendum</a>.</p>\"}]"
+      "sections": [
+        {
+          "title": "1. Introduction",
+          "content": "<p>Welcome to the <strong>Dance2Dance</strong> website (including Biostretch and Be The Dance). We are committed to the integrity and security of the personal data of our users and students. This Privacy Policy applies to all digital interactions on our website, associated services, and platforms under our control.</p><p>By accessing our platforms, you acknowledge and agree to the practices described herein. We process your data responsibly, transparently, and securely, in accordance with applicable laws (such as GDPR and LGPD).</p>"
+        },
+        {
+          "title": "2. Definitions",
+          "content": "<p><strong>Personal Data:</strong> Information that identifies or can identify a natural person.</p><p><strong>Sensitive Personal Data:</strong> Information revealing intimate personal characteristics. We only request essential information required for our activities.</p><p><strong>Data Processing:</strong> Any operation involving Personal Data, such as collection, storage, use, or deletion.</p>"
+        },
+        {
+          "title": "3. Collected Data",
+          "content": "<p>We collect and process:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Information Provided by You:</strong> Name, surname, email address, info provided during workshop registration or contact forms.</li><li><strong>Automatically Collected Information:</strong> Anonymized data about your device, location, and interaction for statistical and functional purposes.</li></ul>"
+        },
+        {
+          "title": "4. Use of Cookies",
+          "content": "<p>We use cookies to improve user experience, understand usage patterns, and ensure site functionality. You can configure your browser to refuse cookies, though some site features may be affected.</p>"
+        },
+        {
+          "title": "5. Processing Purposes",
+          "content": "<p>The data is used to:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Provide and improve our services, classes, and workshops;</li><li>Personalize your experience;</li><li>Communicate important information about classes and events;</li><li>Comply with legal obligations.</li></ul>"
+        },
+        {
+          "title": "6. Data Sharing",
+          "content": "<p>Your data is confidential. We only share it with strictly necessary service providers for site operation and class management, requiring the same data protection guarantees. We do not sell your information.</p>"
+        },
+        {
+          "title": "7. Your Rights",
+          "content": "<p>You have rights regarding your data, including the right to access, rectify, delete, and withdraw consent. To exercise these rights, please contact us.</p>"
+        },
+        {
+          "title": "8. Spam Prevention and Third-Party Services",
+          "content": "<p>To protect our forms and prevent spam messages generated by bots, we use the Cloudflare Turnstile service. By browsing and using our website, you acknowledge and agree that the operation of this invisible protection service is subject to the <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Cloudflare Turnstile Privacy Addendum</a>.</p>"
+        }
+      ]
     },
     "terms": {
       "title": "Terms of Use",
       "lastUpdated": "Last updated: September 2026",
-      "sections": "[{'title': '1. Acceptance of Terms', 'content': '<p>Welcome to <strong>Dance2Dance</strong>. By browsing and using our site and services, you automatically agree to follow the rules and conditions established here. If you do not agree with any point, please do not use our services.</p>'}, {'title': '2. Nature of Practice and Disclaimer', 'content': \"<p>The methodologies taught (Biostretch and Be The Dance) are practices focused on movement, breathing, and body awareness. <strong>They do not replace medical, physical therapy, or psychological diagnoses or treatments.</strong> You assume the responsibility to respect your body's limits and seek medical clearance if you have pre-existing conditions.</p>\"}, {'title': '3. Registration and Cancellations', 'content': '<p>Registrations for workshops and classes are confirmed upon payment. Specific cancellation rules apply depending on the event to organize limited spots. Last-minute cancellations may not be eligible for refunds.</p>'}, {'title': '4. Intellectual Property', 'content': '<p>The available content, including texts, methodologies, images, and audio, is protected intellectual property. Access to our classes grants you the right to experience the practice for personal purposes only.</p><p>Recording, reproduction, distribution, or teaching of the methodology without certification or written authorization is <strong>strictly prohibited</strong>.</p>'}, {'title': '5. Privacy and Security', 'content': '<p>By interacting with our site, you accept our Privacy Policy, which details our responsible approach to data handling. We adopt strict practices to ensure confidentiality.</p>'}, {'title': '6. Modifications to Terms', 'content': '<p>These Terms may be updated to reflect changes in our services. The latest version will always be available on this page.</p>'}]"
+      "sections": [
+        {
+          "title": "1. Acceptance of Terms",
+          "content": "<p>Welcome to <strong>Dance2Dance</strong>. By browsing and using our site and services, you automatically agree to follow the rules and conditions established here. If you do not agree with any point, please do not use our services.</p>"
+        },
+        {
+          "title": "2. Nature of Practice and Disclaimer",
+          "content": "<p>The methodologies taught (Biostretch and Be The Dance) are practices focused on movement, breathing, and body awareness. <strong>They do not replace medical, physical therapy, or psychological diagnoses or treatments.</strong> You assume the responsibility to respect your body's limits and seek medical clearance if you have pre-existing conditions.</p>"
+        },
+        {
+          "title": "3. Registration and Cancellations",
+          "content": "<p>Registrations for workshops and classes are confirmed upon payment. Specific cancellation rules apply depending on the event to organize limited spots. Last-minute cancellations may not be eligible for refunds.</p>"
+        },
+        {
+          "title": "4. Intellectual Property",
+          "content": "<p>The available content, including texts, methodologies, images, and audio, is protected intellectual property. Access to our classes grants you the right to experience the practice for personal purposes only.</p><p>Recording, reproduction, distribution, or teaching of the methodology without certification or written authorization is <strong>strictly prohibited</strong>.</p>"
+        },
+        {
+          "title": "5. Privacy and Security",
+          "content": "<p>By interacting with our site, you accept our Privacy Policy, which details our responsible approach to data handling. We adopt strict practices to ensure confidentiality.</p>"
+        },
+        {
+          "title": "6. Modifications to Terms",
+          "content": "<p>These Terms may be updated to reflect changes in our services. The latest version will always be available on this page.</p>"
+        }
+      ]
     }
   },
   "cv": {
     "title": "Safia",
     "subtitle": "Artistic Director & Creator",
-    "paragraphs": "['Dance entered my life through medical advice. At seven, classical ballet was recommended to correct my foot posture. The initial obligation soon became a fascination. The discipline of the barre and the enthusiasm of master João Luiz Rolla marked the beginning of a journey guided by movement.', 'Technical rigor took me abroad early on. In 1988, I was awarded a scholarship to the Kiev State Classical Ballet School, immersing myself for two years in the Vaganova method in the former Soviet Union. In Cuba, I performed with the Ballet de Camaguey and the National Ballet, where technical precision lived alongside artists from diverse disciplines.', 'The urge to transcend the codified forms of ballet led me toward contemporary dance with Companhia Terpsí. Later, a grant in New York opened the door to study Release Technique at the Trisha Brown Company and Movement Research. It was my first encounter with Somatic Education, realizing that movement could emerge from skeletal alignment and listening, sparing unnecessary effort.', 'This exploration broadened across several fields. I worked backstage as an assistant choreographer at Teatro Castro Alves in Bahia. I earned a degree in Literature from UFRGS, deepening my connection with language. I became a certified Gyrotonic trainer and an educator through Teatro Escola Brincante. I worked on various social projects. In 2007, I co-founded Porto Alegre Cia de Dança, taking on its artistic direction.', 'Beginning in 2011, daily meditation practice redefined my relationship with the body. The focus shifted from external form to the quality of presence. Conscious breathing and silence became components of movement itself. From this convergence of dance, somatic education, and meditation, Biostretch and Be The Dance emerged.', 'Currently living in Norway, I act as an artistic bridge with Brazil. From this crossing, Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance was born, a central project that synthesizes decades of bodily research, pedagogical experience, and investigation into the relationship between technique, presence, and expression. Based in Norway, the initiative is a space for meeting and transformation, dedicated both to dancers and artists as well as anyone seeking to deepen their relationship with their own body.']"
+    "paragraphs": [
+      "Dance entered my life through medical advice. At seven, classical ballet was recommended to correct my foot posture. The initial obligation soon became a fascination. The discipline of the barre and the enthusiasm of master João Luiz Rolla marked the beginning of a journey guided by movement.",
+      "Technical rigor took me abroad early on. In 1988, I was awarded a scholarship to the Kiev State Classical Ballet School, immersing myself for two years in the Vaganova method in the former Soviet Union. In Cuba, I performed with the Ballet de Camaguey and the National Ballet, where technical precision lived alongside artists from diverse disciplines.",
+      "The urge to transcend the codified forms of ballet led me toward contemporary dance with Companhia Terpsí. Later, a grant in New York opened the door to study Release Technique at the Trisha Brown Company and Movement Research. It was my first encounter with Somatic Education, realizing that movement could emerge from skeletal alignment and listening, sparing unnecessary effort.",
+      "This exploration broadened across several fields. I worked backstage as an assistant choreographer at Teatro Castro Alves in Bahia. I earned a degree in Literature from UFRGS, deepening my connection with language. I became a certified Gyrotonic trainer and an educator through Teatro Escola Brincante. I worked on various social projects. In 2007, I co-founded Porto Alegre Cia de Dança, taking on its artistic direction.",
+      "Beginning in 2011, daily meditation practice redefined my relationship with the body. The focus shifted from external form to the quality of presence. Conscious breathing and silence became components of movement itself. From this convergence of dance, somatic education, and meditation, Biostretch and Be The Dance emerged.",
+      "Currently living in Norway, I act as an artistic bridge with Brazil. From this crossing, Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance was born, a central project that synthesizes decades of bodily research, pedagogical experience, and investigation into the relationship between technique, presence, and expression. Based in Norway, the initiative is a space for meeting and transformation, dedicated both to dancers and artists as well as anyone seeking to deepen their relationship with their own body."
+    ]
   },
   "agendaPage": {
     "title": "Full Schedule",
@@ -1016,7 +1285,62 @@
     "pillars_section": {
       "kicker": "DIMENSIONS OF THE EXPERIENCE",
       "intro": "The artistic practice of Be the Dance nurtures both individual well-being and collective dynamics, producing lasting positive effects on workplace culture:",
-      "pillars": "[{'number': '01', 'title': 'Vitality and Ease', 'items': [{'label': 'Individual relaxation', 'desc': 'Releasing daily tensions through diverse and engaging musical rhythms.'}, {'label': 'Personal fulfillment', 'desc': 'Encouraging spontaneity and renewed enthusiasm through creative physical expression.'}, {'label': 'Shared lightness', 'desc': 'A group celebration that rekindles energy and motivation for work.'}]}, {'number': '02', 'title': 'Bonds and Collective Trust', 'items': [{'label': 'Authentic connection', 'desc': 'Genuine rapport among colleagues across departments and organizational levels.'}, {'label': 'Spontaneous communication', 'desc': 'Encouraging candid dialogue within a safe, welcoming environment of attentive listening.'}, {'label': 'Mutual trust', 'desc': 'Gaining deeper appreciation for the strengths and sensitivity of every colleague.'}]}, {'number': '03', 'title': 'Culture and Institutional Care', 'items': [{'label': 'Team cohesion', 'desc': 'Strengthening unity and a shared sense of organizational belonging.'}, {'label': 'Valuing people', 'desc': 'Tangible proof of the company commitment to human care.'}, {'label': 'Relational harmony', 'desc': 'A more collaborative, resilient, and supportive working environment.'}]}]"
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Vitality and Ease",
+          "items": [
+            {
+              "label": "Individual relaxation",
+              "desc": "Releasing daily tensions through diverse and engaging musical rhythms."
+            },
+            {
+              "label": "Personal fulfillment",
+              "desc": "Encouraging spontaneity and renewed enthusiasm through creative physical expression."
+            },
+            {
+              "label": "Shared lightness",
+              "desc": "A group celebration that rekindles energy and motivation for work."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Bonds and Collective Trust",
+          "items": [
+            {
+              "label": "Authentic connection",
+              "desc": "Genuine rapport among colleagues across departments and organizational levels."
+            },
+            {
+              "label": "Spontaneous communication",
+              "desc": "Encouraging candid dialogue within a safe, welcoming environment of attentive listening."
+            },
+            {
+              "label": "Mutual trust",
+              "desc": "Gaining deeper appreciation for the strengths and sensitivity of every colleague."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Culture and Institutional Care",
+          "items": [
+            {
+              "label": "Team cohesion",
+              "desc": "Strengthening unity and a shared sense of organizational belonging."
+            },
+            {
+              "label": "Valuing people",
+              "desc": "Tangible proof of the company commitment to human care."
+            },
+            {
+              "label": "Relational harmony",
+              "desc": "A more collaborative, resilient, and supportive working environment."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "SETTINGS AND APPLICATIONS",

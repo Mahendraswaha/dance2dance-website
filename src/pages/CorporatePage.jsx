@@ -27,10 +27,17 @@ export default function CorporatePage() {
   const logoOpacity = useTransform(scrollY, [700, 1000], [0.4, 0]);
 
 
-  const body = t('corporate.body', { returnObjects: true });
-  const benefits = t('corporate.benefits', { returnObjects: true });
-  const audience = t('corporate.audience', { returnObjects: true });
-  const workshops = t('corporate.workshops_section', { returnObjects: true });
+  const body = t('corporate.body', { returnObjects: true }) || {};
+  const benefits = t('corporate.benefits', { returnObjects: true }) || {};
+  const audience = t('corporate.audience', { returnObjects: true }) || {};
+  const workshops = t('corporate.workshops_section', { returnObjects: true }) || {};
+
+  let pillars = benefits.pillars || [];
+  if (typeof pillars === 'string') {
+    try { pillars = JSON.parse(pillars); } catch(e) {}
+  }
+  if (!Array.isArray(pillars)) pillars = [];
+  const audienceItems = audience.items || {};
 
   return (
     <div className="bg-primary min-h-screen font-sans text-background">
@@ -164,7 +171,7 @@ export default function CorporatePage() {
 
           <div className="max-w-[1100px] mx-auto px-8 md:px-16 lg:px-20">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-              {(benefits.pillars || []).map((pillar, pIndex) => (
+              {(pillars || []).map((pillar, pIndex) => (
                 <motion.div
                   key={pillar.number || pIndex}
                   initial="hidden"
@@ -253,7 +260,7 @@ export default function CorporatePage() {
                   <Icon size={36} className="text-accent/60 group-hover:text-accent transition-colors duration-500 mb-6" strokeWidth={1} />
                   
                   <p className="font-heading text-[12px] tracking-[1px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.6]">
-                    {audience.items[key]}
+                    {audienceItems[key] || ''}
                   </p>
                 </motion.div>
               ))}

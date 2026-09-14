@@ -241,7 +241,56 @@
       "title": "Be the Dance",
       "subtitle": "Oppdag dansen som finnes i deg.",
       "description": "Filosofi og konsept bak Be the Dance...",
-      "philosophy": "[{'title': 'BE THE DANCE', 'content': ['er et program bestående av fire danseworkshops.', 'Det er designet for at du skal kunne utforske bevegelse som en vei til tilstedeværelse, uttrykk og selvinnsikt, og vekke noe essensielt og unikt som allerede finnes i deg: din egen dans.']}, {'title': 'BE THE DANCE ER FOR ALLE', 'content': ['Dans kan oppstå i kroppen til enhver person som tillater seg å bevege seg.', 'Det stilles ingen krav.', 'Det handler bare om å føle og la bevegelsen uttrykke seg.', 'Uansett alder eller fysisk form er det mulig å oppdage sin egen måte å danse på.']}, {'title': 'HVOR ER DANSEN?', 'content': ['Den er ikke begrenset til en bestemt teknikk, en forhåndsdefinert stil eller et spesielt talent.', 'Den finnes i hver og en av oss, som en iboende kreativitet klar til å ta form gjennom kroppen.']}, {'title': 'HVORDAN SKJER DANSEN?', 'content': ['Dansen har fulgt oss i årtusener, som ritual, feiring og kunstnerisk uttrykk. Selv om du kanskje ikke husker det, bærer kroppen på et bevegelsesminne, en evne til å føle, skape og danse.', 'Ved å skape en sensitiv dialog mellom musikk og kropp, åpner vi muligheten for å utforske nye bevegelsesveier. Å gå utover det kjente lar nye uttrykksformer vokse frem.', 'Dansen skjer forbi kontroll og jakten på en ideell form. Når vi tillater oss å være til stede, kan et mer autentisk og unikt uttrykk vokse frem fra kroppen.']}, {'title': 'HVILKE ER FORDELENE?', 'content': ['• Fremme dyp avspenning og bidra til å redusere stress.', '• Øke energien, kroppens tilgjengelighet og flyten i bevegelsene.', '• Gjenkjenne naturlige bevegelser og øke kroppsbevisstheten, og dermed skape rom for et mer autentisk uttrykk.', '• Utvikle oppmerksomheten, vekke sansene og utdype tilstedeværelsen.', '• Utforske forholdet mellom pust og bevegelse, og oppdage nye måter å danse på med større frihet.', '• Utvide persepsjonen ved å anerkjenne kroppens ulike deler og forholdet mellom dem.']}, {'title': 'BE THE DANCE', 'content': ['Workshops som integrerer bevissthet om bevegelse med praksiser innen dans og meditasjon, slik at du kan oppdage og uttrykke den dansen som allerede finnes i deg.']}]",
+      "philosophy": [
+        {
+          "title": "BE THE DANCE",
+          "content": [
+            "er et program bestående av fire danseworkshops.",
+            "Det er designet for at du skal kunne utforske bevegelse som en vei til tilstedeværelse, uttrykk og selvinnsikt, og vekke noe essensielt og unikt som allerede finnes i deg: din egen dans."
+          ]
+        },
+        {
+          "title": "BE THE DANCE ER FOR ALLE",
+          "content": [
+            "Dans kan oppstå i kroppen til enhver person som tillater seg å bevege seg.",
+            "Det stilles ingen krav.",
+            "Det handler bare om å føle og la bevegelsen uttrykke seg.",
+            "Uansett alder eller fysisk form er det mulig å oppdage sin egen måte å danse på."
+          ]
+        },
+        {
+          "title": "HVOR ER DANSEN?",
+          "content": [
+            "Den er ikke begrenset til en bestemt teknikk, en forhåndsdefinert stil eller et spesielt talent.",
+            "Den finnes i hver og en av oss, som en iboende kreativitet klar til å ta form gjennom kroppen."
+          ]
+        },
+        {
+          "title": "HVORDAN SKJER DANSEN?",
+          "content": [
+            "Dansen har fulgt oss i årtusener, som ritual, feiring og kunstnerisk uttrykk. Selv om du kanskje ikke husker det, bærer kroppen på et bevegelsesminne, en evne til å føle, skape og danse.",
+            "Ved å skape en sensitiv dialog mellom musikk og kropp, åpner vi muligheten for å utforske nye bevegelsesveier. Å gå utover det kjente lar nye uttrykksformer vokse frem.",
+            "Dansen skjer forbi kontroll og jakten på en ideell form. Når vi tillater oss å være til stede, kan et mer autentisk og unikt uttrykk vokse frem fra kroppen."
+          ]
+        },
+        {
+          "title": "HVILKE ER FORDELENE?",
+          "content": [
+            "• Fremme dyp avspenning og bidra til å redusere stress.",
+            "• Øke energien, kroppens tilgjengelighet og flyten i bevegelsene.",
+            "• Gjenkjenne naturlige bevegelser og øke kroppsbevisstheten, og dermed skape rom for et mer autentisk uttrykk.",
+            "• Utvikle oppmerksomheten, vekke sansene og utdype tilstedeværelsen.",
+            "• Utforske forholdet mellom pust og bevegelse, og oppdage nye måter å danse på med større frihet.",
+            "• Utvide persepsjonen ved å anerkjenne kroppens ulike deler og forholdet mellom dem."
+          ]
+        },
+        {
+          "title": "BE THE DANCE",
+          "content": [
+            "Workshops som integrerer bevissthet om bevegelse med praksiser innen dans og meditasjon, slik at du kan oppdage og uttrykke den dansen som allerede finnes i deg."
+          ]
+        }
+      ],
       "workshops": {
         "be-water": {
           "title": "Be Water",
@@ -286,7 +335,36 @@
       },
       "origin": {
         "title": "Opprinnelsen til Be The Dance",
-        "paragraphs": "['Min historie med dans startet tidlig. Syv år gammel, mellom barrer, speil, presise posisjoner og streng disiplin, begynte jeg på en ballettskole. Det var et univers av regler, kodifiserte bevegelser, repetisjon og krav. Kroppen måtte adlyde. Jakten på den perfekte bevegelsen.', '[SILVER]Og likevel forelsket jeg meg.', 'Dansen tok meg langt. Som klassisk ballerina reiste jeg til forskjellige deler av verden for å forbedre teknikken min, hente inspirasjon fra ulike kilder og komme stadig nærmere den ideen om perfeksjon som balletten lærer oss å etterstrebe.', 'Men på et tidspunkt begynte noe å forandre seg. Kroppen min var sliten. Og inni meg vokste det frem et ønske om å uttrykke dans på andre måter. Det var da jeg fant moderne dans.', 'Der åpnet andre dører seg. Jeg oppdaget friere, mer naturlige og organiske bevegelser. Jeg oppdaget at kroppen også kunne skape, improvisere, utforske. At en følelse kunne forandre en bevegelse. At ikke enhver bevegelse trengte å være vakker, presis, korrekt eller planlagt. Og jeg begynte å innse at dans kanskje kunne være mye mer enn teknikk.', 'Gjennom denne reisen var det én setning som stadig dukket opp: “Jeg vil gjerne danse… men jeg vil ikke bli danser.” Folk som ikke ønsket å stå på en scene eller gå på audition. Som ikke ønsket å tilbringe år på en danseskole. Folk som rett og slett hadde lyst til å danse, men trodde at dansen tilhørte et sted de ikke hadde tilgang til.', '[SILVER]Det ble værende hos meg.', 'Flere år senere, da jeg allerede ledet mitt eget dansekompani, skapte jeg, sammen med koreografen Mark Sieczkarek, et arrangement i en park, åpent for alle. Og da skjedde det noe veldig enkelt og samtidig transformerende.', '[GOLD]Folk begynte å danse.', 'Mennesker som kanskje aldri hadde forestilt seg å gjøre noe slikt offentlig, var der, beveget kroppene sine, møtte andre, lo, lekte, eksperimenterte. Dansen forlot scenen. Og fant livet.', 'Det var da jeg forsto, på en veldig konkret måte, hvor mye dans kan bringe folk sammen, skape møter og vekke glede. Den trengte ikke å være innelukket i et klasserom, i et kompani eller på en scene. Dans kunne skje hvor som helst der det fantes en kropp som var villig til å bevege seg.', 'Så kom pandemien. Verden stoppet opp. Dørene lukket seg. Vi ble isolert i hjemmene våre, adskilt fra hverandre, og på en måte også fra våre egne kropper.', 'Det var i denne stillheten at Be The Dance begynte å vokse frem. Inspirasjonen kom fra en dokumentar om Bruce Lee og en idé som traff meg: Be Water.', '[SILVER]Være vann. Bevege seg. Tilpasse seg. Flyte. Finne veier.', 'Og jeg tenkte: Hva om vi kunne gjøre det samme med dans? Slik ble ideen om en rekke workshops for folk som ikke er dansere, født. Ikke for å lære trinn. Ikke for å forberede noen for en scene. Ikke for å gjøre noen til profesjonelle. Men for å danse, leke, utforske og oppdage.', '[GOLD]Oppdage hva som beveger oss. Oppdage hvordan vi beveger oss.', 'Oppdage hva som skjer når vi slutter å prøve å kontrollere kroppen og begynner å lytte til den. Og fremfor alt, oppdage hvor dansen er i hver og en av oss.', 'For jeg tror at dans ikke er et privilegium for dem som er født fleksible, dem som begynte som fireåringer, eller dem som lærte å telle åtte slag. Dansen ligger i genene våre. Den ligger i impulsen til å gynge når vi hører musikk. I kroppen som beveger seg når vi er glade. I den spontane gesten. I pusten. I rytmen. I ønsket om å feire, forføre, leke og frigjøre seg. Kanskje vi alle har dansen inni oss, og at det bare trengs en stimulans for å la den komme frem.', 'På den tiden hadde jeg allerede praktisert meditasjon i noen år, og mitt forhold til dans hadde endret seg dyptgående. Estetikk og teknikk hadde fortsatt sin plass, men det var ikke lenger nok.', '[SILVER]Jeg begynte å se på kroppen som en passasje.', 'Et sted for å lytte. Et territorium for oppdagelser. Et instrument vi kan bruke til å krysse våre egne grenser og finne en uttrykksform som er unik, personlig og ekte. Det var slik Be The Dance begynte å ta form.', 'Men jeg innså snart at denne utforskningen også kunne være dypt transformerende for profesjonelle dansere. For jeg kjenner denne veien fra innsiden. Jeg vet hvor mange år en danser kan vie til å perfeksjonere teknikken. Den riktige posisjonen. Det høyeste hoppet. Den perfekte linjen. Den absolutte kontrollen over kroppen.', 'Men hvem lærer oss å være til stede? Hvem lærer oss å finne vår egen bevegelse i en koreografi? Hvem snakker om karisma, tilstedeværelse, autentisitet? Hvem viser oss veier til å kjenne kroppen utover dens utseende? Hvem hjelper oss å oppdage hvem vi er når vi danser?', 'Be The Dance er født nettopp fra dette stedet. Mellom teknikk og frihet, kropp og følelse, bevegelse og tilstedeværelse. Mellom det vi har lært og det som allerede finnes inni oss.', 'Det er en invitasjon til å eksperimentere og la kroppen tenke, føle og snakke. For danseren som ønsker å gå utover teknikken. Og for den som alltid har trodd at de “ikke kan danse”.', 'For kanskje du ikke trenger å vite. Kanskje du bare trenger å begynne. Og så oppdage at dansen allerede var der. Og ventet på deg.', '[GOLD]Be The Dance. Ikke bare dans.\\nVær dansen.', '[SIGNATURE]Safia']",
+        "paragraphs": [
+          "Min historie med dans startet tidlig. Syv år gammel, mellom barrer, speil, presise posisjoner og streng disiplin, begynte jeg på en ballettskole. Det var et univers av regler, kodifiserte bevegelser, repetisjon og krav. Kroppen måtte adlyde. Jakten på den perfekte bevegelsen.",
+          "[SILVER]Og likevel forelsket jeg meg.",
+          "Dansen tok meg langt. Som klassisk ballerina reiste jeg til forskjellige deler av verden for å forbedre teknikken min, hente inspirasjon fra ulike kilder og komme stadig nærmere den ideen om perfeksjon som balletten lærer oss å etterstrebe.",
+          "Men på et tidspunkt begynte noe å forandre seg. Kroppen min var sliten. Og inni meg vokste det frem et ønske om å uttrykke dans på andre måter. Det var da jeg fant moderne dans.",
+          "Der åpnet andre dører seg. Jeg oppdaget friere, mer naturlige og organiske bevegelser. Jeg oppdaget at kroppen også kunne skape, improvisere, utforske. At en følelse kunne forandre en bevegelse. At ikke enhver bevegelse trengte å være vakker, presis, korrekt eller planlagt. Og jeg begynte å innse at dans kanskje kunne være mye mer enn teknikk.",
+          "Gjennom denne reisen var det én setning som stadig dukket opp: “Jeg vil gjerne danse… men jeg vil ikke bli danser.” Folk som ikke ønsket å stå på en scene eller gå på audition. Som ikke ønsket å tilbringe år på en danseskole. Folk som rett og slett hadde lyst til å danse, men trodde at dansen tilhørte et sted de ikke hadde tilgang til.",
+          "[SILVER]Det ble værende hos meg.",
+          "Flere år senere, da jeg allerede ledet mitt eget dansekompani, skapte jeg, sammen med koreografen Mark Sieczkarek, et arrangement i en park, åpent for alle. Og da skjedde det noe veldig enkelt og samtidig transformerende.",
+          "[GOLD]Folk begynte å danse.",
+          "Mennesker som kanskje aldri hadde forestilt seg å gjøre noe slikt offentlig, var der, beveget kroppene sine, møtte andre, lo, lekte, eksperimenterte. Dansen forlot scenen. Og fant livet.",
+          "Det var da jeg forsto, på en veldig konkret måte, hvor mye dans kan bringe folk sammen, skape møter og vekke glede. Den trengte ikke å være innelukket i et klasserom, i et kompani eller på en scene. Dans kunne skje hvor som helst der det fantes en kropp som var villig til å bevege seg.",
+          "Så kom pandemien. Verden stoppet opp. Dørene lukket seg. Vi ble isolert i hjemmene våre, adskilt fra hverandre, og på en måte også fra våre egne kropper.",
+          "Det var i denne stillheten at Be The Dance begynte å vokse frem. Inspirasjonen kom fra en dokumentar om Bruce Lee og en idé som traff meg: Be Water.",
+          "[SILVER]Være vann. Bevege seg. Tilpasse seg. Flyte. Finne veier.",
+          "Og jeg tenkte: Hva om vi kunne gjøre det samme med dans? Slik ble ideen om en rekke workshops for folk som ikke er dansere, født. Ikke for å lære trinn. Ikke for å forberede noen for en scene. Ikke for å gjøre noen til profesjonelle. Men for å danse, leke, utforske og oppdage.",
+          "[GOLD]Oppdage hva som beveger oss. Oppdage hvordan vi beveger oss.",
+          "Oppdage hva som skjer når vi slutter å prøve å kontrollere kroppen og begynner å lytte til den. Og fremfor alt, oppdage hvor dansen er i hver og en av oss.",
+          "For jeg tror at dans ikke er et privilegium for dem som er født fleksible, dem som begynte som fireåringer, eller dem som lærte å telle åtte slag. Dansen ligger i genene våre. Den ligger i impulsen til å gynge når vi hører musikk. I kroppen som beveger seg når vi er glade. I den spontane gesten. I pusten. I rytmen. I ønsket om å feire, forføre, leke og frigjøre seg. Kanskje vi alle har dansen inni oss, og at det bare trengs en stimulans for å la den komme frem.",
+          "På den tiden hadde jeg allerede praktisert meditasjon i noen år, og mitt forhold til dans hadde endret seg dyptgående. Estetikk og teknikk hadde fortsatt sin plass, men det var ikke lenger nok.",
+          "[SILVER]Jeg begynte å se på kroppen som en passasje.",
+          "Et sted for å lytte. Et territorium for oppdagelser. Et instrument vi kan bruke til å krysse våre egne grenser og finne en uttrykksform som er unik, personlig og ekte. Det var slik Be The Dance begynte å ta form.",
+          "Men jeg innså snart at denne utforskningen også kunne være dypt transformerende for profesjonelle dansere. For jeg kjenner denne veien fra innsiden. Jeg vet hvor mange år en danser kan vie til å perfeksjonere teknikken. Den riktige posisjonen. Det høyeste hoppet. Den perfekte linjen. Den absolutte kontrollen over kroppen.",
+          "Men hvem lærer oss å være til stede? Hvem lærer oss å finne vår egen bevegelse i en koreografi? Hvem snakker om karisma, tilstedeværelse, autentisitet? Hvem viser oss veier til å kjenne kroppen utover dens utseende? Hvem hjelper oss å oppdage hvem vi er når vi danser?",
+          "Be The Dance er født nettopp fra dette stedet. Mellom teknikk og frihet, kropp og følelse, bevegelse og tilstedeværelse. Mellom det vi har lært og det som allerede finnes inni oss.",
+          "Det er en invitasjon til å eksperimentere og la kroppen tenke, føle og snakke. For danseren som ønsker å gå utover teknikken. Og for den som alltid har trodd at de “ikke kan danse”.",
+          "For kanskje du ikke trenger å vite. Kanskje du bare trenger å begynne. Og så oppdage at dansen allerede var der. Og ventet på deg.",
+          "[GOLD]Be The Dance. Ikke bare dans.\nVær dansen.",
+          "[SIGNATURE]Safia"
+        ],
         "read_more": "Les hele historien",
         "read_less": "Vis mindre",
         "cv_link_text": "Skaperens CV",
@@ -297,7 +375,43 @@
       "title": "Biostretch",
       "subtitle": "Fire tiår med forskning på bevegelse.",
       "description": "Biostretch er et treningssystem...",
-      "philosophy": "[{'title': 'HVA ER BIOSTRETCH?', 'content': ['Biostretch er et treningssystem som fremmer en gjenforening med kroppen gjennom bevissthet om bevegelse.', 'Metoden bruker oppmerksomhet som sitt viktigste verktøy: en enkel, kraftfull ressurs som er tilgjengelig for alle. Ved å rette den mot bevegelsesopplevelsen, utvider vi oppfatningen av kroppen og åpner rom for nye muligheter for kroppslig organisering.', 'Inspirert av over fire tiår med fordypning i dans, somatisk bevegelseslære og meditasjon, anerkjenner metoden kroppen som et intelligent, helhetlig system i kontinuerlig endring. I stedet for å jage etter prestasjon eller perfeksjon, inviterer den til en nennsom utforskning av den kroppslige opplevelsen – hvor det betyr mindre hva du gjør, og mer hvordan du gjør det.', 'Det er ut fra denne opplevelsen av tilstedeværelse at en ny måte å sanse og bebo egen kropp på vokser frem. Men hvordan foregår egentlig denne forvandlingen i praksis?']}, {'title': 'HVORDAN FUNGERER DET?', 'content': ['Biostretch inviterer deg til å gire ned, gi slipp på spenninger i kroppen og rette oppmerksomheten mot enkle bevegelser og følelsene de vekker.', 'Gjennom denne utforskningen blir det mulig å legge merke til spenningsmønstre, bevegelsesvaner og måter kroppen organiserer seg på, som vanligvis unnslipper oppmerksomheten vår fordi de foregår automatisk og ubevisst. Den tilsynelatende enkelheten i øvelsene åpner opp for en dyp prosess av lytting, sansing og kroppslig reorganisering.', 'Når bevegelsene utføres rolig, mykt og uten anstrengelse, stimuleres en tilstand av balanse i nervesystemet – bindeleddet som koordinerer samspillet mellom kropp og sinn og regulerer kroppens funksjoner. I denne modusen finner kroppen rom til å slippe tak i spenninger, finne tilbake til likevekt og gjenvinne en naturlig, fri bevegelsesflyt.', 'Mer enn å lære bort nye bevegelser, styrker Biostretch tilliten til kroppens medfødte intelligens og inviterer til å gjenoppdage gleden ved å bevege seg med frihet, tilstedeværelse og bevissthet. Det beste av alt er at denne opplevelsen er tilgjengelig for alle.']}, {'title': 'HVEM KAN DELTA?', 'content': ['Biostretch passer for mennesker i alle aldre og med ulik erfaring, fysisk form eller bevegelighet.', 'Praksisen respekterer hver enkelt kropps unike forutsetninger. Det finnes ingen fasit eller ideell bevegelse man må strekke seg etter, og ingen ytre mal å følge. Hver deltaker utforsker øvelsene ut fra sine egne grenser og muligheter, i sitt eget tempo.', 'I stedet for å tvinge kroppen inn i en gitt form, bygger Biostretch på ressursene du allerede bærer i deg: evnen til å sanse, lære og finne mer behagelige og funksjonelle bevegelsesmønstre. Slik fremmer metoden autonomi, trygghet og gleden ved å finne seg til rette i egen kropp.', 'Og hva kan denne praksisen tilføre hverdagen din?']}, {'title': 'HVA ER FORDELENE?', 'content': ['Regelmessig praksis av Biostretch bidrar til å løse opp spenninger, øke bevegeligheten, forbedre holdningen og gjøre bevegelsene lettere, mer samkjørte og behagelige. Over tid gjenvinner kroppen sin smidighet og funksjonalitet, slik at hverdagens gjøremål oppleves lettere og mer lystbetont.', 'Ved å fremme balanse i nervesystemet bidrar praksisen også til å dempe stress, forbedre pustekvaliteten og lindre ubehag forbundet med muskelspenninger – særlig i nakke, skuldre og rygg. I tillegg virker den forebyggende mot belastningsskader forårsaket av ensformige bevegelsesmønstre og overbelastning.', 'Over tid forplanter disse endringene seg utover selve timene, og blir en naturlig del av hvordan vi beveger oss, sanser og bruker kroppen i det daglige.']}]",
+      "philosophy": [
+        {
+          "title": "HVA ER BIOSTRETCH?",
+          "content": [
+            "Biostretch er et treningssystem som fremmer en gjenforening med kroppen gjennom bevissthet om bevegelse.",
+            "Metoden bruker oppmerksomhet som sitt viktigste verktøy: en enkel, kraftfull ressurs som er tilgjengelig for alle. Ved å rette den mot bevegelsesopplevelsen, utvider vi oppfatningen av kroppen og åpner rom for nye muligheter for kroppslig organisering.",
+            "Inspirert av over fire tiår med fordypning i dans, somatisk bevegelseslære og meditasjon, anerkjenner metoden kroppen som et intelligent, helhetlig system i kontinuerlig endring. I stedet for å jage etter prestasjon eller perfeksjon, inviterer den til en nennsom utforskning av den kroppslige opplevelsen – hvor det betyr mindre hva du gjør, og mer hvordan du gjør det.",
+            "Det er ut fra denne opplevelsen av tilstedeværelse at en ny måte å sanse og bebo egen kropp på vokser frem. Men hvordan foregår egentlig denne forvandlingen i praksis?"
+          ]
+        },
+        {
+          "title": "HVORDAN FUNGERER DET?",
+          "content": [
+            "Biostretch inviterer deg til å gire ned, gi slipp på spenninger i kroppen og rette oppmerksomheten mot enkle bevegelser og følelsene de vekker.",
+            "Gjennom denne utforskningen blir det mulig å legge merke til spenningsmønstre, bevegelsesvaner og måter kroppen organiserer seg på, som vanligvis unnslipper oppmerksomheten vår fordi de foregår automatisk og ubevisst. Den tilsynelatende enkelheten i øvelsene åpner opp for en dyp prosess av lytting, sansing og kroppslig reorganisering.",
+            "Når bevegelsene utføres rolig, mykt og uten anstrengelse, stimuleres en tilstand av balanse i nervesystemet – bindeleddet som koordinerer samspillet mellom kropp og sinn og regulerer kroppens funksjoner. I denne modusen finner kroppen rom til å slippe tak i spenninger, finne tilbake til likevekt og gjenvinne en naturlig, fri bevegelsesflyt.",
+            "Mer enn å lære bort nye bevegelser, styrker Biostretch tilliten til kroppens medfødte intelligens og inviterer til å gjenoppdage gleden ved å bevege seg med frihet, tilstedeværelse og bevissthet. Det beste av alt er at denne opplevelsen er tilgjengelig for alle."
+          ]
+        },
+        {
+          "title": "HVEM KAN DELTA?",
+          "content": [
+            "Biostretch passer for mennesker i alle aldre og med ulik erfaring, fysisk form eller bevegelighet.",
+            "Praksisen respekterer hver enkelt kropps unike forutsetninger. Det finnes ingen fasit eller ideell bevegelse man må strekke seg etter, og ingen ytre mal å følge. Hver deltaker utforsker øvelsene ut fra sine egne grenser og muligheter, i sitt eget tempo.",
+            "I stedet for å tvinge kroppen inn i en gitt form, bygger Biostretch på ressursene du allerede bærer i deg: evnen til å sanse, lære og finne mer behagelige og funksjonelle bevegelsesmønstre. Slik fremmer metoden autonomi, trygghet og gleden ved å finne seg til rette i egen kropp.",
+            "Og hva kan denne praksisen tilføre hverdagen din?"
+          ]
+        },
+        {
+          "title": "HVA ER FORDELENE?",
+          "content": [
+            "Regelmessig praksis av Biostretch bidrar til å løse opp spenninger, øke bevegeligheten, forbedre holdningen og gjøre bevegelsene lettere, mer samkjørte og behagelige. Over tid gjenvinner kroppen sin smidighet og funksjonalitet, slik at hverdagens gjøremål oppleves lettere og mer lystbetont.",
+            "Ved å fremme balanse i nervesystemet bidrar praksisen også til å dempe stress, forbedre pustekvaliteten og lindre ubehag forbundet med muskelspenninger – særlig i nakke, skuldre og rygg. I tillegg virker den forebyggende mot belastningsskader forårsaket av ensformige bevegelsesmønstre og overbelastning.",
+            "Over tid forplanter disse endringene seg utover selve timene, og blir en naturlig del av hvordan vi beveger oss, sanser og bruker kroppen i det daglige."
+          ]
+        }
+      ],
       "workshops": {
         "uma-melhor-postura": {
           "title": "En Bedre Holdning",
@@ -349,7 +463,33 @@
         "cv_link_text": "Se hele CV-en",
         "read_more": "Les hele historien",
         "read_less": "Lukk",
-        "paragraphs": "['Alt startet i New York.', 'Jeg var på utkikk etter nye måter å uttrykke dans på. Jeg ønsket å gå utover det jeg allerede visste, å krysse grensene til den kroppen jeg hadde lært meg å mestre. Og det var slik jeg havnet i The Big Apple. Jeg dro for å studere moderne dans, nærmere bestemt en tilnærming kalt Release Technique.', '[SILVER]Og da begynte alt jeg visste om dans å smuldre opp.', 'Jeg kom fra klassisk ballett, et univers av presise former, kodifiserte bevegelser, nøye konstruerte linjer, muskler trent til å adlyde. I Release var det nesten stikk motsatt. Bevegelsen trengte ikke å bli påtvunget kroppen. Den kunne fødes innenfra.', 'En liten impuls, en vektoverføring, et pust, et forhold til tyngdekraften, og noe begynte å bevege seg. Kroppen virket å finne sine egne veier. Skjelettet, vår mest grunnleggende og dypeste struktur, ble utgangspunktet for uendelige muligheter.', 'Det var vanskelig. Og dypt tankevekkende.', 'Kroppen min var fortsatt fanget i balletten. Det tok meg måneder bare å klare å slippe magen. Å puste på en mer naturlig måte. Å tillate at kroppen sluttet å være permanent forberedt på å prestere og i stedet, rett og slett, begynte å føle. Det var en dekonstruksjon.', '[GOLD]Et dykk ut i det ukjente.', 'Det var i denne perioden jeg ble introdusert for ulike metoder innen somatisk utdanning. Jeg forelsket meg umiddelbart.', 'Jeg begynte å søke etter disse praksisene overalt, i alle klasser jeg kunne finne. Og litt etter litt begynte jeg å innse noe som for alltid ville endre mitt forhold til bevegelse: kanskje kroppen ikke trengte mer anstrengelse. Kanskje den trengte mer lytting.', 'Disse praksisene, som oftest er milde mot kroppen, tar utgangspunkt i en kraftfull idé: det finnes en iboende kroppslig intelligens i oss. Og når vi lærer å lytte til den, når vi utvikler bevissthet om bevegelse, åpner vi veier til mer helse, frihet og tilstedeværelse.', 'Først forsto jeg hvor essensielt dette var for dansere. Deretter forsto jeg at det var essensielt for alle. For de som tilbringer timer foran en datamaskin. For de som jobber stående. For de som driver med sport. For de som føler smerte, spenning eller begrensninger. For de som rett og slett ønsker å kjenne sin egen kropp bedre og oppdage en friere måte å bevege seg gjennom livet på.', '[SILVER]Men det var enda en oppdagelse.', 'Jo mer jeg praktiserte, jo mer forsto jeg at dette arbeidet ikke bare handlet om kroppen. Det stilte spørsmål ved noen av bærebjelkene vi bygger det moderne livet på: innsats, kompetanse, produktivitet, effektivitet og kontroll. Vi lever i en kultur som lærer oss å gjøre mer, raskere, bedre. Å kontrollere. Å overvinne. Å erobre.', 'Hva om vi, for et lite øyeblikk, gjorde det motsatte? Hva om vi, i stedet for å kreve et svar fra kroppen, lærte oss å lytte til den? Hva om vi, i stedet for å søke etter bevegelsens perfeksjon, utforsket selve opplevelsen av å være i bevegelse?', 'For meg ble denne praksisen en slags meditasjon i bevegelse. Et rom for å møte seg selv. Et øyeblikk for å suspendere, bare for et sekund, alt vi har lært om hvordan en kropp bør være, hvordan den bør bevege seg, hvordan den bør fungere. Og for å begynne en utforskning. Ikke for å komme frem til en riktig bevegelse. Men for å oppdage hva som er mulig.', 'Det var da jeg innså at jeg kunne samle tre verdener som hadde krysset livet mitt: dans, meditativ praksis og somatisk utdanning. Fra dette krysningspunktet ble Biostretch født. En levende metode.', '[SILVER]Levende fordi den ikke slutter når praksisen er over.', 'Det vi oppfatter under et møte kan krysse dørstokken og følge oss ut i livet. Det kan forandre måten vi går, sitter, puster, jobber, danser, hviler på. Det kan bringe mer komfort, letthet og effektivitet til de enkleste bevegelsene, nettopp de vi gjentar hver dag uten en gang å legge merke til det.', '[GOLD]I Biostretch er bevissthet nøkkelen.', 'For det er ikke bare den bevegelsen vi gjør som betyr noe. Det er kvaliteten den skjer med. Det er det som skjer før bevegelsen. Det er det vi oppfatter mens den skjer. Det er det som endrer seg når vi slutter å kjempe mot kroppen og begynner å snakke med den.', 'Kanskje har du brukt hele livet på å prøve å få kroppen din til å adlyde.\\nHva om det nå var på tide å lytte til den? Det er denne utforskningen jeg foreslår i Biostretch-klassene. En invitasjon til å sakke farten, til å føle, til å puste. Til å slippe det som ikke lenger trenger å bli holdt fast i. Til å oppdage veier som har vært der hele tiden, og bare ventet på at du skulle følge med.', 'Kom og prøv. Kanskje vil du ikke bare oppdage en ny måte å bevege deg på.', '[GOLD]Kanskje vil du oppdage en ny måte å være i din egen kropp på.', '[SIGNATURE]Safia']"
+        "paragraphs": [
+          "Alt startet i New York.",
+          "Jeg var på utkikk etter nye måter å uttrykke dans på. Jeg ønsket å gå utover det jeg allerede visste, å krysse grensene til den kroppen jeg hadde lært meg å mestre. Og det var slik jeg havnet i The Big Apple. Jeg dro for å studere moderne dans, nærmere bestemt en tilnærming kalt Release Technique.",
+          "[SILVER]Og da begynte alt jeg visste om dans å smuldre opp.",
+          "Jeg kom fra klassisk ballett, et univers av presise former, kodifiserte bevegelser, nøye konstruerte linjer, muskler trent til å adlyde. I Release var det nesten stikk motsatt. Bevegelsen trengte ikke å bli påtvunget kroppen. Den kunne fødes innenfra.",
+          "En liten impuls, en vektoverføring, et pust, et forhold til tyngdekraften, og noe begynte å bevege seg. Kroppen virket å finne sine egne veier. Skjelettet, vår mest grunnleggende og dypeste struktur, ble utgangspunktet for uendelige muligheter.",
+          "Det var vanskelig. Og dypt tankevekkende.",
+          "Kroppen min var fortsatt fanget i balletten. Det tok meg måneder bare å klare å slippe magen. Å puste på en mer naturlig måte. Å tillate at kroppen sluttet å være permanent forberedt på å prestere og i stedet, rett og slett, begynte å føle. Det var en dekonstruksjon.",
+          "[GOLD]Et dykk ut i det ukjente.",
+          "Det var i denne perioden jeg ble introdusert for ulike metoder innen somatisk utdanning. Jeg forelsket meg umiddelbart.",
+          "Jeg begynte å søke etter disse praksisene overalt, i alle klasser jeg kunne finne. Og litt etter litt begynte jeg å innse noe som for alltid ville endre mitt forhold til bevegelse: kanskje kroppen ikke trengte mer anstrengelse. Kanskje den trengte mer lytting.",
+          "Disse praksisene, som oftest er milde mot kroppen, tar utgangspunkt i en kraftfull idé: det finnes en iboende kroppslig intelligens i oss. Og når vi lærer å lytte til den, når vi utvikler bevissthet om bevegelse, åpner vi veier til mer helse, frihet og tilstedeværelse.",
+          "Først forsto jeg hvor essensielt dette var for dansere. Deretter forsto jeg at det var essensielt for alle. For de som tilbringer timer foran en datamaskin. For de som jobber stående. For de som driver med sport. For de som føler smerte, spenning eller begrensninger. For de som rett og slett ønsker å kjenne sin egen kropp bedre og oppdage en friere måte å bevege seg gjennom livet på.",
+          "[SILVER]Men det var enda en oppdagelse.",
+          "Jo mer jeg praktiserte, jo mer forsto jeg at dette arbeidet ikke bare handlet om kroppen. Det stilte spørsmål ved noen av bærebjelkene vi bygger det moderne livet på: innsats, kompetanse, produktivitet, effektivitet og kontroll. Vi lever i en kultur som lærer oss å gjøre mer, raskere, bedre. Å kontrollere. Å overvinne. Å erobre.",
+          "Hva om vi, for et lite øyeblikk, gjorde det motsatte? Hva om vi, i stedet for å kreve et svar fra kroppen, lærte oss å lytte til den? Hva om vi, i stedet for å søke etter bevegelsens perfeksjon, utforsket selve opplevelsen av å være i bevegelse?",
+          "For meg ble denne praksisen en slags meditasjon i bevegelse. Et rom for å møte seg selv. Et øyeblikk for å suspendere, bare for et sekund, alt vi har lært om hvordan en kropp bør være, hvordan den bør bevege seg, hvordan den bør fungere. Og for å begynne en utforskning. Ikke for å komme frem til en riktig bevegelse. Men for å oppdage hva som er mulig.",
+          "Det var da jeg innså at jeg kunne samle tre verdener som hadde krysset livet mitt: dans, meditativ praksis og somatisk utdanning. Fra dette krysningspunktet ble Biostretch født. En levende metode.",
+          "[SILVER]Levende fordi den ikke slutter når praksisen er over.",
+          "Det vi oppfatter under et møte kan krysse dørstokken og følge oss ut i livet. Det kan forandre måten vi går, sitter, puster, jobber, danser, hviler på. Det kan bringe mer komfort, letthet og effektivitet til de enkleste bevegelsene, nettopp de vi gjentar hver dag uten en gang å legge merke til det.",
+          "[GOLD]I Biostretch er bevissthet nøkkelen.",
+          "For det er ikke bare den bevegelsen vi gjør som betyr noe. Det er kvaliteten den skjer med. Det er det som skjer før bevegelsen. Det er det vi oppfatter mens den skjer. Det er det som endrer seg når vi slutter å kjempe mot kroppen og begynner å snakke med den.",
+          "Kanskje har du brukt hele livet på å prøve å få kroppen din til å adlyde.\nHva om det nå var på tide å lytte til den? Det er denne utforskningen jeg foreslår i Biostretch-klassene. En invitasjon til å sakke farten, til å føle, til å puste. Til å slippe det som ikke lenger trenger å bli holdt fast i. Til å oppdage veier som har vært der hele tiden, og bare ventet på at du skulle følge med.",
+          "Kom og prøv. Kanskje vil du ikke bare oppdage en ny måte å bevege deg på.",
+          "[GOLD]Kanskje vil du oppdage en ny måte å være i din egen kropp på.",
+          "[SIGNATURE]Safia"
+        ]
       }
     },
     "kroppsskole": {
@@ -563,7 +703,71 @@
           "desc": "Å bidra til sunnere og mer bærekraftige relasjoner på arbeidsplassen"
         }
       },
-      "pillars": "[{'number': '01', 'title': 'Fysiologi og bevissthet', 'items': [{'key': 'consciousness', 'label': 'Kroppsbevissthet', 'desc': 'Legge merke til hvordan kroppen organiserer seg i arbeidshverdagen.'}, {'key': 'tension_relief', 'label': 'Avspenning', 'desc': 'Frigjøre oppbygd stress og fysisk belastning fra rutinepreget arbeid.'}, {'key': 'mobility', 'label': 'Mobilitet og balanse', 'desc': 'Gjenvinne naturlig bevegelsesfrihet og funksjonell stabilitet.'}]}, {'number': '02', 'title': 'Tilstedeværelse og bærekraft', 'items': [{'key': 'coordination', 'label': 'Koordinasjon og persepsjon', 'desc': 'Styrke sammenhengen mellom intensjon, holdning og bevegelse.'}, {'key': 'pause', 'label': 'Veiledet pause', 'desc': 'Skape bevisste pauser som fornyer fysisk og mental energi.'}, {'key': 'presence', 'label': 'Oppmerksomt nærvær', 'desc': 'Kultivere evnen til å være til stede i hver oppgave.'}]}, {'number': '03', 'title': 'Egenomsorg og arbeidsmiljø', 'items': [{'key': 'overload', 'label': 'Belastningsreduksjon', 'desc': 'Avbryte spenningsmønstre før de setter seg i kroppen.'}, {'key': 'selfcare', 'label': 'Varig egenomsorg', 'desc': 'Utvikle gode helsevaner som en naturlig del av bedriftskulturen.'}, {'key': 'environment', 'label': 'Harmonisk miljø', 'desc': 'Bygge sunnere, mer bærekraftige og menneskelige relasjoner på jobb.'}]}]"
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Fysiologi og bevissthet",
+          "items": [
+            {
+              "key": "consciousness",
+              "label": "Kroppsbevissthet",
+              "desc": "Legge merke til hvordan kroppen organiserer seg i arbeidshverdagen."
+            },
+            {
+              "key": "tension_relief",
+              "label": "Avspenning",
+              "desc": "Frigjøre oppbygd stress og fysisk belastning fra rutinepreget arbeid."
+            },
+            {
+              "key": "mobility",
+              "label": "Mobilitet og balanse",
+              "desc": "Gjenvinne naturlig bevegelsesfrihet og funksjonell stabilitet."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Tilstedeværelse og bærekraft",
+          "items": [
+            {
+              "key": "coordination",
+              "label": "Koordinasjon og persepsjon",
+              "desc": "Styrke sammenhengen mellom intensjon, holdning og bevegelse."
+            },
+            {
+              "key": "pause",
+              "label": "Veiledet pause",
+              "desc": "Skape bevisste pauser som fornyer fysisk og mental energi."
+            },
+            {
+              "key": "presence",
+              "label": "Oppmerksomt nærvær",
+              "desc": "Kultivere evnen til å være til stede i hver oppgave."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Egenomsorg og arbeidsmiljø",
+          "items": [
+            {
+              "key": "overload",
+              "label": "Belastningsreduksjon",
+              "desc": "Avbryte spenningsmønstre før de setter seg i kroppen."
+            },
+            {
+              "key": "selfcare",
+              "label": "Varig egenomsorg",
+              "desc": "Utvikle gode helsevaner som en naturlig del av bedriftskulturen."
+            },
+            {
+              "key": "environment",
+              "label": "Harmonisk miljø",
+              "desc": "Bygge sunnere, mer bærekraftige og menneskelige relasjoner på jobb."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "FOR BEDRIFTER SOM VERDSETTER MENNESKER",
@@ -655,18 +859,83 @@
     "privacy": {
       "title": "Personvernerklæring",
       "lastUpdated": "Sist oppdatert: September 2026",
-      "sections": "[{'title': '1. Introduksjon', 'content': '<p>Velkommen til <strong>Dance2Dance</strong> (inkludert Biostretch og Be The Dance). Vi er forpliktet til integriteten og sikkerheten til personopplysningene til våre brukere og studenter. Denne personvernerklæringen gjelder for all digital interaksjon på vår nettside og tilknyttede plattformer.</p><p>Ved å bruke plattformene våre anerkjenner og godtar du praksisene beskrevet her. Vi behandler dataene dine ansvarlig og i samsvar med gjeldende lover (som GDPR).</p>'}, {'title': '2. Definisjoner', 'content': '<p><strong>Personopplysninger:</strong> Informasjon som identifiserer eller kan identifisere en fysisk person.</p><p><strong>Sensitive Personopplysninger:</strong> Informasjon som avslører intime personlige egenskaper. Vi ber kun om essensiell informasjon.</p><p><strong>Databehandling:</strong> Enhver operasjon som involverer personopplysninger, som innsamling, lagring eller sletting.</p>'}, {'title': '3. Innsamlede Data', 'content': \"<p>Vi samler inn og behandler:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informasjon fra deg:</strong> Navn, e-post, og info gitt ved registrering til workshops.</li><li><strong>Automatisk innsamlet informasjon:</strong> Anonymiserte data om enhet og interaksjon for statistiske formål.</li></ul>\"}, {'title': '4. Bruk av Informasjonskapsler (Cookies)', 'content': '<p>Vi bruker informasjonskapsler for å forbedre brukeropplevelsen og sikre nettstedets funksjonalitet. Du kan konfigurere nettleseren din til å avvise informasjonskapsler.</p>'}, {'title': '5. Formål med Behandlingen', 'content': \"<p>Dataene brukes til å:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Tilby og forbedre våre tjenester;</li><li>Tilpasse opplevelsen din;</li><li>Kommunisere viktig informasjon om klasser;</li><li>Overholde juridiske forpliktelser.</li></ul>\"}, {'title': '6. Datadeling', 'content': '<p>Dine data er konfidensielle. Vi deler dem kun med strengt nødvendige tjenesteleverandører. Vi selger ikke informasjonen din.</p>'}, {'title': '7. Dine Rettigheter', 'content': '<p>Du har rett til innsyn, retting, sletting, og til å trekke tilbake samtykke. Kontakt oss for å utøve disse rettighetene.</p>'}, {'title': '8. Spamforebygging og tredjepartstjenester', 'content': \"<p>For å beskytte skjemaene våre og forhindre spam-meldinger generert av roboter, bruker vi Cloudflare Turnstile-tjenesten. Ved å surfe og bruke nettstedet vårt, anerkjenner og godtar du at driften av denne usynlige beskyttelsestjenesten er underlagt <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Cloudflare Turnstile Privacy Addendum</a>.</p>\"}]"
+      "sections": [
+        {
+          "title": "1. Introduksjon",
+          "content": "<p>Velkommen til <strong>Dance2Dance</strong> (inkludert Biostretch og Be The Dance). Vi er forpliktet til integriteten og sikkerheten til personopplysningene til våre brukere og studenter. Denne personvernerklæringen gjelder for all digital interaksjon på vår nettside og tilknyttede plattformer.</p><p>Ved å bruke plattformene våre anerkjenner og godtar du praksisene beskrevet her. Vi behandler dataene dine ansvarlig og i samsvar med gjeldende lover (som GDPR).</p>"
+        },
+        {
+          "title": "2. Definisjoner",
+          "content": "<p><strong>Personopplysninger:</strong> Informasjon som identifiserer eller kan identifisere en fysisk person.</p><p><strong>Sensitive Personopplysninger:</strong> Informasjon som avslører intime personlige egenskaper. Vi ber kun om essensiell informasjon.</p><p><strong>Databehandling:</strong> Enhver operasjon som involverer personopplysninger, som innsamling, lagring eller sletting.</p>"
+        },
+        {
+          "title": "3. Innsamlede Data",
+          "content": "<p>Vi samler inn og behandler:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informasjon fra deg:</strong> Navn, e-post, og info gitt ved registrering til workshops.</li><li><strong>Automatisk innsamlet informasjon:</strong> Anonymiserte data om enhet og interaksjon for statistiske formål.</li></ul>"
+        },
+        {
+          "title": "4. Bruk av Informasjonskapsler (Cookies)",
+          "content": "<p>Vi bruker informasjonskapsler for å forbedre brukeropplevelsen og sikre nettstedets funksjonalitet. Du kan konfigurere nettleseren din til å avvise informasjonskapsler.</p>"
+        },
+        {
+          "title": "5. Formål med Behandlingen",
+          "content": "<p>Dataene brukes til å:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li>Tilby og forbedre våre tjenester;</li><li>Tilpasse opplevelsen din;</li><li>Kommunisere viktig informasjon om klasser;</li><li>Overholde juridiske forpliktelser.</li></ul>"
+        },
+        {
+          "title": "6. Datadeling",
+          "content": "<p>Dine data er konfidensielle. Vi deler dem kun med strengt nødvendige tjenesteleverandører. Vi selger ikke informasjonen din.</p>"
+        },
+        {
+          "title": "7. Dine Rettigheter",
+          "content": "<p>Du har rett til innsyn, retting, sletting, og til å trekke tilbake samtykke. Kontakt oss for å utøve disse rettighetene.</p>"
+        },
+        {
+          "title": "8. Spamforebygging og tredjepartstjenester",
+          "content": "<p>For å beskytte skjemaene våre og forhindre spam-meldinger generert av roboter, bruker vi Cloudflare Turnstile-tjenesten. Ved å surfe og bruke nettstedet vårt, anerkjenner og godtar du at driften av denne usynlige beskyttelsestjenesten er underlagt <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Cloudflare Turnstile Privacy Addendum</a>.</p>"
+        }
+      ]
     },
     "terms": {
       "title": "Brukervilkår",
       "lastUpdated": "Sist oppdatert: September 2026",
-      "sections": "[{'title': '1. Aksept av Vilkår', 'content': '<p>Velkommen til <strong>Dance2Dance</strong>. Ved å bruke nettstedet og tjenestene våre godtar du automatisk disse reglene. Hvis du ikke er enig, vennligst ikke bruk tjenestene våre.</p>'}, {'title': '2. Praksisens Natur og Ansvarsfraskrivelse', 'content': '<p>Metodikkene (Biostretch og Be The Dance) fokuserer på bevegelse og kroppsbevissthet. <strong>De erstatter ikke medisinsk eller psykologisk behandling.</strong> Du har ansvar for å respektere kroppens grenser.</p>'}, {'title': '3. Påmelding og Avbestilling', 'content': '<p>Påmeldinger er bekreftet ved betaling. Spesifikke avbestillingsregler gjelder avhengig av arrangementet. Avbestillinger i siste liten refunderes kanskje ikke.</p>'}, {'title': '4. Åndsverk og Eiendomsrett', 'content': '<p>Innholdet, inkludert metoder og tekster, er beskyttet åndsverk. Tilgang gir deg rett til å oppleve praksisen kun for personlige formål.</p><p>Kopiering eller undervisning av metodikken uten autorisasjon er <strong>strengt forbudt</strong>.</p>'}, {'title': '5. Personvern', 'content': '<p>Ved å bruke nettstedet godtar du vår personvernerklæring, som detaljerer vår håndtering av data i samsvar med lover.</p>'}, {'title': '6. Endringer i Vilkår', 'content': '<p>Disse vilkårene kan oppdateres for å gjenspeile endringer i våre tjenester. Den nyeste versjonen vil alltid være her.</p>'}]"
+      "sections": [
+        {
+          "title": "1. Aksept av Vilkår",
+          "content": "<p>Velkommen til <strong>Dance2Dance</strong>. Ved å bruke nettstedet og tjenestene våre godtar du automatisk disse reglene. Hvis du ikke er enig, vennligst ikke bruk tjenestene våre.</p>"
+        },
+        {
+          "title": "2. Praksisens Natur og Ansvarsfraskrivelse",
+          "content": "<p>Metodikkene (Biostretch og Be The Dance) fokuserer på bevegelse og kroppsbevissthet. <strong>De erstatter ikke medisinsk eller psykologisk behandling.</strong> Du har ansvar for å respektere kroppens grenser.</p>"
+        },
+        {
+          "title": "3. Påmelding og Avbestilling",
+          "content": "<p>Påmeldinger er bekreftet ved betaling. Spesifikke avbestillingsregler gjelder avhengig av arrangementet. Avbestillinger i siste liten refunderes kanskje ikke.</p>"
+        },
+        {
+          "title": "4. Åndsverk og Eiendomsrett",
+          "content": "<p>Innholdet, inkludert metoder og tekster, er beskyttet åndsverk. Tilgang gir deg rett til å oppleve praksisen kun for personlige formål.</p><p>Kopiering eller undervisning av metodikken uten autorisasjon er <strong>strengt forbudt</strong>.</p>"
+        },
+        {
+          "title": "5. Personvern",
+          "content": "<p>Ved å bruke nettstedet godtar du vår personvernerklæring, som detaljerer vår håndtering av data i samsvar med lover.</p>"
+        },
+        {
+          "title": "6. Endringer i Vilkår",
+          "content": "<p>Disse vilkårene kan oppdateres for å gjenspeile endringer i våre tjenester. Den nyeste versjonen vil alltid være her.</p>"
+        }
+      ]
     }
   },
   "cv": {
     "title": "Safia",
     "subtitle": "Kunstnerisk leder og skaper",
-    "paragraphs": "['Dans kom inn i livet mitt etter råd fra lege. Som syvåring ble klassisk ballett anbefalt for å rette opp fotstillingen min. Den opprinnelige plikten ble raskt til en fascinasjon. Disiplinen ved barren og entusiasmen til læremester João Luiz Rolla markerte begynnelsen på en reise ledet av bevegelse.', 'Teknisk disiplin førte meg tidlig ut i verden. I 1988 mottok jeg et stipend til statens ballettskole i Kiev, og fordypet meg i to år i Vaganova-metoden i det tidligere Sovjetunionen. På Cuba danset jeg med Ballet de Camaguey og Nasjonalballetten, der teknisk presisjon levde side om side med kunstnere fra ulike disipliner.', 'Behovet for å gå utover ballettens kodifiserte former førte meg til samtidsdans i Companhia Terpsí. Senere åpnet et stipend i New York døren til å studere Release-teknikk ved Trisha Brown Company og Movement Research. Det ble mitt første møte med somatisk utdanning, der jeg oppdaget at bevegelse kan springe ut fra skjelettets linjer og oppmerksom lytting, uten unødig anstrengelse.', 'Denne utforskningen utvidet seg på flere felt. Jeg arbeidet bak scenen som assistentkoreograf ved Teatro Castro Alves i Bahia. Jeg tok en grad i litteratur ved UFRGS og fordypet dialogen med språket. Jeg ble sertifisert Gyrotonic-instruktør og pedagog ved Teatro Escola Brincante. Jeg arbeidet med ulike sosiale prosjekter. I 2007 var jeg med på å grunnlegge Porto Alegre Cia de Dança, og overtok den kunstneriske ledelsen.', 'Fra 2011 omdefinerte daglig meditasjonspraksis mitt forhold til kroppen. Fokuset flyttet seg fra den ytre formen til kvaliteten på tilstedeværelsen. Bevisst pust og stillhet ble bestanddeler i selve bevegelsen. Ut fra dette møtet mellom dans, somatisk utdanning og meditasjon ble metodene Biostretch og Be The Dance skapt.', 'Nå med base i Norge jobber jeg som en kunstnerisk bro til Brasil. Fra denne kryssingen oppsto Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance, et sentralt prosjekt som samler tiår med kroppsforskning, pedagogisk erfaring og undersøkelser av forholdet mellom teknikk, tilstedeværelse og uttrykk. Med base i Norge er initiativet en møteplass og en arena for transformasjon, rettet både mot dansere og kunstnere, så vel som alle som ønsker å fordype forholdet til sin egen kropp.']"
+    "paragraphs": [
+      "Dans kom inn i livet mitt etter råd fra lege. Som syvåring ble klassisk ballett anbefalt for å rette opp fotstillingen min. Den opprinnelige plikten ble raskt til en fascinasjon. Disiplinen ved barren og entusiasmen til læremester João Luiz Rolla markerte begynnelsen på en reise ledet av bevegelse.",
+      "Teknisk disiplin førte meg tidlig ut i verden. I 1988 mottok jeg et stipend til statens ballettskole i Kiev, og fordypet meg i to år i Vaganova-metoden i det tidligere Sovjetunionen. På Cuba danset jeg med Ballet de Camaguey og Nasjonalballetten, der teknisk presisjon levde side om side med kunstnere fra ulike disipliner.",
+      "Behovet for å gå utover ballettens kodifiserte former førte meg til samtidsdans i Companhia Terpsí. Senere åpnet et stipend i New York døren til å studere Release-teknikk ved Trisha Brown Company og Movement Research. Det ble mitt første møte med somatisk utdanning, der jeg oppdaget at bevegelse kan springe ut fra skjelettets linjer og oppmerksom lytting, uten unødig anstrengelse.",
+      "Denne utforskningen utvidet seg på flere felt. Jeg arbeidet bak scenen som assistentkoreograf ved Teatro Castro Alves i Bahia. Jeg tok en grad i litteratur ved UFRGS og fordypet dialogen med språket. Jeg ble sertifisert Gyrotonic-instruktør og pedagog ved Teatro Escola Brincante. Jeg arbeidet med ulike sosiale prosjekter. I 2007 var jeg med på å grunnlegge Porto Alegre Cia de Dança, og overtok den kunstneriske ledelsen.",
+      "Fra 2011 omdefinerte daglig meditasjonspraksis mitt forhold til kroppen. Fokuset flyttet seg fra den ytre formen til kvaliteten på tilstedeværelsen. Bevisst pust og stillhet ble bestanddeler i selve bevegelsen. Ut fra dette møtet mellom dans, somatisk utdanning og meditasjon ble metodene Biostretch og Be The Dance skapt.",
+      "Nå med base i Norge jobber jeg som en kunstnerisk bro til Brasil. Fra denne kryssingen oppsto Dance<span class=\"text-accent text-[1.28em] font-normal\">2</span>Dance, et sentralt prosjekt som samler tiår med kroppsforskning, pedagogisk erfaring og undersøkelser av forholdet mellom teknikk, tilstedeværelse og uttrykk. Med base i Norge er initiativet en møteplass og en arena for transformasjon, rettet både mot dansere og kunstnere, så vel som alle som ønsker å fordype forholdet til sin egen kropp."
+    ]
   },
   "agendaPage": {
     "title": "Full Timeplan",
@@ -1016,7 +1285,62 @@
     "pillars_section": {
       "kicker": "DIMENSJONER AV OPPLEVELSEN",
       "intro": "Be the Dance virker samtidig på individuelt velvære og gruppedynamikk, med varig positiv effekt på bedriftskulturen:",
-      "pillars": "[{'number': '01', 'title': 'Vitalitet og Avspenning', 'items': [{'label': 'Individuell avspenning', 'desc': 'Frigjøring av hverdagsspenninger gjennom mangfoldige og fengende musikalske rytmer.'}, {'label': 'Personlig tilfredsstillelse', 'desc': 'Stimulering av spontanitet og fornyet livsglede gjennom kreativ kroppslig utfoldelse.'}, {'label': 'Delt letthet', 'desc': 'En felles feiring som gjenoppretter engasjement og arbeidslyst.'}]}, {'number': '02', 'title': 'Bånd og Felles Tillit', 'items': [{'label': 'Ekte kontakt', 'desc': 'Oppriktig relasjonsbygging på tvers av avdelinger og organisatoriske nivåer.'}, {'label': 'Spontan kommunikasjon', 'desc': 'Åpenhet for ærlig dialog i et trygt og inkluderende miljø med aktiv lytting.'}, {'label': 'Gjensidig tillit', 'desc': 'Dypere forståelse for hverandres styrker og menneskelige kvaliteter.'}]}, {'number': '03', 'title': 'Kultur og Institusjonell Omsorg', 'items': [{'label': 'Teamsamhold', 'desc': 'Styrking av fellesskapsfølelsen og tilhørigheten til organisasjonen.'}, {'label': 'Verdsetting av mennesker', 'desc': 'Et tydelig bevis på bedriftens engasjement for medarbeidernes velvære.'}, {'label': 'Relasjonell harmoni', 'desc': 'Et mer samarbeidsorientert, robust og omsorgsfullt arbeidsmiljø.'}]}]"
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Vitalitet og Avspenning",
+          "items": [
+            {
+              "label": "Individuell avspenning",
+              "desc": "Frigjøring av hverdagsspenninger gjennom mangfoldige og fengende musikalske rytmer."
+            },
+            {
+              "label": "Personlig tilfredsstillelse",
+              "desc": "Stimulering av spontanitet og fornyet livsglede gjennom kreativ kroppslig utfoldelse."
+            },
+            {
+              "label": "Delt letthet",
+              "desc": "En felles feiring som gjenoppretter engasjement og arbeidslyst."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Bånd og Felles Tillit",
+          "items": [
+            {
+              "label": "Ekte kontakt",
+              "desc": "Oppriktig relasjonsbygging på tvers av avdelinger og organisatoriske nivåer."
+            },
+            {
+              "label": "Spontan kommunikasjon",
+              "desc": "Åpenhet for ærlig dialog i et trygt og inkluderende miljø med aktiv lytting."
+            },
+            {
+              "label": "Gjensidig tillit",
+              "desc": "Dypere forståelse for hverandres styrker og menneskelige kvaliteter."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Kultur og Institusjonell Omsorg",
+          "items": [
+            {
+              "label": "Teamsamhold",
+              "desc": "Styrking av fellesskapsfølelsen og tilhørigheten til organisasjonen."
+            },
+            {
+              "label": "Verdsetting av mennesker",
+              "desc": "Et tydelig bevis på bedriftens engasjement for medarbeidernes velvære."
+            },
+            {
+              "label": "Relasjonell harmoni",
+              "desc": "Et mer samarbeidsorientert, robust og omsorgsfullt arbeidsmiljø."
+            }
+          ]
+        }
+      ]
     },
     "audience": {
       "kicker": "BRUKSOMRÅDER OG FORMATER",

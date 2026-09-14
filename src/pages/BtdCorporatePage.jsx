@@ -31,7 +31,11 @@ export default function BtdCorporatePage() {
   const audience = t('btd_corporate.audience', { returnObjects: true }) || {};
   const workshops = t('btd_corporate.workshops_section', { returnObjects: true }) || {};
 
-  const pillars = pillarsSection.pillars || [];
+  let pillars = pillarsSection.pillars || [];
+  if (typeof pillars === 'string') {
+    try { pillars = JSON.parse(pillars); } catch(e) {}
+  }
+  if (!Array.isArray(pillars)) pillars = [];
 
   return (
     <div className="bg-primary min-h-screen font-sans text-background">

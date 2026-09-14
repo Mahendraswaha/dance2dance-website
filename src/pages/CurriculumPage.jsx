@@ -16,9 +16,14 @@ import Footer from '../components/Footer';
 export default function CurriculumPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const cvData = t('cv', { returnObjects: true });
+  const cvData = t('cv', { returnObjects: true }) || {};
+  let paragraphs = cvData.paragraphs || [];
+  if (typeof paragraphs === 'string') {
+    try { paragraphs = JSON.parse(paragraphs); } catch(e) {}
+  }
+  if (!Array.isArray(paragraphs)) paragraphs = [];
   
-  if (!cvData || !cvData.paragraphs) return null;
+  if (paragraphs.length === 0) return null;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const paragraphRefs = useRef([]);
@@ -104,7 +109,7 @@ export default function CurriculumPage() {
             
             {/* Left Column: Narrative Prose */}
             <div className="flex-1 max-w-[460px] pb-32">
-              {cvData.paragraphs.map((p, pIdx) => (
+              {paragraphs.map((p, pIdx) => (
                 <div key={pIdx}>
                   {/* Mobile Image interspersed */}
                   <div className="md:hidden w-full max-w-[400px] mx-auto mb-8 rounded-sm overflow-hidden border border-white/10 shadow-xl aspect-square">
@@ -118,7 +123,7 @@ export default function CurriculumPage() {
                   <div 
                     data-index={pIdx}
                     ref={(el) => (paragraphRefs.current[pIdx] = el)}
-                    className={pIdx === cvData.paragraphs.length - 1 ? 'mb-0' : 'mb-10 md:mb-12'} 
+                    className={pIdx === paragraphs.length - 1 ? 'mb-0' : 'mb-10 md:mb-12'} 
                   >
                     <p 
                       className={`font-drama text-lg md:text-xl leading-loose font-light transition-colors duration-700 ${activeIndex === pIdx ? 'text-[#F0EDE8]' : 'text-[#F0EDE8]/40'}`}

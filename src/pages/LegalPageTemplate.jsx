@@ -9,6 +9,12 @@ export default function LegalPageTemplate({ title, lastUpdated, sections }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  let safeSections = sections || [];
+  if (typeof safeSections === 'string') {
+    try { safeSections = JSON.parse(safeSections); } catch(e) {}
+  }
+  if (!Array.isArray(safeSections)) safeSections = [];
+
   return (
     <div className="bg-primary min-h-screen font-sans text-background">
       <Navbar />
@@ -29,7 +35,7 @@ export default function LegalPageTemplate({ title, lastUpdated, sections }) {
           )}
 
           <div className="space-y-12">
-            {sections.map((section, idx) => (
+            {safeSections.map((section, idx) => (
               <motion.section
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
