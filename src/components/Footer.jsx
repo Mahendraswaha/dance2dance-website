@@ -28,7 +28,6 @@ const Footer = () => {
                   src="/logo-dance2dance.png" 
                   alt="Dance2Dance Logo" 
                   className="h-10 md:h-16 object-contain" 
-                  style={{ imageRendering: 'auto' }}
                 />
               </button>
             </div>
