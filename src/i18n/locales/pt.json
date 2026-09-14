@@ -1136,8 +1136,8 @@
     },
     "addToInstructorCalendar": "Adicionar à Agenda do Instrutor (Google Calendar)",
     "instructorEmail": "E-mail do Instrutor",
-    "masterTabWishlist": "Wishlists & Demandas",
-    "ready": "pronta(s)",
+    "masterTabWishlist": "Demandas & Wishlist",
+    "ready": "Pronto para Agendar",
     "wishlistManager": {
       "alertReadyDesc": "Há demanda confirmada para a abertura de novas turmas na agenda.",
       "viewReadyOnly": "Ver Prontos para Agendar",
@@ -1452,7 +1452,7 @@
       "subtitle": "é uma organização social sem fins lucrativos sediada em Oslo. Nossos valores são estruturados em um modelo de solidariedade: a receita gerada por quem pode investir viabiliza o acesso integral e gratuito para a comunidade local."
     },
     "payerCard": {
-      "kicker": "Desenvolvimento Pessoal & Solidariedade",
+      "kicker": "Sustentabilidade Consciente",
       "title": "Valores Justos de Mercado",
       "subtitle": "Para quem participa investindo",
       "pillarNumber": "01",
@@ -1493,7 +1493,7 @@
       "kicker": "Parcerias & Organizações",
       "title": "Formato para Empresas",
       "subtitle": "Programas customizados para empresas e equipes.",
-      "btdTitle": "Be The Dance in Company",
+      "btdTitle": "Be the Dance in Company",
       "btdDesc": "Dinâmicas integrativas de presença, ritmo e expressão corporal para equipes corporativas.",
       "bioTitle": "Biostretch in Company",
       "bioDesc": "Ergonomia postural, alívio de tensões e descompressão do estresse no ambiente de trabalho.",

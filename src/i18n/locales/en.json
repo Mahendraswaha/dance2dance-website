@@ -1136,8 +1136,8 @@
     },
     "addToInstructorCalendar": "Add to Instructor's Calendar (Google Calendar)",
     "instructorEmail": "Instructor Email",
-    "masterTabWishlist": "Wishlists & Demands",
-    "ready": "ready",
+    "masterTabWishlist": "Demand & Wishlist",
+    "ready": "Ready to Schedule",
     "wishlistManager": {
       "alertReadyDesc": "There is confirmed demand to schedule new workshop cohorts.",
       "viewReadyOnly": "View Ready to Schedule",
@@ -1155,18 +1155,18 @@
       "sortName": "Workshop Name",
       "noResultsTitle": "No demands found",
       "noResultsFilter": "Try adjusting the filters or search above.",
-      "noWishesYet": "As soon as students manifest interest in unscheduled workshops, their wishes will appear here.",
+      "noWishesYet": "As soon as students express interest in unscheduled workshops, their wishes will appear here.",
       "goalReachedTag": "Goal Reached!",
       "interested": "interested",
       "viewWorkshopPage": "View workshop page",
-      "progressToGoal": "Progress towards cohort opening",
+      "progressToGoal": "Progress toward cohort opening",
       "scheduleTooltip": "Open form and schedule this workshop",
       "scheduleBtn": "Schedule Workshop",
       "copyEmailsTooltip": "Copy emails of all interested students",
       "copyEmails": "Copy Emails",
       "exportCsvTooltip": "Download spreadsheet (.csv) with interested students data",
       "viewStudents": "Students",
-      "interestedStudentsList": "Students on the Waiting List",
+      "interestedStudentsList": "Students on Wishlist",
       "removeEntry": "Remove entry",
       "confirmDelete": "Are you sure you want to remove this wish entry?"
     }
@@ -1445,44 +1445,44 @@
   },
   "pricingPage": {
     "seoTitle": "Pricing & Access",
-    "seoDesc": "Financial transparency and community access. Explore our workshop tuition rates and 100% full scholarship program for Tøyen and Grønland.",
+    "seoDesc": "Financial transparency and community access. Explore our workshop rates and 100% full scholarship program for Tøyen and Grønland.",
     "hero": {
       "kicker": "Non-Profit",
       "title": "Pricing & Access",
-      "subtitle": "is a non-profit social organization based in Oslo. Our financial framework is built on solidarity: participation fees from those who can invest directly fund full, free access for our local community."
+      "subtitle": "is a non-profit social organization based in Oslo. Our financial model is rooted in solidarity: fees from those who can invest directly fund full, free access for our local community."
     },
     "payerCard": {
-      "kicker": "Personal Development & Solidarity",
+      "kicker": "Conscious Sustainability",
       "title": "Fair Market Rates",
-      "subtitle": "For paying participants",
+      "subtitle": "For those who invest in participation",
       "pillarNumber": "01",
       "item1Title": "Health & Expression",
-      "item1Desc": "A direct investment in your physical and mental wellbeing, artistic development, and body awareness under world-class guidance.",
+      "item1Desc": "A direct investment in physical and mental wellbeing, creativity, and artistic growth under exceptional professional guidance.",
       "item2Title": "Authentic Connections & Presence",
-      "item2Desc": "Meaningful human encounters in a supportive environment, where movement expands awareness and creative vitality.",
+      "item2Desc": "Genuine human encounters in a safe and welcoming space, where movement expands awareness and creative vitality.",
       "item3Title": "Shared Social Impact",
-      "item3Desc": "For those with financial capacity, fees reflect fair market rates. This investment maintains high production standards while co-funding full community scholarships."
+      "item3Desc": "For those with the financial means, our fees reflect fair market rates. This investment covers production costs and directly co-funds full scholarships for our local community."
     },
     "communityCard": {
       "kicker": "Local Impact & Equity",
       "title": "100% Full Scholarships",
-      "subtitle": "For scholarship recipients",
+      "subtitle": "For scholarship participants",
       "pillarNumber": "02",
       "item1Title": "Zero Cost",
-      "item1Desc": "Residents of Tøyen and Grønland have the opportunity for free access to all our activities through full scholarships.",
-      "item2Title": "Vocation & New Potential",
-      "item2Desc": "An opportunity to discover professional vocation, unlock creative potential, and open pathways for self-development.",
-      "item3Title": "Identical Excellence",
-      "item3Desc": "The same studio, the same teachers, and the same technical rigor. An open door to culture in your local neighborhood, without compromise."
+      "item1Desc": "Residents of Tøyen and Grønland have the opportunity to access any of our activities completely free through full scholarships.",
+      "item2Title": "Calling & New Potential",
+      "item2Desc": "An opportunity to discover your professional calling, unlock creative potential, and open meaningful paths for personal and artistic growth.",
+      "item3Title": "Equal Excellence",
+      "item3Desc": "The same studio, the same teachers, and the same artistic rigor. An open door to culture in the heart of your neighborhood, without distinctions or compromise."
     },
     "manifesto": {
       "title": "Absolute transparency.",
-      "body": "Those who invest financially understand the genuine value of what they receive and the social impact they generate. Those who join through full scholarships find an environment of mutual respect and dignity.",
-      "subtext": "Workshop revenue is the first of four pillars in our financial sustainability ecosystem.",
-      "linkText": "Explore our full social model"
+      "body": "Those who invest financially clearly see the value of what they receive and the social impact of their contribution. Those who join through full scholarships are assured an environment of mutual respect and dignity.",
+      "subtext": "Workshop revenue is only the first of four sustainability pillars at Dance2Dance.",
+      "linkText": "Explore our full financial model on the Social Project page"
     },
     "rates": {
-      "kicker": "Objective Transparency",
+      "kicker": "Clear & Transparent",
       "title": "Workshops & Courses",
       "allFilter": "All",
       "hoursUnit": "hours",
@@ -1492,24 +1492,24 @@
     "corporateSection": {
       "kicker": "Partnerships & Organizations",
       "title": "Corporate Formats",
-      "subtitle": "Customized programs for companies and teams.",
-      "btdTitle": "Be The Dance in Company",
-      "btdDesc": "Integrative workshops on presence, rhythm, and movement for workplace teams.",
+      "subtitle": "Tailored programs for organizations and teams.",
+      "btdTitle": "Be the Dance in Company",
+      "btdDesc": "Integrative sessions focused on presence, rhythm, and embodied expression for workplace teams.",
       "bioTitle": "Biostretch in Company",
-      "bioDesc": "Postural ergonomics, tension release, and stress management in the corporate setting.",
+      "bioDesc": "Postural ergonomics, tension release, and stress relief tailored for the workplace.",
       "learnMore": "Learn more"
     },
     "finalCta": {
-      "titleLead": "offers original and exclusive courses.",
-      "subtitle": "Discover the full schedule of our upcoming sessions and reserve your spot.",
+      "titleLead": "offers original and immersive courses.",
+      "subtitle": "Discover the full schedule of our upcoming sessions and reserve your place.",
       "btn": "View full schedule"
     }
   },
   "scholarshipModal": {
     "badge": "Tøyen & Grønland • Community Access",
-    "question": "Would you like to apply for a full scholarship for this workshop?",
-    "description": "We identified that your registered address is in {{neighborhood}}. Residents of Tøyen and Grønland are eligible for 100% full scholarships funded by our social sustainability ecosystem.",
-    "solidarityNote": "If you have the financial means to pay the standard tuition fee, your contribution helps keep this opportunity open for those who need it most.",
+    "question": "Would you like to request a full scholarship for this workshop?",
+    "description": "We noticed that your registered address is in {{neighborhood}}. Residents of Tøyen and Grønland are eligible for 100% full scholarships funded through our social sustainability model.",
+    "solidarityNote": "If you have the financial means to pay the standard tuition, your contribution helps keep this opportunity open for those who need it most.",
     "declineBtn": "No, I have the means to pay",
     "confirmBtn": "Yes, I request a full scholarship"
   }
