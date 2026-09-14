@@ -88,8 +88,9 @@ const Navbar = () => {
             {/* Links (Centro Absoluto) */}
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-30">
               {/* Desktop Links */}
-              <div className="hidden lg:flex gap-6 xl:gap-8 text-xs xl:text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
+              <div className="hidden lg:flex gap-5 xl:gap-7 text-xs xl:text-sm font-heading font-semibold text-background/80 whitespace-nowrap">
                 <Link to="/#workshops" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.workshops')}</Link>
+                <Link to="/valores" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.pricing', 'Valores & Acesso')}</Link>
                 <Link to="/social" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.social')}</Link>
                 <Link to="/agenda" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.agenda')}</Link>
                 <Link to="/contato" className="hover:text-accent transition-colors hover:-translate-y-[1px]">{t('nav.contact')}</Link>
@@ -212,17 +213,20 @@ const Navbar = () => {
         </div>
 
         {/* Links Principais */}
-        <div className="flex flex-col items-start justify-center flex-1 gap-10 px-8">
-          <Link to="/#workshops" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
+        <div className="flex flex-col items-start justify-center flex-1 gap-7 sm:gap-8 px-8">
+          <Link to="/#workshops" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-3xl sm:text-4xl text-background hover:text-accent transition-colors">
             {t('nav.workshops')}
           </Link>
-          <Link to="/social" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
+          <Link to="/valores" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-3xl sm:text-4xl text-background hover:text-accent transition-colors">
+            {t('nav.pricing', 'Valores & Acesso')}
+          </Link>
+          <Link to="/social" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-3xl sm:text-4xl text-background hover:text-accent transition-colors">
             {t('nav.social')}
           </Link>
-          <Link to="/agenda" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
+          <Link to="/agenda" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-3xl sm:text-4xl text-background hover:text-accent transition-colors">
             {t('nav.agenda')}
           </Link>
-          <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-4xl text-background hover:text-accent transition-colors">
+          <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="font-drama italic text-3xl sm:text-4xl text-background hover:text-accent transition-colors">
             {t('nav.contact')}
           </Link>
         </div>

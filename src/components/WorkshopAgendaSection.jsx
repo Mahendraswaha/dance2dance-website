@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, query, orderBy, getDocs, doc, runTransaction, where } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs, doc, runTransaction, where, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
@@ -23,12 +23,12 @@ import {
   isEventPast, 
   isEventOngoing, 
   formatEventDate, 
-  getCategoryTheme,
+  getCategoryTheme, 
   getWeekdayAbbrev 
 } from '../utils/eventHelpers';
 import WorkshopWishlist from './WorkshopWishlist';
 import ScholarshipModal from './ScholarshipModal';
-import { isScholarshipEligibleNeighborhood } from '../utils/neighborhoodHelpers';
+import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
 
 export default function WorkshopAgendaSection({ program, workshop, onEventsLoaded }) {
   const { t, i18n } = useTranslation();
@@ -121,17 +121,29 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         return;
       }
 
-      const userNeighborhood = currentUser.profile?.neighborhood || currentUser.profile?.bairro || '';
+      // 1. Obter dados atualizados do perfil (do cache local e do Firestore caso necessário)
+      let profileData = currentUser.profile || {};
+      try {
+        const freshSnap = await getDoc(doc(db, 'users', currentUser.uid));
+        if (freshSnap.exists()) {
+          profileData = { ...profileData, ...freshSnap.data() };
+        }
+      } catch (err) {
+        console.warn("Could not fetch fresh user profile:", err);
+      }
+
+      const { isEligible, neighborhood: eligibleNeighborhood } = checkUserScholarshipEligibility(profileData);
+      const userNeighborhood = profileData.neighborhood || profileData.bairro || eligibleNeighborhood || '';
 
       // Se o usuário reside em Tøyen ou Grønland e ainda não decidiu sobre a bolsa:
-      if (scholarshipDecision === null && isScholarshipEligibleNeighborhood(userNeighborhood)) {
+      if (scholarshipDecision === null && isEligible) {
         const ev = events.find(e => e.id === eventId);
         const { title: evTitle } = ev ? getLocalizedEvent(ev, currentLang) : { title: '' };
         setPendingEnrollment({
           eventId,
           isFull,
           workshopTitle: evTitle,
-          neighborhood: userNeighborhood
+          neighborhood: eligibleNeighborhood || userNeighborhood || 'Tøyen / Grønland'
         });
         setScholarshipModalOpen(true);
         return;
@@ -161,21 +173,21 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         transaction.set(newEnrollmentRef, {
           eventId: eventId,
           userId: currentUser.uid || 'unknown',
-          userName: currentUser.profile?.fullName || currentUser.profile?.nome || currentUser.email || 'unknown',
+          userName: profileData.fullName || profileData.nome || currentUser.email || 'unknown',
           userEmail: currentUser.email || 'unknown',
-          userPhone: currentUser.profile?.phone || currentUser.profile?.telefone || '',
-          userBirthDate: currentUser.profile?.birthDate || '',
-          userAddress: currentUser.profile?.address || currentUser.profile?.endereco || '',
+          userPhone: profileData.phone || profileData.telefone || '',
+          userBirthDate: profileData.birthDate || '',
+          userAddress: profileData.address || profileData.endereco || '',
           userNeighborhood: userNeighborhood,
-          userCity: currentUser.profile?.city || '',
-          userZip: currentUser.profile?.zip || currentUser.profile?.cep || '',
-          userCountry: currentUser.profile?.country || '',
-          userExperience: currentUser.profile?.experiencia || '',
-          userRestrictions: currentUser.profile?.restricoes || '',
+          userCity: profileData.city || profileData.cidade || '',
+          userZip: profileData.zip || profileData.cep || '',
+          userCountry: profileData.country || profileData.pais || '',
+          userExperience: profileData.experiencia || '',
+          userRestrictions: profileData.restricoes || '',
           status: finalStatus,
           scholarshipRequested: isScholarship,
           scholarshipStatus: isScholarship ? 'requested' : 'none',
-          scholarshipNeighborhood: isScholarship ? userNeighborhood : '',
+          scholarshipNeighborhood: isScholarship ? (eligibleNeighborhood || userNeighborhood) : '',
           createdAt: new Date().toISOString()
         });
       });
@@ -189,13 +201,15 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         return ev;
       }));
 
+      // Fecha o modal e limpa inscrição pendente com sucesso
+      setScholarshipModalOpen(false);
+      setPendingEnrollment(null);
+
     } catch (err) {
       console.error(err);
       alert("ERRO: " + err.message);
     } finally {
       setActionLoading(null);
-      setScholarshipModalOpen(false);
-      setPendingEnrollment(null);
     }
   }
 
