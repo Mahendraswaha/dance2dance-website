@@ -1458,7 +1458,7 @@
       "item1Title": "Saúde e Expressão",
       "item1Desc": "Investimento direto em bem-estar físico e mental, criatividade e desenvolvimento artístico com orientação profissional de excelência.",
       "item2Title": "Conexões Reais & Presença",
-      "item2Desc": "Encontros humanos autênticos em um espaço seguro e acolhedor, onde o movimento expande a percepção, a vitalidade criativa e o autocuidado.",
+      "item2Desc": "Encontros humanos autênticos em um espaço seguro e acolhedor, onde o movimento expande a percepção e a vitalidade criativa.",
       "item3Title": "Impacto Social Compartilhado",
       "item3Desc": "Para quem tem condições financeiras, a taxa de inscrição reflete um valor justo de mercado. Esse valor cobre custos de produção e co-financia diretamente as bolsas comunitárias."
     },
@@ -1468,16 +1468,16 @@
       "subtitle": "Para quem participa por bolsa",
       "pillarNumber": "02",
       "item1Title": "Gratuidade Total",
-      "item1Desc": "Moradores de Tøyen e Grønland têm acesso gratuito a qualquer uma de nossas atividades abertas por meio de bolsas integrais.",
+      "item1Desc": "Moradores de Tøyen e Grønland têm a possibilidade de acesso gratuito a qualquer uma de nossas atividades por meio de bolsas integrais.",
       "item2Title": "Vocação e Novos Potenciais",
-      "item2Desc": "Uma oportunidade de descobrir a própria vocação artística, desbloquear novos potenciais criativos e abrir caminhos reais para o desenvolvimento profissional nas artes do corpo.",
+      "item2Desc": "Uma oportunidade de descobrir a própria vocação profissional, desbloquear potenciais criativos e abrir caminhos para o autodesenvolvimento.",
       "item3Title": "A Mesma Excelência",
       "item3Desc": "O mesmo estúdio, os mesmos instrutores e o mesmo rigor técnico. Uma porta aberta para a cultura no coração do seu próprio bairro, sem distinções ou concessões."
     },
     "manifesto": {
       "title": "Transparência absoluta.",
       "body": "Quem investe financeiramente sabe com clareza o valor do que recebe e o impacto social do seu recurso. E quem ingressa por bolsa integral tem assegurado um ambiente de respeito mútuo e dignidade.",
-      "subtext": "A receita própria de workshops é apenas o primeiro dos quatro pilares de sustentabilidade do Dance2Dance.",
+      "subtext": "A receita de workshops é apenas o primeiro dos quatro pilares de sustentabilidade do Dance2Dance.",
       "linkText": "Conheça nosso ecossistema financeiro completo no Projeto Social"
     },
     "rates": {
@@ -1491,8 +1491,8 @@
     },
     "corporateSection": {
       "kicker": "Parcerias & Organizações",
-      "title": "Formatos In Company",
-      "subtitle": "Programas customizados de ergonomia, consciência corporal e saúde mental para empresas e equipes.",
+      "title": "Formato para Empresas",
+      "subtitle": "Programas customizados para empresas e equipes.",
       "btdTitle": "Be The Dance in Company",
       "btdDesc": "Dinâmicas integrativas de presença, ritmo e expressão corporal para equipes corporativas.",
       "bioTitle": "Biostretch in Company",

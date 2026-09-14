@@ -44,17 +44,17 @@ export default function PricingPage() {
       />
       <Navbar />
 
-      {/* Main Container com a distância padronizada da Navbar */}
-      <main className="relative z-10 flex-grow pt-36 md:pt-44 pb-24 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto w-full">
+      {/* 1. Main Container com margem superior ampla (pt-48 md:pt-56) para eliminar colisão com Navbar */}
+      <main className="relative z-10 flex-grow pt-48 md:pt-56 pb-24 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto w-full">
 
-        {/* 1. HERO SECTION */}
+        {/* HERO SECTION */}
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 md:mb-20"
         >
-          {/* Kicker no padrão do site: font-heading text-[10px] tracking-[5px] uppercase text-accent */}
+          {/* Kicker no padrão do site com respiro generoso */}
           <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-4 font-semibold">
             {t('pricingPage.hero.kicker', 'Sem Fins Lucrativos')}
           </span>
@@ -70,10 +70,10 @@ export default function PricingPage() {
           </p>
         </motion.header>
 
-        {/* 2. PILARES DE SUSTENTABILIDADE E ACESSO (CARDS LIMPOS INSPIRADOS NO FORMATO CORPORATIVO) */}
+        {/* 2. CARDS COMPARATIVOS (SEM NÚMEROS 1 E 2, SUBTÍTULOS ALINHADOS À ESQUERDA, TEXTOS REVISADOS) */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-20 items-stretch">
           
-          {/* Pilar 01: Participantes Pagantes */}
+          {/* Card: Participantes Pagantes */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,22 +84,20 @@ export default function PricingPage() {
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             <div>
-              <div className="flex items-baseline justify-between mb-4">
-                <span className="font-drama text-3xl md:text-4xl text-accent/40 group-hover:text-accent/80 transition-colors duration-500 font-light">
-                  {t('pricingPage.payerCard.pillarNumber', '01')}
-                </span>
-                <span className="font-heading text-[9px] tracking-[3px] uppercase text-[#777777] font-medium">
+              {/* Alinhamento na esquerda e sem numeração */}
+              <div className="mb-3 text-left">
+                <span className="font-heading text-[10px] tracking-[3px] uppercase text-[#777777] font-medium block">
                   {t('pricingPage.payerCard.subtitle', 'Para quem participa investindo')}
                 </span>
               </div>
 
-              <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] tracking-tight leading-snug group-hover:text-accent transition-colors duration-500 mb-2 font-normal">
+              <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] tracking-tight leading-snug group-hover:text-accent transition-colors duration-500 mb-2 font-normal text-left">
                 {t('pricingPage.payerCard.title', 'Valores Justos de Mercado')}
               </h3>
 
               <div className="w-10 h-[1px] bg-accent/40 mb-8 group-hover:w-16 transition-all duration-500" />
 
-              <div className="space-y-6">
+              <div className="space-y-6 text-left">
                 {/* Item 1 */}
                 <div className="group/item transition-all duration-300">
                   <div className="flex items-start gap-3 mb-1.5">
@@ -113,7 +111,7 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                {/* Item 2: Ênfase em autocuidado, presença e conexões */}
+                {/* Item 2: Texto revisado */}
                 <div className="group/item transition-all duration-300">
                   <div className="flex items-start gap-3 mb-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0 group-hover/item:bg-accent group-hover/item:shadow-[0_0_8px_rgba(226,195,102,0.7)] transition-all duration-300" />
@@ -142,7 +140,7 @@ export default function PricingPage() {
             </div>
           </motion.div>
 
-          {/* Pilar 02: Bolsas Integrais Comunitárias */}
+          {/* Card: Bolsas Integrais Comunitárias */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -153,23 +151,21 @@ export default function PricingPage() {
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             <div>
-              <div className="flex items-baseline justify-between mb-4">
-                <span className="font-drama text-3xl md:text-4xl text-accent/40 group-hover:text-accent/80 transition-colors duration-500 font-light">
-                  {t('pricingPage.communityCard.pillarNumber', '02')}
-                </span>
-                <span className="font-heading text-[9px] tracking-[3px] uppercase text-[#777777] font-medium">
+              {/* Alinhamento na esquerda e sem numeração */}
+              <div className="mb-3 text-left">
+                <span className="font-heading text-[10px] tracking-[3px] uppercase text-[#777777] font-medium block">
                   {t('pricingPage.communityCard.subtitle', 'Para quem participa por bolsa')}
                 </span>
               </div>
 
-              <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] tracking-tight leading-snug group-hover:text-accent transition-colors duration-500 mb-2 font-normal">
+              <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] tracking-tight leading-snug group-hover:text-accent transition-colors duration-500 mb-2 font-normal text-left">
                 {t('pricingPage.communityCard.title', 'Bolsas Integrais de 100%')}
               </h3>
 
               <div className="w-10 h-[1px] bg-accent/40 mb-8 group-hover:w-16 transition-all duration-500" />
 
-              <div className="space-y-6">
-                {/* Item 1 */}
+              <div className="space-y-6 text-left">
+                {/* Item 1: Texto revisado com 'a possibilidade de acesso gratuito' */}
                 <div className="group/item transition-all duration-300">
                   <div className="flex items-start gap-3 mb-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0 group-hover/item:bg-accent group-hover/item:shadow-[0_0_8px_rgba(226,195,102,0.7)] transition-all duration-300" />
@@ -182,7 +178,7 @@ export default function PricingPage() {
                   </p>
                 </div>
 
-                {/* Item 2: Ênfase em vocação artística e potenciais profissionais para bolsistas */}
+                {/* Item 2: Texto revisado com vocação profissional e autodesenvolvimento */}
                 <div className="group/item transition-all duration-300">
                   <div className="flex items-start gap-3 mb-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0 group-hover/item:bg-accent group-hover/item:shadow-[0_0_8px_rgba(226,195,102,0.7)] transition-all duration-300" />
@@ -213,21 +209,22 @@ export default function PricingPage() {
 
         </section>
 
-        {/* 3. MANIFESTO DE TRANSPARÊNCIA (SEM BOX, PADRÃO PULL-QUOTE DO SITE, LINK EM NOVA ABA) */}
-        <section className="py-12 md:py-16 flex justify-center text-center">
+        {/* 3. MANIFESTO DE TRANSPARÊNCIA (PRINT 2: MAIS AREJADO, FONTE MAIOR, TEXTO REVISADO) */}
+        <section className="py-16 md:py-24 flex justify-center text-center">
           <div className="max-w-2xl mx-auto px-4">
-            <div className="w-8 h-[1px] bg-accent/40 mx-auto mb-6" />
+            <div className="w-8 h-[1px] bg-accent/40 mx-auto mb-8" />
             
-            <h3 className="font-drama italic text-2xl md:text-3xl text-[#FAF8F5] mb-4 leading-relaxed">
+            <h3 className="font-drama italic text-3xl md:text-4xl text-[#FAF8F5] mb-6 leading-relaxed">
               {t('pricingPage.manifesto.title', 'Transparência absoluta.')}
             </h3>
             
-            <p className="font-heading font-light text-[#CFCFCF] text-sm md:text-base leading-relaxed mb-4">
+            <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-relaxed mb-6">
               {t('pricingPage.manifesto.body')}
             </p>
             
-            <p className="text-xs font-heading text-[#777777] mb-6">
-              {t('pricingPage.manifesto.subtext')}
+            {/* Texto revisado e tamanho de fonte aumentado */}
+            <p className="font-heading text-sm md:text-base text-[#A0A0A0] font-light mb-8 max-w-xl mx-auto leading-relaxed">
+              {t('pricingPage.manifesto.subtext', 'A receita de workshops é apenas o primeiro dos quatro pilares de sustentabilidade do Dance2Dance.')}
             </p>
             
             <Link
@@ -240,21 +237,21 @@ export default function PricingPage() {
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
 
-            <div className="w-8 h-[1px] bg-accent/40 mx-auto mt-6" />
+            <div className="w-8 h-[1px] bg-accent/40 mx-auto mt-8" />
           </div>
         </section>
 
-        {/* 4. TABELA OBJETIVA DE VALORES (COM KICKER PADRONIZADO E BOTÕES "SAIBA MAIS") */}
-        <section className="pt-12 mb-20">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-4 border-b border-[#222222]">
+        {/* 4. TABELA OBJETIVA DE VALORES (PRINT 3: TÍTULO AREJADO, SEM VAGAS LIMITADAS, PREÇO EM 'kr', CENTRALIZADOS, SEM SUBTÍTULO) */}
+        <section className="pt-12 mb-24">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 pb-6 border-b border-[#222222]">
             <div>
-              <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-2 font-semibold">
+              <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-3 font-semibold">
                 {t('pricingPage.rates.kicker', 'Transparência Objetiva')}
               </span>
               <h2 className="font-batang text-3xl sm:text-4xl text-[#F0EDE8] font-normal">
                 {t('pricingPage.rates.title', 'Workshops & Formações')}
               </h2>
-              <p className="font-heading font-light text-xs sm:text-sm text-[#9A9A9A] mt-1.5">
+              <p className="font-heading font-light text-xs sm:text-sm text-[#9A9A9A] mt-2">
                 {t('pricingPage.rates.subtitle', 'Informações diretas sobre carga horária e valores de participação.')}
               </p>
             </div>
@@ -294,16 +291,12 @@ export default function PricingPage() {
             </div>
           </div>
 
-          {/* Grid de Cards de Workshops no padrão das páginas de Be The Dance e Biostretch */}
+          {/* Grid de Cards de Workshops no padrão ultra limpo solicitado */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredWorkshops.map(workshop => {
               const workshopTitle = t(
                 `programs.${workshop.programId}.workshops.${workshop.id}.title`,
                 workshop.name || workshop.id
-              );
-              const workshopDesc = t(
-                `programs.${workshop.programId}.workshops.${workshop.id}.shortDescription`,
-                ''
               );
 
               return (
@@ -312,12 +305,12 @@ export default function PricingPage() {
                   to={`/${workshop.programId}/${workshop.slug}`}
                   className="group block"
                 >
-                  <div className="relative bg-[#141414] p-7 md:p-8 overflow-hidden transition-all duration-500 border border-[#222222] rounded-[2px] hover:-translate-y-1 hover:border-accent/40 flex flex-col justify-between h-full">
+                  <div className="relative bg-[#141414] p-8 overflow-hidden transition-all duration-500 border border-[#222222] rounded-[2px] hover:-translate-y-1 hover:border-accent/40 flex flex-col justify-between h-full text-center">
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                     <div>
                       {/* Header do card: Tag do programa + Carga horária */}
-                      <div className="flex items-center justify-between gap-2 mb-4">
+                      <div className="flex items-center justify-between gap-2 mb-6">
                         <span className="font-heading text-[9px] tracking-[2px] uppercase text-accent/80 font-semibold">
                           {workshop.programName}
                         </span>
@@ -331,34 +324,21 @@ export default function PricingPage() {
                       <h4 className="font-batang text-xl md:text-2xl text-[#F0EDE8] mb-3 group-hover:text-accent transition-colors font-normal">
                         {workshopTitle}
                       </h4>
-                      <div className="w-7 h-[1px] bg-accent/40 group-hover:w-14 transition-all duration-500 mb-4" />
-
-                      {/* Descrição resumida */}
-                      {workshopDesc && (
-                        <p className="font-heading text-xs md:text-sm text-[#9A9A9A] font-light leading-relaxed mb-6 line-clamp-2">
-                          {workshopDesc}
-                        </p>
-                      )}
+                      <div className="w-7 h-[1px] bg-accent/40 group-hover:w-14 transition-all duration-500 mb-6 mx-auto" />
                     </div>
 
-                    <div className="pt-4 border-t border-[#1F1F1F] mt-auto">
-                      {/* Preço em destaque */}
-                      <div className="flex items-baseline justify-between mb-4">
-                        <span className="text-[10px] font-heading uppercase tracking-wider text-[#777777]">
-                          {t('pricingPage.rates.spotsInfo', 'Vagas limitadas por turma')}
+                    {/* Preço e Saiba Mais rigorosamente CENTRALIZADOS, com 'kr' e sem 'vagas limitadas' */}
+                    <div className="pt-6 border-t border-[#1F1F1F] mt-auto flex flex-col items-center justify-center text-center">
+                      <div className="mb-4 text-center">
+                        <span className="font-drama text-2xl md:text-3xl text-[#F0EDE8] font-light">
+                          {workshop.price}
                         </span>
-                        <div className="text-right">
-                          <span className="font-drama text-2xl text-[#F0EDE8] font-light">
-                            {workshop.price}
-                          </span>
-                          <span className="text-xs font-mono text-accent ml-1.5 font-bold">
-                            NOK
-                          </span>
-                        </div>
+                        <span className="text-xs font-mono text-accent ml-1.5 font-bold">
+                          kr
+                        </span>
                       </div>
 
-                      {/* Link "Saiba mais" idêntico aos cards das páginas de Be The Dance e Biostretch */}
-                      <div className="inline-flex items-center gap-2 font-heading text-[11px] font-semibold text-accent uppercase tracking-[2px] transition-all duration-300 group-hover:text-white">
+                      <div className="inline-flex items-center justify-center gap-2 font-heading text-[11px] font-semibold text-accent uppercase tracking-[2px] transition-all duration-300 group-hover:text-white mx-auto">
                         {t('actions.learn_more', 'Saiba mais')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
@@ -369,17 +349,17 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* 5. PARCERIAS & ORGANIZAÇÕES (FORMATOS IN COMPANY COM LINKS EM NOVA ABA) */}
+        {/* 5. FORMATO PARA EMPRESAS (REFORMULADO: SEM DESCRIÇÕES INTERNAS, LINKS EM NOVA ABA) */}
         <section className="pt-16 pb-20 border-t border-[#1C1C1C]">
-          <div className="mb-10">
+          <div className="mb-10 text-left">
             <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-3 font-semibold">
               {t('pricingPage.corporateSection.kicker', 'Parcerias & Organizações')}
             </span>
             <h3 className="font-batang text-2xl md:text-3xl font-normal text-[#F0EDE8] mb-3">
-              {t('pricingPage.corporateSection.title', 'Formatos In Company')}
+              {t('pricingPage.corporateSection.title', 'Formato para Empresas')}
             </h3>
             <p className="font-heading text-[#9A9A9A] font-light text-sm md:text-base leading-relaxed max-w-2xl">
-              {t('pricingPage.corporateSection.subtitle', 'Programas customizados de ergonomia, consciência corporal e saúde mental para empresas e equipes.')}
+              {t('pricingPage.corporateSection.subtitle', 'Programas customizados para empresas e equipes.')}
             </p>
           </div>
 
@@ -389,16 +369,13 @@ export default function PricingPage() {
               to="/be-the-dance/empresas"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block py-8 md:py-10 border-b border-[#222222] hover:border-accent/60 transition-colors"
+              className="group block py-6 md:py-8 border-b border-[#222222] hover:border-accent/60 transition-colors"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="flex flex-row items-center justify-between gap-6">
                 <div>
-                  <h4 className="font-batang text-xl md:text-2xl font-normal text-[#F0EDE8] mb-2 group-hover:text-accent transition-colors">
+                  <h4 className="font-batang text-xl md:text-2xl font-normal text-[#F0EDE8] group-hover:text-accent transition-colors">
                     {t('pricingPage.corporateSection.btdTitle', 'Be The Dance in Company')}
                   </h4>
-                  <p className="font-heading text-[#9A9A9A] font-light text-sm leading-relaxed max-w-xl">
-                    {t('pricingPage.corporateSection.btdDesc')}
-                  </p>
                 </div>
                 <div className="shrink-0 text-accent opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 flex items-center gap-3">
                   <span className="font-heading text-[10px] tracking-[3px] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -414,16 +391,13 @@ export default function PricingPage() {
               to="/biostretch/empresas"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block py-8 md:py-10 border-b border-[#222222] hover:border-accent/60 transition-colors"
+              className="group block py-6 md:py-8 border-b border-[#222222] hover:border-accent/60 transition-colors"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="flex flex-row items-center justify-between gap-6">
                 <div>
-                  <h4 className="font-batang text-xl md:text-2xl font-normal text-[#F0EDE8] mb-2 group-hover:text-accent transition-colors">
+                  <h4 className="font-batang text-xl md:text-2xl font-normal text-[#F0EDE8] group-hover:text-accent transition-colors">
                     {t('pricingPage.corporateSection.bioTitle', 'Biostretch in Company')}
                   </h4>
-                  <p className="font-heading text-[#9A9A9A] font-light text-sm leading-relaxed max-w-xl">
-                    {t('pricingPage.corporateSection.bioDesc')}
-                  </p>
                 </div>
                 <div className="shrink-0 text-accent opacity-60 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 flex items-center gap-3">
                   <span className="font-heading text-[10px] tracking-[3px] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -436,25 +410,25 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* 6. CTA FINAL DA PÁGINA (COM BRAND OFICIAL E PADRÃO DO SITE) */}
+        {/* 6. CTA FINAL DA PÁGINA (PRINT 4: SEM BOX, TOTALMENTE AREJADO E INTEGRADO) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center py-16 px-6 mt-10 rounded-[2px] bg-gradient-to-b from-[#141414] to-[#0a0a0a] border border-[#222222] shadow-[0_15px_40px_rgba(0,0,0,0.6)]"
+          className="text-center py-20 md:py-28 px-4"
         >
-          <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-4 font-semibold">
+          <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-5 font-semibold">
             DANCE2DANCE OSLO
           </span>
-          <h2 className="font-drama text-3xl sm:text-4xl md:text-5xl text-[#FAF8F5] max-w-2xl mx-auto mb-4 leading-tight">
+          <h2 className="font-drama text-3xl sm:text-4xl md:text-5xl text-[#FAF8F5] max-w-3xl mx-auto mb-6 leading-tight">
             <Brand className="text-[#FAF8F5]" /> {t('pricingPage.finalCta.titleLead', 'oferece cursos originais e exclusivos.')}
           </h2>
-          <p className="font-heading text-[#9A9A9A] font-light text-sm md:text-base max-w-md mx-auto mb-8 leading-relaxed">
+          <p className="font-heading text-[#9A9A9A] font-light text-base md:text-lg max-w-lg mx-auto mb-10 leading-relaxed">
             {t('pricingPage.finalCta.subtitle', 'Descubra a programação completa dos nossos próximos encontros e garanta o seu lugar.')}
           </p>
           <Link
             to="/agenda"
-            className="btn-magnetic inline-flex items-center gap-2 bg-accent hover:bg-[#F0EDE8] text-primary font-heading text-xs md:text-sm uppercase tracking-[2px] font-bold py-3.5 px-8 rounded-full shadow-lg transition-all"
+            className="btn-magnetic inline-flex items-center gap-2 bg-accent hover:bg-[#F0EDE8] text-primary font-heading text-xs md:text-sm uppercase tracking-[2px] font-bold py-4 px-9 rounded-full shadow-lg transition-all"
           >
             <span>{t('pricingPage.finalCta.btn', 'Ver agenda completa')}</span>
             <ArrowRight className="w-4 h-4" />

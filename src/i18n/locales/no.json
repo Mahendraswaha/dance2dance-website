@@ -1134,7 +1134,7 @@
       "item1Title": "Helse og Utfoldelse",
       "item1Desc": "En direkte investering i fysisk og mental helse, kunstnerisk vekst og kroppsbevissthet under profesjonell veiledning.",
       "item2Title": "Ekte Menneskemøter & Nærvær",
-      "item2Desc": "Menneskelige fellesskap i et trygt miljø, der bevegelse åpner for ny oppmerksomhet, kreativ vitalitet og egenomsorg.",
+      "item2Desc": "Menneskelige fellesskap i et trygt miljø, der bevegelse åpner for ny oppmerksomhet og kreativ vitalitet.",
       "item3Title": "Felles Samfunnsansvar",
       "item3Desc": "For dem med betalingsevne reflekterer avgiften en rettferdig markedspris. Dette sikrer høy faglig kvalitet og medfinansierer fulle stipendplasser for lokalsamfunnet."
     },
@@ -1144,16 +1144,16 @@
       "subtitle": "For lokale stipendmottakere",
       "pillarNumber": "02",
       "item1Title": "Helt Gratis",
-      "item1Desc": "Beboere i Tøyen og Grønland har gratis tilgang til alle våre åpne workshops og programmer gjennom fulle stipend.",
+      "item1Desc": "Beboere i Tøyen og Grønland har mulighet for gratis tilgang til alle våre aktiviteter gjennom fulle stipend.",
       "item2Title": "Yrkesvei & Nye Muligheter",
-      "item2Desc": "En mulighet til å oppdage kunstneriske talenter, frigjøre kreativt potensial og åpne reelle veier mot en yrkeskarriere innen scenekunst og bevegelse.",
+      "item2Desc": "En mulighet til å oppdage sin yrkesvei, frigjøre kreativt potensial og åpne dører for personlig utvikling.",
       "item3Title": "Nøyaktig Samme Kvalitet",
       "item3Desc": "Samme sal, samme instruktører og samme høye standard. En åpen dør til kultur i eget nabolag, uten kompromisser."
     },
     "manifesto": {
       "title": "Full åpenhet.",
       "body": "De som investerer økonomisk, kjenner den reelle verdien av det de mottar og samfunnseffekten av sitt bidrag. De som deltar på stipend, møter et miljø preget av verdighet og gjensidig respekt.",
-      "subtext": "Egeninntekter fra workshops er den første av fire pilarer i vår finansielle modell.",
+      "subtext": "Inntekter fra workshops er den første av fire pilarer for økonomisk bærekraft i Dance2Dance.",
       "linkText": "Les mer om samfunnsprosjektet"
     },
     "rates": {
@@ -1167,8 +1167,8 @@
     },
     "corporateSection": {
       "kicker": "Bedrifter & Samarbeid",
-      "title": "In Company Formater",
-      "subtitle": "Skreddersydde workshops innen ergonomi, kroppsbevissthet og stressmestring for arbeidsplassen.",
+      "title": "Formater for Bedrifter",
+      "subtitle": "Skreddersydde programmer for bedrifter og team.",
       "btdTitle": "Be The Dance in Company",
       "btdDesc": "Teambygging og nærværspraksis med fokus på rytme, bevegelse og fellesskap.",
       "bioTitle": "Biostretch in Company",

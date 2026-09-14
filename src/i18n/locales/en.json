@@ -1134,7 +1134,7 @@
       "item1Title": "Health & Expression",
       "item1Desc": "A direct investment in your physical and mental wellbeing, artistic development, and body awareness under world-class guidance.",
       "item2Title": "Authentic Connections & Presence",
-      "item2Desc": "Meaningful human encounters in a supportive environment, where movement expands awareness, creative vitality, and self-care.",
+      "item2Desc": "Meaningful human encounters in a supportive environment, where movement expands awareness and creative vitality.",
       "item3Title": "Shared Social Impact",
       "item3Desc": "For those with financial capacity, fees reflect fair market rates. This investment maintains high production standards while co-funding full community scholarships."
     },
@@ -1144,16 +1144,16 @@
       "subtitle": "For scholarship recipients",
       "pillarNumber": "02",
       "item1Title": "Zero Cost",
-      "item1Desc": "Residents of Tøyen and Grønland have full, free access to all our open workshops and programs through 100% scholarships.",
+      "item1Desc": "Residents of Tøyen and Grønland have the opportunity for free access to all our activities through full scholarships.",
       "item2Title": "Vocation & New Potential",
-      "item2Desc": "A transformative opportunity to discover artistic vocation, unlock new creative potential, and open pathways to professional growth in the somatic arts.",
+      "item2Desc": "An opportunity to discover professional vocation, unlock creative potential, and open pathways for self-development.",
       "item3Title": "Identical Excellence",
       "item3Desc": "The same studio, the same teachers, and the same technical rigor. An open door to culture in your local neighborhood, without compromise."
     },
     "manifesto": {
       "title": "Absolute transparency.",
       "body": "Those who invest financially understand the genuine value of what they receive and the social impact they generate. Those who join through full scholarships find an environment of mutual respect and dignity.",
-      "subtext": "Earned workshop revenue is the first of four pillars in our financial ecosystem.",
+      "subtext": "Workshop revenue is the first of four pillars in our financial sustainability ecosystem.",
       "linkText": "Explore our full social model"
     },
     "rates": {
@@ -1167,8 +1167,8 @@
     },
     "corporateSection": {
       "kicker": "Partnerships & Organizations",
-      "title": "In Company Formats",
-      "subtitle": "Customized ergonomics, somatic awareness, and mental health programs for teams and organizations.",
+      "title": "Corporate Formats",
+      "subtitle": "Customized programs for companies and teams.",
       "btdTitle": "Be The Dance in Company",
       "btdDesc": "Integrative workshops on presence, rhythm, and movement for workplace teams.",
       "bioTitle": "Biostretch in Company",
