@@ -1122,18 +1122,19 @@
     "seoTitle": "Pricing & Access",
     "seoDesc": "Financial transparency and community access. Explore our workshop tuition rates and 100% full scholarship program for Tøyen and Grønland.",
     "hero": {
-      "kicker": "Non-Profit Social Organization",
+      "kicker": "Non-Profit",
       "title": "Pricing & Access",
-      "subtitle": "Dance2Dance is a non-profit social organization based in Oslo. Our financial framework is built on solidarity: participation fees from those who can invest directly fund full, free access for our local community."
+      "subtitle": "is a non-profit social organization based in Oslo. Our financial framework is built on solidarity: participation fees from those who can invest directly fund full, free access for our local community."
     },
     "payerCard": {
       "kicker": "Personal Development & Solidarity",
       "title": "Fair Market Rates",
       "subtitle": "For paying participants",
+      "pillarNumber": "01",
       "item1Title": "Health & Expression",
       "item1Desc": "A direct investment in your physical and mental wellbeing, artistic development, and body awareness under world-class guidance.",
-      "item2Title": "Authentic Connections",
-      "item2Desc": "Meaningful human encounters in a supportive environment, opening pathways to discover personal and creative callings.",
+      "item2Title": "Authentic Connections & Presence",
+      "item2Desc": "Meaningful human encounters in a supportive environment, where movement expands awareness, creative vitality, and self-care.",
       "item3Title": "Shared Social Impact",
       "item3Desc": "For those with financial capacity, fees reflect fair market rates. This investment maintains high production standards while co-funding full community scholarships."
     },
@@ -1141,15 +1142,17 @@
       "kicker": "Local Impact & Equity",
       "title": "100% Full Scholarships",
       "subtitle": "For scholarship recipients",
+      "pillarNumber": "02",
       "item1Title": "Zero Cost",
       "item1Desc": "Residents of Tøyen and Grønland have full, free access to all our open workshops and programs through 100% scholarships.",
-      "item2Title": "Identical Excellence",
-      "item2Desc": "The same studio, the same teachers, and the same technical rigor. No distinction, no compromise.",
-      "item3Title": "Cultural Belonging",
-      "item3Desc": "An open door to somatic practice and artistic growth right in your local neighborhood."
+      "item2Title": "Vocation & New Potential",
+      "item2Desc": "A transformative opportunity to discover artistic vocation, unlock new creative potential, and open pathways to professional growth in the somatic arts.",
+      "item3Title": "Identical Excellence",
+      "item3Desc": "The same studio, the same teachers, and the same technical rigor. An open door to culture in your local neighborhood, without compromise."
     },
     "manifesto": {
-      "quote": "We believe in complete transparency. Those who invest financially understand the genuine value of what they receive and the social impact they generate. Those who join through full scholarships find an environment of mutual respect and dignity.",
+      "title": "Absolute transparency.",
+      "body": "Those who invest financially understand the genuine value of what they receive and the social impact they generate. Those who join through full scholarships find an environment of mutual respect and dignity.",
       "subtext": "Earned workshop revenue is the first of four pillars in our financial ecosystem.",
       "linkText": "Explore our full social model"
     },
@@ -1160,26 +1163,20 @@
       "allFilter": "All",
       "hoursUnit": "hours",
       "spotsInfo": "Limited spots per group",
-      "viewScheduleBtn": "View Dates in Schedule",
-      "viewDetailsBtn": "View Details",
-      "includedTitle": "What is included:",
-      "includedDesc": "Full in-person sessions, personalized guidance, and supporting materials."
+      "learnMore": "Learn more"
     },
-    "scholarshipCallout": {
-      "badge": "Community Access",
-      "title": "Living in Tøyen or Grønland?",
-      "description": "If you live in our designated local impact area, apply for your 100% full scholarship at no cost during enrollment.",
-      "btn": "View Upcoming Workshops in Schedule",
-      "contactBtn": "Contact Us About Scholarships"
-    },
-    "corporateCard": {
+    "corporateSection": {
       "kicker": "Partnerships & Organizations",
-      "title": "In Company and Corporate Programs",
-      "description": "We offer customized workshops in ergonomics, somatic movement, and workplace mental health for teams and organizations. Rates tailored to scope.",
-      "btn": "Request Corporate Proposal"
+      "title": "In Company Formats",
+      "subtitle": "Customized ergonomics, somatic awareness, and mental health programs for teams and organizations.",
+      "btdTitle": "Be The Dance in Company",
+      "btdDesc": "Integrative workshops on presence, rhythm, and movement for workplace teams.",
+      "bioTitle": "Biostretch in Company",
+      "bioDesc": "Postural ergonomics, tension release, and stress management in the corporate setting.",
+      "learnMore": "Learn more"
     },
     "finalCta": {
-      "title": "Dance2Dance offers original and exclusive courses.",
+      "titleLead": "offers original and exclusive courses.",
       "subtitle": "Discover the full schedule of our upcoming sessions and reserve your spot.",
       "btn": "View full schedule"
     }

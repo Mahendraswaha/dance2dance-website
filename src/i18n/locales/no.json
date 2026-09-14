@@ -1122,18 +1122,19 @@
     "seoTitle": "Priser & Tilgang",
     "seoDesc": "Økonomisk åpenhet og samfunnsdeltakelse. Se kursoversikt, priser og vårt program for 100 % fullt stipend for Tøyen og Grønland.",
     "hero": {
-      "kicker": "Ideell Sosial Organisasjon",
+      "kicker": "Ideell Organisasjon",
       "title": "Priser & Tilgang",
-      "subtitle": "Dance2Dance er en ideell sosial organisasjon med base i Oslo. Vår prisstruktur bygger på en solidaritetsmodell: deltakeravgifter fra dem som kan investere, finansierer full og gratis deltakelse for lokalmiljøet."
+      "subtitle": "er en ideell sosial organisasjon med base i Oslo. Vår prisstruktur bygger på en solidaritetsmodell: deltakeravgifter fra dem som kan investere, finansierer full og gratis deltakelse for lokalmiljøet."
     },
     "payerCard": {
       "kicker": "Personlig Utvikling & Solidaritet",
       "title": "Rettferdige Markedspriser",
       "subtitle": "For betalende deltakere",
+      "pillarNumber": "01",
       "item1Title": "Helse og Utfoldelse",
       "item1Desc": "En direkte investering i fysisk og mental helse, kunstnerisk vekst og kroppsbevissthet under profesjonell veiledning.",
-      "item2Title": "Ekte Menneskemøter",
-      "item2Desc": "Menneskelige fellesskap i et trygt miljø, med mulighet for å utforske nye kreative og faglige interesser.",
+      "item2Title": "Ekte Menneskemøter & Nærvær",
+      "item2Desc": "Menneskelige fellesskap i et trygt miljø, der bevegelse åpner for ny oppmerksomhet, kreativ vitalitet og egenomsorg.",
       "item3Title": "Felles Samfunnsansvar",
       "item3Desc": "For dem med betalingsevne reflekterer avgiften en rettferdig markedspris. Dette sikrer høy faglig kvalitet og medfinansierer fulle stipendplasser for lokalsamfunnet."
     },
@@ -1141,15 +1142,17 @@
       "kicker": "Lokal Inkludering & Likeverd",
       "title": "100 % Fulle Stipend",
       "subtitle": "For lokale stipendmottakere",
+      "pillarNumber": "02",
       "item1Title": "Helt Gratis",
       "item1Desc": "Beboere i Tøyen og Grønland har gratis tilgang til alle våre åpne workshops og programmer gjennom fulle stipend.",
-      "item2Title": "Nøyaktig Samme Kvalitet",
-      "item2Desc": "Samme sal, samme instruktører og samme høye standard. Uten forskjellsbehandling eller kompromisser.",
-      "item3Title": "Rett til Kultur",
-      "item3Desc": "En åpen dør til bevegelsespraksis og kunstnerisk fordypning i eget nabolag."
+      "item2Title": "Yrkesvei & Nye Muligheter",
+      "item2Desc": "En mulighet til å oppdage kunstneriske talenter, frigjøre kreativt potensial og åpne reelle veier mot en yrkeskarriere innen scenekunst og bevegelse.",
+      "item3Title": "Nøyaktig Samme Kvalitet",
+      "item3Desc": "Samme sal, samme instruktører og samme høye standard. En åpen dør til kultur i eget nabolag, uten kompromisser."
     },
     "manifesto": {
-      "quote": "Vi tror på full åpenhet. De som investerer økonomisk, kjenner den reelle verdien av det de mottar og samfunnseffekten av sitt bidrag. De som deltar på stipend, møter et miljø preget av verdighet og gjensidig respekt.",
+      "title": "Full åpenhet.",
+      "body": "De som investerer økonomisk, kjenner den reelle verdien av det de mottar og samfunnseffekten av sitt bidrag. De som deltar på stipend, møter et miljø preget av verdighet og gjensidig respekt.",
       "subtext": "Egeninntekter fra workshops er den første av fire pilarer i vår finansielle modell.",
       "linkText": "Les mer om samfunnsprosjektet"
     },
@@ -1160,26 +1163,20 @@
       "allFilter": "Alle",
       "hoursUnit": "timer",
       "spotsInfo": "Begrenset antall plasser per gruppe",
-      "viewScheduleBtn": "Se Datoer i Kalenderen",
-      "viewDetailsBtn": "Se Detaljer",
-      "includedTitle": "Dette er inkludert:",
-      "includedDesc": "Fysiske samlinger, individuell veiledning og kursmateriell."
+      "learnMore": "Les mer"
     },
-    "scholarshipCallout": {
-      "badge": "Samfunnsdeltakelse",
-      "title": "Bor du på Tøyen eller Grønland?",
-      "description": "Hvis du bor i vårt definerte innsatsområde, kan du søke om 100 % fullt stipend uten kostnad ved påmelding.",
-      "btn": "Se Neste Workshops i Kalenderen",
-      "contactBtn": "Kontakt Oss om Stipend"
-    },
-    "corporateCard": {
+    "corporateSection": {
       "kicker": "Bedrifter & Samarbeid",
-      "title": "In Company og Bedriftsprogrammer",
-      "description": "Vi tilbyr skreddersydde workshops innen ergonomi, kroppsbevissthet og stressmestring for arbeidsplassen. Priser tilpasses omfang og gruppestørrelse.",
-      "btn": "Be om Bedriftstilbud"
+      "title": "In Company Formater",
+      "subtitle": "Skreddersydde workshops innen ergonomi, kroppsbevissthet og stressmestring for arbeidsplassen.",
+      "btdTitle": "Be The Dance in Company",
+      "btdDesc": "Teambygging og nærværspraksis med fokus på rytme, bevegelse og fellesskap.",
+      "bioTitle": "Biostretch in Company",
+      "bioDesc": "Ergonomi, avspenning og stressmestring i arbeidshverdagen.",
+      "learnMore": "Les mer"
     },
     "finalCta": {
-      "title": "Dance2Dance tilbyr originale og eksklusive kurs.",
+      "titleLead": "tilbyr originale og eksklusive kurs.",
       "subtitle": "Utforsk den fullstendige timeplanen for våre kommende kurs og sikre din plass.",
       "btn": "Se hele kalenderen"
     }

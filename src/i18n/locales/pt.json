@@ -1446,34 +1446,37 @@
     "seoTitle": "Valores & Acesso",
     "seoDesc": "Transparência financeira e acesso comunitário. Conheça nossos valores por workshop e o programa de bolsas integrais para Tøyen e Grønland.",
     "hero": {
-      "kicker": "Organização Social Sem Fins Lucrativos",
+      "kicker": "Sem Fins Lucrativos",
       "title": "Valores & Acesso",
-      "subtitle": "O Dance2Dance é uma organização social sem fins lucrativos sediada em Oslo. Nossos valores são estruturados em um modelo de solidariedade: a receita gerada por quem pode investir viabiliza o acesso integral e gratuito para a comunidade local."
+      "subtitle": "é uma organização social sem fins lucrativos sediada em Oslo. Nossos valores são estruturados em um modelo de solidariedade: a receita gerada por quem pode investir viabiliza o acesso integral e gratuito para a comunidade local."
     },
     "payerCard": {
       "kicker": "Desenvolvimento Pessoal & Solidariedade",
       "title": "Valores Justos de Mercado",
       "subtitle": "Para quem participa investindo",
+      "pillarNumber": "01",
       "item1Title": "Saúde e Expressão",
       "item1Desc": "Investimento direto em bem-estar físico e mental, criatividade e desenvolvimento artístico com orientação profissional de excelência.",
-      "item2Title": "Conexões Reais",
-      "item2Desc": "Encontros humanos autênticos em um espaço acolhedor, com a oportunidade de explorar novas vocações e potenciais.",
-      "item3Title": "Impacto Social Coletivo",
-      "item3Desc": "Para quem tem condições financeiras, a taxa de inscrição reflete um valor justo de mercado. Esse valor cobre a infraestrutura de alto nível e co-financia diretamente as bolsas comunitárias."
+      "item2Title": "Conexões Reais & Presença",
+      "item2Desc": "Encontros humanos autênticos em um espaço seguro e acolhedor, onde o movimento expande a percepção, a vitalidade criativa e o autocuidado.",
+      "item3Title": "Impacto Social Compartilhado",
+      "item3Desc": "Para quem tem condições financeiras, a taxa de inscrição reflete um valor justo de mercado. Esse valor cobre custos de produção e co-financia diretamente as bolsas comunitárias."
     },
     "communityCard": {
       "kicker": "Impacto Local & Equidade",
       "title": "Bolsas Integrais de 100%",
       "subtitle": "Para quem participa por bolsa",
+      "pillarNumber": "02",
       "item1Title": "Gratuidade Total",
       "item1Desc": "Moradores de Tøyen e Grønland têm acesso gratuito a qualquer uma de nossas atividades abertas por meio de bolsas integrais.",
-      "item2Title": "A Mesma Excelência",
-      "item2Desc": "O mesmo estúdio, os mesmos instrutores e o mesmo rigor técnico. Sem distinções, rótulos ou concessões.",
-      "item3Title": "Direito à Cultura",
-      "item3Desc": "Uma porta aberta para a prática corporal e o desenvolvimento artístico no coração do próprio bairro."
+      "item2Title": "Vocação e Novos Potenciais",
+      "item2Desc": "Uma oportunidade de descobrir a própria vocação artística, desbloquear novos potenciais criativos e abrir caminhos reais para o desenvolvimento profissional nas artes do corpo.",
+      "item3Title": "A Mesma Excelência",
+      "item3Desc": "O mesmo estúdio, os mesmos instrutores e o mesmo rigor técnico. Uma porta aberta para a cultura no coração do seu próprio bairro, sem distinções ou concessões."
     },
     "manifesto": {
-      "quote": "Acreditamos na transparência absoluta. Quem investe financeiramente sabe com clareza o valor do que recebe e o impacto social do seu recurso. E quem ingressa por bolsa integral tem assegurado um ambiente de respeito mútuo e dignidade.",
+      "title": "Transparência absoluta.",
+      "body": "Quem investe financeiramente sabe com clareza o valor do que recebe e o impacto social do seu recurso. E quem ingressa por bolsa integral tem assegurado um ambiente de respeito mútuo e dignidade.",
       "subtext": "A receita própria de workshops é apenas o primeiro dos quatro pilares de sustentabilidade do Dance2Dance.",
       "linkText": "Conheça nosso ecossistema financeiro completo no Projeto Social"
     },
@@ -1484,26 +1487,20 @@
       "allFilter": "Todos",
       "hoursUnit": "horas",
       "spotsInfo": "Vagas limitadas por turma",
-      "viewScheduleBtn": "Ver Datas na Agenda",
-      "viewDetailsBtn": "Ver Detalhes",
-      "includedTitle": "O que está incluído:",
-      "includedDesc": "Acesso às sessões presenciais, acompanhamento individual e materiais de apoio."
+      "learnMore": "Saiba mais"
     },
-    "scholarshipCallout": {
-      "badge": "Acesso Comunitário",
-      "title": "Mora em Tøyen ou Grønland?",
-      "description": "Se você reside na nossa área de impacto prioritário, solicite sua bolsa de estudos integral de 100% sem custos no momento da inscrição.",
-      "btn": "Ver Próximos Workshops na Agenda",
-      "contactBtn": "Falar Conosco Sobre Bolsas"
-    },
-    "corporateCard": {
+    "corporateSection": {
       "kicker": "Parcerias & Organizações",
-      "title": "In Company e Programas Corporativos",
-      "description": "Desenvolvemos workshops customizados de ergonomia, consciência corporal e saúde mental para empresas e equipes. Valores sob medida de acordo com o escopo.",
-      "btn": "Solicitar Proposta Corporativa"
+      "title": "Formatos In Company",
+      "subtitle": "Programas customizados de ergonomia, consciência corporal e saúde mental para empresas e equipes.",
+      "btdTitle": "Be The Dance in Company",
+      "btdDesc": "Dinâmicas integrativas de presença, ritmo e expressão corporal para equipes corporativas.",
+      "bioTitle": "Biostretch in Company",
+      "bioDesc": "Ergonomia postural, alívio de tensões e descompressão do estresse no ambiente de trabalho.",
+      "learnMore": "Saiba mais"
     },
     "finalCta": {
-      "title": "Dance2Dance oferece cursos originais e exclusivos.",
+      "titleLead": "oferece cursos originais e exclusivos.",
       "subtitle": "Descubra a programação completa dos nossos próximos encontros e garanta o seu lugar.",
       "btn": "Ver agenda completa"
     }
