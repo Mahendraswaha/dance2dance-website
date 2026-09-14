@@ -251,9 +251,6 @@ export default function PricingPage() {
               <h2 className="font-batang text-3xl sm:text-4xl text-[#F0EDE8] font-normal">
                 {t('pricingPage.rates.title', 'Workshops & Formações')}
               </h2>
-              <p className="font-heading font-light text-xs sm:text-sm text-[#9A9A9A] mt-2">
-                {t('pricingPage.rates.subtitle', 'Informações diretas sobre carga horária e valores de participação.')}
-              </p>
             </div>
 
             {/* Filtros rápidos no padrão elegante do site */}
