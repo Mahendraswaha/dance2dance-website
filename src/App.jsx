@@ -58,8 +58,8 @@ const AdminDashboard = lazyWithRetries(() => import('./pages/AdminDashboard'));
 // Indicador discreto de transição entre páginas
 function PageFallback() {
   return (
-    <div className="min-h-screen bg-[#0A0A0E] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-accent/20 border-t-accent rounded-full animate-spin" />
+    <div style={{ backgroundColor: '#0A0A0E', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: '32px', height: '32px', border: '2px solid rgba(201, 168, 76, 0.2)', borderTopColor: '#C9A84C', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
     </div>
   );
 }
@@ -100,5 +100,6 @@ export default function App() {
     </AuthProvider>
   );
 }
+
 
 

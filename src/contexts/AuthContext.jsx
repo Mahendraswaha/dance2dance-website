@@ -83,9 +83,17 @@ export function AuthProvider({ children }) {
     updateProfileData
   };
 
+  if (loading) {
+    return (
+      <div style={{ backgroundColor: '#0A0A0E', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '32px', height: '32px', border: '2px solid rgba(201, 168, 76, 0.2)', borderTopColor: '#C9A84C', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+      </div>
+    );
+  }
+
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 }
