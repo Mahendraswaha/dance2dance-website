@@ -1,4 +1,31 @@
 import React, { Suspense, lazy } from 'react';
+
+// Wrapper robusto para tentar recarregar os chunks dinâmicos caso haja instabilidade de rede ou cache
+function lazyWithRetries(componentImport) {
+  return lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      console.warn('Network hiccup detected loading chunk. Retrying in 1.5s...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      try {
+        return await componentImport();
+      } catch (error2) {
+        console.warn('Second attempt failed. Retrying in 3s...');
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        try {
+          return await componentImport();
+        } catch (error3) {
+          if (!sessionStorage.getItem('chunk_force_reloaded')) {
+            sessionStorage.setItem('chunk_force_reloaded', 'true');
+            window.location.reload();
+          }
+          throw error3;
+        }
+      }
+    }
+  });
+}
 import { AuthProvider } from './contexts/AuthContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
@@ -10,23 +37,23 @@ import './i18n';
 import Home from './pages/Home';
 
 // Carregamento dinâmico sob demanda (Code Splitting) para todas as outras páginas
-const AgendaPage = lazy(() => import('./pages/AgendaPage'));
-const ProgramPage = lazy(() => import('./pages/ProgramPage'));
-const WorkshopPage = lazy(() => import('./pages/WorkshopPage'));
-const SocialPage = lazy(() => import('./pages/SocialPage'));
-const CorporatePage = lazy(() => import('./pages/CorporatePage'));
-const BtdCorporatePage = lazy(() => import('./pages/BtdCorporatePage'));
-const IndividualPage = lazy(() => import('./pages/IndividualPage'));
-const RegularClassesPage = lazy(() => import('./pages/RegularClassesPage'));
-const CurriculumPage = lazy(() => import('./pages/CurriculumPage'));
-const LoginPage = lazy(() => import('./pages/LoginPage'));
-const SignupPage = lazy(() => import('./pages/SignupPage'));
-const ProfilePage = lazy(() => import('./pages/ProfilePage'));
-const TermsPage = lazy(() => import('./pages/TermsPage'));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const PricingPage = lazy(() => import('./pages/PricingPage'));
-const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const AgendaPage = lazyWithRetries(() => import('./pages/AgendaPage'));
+const ProgramPage = lazyWithRetries(() => import('./pages/ProgramPage'));
+const WorkshopPage = lazyWithRetries(() => import('./pages/WorkshopPage'));
+const SocialPage = lazyWithRetries(() => import('./pages/SocialPage'));
+const CorporatePage = lazyWithRetries(() => import('./pages/CorporatePage'));
+const BtdCorporatePage = lazyWithRetries(() => import('./pages/BtdCorporatePage'));
+const IndividualPage = lazyWithRetries(() => import('./pages/IndividualPage'));
+const RegularClassesPage = lazyWithRetries(() => import('./pages/RegularClassesPage'));
+const CurriculumPage = lazyWithRetries(() => import('./pages/CurriculumPage'));
+const LoginPage = lazyWithRetries(() => import('./pages/LoginPage'));
+const SignupPage = lazyWithRetries(() => import('./pages/SignupPage'));
+const ProfilePage = lazyWithRetries(() => import('./pages/ProfilePage'));
+const TermsPage = lazyWithRetries(() => import('./pages/TermsPage'));
+const PrivacyPolicyPage = lazyWithRetries(() => import('./pages/PrivacyPolicyPage'));
+const ContactPage = lazyWithRetries(() => import('./pages/ContactPage'));
+const PricingPage = lazyWithRetries(() => import('./pages/PricingPage'));
+const AdminDashboard = lazyWithRetries(() => import('./pages/AdminDashboard'));
 
 // Indicador discreto de transição entre páginas
 function PageFallback() {
@@ -73,4 +100,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+
 
