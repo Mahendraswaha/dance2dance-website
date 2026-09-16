@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
+    updateProfile,
   sendPasswordResetEmail, 
   signOut, 
   onAuthStateChanged 
@@ -23,6 +24,12 @@ export function AuthProvider({ children }) {
   async function signup(email, password, userData) {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
+    
+    // Update the Auth Profile with the user's name so emails don't say "Hello, !"
+    const displayName = userData.fullName || userData.nome;
+    if (displayName) {
+      await updateProfile(user, { displayName: displayName });
+    }
     
     // Create the user document in Firestore with additional data
     await setDoc(doc(db, 'users', user.uid), {
@@ -97,3 +104,4 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
