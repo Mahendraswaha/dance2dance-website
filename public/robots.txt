@@ -7,4 +7,5 @@ Disallow: /profile
 
 Allow: /
 
-Sitemap: https://dance2dance.no/sitemap.xml
+Sitemap: https://www.dance2dance.no/sitemap.xml
+
