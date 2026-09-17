@@ -37,7 +37,7 @@
         }
 
         /* Language Switcher */
-        .no-print, .lang-switcher {
+        .lang-switcher {
             position: fixed;
             top: 24px;
             right: 24px;
@@ -183,12 +183,6 @@
 
         /* Components */
         .card {
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(201, 168, 76, 0.15);
-            transition: border-color 0.3s ease;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
             padding: 32px;
@@ -352,9 +346,47 @@
 
         /* Print optimization */
         @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            :root {
+                --bg-color: white;
+                --text-color: black;
+                --text-secondary: #333333;
+                --accent-color: #8B7330;
+                --border-color: #DDDDDD;
+            }
+            section {
+                page-break-before: always;
+                min-height: auto;
+                height: 100vh;
+                padding: 40px;
+                border: none;
+            }
+            section::before {
+                display: none;
+            }
+            .lang-switcher {
+                display: none;
+            }
+            .card {
+                background: white;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+            .btn {
+                border: 1px solid black;
+                color: black;
+            }
+        }
+    
+        .no-print { display: block; }
+        @media print {
+            .no-print { display: none !important; }
             @page {
-                size: 1920px 1080px; /* Force 16:9 landscape aspect ratio */
-                margin: 0; /* No browser margins */
+                size: A4 landscape; /* A4 size 297x210mm */
+                margin: 0;
             }
             body {
                 -webkit-print-color-adjust: exact !important;
@@ -364,19 +396,34 @@
             section {
                 page-break-after: always;
                 page-break-inside: avoid;
-                width: 1920px;
-                height: 1080px;
-                min-height: 1080px;
-                padding: 100px 140px;
+                width: 297mm;
+                height: 210mm;
+                min-height: 210mm;
+                padding: 12mm 20mm;
                 margin: 0;
                 overflow: hidden;
                 box-sizing: border-box;
+                position: relative;
             }
-            .lang-switcher {
-                display: none;
+            /* Force background using a giant pseudo-element if browser is stubborn */
+            section::after {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: #0A0A0E !important;
+                z-index: -2;
             }
         }
-            
+        .slide-01-watermark {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 120%;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="show-en">
@@ -388,28 +435,42 @@
     </div>
 
     <!-- SLIDE 01 - COVER -->
-    <section id="slide-1">
+    <section id="slide-1" style="position: relative; overflow: hidden; padding: 60px 80px;">
         <div class="slide-number">01</div>
-        <div class="slide-01-content">
-            <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px; margin-bottom: 40px;">
-            <h1 class="title heading-font">
-                <span class="lang-en">Excellence that transforms.</span>
-                <span class="lang-pt">Excelência que transforma.</span>
-                <span class="lang-no">Fremragende kvalitet som forvandler.</span>
-            </h1>
-            <p class="subtitle">
-                <span class="lang-en">Institutional Pitch Deck 2026</span>
-                <span class="lang-pt">Pitch Deck Institucional 2026</span>
-                <span class="lang-no">Institusjonell Pitch Deck 2026</span>
+        <img src="/logo-D2D-dancer.png" alt="Watermark" class="slide-01-watermark">
+        <div class="slide-01-content" style="justify-content: center; height: 100%;">
+            <img src="/logo-D2D-dancer.png" alt="Dance2Dance" style="height: 64px; margin-bottom: 40px;">
+            
+            <p class="kicker" style="letter-spacing: 4px; font-size: 11px; margin-bottom: 24px;">
+                <span class="lang-en">SOCIAL IMPACT INVESTMENT</span>
+                <span class="lang-pt">INVESTIMENTO DE IMPACTO SOCIAL</span>
+                <span class="lang-no">SOSIAL KONSEKVENSINVESTERING</span>
             </p>
-            <p class="body-text" style="margin-bottom: 60px;">
-                <span class="lang-en">Oslo, Norway</span>
-                <span class="lang-pt">Oslo, Noruega</span>
-                <span class="lang-no">Oslo, Norge</span>
-            </p>
-            <div>
-                <p class="kicker" style="font-size:12px; margin-bottom:8px;">Powered by Porto Alegre Cia de Dança</p>
-                <img src="/logo-poaciadanca.png" alt="POA Cia de Dança" style="height:32px; margin-bottom: 0;">
+            
+            <h2 class="title" style="font-family: var(--font-heading); font-style: italic; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 40px;">
+                <span class="lang-en">Excellence<br><span style="color: rgba(255,255,255,0.4);">that transforms.</span></span>
+                <span class="lang-pt">Excelência<br><span style="color: rgba(255,255,255,0.4);">que transforma.</span></span>
+                <span class="lang-no">Fremragende kvalitet<br><span style="color: rgba(255,255,255,0.4);">som forvandler.</span></span>
+            </h2>
+            
+            <div style="background: rgba(0,0,0,0.4); border-left: 2px solid var(--accent-color); padding: 24px; margin-bottom: 40px; display: inline-block;">
+                <div style="font-size: 1.5rem; color: var(--text-color); margin-bottom: 8px;">
+                    <span class="lang-en">Institutional Pitch Deck 2026</span>
+                    <span class="lang-pt">Pitch Deck Institucional 2026</span>
+                    <span class="lang-no">Institusjonell Pitch Deck 2026</span>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 1rem;">
+                    <span class="lang-en">Oslo, Norway</span>
+                    <span class="lang-pt">Oslo, Noruega</span>
+                    <span class="lang-no">Oslo, Norge</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.4); padding: 16px; border-radius: 4px; display: inline-flex;">
+                <div style="font-size: 9px; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">
+                    POWERED BY PORTO ALEGRE CIA DE DANÇA
+                </div>
+                <img src="/logo-poaciadanca.png" alt="POA Cia de Dança" style="height: 32px; filter: brightness(0.8);">
             </div>
         </div>
     </section>
@@ -481,9 +542,11 @@
         </h2>
         <div class="grid-3">
             <!-- Card 1 -->
-            <div class="card">
-                <div style="height: 60px; display: flex; align-items: flex-end; margin-bottom: 16px;"><img src="/logo-bethedance.png" alt="Be The Dance" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
-                <p>
+            <div class="card" style="padding: 24px;">
+                <div style="height: 60px; display: flex; align-items: flex-end; margin-bottom: 24px;">
+                    <img src="/logo-bethedance.png" alt="Be The Dance" style="max-width: 100%; max-height: 100%; object-fit: contain; object-position: left bottom;">
+                </div>
+                <p style="font-size: 0.9rem;">
                     <span class="lang-en">A dance workshop program that integrates movement awareness with dance and meditation practices. Designed to explore movement as a path of presence, expression, and self-knowledge, awakening the unique dance that already exists within you.</span>
                     <span class="lang-pt">Um programa de workshops que integra a consciência do movimento com práticas de dança e meditação. Desenhado para explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando a dança única que já existe em você.</span>
                     <span class="lang-no">Et danse-workshop program som integrerer bevegelsesbevissthet med danse- og meditasjonspraksis. Designet for å utforske bevegelse som en vei til nærvær, uttrykk og selverkjennelse, og vekke den unike dansen som allerede finnes i deg.</span>
@@ -495,9 +558,11 @@
                 </div>
             </div>
             <!-- Card 2 -->
-            <div class="card">
-                <div style="height: 60px; display: flex; align-items: flex-end; margin-bottom: 16px;"><img src="/logo-biostretch.png" alt="Biostretch" style="max-width: 120px; max-height: 80%; object-fit: contain;"></div>
-                <p>
+            <div class="card" style="padding: 24px;">
+                <div style="height: 60px; display: flex; align-items: flex-end; margin-bottom: 24px;">
+                    <img src="/logo-biostretch.png" alt="Biostretch" style="max-width: 110px; max-height: 80%; object-fit: contain; object-position: left bottom;">
+                </div>
+                <p style="font-size: 0.9rem;">
                     <span class="lang-en">A method that uses attention as the main tool for bodily reconnection. Inspired by decades of dance, somatic education, and meditation, it proposes a subtle investigation that favors nervous system balance, releases tension, and restores natural movement fluidity.</span>
                     <span class="lang-pt">Um método que utiliza a atenção como ferramenta principal para reconexão corporal. Inspirado em décadas de dança, educação somática e meditação, propõe uma investigação sutil que favorece o equilíbrio do sistema nervoso, libera tensões e recupera a fluidez natural do movimento.</span>
                     <span class="lang-no">En metode som bruker oppmerksomhet som hovedverktøy for kroppslig gjenoppkobling. Inspirert av tiår med dans, somatisk utdanning og meditasjon, foreslår det en subtil utforskning som fremmer balanse i nervesystemet, frigjør spenninger og gjenoppretter naturlig bevegelsesflyt.</span>
@@ -509,9 +574,11 @@
                 </div>
             </div>
             <!-- Card 3 -->
-            <div class="card">
-                <div style="height: 60px; display: flex; align-items: flex-end; margin-bottom: 16px;"><img src="/logo-kroppsskole.png" alt="Kroppsskole" style="max-width: 100%; max-height: 100%; object-fit: contain;"></div>
-                <p>
+            <div class="card" style="padding: 24px;">
+                <div style="height: 60px; display: flex; align-items: flex-end; margin-bottom: 24px;">
+                    <img src="/logo-kroppsskole.png" alt="Kroppsskole" style="max-width: 100%; max-height: 100%; object-fit: contain; object-position: left bottom;">
+                </div>
+                <p style="font-size: 0.9rem;">
                     <span class="lang-en">A school to learn with the body, about the body, and through the body. Welcoming different facilitators and knowledge, it creates experiences that explore movement, touch, and presence, based on the premise that deep well-being matures when we care for our physical foundation.</span>
                     <span class="lang-pt">Uma escola para aprender com o corpo, sobre o corpo e através do corpo. Acolhendo diferentes facilitadores e saberes, cria experiências que exploram o movimento, o toque e a presença, sob a premissa de que o bem-estar profundo amadurece quando cuidamos da nossa base física.</span>
                     <span class="lang-no">En skole for å lære med kroppen, om kroppen, og gjennom kroppen. Ved å ønske ulike fasilitatorer og kunnskap velkommen, skaper den opplevelser som utforsker bevegelse, berøring og nærvær, basert på premisset om at dyp velvære modnes når vi tar vare på vårt fysiske fundament.</span>
@@ -545,9 +612,8 @@
         </p>
         
         <div class="grid-2" style="margin-bottom: 40px; max-width: 800px;">
-            <!-- Paid card -->
-            <div class="card" style="background: #0C0C0C; border: 1px solid rgba(255,255,255,0.1); padding: 48px; border-radius: 0; text-align: left; box-shadow: none;">
-                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 16px;">
+            <div class="card" style="background: #0C0C0C; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 0; text-align: left; box-shadow: none;">
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 24px;">
                     <span class="lang-en">Paying Audience</span>
                     <span class="lang-pt">Público Pagante</span>
                     <span class="lang-no">Betalende Publikum</span>
@@ -564,9 +630,8 @@
                     <span class="lang-no">Faste elever bekrefter tjenestekvaliteten og gir inntekter som gir næring til den sosiale innvirkningen.</span>
                 </p>
             </div>
-            <!-- Free card -->
-            <div class="card" style="background: #0C0C0C; border: 1px solid rgba(255,255,255,0.1); padding: 48px; border-radius: 0; text-align: left; box-shadow: none;">
-                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 16px;">
+            <div class="card" style="background: #0C0C0C; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 0; text-align: left; box-shadow: none;">
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 24px;">
                     <span class="lang-en">Local Community</span>
                     <span class="lang-pt">Comunidade Local</span>
                     <span class="lang-no">Lokalsamfunnet</span>
@@ -584,7 +649,6 @@
                 </p>
             </div>
         </div>
-
         <div class="accent-quote" style="font-size: 1.3rem; margin-top: 0;">
             <span class="lang-en">"Social projects that do not compromise on the highest standards of technical quality attract partners who demand excellence in their own brands."</span>
             <span class="lang-pt">"Projetos sociais que não abrem mão do mais alto padrão de qualidade técnica atraem parceiros que exigem excelência em suas próprias marcas."</span>
@@ -611,94 +675,49 @@
             <span class="lang-no">Investorer unngår prosjekter som er avhengige av en enkelt donor. Dance2Dance ble bygget på 4 inntektspilarer som garanterer lang levetid, økonomisk sikkerhet og risikoreduksjon for alle interessenter.</span>
         </p>
         
-        <div class="grid-4" style="margin-bottom: 40px; gap: 16px;">
-            <!-- Pillar 1 -->
-            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 32px 16px; text-align: center; border-top: 1px solid rgba(201, 168, 76, 0.5); box-shadow: inset 0 20px 40px -20px rgba(201, 168, 76, 0.1);">
-                <div class="heading-font" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 8px;">01</div>
+        <div class="grid-4" style="margin-bottom: 24px; gap: 16px;">
+            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 24px 16px; text-align: center; border-top: 1px solid rgba(201, 168, 76, 0.5); box-shadow: inset 0 20px 40px -20px rgba(201, 168, 76, 0.1);">
+                <div class="heading-font" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 8px;">01</div>
                 <div style="width: 30px; height: 1px; background: var(--accent-color); opacity: 0.6; margin-bottom: 16px;"></div>
-                <div style="font-family: var(--font-body); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
-                    <span class="lang-en">Self Revenue</span>
-                    <span class="lang-pt">Receita Própria</span>
-                    <span class="lang-no">Egeninntekt</span>
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
+                    <span class="lang-en">Self Revenue</span><span class="lang-pt">Receita Própria</span><span class="lang-no">Egeninntekt</span>
                 </div>
-                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none">
-        <circle cx="35" cy="25" r="10" stroke="currentColor" stroke-width="1"/>
-        <path d="M20 55 C20 43 28 38 35 38 C42 38 50 43 50 55" stroke="currentColor" stroke-width="1" fill="none"/>
-        <circle cx="35" cy="35" r="22" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-        <circle cx="35" cy="35" r="28" stroke="currentColor" stroke-width="0.3" opacity="0.2"/>
-    </svg>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                    <span class="lang-en">Ticket sales cover costs and attest demand</span>
-                    <span class="lang-pt">Venda de ingressos cobre custos e atesta demanda</span>
-                    <span class="lang-no">Billettsalg dekker kostnader og bekrefter etterspørsel</span>
+                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none"><circle cx="35" cy="25" r="10" stroke="currentColor" stroke-width="1"/><path d="M20 55 C20 43 28 38 35 38 C42 38 50 43 50 55" stroke="currentColor" stroke-width="1" fill="none"/><circle cx="35" cy="35" r="22" stroke="currentColor" stroke-width="0.5" opacity="0.3"/><circle cx="35" cy="35" r="28" stroke="currentColor" stroke-width="0.3" opacity="0.2"/></svg>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                    <span class="lang-en">Ticket sales cover costs and attest demand</span><span class="lang-pt">Venda de ingressos cobre custos e atesta demanda</span><span class="lang-no">Billettsalg dekker kostnader og bekrefter etterspørsel</span>
                 </p>
             </div>
-            <!-- Pillar 2 -->
-            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 32px 16px; text-align: center;">
-                <div class="heading-font" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 8px;">02</div>
+            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 24px 16px; text-align: center;">
+                <div class="heading-font" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 8px;">02</div>
                 <div style="width: 30px; height: 1px; background: var(--accent-color); opacity: 0.6; margin-bottom: 16px;"></div>
-                <div style="font-family: var(--font-body); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
-                    <span class="lang-en">Visionary Brands</span>
-                    <span class="lang-pt">Marcas Visionárias</span>
-                    <span class="lang-no">Visjonære Merkevarer</span>
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
+                    <span class="lang-en">Visionary Brands</span><span class="lang-pt">Marcas Visionárias</span><span class="lang-no">Visjonære Merkevarer</span>
                 </div>
-                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none">
-        <rect x="20" y="26" width="30" height="30" stroke="currentColor" stroke-width="1"/>
-        <line x1="28" y1="26" x2="28" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-        <line x1="35" y1="26" x2="35" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-        <line x1="42" y1="26" x2="42" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-        <line x1="20" y1="36" x2="50" y2="36" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-        <line x1="20" y1="46" x2="50" y2="46" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-        <circle cx="35" cy="16" r="3" stroke="currentColor" stroke-width="1"/>
-        <line x1="35" y1="19" x2="35" y2="26" stroke="currentColor" stroke-width="0.5"/>
-    </svg>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                    <span class="lang-en">Corporate sponsors, ESG reports, visibility</span>
-                    <span class="lang-pt">Patrocinadores corporativos, relatórios ESG, visibilidade</span>
-                    <span class="lang-no">Bedriftssponsorer, ESG-rapporter, synlighet</span>
+                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none"><rect x="20" y="26" width="30" height="30" stroke="currentColor" stroke-width="1"/><line x1="28" y1="26" x2="28" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.5"/><line x1="35" y1="26" x2="35" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.5"/><line x1="42" y1="26" x2="42" y2="56" stroke="currentColor" stroke-width="0.5" opacity="0.5"/><line x1="20" y1="36" x2="50" y2="36" stroke="currentColor" stroke-width="0.5" opacity="0.5"/><line x1="20" y1="46" x2="50" y2="46" stroke="currentColor" stroke-width="0.5" opacity="0.5"/><circle cx="35" cy="16" r="3" stroke="currentColor" stroke-width="1"/><line x1="35" y1="19" x2="35" y2="26" stroke="currentColor" stroke-width="0.5"/></svg>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                    <span class="lang-en">Corporate sponsors, ESG reports, visibility</span><span class="lang-pt">Patrocinadores corporativos, relatórios ESG, visibilidade</span><span class="lang-no">Bedriftssponsorer, ESG-rapporter, synlighet</span>
                 </p>
             </div>
-            <!-- Pillar 3 -->
-            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 32px 16px; text-align: center;">
-                <div class="heading-font" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 8px;">03</div>
+            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 24px 16px; text-align: center;">
+                <div class="heading-font" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 8px;">03</div>
                 <div style="width: 30px; height: 1px; background: var(--accent-color); opacity: 0.6; margin-bottom: 16px;"></div>
-                <div style="font-family: var(--font-body); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
-                    <span class="lang-en">Public Funding</span>
-                    <span class="lang-pt">Fomento Público</span>
-                    <span class="lang-no">Offentlig Støtte</span>
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
+                    <span class="lang-en">Public Funding</span><span class="lang-pt">Fomento Público</span><span class="lang-no">Offentlig Støtte</span>
                 </div>
-                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none">
-        <circle cx="35" cy="35" r="15" stroke="currentColor" stroke-width="1"/>
-        <circle cx="35" cy="35" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
-        <path d="M35 20 L35 12 M35 50 L35 58 M20 35 L12 35 M50 35 L58 35" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-        <path d="M25 25 L19 19 M45 45 L51 51 M45 25 L51 19 M25 45 L19 51" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-    </svg>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                    <span class="lang-en">Norwegian government cultural grants</span>
-                    <span class="lang-pt">Editais e fundos culturais do governo norueguês</span>
-                    <span class="lang-no">Kulturmidler fra norske myndigheter</span>
+                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none"><circle cx="35" cy="35" r="15" stroke="currentColor" stroke-width="1"/><circle cx="35" cy="35" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.6"/><path d="M35 20 L35 12 M35 50 L35 58 M20 35 L12 35 M50 35 L58 35" stroke="currentColor" stroke-width="0.5" opacity="0.4"/><path d="M25 25 L19 19 M45 45 L51 51 M45 25 L51 19 M25 45 L19 51" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                    <span class="lang-en">Norwegian government cultural grants</span><span class="lang-pt">Editais e fundos culturais do governo norueguês</span><span class="lang-no">Kulturmidler fra norske myndigheter</span>
                 </p>
             </div>
-            <!-- Pillar 4 -->
-            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 32px 16px; text-align: center;">
-                <div class="heading-font" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 8px;">04</div>
+            <div style="border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; padding: 24px 16px; text-align: center;">
+                <div class="heading-font" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 8px;">04</div>
                 <div style="width: 30px; height: 1px; background: var(--accent-color); opacity: 0.6; margin-bottom: 16px;"></div>
-                <div style="font-family: var(--font-body); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
-                    <span class="lang-en">Private Donors</span>
-                    <span class="lang-pt">Doadores Privados</span>
-                    <span class="lang-no">Private Givere</span>
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #d4cfc7; font-weight: 500; margin-bottom: 8px;">
+                    <span class="lang-en">Private Donors</span><span class="lang-pt">Doadores Privados</span><span class="lang-no">Private Givere</span>
                 </div>
-                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none">
-        <path d="M20 50 Q35 20 50 50" stroke="currentColor" stroke-width="1" fill="none"/>
-        <path d="M25 45 Q35 28 45 45" stroke="currentColor" stroke-width="0.5" opacity="0.5" fill="none"/>
-        <circle cx="35" cy="18" r="4" stroke="currentColor" stroke-width="1"/>
-        <circle cx="20" cy="52" r="3" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
-        <circle cx="50" cy="52" r="3" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
-    </svg>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                    <span class="lang-en">Philanthropists demanding clear metrics</span>
-                    <span class="lang-pt">Filantropos que exigem métricas claras</span>
-                    <span class="lang-no">Filantroper som krever tydelige metrikker</span>
+                <svg style="width: 40px; height: 40px; color: var(--accent-color); margin: 16px 0;" viewBox="0 0 70 70" fill="none"><path d="M20 50 Q35 20 50 50" stroke="currentColor" stroke-width="1" fill="none"/><path d="M25 45 Q35 28 45 45" stroke="currentColor" stroke-width="0.5" opacity="0.5" fill="none"/><circle cx="35" cy="18" r="4" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="52" r="3" stroke="currentColor" stroke-width="0.5" opacity="0.6"/><circle cx="50" cy="52" r="3" stroke="currentColor" stroke-width="0.5" opacity="0.6"/></svg>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                    <span class="lang-en">Philanthropists demanding clear metrics</span><span class="lang-pt">Filantropos que exigem métricas claras</span><span class="lang-no">Filantroper som krever tydelige metrikker</span>
                 </p>
             </div>
         </div>
@@ -794,7 +813,7 @@
             <img src="/images/creator-be-the-dance.jpg" alt="Safia" style="max-width:280px; border-radius:4px;">
             <div>
                 <h2 class="title" style="margin-bottom: 8px;">Safia</h2>
-                <p class="kicker" style="color:var(--text-secondary); margin-bottom: 16px;">
+                <p class="kicker" style="color:var(--text-secondary); margin-bottom: 24px;">
                     <span class="lang-en">Artistic Director & Creator</span>
                     <span class="lang-pt">Diretora Artística e Criadora</span>
                     <span class="lang-no">Kunstnerisk Direktør og Grunnlegger</span>
@@ -844,15 +863,15 @@
                 <span class="lang-no">Utforsk Programmene Våre</span>
             </a>
         
-                <button onclick="window.print()" class="btn btn-secondary no-print" style="cursor: pointer; font-family: inherit; font-size: 1rem;">
-                    <span class="lang-en">Save as PDF</span>
-                    <span class="lang-pt">Salvar como PDF</span>
-                    <span class="lang-no">Lagre som PDF</span>
+                <button id="pdf-btn" onclick="downloadPDF()" class="btn btn-secondary no-print" style="cursor: pointer; font-family: inherit; font-size: 1rem; border-color: var(--accent-color); color: var(--accent-color);">
+                    <span class="lang-en">Download PDF (A4)</span>
+                    <span class="lang-pt">Baixar PDF (A4)</span>
+                    <span class="lang-no">Last ned PDF (A4)</span>
                 </button>
             </div>
 
         <div class="footer">
-            <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px; margin-bottom: 40px;">
+            <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:32px; opacity:0.5;">
             <span>Dance2Dance &copy; 2026. Oslo, Norway.</span>
         </div>
     </section>
@@ -870,6 +889,35 @@
             if(activeBtn) {
                 activeBtn.classList.add('active');
             }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const element = document.body;
+            // hide elements that shouldn't be in PDF
+            document.querySelector('.lang-switcher').style.display = 'none';
+            document.querySelectorAll('.no-print').forEach(el => el.style.display = 'none');
+            
+            const btn = document.getElementById('pdf-btn');
+            const oldText = btn.innerHTML;
+            btn.innerHTML = '<span class="lang-pt">Gerando...</span>';
+            
+            var opt = {
+              margin:       0,
+              filename:     'Dance2Dance_PitchDeck_2026.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2, useCORS: true, logging: false },
+              jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' },
+              pagebreak:    { mode: 'css', avoid: 'section' }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                document.querySelector('.lang-switcher').style.display = 'flex';
+                document.querySelectorAll('.no-print').forEach(el => el.style.display = 'inline-block');
+                btn.innerHTML = oldText;
+            });
         }
     </script>
 </body>
