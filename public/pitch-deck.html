@@ -37,7 +37,7 @@
         }
 
         /* Language Switcher */
-        .lang-switcher {
+        .no-print, .lang-switcher {
             position: fixed;
             top: 24px;
             right: 24px;
@@ -376,36 +376,7 @@
                 display: none;
             }
         }
-            :root {
-                --bg-color: white;
-                --text-color: black;
-                --text-secondary: #333333;
-                --accent-color: #8B7330;
-                --border-color: #DDDDDD;
-            }
-            section {
-                page-break-before: always;
-                min-height: auto;
-                height: 100vh;
-                padding: 40px;
-                border: none;
-            }
-            section::before {
-                display: none;
-            }
-            .lang-switcher {
-                display: none;
-            }
-            .card {
-                background: white;
-                border: 1px solid #ddd;
-                page-break-inside: avoid;
-            }
-            .btn {
-                border: 1px solid black;
-                color: black;
-            }
-        }
+            
     </style>
 </head>
 <body class="show-en">
@@ -872,7 +843,13 @@
                 <span class="lang-pt">Explorar Nossos Programas</span>
                 <span class="lang-no">Utforsk Programmene Våre</span>
             </a>
-        </div>
+        
+                <button onclick="window.print()" class="btn btn-secondary no-print" style="cursor: pointer; font-family: inherit; font-size: 1rem;">
+                    <span class="lang-en">Save as PDF</span>
+                    <span class="lang-pt">Salvar como PDF</span>
+                    <span class="lang-no">Lagre som PDF</span>
+                </button>
+            </div>
 
         <div class="footer">
             <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px; margin-bottom: 40px;">
