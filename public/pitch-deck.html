@@ -13,6 +13,7 @@
             --border-color: rgba(201, 168, 76, 0.2);
             --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
             --font-heading: Georgia, 'Times New Roman', serif;
+            --font-batang: Batang, 'Times New Roman', serif;
         }
 
         * {
@@ -182,6 +183,12 @@
 
         /* Components */
         .card {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            transition: border-color 0.3s ease;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
             padding: 32px;
@@ -384,16 +391,16 @@
 <body class="show-en">
 
     <div class="lang-switcher">
+        <button class="lang-btn" onclick="setLang('no')">NO</button>
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('pt')">PT</button>
-        <button class="lang-btn" onclick="setLang('no')">NO</button>
     </div>
 
     <!-- SLIDE 01 - COVER -->
     <section id="slide-1">
         <div class="slide-number">01</div>
         <div class="slide-01-content">
-            <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px">
+            <div style="font-family: var(--font-batang); font-size: 28px; line-height: 1; letter-spacing: -0.5px; color: var(--text-color); margin-bottom: 40px; display: flex; align-items: baseline;">Dance<span style="color: var(--accent-color); font-size: 1.28em; position: relative; top: -0.1em; margin: 0 1px;">2</span>Dance</div>
             <h1 class="title heading-font">
                 <span class="lang-en">Excellence that transforms.</span>
                 <span class="lang-pt">Excelência que transforma.</span>
@@ -463,7 +470,7 @@
                 </p>
             </div>
             <div>
-                <img src="/images/cv-3.jpg" alt="Dance2Dance in action" style="width:100%; border-radius:8px;">
+                <img src="/images/cv-5.jpg" alt="Dance2Dance in action" style="width:100%; border-radius:8px;">
             </div>
         </div>
     </section>
@@ -477,18 +484,18 @@
             <span class="lang-no">Hva Vi Tilbyr</span>
         </p>
         <h2 class="title">
-            <span class="lang-en">Three lines of practice.</span>
-            <span class="lang-pt">Três linhas de prática.</span>
-            <span class="lang-no">Tre praksislinjer.</span>
+            <span class="lang-en">Our Core Programs.</span>
+            <span class="lang-pt">Nossos Programas Principais.</span>
+            <span class="lang-no">Våre Kjerneprogrammer.</span>
         </h2>
         <div class="grid-3">
             <!-- Card 1 -->
             <div class="card">
-                <img src="/logo-bethedance.png" alt="Be The Dance" style="height:36px; margin-bottom: 24px; align-self: flex-start;">
+                <img src="/logo-bethedance.png" alt="Be The Dance" style="width: 140px; object-fit: contain; object-position: left center; margin-bottom: 24px;">
                 <p>
-                    <span class="lang-en">Discover the dance that already exists in you. Workshops for all levels that integrate body awareness, meditation, and dance. Available for individuals and corporate teams.</span>
-                    <span class="lang-pt">Descubra a dança que já existe em você. Workshops para todos os níveis que integram consciência corporal, meditação e dança. Disponível para indivíduos e equipes corporativas.</span>
-                    <span class="lang-no">Oppdag dansen som allerede finnes i deg. Workshops for alle nivåer som integrerer kroppsbevissthet, meditasjon og dans. Tilgjengelig for enkeltpersoner og bedriftsteam.</span>
+                    <span class="lang-en">A dance workshop program that integrates movement awareness with dance and meditation practices. Designed to explore movement as a path of presence, expression, and self-knowledge, awakening the unique dance that already exists within you.</span>
+                    <span class="lang-pt">Um programa de workshops que integra a consciência do movimento com práticas de dança e meditação. Desenhado para explorar o movimento como caminho de presença, expressão e autoconhecimento, despertando a dança única que já existe em você.</span>
+                    <span class="lang-no">Et danse-workshop program som integrerer bevegelsesbevissthet med danse- og meditasjonspraksis. Designet for å utforske bevegelse som en vei til nærvær, uttrykk og selverkjennelse, og vekke den unike dansen som allerede finnes i deg.</span>
                 </p>
                 <div class="formats">
                     <span class="lang-en">Workshops | Corporate</span>
@@ -498,11 +505,11 @@
             </div>
             <!-- Card 2 -->
             <div class="card">
-                <img src="/logo-biostretch.png" alt="Biostretch" style="height:36px; margin-bottom: 24px; align-self: flex-start;">
+                <img src="/logo-biostretch.png" alt="Biostretch" style="width: 140px; object-fit: contain; object-position: left center; margin-bottom: 24px;">
                 <p>
-                    <span class="lang-en">A somatic exercise system that reconnects you with your body through movement awareness. Inspired by four decades of research in dance, somatic education, and meditation.</span>
-                    <span class="lang-pt">Um sistema de exercícios somáticos que reconecta você com o corpo através da consciência do movimento. Inspirado em quatro décadas de pesquisa em dança, educação somática e meditação.</span>
-                    <span class="lang-no">Et somatisk øvelsessystem som kobler deg til kroppen gjennom bevissthetsbevegelse. Inspirert av fire tiår med forskning innen dans, somatisk utdanning og meditasjon.</span>
+                    <span class="lang-en">A method that uses attention as the main tool for bodily reconnection. Inspired by decades of dance, somatic education, and meditation, it proposes a subtle investigation that favors nervous system balance, releases tension, and restores natural movement fluidity.</span>
+                    <span class="lang-pt">Um método que utiliza a atenção como ferramenta principal para reconexão corporal. Inspirado em décadas de dança, educação somática e meditação, propõe uma investigação sutil que favorece o equilíbrio do sistema nervoso, libera tensões e recupera a fluidez natural do movimento.</span>
+                    <span class="lang-no">En metode som bruker oppmerksomhet som hovedverktøy for kroppslig gjenoppkobling. Inspirert av tiår med dans, somatisk utdanning og meditasjon, foreslår det en subtil utforskning som fremmer balanse i nervesystemet, frigjør spenninger og gjenoppretter naturlig bevegelsesflyt.</span>
                 </p>
                 <div class="formats">
                     <span class="lang-en">Workshops | Regular Classes | Corporate</span>
@@ -512,11 +519,11 @@
             </div>
             <!-- Card 3 -->
             <div class="card">
-                <img src="/logo-kroppsskole.png" alt="Kroppsskole" style="height:36px; margin-bottom: 24px; align-self: flex-start;">
+                <img src="/logo-kroppsskole.png" alt="Kroppsskole" style="width: 140px; object-fit: contain; object-position: left center; margin-bottom: 24px;">
                 <p>
-                    <span class="lang-en">Body School: an umbrella for diverse practices. A space where knowledge and experience meet, exploring movement, touch, breath, expression, and presence with guest facilitators.</span>
-                    <span class="lang-pt">Escola do Corpo: um guarda-chuva para práticas diversas. Um espaço onde conhecimento e experiência se encontram, explorando movimento, toque, respiração, expressão e presença com facilitadores convidados.</span>
-                    <span class="lang-no">Kroppsskole: en paraply for ulike praksiser. Et sted der kunnskap og erfaring møtes, og utforsker bevegelse, berøring, pust, uttrykk og nærvær med gjestefasilitatorer.</span>
+                    <span class="lang-en">A school to learn with the body, about the body, and through the body. Welcoming different facilitators and knowledge, it creates experiences that explore movement, touch, and presence, based on the premise that deep well-being matures when we care for our physical foundation.</span>
+                    <span class="lang-pt">Uma escola para aprender com o corpo, sobre o corpo e através do corpo. Acolhendo diferentes facilitadores e saberes, cria experiências que exploram o movimento, o toque e a presença, sob a premissa de que o bem-estar profundo amadurece quando cuidamos da nossa base física.</span>
+                    <span class="lang-no">En skole for å lære med kroppen, om kroppen, og gjennom kroppen. Ved å ønske ulike fasilitatorer og kunnskap velkommen, skaper den opplevelser som utforsker bevegelse, berøring og nærvær, basert på premisset om at dyp velvære modnes når vi tar vare på vårt fysiske fundament.</span>
                 </p>
                 <div class="formats">
                     <span class="lang-en">Workshops | Regular Classes</span>
@@ -547,8 +554,11 @@
         </p>
         
         <div class="grid-2" style="margin-bottom: 40px; max-width: 800px;">
-            <div class="card" style="text-align: center;">
-                <h3 class="heading-font" style="color:var(--accent-color); font-size:2rem;">
+            <div class="card" style="text-align: center; border-top: 3px solid var(--accent-color);">
+                <div style="margin-bottom: 24px; color: var(--accent-color);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <h3 class="heading-font" style="color:var(--text-color); font-size:1.8rem;">
                     <span class="lang-en">Market Value</span>
                     <span class="lang-pt">Valor de Mercado</span>
                     <span class="lang-no">Markedsverdi</span>
@@ -559,10 +569,13 @@
                     <span class="lang-no">Betalende publikum finansierer økosystemet</span>
                 </p>
             </div>
-            <div class="card" style="text-align: center;">
-                <h3 class="heading-font" style="color:var(--accent-color); font-size:2rem;">
+            <div class="card" style="text-align: center; border-top: 3px solid var(--accent-color);">
+                <div style="margin-bottom: 24px; color: var(--accent-color);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </div>
+                <h3 class="heading-font" style="color:var(--text-color); font-size:1.8rem;">
                     <span class="lang-en">100% Scholarships</span>
-                    <span class="lang-pt">Bolsas Integrais de 100%</span>
+                    <span class="lang-pt">Bolsas Integrais</span>
                     <span class="lang-no">100% Stipender</span>
                 </h3>
                 <p>
@@ -798,7 +811,7 @@
         </div>
 
         <div class="footer">
-            <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:32px; opacity:0.5;">
+            <div style="font-family: var(--font-batang); font-size: 28px; line-height: 1; letter-spacing: -0.5px; color: var(--text-color); margin-bottom: 40px; display: flex; align-items: baseline;">Dance<span style="color: var(--accent-color); font-size: 1.28em; position: relative; top: -0.1em; margin: 0 1px;">2</span>Dance</div>
             <span>Dance2Dance &copy; 2026. Oslo, Norway.</span>
         </div>
     </section>
