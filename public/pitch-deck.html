@@ -355,19 +355,20 @@
             .no-print { display: none !important; }
             .lang-switcher { display: none !important; }
             @page {
-                size: 297mm 210mm; /* A4 Landscape */
+                size: 16in 9in; /* 16:9 Standard Pitch Deck Ratio */
                 margin: 0;
             }
             body {
                 margin: 0;
+                background-color: #0A0A0E !important;
             }
             section {
                 page-break-after: always;
                 page-break-inside: avoid;
-                width: 297mm;
-                height: 210mm;
-                min-height: 210mm;
-                padding: 15mm 20mm;
+                width: 16in;
+                height: 9in;
+                min-height: 9in;
+                padding: 1in 1.2in;
                 margin: 0;
                 overflow: hidden;
                 box-sizing: border-box;
@@ -395,8 +396,9 @@
 
     <!-- SLIDE 01 - COVER -->
     <section id="slide-1" style="position: relative; z-index: 1;">
-        <img src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: 40px; top: 5%; height: 90%; object-fit: contain; opacity: 0.15; z-index: -1; pointer-events: none;">
+        
         <div class="slide-number">01</div>
+        <img src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: 5%; top: 0; height: 100%; object-fit: contain; opacity: 0.15; z-index: -1; pointer-events: none;">
         <div class="slide-01-content">
             <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px; margin-bottom: 60px;">
             <h1 class="title heading-font" style="font-size: 3.5rem; margin-bottom: 30px;">
@@ -617,7 +619,7 @@
         
         <div class="grid-4" style="margin-bottom: 16px;">
             <div class="card" style="padding: 24px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; position: relative; overflow: hidden;">
-                <div style="font-family: var(--font-heading); font-size: 3rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -10px; right: 10px; line-height: 1;">01</div>
+                <div style="font-family: var(--font-heading); font-size: 7rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -20px; right: 10px; line-height: 1;">01</div>
                 <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-color); position: relative; z-index: 1;">
                     <span class="lang-en">Self Revenue</span>
                     <span class="lang-pt">Receita Própria</span>
@@ -631,7 +633,7 @@
             </div>
             
             <div class="card" style="padding: 24px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; position: relative; overflow: hidden;">
-                <div style="font-family: var(--font-heading); font-size: 3rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -10px; right: 10px; line-height: 1;">02</div>
+                <div style="font-family: var(--font-heading); font-size: 7rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -20px; right: 10px; line-height: 1;">02</div>
                 <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-color); position: relative; z-index: 1;">
                     <span class="lang-en">Visionary Brands</span>
                     <span class="lang-pt">Marcas Visionárias</span>
@@ -645,7 +647,7 @@
             </div>
             
             <div class="card" style="padding: 24px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; position: relative; overflow: hidden;">
-                <div style="font-family: var(--font-heading); font-size: 3rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -10px; right: 10px; line-height: 1;">03</div>
+                <div style="font-family: var(--font-heading); font-size: 7rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -20px; right: 10px; line-height: 1;">03</div>
                 <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-color); position: relative; z-index: 1;">
                     <span class="lang-en">Public Funding</span>
                     <span class="lang-pt">Fomento Público</span>
@@ -659,7 +661,7 @@
             </div>
             
             <div class="card" style="padding: 24px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; position: relative; overflow: hidden;">
-                <div style="font-family: var(--font-heading); font-size: 3rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -10px; right: 10px; line-height: 1;">04</div>
+                <div style="font-family: var(--font-heading); font-size: 7rem; color: rgba(201, 168, 76, 0.2); position: absolute; top: -20px; right: 10px; line-height: 1;">04</div>
                 <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-color); position: relative; z-index: 1;">
                     <span class="lang-en">Private Donors</span>
                     <span class="lang-pt">Private Donors</span>
@@ -804,15 +806,16 @@
         </p>
         
         <div class="cta-buttons">
+            
             <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start;">
                 
-            <a href="https://www.dance2dance.no/contato?subject=reuniao-executiva" class="no-print" style="display: flex; align-items: center; justify-content: center; height: 56px; width: 300px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; font-family: sans-serif; transition: background 0.3s; box-sizing: border-box; background: #C9A84C; color: #0A0A0E; border: none;">
+            <a href="https://www.dance2dance.no/contato?subject=reuniao-executiva" style="display: flex; align-items: center; justify-content: center; height: 56px; width: 300px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; font-family: sans-serif; transition: background 0.3s; box-sizing: border-box; background: #C9A84C; color: #0A0A0E; border: none;">
                 <span class="lang-en">Schedule Executive Meeting</span>
                 <span class="lang-pt">Agendar Reunião Executiva</span>
                 <span class="lang-no">Planlegg Ledermøte</span>
             </a>
                 
-            <a href="https://www.dance2dance.no" class="no-print" style="display: flex; align-items: center; justify-content: center; height: 56px; width: 300px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; font-family: sans-serif; transition: background 0.3s; box-sizing: border-box; background: transparent; color: white; border: 1px solid #475569;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+            <a href="https://www.dance2dance.no" style="display: flex; align-items: center; justify-content: center; height: 56px; width: 300px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; font-family: sans-serif; transition: background 0.3s; box-sizing: border-box; background: transparent; color: white; border: 1px solid #475569;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                 <span class="lang-en">Explore Our Programs</span>
                 <span class="lang-pt">Explorar Nossos Programas</span>
                 <span class="lang-no">Utforsk Programmene Våre</span>
@@ -822,8 +825,7 @@
                 <span class="lang-en">Save as PDF</span>
                 <span class="lang-pt">Salvar como PDF</span>
                 <span class="lang-no">Lagre som PDF</span>
-            </button>
-            </div>
+            </button></div>
         </div>
 
         <div class="footer">
