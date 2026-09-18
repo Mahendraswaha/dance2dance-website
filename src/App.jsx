@@ -40,7 +40,7 @@ import Home from './pages/Home';
 const AgendaPage = lazyWithRetries(() => import('./pages/AgendaPage'));
 const ProgramPage = lazyWithRetries(() => import('./pages/ProgramPage'));
 const WorkshopPage = lazyWithRetries(() => import('./pages/WorkshopPage'));
-const SocialPage = lazyWithRetries(() => import('./pages/SocialPage'));
+const SocialPage = lazyWithRetries(() => import('./pages/ImpactPage'));
 const CorporatePage = lazyWithRetries(() => import('./pages/CorporatePage'));
 const BtdCorporatePage = lazyWithRetries(() => import('./pages/BtdCorporatePage'));
 const IndividualPage = lazyWithRetries(() => import('./pages/IndividualPage'));
