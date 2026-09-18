@@ -345,7 +345,7 @@
         }
 
         /* Print optimization */
-        .no-print { display: inline-block; }
+        .no-print { display: inline-flex; }
         @media print {
             * {
                 -webkit-print-color-adjust: exact !important;
@@ -372,8 +372,9 @@
                 overflow: hidden;
                 box-sizing: border-box;
                 position: relative;
+                background-color: #0A0A0E !important;
+                box-shadow: inset 0 0 0 10000px #0A0A0E !important;
             }
-            /* Dark background fill for Chrome PDF */
             section::before {
                 content: '';
                 position: absolute;
@@ -387,34 +388,49 @@
 <body class="show-en">
 
     <div class="lang-switcher">
+        <button class="lang-btn" onclick="setLang('no')">NO</button>
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('pt')">PT</button>
-        <button class="lang-btn" onclick="setLang('no')">NO</button>
     </div>
 
     <!-- SLIDE 01 - COVER -->
-    <section id="slide-1">
+    <section id="slide-1" style="position: relative; overflow: hidden; padding: 60px 80px;">
         <div class="slide-number">01</div>
-        <div class="slide-01-content">
-            <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px">
-            <h1 class="title heading-font">
-                <span class="lang-en">Excellence that transforms.</span>
+        <img src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: -5%; top: 50%; transform: translateY(-50%); height: 120%; opacity: 0.15; z-index: -1; pointer-events: none;">
+        
+        <div class="slide-01-content" style="justify-content: center; height: 100%;">
+            <img src="/logo-D2D-dancer.png" alt="Dance2Dance" style="height: 72px; margin-bottom: 40px;">
+            
+            <p class="kicker" style="letter-spacing: 4px; font-size: 11px; margin-bottom: 24px;">
+                <span class="lang-en">SOCIAL IMPACT INVESTMENT</span>
+                <span class="lang-pt">INVESTIMENTO DE IMPACTO SOCIAL</span>
+                <span class="lang-no">SOSIAL KONSEKVENSINVESTERING</span>
+            </p>
+            
+            <h2 class="title" style="font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 40px; color: #FAF8F5;">
+                <span class="lang-en">Excellence que transforms.</span>
                 <span class="lang-pt">Excelência que transforma.</span>
                 <span class="lang-no">Fremragende kvalitet som forvandler.</span>
-            </h1>
-            <p class="subtitle">
-                <span class="lang-en">Institutional Pitch Deck 2026</span>
-                <span class="lang-pt">Pitch Deck Institucional 2026</span>
-                <span class="lang-no">Institusjonell Pitch Deck 2026</span>
-            </p>
-            <p class="body-text" style="margin-bottom: 60px;">
-                <span class="lang-en">Oslo, Norway</span>
-                <span class="lang-pt">Oslo, Noruega</span>
-                <span class="lang-no">Oslo, Norge</span>
-            </p>
-            <div>
-                <p class="kicker" style="font-size:12px; margin-bottom:8px;">Powered by Porto Alegre Cia de Dança</p>
-                <img src="/logo-poaciadanca.png" alt="POA Cia de Dança" style="height:32px; margin-bottom: 0;">
+            </h2>
+            
+            <div style="background: rgba(255,255,255,0.03); border-left: 2px solid var(--accent-color); padding: 24px; margin-bottom: 40px; display: inline-block;">
+                <div style="font-size: 1.5rem; color: var(--text-color); margin-bottom: 8px;">
+                    <span class="lang-en">Institutional Pitch Deck 2026</span>
+                    <span class="lang-pt">Pitch Deck Institucional 2026</span>
+                    <span class="lang-no">Institusjonell Pitch Deck 2026</span>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 1rem;">
+                    <span class="lang-en">Oslo, Norway</span>
+                    <span class="lang-pt">Oslo, Noruega</span>
+                    <span class="lang-no">Oslo, Norge</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.6); padding: 16px; border-radius: 4px; display: inline-flex;">
+                <div style="font-size: 9px; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">
+                    POWERED BY PORTO ALEGRE CIA DE DANÇA
+                </div>
+                <img src="/logo-poaciadanca.png" alt="POA Cia de Dança" style="height: 32px; filter: brightness(0.8);">
             </div>
         </div>
     </section>
@@ -455,9 +471,9 @@
                     <span class="lang-no">Om Oss</span>
                 </p>
                 <h2 class="title">
-                    <span class="lang-en" style="font-family: var(--font-batang);">Dance<span style="color: var(--accent-color);">2</span>Dance</span>
-                    <span class="lang-pt" style="font-family: var(--font-batang);">Dance<span style="color: var(--accent-color);">2</span>Dance</span>
-                    <span class="lang-no" style="font-family: var(--font-batang);">Dance<span style="color: var(--accent-color);">2</span>Dance</span>
+                    <span class="lang-en">Dance2Dance</span>
+                    <span class="lang-pt">Dance2Dance</span>
+                    <span class="lang-no">Dance2Dance</span>
                 </h2>
                 <p class="body-text">
                     <span class="lang-en">Dance2Dance is a non-profit social organization based in Oslo, Norway. Backed by the technical expertise and decades of artistic experience of Porto Alegre Cia de Dança (Brazil), we deliver world-class workshops in dance, body awareness, and somatic practices to the local community of Tøyen and Grønland.</span>
@@ -466,7 +482,7 @@
                 </p>
             </div>
             <div>
-                <img src="/images/cv-5.jpg" alt="Dance2Dance in action" style="width:100%; border-radius:8px;">
+                <img src="/images/cv-3.jpg" alt="Dance2Dance in action" style="width:100%; border-radius:8px;">
             </div>
         </div>
     </section>
@@ -474,58 +490,53 @@
     <!-- SLIDE 04 - OUR PROGRAMS -->
     <section id="slide-4">
         <div class="slide-number">04</div>
-        <p class="kicker">
-            <span class="lang-en">What We Offer</span>
-            <span class="lang-pt">O Que Oferecemos</span>
-            <span class="lang-no">Hva Vi Tilbyr</span>
-        </p>
-        <h2 class="title">
-            <span class="lang-en">Three lines of practice.</span>
-            <span class="lang-pt">Três linhas de prática.</span>
-            <span class="lang-no">Tre praksislinjer.</span>
-        </h2>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-family: var(--font-heading); margin-bottom: 16px; font-size: 2.5rem;">
+                <span class="lang-en">Our Activities</span>
+                <span class="lang-pt">Nossas Atividades</span>
+                <span class="lang-no">Våre Aktiviteter</span>
+            </h2>
+            <div style="width: 40px; height: 1px; background: var(--accent-color); margin: 0 auto;"></div>
+        </div>
+        
         <div class="grid-3">
-            <!-- Card 1 -->
-            <div class="card">
-                <img src="/logo-bethedance.png" alt="Be The Dance" style="height:36px; margin-bottom: 24px; align-self: flex-start;">
-                <p>
-                    <span class="lang-en">Discover the dance that already exists in you. Workshops for all levels that integrate body awareness, meditation, and dance. Available for individuals and corporate teams.</span>
-                    <span class="lang-pt">Descubra a dança que já existe em você. Workshops para todos os níveis que integram consciência corporal, meditação e dança. Disponível para indivíduos e equipes corporativas.</span>
-                    <span class="lang-no">Oppdag dansen som allerede finnes i deg. Workshops for alle nivåer som integrerer kroppsbevissthet, meditasjon og dans. Tilgjengelig for enkeltpersoner og bedriftsteam.</span>
-                </p>
-                <div class="formats">
-                    <span class="lang-en">Workshops | Corporate</span>
-                    <span class="lang-pt">Workshops | Empresas</span>
-                    <span class="lang-no">Workshops | Bedrift</span>
+            <div class="card" style="background: #1A1A1A; border: none; padding: 32px 24px; text-align: center; align-items: center;">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                    <img src="/logo-bethedance.png" alt="Be The Dance" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                 </div>
+                <h3 style="color: #FAF8F5; font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 16px;">Be the Dance</h3>
+                <div style="width: 30px; height: 1px; background: var(--accent-color); margin: 0 auto 16px auto; opacity: 0.5;"></div>
+                <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6;">
+                    <span class="lang-en">Every body holds a dance it hasn't yet dared to release. These workshops are a space where movement, presence, and expression bring it to light.</span>
+                    <span class="lang-pt">Cada corpo carrega uma dança que ainda não se atreveu a sair. Estes workshops são o espaço onde movimento, presença e expressão a trazem à luz.</span>
+                    <span class="lang-no">Hver kropp bærer på en dans den ennå ikke har våget å slippe fri. Disse workshopene er rommet hvor bevegelse, tilstedeværelse og uttrykk bringer den frem i lyset.</span>
+                </p>
             </div>
-            <!-- Card 2 -->
-            <div class="card">
-                <img src="/logo-biostretch.png" alt="Biostretch" style="height:36px; margin-bottom: 24px; align-self: flex-start;">
-                <p>
-                    <span class="lang-en">A somatic exercise system that reconnects you with your body through movement awareness. Inspired by four decades of research in dance, somatic education, and meditation.</span>
-                    <span class="lang-pt">Um sistema de exercícios somáticos que reconecta você com o corpo através da consciência do movimento. Inspirado em quatro décadas de pesquisa em dança, educação somática e meditação.</span>
-                    <span class="lang-no">Et somatisk øvelsessystem som kobler deg til kroppen gjennom bevissthetsbevegelse. Inspirert av fire tiår med forskning innen dans, somatisk utdanning og meditasjon.</span>
-                </p>
-                <div class="formats">
-                    <span class="lang-en">Workshops | Regular Classes | Corporate</span>
-                    <span class="lang-pt">Workshops | Aulas Regulares | Empresas</span>
-                    <span class="lang-no">Workshops | Faste Kurs | Bedrift</span>
+            
+            <div class="card" style="background: #1A1A1A; border: none; padding: 32px 24px; text-align: center; align-items: center;">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                    <img src="/logo-biostretch.png" alt="Biostretch" style="max-height: 40px; max-width: 100%; object-fit: contain;">
                 </div>
+                <h3 style="color: #FAF8F5; font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 16px;">Biostretch</h3>
+                <div style="width: 30px; height: 1px; background: var(--accent-color); margin: 0 auto 16px auto; opacity: 0.5;"></div>
+                <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6;">
+                    <span class="lang-en">Conscious movement practices that expand perception, encourage bodily reorganization, and transform how we inhabit our bodies.</span>
+                    <span class="lang-pt">Práticas de movimento consciente que ampliam a percepção, estimulam a reorganização corporal e transformam a maneira como habitamos o corpo.</span>
+                    <span class="lang-no">Bevisste bevegelsespraksiser som utvider sanseopplevelsen, stimulerer kroppslig omorganisering og forvandler måten vi er i egen kropp på.</span>
+                </p>
             </div>
-            <!-- Card 3 -->
-            <div class="card">
-                <img src="/logo-kroppsskole.png" alt="Kroppsskole" style="height:36px; margin-bottom: 24px; align-self: flex-start;">
-                <p>
-                    <span class="lang-en">Body School: an umbrella for diverse practices. A space where knowledge and experience meet, exploring movement, touch, breath, expression, and presence with guest facilitators.</span>
-                    <span class="lang-pt">Escola do Corpo: um guarda-chuva para práticas diversas. Um espaço onde conhecimento e experiência se encontram, explorando movimento, toque, respiração, expressão e presença com facilitadores convidados.</span>
-                    <span class="lang-no">Kroppsskole: en paraply for ulike praksiser. Et sted der kunnskap og erfaring møtes, og utforsker bevegelse, berøring, pust, uttrykk og nærvær med gjestefasilitatorer.</span>
-                </p>
-                <div class="formats">
-                    <span class="lang-en">Workshops | Regular Classes</span>
-                    <span class="lang-pt">Workshops | Aulas Regulares</span>
-                    <span class="lang-no">Workshops | Faste Kurs</span>
+            
+            <div class="card" style="background: #1A1A1A; border: none; padding: 32px 24px; text-align: center; align-items: center;">
+                <div style="height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                    <img src="/logo-kroppsskole.png" alt="Kroppsskole" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                 </div>
+                <h3 style="color: #FAF8F5; font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 16px;">Kroppsskole</h3>
+                <div style="width: 30px; height: 1px; background: var(--accent-color); margin: 0 auto 16px auto; opacity: 0.5;"></div>
+                <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6;">
+                    <span class="lang-en">Community projects that reach across streets and neighborhoods - weaving connections, building bonds, and sparking transformation.</span>
+                    <span class="lang-pt">Projetos comunitários que atravessam ruas e bairros, tecendo laços, criando vínculos e transformando.</span>
+                    <span class="lang-no">Samfunnsprosjekter som krysser gater og nabolag, vever bånd, skaper forbindelser og transformerer.</span>
+                </p>
             </div>
         </div>
     </section>
@@ -534,133 +545,143 @@
     <section id="slide-5">
         <div class="slide-number">05</div>
         <p class="kicker">
-            <span class="lang-en">Solidarity Model</span>
-            <span class="lang-pt">Modelo de Solidariedade</span>
-            <span class="lang-no">Solidaritetsmodell</span>
+            <span class="lang-en">B2B Transparency</span>
+            <span class="lang-pt">Transparência B2B</span>
+            <span class="lang-no">B2B Transparens</span>
         </p>
-        <h2 class="title">
+        <h2 class="title" style="margin-bottom: 16px;">
             <span class="lang-en">Perceived value. Real impact.</span>
             <span class="lang-pt">Valor percebido. Impacto real.</span>
             <span class="lang-no">Oppfattet verdi. Reell innvirkning.</span>
         </h2>
         <p class="body-text">
-            <span class="lang-en">Our free spots are not charity. They are full scholarships funded by our ecosystem. By pricing workshops for external audiences at market value, we prove the quality of what we deliver and fund 100% scholarships for Tøyen and Grønland residents.</span>
-            <span class="lang-pt">Nossas vagas gratuitas não são caridade. São bolsas integrais financiadas pelo nosso ecossistema. Ao precificar workshops para o público externo a valor de mercado, comprovamos a qualidade do que entregamos e financiamos bolsas de 100% para moradores de Tøyen e Grønland.</span>
-            <span class="lang-no">Våre gratis plasser er ikke veldedighet. De er fullfinansierte stipender finansiert av vårt økosystem. Ved å prise workshops for eksterne deltakere til markedsverdi, beviser vi kvaliteten på det vi leverer og finansierer 100% stipender for innbyggere i Tøyen og Grønland.</span>
+            <span class="lang-en">Our free spots are not charity, they are full scholarships funded by our ecosystem. By pricing the workshop for external audiences, we prove the high value delivered to local residents and our investors.</span>
+            <span class="lang-pt">Nossas vagas gratuitas não são caridade, são bolsas integrais financiadas pelo nosso ecossistema. Ao precificarmos o workshop para o público externo, comprovamos o alto valor da entrega para os moradores locais e para nossos investidores.</span>
+            <span class="lang-no">Våre gratis plasser er ikke veldedighet, de er fullfinansierte stipender finansiert av vårt økosystem. Ved å prise workshopen for eksterne deltakere, beviser vi den høye verdien som leveres til lokale innbyggere og våre investorer.</span>
         </p>
         
         <div class="grid-2" style="margin-bottom: 24px; max-width: 800px;">
-            <div class="card" style="text-align: center; padding: 24px;">
-                <h3 class="heading-font" style="color:var(--accent-color); font-size:1.5rem;">
+            <div class="card" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 24px; text-align: left; box-shadow: none;">
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px;">
+                    <span class="lang-en">Paying Audience</span>
+                    <span class="lang-pt">Público Pagante</span>
+                    <span class="lang-no">Betalende deltakere</span>
+                </div>
+                <h3 class="heading-font" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 16px;">
                     <span class="lang-en">Market Value</span>
                     <span class="lang-pt">Valor de Mercado</span>
                     <span class="lang-no">Markedsverdi</span>
                 </h3>
-                <p>
-                    <span class="lang-en">Paying audience funds the ecosystem</span>
-                    <span class="lang-pt">Público pagante financia o ecossistema</span>
-                    <span class="lang-no">Betalende publikum finansierer økosystemet</span>
+                <p style="font-size: 0.9rem; margin: 0; color: var(--text-secondary);">
+                    <span class="lang-en">Regular students attest to the quality of the service and inject revenue that fuels the social impact.</span>
+                    <span class="lang-pt">Alunos regulares atestam a qualidade do serviço e injetam receita que retroalimenta o impacto social.</span>
+                    <span class="lang-no">Regulære studenter bekrefter kvaliteten på tjenesten og tilfører inntekter som driver den sosiale innvirkningen.</span>
                 </p>
             </div>
-            <div class="card" style="text-align: center; padding: 24px;">
-                <h3 class="heading-font" style="color:var(--accent-color); font-size:1.5rem;">
-                    <span class="lang-en">100% Scholarships</span>
-                    <span class="lang-pt">Bolsas Integrais de 100%</span>
-                    <span class="lang-no">100% Stipender</span>
+            
+            <div class="card" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 24px; text-align: left; box-shadow: none;">
+                <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px;">
+                    <span class="lang-en">Local Community</span>
+                    <span class="lang-pt">Comunidade Local</span>
+                    <span class="lang-no">Lokalsamfunn</span>
+                </div>
+                <h3 class="heading-font" style="font-size: 1.8rem; color: var(--accent-color); margin-bottom: 16px;">
+                    <span class="lang-en">Guaranteed Access</span>
+                    <span class="lang-pt">Acesso Garantido</span>
+                    <span class="lang-no">Garantert tilgang</span>
                 </h3>
-                <p>
-                    <span class="lang-en">Same studio, same teachers, same excellence</span>
-                    <span class="lang-pt">Mesmo estúdio, mesmos professores, mesma excelência</span>
-                    <span class="lang-no">Samme studio, samme lærere, samme kvalitet</span>
+                <p style="font-size: 0.9rem; margin: 0; color: var(--text-secondary);">
+                    <span class="lang-en">Residents receive unrestricted access to the same infrastructure and teachers, generating dignity and belonging.</span>
+                    <span class="lang-pt">Residentes recebem acesso irrestrito à mesma infraestrutura e professores, gerando dignidade e pertencimento.</span>
+                    <span class="lang-no">Innbyggere får ubegrenset tilgang til samme infrastruktur og lærere, noe som genererer verdighet og tilhørighet.</span>
                 </p>
             </div>
         </div>
 
-        <div class="accent-quote" style="font-size: 1.3rem; margin-top: 0;">
+        <div class="accent-quote" style="font-size: 1.2rem; margin-top: 0; font-family: var(--font-body); font-style: italic;">
             <span class="lang-en">"Social projects that do not compromise on the highest standards of technical quality attract partners who demand excellence in their own brands."</span>
             <span class="lang-pt">"Projetos sociais que não abrem mão do mais alto padrão de qualidade técnica atraem parceiros que exigem excelência em suas próprias marcas."</span>
             <span class="lang-no">"Sosiale prosjekter som ikke går på kompromiss med de høyeste standardene for teknisk kvalitet, tiltrekker seg partnere som krever fremragende kvalitet i sine egne merkevarer."</span>
         </div>
     </section>
 
-    <!-- SLIDE 06 - FINANCIAL ECOSYSTEM -->
+    <!-- SLIDE 06 - 4 PILLARS -->
     <section id="slide-6">
         <div class="slide-number">06</div>
         <p class="kicker">
-            <span class="lang-en">Governance & Sustainability</span>
+            <span class="lang-en">Governance and Sustainability</span>
             <span class="lang-pt">Governança e Sustentabilidade</span>
             <span class="lang-no">Styring og Bærekraft</span>
         </p>
-        <h2 class="title">
-            <span class="lang-en">Four pillars of revenue.</span>
-            <span class="lang-pt">Quatro pilares de receita.</span>
-            <span class="lang-no">Fire inntektspilarer.</span>
+        <h2 class="title" style="margin-bottom: 16px;">
+            <span class="lang-en">Financial Ecosystem.</span>
+            <span class="lang-pt">Ecossistema Financeiro.</span>
+            <span class="lang-no">Økonomisk Økosystem.</span>
         </h2>
-        <p class="body-text">
+        <p class="body-text" style="margin-bottom: 24px;">
             <span class="lang-en">Investors avoid projects dependent on single donors. Dance2Dance was built on 4 revenue pillars that guarantee longevity, financial security, and risk mitigation for all stakeholders.</span>
             <span class="lang-pt">Investidores fogem de projetos dependentes de doadores únicos. O Dance2Dance foi arquitetado sobre 4 pilares de receita que garantem perenidade, segurança financeira e mitigação de riscos para todos os stakeholders.</span>
-            <span class="lang-no">Investorer unngår prosjekter som er avhengige av en enkelt donor. Dance2Dance ble bygget på 4 inntektspilarer som garanterer lang levetid, økonomisk sikkerhet og risikoreduksjon for alle interessenter.</span>
+            <span class="lang-no">Investorer unngår prosjekter som er avhengige av én enkelt donor. Dance2Dance ble bygget på 4 inntektspilarer som garanterer lang levetid, økonomisk sikkerhet og risikoreduksjon for alle interessenter.</span>
         </p>
         
-        <div class="grid-4" style="margin-bottom: 40px;">
-            <div class="numbered-item">
-                <div class="number">01</div>
-                <h3 class="heading-font">
+        <div class="grid-4" style="margin-bottom: 16px;">
+            <div class="card" style="padding: 24px 16px; border-top: 2px solid var(--accent-color);">
+                <h3 style="font-size: 1.2rem; margin-bottom: 12px; color: var(--accent-color);">
                     <span class="lang-en">Self Revenue</span>
                     <span class="lang-pt">Receita Própria</span>
                     <span class="lang-no">Egeninntekt</span>
                 </h3>
-                <p style="color:var(--text-secondary); font-size: 0.95rem;">
-                    <span class="lang-en">Ticket sales cover costs and attest demand</span>
-                    <span class="lang-pt">Venda de ingressos cobre custos e atesta demanda</span>
-                    <span class="lang-no">Billettsalg dekker kostnader og bekrefter etterspørsel</span>
+                <p style="font-size: 0.85rem;">
+                    <span class="lang-en">Ticket sales to participants outside the impact zone cover basic costs and attest to the product's demand.</span>
+                    <span class="lang-pt">A venda de ingressos para participantes fora da zona de impacto cobre custos básicos e atesta a demanda pelo produto.</span>
+                    <span class="lang-no">Billettsalg til deltakere utenfor innvirkningssonen dekker grunnleggende kostnader og bekrefter etterspørselen etter produktet.</span>
                 </p>
             </div>
-            <div class="numbered-item">
-                <div class="number">02</div>
-                <h3 class="heading-font">
+            
+            <div class="card" style="padding: 24px 16px; border-top: 2px solid var(--accent-color);">
+                <h3 style="font-size: 1.2rem; margin-bottom: 12px; color: var(--accent-color);">
                     <span class="lang-en">Visionary Brands</span>
                     <span class="lang-pt">Marcas Visionárias</span>
                     <span class="lang-no">Visjonære Merkevarer</span>
                 </h3>
-                <p style="color:var(--text-secondary); font-size: 0.95rem;">
-                    <span class="lang-en">Corporate sponsors, ESG reports, visibility</span>
-                    <span class="lang-pt">Patrocinadores corporativos, relatórios ESG, visibilidade</span>
-                    <span class="lang-no">Bedriftssponsorer, ESG-rapporter, synlighet</span>
+                <p style="font-size: 0.85rem;">
+                    <span class="lang-en">Corporate sponsors who add the project to their ESG impact reports, gaining visibility and social equity.</span>
+                    <span class="lang-pt">Patrocinadores corporativos que agregam o projeto aos seus relatórios de impacto ESG, ganhando visibilidade e equity social.</span>
+                    <span class="lang-no">Bedriftssponsorer som legger prosjektet til sine ESG-rapporter, og oppnår synlighet og sosial egenkapital.</span>
                 </p>
             </div>
-            <div class="numbered-item">
-                <div class="number">03</div>
-                <h3 class="heading-font">
+            
+            <div class="card" style="padding: 24px 16px; border-top: 2px solid var(--accent-color);">
+                <h3 style="font-size: 1.2rem; margin-bottom: 12px; color: var(--accent-color);">
                     <span class="lang-en">Public Funding</span>
                     <span class="lang-pt">Fomento Público</span>
                     <span class="lang-no">Offentlig Støtte</span>
                 </h3>
-                <p style="color:var(--text-secondary); font-size: 0.95rem;">
-                    <span class="lang-en">Norwegian government cultural grants</span>
-                    <span class="lang-pt">Editais e fundos culturais do governo norueguês</span>
-                    <span class="lang-no">Kulturmidler fra norske myndigheter</span>
+                <p style="font-size: 0.85rem;">
+                    <span class="lang-en">Strategic alignment with public policies and cultural grants from the Norwegian government, validating institutional rigor.</span>
+                    <span class="lang-pt">Alinhamento estratégico com políticas públicas e editais culturais do governo norueguês, validando o rigor institucional.</span>
+                    <span class="lang-no">Strategisk tilpasning til offentlig politikk og kulturtilskudd fra den norske stat, noe som validerer institusjonell strenghet.</span>
                 </p>
             </div>
-            <div class="numbered-item">
-                <div class="number">04</div>
-                <h3 class="heading-font">
+            
+            <div class="card" style="padding: 24px 16px; border-top: 2px solid var(--accent-color);">
+                <h3 style="font-size: 1.2rem; margin-bottom: 12px; color: var(--accent-color);">
                     <span class="lang-en">Private Donors</span>
-                    <span class="lang-pt">Doadores Privados</span>
+                    <span class="lang-pt">Private Donors</span>
                     <span class="lang-no">Private Givere</span>
                 </h3>
-                <p style="color:var(--text-secondary); font-size: 0.95rem;">
-                    <span class="lang-en">Philanthropists demanding clear metrics</span>
-                    <span class="lang-pt">Filantropos que exigem métricas claras</span>
-                    <span class="lang-no">Filantroper som krever tydelige metrikker</span>
+                <p style="font-size: 0.85rem;">
+                    <span class="lang-en">Independent philanthropists who demand clear metrics and bet on the transformative power of bodily practices and access to culture.</span>
+                    <span class="lang-pt">Filantropos independentes que exigem métricas claras e apostam no poder transformador de práticas corporais e do acesso à cultura.</span>
+                    <span class="lang-no">Uavhengige filantroper som krever klare beregninger og satser på den transformerende kraften i kroppslig praksis og tilgang til kultur.</span>
                 </p>
             </div>
         </div>
-        
-        <p class="body-text" style="color:var(--accent-color); font-weight: 500;">
-            <span class="lang-en">An antifragile model: if one source fluctuates, the financial matrix rebalances. Maximum security for investors, guaranteed continuity for dancers.</span>
+
+        <p class="body-text" style="color:var(--accent-color); font-weight:bold; font-size: 1rem;">
+            <span class="lang-en">An antifragile model: if one source fluctuates, the financial matrix rebalances itself. Maximum security for investors, guaranteed continuity for dancers.</span>
             <span class="lang-pt">Um modelo antifrágil: se uma fonte oscila, a matriz financeira se reequilibra. Segurança máxima para quem investe, continuidade garantida para quem dança.</span>
-            <span class="lang-no">En antifragil modell: hvis en kilde svinger, balanserer den økonomiske matrisen seg selv. Maksimal sikkerhet for investorer, garantert kontinuitet for dansere.</span>
+            <span class="lang-no">En antifragil modell: hvis én kilde svinger, balanserer den økonomiske matrisen seg selv. Maksimal sikkerhet for investorer, garantert kontinuitet for dansere.</span>
         </p>
     </section>
 
@@ -788,23 +809,23 @@
         </p>
         
         <div class="cta-buttons">
-            <a href="https://www.dance2dance.no/contato?subject=reuniao-executiva" class="btn btn-primary">
+            <!-- Botões padrão do site: rounded-full, text-sm, border, etc -->
+            <a href="https://www.dance2dance.no/contato?subject=reuniao-executiva" class="no-print" style="display:inline-flex; align-items:center; justify-content:center; background: transparent; color: white; border: 1px solid #475569; padding: 16px 32px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; font-family: sans-serif; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                 <span class="lang-en">Schedule Executive Meeting</span>
                 <span class="lang-pt">Agendar Reunião Executiva</span>
                 <span class="lang-no">Planlegg Ledermøte</span>
             </a>
-            <a href="https://www.dance2dance.no" class="btn btn-secondary">
+            <a href="https://www.dance2dance.no" class="no-print" style="display:inline-flex; align-items:center; justify-content:center; background: transparent; color: white; border: 1px solid #475569; padding: 16px 32px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; font-family: sans-serif; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                 <span class="lang-en">Explore Our Programs</span>
                 <span class="lang-pt">Explorar Nossos Programas</span>
                 <span class="lang-no">Utforsk Programmene Våre</span>
             </a>
-        
-                <button onclick="window.print()" class="btn btn-secondary no-print" style="cursor: pointer; font-family: inherit; font-size: 1rem; border-color: var(--accent-color); color: var(--accent-color);">
-                    <span class="lang-en">Save as PDF</span>
-                    <span class="lang-pt">Salvar como PDF</span>
-                    <span class="lang-no">Lagre som PDF</span>
-                </button>
-            </div>
+            <button onclick="alert('Importante: Na janela de impressão, marque a opção \'Gráficos de segundo plano\' (Background graphics) para o documento sair com o fundo escuro correto!'); window.print()" class="no-print" style="display:inline-flex; align-items:center; justify-content:center; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 16px 32px; border-radius: 9999px; font-weight: bold; font-size: 14px; text-align: center; font-family: sans-serif; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='rgba(201, 168, 76, 0.05)'" onmouseout="this.style.background='transparent'">
+                <span class="lang-en">Save as PDF</span>
+                <span class="lang-pt">Salvar como PDF</span>
+                <span class="lang-no">Lagre som PDF</span>
+            </button>
+        </div>
 
         <div class="footer">
             <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:32px; opacity:0.5;">
