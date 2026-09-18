@@ -207,7 +207,7 @@
             width: 320px;
             height: auto;
             flex-shrink: 0;
-            border-radius: 8px;
+            /* removed border-radius */
         }
         .founder-grid > div {
             flex: 1 1 0;
@@ -275,6 +275,29 @@
                 z-index: -1;
             }
         }
+    
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .benefits-list li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 16px;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
     </style>
 </head>
 <body class="show-en">
@@ -289,7 +312,7 @@
     <section id="slide-1" style="position: relative; z-index: 1;">
         
         <div class="slide-number">01</div>
-        <img src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: 3%; top: 7.5%; height: 85%; object-fit: contain; opacity: 0.15; z-index: -1; pointer-events: none;">
+        <img src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: -5%; top: 15%; height: 70%; object-fit: contain; opacity: 0.15; z-index: -1; pointer-events: none;">
         <div class="slide-01-content">
             <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:48px; margin-bottom: 60px;">
             <h1 class="title heading-font" style="font-size: 3.5rem; margin-bottom: 30px;">
@@ -361,7 +384,7 @@
                 </p>
             </div>
             <div>
-                <img src="/images/cv-5.jpg" alt="Dance2Dance in action" style="width:100%; border-radius:8px;">
+                <img src="/images/cv-5.jpg" alt="Dance2Dance in action" style="width:100%;">
             </div>
         </div>
     </section>
@@ -444,7 +467,7 @@
             <span class="lang-no">Våre gratis plasser er ikke veldedighet, de er fullfinansierte stipender finansiert av vårt økosystem. Ved å prise workshopen for eksterne deltakere, beviser vi den høye verdien som leveres til lokale innbyggere og våre investorer.</span>
         </p>
         
-        <div class="grid-2" style="margin-bottom: 24px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <div class="grid-2" style="margin-bottom: 24px;">
             <div class="card" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 24px; text-align: left; box-shadow: none;">
                 <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px;">
                     <span class="lang-en">Paying Audience</span>
