@@ -215,6 +215,20 @@
         }
 
         @media screen and (max-width: 768px) {
+            .watermark {
+                display: none !important;
+            }
+            .partner-logos {
+                gap: 40px !important;
+                margin-top: 48px !important;
+            }
+            .partner-logos img:nth-child(1) {
+                height: 36px !important;
+            }
+            .partner-logos img:nth-child(2) {
+                height: 48px !important;
+            }
+
             section {
                 padding: 100px 5% 60px;
                 min-height: auto;
@@ -329,7 +343,7 @@
     <section id="slide-1" style="position: relative; z-index: 1;">
         
         <div class="slide-number">01</div>
-        <img src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: 12%; top: 25%; height: 56%; object-fit: contain; opacity: 0.15; z-index: -1; pointer-events: none;">
+        <img class="watermark" src="/logo-D2D-dancer.png" alt="Watermark" style="position: absolute; right: 12%; top: 25%; height: 56%; object-fit: contain; opacity: 0.15; z-index: -1; pointer-events: none;">
         <div class="slide-01-content">
             <img src="/logo-dance2dance.png" alt="Dance2Dance" style="height:72px; margin-bottom: 60px;">
             <h1 class="title heading-font" style="margin-bottom: 30px; font-size: clamp(3rem, 7vw, 5rem); line-height: 1.1; font-family: 'Playfair Display', serif;">
