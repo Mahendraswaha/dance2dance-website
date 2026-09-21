@@ -57,8 +57,13 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         // Fetch additional user data from Firestore if needed
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        setCurrentUser({ ...user, profile: userDoc.exists() ? userDoc.data() : {} });
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          setCurrentUser({ ...user, profile: userDoc.exists() ? userDoc.data() : {} });
+        } catch (error) {
+          console.error("Erro ao buscar dados do usuário no Firestore:", error);
+          setCurrentUser({ ...user, profile: {} }); // Permite o login mesmo se o Firestore falhar
+        }
       } else {
         setCurrentUser(null);
       }
