@@ -15,10 +15,29 @@ export class ErrorBoundary extends React.Component {
     console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
+  componentDidMount() {
+    // If an error is caught, we wait 500ms before showing the UI
+    // This allows automatic window.location.reload() to execute without flashing a DOS-like screen.
+    if (this.state.hasError) {
+      this.timeout = setTimeout(() => this.setState({ showUI: true }), 500);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.hasError && !prevState.hasError) {
+      this.timeout = setTimeout(() => this.setState({ showUI: true }), 500);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.timeout) clearTimeout(this.timeout);
+  }
+
   render() {
     if (this.state.hasError) {
+      if (!this.state.showUI) return null; // Wait for timeout
       return (
-        <div style={{ padding: '2rem', backgroundColor: '#330000', color: 'white', minHeight: '100vh', fontFamily: 'monospace' }}>
+        <div style={{ padding: '2rem', backgroundColor: '#0A0A0E', color: 'white', minHeight: '100vh', fontFamily: 'monospace' }}>
           <h1 style={{ color: '#ff6b6b' }}>Erro Inesperado</h1>
           <p>Tire um print desta tela e mande para o suporte:</p>
           <pre style={{ backgroundColor: 'black', padding: '1rem', overflow: 'auto', border: '1px solid #ff6b6b' }}>
