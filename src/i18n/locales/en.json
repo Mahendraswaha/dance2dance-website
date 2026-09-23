@@ -234,6 +234,23 @@
       "desc": "We are selecting strategic partners for Dance2Dance's founding year. Companies that join us now secure naming rights quotas and leadership in social impact in Oslo.",
       "btn1": "Schedule Executive Meeting",
       "btn2": "Download Institutional Pitch Deck"
+    },
+    "projects": {
+      "kicker": "Impact Projects",
+      "title": "Our target. Our mission.",
+      "desc": "We materialize theory into practical projects with high social impact and geographic focus.",
+      "youth": {
+        "title": "Be the Dance Ung",
+        "subtitle": "Lavterskel dans og mestring i Tøyen",
+        "desc": "Focused on youth in Tøyen and Grønland. We use urban dance, contemporary dance, and artistic expression to combat digital isolation, creating a safe space for belonging (tilhørighet) and collective mastery.",
+        "btn": "View project details"
+      },
+      "women": {
+        "title": "Dance2Dance Kvinne",
+        "subtitle": "Sosial møteplass og livskvalitet",
+        "desc": "Focused on adult and older women. Using the Biostretch system and Good Morning Dance, we promote motor autonomy, preventive health, and create a vital meeting point to combat social isolation.",
+        "btn": "View project details"
+      }
     }
   },
   "programs": {

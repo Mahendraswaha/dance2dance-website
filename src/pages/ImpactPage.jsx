@@ -271,7 +271,83 @@ const ImpactPage = () => {
       </section>
 
       {/* ─── CTA B2B ─────────────────────────────────────────────────── */}
-      <section id="apoie" className="py-24 bg-gradient-to-br from-[#0a0a0e] to-[#1a1a24] border-t border-slate-800 relative overflow-hidden">
+      
+        {/* ⚡ IMPACT PROJECTS (YOUTH & WOMEN) ⚡ */}
+        <section className="py-24 md:py-32 px-6 lg:px-12 bg-[#080808] border-t border-slate-900 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="mb-16 md:mb-24 reveal-elem text-center">
+              <span className="font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-accent mb-6 block">
+                {t('social_page_b2b.projects.kicker')}
+              </span>
+              <h2 className="font-drama italic text-4xl md:text-5xl lg:text-6xl text-background mb-8 leading-tight">
+                {t('social_page_b2b.projects.title')}
+              </h2>
+              <p className="font-heading font-light text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                {t('social_page_b2b.projects.desc')}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              
+              {/* Project 1: Be the Dance Ung (Youth) */}
+              <div className="group reveal-elem relative bg-[#111111] border border-slate-800 rounded-sm overflow-hidden hover:border-accent/30 transition-all duration-700 flex flex-col">
+                <div className="w-full h-64 md:h-80 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-black/30 z-10 group-hover:bg-black/10 transition-colors duration-700"></div>
+                  {/* Using the hero animation vibe placeholder */}
+                  <img src="/images/hero-home.jpg" alt="Be the Dance Ung" className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000" />
+                  <div className="absolute top-6 right-6 z-20">
+                    <span className="px-4 py-1.5 bg-background text-primary text-[9px] uppercase tracking-[3px] font-heading font-bold rounded-full">
+                      Tøyen & Grønland
+                    </span>
+                  </div>
+                </div>
+                <div className="p-8 md:p-12 flex-grow flex flex-col">
+                  <h3 className="font-drama text-3xl text-background mb-2 group-hover:text-accent transition-colors">{t('social_page_b2b.projects.youth.title')}</h3>
+                  <p className="font-heading text-[11px] uppercase tracking-[2px] text-accent/80 mb-6 font-semibold">{t('social_page_b2b.projects.youth.subtitle')}</p>
+                  <p className="font-heading font-light text-slate-300 leading-[1.8] mb-10 flex-grow">
+                    {t('social_page_b2b.projects.youth.desc')}
+                  </p>
+                  <Link to="/social" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn mt-auto opacity-50 cursor-not-allowed" title="Em breve">
+                    {t('social_page_b2b.projects.youth.btn')}
+                    <div className="w-8 h-[1px] bg-white/30 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300 relative">
+                      <ArrowRight className="absolute -right-1 -top-[7px] w-4 h-4 text-white/30 group-hover/btn:text-accent transition-colors" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Project 2: Dance2Dance Kvinne (Women) */}
+              <div className="group reveal-elem relative bg-[#111111] border border-slate-800 rounded-sm overflow-hidden hover:border-accent/30 transition-all duration-700 flex flex-col">
+                <div className="w-full h-64 md:h-80 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-black/30 z-10 group-hover:bg-black/10 transition-colors duration-700"></div>
+                  {/* Using a biostretch/women placeholder */}
+                  <img src="/images/biostretch-2.jpg" alt="Dance2Dance Kvinne" className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000" />
+                  <div className="absolute top-6 right-6 z-20">
+                    <span className="px-4 py-1.5 bg-background text-primary text-[9px] uppercase tracking-[3px] font-heading font-bold rounded-full">
+                      Tøyen & Grønland
+                    </span>
+                  </div>
+                </div>
+                <div className="p-8 md:p-12 flex-grow flex flex-col">
+                  <h3 className="font-drama text-3xl text-background mb-2 group-hover:text-accent transition-colors">{t('social_page_b2b.projects.women.title')}</h3>
+                  <p className="font-heading text-[11px] uppercase tracking-[2px] text-accent/80 mb-6 font-semibold">{t('social_page_b2b.projects.women.subtitle')}</p>
+                  <p className="font-heading font-light text-slate-300 leading-[1.8] mb-10 flex-grow">
+                    {t('social_page_b2b.projects.women.desc')}
+                  </p>
+                  <Link to="/social" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn mt-auto opacity-50 cursor-not-allowed" title="Em breve">
+                    {t('social_page_b2b.projects.women.btn')}
+                    <div className="w-8 h-[1px] bg-white/30 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300 relative">
+                      <ArrowRight className="absolute -right-1 -top-[7px] w-4 h-4 text-white/30 group-hover/btn:text-accent transition-colors" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+<section id="apoie" className="py-24 bg-gradient-to-br from-[#0a0a0e] to-[#1a1a24] border-t border-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] opacity-[0.03]"
                style={{ background: 'radial-gradient(ellipse, #E2E8F0 0%, transparent 70%)' }} />
