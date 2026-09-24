@@ -1,15 +1,18 @@
 {
   "specVersion": "1.0",
   "host": {
-    "displayName": "Dance2Dance"
+    "displayName": "Dance2Dance",
+    "identifier": "did:web:dance2dance.no",
+    "documentationUrl": "https://www.dance2dance.no",
+    "logoUrl": "https://www.dance2dance.no/logo-dance2dance.png"
   },
   "entries": [
     {
-      "identifier": "llms",
-      "displayName": "LLM Instructions",
-      "type": "text/plain",
-      "url": "https://www.dance2dance.no/.well-known/llms.txt",
-      "description": "Agent guidelines and core context for Dance2Dance"
+      "identifier": "urn:ai:dance2dance.no:api",
+      "displayName": "Dance2Dance Sitemap API",
+      "type": "api",
+      "url": "https://www.dance2dance.no/sitemap.xml",
+      "description": "Public API to discover all accessible pages on Dance2Dance"
     }
   ]
 }

@@ -34,37 +34,17 @@ export const preloadFrames = (onProgress) => {
     loadedCount++;
     callbacks.forEach(cb => cb(loadedCount / frameCount));
 
-    // Only AFTER frame 1 is loaded (and LCP is satisfied), load the rest without blocking the main thread
-    let currentIndex = 1;
-    const batchSize = 10;
-
-    const loadNextBatch = () => {
-      const end = Math.min(currentIndex + batchSize, frameCount);
-      for (let i = currentIndex; i < end; i++) {
-        frameCache[i].src = currentFrame(i);
-        frameCache[i].onload = () => {
-          loadedCount++;
-          callbacks.forEach(cb => cb(loadedCount / frameCount));
-          
-          if (loadedCount === frameCount) {
-            isLoaded = true;
-          }
-        };
-      }
-      currentIndex = end;
-      if (currentIndex < frameCount) {
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(loadNextBatch);
-        } else {
-          setTimeout(loadNextBatch, 10);
+    // Only AFTER frame 1 is loaded (and LCP is satisfied), load the rest immediately so they are ready for scrolling
+    for (let i = 1; i < frameCount; i++) {
+      frameCache[i].src = currentFrame(i);
+      frameCache[i].onload = () => {
+        loadedCount++;
+        callbacks.forEach(cb => cb(loadedCount / frameCount));
+        
+        if (loadedCount === frameCount) {
+          isLoaded = true;
         }
-      }
-    };
-
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(loadNextBatch);
-    } else {
-      setTimeout(loadNextBatch, 10);
+      };
     }
   };
 
