@@ -295,20 +295,40 @@ export default function AgendaPage() {
     });
   }, [events, filter]);
 
-  // Lista: separa próximos e passados
-  const upcomingEvents = useMemo(() => {
-    return categoryFilteredEvents.filter(ev => !isEventPast(ev));
-  }, [categoryFilteredEvents]);
+  
+    // Lista: separa próximos e passados
+    const upcomingEvents = useMemo(() => {
+      return categoryFilteredEvents
+        .filter(ev => !isEventPast(ev))
+        .sort((a, b) => {
+          const dateA = a.startDate || '';
+          const dateB = b.startDate || '';
+          if (dateA !== dateB) return dateA.localeCompare(dateB);
+          
+          let timeA = (a.startTime || '99:99').trim();
+          let timeB = (b.startTime || '99:99').trim();
+          if (timeA.length === 4 && timeA.includes(':')) timeA = '0' + timeA;
+          if (timeB.length === 4 && timeB.includes(':')) timeB = '0' + timeB;
+          return timeA.localeCompare(timeB);
+        });
+    }, [categoryFilteredEvents]);
 
-  const pastEvents = useMemo(() => {
-    return categoryFilteredEvents
-      .filter(ev => isEventPast(ev))
-      .sort((a, b) => {
-        const dateA = a.startDate || a.endDate || '';
-        const dateB = b.startDate || b.endDate || '';
-        return dateB.localeCompare(dateA); // Ordem decrescente: mais recente primeiro, mais antigo por último
-      });
-  }, [categoryFilteredEvents]);
+    const pastEvents = useMemo(() => {
+      return categoryFilteredEvents
+        .filter(ev => isEventPast(ev))
+        .sort((a, b) => {
+          const dateA = a.startDate || a.endDate || '';
+          const dateB = b.startDate || b.endDate || '';
+          if (dateA !== dateB) return dateB.localeCompare(dateA); // Ordem decrescente
+          
+          let timeA = (a.startTime || '99:99').trim();
+          let timeB = (b.startTime || '99:99').trim();
+          if (timeA.length === 4 && timeA.includes(':')) timeA = '0' + timeA;
+          if (timeB.length === 4 && timeB.includes(':')) timeB = '0' + timeB;
+          return timeB.localeCompare(timeA); // Decrescente
+        });
+    }, [categoryFilteredEvents]);
+
 
   // Mapa de datas para o Calendário: dateStr ('YYYY-MM-DD') -> Array de sessões
   const eventsByDate = useMemo(() => {
