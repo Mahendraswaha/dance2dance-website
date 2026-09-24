@@ -16,16 +16,16 @@ export class ErrorBoundary extends React.Component {
   }
 
   componentDidMount() {
-    // If an error is caught, we wait 500ms before showing the UI
+    // If an error is caught, we wait 2500ms before showing the UI
     // This allows automatic window.location.reload() to execute without flashing a DOS-like screen.
     if (this.state.hasError) {
-      this.timeout = setTimeout(() => this.setState({ showUI: true }), 500);
+      this.timeout = setTimeout(() => this.setState({ showUI: true }), 2500);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.hasError && !prevState.hasError) {
-      this.timeout = setTimeout(() => this.setState({ showUI: true }), 500);
+      this.timeout = setTimeout(() => this.setState({ showUI: true }), 2500);
     }
   }
 

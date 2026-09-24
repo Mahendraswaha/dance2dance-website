@@ -4,17 +4,23 @@ import React, { Suspense, lazy } from 'react';
 function lazyWithRetries(componentImport) {
   return lazy(async () => {
     try {
-      return await componentImport();
+      const component = await componentImport();
+      sessionStorage.removeItem('chunk_force_reloaded');
+      return component;
     } catch (error) {
       console.warn('Network hiccup detected loading chunk. Retrying in 1.5s...');
       await new Promise(resolve => setTimeout(resolve, 1500));
       try {
-        return await componentImport();
+        const component = await componentImport();
+        sessionStorage.removeItem('chunk_force_reloaded');
+        return component;
       } catch (error2) {
         console.warn('Second attempt failed. Retrying in 3s...');
         await new Promise(resolve => setTimeout(resolve, 3000));
         try {
-          return await componentImport();
+          const component = await componentImport();
+          sessionStorage.removeItem('chunk_force_reloaded');
+          return component;
         } catch (error3) {
           if (!sessionStorage.getItem('chunk_force_reloaded')) {
             sessionStorage.setItem('chunk_force_reloaded', 'true');
