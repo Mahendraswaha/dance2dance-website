@@ -1230,7 +1230,7 @@
     "countryLabel": "País (Opcional)",
     "countryPlaceholder": "Brasil, Noruega...",
     "neighborhoodLabel": "Bairro (Opcional)",
-    "neighborhoodPlaceholder": "Seu bairro",
+    "neighborhoodPlaceholder": "Ex: Tøyen, Grønland, Vålerenga...",
     "emailPlaceholder": "seuemail@exemplo.com",
     "phonePlaceholder": "+55 ... / +47 ..."
   },
@@ -1252,7 +1252,7 @@
     "addressLabel": "Endereço *",
     "addressPlaceholder": "Nome da rua, número",
     "neighborhoodLabel": "Bairro *",
-    "neighborhoodPlaceholder": "Seu bairro",
+    "neighborhoodPlaceholder": "Ex: Tøyen, Grønland, Vålerenga...",
     "cityLabel": "Cidade *",
     "cityPlaceholder": "Sua cidade",
     "zipLabel": "CEP / Código Postal *",

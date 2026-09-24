@@ -1230,7 +1230,7 @@
     "countryLabel": "Country (Optional)",
     "countryPlaceholder": "Norway...",
     "neighborhoodLabel": "Neighborhood (Optional)",
-    "neighborhoodPlaceholder": "Your neighborhood",
+    "neighborhoodPlaceholder": "E.g., Tøyen, Grønland, Vålerenga...",
     "emailPlaceholder": "your.email@example.com",
     "phonePlaceholder": "+47 ..."
   },
@@ -1252,7 +1252,7 @@
     "addressLabel": "Address *",
     "addressPlaceholder": "Street name, number",
     "neighborhoodLabel": "Neighborhood / District *",
-    "neighborhoodPlaceholder": "Your neighborhood",
+    "neighborhoodPlaceholder": "E.g., Tøyen, Grønland, Vålerenga...",
     "cityLabel": "City *",
     "cityPlaceholder": "Your city",
     "zipLabel": "ZIP / Postal Code *",

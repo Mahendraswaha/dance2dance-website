@@ -1230,7 +1230,7 @@
     "countryLabel": "Land (Valgfritt)",
     "countryPlaceholder": "Norge...",
     "neighborhoodLabel": "Nabolag (Valgfritt)",
-    "neighborhoodPlaceholder": "Ditt nabolag",
+    "neighborhoodPlaceholder": "F.eks. Tøyen, Grønland, Vålerenga...",
     "emailPlaceholder": "din.epost@eksempel.no",
     "phonePlaceholder": "+47 ..."
   },
@@ -1252,7 +1252,7 @@
     "addressLabel": "Adresse *",
     "addressPlaceholder": "Gatenavn, husnummer",
     "neighborhoodLabel": "Nabolag *",
-    "neighborhoodPlaceholder": "Ditt nabolag",
+    "neighborhoodPlaceholder": "F.eks. Tøyen, Grønland, Vålerenga...",
     "cityLabel": "By *",
     "cityPlaceholder": "Din by",
     "zipLabel": "Postnummer *",
