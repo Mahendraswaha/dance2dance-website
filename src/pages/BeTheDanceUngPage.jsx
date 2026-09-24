@@ -81,7 +81,7 @@ export default function BeTheDanceUngPage() {
               <div className="aspect-[4/3] overflow-hidden rounded-[2px] relative group">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
                 <img 
-                  src="/images/frame-240.jpg" 
+                  src="/gallery/sequence/frame-240.jpg" 
                   alt="Be the Dance Ung" 
                   className="w-full h-full object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                 />
