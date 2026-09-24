@@ -1531,53 +1531,103 @@
     "confirmBtn": "Yes, I request a full scholarship"
   },
   "btd_ung": {
-    "seoTitle": "Be the Dance Ung | Social Project",
-    "seoDesc": "A safe space of belonging, mastery, and artistic development for youth in Tøyen and Grønland.",
-    "kicker": "IMPACT PROJECT",
+    "seoTitle": "Be the Dance Ung | The Formation",
+    "seoDesc": "An artistic dimension of belonging, mastery, and continuous development.",
+    "kicker": "THE FORMATION",
     "title": "Be the Dance Ung.",
-    "subtitle": "Low-threshold access, mastery and inclusion in Tøyen and Grønland.",
-    "intro": "A continuous artistic journey. More than a social activity, Be the Dance Ung is a structured platform designed to qualify youth, build belonging through art, and shape the talents of the future.",
-    "pillarsKicker": "COURSE SKELETON",
-    "pillarsTitle": "An umbrella of opportunities.",
-    "pillars": [
-      {
-        "title": "Foundational Training",
-        "label": "BALLET & CONTEMPORARY DANCE",
-        "desc": "Regular classes that build technical foundation, discipline, and body awareness. Where rigor meets community access (lavterskeltilbud)."
-      },
-      {
-        "title": "The Artistic Core",
-        "label": "BE THE DANCE MODULES",
-        "desc": "Exploration of the six dimensions (Water, Balance, Total, Stillness, Day, Pro) focused on mental focus, mastery (mestring), and emotional expression."
-      },
-      {
-        "title": "Advanced Qualification",
-        "label": "BE THE DANCE PRO",
-        "desc": "A direct pathway to the professional level, ensuring young talents have the necessary platform to become the dancers of the future."
-      }
-    ],
-    "audienceKicker": "THE TARGET",
-    "audience": [
-      {
-        "title": "Inclusion (Inkludering)",
-        "desc": "Removing financial and social barriers with 100% scholarships for residents."
-      },
-      {
-        "title": "Mastery (Mestring)",
-        "desc": "The belief that artistic excellence is the most powerful tool to build self-esteem."
-      },
-      {
-        "title": "Belonging (Tilhørighet)",
-        "desc": "A creative, in-person haven away from digital screen isolation."
-      }
-    ],
-    "mentorKicker": "PROFESSIONAL MENTORSHIP",
-    "mentorText": "Under Safia’s artistic leadership, youth receive mentorship that goes beyond movement. They are nurtured to master their art and, most importantly, their own autonomy and confidence.",
+    "subtitle": "An artistic dimension of belonging, mastery, and continuous development for youth.",
+    "hook": "Forming an individual requires more than just occupying their time. It involves providing tools of excellence that develop both physical mastery and emotional balance. At Be the Dance Ung, the rigorous technique of ballet and contemporary dance meets the depth of somatic awareness modules, creating a continuous platform that transcends the studio and impacts lives.",
+    "body": {
+      "p1": "Providing access to culture is only the first step. True social impact occurs when we deliver excellence. By designing a curriculum that integrates regular foundational classes with somatic immersions, we build a safe space where youth discover that discipline is not an imposition, but the pathway to their own autonomy.",
+      "pullQuote": "Artistic excellence is the most powerful tool to sculpt confidence.",
+      "p2": "The project is structured to welcome and challenge. The technical foundation, built through classical ballet and contemporary dance, develops mental focus, posture, and spatial awareness. Simultaneously, progression through the Be the Dance method teaches adaptability (Be Water), grounding (Be Balance), presence (Be Stillness), and full integration (Be Total).",
+      "p3": "The result is an organic journey of mastery. A young person entering an open class can follow a continuous path culminating in the Be the Dance Pro level—a true qualification platform that opens doors to professional dance training under the attentive mentorship of Safia and guest artists."
+    },
+    "pillars_section": {
+      "kicker": "THE METHODOLOGY",
+      "intro": "The Be the Dance Ung curriculum is built on three complementary fronts, combining the rigor of formal techniques with the sensitivity of somatic education:",
+      "pillars": [
+        {
+          "number": "01",
+          "title": "The Technical Foundation",
+          "items": [
+            {
+              "label": "Classical Ballet",
+              "desc": "Developing discipline, body lines, and motor coordination through classical structuring."
+            },
+            {
+              "label": "Contemporary Dance",
+              "desc": "Exploring weight, floorwork, and free movement dynamics to stimulate expressiveness."
+            },
+            {
+              "label": "Anatomical Awareness",
+              "desc": "Understanding the mechanics of ones own body, preventing injuries and promoting intelligent physicality."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Somatic Integration",
+          "items": [
+            {
+              "label": "Fluidity & Adaptation",
+              "desc": "Concepts from Be Water that teach how to navigate tension and handle the unexpected."
+            },
+            {
+              "label": "Focus & Silence",
+              "desc": "Tools from Be Stillness for building internal silence amidst excessive digital stimuli."
+            },
+            {
+              "label": "The Body as a Totem",
+              "desc": "Elements from Be Total, where body, breath, and intention act in absolute synchrony."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Professional Qualification",
+          "items": [
+            {
+              "label": "Be the Dance Pro",
+              "desc": "The advanced stage designed to catapult young talents to a professional artistic level."
+            },
+            {
+              "label": "Continuous Mentorship",
+              "desc": "Individualized guidance transforming raw potential into unquestionable technical capability."
+            },
+            {
+              "label": "Stage Excellence",
+              "desc": "The real experience of performance and building identity as an artist and individual."
+            }
+          ]
+        }
+      ]
+    },
+    "impact_section": {
+      "kicker": "PILLARS OF IMPACT",
+      "intro": "The project materializes social transformation guidelines, ensuring tangible results in the lives of youth:",
+      "items": [
+        {
+          "title": "Absolute Inclusion",
+          "desc": "Financial barriers removed with 100% scholarships for local residents."
+        },
+        {
+          "title": "Personal Mastery",
+          "desc": "Progressive mastery of dance builds unshakable self-confidence and resilience (mestring)."
+        },
+        {
+          "title": "Real Belonging",
+          "desc": "A physical haven of human connection, creating solid community ties (tilhørighet)."
+        }
+      ]
+    },
+    "mentorKicker": "ARTISTIC DIRECTION",
+    "mentorText": "Under Safia’s vision, youth receive more than technical instructions; they inherit decades of international dance research. The experience gained on global stages is translated into a sensitive, rigorous mentorship deeply dedicated to awakening each student’s autonomy and leadership.",
     "closing": "Excellence is not a privilege.\nIt is the result of belonging.",
     "cta": {
-      "title": "Become a Funding Partner",
-      "text": "Support the long-term development of youth in Tøyen and Grønland.",
-      "button": "Speak with Directors"
+      "title": "Shall we transform the next generation together?",
+      "text": "Be the Dance Ung seeks visionary partnerships. Schedule a conversation to understand how our methodology aligns with your institution’s goals.",
+      "button": "Speak with the Team"
     }
   }
 }

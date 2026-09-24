@@ -1531,53 +1531,103 @@
     "confirmBtn": "Ja, jeg søker om fullt stipend"
   },
   "btd_ung": {
-    "seoTitle": "Be the Dance Ung | Sosialt Prosjekt",
-    "seoDesc": "Et trygt rom for tilhørighet, mestring og kunstnerisk utvikling for ungdom i Tøyen og Grønland.",
-    "kicker": "EFFEKTPROSJEKT",
+    "seoTitle": "Be the Dance Ung | Utdanningen",
+    "seoDesc": "En kunstnerisk dimensjon for tilhørighet, mestring og kontinuerlig utvikling.",
+    "kicker": "UTDANNINGEN",
     "title": "Be the Dance Ung.",
-    "subtitle": "Lavterskeltilbud, mestring og inkludering i Tøyen og Grønland.",
-    "intro": "En kontinuerlig kunstnerisk reise. Mer enn en sosial aktivitet, er Be the Dance Ung en strukturert plattform designet for å kvalifisere ungdom, bygge tilhørighet gjennom kunst og forme fremtidens talenter.",
-    "pillarsKicker": "KURSSTRUKTUR",
-    "pillarsTitle": "En paraply av muligheter.",
-    "pillars": [
-      {
-        "title": "Grunnleggende Trening",
-        "label": "BALLETT & SAMTIDSDANS",
-        "desc": "Faste klasser som bygger teknisk fundament, disiplin og kroppsbevissthet. Der profesjonalitet møter et ekte lavterskeltilbud."
-      },
-      {
-        "title": "Det Kunstneriske Kjernen",
-        "label": "BE THE DANCE MODULER",
-        "desc": "Utforskning av de seks dimensjonene (Water, Balance, Total, Stillness, Day, Pro) med fokus på mentalt fokus, mestring og følelsesmessig uttrykk."
-      },
-      {
-        "title": "Avansert Kvalifisering",
-        "label": "BE THE DANCE PRO",
-        "desc": "En direkte vei til profesjonelt nivå, som sikrer at unge talenter får den nødvendige plattformen for å bli fremtidens dansere."
-      }
-    ],
-    "audienceKicker": "MÅLGRUPPEN",
-    "audience": [
-      {
-        "title": "Inkludering",
-        "desc": "Fjerner økonomiske og sosiale barrierer gjennom 100% stipender for lokale innbyggere."
-      },
-      {
-        "title": "Mestring",
-        "desc": "Troen på at kunstnerisk fremragende kvalitet er det kraftigste verktøyet for å bygge selvfølelse."
-      },
-      {
-        "title": "Tilhørighet",
-        "desc": "En kreativ, fysisk trygg havn borte fra den digitale isolasjonen foran skjermen."
-      }
-    ],
-    "mentorKicker": "PROFESJONELL VEILEDNING",
-    "mentorText": "Under Safias kunstneriske ledelse får ungdommene veiledning som stikker dypere enn bevegelse. De får støtte til å mestre kunsten sin og, enda viktigere, sin egen autonomi og selvtillit.",
+    "subtitle": "En kunstnerisk dimensjon for tilhørighet, mestring og kontinuerlig utvikling for ungdom.",
+    "hook": "Å forme et individ krever mer enn bare å fylle tiden deres. Det innebærer å tilby fremragende verktøy som utvikler både fysisk mestring og emosjonell balanse. Hos Be the Dance Ung møter den strenge teknikken i ballett og samtidsdans dybden i somatiske moduler, og skaper en kontinuerlig plattform som går langt utover studioet og påvirker liv.",
+    "body": {
+      "p1": "Å tilby tilgang til kultur er bare det første skrittet. Ekte sosial innvirkning skjer når vi leverer kvalitet. Ved å designe en læreplan som integrerer faste grunnklasser med somatiske fordypninger, bygger vi et trygt rom der ungdom oppdager at disiplin ikke er en pålagt byrde, men veien til egen autonomi.",
+      "pullQuote": "Kunstnerisk kvalitet er det kraftigste verktøyet for å bygge selvtillit.",
+      "p2": "Prosjektet er strukturert for å både omfavne og utfordre. Det tekniske fundamentet, bygget gjennom klassisk ballett og samtidsdans, utvikler mentalt fokus, holdning og romforståelse. Samtidig lærer progresjonen gjennom Be the Dance-metoden tilpasningsevne (Be Water), forankring (Be Balance), tilstedeværelse (Be Stillness) og full integrasjon (Be Total).",
+      "p3": "Resultatet er en organisk mestringsreise. En ungdom som starter i en åpen klasse, kan følge en kontinuerlig vei som kulminerer i Be the Dance Pro-nivået – en sann kvalifiseringsplattform som åpner dører for profesjonell danseutdanning under Safias og gjestekunstneres oppmerksomme veiledning."
+    },
+    "pillars_section": {
+      "kicker": "METODIKKEN",
+      "intro": "Be the Dance Ung-læreplanen bygger på tre utfyllende fronter, og kombinerer strengheten fra formelle teknikker med følsomheten i somatisk utdanning:",
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Det Tekniske Fundamentet",
+          "items": [
+            {
+              "label": "Klassisk Ballett",
+              "desc": "Utvikler disiplin, kroppslinjer og motorisk koordinasjon gjennom klassisk strukturering."
+            },
+            {
+              "label": "Samtidsdans",
+              "desc": "Utforsker vekt, gulvarbeid og frie bevegelsesdynamikker for å stimulere uttrykksevnen."
+            },
+            {
+              "label": "Anatomisk Bevissthet",
+              "desc": "Forståelse av kroppens mekanikk, som forebygger skader og fremmer intelligent fysikalitet."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Somatisk Integrasjon",
+          "items": [
+            {
+              "label": "Flyt & Tilpasning",
+              "desc": "Konsepter fra Be Water som lærer hvordan man navigerer spenninger og håndterer det uventede."
+            },
+            {
+              "label": "Fokus & Stillhet",
+              "desc": "Verktøy fra Be Stillness for å bygge indre ro midt i overdrevne digitale stimuli."
+            },
+            {
+              "label": "Kroppen som et Totem",
+              "desc": "Elementer fra Be Total, der kropp, pust og intensjon virker i absolutt synkroni."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Profesjonell Kvalifisering",
+          "items": [
+            {
+              "label": "Be the Dance Pro",
+              "desc": "Det avanserte stadiet designet for å løfte unge talenter til et profesjonelt kunstnerisk nivå."
+            },
+            {
+              "label": "Kontinuerlig Veiledning",
+              "desc": "Individuell oppfølging som transformerer rått potensial til udiskutabel teknisk kapasitet."
+            },
+            {
+              "label": "Scenekvalitet",
+              "desc": "Den virkelige opplevelsen av performance og å bygge identitet som artist og individ."
+            }
+          ]
+        }
+      ]
+    },
+    "impact_section": {
+      "kicker": "EFFEKTPILARER",
+      "intro": "Prosjektet materialiserer retningslinjer for sosial transformasjon, og sikrer håndgripelige resultater i ungdommenes liv:",
+      "items": [
+        {
+          "title": "Absolutt Inkludering",
+          "desc": "Økonomiske barrierer fjernes med 100% stipender for lokale innbyggere."
+        },
+        {
+          "title": "Personlig Mestring",
+          "desc": "Progressiv mestring av dans bygger urokkelig selvtillit og robusthet."
+        },
+        {
+          "title": "Ekte Tilhørighet",
+          "desc": "En fysisk trygg havn for menneskelig kontakt, som skaper solide bånd i lokalsamfunnet."
+        }
+      ]
+    },
+    "mentorKicker": "KUNSTNERISK LEDELSE",
+    "mentorText": "Under Safias visjon får ungdommene mer enn bare teknisk instruksjon; de arver tiår med internasjonal danseforskning. Erfaringen fra globale scener oversettes til en følsom og streng veiledning, dypt dedikert til å vekke hver enkelt elevs autonomi og handlekraft.",
     "closing": "Fremragende kvalitet er ikke et privilegium.\nDet er resultatet av tilhørighet.",
     "cta": {
-      "title": "Bli en Finansieringspartner",
-      "text": "Støtt den langsiktige utviklingen av ungdom i Tøyen og Grønland.",
-      "button": "Snakk med Ledelsen"
+      "title": "Skal vi transformere neste generasjon sammen?",
+      "text": "Be the Dance Ung søker visjonære partnerskap. Avtal en samtale for å forstå hvordan vår metodikk sammenfaller med institusjonens mål.",
+      "button": "Snakk med Teamet"
     }
   }
 }

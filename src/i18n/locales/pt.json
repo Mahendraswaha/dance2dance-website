@@ -1531,53 +1531,103 @@
     "confirmBtn": "Sim, solicito bolsa integral"
   },
   "btd_ung": {
-    "seoTitle": "Be the Dance Ung | Projeto Social",
-    "seoDesc": "Um espaço seguro de pertencimento, superação e desenvolvimento artístico para jovens em Tøyen e Grønland.",
-    "kicker": "PROJETO DE IMPACTO",
+    "seoTitle": "Be the Dance Ung | A Formação",
+    "seoDesc": "Uma dimensão artística de pertencimento, superação e desenvolvimento continuado.",
+    "kicker": "A FORMAÇÃO",
     "title": "Be the Dance Ung.",
-    "subtitle": "Acesso facilitado, superação e inclusão em Tøyen e Grønland.",
-    "intro": "Uma jornada artística contínua. Mais que uma atividade social, o Be the Dance Ung é uma plataforma estruturada desenhada para qualificar jovens, construir pertencimento através da arte e formar os talentos do futuro.",
-    "pillarsKicker": "O ESQUELETO DO CURSO",
-    "pillarsTitle": "Um guarda-chuva de oportunidades.",
-    "pillars": [
-      {
-        "title": "Treinamento de Base",
-        "label": "BALLET E DANÇA CONTEMPORÂNEA",
-        "desc": "Aulas regulares que constroem a base técnica, disciplina e consciência corporal. Onde o rigor se encontra com o acesso comunitário (lavterskeltilbud)."
-      },
-      {
-        "title": "O Núcleo Artístico",
-        "label": "OS MÓDULOS BE THE DANCE",
-        "desc": "Exploração das seis dimensões (Water, Balance, Total, Stillness, Day, Pro) focadas no foco mental, superação (mestring) e expressão emocional."
-      },
-      {
-        "title": "Qualificação Avançada",
-        "label": "BE THE DANCE PRO",
-        "desc": "Um caminho direto para o nível profissional, garantindo que jovens talentos tenham a plataforma necessária para se tornarem os bailarinos do futuro."
-      }
-    ],
-    "audienceKicker": "O ALVO",
-    "audience": [
-      {
-        "title": "Inclusão (Inkludering)",
-        "desc": "Removendo barreiras financeiras e sociais com 100% de bolsas para moradores."
-      },
-      {
-        "title": "Superação (Mestring)",
-        "desc": "A crença de que excelência artística é a ferramenta mais poderosa para construir autoestima."
-      },
-      {
-        "title": "Pertencimento (Tilhørighet)",
-        "desc": "Um refúgio criativo presencial, longe do isolamento digital das telas."
-      }
-    ],
-    "mentorKicker": "MENTORIA PROFISSIONAL",
-    "mentorText": "Sob a liderança artística de Safia, os jovens recebem mentoria que vai além do movimento. Eles são nutridos para dominar sua arte e, o mais importante, sua própria autonomia e confiança.",
+    "subtitle": "Uma dimensão artística de pertencimento, superação e desenvolvimento continuado para a juventude.",
+    "hook": "A formação de um indivíduo exige mais do que apenas ocupar o seu tempo. Envolve oferecer ferramentas de excelência que desenvolvam tanto o domínio físico quanto o equilíbrio emocional. No Be the Dance Ung, a técnica rigorosa do ballet e da dança contemporânea encontra a profundidade dos módulos de consciência corporal, criando uma plataforma contínua que transcende o estúdio e impacta a vida.",
+    "body": {
+      "p1": "Oferecer acesso à cultura é apenas o primeiro passo. O verdadeiro impacto social ocorre quando entregamos excelência. Ao desenhar um currículo que integra aulas regulares de base com imersões somáticas, construímos um espaço seguro onde os jovens descobrem que a disciplina não é uma imposição, mas o caminho para a própria autonomia.",
+      "pullQuote": "A excelência artística é a ferramenta mais poderosa para esculpir a confiança.",
+      "p2": "O projeto foi estruturado para acolher e desafiar. A fundação técnica, construída através do ballet clássico e da dança contemporânea, desenvolve foco mental, postura e percepção espacial. Simultaneamente, a progressão pelos módulos do método Be the Dance ensina adaptabilidade (Be Water), enraizamento (Be Balance), presença (Be Stillness) e integração plena (Be Total).",
+      "p3": "O resultado é uma jornada de superação orgânica. O jovem que entra em uma aula aberta pode seguir um caminho contínuo, culminando no nível Be the Dance Pro, uma verdadeira plataforma de qualificação que abre portas para a formação profissional de bailarinos sob a mentoria atenta de Safia e artistas convidados."
+    },
+    "pillars_section": {
+      "kicker": "A METODOLOGIA",
+      "intro": "O currículo do Be the Dance Ung foi arquitetado em três frentes complementares, combinando o rigor das técnicas formais com a sensibilidade da educação somática:",
+      "pillars": [
+        {
+          "number": "01",
+          "title": "A Fundação Técnica",
+          "items": [
+            {
+              "label": "Ballet Clássico",
+              "desc": "Desenvolvimento da disciplina, linhas corporais e coordenação motora através da estruturação clássica."
+            },
+            {
+              "label": "Dança Contemporânea",
+              "desc": "Exploração do peso, do chão e das dinâmicas de movimento livre, estimulando a expressividade."
+            },
+            {
+              "label": "Consciência Anatômica",
+              "desc": "Compreensão da mecânica do próprio corpo, prevenindo lesões e promovendo uma fisicalidade inteligente."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "A Integração Somática",
+          "items": [
+            {
+              "label": "Fluidez e Adaptação",
+              "desc": "Conceitos do Be Water que ensinam a contornar tensões e lidar com o inesperado."
+            },
+            {
+              "label": "Foco e Silêncio",
+              "desc": "Ferramentas do Be Stillness para construção do silêncio interno em meio ao excesso de estímulos digitais."
+            },
+            {
+              "label": "O Corpo como Totem",
+              "desc": "Elementos do Be Total, onde corpo, respiração e intenção agem em absoluta sincronia."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "A Qualificação Profissional",
+          "items": [
+            {
+              "label": "Be the Dance Pro",
+              "desc": "O estágio avançado projetado para catapultar os jovens talentos ao nível artístico profissional."
+            },
+            {
+              "label": "Mentoria Continuada",
+              "desc": "Acompanhamento individualizado, transformando o potencial bruto em capacidade técnica inquestionável."
+            },
+            {
+              "label": "Excelência de Palco",
+              "desc": "A experiência real da performance e a construção da identidade como artista e indivíduo."
+            }
+          ]
+        }
+      ]
+    },
+    "impact_section": {
+      "kicker": "OS PILARES DE IMPACTO",
+      "intro": "O projeto materializa diretrizes de transformação social, garantindo resultados tangíveis na vida dos jovens:",
+      "items": [
+        {
+          "title": "Inclusão Absoluta",
+          "desc": "Barreiras financeiras removidas com 100% de bolsas para moradores locais."
+        },
+        {
+          "title": "Superação Pessoal",
+          "desc": "O domínio progressivo da dança constrói autoconfiança inabalável e resiliência (mestring)."
+        },
+        {
+          "title": "Pertencimento Real",
+          "desc": "Um reduto físico de conexão humana e acolhimento, criando laços sólidos na comunidade (tilhørighet)."
+        }
+      ]
+    },
+    "mentorKicker": "DIREÇÃO ARTÍSTICA",
+    "mentorText": "Sob a visão de Safia, os jovens não recebem apenas instruções técnicas; eles recebem o legado de décadas de pesquisa internacional em dança. A experiência vivenciada nos palcos globais é traduzida em uma mentoria sensível, rigorosa e profundamente dedicada a despertar a autonomia e o protagonismo de cada aluno.",
     "closing": "A excelência não é um privilégio.\nEla é o resultado do pertencimento.",
     "cta": {
-      "title": "Seja um Parceiro Financiador",
-      "text": "Apoie o desenvolvimento a longo prazo da juventude de Tøyen e Grønland.",
-      "button": "Falar com a Diretoria"
+      "title": "Vamos transformar juntos a próxima geração?",
+      "text": "O Be the Dance Ung procura parcerias visionárias. Agende uma conversa para entender como nossa metodologia se alinha aos objetivos da sua instituição.",
+      "button": "Falar com a Equipe"
     }
   }
 }
