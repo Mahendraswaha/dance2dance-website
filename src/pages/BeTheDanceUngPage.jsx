@@ -303,7 +303,7 @@ export default function BeTheDanceUngPage() {
             </p>
 
             <Link
-              to="/contato?subject=btd-ung-parceria"
+              to="/contato?subject=reuniao-executiva"
               className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-10 py-4 hover:bg-background hover:text-primary transition-colors duration-300 font-semibold rounded-full mb-12"
             >
               {t('btd_ung.cta.button')}
