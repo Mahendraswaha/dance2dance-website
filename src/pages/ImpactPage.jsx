@@ -307,7 +307,7 @@ const ImpactPage = () => {
                   <p className="font-heading font-light text-slate-300 leading-[1.8] mb-10 flex-grow">
                     {t('social_page_b2b.projects.youth.desc')}
                   </p>
-                  <Link to="/social" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn mt-auto opacity-50 cursor-not-allowed" title="Em breve">
+                  <Link to="/projects/be-the-dance-ung" className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn mt-auto">
                     {t('social_page_b2b.projects.youth.btn')}
                     <div className="w-8 h-[1px] bg-white/30 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300 relative">
                       <ArrowRight className="absolute -right-1 -top-[7px] w-4 h-4 text-white/30 group-hover/btn:text-accent transition-colors" />

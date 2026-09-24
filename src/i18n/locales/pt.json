@@ -1529,5 +1529,55 @@
     "solidarityNote": "Se você tem condições financeiras de investir no valor da vaga, sua taxa ajuda a manter essa oportunidade aberta para quem mais precisa.",
     "declineBtn": "Não, tenho condições de pagar",
     "confirmBtn": "Sim, solicito bolsa integral"
+  },
+  "btd_ung": {
+    "seoTitle": "Be the Dance Ung | Projeto Social",
+    "seoDesc": "Um espaço seguro de pertencimento, superação e desenvolvimento artístico para jovens em Tøyen e Grønland.",
+    "kicker": "PROJETO DE IMPACTO",
+    "title": "Be the Dance Ung.",
+    "subtitle": "Acesso facilitado, superação e inclusão em Tøyen e Grønland.",
+    "intro": "Uma jornada artística contínua. Mais que uma atividade social, o Be the Dance Ung é uma plataforma estruturada desenhada para qualificar jovens, construir pertencimento através da arte e formar os talentos do futuro.",
+    "pillarsKicker": "O ESQUELETO DO CURSO",
+    "pillarsTitle": "Um guarda-chuva de oportunidades.",
+    "pillars": [
+      {
+        "title": "Treinamento de Base",
+        "label": "BALLET E DANÇA CONTEMPORÂNEA",
+        "desc": "Aulas regulares que constroem a base técnica, disciplina e consciência corporal. Onde o rigor se encontra com o acesso comunitário (lavterskeltilbud)."
+      },
+      {
+        "title": "O Núcleo Artístico",
+        "label": "OS MÓDULOS BE THE DANCE",
+        "desc": "Exploração das seis dimensões (Water, Balance, Total, Stillness, Day, Pro) focadas no foco mental, superação (mestring) e expressão emocional."
+      },
+      {
+        "title": "Qualificação Avançada",
+        "label": "BE THE DANCE PRO",
+        "desc": "Um caminho direto para o nível profissional, garantindo que jovens talentos tenham a plataforma necessária para se tornarem os bailarinos do futuro."
+      }
+    ],
+    "audienceKicker": "O ALVO",
+    "audience": [
+      {
+        "title": "Inclusão (Inkludering)",
+        "desc": "Removendo barreiras financeiras e sociais com 100% de bolsas para moradores."
+      },
+      {
+        "title": "Superação (Mestring)",
+        "desc": "A crença de que excelência artística é a ferramenta mais poderosa para construir autoestima."
+      },
+      {
+        "title": "Pertencimento (Tilhørighet)",
+        "desc": "Um refúgio criativo presencial, longe do isolamento digital das telas."
+      }
+    ],
+    "mentorKicker": "MENTORIA PROFISSIONAL",
+    "mentorText": "Sob a liderança artística de Safia, os jovens recebem mentoria que vai além do movimento. Eles são nutridos para dominar sua arte e, o mais importante, sua própria autonomia e confiança.",
+    "closing": "A excelência não é um privilégio.\\nEla é o resultado do pertencimento.",
+    "cta": {
+      "title": "Seja um Parceiro Financiador",
+      "text": "Apoie o desenvolvimento a longo prazo da juventude de Tøyen e Grønland.",
+      "button": "Falar com a Diretoria"
+    }
   }
 }

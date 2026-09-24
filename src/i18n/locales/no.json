@@ -1529,5 +1529,55 @@
     "solidarityNote": "Dersom du har økonomisk mulighet til å betale ordinær kursavgift, bidrar du til å holde denne ordningen åpen for dem som trenger det mest.",
     "declineBtn": "Nei, jeg har mulighet til å betale",
     "confirmBtn": "Ja, jeg søker om fullt stipend"
+  },
+  "btd_ung": {
+    "seoTitle": "Be the Dance Ung | Sosialt Prosjekt",
+    "seoDesc": "Et trygt rom for tilhørighet, mestring og kunstnerisk utvikling for ungdom i Tøyen og Grønland.",
+    "kicker": "EFFEKTPROSJEKT",
+    "title": "Be the Dance Ung.",
+    "subtitle": "Lavterskeltilbud, mestring og inkludering i Tøyen og Grønland.",
+    "intro": "En kontinuerlig kunstnerisk reise. Mer enn en sosial aktivitet, er Be the Dance Ung en strukturert plattform designet for å kvalifisere ungdom, bygge tilhørighet gjennom kunst og forme fremtidens talenter.",
+    "pillarsKicker": "KURSSTRUKTUR",
+    "pillarsTitle": "En paraply av muligheter.",
+    "pillars": [
+      {
+        "title": "Grunnleggende Trening",
+        "label": "BALLETT & SAMTIDSDANS",
+        "desc": "Faste klasser som bygger teknisk fundament, disiplin og kroppsbevissthet. Der profesjonalitet møter et ekte lavterskeltilbud."
+      },
+      {
+        "title": "Det Kunstneriske Kjernen",
+        "label": "BE THE DANCE MODULER",
+        "desc": "Utforskning av de seks dimensjonene (Water, Balance, Total, Stillness, Day, Pro) med fokus på mentalt fokus, mestring og følelsesmessig uttrykk."
+      },
+      {
+        "title": "Avansert Kvalifisering",
+        "label": "BE THE DANCE PRO",
+        "desc": "En direkte vei til profesjonelt nivå, som sikrer at unge talenter får den nødvendige plattformen for å bli fremtidens dansere."
+      }
+    ],
+    "audienceKicker": "MÅLGRUPPEN",
+    "audience": [
+      {
+        "title": "Inkludering",
+        "desc": "Fjerner økonomiske og sosiale barrierer gjennom 100% stipender for lokale innbyggere."
+      },
+      {
+        "title": "Mestring",
+        "desc": "Troen på at kunstnerisk fremragende kvalitet er det kraftigste verktøyet for å bygge selvfølelse."
+      },
+      {
+        "title": "Tilhørighet",
+        "desc": "En kreativ, fysisk trygg havn borte fra den digitale isolasjonen foran skjermen."
+      }
+    ],
+    "mentorKicker": "PROFESJONELL VEILEDNING",
+    "mentorText": "Under Safias kunstneriske ledelse får ungdommene veiledning som stikker dypere enn bevegelse. De får støtte til å mestre kunsten sin og, enda viktigere, sin egen autonomi og selvtillit.",
+    "closing": "Fremragende kvalitet er ikke et privilegium.\\nDet er resultatet av tilhørighet.",
+    "cta": {
+      "title": "Bli en Finansieringspartner",
+      "text": "Støtt den langsiktige utviklingen av ungdom i Tøyen og Grønland.",
+      "button": "Snakk med Ledelsen"
+    }
   }
 }
