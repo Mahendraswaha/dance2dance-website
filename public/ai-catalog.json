@@ -1,12 +1,15 @@
 {
   "specVersion": "1.0",
-  "host": "https://www.dance2dance.no",
+  "host": {
+    "displayName": "Dance2Dance"
+  },
   "entries": [
     {
-      "identifier": "dance-api",
-      "type": "api",
-      "url": "https://www.dance2dance.no/",
-      "description": "Main public interface"
+      "identifier": "llms",
+      "displayName": "LLM Instructions",
+      "type": "text/plain",
+      "url": "https://www.dance2dance.no/.well-known/llms.txt",
+      "description": "Agent guidelines and core context for Dance2Dance"
     }
   ]
 }
