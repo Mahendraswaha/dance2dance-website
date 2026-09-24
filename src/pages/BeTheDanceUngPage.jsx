@@ -109,32 +109,6 @@ export default function BeTheDanceUngPage() {
               >
                 {t('btd_ung.body.p1')}
               </motion.p>
-
-              <motion.div
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-                variants={fadeUp}
-                className="my-14 text-center py-8 border-y border-[#222222]"
-              >
-                <h2 className="font-drama text-2xl md:text-3xl text-accent mb-2 italic px-4">
-                  "{t('btd_ung.body.pullQuote')}"
-                </h2>
-              </motion.div>
-
-              <motion.p
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-                variants={fadeUp}
-                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
-              >
-                {t('btd_ung.body.p2')}
-              </motion.p>
-
-              <motion.p
-                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-                variants={fadeUp}
-                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85]"
-              >
-                {t('btd_ung.body.p3')}
-              </motion.p>
             </div>
           </div>
         </div>
@@ -201,6 +175,36 @@ export default function BeTheDanceUngPage() {
             </div>
           </div>
         </section>
+
+        
+        {/* POST-PROGRAM TEXT BLOCK */}
+        <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 mb-24">
+          <motion.div
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="my-14 text-center py-8 border-y border-[#222222]"
+              >
+                <h2 className="font-drama text-2xl md:text-3xl text-accent mb-2 italic px-4">
+                  "{t('btd_ung.body.pullQuote')}"
+                </h2>
+              </motion.div>
+
+              <motion.p
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
+              >
+                {t('btd_ung.body.p2')}
+              </motion.p>
+
+              <motion.p
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85]"
+              >
+                {t('btd_ung.body.p3')}
+              </motion.p>
+        </div>
 
         {/* IMPACT SECTION */}
         <section className="mb-24">
