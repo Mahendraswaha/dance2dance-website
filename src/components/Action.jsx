@@ -46,7 +46,7 @@ const Action = () => {
 
     const render = (index) => {
       const img = imagesRef.current[index];
-      if (!img || !canvas.width) return;
+      if (!img || !img.complete || img.naturalHeight === 0 || !canvas.width) return;
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
       const ratio = Math.max(hRatio, vRatio);

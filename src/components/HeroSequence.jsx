@@ -46,10 +46,12 @@ const HeroSequence = () => {
       
       let img = imgs[floorIndex];
       
-      // Se o frame exato não carregou (scroll muito rápido), acha o último frame que carregou
-      if (!img) {
+      // Se a imagem exata não existe ou ainda não terminou de baixar (scroll muito rápido)
+      // voltamos para trás até achar a última imagem que já está baixada e pronta para desenhar
+      if (!img || !img.complete || img.naturalHeight === 0) {
+        img = null;
         for(let i = floorIndex - 1; i >= 0; i--) {
-          if (imgs[i]) {
+          if (imgs[i] && imgs[i].complete && imgs[i].naturalHeight !== 0) {
             img = imgs[i];
             break;
           }
