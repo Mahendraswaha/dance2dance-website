@@ -1533,71 +1533,71 @@
   "btd_ung": {
     "seoTitle": "Be the Dance Ung | The Formation",
     "seoDesc": "An artistic dimension of belonging, mastery, and continuous development.",
-    "kicker": "THE FORMATION",
+    "kicker": "IMPACT PROJECT",
     "title": "Be the Dance Ung.",
-    "subtitle": "An artistic dimension of belonging, mastery, and continuous development for youth.",
-    "hook": "Forming an individual requires more than just occupying their time. It involves providing tools of excellence that develop both physical mastery and emotional balance. At Be the Dance Ung, the rigorous technique of ballet and contemporary dance meets the depth of somatic awareness modules, creating a continuous platform that transcends the studio and impacts lives.",
+    "subtitle": "Low-threshold access, mastery, and belonging in Tøyen and Grønland.",
+    "hook": "Forming an individual requires more than just occupying their time. It involves providing tools of excellence that develop both physical mastery and emotional balance. At Be the Dance Ung, the rigorous technique of ballet and contemporary dance meets the depth of authentic expression, creating a continuous platform that transcends the studio and impacts lives.",
     "body": {
-      "p1": "Providing access to culture is only the first step. True social impact occurs when we deliver excellence. By designing a curriculum that integrates regular foundational classes with somatic immersions, we build a safe space where youth discover that discipline is not an imposition, but the pathway to their own autonomy.",
+      "p1": "Providing access to culture is only the first step. True social impact occurs when we deliver excellence. By designing a curriculum that integrates regular foundational classes with immersions focused on individual expression, we build a safe space where youth discover that discipline is not an imposition, but the pathway to their own autonomy.",
       "pullQuote": "Artistic excellence is the most powerful tool to sculpt confidence.",
-      "p2": "The project is structured to welcome and challenge. The technical foundation, built through classical ballet and contemporary dance, develops mental focus, posture, and spatial awareness. Simultaneously, progression through the Be the Dance method teaches adaptability (Be Water), grounding (Be Balance), presence (Be Stillness), and full integration (Be Total).",
-      "p3": "The result is an organic journey of mastery. A young person entering an open class can follow a continuous path culminating in the Be the Dance Pro level—a true qualification platform that opens doors to professional dance training under the attentive mentorship of Safia and guest artists."
+      "p2": "The project is structured to welcome and challenge. The technical foundation, built through classical ballet and contemporary dance, develops mental focus, posture, and spatial awareness. Simultaneously, the Be the Dance awareness methodology works on the youth’s internal state, encouraging them to embrace their uniqueness and express themselves without constraints.",
+      "p3": "The result is an organic journey of mastery. A young person entering an open class can follow a continuous path, culminating in advanced levels and performances—a true qualification platform that opens doors to artistic development under the attentive mentorship of Safia and guest artists."
     },
-    "pillars_section": {
-      "kicker": "THE METHODOLOGY",
-      "intro": "The Be the Dance Ung curriculum is built on three complementary fronts, combining the rigor of formal techniques with the sensitivity of somatic education:",
-      "pillars": [
+    "program_section": {
+      "kicker": "PROGRAM STRUCTURE",
+      "intro": "The Be the Dance Ung curriculum is built on three complementary fronts, combining the rigor of formal techniques with the development of self-confidence:",
+      "items": [
         {
           "number": "01",
           "title": "The Technical Foundation",
-          "items": [
+          "list": [
             {
               "label": "Classical Ballet",
               "desc": "Developing discipline, body lines, and motor coordination through classical structuring."
             },
             {
               "label": "Contemporary Dance",
-              "desc": "Exploring weight, floorwork, and free movement dynamics to stimulate expressiveness."
+              "desc": "Exploring weight, floorwork, and free movement dynamics to stimulate physical expressiveness."
             },
             {
-              "label": "Anatomical Awareness",
-              "desc": "Understanding the mechanics of ones own body, preventing injuries and promoting intelligent physicality."
+              "label": "Body Awareness",
+              "desc": "Intelligent understanding of one’s own mechanics, preventing injuries and building a solid athletic base."
             }
           ]
         },
         {
           "number": "02",
-          "title": "Somatic Integration",
-          "items": [
+          "title": "The Artistic Core",
+          "list": [
             {
-              "label": "Fluidity & Adaptation",
-              "desc": "Concepts from Be Water that teach how to navigate tension and handle the unexpected."
+              "label": "Unshakable Self-Confidence",
+              "desc": "Practices designed to silence internal and external judgment, allowing true essence to emerge."
             },
             {
-              "label": "Focus & Silence",
-              "desc": "Tools from Be Stillness for building internal silence amidst excessive digital stimuli."
+              "label": "Unique Expression",
+              "desc": "Youth are guided to find their own voice in movement, understanding that their uniqueness is their greatest asset."
             },
             {
-              "label": "The Body as a Totem",
-              "desc": "Elements from Be Total, where body, breath, and intention act in absolute synchrony."
+              "label": "Focus and Presence",
+              "desc": "Mindfulness exercises that anchor the practitioner in the present moment, combating digital distraction."
             }
           ]
         },
         {
           "number": "03",
           "title": "Professional Qualification",
-          "items": [
+          "list": [
             {
               "label": "Be the Dance Pro",
-              "desc": "The advanced stage designed to catapult young talents to a professional artistic level."
+              "desc": "The advanced stage designed to catapult young talents and prepare them for real challenges."
             },
             {
               "label": "Continuous Mentorship",
-              "desc": "Individualized guidance transforming raw potential into unquestionable technical capability."
+              "desc": "Individualized guidance that transforms raw potential into unquestionable technical capability."
             },
             {
               "label": "Stage Excellence",
-              "desc": "The real experience of performance and building identity as an artist and individual."
+              "desc": "The immersive experience of creating, rehearsing, and performing, consolidating identity as an artist and citizen."
             }
           ]
         }
@@ -1605,19 +1605,19 @@
     },
     "impact_section": {
       "kicker": "PILLARS OF IMPACT",
-      "intro": "The project materializes social transformation guidelines, ensuring tangible results in the lives of youth:",
+      "intro": "Our approach translates social transformation goals into practical actions, ensuring profound and structural results in the community:",
       "items": [
         {
-          "title": "Absolute Inclusion",
-          "desc": "Financial barriers removed with 100% scholarships for local residents."
+          "title": "Inclusion & Access (Lavterskeltilbud)",
+          "desc": "We do not just offer free entry; we destroy cultural and financial barriers. By providing 100% scholarships to local residents, we create a low-threshold space (lavterskeltilbud) where any youth from Tøyen or Grønland receives the exact same standard of excellence as an elite academy, promoting real inclusion (inkludering)."
         },
         {
-          "title": "Personal Mastery",
-          "desc": "Progressive mastery of dance builds unshakable self-confidence and resilience (mestring)."
+          "title": "Mastery & Resilience (Mestring)",
+          "desc": "Dance demands rigor and consistency. By mastering complex movements and overcoming their own physical limitations, youth build an unshakable sense of capability (mestring). This experience of continuous mastery in the studio translates into resilience to face academic and social adversities in everyday life."
         },
         {
-          "title": "Real Belonging",
-          "desc": "A physical haven of human connection, creating solid community ties (tilhørighet)."
+          "title": "Absolute Belonging (Tilhørighet)",
+          "desc": "In an era of digital isolation and social fragmentation, the studio becomes a physical safe haven. Youth become part of a community united by a common language of respect and art. This deep bond with the group and the space creates strong roots, pulling them away from marginalization and consolidating their belonging (tilhørighet)."
         }
       ]
     },
@@ -1626,7 +1626,7 @@
     "closing": "Excellence is not a privilege.\nIt is the result of belonging.",
     "cta": {
       "title": "Shall we transform the next generation together?",
-      "text": "Be the Dance Ung seeks visionary partnerships. Schedule a conversation to understand how our methodology aligns with your institution’s goals.",
+      "text": "Be the Dance Ung seeks continuous partnerships. Schedule a conversation to understand how our methodology aligns with your institution’s long-term goals.",
       "button": "Speak with the Team"
     }
   }

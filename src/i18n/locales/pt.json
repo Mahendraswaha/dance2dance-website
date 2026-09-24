@@ -1533,71 +1533,71 @@
   "btd_ung": {
     "seoTitle": "Be the Dance Ung | A Formação",
     "seoDesc": "Uma dimensão artística de pertencimento, superação e desenvolvimento continuado.",
-    "kicker": "A FORMAÇÃO",
+    "kicker": "PROJETO DE IMPACTO",
     "title": "Be the Dance Ung.",
-    "subtitle": "Uma dimensão artística de pertencimento, superação e desenvolvimento continuado para a juventude.",
-    "hook": "A formação de um indivíduo exige mais do que apenas ocupar o seu tempo. Envolve oferecer ferramentas de excelência que desenvolvam tanto o domínio físico quanto o equilíbrio emocional. No Be the Dance Ung, a técnica rigorosa do ballet e da dança contemporânea encontra a profundidade dos módulos de consciência corporal, criando uma plataforma contínua que transcende o estúdio e impacta a vida.",
+    "subtitle": "Acesso facilitado, superação e pertencimento em Tøyen e Grønland.",
+    "hook": "A formação de um indivíduo exige mais do que apenas ocupar o seu tempo. Envolve oferecer ferramentas de excelência que desenvolvam tanto o domínio físico quanto o equilíbrio emocional. No Be the Dance Ung, a técnica rigorosa do ballet e da dança contemporânea encontra a profundidade da expressão autêntica, criando uma plataforma contínua que transcende o estúdio e impacta a vida.",
     "body": {
-      "p1": "Oferecer acesso à cultura é apenas o primeiro passo. O verdadeiro impacto social ocorre quando entregamos excelência. Ao desenhar um currículo que integra aulas regulares de base com imersões somáticas, construímos um espaço seguro onde os jovens descobrem que a disciplina não é uma imposição, mas o caminho para a própria autonomia.",
+      "p1": "Oferecer acesso à cultura é apenas o primeiro passo. O verdadeiro impacto social ocorre quando entregamos excelência. Ao desenhar um currículo que integra aulas regulares de base com imersões focadas na expressão individual, construímos um espaço seguro onde os jovens descobrem que a disciplina não é uma imposição, mas o caminho para a própria autonomia.",
       "pullQuote": "A excelência artística é a ferramenta mais poderosa para esculpir a confiança.",
-      "p2": "O projeto foi estruturado para acolher e desafiar. A fundação técnica, construída através do ballet clássico e da dança contemporânea, desenvolve foco mental, postura e percepção espacial. Simultaneamente, a progressão pelos módulos do método Be the Dance ensina adaptabilidade (Be Water), enraizamento (Be Balance), presença (Be Stillness) e integração plena (Be Total).",
-      "p3": "O resultado é uma jornada de superação orgânica. O jovem que entra em uma aula aberta pode seguir um caminho contínuo, culminando no nível Be the Dance Pro, uma verdadeira plataforma de qualificação que abre portas para a formação profissional de bailarinos sob a mentoria atenta de Safia e artistas convidados."
+      "p2": "O projeto foi estruturado para acolher e desafiar. A fundação técnica, construída através do ballet clássico e da dança contemporânea, desenvolve foco mental, postura e percepção espacial. Simultaneamente, a metodologia de consciência do Be the Dance atua no estado interno do jovem, encorajando-o a abraçar sua singularidade e a se expressar sem amarras.",
+      "p3": "O resultado é uma jornada de superação orgânica. O jovem que entra em uma aula aberta pode seguir um caminho contínuo, culminando em níveis avançados e apresentações, uma verdadeira plataforma de qualificação que abre portas para o desenvolvimento artístico sob a mentoria atenta de Safia e artistas convidados."
     },
-    "pillars_section": {
-      "kicker": "A METODOLOGIA",
-      "intro": "O currículo do Be the Dance Ung foi arquitetado em três frentes complementares, combinando o rigor das técnicas formais com a sensibilidade da educação somática:",
-      "pillars": [
+    "program_section": {
+      "kicker": "ESTRUTURA DO PROGRAMA",
+      "intro": "O currículo do Be the Dance Ung foi arquitetado em três frentes complementares, combinando o rigor das técnicas formais com o desenvolvimento da autoconfiança:",
+      "items": [
         {
           "number": "01",
           "title": "A Fundação Técnica",
-          "items": [
+          "list": [
             {
               "label": "Ballet Clássico",
               "desc": "Desenvolvimento da disciplina, linhas corporais e coordenação motora através da estruturação clássica."
             },
             {
               "label": "Dança Contemporânea",
-              "desc": "Exploração do peso, do chão e das dinâmicas de movimento livre, estimulando a expressividade."
+              "desc": "Exploração do peso, do chão e das dinâmicas de movimento livre, estimulando a expressividade física."
             },
             {
-              "label": "Consciência Anatômica",
-              "desc": "Compreensão da mecânica do próprio corpo, prevenindo lesões e promovendo uma fisicalidade inteligente."
+              "label": "Consciência Corporal",
+              "desc": "Compreensão inteligente da própria mecânica, prevenindo lesões e construindo uma base atlética sólida."
             }
           ]
         },
         {
           "number": "02",
-          "title": "A Integração Somática",
-          "items": [
+          "title": "O Núcleo Artístico",
+          "list": [
             {
-              "label": "Fluidez e Adaptação",
-              "desc": "Conceitos do Be Water que ensinam a contornar tensões e lidar com o inesperado."
+              "label": "Autoconfiança Inabalável",
+              "desc": "Práticas desenhadas para silenciar o julgamento interno e externo, permitindo que a verdadeira essência emerja."
             },
             {
-              "label": "Foco e Silêncio",
-              "desc": "Ferramentas do Be Stillness para construção do silêncio interno em meio ao excesso de estímulos digitais."
+              "label": "Expressão Única",
+              "desc": "O jovem é guiado a encontrar sua própria voz no movimento, entendendo que sua singularidade é seu maior trunfo."
             },
             {
-              "label": "O Corpo como Totem",
-              "desc": "Elementos do Be Total, onde corpo, respiração e intenção agem em absoluta sincronia."
+              "label": "Foco e Presença",
+              "desc": "Exercícios de atenção plena que ancoram o praticante no momento presente, combatendo a dispersão digital."
             }
           ]
         },
         {
           "number": "03",
           "title": "A Qualificação Profissional",
-          "items": [
+          "list": [
             {
               "label": "Be the Dance Pro",
-              "desc": "O estágio avançado projetado para catapultar os jovens talentos ao nível artístico profissional."
+              "desc": "O estágio avançado projetado para catapultar os jovens talentos e prepará-los para desafios reais."
             },
             {
               "label": "Mentoria Continuada",
-              "desc": "Acompanhamento individualizado, transformando o potencial bruto em capacidade técnica inquestionável."
+              "desc": "Acompanhamento individualizado que transforma o potencial bruto em capacidade técnica inquestionável."
             },
             {
               "label": "Excelência de Palco",
-              "desc": "A experiência real da performance e a construção da identidade como artista e indivíduo."
+              "desc": "A experiência imersiva de criar, ensaiar e performar, consolidando a identidade como artista e cidadão."
             }
           ]
         }
@@ -1605,19 +1605,19 @@
     },
     "impact_section": {
       "kicker": "OS PILARES DE IMPACTO",
-      "intro": "O projeto materializa diretrizes de transformação social, garantindo resultados tangíveis na vida dos jovens:",
+      "intro": "Nossa abordagem traduz os objetivos de transformação social em ações práticas, garantindo resultados profundos e estruturais na comunidade:",
       "items": [
         {
-          "title": "Inclusão Absoluta",
-          "desc": "Barreiras financeiras removidas com 100% de bolsas para moradores locais."
+          "title": "Inclusão & Acesso (Lavterskeltilbud)",
+          "desc": "Não oferecemos apenas gratuidade; destruímos barreiras culturais e financeiras. Ao disponibilizar 100% de bolsas para moradores locais, criamos um espaço de acesso facilitado (lavterskeltilbud) onde qualquer jovem de Tøyen ou Grønland recebe o exato mesmo padrão de excelência de uma academia de elite, promovendo uma inclusão real (inkludering)."
         },
         {
-          "title": "Superação Pessoal",
-          "desc": "O domínio progressivo da dança constrói autoconfiança inabalável e resiliência (mestring)."
+          "title": "Superação & Resiliência (Mestring)",
+          "desc": "A dança exige rigor e constância. Ao dominar movimentos complexos e superar as próprias limitações físicas, o jovem constrói um senso inabalável de capacidade (mestring). Essa experiência de superação contínua no estúdio traduz-se em resiliência para enfrentar as adversidades acadêmicas e sociais da vida cotidiana."
         },
         {
-          "title": "Pertencimento Real",
-          "desc": "Um reduto físico de conexão humana e acolhimento, criando laços sólidos na comunidade (tilhørighet)."
+          "title": "Pertencimento Absoluto (Tilhørighet)",
+          "desc": "Em uma era de isolamento digital e fragmentação social, o estúdio se torna um porto seguro físico. Os jovens passam a integrar uma comunidade unida por uma linguagem comum de respeito e arte. Esse vínculo profundo com o grupo e com o espaço cria raízes fortes, afastando-os da marginalização e consolidando o seu pertencimento (tilhørighet)."
         }
       ]
     },
@@ -1626,7 +1626,7 @@
     "closing": "A excelência não é um privilégio.\nEla é o resultado do pertencimento.",
     "cta": {
       "title": "Vamos transformar juntos a próxima geração?",
-      "text": "O Be the Dance Ung procura parcerias visionárias. Agende uma conversa para entender como nossa metodologia se alinha aos objetivos da sua instituição.",
+      "text": "O Be the Dance Ung procura parcerias continuadas. Agende uma conversa para entender como nossa metodologia se alinha aos objetivos de longo prazo da sua instituição.",
       "button": "Falar com a Equipe"
     }
   }

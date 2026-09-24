@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, Award, Users } from 'lucide-react';
@@ -11,26 +11,22 @@ export default function BeTheDanceUngPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const { scrollY } = useScroll();
-  const logoOpacity = useTransform(scrollY, [0, 150], [0.3, 0]);
-
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } }
   };
 
   const audienceIcons = [
-    { icon: Heart, key: 0 },
+    { icon: Users, key: 0 },
     { icon: Award, key: 1 },
-    { icon: Users, key: 2 },
+    { icon: Heart, key: 2 },
   ];
 
-  // Try parsing pillars in case i18next returns string due to backend configuration, though standard is object
-  let pillars = t('btd_ung.pillars_section.pillars', { returnObjects: true });
-  if (typeof pillars === 'string') {
-    try { pillars = JSON.parse(pillars); } catch(e) {}
+  let programItems = t('btd_ung.program_section.items', { returnObjects: true });
+  if (typeof programItems === 'string') {
+    try { programItems = JSON.parse(programItems); } catch(e) {}
   }
-  if (!Array.isArray(pillars)) pillars = [];
+  if (!Array.isArray(programItems)) programItems = [];
 
   const impactItems = t('btd_ung.impact_section.items', { returnObjects: true }) || [];
 
@@ -43,99 +39,107 @@ export default function BeTheDanceUngPage() {
       
       <Navbar />
 
-      <div className="pt-40 md:pt-52 pb-24 relative">
-        {/* Watermark Logo */}
-        <div className="fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40">
-          <div className="max-w-7xl mx-auto flex">
-            <motion.img
-              src="/logo-bethedance.png"
-              alt="Be the Dance"
-              className="h-12 md:h-24 ml-4 md:ml-10 object-contain"
-              style={{ opacity: logoOpacity }}
-            />
+      <div className="pt-32 pb-24 relative">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10">
+          
+          {/* HERO SPLIT */}
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-24 mt-12">
+            <div className="w-full lg:w-1/2">
+              <motion.p
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-6"
+              >
+                {t('btd_ung.kicker')}
+              </motion.p>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="font-batang text-5xl md:text-6xl lg:text-7xl font-normal mb-8 leading-tight text-[#F0EDE8]"
+              >
+                {t('btd_ung.title')}
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
+                className="font-heading text-lg md:text-xl text-[#CFCFCF] font-light leading-relaxed max-w-lg mb-8"
+              >
+                {t('btd_ung.subtitle')}
+              </motion.p>
+              
+              <motion.div initial={{ width: 0 }} animate={{ width: 64 }} transition={{ delay: 0.3, duration: 0.6 }}
+                className="h-[1px] bg-accent/70"
+              />
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="w-full lg:w-1/2"
+            >
+              <div className="aspect-[4/3] overflow-hidden rounded-[2px] relative group">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
+                <img 
+                  src="/images/frame-240.jpg" 
+                  alt="Be the Dance Ung" 
+                  className="w-full h-full object-cover filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
 
-        <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10">
-
-          {/* HEADER */}
-          <header className="mb-12">
-            <motion.p
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-              className="font-heading text-[10px] tracking-[5px] uppercase text-accent/80 mb-5"
-            >
-              {t('btd_ung.kicker')}
-            </motion.p>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-batang text-4xl md:text-6xl font-normal mb-6 leading-tight text-[#F0EDE8]"
-            >
-              {t('btd_ung.title')}
-            </motion.h1>
-
-            <motion.div initial={{ width: 0 }} animate={{ width: 48 }} transition={{ delay: 0.3, duration: 0.6 }}
-              className="h-[1px] bg-accent/70 mb-8"
-            />
-
-            <motion.p
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-              className="font-heading text-xl text-[#CFCFCF] font-light leading-relaxed"
-            >
-              {t('btd_ung.subtitle')}
-            </motion.p>
-          </header>
-
-          {/* DRAMATIC HOOK */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.45, duration: 0.7 }}
-            className="border-l-2 border-accent/50 pl-8 md:pl-10 mb-16"
-          >
-            <p className="font-drama italic text-2xl md:text-3xl text-[#E8E0D4] leading-[1.45]">
-              "{t('btd_ung.hook')}"
-            </p>
-          </motion.div>
-
-          {/* BODY PARAGRAPHS */}
-          <div className="space-y-0 mb-24">
-            <motion.p
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-              variants={fadeUp}
-              className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
-            >
-              {t('btd_ung.body.p1')}
-            </motion.p>
-
+          <div className="max-w-[900px] mx-auto">
+            {/* DRAMATIC HOOK */}
             <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-              variants={fadeUp}
-              className="my-14 text-center py-8 border-y border-[#222222]"
+              initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.45, duration: 0.7 }}
+              className="border-l-2 border-accent/50 pl-8 md:pl-10 mb-16"
             >
-              <h2 className="font-drama text-2xl md:text-3xl text-accent mb-2 italic px-4">
-                "{t('btd_ung.body.pullQuote')}"
-              </h2>
+              <p className="font-drama italic text-2xl md:text-3xl text-[#E8E0D4] leading-[1.45]">
+                "{t('btd_ung.hook')}"
+              </p>
             </motion.div>
 
-            <motion.p
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-              variants={fadeUp}
-              className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
-            >
-              {t('btd_ung.body.p2')}
-            </motion.p>
+            {/* BODY PARAGRAPHS */}
+            <div className="space-y-0 mb-24">
+              <motion.p
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
+              >
+                {t('btd_ung.body.p1')}
+              </motion.p>
 
-            <motion.p
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-              variants={fadeUp}
-              className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85]"
-            >
-              {t('btd_ung.body.p3')}
-            </motion.p>
+              <motion.div
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="my-14 text-center py-8 border-y border-[#222222]"
+              >
+                <h2 className="font-drama text-2xl md:text-3xl text-accent mb-2 italic px-4">
+                  "{t('btd_ung.body.pullQuote')}"
+                </h2>
+              </motion.div>
+
+              <motion.p
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
+              >
+                {t('btd_ung.body.p2')}
+              </motion.p>
+
+              <motion.p
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+                variants={fadeUp}
+                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85]"
+              >
+                {t('btd_ung.body.p3')}
+              </motion.p>
+            </div>
           </div>
         </div>
 
-        {/* PILLARS SECTION */}
+        {/* PROGRAM STRUCTURE SECTION */}
         <section className="bg-gradient-to-b from-[#0c0c0c] to-[#0A0A0E] py-24 mb-16 border-y border-[#181818]">
           <div className="max-w-[1100px] mx-auto px-8 md:px-16 lg:px-20">
             <motion.div
@@ -144,15 +148,15 @@ export default function BeTheDanceUngPage() {
               className="mb-16"
             >
               <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
-                {t('btd_ung.pillars_section.kicker')}
+                {t('btd_ung.program_section.kicker')}
               </span>
               <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] max-w-[700px]">
-                {t('btd_ung.pillars_section.intro')}
+                {t('btd_ung.program_section.intro')}
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-              {pillars.map((pillar, index) => (
+              {programItems.map((itemGroup, index) => (
                 <motion.div
                   key={index}
                   initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
@@ -164,32 +168,29 @@ export default function BeTheDanceUngPage() {
                   <div className="lg:pl-8">
                     <div className="flex items-center gap-3 mb-6">
                       <span className="font-drama text-accent text-xl opacity-60">
-                        {pillar.number}
-                      </span>
-                      <span className="font-heading text-[9px] tracking-[3px] uppercase text-[#777777] font-medium">
-                        {t('labels.pillar', 'PILAR')}
+                        {itemGroup.number}
                       </span>
                     </div>
 
                     <div className="min-h-[3.75rem] md:min-h-[4.75rem] flex flex-col justify-start mb-4">
                       <h3 className="font-batang text-xl md:text-2xl text-[#F0EDE8] tracking-tight leading-snug group-hover:text-accent transition-colors duration-500">
-                        {pillar.title}
+                        {itemGroup.title}
                       </h3>
                     </div>
 
                     <div className="w-10 h-[1px] bg-accent/40 mb-8 group-hover:w-16 transition-all duration-500" />
 
                     <div className="space-y-6">
-                      {pillar.items?.map((item, iIndex) => (
+                      {itemGroup.list?.map((subItem, iIndex) => (
                         <div key={iIndex} className="group/item transition-all duration-300">
                           <div className="flex items-start gap-3 mb-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0 group-hover/item:bg-accent group-hover/item:shadow-[0_0_8px_rgba(226,195,102,0.7)] transition-all duration-300" />
                             <h4 className="font-heading text-[12px] uppercase tracking-[1.5px] text-[#E2C366] group-hover/item:text-[#F0EDE8] font-medium leading-snug transition-colors duration-300">
-                              {item.label}
+                              {subItem.label}
                             </h4>
                           </div>
                           <p className="font-heading text-[13px] text-[#9A9A9A] group-hover/item:text-[#DCD8D0] font-light leading-relaxed pl-4 transition-colors duration-300">
-                            {item.desc}
+                            {subItem.desc}
                           </p>
                         </div>
                       ))}
@@ -219,7 +220,7 @@ export default function BeTheDanceUngPage() {
           </div>
 
           <div className="max-w-[1100px] mx-auto px-8 md:px-16 lg:px-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {audienceIcons.map(({ icon: Icon, key }, index) => (
                 <motion.div
                   key={key}
@@ -228,19 +229,20 @@ export default function BeTheDanceUngPage() {
                   viewport={{ once: true, margin: '-30px' }}
                   variants={fadeUp}
                   custom={index}
-                  className="group relative bg-gradient-to-br from-[#141414] to-[#0f0f0f] border border-[#1f1f1f] rounded-[4px] py-10 px-6 md:py-16 md:px-8 flex flex-col items-center justify-center transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-accent/25 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(226,195,102,0.08)] overflow-hidden min-h-[260px] md:min-h-[320px]"
+                  className="group relative bg-gradient-to-br from-[#141414] to-[#0f0f0f] border border-[#1f1f1f] rounded-[4px] py-10 px-8 md:py-16 md:px-10 flex flex-col transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-accent/25 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(226,195,102,0.08)] overflow-hidden"
                 >
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms]" />
                   
-                  <div className="font-drama text-2xl text-accent mb-2 font-normal opacity-40">0{index + 1}</div>
-                  <div className="w-[30px] h-[1px] bg-accent mb-6 opacity-40" />
-
-                  <Icon size={36} className="text-accent/60 group-hover:text-accent transition-colors duration-500 mb-6" strokeWidth={1} />
+                  <div className="flex items-center gap-4 mb-8">
+                    <Icon size={32} className="text-accent/60 group-hover:text-accent transition-colors duration-500" strokeWidth={1} />
+                    <div className="w-[30px] h-[1px] bg-accent opacity-40" />
+                    <div className="font-drama text-2xl text-accent font-normal opacity-40">0{index + 1}</div>
+                  </div>
                   
-                  <h4 className="font-heading text-[12px] tracking-[1px] uppercase text-[#d4cfc7] text-center font-medium leading-[1.6] mb-3">
+                  <h4 className="font-heading text-[14px] tracking-[1px] uppercase text-[#F0EDE8] font-medium leading-[1.6] mb-4">
                     {impactItems[key]?.title}
                   </h4>
-                  <p className="font-heading text-[12px] text-[#9A9A9A] text-center font-light leading-[1.6]">
+                  <p className="font-heading text-[14px] text-[#A1A1A1] group-hover:text-[#CFCFCF] font-light leading-[1.8] transition-colors duration-300">
                     {impactItems[key]?.desc}
                   </p>
                 </motion.div>
