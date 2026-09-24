@@ -1,75 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Home -->
-  <url>
-    <loc>https://www.dance2dance.no/</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.dance2dance.no/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://www.dance2dance.no/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.dance2dance.no/"/>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url><loc>https://www.dance2dance.no/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.dance2dance.no/agenda</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.dance2dance.no/valores</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dance2dance.no/social</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dance2dance.no/contato</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/safia</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Programs -->
-  <url>
-    <loc>https://www.dance2dance.no/be-the-dance</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/biostretch</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/kroppsskole</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <url><loc>https://www.dance2dance.no/be-the-dance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.dance2dance.no/kroppsskole</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Other public pages -->
-  <url>
-    <loc>https://www.dance2dance.no/social</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/agenda</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/contato</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/safia</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/termos</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.dance2dance.no/privacidade</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
+  <!-- Be the Dance Workshops -->
+  <url><loc>https://www.dance2dance.no/be-the-dance/be-water</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/be-the-dance/be-balance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/be-the-dance/be-total</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/be-the-dance/be-stillness</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/be-the-dance/be-the-dance-pro</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/be-the-dance/be-the-dance-day</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
+  <!-- Biostretch Workshops -->
+  <url><loc>https://www.dance2dance.no/biostretch/uma-melhor-postura</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/aprendendo-a-relaxar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/alongar-respirar-e-meditar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/transformando-habitos</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/movimentos-diarios-para-prevenir-o-stress</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/recuperando-o-foco</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Corporate & Specialized Pages -->
+  <url><loc>https://www.dance2dance.no/be-the-dance/empresas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/empresas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/individual</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.dance2dance.no/biostretch/aulas-regulares</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Impact Projects -->
+  <url><loc>https://www.dance2dance.no/projects/be-the-dance-ung</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://www.dance2dance.no/termos</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.dance2dance.no/privacidade</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
-

@@ -61,6 +61,7 @@ const ContactPage = lazyWithRetries(() => import('./pages/ContactPage'));
 const PricingPage = lazyWithRetries(() => import('./pages/PricingPage'));
 const AdminDashboard = lazyWithRetries(() => import('./pages/AdminDashboard'));
 const BeTheDanceUngPage = lazyWithRetries(() => import('./pages/BeTheDanceUngPage'));
+const NotFoundPage = lazyWithRetries(() => import('./pages/NotFoundPage'));
 
 // Indicador discreto de transição entre páginas
 function PageFallback() {
@@ -101,6 +102,7 @@ export default function App() {
             <Route path="/projects/be-the-dance-ung" element={<BeTheDanceUngPage />} />
             <Route path="/termos" element={<TermsPage />} />
             <Route path="/privacidade" element={<PrivacyPolicyPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
         <CookieBanner />

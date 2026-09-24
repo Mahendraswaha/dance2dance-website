@@ -282,9 +282,9 @@ const HeroSequence = () => {
           {t("hero.desc")}
         </p>
         <div className="hero-elem mt-10 pointer-events-auto">
-          <a href="/#workshops" className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2 inline-flex">
+          <button onClick={() => { const el = document.getElementById('workshops'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-heading font-bold text-lg flex items-center gap-2 inline-flex cursor-pointer">
             <span className="relative z-10 flex items-center gap-2">{t("hero.cta")} <ArrowRight size={20}/></span>
-          </a>
+          </button>
         </div>
       </div>
 
