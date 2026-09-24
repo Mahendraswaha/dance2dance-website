@@ -1,0 +1,18 @@
+{
+  "specVersion": "1.0",
+  "host": "https://www.dance2dance.no",
+  "entries": [
+    {
+      "identifier": "sitemap",
+      "type": "sitemap",
+      "url": "https://www.dance2dance.no/sitemap.xml",
+      "description": "Sitemap for Dance2Dance providing all accessible pages"
+    },
+    {
+      "identifier": "llms",
+      "type": "agent-instructions",
+      "url": "https://www.dance2dance.no/.well-known/llms.txt",
+      "description": "Agent guidelines and core context for Dance2Dance"
+    }
+  ]
+}
