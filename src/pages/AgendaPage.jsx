@@ -324,9 +324,11 @@ export default function AgendaPage() {
     // Ordena as sessões de cada dia em ordem cronológica (horário mais cedo acima)
     Object.keys(map).forEach(dateKey => {
       map[dateKey].sort((a, b) => {
-        const timeA = a.startTime || a.event?.startTime || '99:99';
-        const timeB = b.startTime || b.event?.startTime || '99:99';
-        return timeA.localeCompare(timeB);
+          let timeA = (a.startTime || a.event?.startTime || '99:99').trim();
+          let timeB = (b.startTime || b.event?.startTime || '99:99').trim();
+          if(timeA.length === 4 && timeA.includes(':')) timeA = '0' + timeA;
+          if(timeB.length === 4 && timeB.includes(':')) timeB = '0' + timeB;
+          return timeA.localeCompare(timeB);
       });
     });
     return map;
@@ -440,9 +442,11 @@ export default function AgendaPage() {
     if (!selectedDate) return [];
     const sessions = eventsByDate[selectedDate] || [];
     return [...sessions].sort((a, b) => {
-      const timeA = a.startTime || a.event?.startTime || '99:99';
-      const timeB = b.startTime || b.event?.startTime || '99:99';
-      return timeA.localeCompare(timeB);
+          let timeA = (a.startTime || a.event?.startTime || '99:99').trim();
+          let timeB = (b.startTime || b.event?.startTime || '99:99').trim();
+          if(timeA.length === 4 && timeA.includes(':')) timeA = '0' + timeA;
+          if(timeB.length === 4 && timeB.includes(':')) timeB = '0' + timeB;
+          return timeA.localeCompare(timeB);
     });
   }, [selectedDate, eventsByDate]);
 
