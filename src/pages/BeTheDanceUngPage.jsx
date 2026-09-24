@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, Award, Users } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function BeTheDanceUngPage() {
@@ -29,7 +29,7 @@ export default function BeTheDanceUngPage() {
         description={t('btd_ung.seoDesc')} 
       />
       
-      <Header />
+      <Navbar />
 
       <main className="pt-24 pb-0 relative">
         {/* HERO SECTION */}
