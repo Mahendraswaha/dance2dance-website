@@ -16,11 +16,13 @@ const Home = () => {
       />
       <Navbar />
       
+      <main>
         <HeroSequence />
         <Activities />
         <Philosophy />
         <Protocol />
         <Action />
+      </main>
       
       <Footer />
     </div>
