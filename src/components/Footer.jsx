@@ -56,6 +56,10 @@ const Footer = () => {
               <Link to="/social" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors">{t("footer.links.impact")}</Link>
             </div>
             <div className="flex flex-col gap-4">
+              <a href="#" className="hover:text-accent transition-colors">Instagram</a>
+              <a href="#" className="hover:text-accent transition-colors">Facebook</a>
+              <a href="#" className="hover:text-accent transition-colors">YouTube</a>
+              <a href="#" className="hover:text-accent transition-colors">TikTok</a>
               
               {/* Espaçamento extra antes dos links legais/contato */}
               <Link to="/contato" onClick={() => window.scrollTo(0,0)} className="hover:text-accent transition-colors mt-4">

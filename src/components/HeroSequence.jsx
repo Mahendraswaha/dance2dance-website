@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 gsap.registerPlugin(ScrollTrigger);
 
 import Brand from './Brand';
+import { preloadFrames } from '../utils/frameCache';
 
 const HeroSequence = () => {
   const { t } = useTranslation();
@@ -20,30 +21,14 @@ const HeroSequence = () => {
   const frameCount = 240;
 
   useEffect(() => {
-    let loadedCount = 0;
-    imagesRef.current = new Array(frameCount).fill(null);
+    imagesRef.current = preloadFrames((progress) => {
+      if (progress > 0) setFirstFrameLoaded(true);
+      if (progress === 1) setIsLoaded(true);
+    });
     
-    const firstImg = new Image();
-    firstImg.src = `/gallery/sequence/frame-001.jpg`;
-    firstImg.onload = () => {
-      imagesRef.current[0] = firstImg;
-      loadedCount++;
-      setFirstFrameLoaded(true); // Libera a tela imediatamente com o frame 1
-      
-      // Começa a carregar o restante em background
-      for (let i = 2; i <= frameCount; i++) {
-        const img = new Image();
-        const frameNumber = i.toString().padStart(3, '0');
-        img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
-        img.onload = () => {
-          imagesRef.current[i-1] = img;
-          loadedCount++;
-          if (loadedCount === frameCount) {
-            setIsLoaded(true);
-          }
-        };
-      }
-    };
+    if (imagesRef.current.length > 0 && imagesRef.current[0].complete) {
+      setFirstFrameLoaded(true);
+    }
   }, []);
 
   useEffect(() => {

@@ -321,7 +321,7 @@ const ImpactPage = () => {
                 <div className="w-full h-64 md:h-80 overflow-hidden relative">
                   <div className="absolute inset-0 bg-black/30 z-10 group-hover:bg-black/10 transition-colors duration-700"></div>
                   {/* Using a biostretch/women placeholder */}
-                  <img src="/Deance2Dance%20Kvinne.jpg" alt="Dance2Dance Kvinne" className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000" />
+                  <img src="/images/dance2dance-kvinne.jpg" alt="Dance2Dance Kvinne" className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000" />
                   <div className="absolute top-6 right-6 z-20">
                     <span className="px-4 py-1.5 bg-background text-primary text-[9px] uppercase tracking-[3px] font-heading font-bold rounded-full">
                       Tøyen & Grønland
@@ -334,7 +334,7 @@ const ImpactPage = () => {
                   <p className="font-heading font-light text-slate-300 leading-[1.8] mb-10 flex-grow">
                     {t('social_page_b2b.projects.women.desc')}
                   </p>
-                  <Link to="/social" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn mt-auto opacity-50 cursor-not-allowed" title="Em breve">
+                  <Link to="/projects/dance2dance-kvinne" onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn mt-auto">
                     {t('social_page_b2b.projects.women.btn')}
                     <div className="w-8 h-[1px] bg-white/30 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300 relative">
                       <ArrowRight className="absolute -right-1 -top-[7px] w-4 h-4 text-white/30 group-hover/btn:text-accent transition-colors" />

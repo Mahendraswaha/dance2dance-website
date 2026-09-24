@@ -61,6 +61,7 @@ const ContactPage = lazyWithRetries(() => import('./pages/ContactPage'));
 const PricingPage = lazyWithRetries(() => import('./pages/PricingPage'));
 const AdminDashboard = lazyWithRetries(() => import('./pages/AdminDashboard'));
 const BeTheDanceUngPage = lazyWithRetries(() => import('./pages/BeTheDanceUngPage'));
+const Dance2DanceKvinnePage = lazyWithRetries(() => import('./pages/Dance2DanceKvinnePage'));
 const NotFoundPage = lazyWithRetries(() => import('./pages/NotFoundPage'));
 
 // Indicador discreto de transição entre páginas
@@ -100,6 +101,7 @@ export default function App() {
             <Route path="/:programId" element={<ProgramPage />} />
             <Route path="/:programId/:workshopId" element={<WorkshopPage />} />
             <Route path="/projects/be-the-dance-ung" element={<BeTheDanceUngPage />} />
+            <Route path="/projects/dance2dance-kvinne" element={<Dance2DanceKvinnePage />} />
             <Route path="/termos" element={<TermsPage />} />
             <Route path="/privacidade" element={<PrivacyPolicyPage />} />
             <Route path="*" element={<NotFoundPage />} />

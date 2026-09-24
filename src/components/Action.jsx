@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger);
 
 import Brand from './Brand';
+import { preloadFrames } from '../utils/frameCache';
 
 const Action = () => {
   const { t } = useTranslation();
@@ -18,33 +19,14 @@ const Action = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const frameCount = 240;
 
-  // Carrega as imagens (virão do cache do browser, pois o Hero já as carregou)
+  // Carrega as imagens do cache compartilhado
   useEffect(() => {
-    const loadedImages = [];
-    let loadedCount = 0;
-    for (let i = 1; i <= frameCount; i++) {
-      const img = new Image();
-      const frameNumber = i.toString().padStart(3, '0');
-      img.src = `/gallery/sequence/frame-${frameNumber}.jpg`;
-      img.onload = () => {
-        loadedCount++;
-        loadedImages.push(img);
-        if (loadedCount === frameCount) {
-          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
-          imagesRef.current = loadedImages;
-          setIsLoaded(true);
-        }
-      };
-      // Se a imagem já estava em cache, onload pode não disparar
-      if (img.complete) {
-        loadedCount++;
-        loadedImages.push(img);
-        if (loadedCount === frameCount) {
-          loadedImages.sort((a, b) => a.src.localeCompare(b.src));
-          imagesRef.current = loadedImages;
-          setIsLoaded(true);
-        }
-      }
+    imagesRef.current = preloadFrames((progress) => {
+      if (progress === 1) setIsLoaded(true);
+    });
+    
+    if (imagesRef.current.length === frameCount && imagesRef.current[frameCount - 1]?.complete) {
+      setIsLoaded(true);
     }
   }, []);
 

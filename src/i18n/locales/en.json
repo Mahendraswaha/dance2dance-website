@@ -1629,5 +1629,93 @@
       "text": "Be the Dance Ung seeks continuous partnerships. Schedule a conversation to understand how our methodology aligns with your institution’s long-term goals.",
       "button": "Schedule Executive Meeting"
     }
+  },
+  "btd_kvinne": {
+    "kicker": "Women Impact Project",
+    "seoTitle": "Dance2Dance Kvinne | Social Impact for Women",
+    "seoDesc": "A project aimed at the well-being, empowerment, and social connection of women in Tøyen and Grønland.",
+    "title": "Dance2Dance\nKvinne.",
+    "subtitle": "Social meeting point, well-being and self-confidence in Tøyen and Grønland.",
+    "hook": "The collective female strength finds a safe space for healing and reconstruction in movement.",
+    "body": {
+      "p1": "Dance2Dance Kvinne was born from the need to create an exclusive refuge for women. An environment where social and cultural pressure is left outside, allowing each participant to safely reconnect with herself.",
+      "pullQuote": "When women move together, they weave an invisible but unbreakable support network.",
+      "p2": "More than a dance class, the project is a welcoming hub. We use body awareness as a tool to rescue physical and emotional autonomy, respecting the limits and history of each body.",
+      "p3": "By providing a space where personal care is a priority, we empower these women to become multiplying agents of well-being in their families and communities."
+    },
+    "program_section": {
+      "kicker": "Program Structure",
+      "intro": "Our approach integrates somatic practices and social interaction in three fundamental steps.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Sensory Reconnection",
+          "list": [
+            {
+              "label": "Conscious Breathing",
+              "desc": "Practical exercises for self-regulation."
+            },
+            {
+              "label": "Gentle Mobility",
+              "desc": "Releasing accumulated tension."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Expression and Movement",
+          "list": [
+            {
+              "label": "Free Dance",
+              "desc": "Exploring personal rhythm without rigid choreography."
+            },
+            {
+              "label": "Group Dynamics",
+              "desc": "Circle movements to strengthen empathy."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Community and Sharing",
+          "list": [
+            {
+              "label": "Dialogue Circle",
+              "desc": "A moment to exchange experiences at the end of classes."
+            },
+            {
+              "label": "Support Network",
+              "desc": "Building bonds that extend beyond the studio."
+            }
+          ]
+        }
+      ]
+    },
+    "impact_section": {
+      "kicker": "Impact Pillars",
+      "intro": "Aligned with community development goals, we structured the benefits of this project to generate lasting results.",
+      "items": [
+        {
+          "title": "Physical and Mental Well-being",
+          "desc": "Reduction of stress and anxiety symptoms through continuous practice, promoting a healthier relationship with one's own body."
+        },
+        {
+          "title": "Empowerment and Autonomy",
+          "desc": "The rescue of physical confidence translates into greater assertiveness in social relations and decision-making."
+        },
+        {
+          "title": "Inclusion and Møteplass (Meeting Point)",
+          "desc": "Creation of a safe space free of judgment, where women from different cultural backgrounds connect."
+        }
+      ]
+    },
+    "mentorKicker": "Artistic Direction and Mentorship",
+    "mentorText": "As the founder of Dance2Dance, Safia brings her experience not only as a dancer but as a somatic facilitator specializing in processes of female reconnection. Her mentorship ensures the space is maintained with profound sensitivity and technical rigor.",
+    "closing": "Transforming a woman's reality\nis transforming the core of an entire community.",
+    "cta": {
+      "title": "Become a partner of the women's project",
+      "text": "Support Dance2Dance Kvinne and associate your brand with the empowerment and well-being of women in our community.",
+      "button": "Schedule Executive Meeting"
+    }
   }
 }

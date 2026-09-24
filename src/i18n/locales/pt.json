@@ -1629,5 +1629,93 @@
       "text": "O Be the Dance Ung procura parcerias continuadas. Agende uma conversa para entender como nossa metodologia se alinha aos objetivos de longo prazo da sua instituição.",
       "button": "Agendar Reunião Executiva"
     }
+  },
+  "btd_kvinne": {
+    "kicker": "Projeto de Impacto Feminino",
+    "seoTitle": "Dance2Dance Kvinne | Impacto Social para Mulheres",
+    "seoDesc": "Um projeto voltado para o bem-estar, empoderamento e conexão social de mulheres em Tøyen e Grønland.",
+    "title": "Dance2Dance\nKvinne.",
+    "subtitle": "Ponto de encontro social, bem-estar e autoconfiança em Tøyen e Grønland.",
+    "hook": "A força coletiva feminina encontra no movimento um espaço seguro de cura e reconstrução.",
+    "body": {
+      "p1": "O Dance2Dance Kvinne nasceu da necessidade de criar um refúgio exclusivo para mulheres. Um ambiente onde a pressão social e cultural fica do lado de fora, permitindo que cada participante se reconecte consigo mesma em segurança.",
+      "pullQuote": "Quando mulheres se movem juntas, elas tecem uma rede de sustentação invisível, porém inquebrável.",
+      "p2": "Mais do que uma aula de dança, o projeto é um polo de acolhimento. Trabalhamos a consciência corporal como ferramenta para resgatar a autonomia física e emocional, respeitando os limites e a história de cada corpo.",
+      "p3": "Ao fornecer um espaço onde o cuidado pessoal é prioridade, empoderamos essas mulheres a se tornarem agentes multiplicadores de bem-estar em suas famílias e comunidades."
+    },
+    "program_section": {
+      "kicker": "Estrutura do Programa",
+      "intro": "Nossa abordagem integra práticas somáticas e convivência social em três etapas fundamentais.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Reconexão Sensorial",
+          "list": [
+            {
+              "label": "Respiração Consciente",
+              "desc": "Exercícios práticos para autorregulação."
+            },
+            {
+              "label": "Mobilidade Suave",
+              "desc": "Desbloqueio de tensões acumuladas."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Expressão e Movimento",
+          "list": [
+            {
+              "label": "Dança Livre",
+              "desc": "Exploração do ritmo pessoal sem coreografias rígidas."
+            },
+            {
+              "label": "Dinâmicas de Grupo",
+              "desc": "Movimentos em roda para fortalecer a empatia."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Comunidade e Partilha",
+          "list": [
+            {
+              "label": "Círculo de Diálogo",
+              "desc": "Momento de troca de experiências ao fim das aulas."
+            },
+            {
+              "label": "Rede de Apoio",
+              "desc": "Construção de vínculos que se estendem além do estúdio."
+            }
+          ]
+        }
+      ]
+    },
+    "impact_section": {
+      "kicker": "Pilares de Impacto",
+      "intro": "Alinhados aos objetivos de desenvolvimento comunitário, estruturamos os benefícios deste projeto para gerar resultados duradouros.",
+      "items": [
+        {
+          "title": "Bem-estar Físico e Mental",
+          "desc": "Redução de sintomas de estresse e ansiedade através da prática continuada, promovendo uma relação mais saudável com o próprio corpo."
+        },
+        {
+          "title": "Empoderamento e Autonomia",
+          "desc": "O resgate da confiança física traduz-se em uma maior assertividade nas relações sociais e na tomada de decisões."
+        },
+        {
+          "title": "Inclusão e Møteplass (Ponto de Encontro)",
+          "desc": "Criação de um espaço seguro (safe space) livre de julgamentos, onde mulheres de diferentes origens culturais se conectam."
+        }
+      ]
+    },
+    "mentorKicker": "Direção Artística e Mentoria",
+    "mentorText": "Como fundadora do Dance2Dance, Safia traz sua experiência não apenas como bailarina, mas como facilitadora somática especializada em processos de reconexão feminina. Sua mentoria garante que o espaço seja mantido com profunda sensibilidade e rigor técnico.",
+    "closing": "Transformar a realidade de uma mulher\né transformar o núcleo de uma comunidade inteira.",
+    "cta": {
+      "title": "Seja um parceiro do projeto feminino",
+      "text": "Apoie o Dance2Dance Kvinne e associe sua marca ao empoderamento e bem-estar de mulheres em nossa comunidade.",
+      "button": "Agendar Reunião Executiva"
+    }
   }
 }

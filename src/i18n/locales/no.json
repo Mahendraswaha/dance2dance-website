@@ -1629,5 +1629,93 @@
       "text": "Be the Dance Ung søker langsiktige partnerskap. Avtal en samtale for å forstå hvordan vår metodikk sammenfaller med institusjonens langsiktige mål.",
       "button": "Planlegg Ledermøte"
     }
+  },
+  "btd_kvinne": {
+    "kicker": "Kvinners Effektprosjekt",
+    "seoTitle": "Dance2Dance Kvinne | Sosial Effekt for Kvinner",
+    "seoDesc": "Et prosjekt rettet mot velvære, myndiggjøring og sosial tilkobling for kvinner på Tøyen og Grønland.",
+    "title": "Dance2Dance\nKvinne.",
+    "subtitle": "Sosial møteplass, velvære og selvtillit på Tøyen og Grønland.",
+    "hook": "Den kollektive kvinnelige styrken finner et trygt rom for helbredelse og gjenoppbygging i bevegelse.",
+    "body": {
+      "p1": "Dance2Dance Kvinne ble født ut av behovet for å skape et eksklusivt tilfluktssted for kvinner. Et miljø der sosialt og kulturelt press blir lagt igjen utenfor, slik at hver deltaker trygt kan koble seg på seg selv igjen.",
+      "pullQuote": "Når kvinner beveger seg sammen, vever de et usynlig, men uknuselig støttenettverk.",
+      "p2": "Mer enn en danseklasse, er prosjektet et innbydende knutepunkt. Vi bruker kroppsbevissthet som et verktøy for å redde fysisk og emosjonell autonomi, med respekt for hvert enkelt kropps grenser og historie.",
+      "p3": "Ved å tilby et rom der personlig pleie er en prioritet, myndiggjør vi disse kvinnene til å bli multipliserende agenter for velvære i sine familier og lokalsamfunn."
+    },
+    "program_section": {
+      "kicker": "Programstruktur",
+      "intro": "Vår tilnærming integrerer somatisk praksis og sosialt samspill i tre grunnleggende trinn.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Sensorisk Gjentilkobling",
+          "list": [
+            {
+              "label": "Bevisst Pusting",
+              "desc": "Praktiske øvelser for selvregulering."
+            },
+            {
+              "label": "Skånsom Mobilitet",
+              "desc": "Frigjøring av akkumulerte spenninger."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Uttrykk og Bevegelse",
+          "list": [
+            {
+              "label": "Fri Dans",
+              "desc": "Utforsking av personlig rytme uten stiv koreografi."
+            },
+            {
+              "label": "Gruppedynamikk",
+              "desc": "Sirkelbevegelser for å styrke empati."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Fellesskap og Deling",
+          "list": [
+            {
+              "label": "Dialogsirkel",
+              "desc": "Et øyeblikk for å utveksle erfaringer på slutten av timene."
+            },
+            {
+              "label": "Støttenettverk",
+              "desc": "Bygging av bånd som strekker seg utover studioet."
+            }
+          ]
+        }
+      ]
+    },
+    "impact_section": {
+      "kicker": "Effektpilarer",
+      "intro": "På linje med målene for samfunnsutvikling, strukturerte vi fordelene med dette prosjektet for å generere varige resultater.",
+      "items": [
+        {
+          "title": "Fysisk og Mentalt Velvære",
+          "desc": "Reduksjon av stress- og angstsymptomer gjennom kontinuerlig praksis, fremmer et sunnere forhold til egen kropp."
+        },
+        {
+          "title": "Myndiggjøring og Autonomi",
+          "desc": "Redningen av fysisk selvtillit oversettes til større selvsikkerhet i sosiale relasjoner og beslutningstaking."
+        },
+        {
+          "title": "Inkludering og Møteplass",
+          "desc": "Opprettelse av et trygt rom uten dom, der kvinner med ulik kulturell bakgrunn knytter bånd."
+        }
+      ]
+    },
+    "mentorKicker": "Kunstnerisk Ledelse og Mentorskap",
+    "mentorText": "Som grunnlegger av Dance2Dance bringer Safia med seg erfaring ikke bare som danser, men som somatisk tilrettelegger som spesialiserer seg på kvinnelige gjentilkoblingsprosesser. Hennes mentorskap sikrer at rommet opprettholdes med dyp følsomhet og teknisk strenghet.",
+    "closing": "Å transformere en kvinnes virkelighet\ner å transformere kjernen i et helt lokalsamfunn.",
+    "cta": {
+      "title": "Bli en partner for kvinneprosjektet",
+      "text": "Støtt Dance2Dance Kvinne og knytt merkevaren din til myndiggjøring og velvære for kvinner i samfunnet vårt.",
+      "button": "Planlegg Ledermøte"
+    }
   }
 }
