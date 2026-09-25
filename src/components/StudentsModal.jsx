@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { 
   X, Copy, Check, Download, UserCheck, Trash2, Phone, HeartPulse, 
   Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid,
-  Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock
+  Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock, RotateCcw
 } from 'lucide-react';
 import { generateInstructorCalendarUrl, formatEventDate, getLocalizedEvent, getEventCategory, getEventRoute } from '../utils/eventHelpers';
 
