@@ -194,7 +194,7 @@ export default function AgendaPage() {
             const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
-            const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (ev?.location ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.location)}` : 'https://maps.google.com');
+            const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
             
             let dateStr = '';
             let timeStr = '';
@@ -324,7 +324,7 @@ export default function AgendaPage() {
             const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
-            const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (ev?.location ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.location)}` : 'https://maps.google.com');
+            const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
             
             let dateStr = '';
             let timeStr = '';
