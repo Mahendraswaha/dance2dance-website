@@ -87,7 +87,7 @@ const ImpactPage = () => {
         
         {/* Background Layer - Video aligned perfectly to the right */}
         <div className="absolute top-1/2 left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
-          <div className="w-full max-w-7xl mx-auto h-full relative md:translate-x-1">
+          <div className="w-full max-w-5xl mx-auto h-full relative md:translate-x-1">
             <video 
               autoPlay 
               loop 
@@ -104,7 +104,7 @@ const ImpactPage = () => {
         </div>
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
+        <div className="relative z-10 w-full max-w-5xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
           <div className="flex flex-col md:w-2/3 lg:w-1/2 items-start">
           
           {/* B2B Authority Badge */}
