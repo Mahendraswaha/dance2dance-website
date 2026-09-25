@@ -1631,90 +1631,90 @@
     }
   },
   "btd_kvinne": {
-    "kicker": "Kvinners Effektprosjekt",
-    "seoTitle": "Dance2Dance Kvinne | Sosial Effekt for Kvinner",
-    "seoDesc": "Et prosjekt rettet mot velvære, myndiggjøring og sosial tilkobling for kvinner på Tøyen og Grønland.",
+    "kicker": "Kvinnehelse og Integrering",
+    "seoTitle": "Dance2Dance Kvinne | Sosial Innvirkning for Kvinner",
+    "seoDesc": "Et eksklusivt prosjekt for kvinner på Tøyen og Grønland, som forener kroppsbevisstheten i Biostretch med gleden i Be The Dance.",
     "title": "Dance2Dance\nKvinne.",
-    "subtitle": "Sosial møteplass, velvære og selvtillit på Tøyen og Grønland.",
-    "hook": "Den kollektive kvinnelige styrken finner et trygt rom for helbredelse og gjenoppbygging i bevegelse.",
+    "subtitle": "En sosial møteplass og rom for personlig velvære på Tøyen og Grønland, som forener kroppslytting og bevegelsesglede.",
+    "hook": "Før vi krever noe av kroppen, lærer vi å lytte til den. Og sammen oppdager vi dansen som allerede finnes i oss.",
     "body": {
-      "p1": "Dance2Dance Kvinne ble født ut av behovet for å skape et eksklusivt tilfluktssted for kvinner. Et miljø der sosialt og kulturelt press blir lagt igjen utenfor, slik at hver deltaker trygt kan koble seg på seg selv igjen.",
-      "pullQuote": "Når kvinner beveger seg sammen, vever de et usynlig, men uknuselig støttenettverk.",
-      "p2": "Mer enn en danseklasse, er prosjektet et innbydende knutepunkt. Vi bruker kroppsbevissthet som et verktøy for å redde fysisk og emosjonell autonomi, med respekt for hvert enkelt kropps grenser og historie.",
-      "p3": "Ved å tilby et rom der personlig pleie er en prioritet, myndiggjør vi disse kvinnene til å bli multipliserende agenter for velvære i sine familier og lokalsamfunn."
+      "p1": "Dance2Dance Kvinne ble til av behovet for å skape et eksklusivt og trygt fristed for kvinner. Vi lever i en verden som stadig krever innsats, produktivitet og kontroll. Her legges det sosiale og kulturelle presset igjen utenfor. Målet er ikke perfekt bevegelse, men opplevelsen av å være i bevegelse og bygge fellesskap.",
+      "pullQuote": "Kanskje du har brukt hele livet på å prøve å få kroppen til å adlyde. Hva om tiden er inne for å lytte til den og feire med den?",
+      "p2": "Prosjektet forener essensen av to grunnleggende tilnærminger: den sensitive lyttingen i Biostretch og den frigjørende feiringen i Be The Dance. I våre møter – som vår nylige \"Good morning dance\" – bruker vi kroppsbevissthet og selvinnsikt for å gi slipp på det vi ikke lenger trenger å bære, slik at hver deltaker kan gjenopprette sin fysiske og følelsesmessige autonomi, uten rette eller gale trinn.",
+      "p3": "For våre partnere og investorer er dette et direkte engasjement for samfunnets grunnmur. Når kvinner finner et rom hvor omsorg og personlig velvære prioriteres, styrker de ikke bare sin egen selvtillit; de blir også multiplikatorer for trivsel, som utstråler denne transformasjonen til sine familier og hele lokalsamfunnet på Tøyen og Grønland."
     },
     "program_section": {
-      "kicker": "Programstruktur",
-      "intro": "Vår tilnærming integrerer somatisk praksis og sosialt samspill i tre grunnleggende trinn.",
+      "kicker": "Vår Metode",
+      "intro": "Vi fletter sammen somatisk undervisning og dans som verktøy for fornyet kontakt og felleskap.",
       "items": [
         {
           "number": "01",
-          "title": "Sensorisk Gjentilkobling",
+          "title": "Lytt Før Du Handler (Biostretch)",
           "list": [
             {
-              "label": "Bevisst Pusting",
-              "desc": "Praktiske øvelser for selvregulering."
+              "label": "Dekompresjon",
+              "desc": "Skånsomme praksiser for å frigjøre oppsamlede fysiske og emosjonelle spenninger."
             },
             {
-              "label": "Skånsom Mobilitet",
-              "desc": "Frigjøring av akkumulerte spenninger."
+              "label": "Kroppslytting",
+              "desc": "Å erstatte innsats med bevegelsens iboende intelligens for dypere selvinnsikt."
             }
           ]
         },
         {
           "number": "02",
-          "title": "Uttrykk og Bevegelse",
+          "title": "Dansen i Deg (Be The Dance)",
           "list": [
             {
-              "label": "Fri Dans",
-              "desc": "Utforsking av personlig rytme uten stiv koreografi."
+              "label": "Fri Bevegelse",
+              "desc": "Å oppdage at dans ikke er et privilegium, men et kunstnerisk uttrykk som ikke krever perfeksjon."
             },
             {
-              "label": "Gruppedynamikk",
-              "desc": "Sirkelbevegelser for å styrke empati."
+              "label": "Feiring",
+              "desc": "Øyeblikk av ren glede, vitalitet og forbindelse gjennom musikk, som vår Good morning dance."
             }
           ]
         },
         {
           "number": "03",
-          "title": "Fellesskap og Deling",
+          "title": "Møteplass",
           "list": [
             {
-              "label": "Dialogsirkel",
-              "desc": "Et øyeblikk for å utveksle erfaringer på slutten av timene."
+              "label": "Støttenettverk",
+              "desc": "Å samles bringer kvinner fra ulike kulturer nærmere og skaper dype bånd."
             },
             {
-              "label": "Støttenettverk",
-              "desc": "Bygging av bånd som strekker seg utover studioet."
+              "label": "Trygt Rom",
+              "desc": "Et fordomsfritt miljø hvor varme og selvtillit er fundamentet."
             }
           ]
         }
       ]
     },
     "impact_section": {
-      "kicker": "Effektpilarer",
-      "intro": "På linje med målene for samfunnsutvikling, strukturerte vi fordelene med dette prosjektet for å generere varige resultater.",
+      "kicker": "Innvirkningspilarer",
+      "intro": "For investorer og sponsorer leverer Kvinne-prosjektet dype og målbare resultater for samfunnsutviklingen.",
       "items": [
         {
-          "title": "Fysisk og Mentalt Velvære",
-          "desc": "Reduksjon av stress- og angstsymptomer gjennom kontinuerlig praksis, fremmer et sunnere forhold til egen kropp."
+          "title": "Mental Helse og Autonomi",
+          "desc": "Somatisk praksis reduserer kronisk stress, og bygger et fundament av selvtillit som reflekteres i daglig mestringsevne."
         },
         {
-          "title": "Myndiggjøring og Autonomi",
-          "desc": "Redningen av fysisk selvtillit oversettes til større selvsikkerhet i sosiale relasjoner og beslutningstaking."
+          "title": "Inkludering og Kulturell Integrering",
+          "desc": "Dans overskrider språk. Bevegelse og musikk blir det felles språket som forener kvinner med ulike nasjonaliteter."
         },
         {
-          "title": "Inkludering og Møteplass",
-          "desc": "Opprettelse av et trygt rom uten dom, der kvinner med ulik kulturell bakgrunn knytter bånd."
+          "title": "Fellesskapets Multiplikatoreffekt",
+          "desc": "Kvinner er kjernen i familien. Ved å investere i en kvinnes personlige velvære, sprer den sosiale effekten seg umiddelbart til barna og omgivelsene."
         }
       ]
     },
-    "mentorKicker": "Kunstnerisk Ledelse og Mentorskap",
-    "mentorText": "Som grunnlegger av Dance2Dance bringer Safia med seg erfaring ikke bare som danser, men som somatisk tilrettelegger som spesialiserer seg på kvinnelige gjentilkoblingsprosesser. Hennes mentorskap sikrer at rommet opprettholdes med dyp følsomhet og teknisk strenghet.",
-    "closing": "Å transformere en kvinnes virkelighet\ner å transformere kjernen i et helt lokalsamfunn.",
+    "mentorKicker": "Kunstnerisk Ledelse",
+    "mentorText": "Safia forener tiår med forskning innen dans og meditasjon for å lede dette rommet. Mer enn teknikk tilbyr hun et trygt miljø der hver kvinne får veiledning til å finne sin egen bevegelse og gjenvinne gleden ved å bo i sin egen kropp.",
+    "closing": "Å transformere en kvinnes virkelighet\ner å transformere kjernen i et helt samfunn.",
     "cta": {
-      "title": "Bli en partner for kvinneprosjektet",
-      "text": "Støtt Dance2Dance Kvinne og knytt merkevaren din til myndiggjøring og velvære for kvinner i samfunnet vårt.",
+      "title": "Bli en Impact Partner",
+      "text": "Støtt Dance2Dance Kvinne og knytt merkevaren din til kvinners egenmakt og integrativ helse i Oslo.",
       "button": "Planlegg Ledermøte"
     }
   }

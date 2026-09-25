@@ -1631,61 +1631,61 @@
     }
   },
   "btd_kvinne": {
-    "kicker": "Projeto de Impacto Feminino",
+    "kicker": "Saúde e Integração Feminina",
     "seoTitle": "Dance2Dance Kvinne | Impacto Social para Mulheres",
-    "seoDesc": "Um projeto voltado para o bem-estar, empoderamento e conexão social de mulheres em Tøyen e Grønland.",
+    "seoDesc": "Um projeto exclusivo para mulheres em Tøyen e Grønland, unindo a escuta do corpo do Biostretch e a alegria do Be The Dance.",
     "title": "Dance2Dance\nKvinne.",
-    "subtitle": "Ponto de encontro social, bem-estar e autoconfiança em Tøyen e Grønland.",
-    "hook": "A força coletiva feminina encontra no movimento um espaço seguro de cura e reconstrução.",
+    "subtitle": "Ponto de encontro social e bem-estar em Tøyen e Grønland, unindo a escuta do corpo e a alegria do movimento.",
+    "hook": "Antes de exigir do corpo, aprendemos a ouvi-lo. E juntas, descobrimos a dança que já existe em nós.",
     "body": {
-      "p1": "O Dance2Dance Kvinne nasceu da necessidade de criar um refúgio exclusivo para mulheres. Um ambiente onde a pressão social e cultural fica do lado de fora, permitindo que cada participante se reconecte consigo mesma em segurança.",
-      "pullQuote": "Quando mulheres se movem juntas, elas tecem uma rede de sustentação invisível, porém inquebrável.",
-      "p2": "Mais do que uma aula de dança, o projeto é um polo de acolhimento. Trabalhamos a consciência corporal como ferramenta para resgatar a autonomia física e emocional, respeitando os limites e a história de cada corpo.",
-      "p3": "Ao fornecer um espaço onde o cuidado pessoal é prioridade, empoderamos essas mulheres a se tornarem agentes multiplicadores de bem-estar em suas famílias e comunidades."
+      "p1": "O Dance2Dance Kvinne nasceu da necessidade de criar um refúgio exclusivo e seguro para mulheres. Vivemos em um mundo que exige esforço constante, produtividade e controle. Aqui, a pressão social e cultural fica do lado de fora. O objetivo não é a perfeição do movimento, mas a experiência de estar em movimento e em comunidade.",
+      "pullQuote": "Talvez você tenha passado a vida tentando fazer o corpo obedecer. E se agora fosse o momento de escutá-lo e celebrar com ele?",
+      "p2": "O projeto une a essência de duas abordagens fundamentais: a escuta sensível do Biostretch e a celebração libertadora do Be The Dance. Em nossos encontros — como a nossa recém-lançada \"Good morning dance\" —, usamos a consciência corporal para soltar o que já não precisa ser sustentado, permitindo que cada participante recupere sua autonomia física e emocional, sem passos certos ou errados.",
+      "p3": "Para nossos parceiros e investidores, este é um compromisso direto com a base da sociedade. Quando as mulheres encontram um espaço onde o cuidado pessoal é prioridade, elas não apenas se fortalecem; elas se tornam agentes multiplicadoras de bem-estar, irradiando essa transformação para suas famílias e para toda a comunidade de Tøyen e Grønland."
     },
     "program_section": {
-      "kicker": "Estrutura do Programa",
-      "intro": "Nossa abordagem integra práticas somáticas e convivência social em três etapas fundamentais.",
+      "kicker": "A Metodologia",
+      "intro": "Entrelaçamos a educação somática e a dança como ferramentas de reconexão e encontro.",
       "items": [
         {
           "number": "01",
-          "title": "Reconexão Sensorial",
+          "title": "Ouvir antes de agir (Biostretch)",
           "list": [
             {
-              "label": "Respiração Consciente",
-              "desc": "Exercícios práticos para autorregulação."
+              "label": "Descompressão",
+              "desc": "Práticas gentis para soltar tensões físicas e emocionais acumuladas."
             },
             {
-              "label": "Mobilidade Suave",
-              "desc": "Desbloqueio de tensões acumuladas."
+              "label": "Escuta do Corpo",
+              "desc": "Substituir o esforço pela inteligência inerente do movimento."
             }
           ]
         },
         {
           "number": "02",
-          "title": "Expressão e Movimento",
+          "title": "A Dança que já existe (Be The Dance)",
           "list": [
             {
-              "label": "Dança Livre",
-              "desc": "Exploração do ritmo pessoal sem coreografias rígidas."
+              "label": "Movimento Livre",
+              "desc": "Descobrir que a dança não é privilégio, é expressão e não exige perfeição."
             },
             {
-              "label": "Dinâmicas de Grupo",
-              "desc": "Movimentos em roda para fortalecer a empatia."
+              "label": "Celebração",
+              "desc": "Momentos de pura alegria, vitalidade e conexão através da música, como a nossa Good morning dance."
             }
           ]
         },
         {
           "number": "03",
-          "title": "Comunidade e Partilha",
+          "title": "Møteplass (Ponto de Encontro)",
           "list": [
             {
-              "label": "Círculo de Diálogo",
-              "desc": "Momento de troca de experiências ao fim das aulas."
+              "label": "Rede de Sustentação",
+              "desc": "A convivência aproxima mulheres de diferentes culturas e cria laços profundos."
             },
             {
-              "label": "Rede de Apoio",
-              "desc": "Construção de vínculos que se estendem além do estúdio."
+              "label": "Espaço Seguro",
+              "desc": "Um ambiente sem julgamentos, onde o acolhimento e a confiança são o alicerce."
             }
           ]
         }
@@ -1693,28 +1693,28 @@
     },
     "impact_section": {
       "kicker": "Pilares de Impacto",
-      "intro": "Alinhados aos objetivos de desenvolvimento comunitário, estruturamos os benefícios deste projeto para gerar resultados duradouros.",
+      "intro": "Para investidores e patrocinadores, o projeto Kvinne entrega resultados profundos e mensuráveis no desenvolvimento comunitário.",
       "items": [
         {
-          "title": "Bem-estar Físico e Mental",
-          "desc": "Redução de sintomas de estresse e ansiedade através da prática continuada, promovendo uma relação mais saudável com o próprio corpo."
+          "title": "Saúde Mental e Autonomia Físico-emocional",
+          "desc": "A prática somática reduz o estresse crônico, construindo uma base de autoconfiança que se reflete na resiliência do dia a dia."
         },
         {
-          "title": "Empoderamento e Autonomia",
-          "desc": "O resgate da confiança física traduz-se em uma maior assertividade nas relações sociais e na tomada de decisões."
+          "title": "Inclusão e Integração Cultural",
+          "desc": "A dança transcende idiomas. O movimento e a música se tornam a linguagem comum que une mulheres de diferentes nacionalidades."
         },
         {
-          "title": "Inclusão e Møteplass (Ponto de Encontro)",
-          "desc": "Criação de um espaço seguro (safe space) livre de julgamentos, onde mulheres de diferentes origens culturais se conectam."
+          "title": "Efeito Multiplicador Comunitário",
+          "desc": "Mulheres são o núcleo familiar. Ao investir no bem-estar de uma mulher, o impacto social irradia imediatamente para seus filhos e seu entorno."
         }
       ]
     },
-    "mentorKicker": "Direção Artística e Mentoria",
-    "mentorText": "Como fundadora do Dance2Dance, Safia traz sua experiência não apenas como bailarina, mas como facilitadora somática especializada em processos de reconexão feminina. Sua mentoria garante que o espaço seja mantido com profunda sensibilidade e rigor técnico.",
+    "mentorKicker": "Direção Artística",
+    "mentorText": "Safia une suas décadas de pesquisa em dança e meditação para conduzir esse espaço. Mais do que técnica, ela oferece um ambiente seguro onde cada mulher é guiada a descobrir seu próprio movimento e recuperar o prazer de habitar o próprio corpo.",
     "closing": "Transformar a realidade de uma mulher\né transformar o núcleo de uma comunidade inteira.",
     "cta": {
-      "title": "Seja um parceiro do projeto feminino",
-      "text": "Apoie o Dance2Dance Kvinne e associe sua marca ao empoderamento e bem-estar de mulheres em nossa comunidade.",
+      "title": "Seja um parceiro de impacto",
+      "text": "Apoie o Dance2Dance Kvinne e associe sua marca ao empoderamento feminino e à saúde integrativa em Oslo.",
       "button": "Agendar Reunião Executiva"
     }
   }
