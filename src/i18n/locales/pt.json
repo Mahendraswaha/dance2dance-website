@@ -979,7 +979,7 @@
     "comingSoon": "Em breve",
     "tbd": "Horários a definir",
     "enrolled": "Inscrito",
-    "waitlist": "Na Espera",
+    "waitlist": "Lista de Espera",
     "joinWaitlist": "Entrar na Espera",
     "subscribe": "Inscreva-se",
     "cancel": "Cancelar Inscrição",
@@ -995,7 +995,8 @@
     "confirmCancel": "Tem certeza que deseja cancelar sua inscrição/espera para este evento?",
     "cancelError": "Erro ao cancelar: ",
     "instructor": "Instrutor",
-    "ongoing": "Em Andamento"
+    "ongoing": "Em Andamento",
+    "fullSpots": "Vagas esgotadas"
   },
   "adminPage": {
     "adminTitle": "Painel Administrativo",

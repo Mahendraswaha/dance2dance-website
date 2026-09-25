@@ -995,7 +995,8 @@
     "confirmCancel": "Er du sikker på at du vil avbryte påmeldingen/ventelisten for dette arrangementet?",
     "cancelError": "Feil ved avbestilling: ",
     "instructor": "Instruktør",
-    "ongoing": "Pågående"
+    "ongoing": "Pågående",
+    "fullSpots": "Fullbooket"
   },
   "adminPage": {
     "adminTitle": "Administrasjonspanel",

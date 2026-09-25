@@ -995,7 +995,8 @@
     "confirmCancel": "Are you sure you want to cancel your enrollment/waitlist for this event?",
     "cancelError": "Error canceling: ",
     "instructor": "Instructor",
-    "ongoing": "Ongoing"
+    "ongoing": "Ongoing",
+    "fullSpots": "Fully booked"
   },
   "adminPage": {
     "adminTitle": "Administrative Panel",
