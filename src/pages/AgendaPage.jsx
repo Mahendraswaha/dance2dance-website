@@ -212,8 +212,8 @@ export default function AgendaPage() {
                 type: 'waitlist_promoted',
                 userEmail: promotedEnrollmentData.userEmail,
                 userName: promotedEnrollmentData.userName,
-                userLang: currentLang, // Might send in the canceler's lang, but it's fine for now
-                workshopName: fullTitle,
+                userLang: promotedEnrollmentData.userLang || currentLang,
+                  workshopName: fullTitle,
                   workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
@@ -303,6 +303,7 @@ export default function AgendaPage() {
 
         transaction.set(newEnrollmentRef, {
           eventId: eventId,
+            userLang: currentLang,
           userId: currentUser.uid || 'unknown',
           userName: profileData.fullName || profileData.nome || currentUser.email || 'unknown',
           userEmail: currentUser.email || 'unknown',

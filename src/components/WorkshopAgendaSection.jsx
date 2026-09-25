@@ -172,6 +172,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
 
         transaction.set(newEnrollmentRef, {
           eventId: eventId,
+            userLang: currentLang,
           userId: currentUser.uid || 'unknown',
           userName: profileData.fullName || profileData.nome || currentUser.email || 'unknown',
           userEmail: currentUser.email || 'unknown',
