@@ -190,9 +190,42 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
           scholarshipNeighborhood: isScholarship ? (eligibleNeighborhood || userNeighborhood) : '',
           createdAt: new Date().toISOString()
         });
-      });
+                });
 
-      setUserEnrollments(prev => ({ ...prev, [eventId]: { status: finalStatus, id: newEnrollmentRef.id } }));
+        if (finalStatus === 'enrolled') {
+          try {
+            const ev = events.find(e => e.id === eventId);
+            const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
+            const evTitle = localizedEv.title || '';
+            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+            
+            let dateStr = '';
+            let timeStr = '';
+            if (ev?.startDate) dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(currentLang === 'no' ? 'no-NO' : currentLang === 'en' ? 'en-US' : 'pt-BR');
+            if (ev?.startTime) timeStr = ev.startTime;
+
+            await fetch('/api/agenda-notify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                type: 'enrolled',
+                userEmail: currentUser.email,
+                userName: profileData.fullName || profileData.nome || currentUser.email,
+                userLang: currentLang,
+                workshopName: evTitle,
+                workshopDate: dateStr,
+                workshopTime: timeStr,
+                locationName: locationStr,
+                locationMapLink: locationMap
+              })
+            });
+          } catch(emailErr) {
+            console.error("Failed to send enrollment email", emailErr);
+          }
+        }
+
+        setUserEnrollments(prev => ({ ...prev, [eventId]: { status: finalStatus, id: newEnrollmentRef.id } }));
       setEvents(prev => prev.map(ev => {
         if (ev.id === eventId) {
           if (isFull) return { ...ev, waitlistCount: (ev.waitlistCount || 0) + 1 };
@@ -249,9 +282,42 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         }
 
         transaction.delete(enrollmentRef);
-      });
+                });
 
-      const newUserEnrollments = { ...userEnrollments };
+        if (promotedEnrollmentData) {
+          try {
+            const ev = events.find(e => e.id === eventId);
+            const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
+            const evTitle = localizedEv.title || '';
+            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+            
+            let dateStr = '';
+            let timeStr = '';
+            if (ev?.startDate) dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(currentLang === 'no' ? 'no-NO' : currentLang === 'en' ? 'en-US' : 'pt-BR');
+            if (ev?.startTime) timeStr = ev.startTime;
+
+            await fetch('/api/agenda-notify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                type: 'waitlist_promoted',
+                userEmail: promotedEnrollmentData.userEmail,
+                userName: promotedEnrollmentData.userName,
+                userLang: currentLang,
+                workshopName: evTitle,
+                workshopDate: dateStr,
+                workshopTime: timeStr,
+                locationName: locationStr,
+                locationMapLink: locationMap
+              })
+            });
+          } catch(emailErr) {
+            console.error("Failed to send waitlist promotion email", emailErr);
+          }
+        }
+
+        const newUserEnrollments = { ...userEnrollments };
       delete newUserEnrollments[eventId];
       setUserEnrollments(newUserEnrollments);
       
