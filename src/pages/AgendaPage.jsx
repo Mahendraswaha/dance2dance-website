@@ -191,9 +191,10 @@ export default function AgendaPage() {
         if (promotedEnrollmentData) {
           try {
             const ev = events.find(e => e.id === eventId);
-            const { title: evTitle } = ev ? getLocalizedEvent(ev, currentLang) : { title: '' };
-            const locationStr = ev?.location || 'Dance2Dance Studio';
-            const locationMap = ev?.mapLink || 'https://maps.google.com';
+            const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
+            const evTitle = localizedEv.title || '';
+            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationMap = ev?.locationUrl || 'https://maps.google.com';
             
             let dateStr = '';
             let timeStr = '';
@@ -320,9 +321,10 @@ export default function AgendaPage() {
         if (finalStatus === 'enrolled') {
           try {
             const ev = events.find(e => e.id === eventId);
-            const { title: evTitle } = ev ? getLocalizedEvent(ev, currentLang) : { title: '' };
-            const locationStr = ev?.location || 'Dance2Dance Studio';
-            const locationMap = ev?.mapLink || 'https://maps.google.com';
+            const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
+            const evTitle = localizedEv.title || '';
+            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationMap = ev?.locationUrl || 'https://maps.google.com';
             
             let dateStr = '';
             let timeStr = '';

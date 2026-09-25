@@ -79,7 +79,7 @@ export default async function handler(req, res) {
         .content strong { color: #FAF8F5; }
         .greeting { font-size: 18px; color: #FAF8F5; margin-bottom: 24px; font-weight: 600; }
         .divider { height: 1px; background: #1E1E24; margin: 32px 0; }
-        .location-box { background: #0A0A0E; border-left: 3px solid #C9A84C; padding: 16px; border-radius: 4px; margin: 24px 0; }
+        
         .footer { padding: 24px 32px; background: #0D0D12; border-top: 1px solid #1E1E24; font-size: 12px; color: #71717A; text-align: center; line-height: 1.7; }
         .footer a { color: #C9A84C; text-decoration: none; }
       </style>
@@ -112,9 +112,10 @@ export default async function handler(req, res) {
           <p>If you are unable to attend, please cancel your registration directly on our scheduling page as early as possible. This moves the waitlist automatically and opens the space for the next participant.</p>
           <p>Please arrive 10 to 15 minutes early to settle in.</p>
           <p>See you at:</p>
-          <div class="location-box">
-            📍 <strong>${locationName}</strong><br>
-            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          <div style="margin-top: 15px;">
+            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+              📍 ${locationName}
+            </a>
           </div>
           <p><strong>The Dance2Dance Team</strong></p>
         `;
@@ -128,9 +129,10 @@ export default async function handler(req, res) {
           <p>Hvis du ikke kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen vår så tidlig som mulig. Dette flytter ventelisten automatisk og frigjør plassen for neste deltaker.</p>
           <p>Vennligst møt opp 10-15 minutter før for å finne deg til rette.</p>
           <p>Vi ses på:</p>
-          <div class="location-box">
-            📍 <strong>${locationName}</strong><br>
-            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          <div style="margin-top: 15px;">
+            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+              📍 ${locationName}
+            </a>
           </div>
           <p><strong>Dance2Dance-teamet</strong></p>
         `;
@@ -145,9 +147,10 @@ export default async function handler(req, res) {
           <p>Caso não possa comparecer, cancele sua inscrição diretamente na agenda do nosso site com a maior antecedência possível. Isso faz a lista girar automaticamente e libera o espaço para o próximo participante.</p>
           <p>Por favor, chegue com 10 a 15 minutos de antecedência para se acomodar com calma.</p>
           <p>Nos vemos em:</p>
-          <div class="location-box">
-            📍 <strong>${locationName}</strong><br>
-            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          <div style="margin-top: 15px;">
+            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+              📍 ${locationName}
+            </a>
           </div>
           <p><strong>Equipe Dance2Dance</strong></p>
         `;
@@ -162,9 +165,10 @@ export default async function handler(req, res) {
           <p>If your plans have changed and you can no longer attend, please cancel your registration directly on the scheduling page as soon as possible. This ensures the next participant in line gets a chance to join.</p>
           <p>Please arrive 10 to 15 minutes early.</p>
           <p>See you at:</p>
-          <div class="location-box">
-            📍 <strong>${locationName}</strong><br>
-            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          <div style="margin-top: 15px;">
+            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+              📍 ${locationName}
+            </a>
           </div>
           <p><strong>The Dance2Dance Team</strong></p>
         `;
@@ -177,9 +181,10 @@ export default async function handler(req, res) {
           <p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p>
           <p>Vennligst møt opp 10-15 minutter før start.</p>
           <p>Vi ses på:</p>
-          <div class="location-box">
-            📍 <strong>${locationName}</strong><br>
-            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          <div style="margin-top: 15px;">
+            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+              📍 ${locationName}
+            </a>
           </div>
           <p><strong>Dance2Dance-teamet</strong></p>
         `;
@@ -193,9 +198,10 @@ export default async function handler(req, res) {
           <p>Se os seus planos mudaram e você não puder mais participar, pedimos que cancele sua inscrição diretamente na nossa agenda o quanto antes. Assim, o próximo participante da lista também terá a chance de ser chamado.</p>
           <p>Por favor, chegue com 10 a 15 minutos de antecedência.</p>
           <p>Nos vemos em:</p>
-          <div class="location-box">
-            📍 <strong>${locationName}</strong><br>
-            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          <div style="margin-top: 15px;">
+            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+              📍 ${locationName}
+            </a>
           </div>
           <p><strong>Equipe Dance2Dance</strong></p>
         `;
