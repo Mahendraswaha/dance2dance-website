@@ -94,7 +94,7 @@ export default async function handler(req, res) {
         </div>
         <div class="footer">
           <strong>Dance2Dance</strong><br>
-          <a href="mailto:contact@dance2dance.no">contact@dance2dance.no</a> ? <a href="https://www.dance2dance.no" target="_blank">www.dance2dance.no</a>
+          <a href="mailto:contact@dance2dance.no">contact@dance2dance.no</a> | <a href="https://www.dance2dance.no" target="_blank">www.dance2dance.no</a>
         </div>
       </div>
     </body>
@@ -113,7 +113,7 @@ export default async function handler(req, res) {
           <p>Please arrive 10 to 15 minutes early to settle in.</p>
           <p>See you at:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -130,7 +130,7 @@ export default async function handler(req, res) {
           <p>Vennligst møt opp 10-15 minutter før for å finne deg til rette.</p>
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -148,7 +148,7 @@ export default async function handler(req, res) {
           <p>Por favor, chegue com 10 a 15 minutos de antecedência para se acomodar com calma.</p>
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -166,7 +166,7 @@ export default async function handler(req, res) {
           <p>Please arrive 10 to 15 minutes early.</p>
           <p>See you at:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -182,7 +182,7 @@ export default async function handler(req, res) {
           <p>Vennligst møt opp 10-15 minutter før start.</p>
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -199,7 +199,7 @@ export default async function handler(req, res) {
           <p>Por favor, chegue com 10 a 15 minutos de antecedência.</p>
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
