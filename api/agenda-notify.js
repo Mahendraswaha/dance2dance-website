@@ -107,16 +107,17 @@ export default async function handler(req, res) {
         subject = `Registration confirmed: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Hello ${userName}.</div>
-          <p>We confirm your enrollment in the retreat:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
+          <p>We have confirmed your registration for the workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
           <p>Dance2Dance operates on a solidarity model. We offer full scholarships to local residents and keep classes small to ensure excellence. As a result, our spots are strictly limited and waitlists are common.</p>
           <p>An absence without cancellation takes the opportunity to participate away from someone else.</p>
           <p>If you are unable to attend, please cancel your registration directly on our scheduling page as early as possible. This moves the waitlist automatically and opens the space for the next participant.</p>
           <p>Please arrive 10 to 15 minutes early to settle in.</p>
           <p>See you at:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
-            </a>
+            <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
+              <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+                ${locationName}
+              </a>
           </div>
           <p><strong>The Dance2Dance Team</strong></p>
         `;
@@ -124,16 +125,17 @@ export default async function handler(req, res) {
         subject = `Påmelding bekreftet: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Hei ${userName}.</div>
-          <p>Din plass på <strong>${workshopName}</strong> den ${workshopDate} kl. ${workshopTime} er bekreftet.</p>
+          <p>Vi har bekreftet din registrering for workshopen:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dato: ${workshopDate}</p><p style="margin-top: 0;">tid: ${workshopTime}</p>
           <p>Dance2Dance driver etter en solidaritetsmodell. Vi tilbyr fulle stipender til lokale innbyggere og holder klassene små for å sikre høy kvalitet. Derfor er plassene våre strengt begrensede og ventelister er vanlige.</p>
           <p>Å ikke møte opp uten å avbestille tar fra noen andre muligheten til å delta.</p>
           <p>Hvis du ikke kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen vår så tidlig som mulig. Dette flytter ventelisten automatisk og frigjør plassen for neste deltaker.</p>
           <p>Vennligst møt opp 10-15 minutter før for å finne deg til rette.</p>
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
-            </a>
+            <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
+              <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+                ${locationName}
+              </a>
           </div>
           <p><strong>Dance2Dance-teamet</strong></p>
         `;
@@ -142,16 +144,17 @@ export default async function handler(req, res) {
         subject = `Inscrição confirmada: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Olá, ${userName}.</div>
-          <p>Confirmamos sua inscri&ccedil;&atilde;o no retiro:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
+          <p>Confirmamos sua inscri&ccedil;&atilde;o para o workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
           <p>O Dance2Dance opera sob um modelo de solidariedade. Oferecemos bolsas integrais para moradores locais e mantemos turmas reduzidas para garantir a excelência do encontro. Por isso, nossas vagas são estritamente limitadas e a lista de espera é constante.</p>
           <p>A ausência sem cancelamento tira de outra pessoa a oportunidade de participar.</p>
           <p>Caso não possa comparecer, cancele sua inscrição diretamente na agenda do nosso site com a maior antecedência possível. Isso faz a lista girar automaticamente e libera o espaço para o próximo participante.</p>
           <p>Por favor, chegue com 10 a 15 minutos de antecedência para se acomodar com calma.</p>
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
-            </a>
+            <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
+              <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+                ${locationName}
+              </a>
           </div>
           <p><strong>Equipe Dance2Dance</strong></p>
         `;
@@ -161,13 +164,14 @@ export default async function handler(req, res) {
           subject = `Waitlist Confirmation: ${workshopName}`;
           htmlContent = `
             <div class="greeting">Hello ${userName}.</div>
-            <p>You have successfully joined the waitlist for the retreat:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
+            <p>You have successfully joined the waitlist for the workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
             <p>Since our spots are limited and based on a solidarity model, the waitlist is constantly moving.</p>
             <p>As soon as a spot opens up for you, we will notify you immediately by email!</p>
-            <p>See you at:</p>
+            <p>Location:</p>
             <div style="margin-top: 15px;">
+              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
               <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-                <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
+                ${locationName}
               </a>
             </div>
             <div class="divider"></div>
@@ -177,13 +181,14 @@ export default async function handler(req, res) {
           subject = `Ventelistebekreftelse: ${workshopName}`;
           htmlContent = `
             <div class="greeting">Hei ${userName}.</div>
-            <p>Du st&aring;r n&aring; p&aring; ventelisten for retretten:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dato: ${workshopDate}</p><p style="margin-top: 0;">tid: ${workshopTime}</p>
+            <p>Du st&aring;r n&aring; p&aring; ventelisten for workshopen:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dato: ${workshopDate}</p><p style="margin-top: 0;">tid: ${workshopTime}</p>
             <p>Siden plassene v&aring;re er begrensede og basert p&aring; en solidaritetsmodell, er ventelisten i stadig bevegelse.</p>
             <p>S&aring; snart en plass &aring;pner seg for deg, vil vi gi deg beskjed umiddelbart via e-post!</p>
-            <p>Vi ses p&aring;:</p>
+            <p>Sted:</p>
             <div style="margin-top: 15px;">
+              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
               <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-                <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
+                ${locationName}
               </a>
             </div>
             <div class="divider"></div>
@@ -193,13 +198,14 @@ export default async function handler(req, res) {
           subject = `Confirmação de Lista de Espera: ${workshopName}`;
           htmlContent = `
             <div class="greeting">Ol&aacute;, ${userName}.</div>
-            <p>Voc&ecirc; entrou na lista de espera para o retiro:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
+            <p>Voc&ecirc; entrou na lista de espera para o workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
             <p>Como nossas vagas s&atilde;o limitadas e baseadas em um modelo de solidariedade, a lista de espera &eacute; constante.</p>
             <p>Assim que houver uma desist&ecirc;ncia e uma vaga for liberada para voc&ecirc;, n&oacute;s te avisaremos imediatamente por este e-mail!</p>
-            <p>Nos vemos em:</p>
+            <p>Local:</p>
             <div style="margin-top: 15px;">
+              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
               <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-                <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
+                ${locationName}
               </a>
             </div>
             <div class="divider"></div>
@@ -211,15 +217,16 @@ export default async function handler(req, res) {
         subject = `A spot has opened up for you: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Hello ${userName}.</div>
-          <p>The waitlist has moved and your spot for the retreat:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
+          <p>The waitlist has moved and your spot for the workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
           <p>Since our spots are limited and based on a solidarity model, we rely on everyone's support to keep access open.</p>
           <p>If your plans have changed and you can no longer attend, please cancel your registration directly on the scheduling page as soon as possible. This ensures the next participant in line gets a chance to join.</p>
           <p>Please arrive 10 to 15 minutes early.</p>
           <p>See you at:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
-            </a>
+            <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
+              <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+                ${locationName}
+              </a>
           </div>
           <p><strong>The Dance2Dance Team</strong></p>
         `;
@@ -227,15 +234,16 @@ export default async function handler(req, res) {
         subject = `En plass har blitt ledig for deg: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Hei ${userName}.</div>
-          <p>Ventelisten har flyttet seg, og din plass på <strong>${workshopName}</strong> den ${workshopDate} kl. ${workshopTime} er nå bekreftet.</p>
+          <p>Ventelisten har flyttet seg, og din plass for workshopen:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dato: ${workshopDate}</p><p style="margin-top: 0;">tid: ${workshopTime}</p>
           <p>Ettersom plassene våre er begrensede og bygger på en solidaritetsmodell, er vi avhengige av alles støtte for å holde tilgangen åpen.</p>
           <p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p>
           <p>Vennligst møt opp 10-15 minutter før start.</p>
-          <p>Vi ses på:</p>
+          <p>Sted:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
-            </a>
+            <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
+              <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+                ${locationName}
+              </a>
           </div>
           <p><strong>Dance2Dance-teamet</strong></p>
         `;
@@ -244,15 +252,16 @@ export default async function handler(req, res) {
         subject = `Uma vaga foi liberada para você: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Olá, ${userName}.</div>
-          <p>A lista de espera girou e sua vaga para o retiro:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
+          <p>A lista de espera girou e sua vaga para o workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
           <p>Como nossas vagas são limitadas e baseadas em um modelo de solidariedade, contamos com o apoio de todos para manter o acesso aberto.</p>
           <p>Se os seus planos mudaram e você não puder mais participar, pedimos que cancele sua inscrição diretamente na nossa agenda o quanto antes. Assim, o próximo participante da lista também terá a chance de ser chamado.</p>
           <p>Por favor, chegue com 10 a 15 minutos de antecedência.</p>
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
-            </a>
+            <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span>
+              <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+                ${locationName}
+              </a>
           </div>
           <p><strong>Equipe Dance2Dance</strong></p>
         `;
