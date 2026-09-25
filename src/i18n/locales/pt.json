@@ -1633,15 +1633,15 @@
   "btd_kvinne": {
     "kicker": "Saúde e Integração Feminina",
     "seoTitle": "Dance2Dance Kvinne | Impacto Social para Mulheres",
-    "seoDesc": "Um projeto exclusivo para mulheres em Tøyen e Grønland, unindo a escuta do corpo do Biostretch e a alegria do Be The Dance.",
+    "seoDesc": "Um projeto para mulheres em Tøyen e Grønland, integrando a escuta do corpo do Biostretch e a alegria do Be The Dance.",
     "title": "Dance2Dance\nKvinne.",
-    "subtitle": "Ponto de encontro social e bem-estar em Tøyen e Grønland, unindo a escuta do corpo e a alegria do movimento.",
-    "hook": "Antes de exigir do corpo, aprendemos a ouvi-lo. E juntas, descobrimos a dança que já existe em nós.",
+    "subtitle": "Um espaço de encontro e bem-estar, integrando a consciência corporal e a alegria do movimento.",
+    "hook": "A escuta profunda do corpo abre espaço para uma presença mais autêntica, onde cada mulher redescobre a própria vitalidade.",
     "body": {
-      "p1": "O Dance2Dance Kvinne nasceu da necessidade de criar um refúgio exclusivo e seguro para mulheres. Vivemos em um mundo que exige esforço constante, produtividade e controle. Aqui, a pressão social e cultural fica do lado de fora. O objetivo não é a perfeição do movimento, mas a experiência de estar em movimento e em comunidade.",
-      "pullQuote": "Talvez você tenha passado a vida tentando fazer o corpo obedecer. E se agora fosse o momento de escutá-lo e celebrar com ele?",
-      "p2": "O projeto une a essência de duas abordagens fundamentais: a escuta sensível do Biostretch e a celebração libertadora do Be The Dance. Em nossos encontros — como a nossa recém-lançada \"Good morning dance\" —, usamos a consciência corporal para soltar o que já não precisa ser sustentado, permitindo que cada participante recupere sua autonomia física e emocional, sem passos certos ou errados.",
-      "p3": "Para nossos parceiros e investidores, este é um compromisso direto com a base da sociedade. Quando as mulheres encontram um espaço onde o cuidado pessoal é prioridade, elas não apenas se fortalecem; elas se tornam agentes multiplicadoras de bem-estar, irradiando essa transformação para suas famílias e para toda a comunidade de Tøyen e Grønland."
+      "p1": "O Dance2Dance Kvinne propõe um ambiente seguro onde o corpo deixa de ser um instrumento de cobrança para se tornar uma bússola de autoconhecimento. Ao acolher mulheres em um espaço livre de expectativas externas, facilitamos uma transição suave entre a agitação diária e o reencontro com a própria essência.",
+      "pullQuote": "Quando o movimento flui sem julgamentos, a autoestima floresce e conexões genuínas se formam.",
+      "p2": "O projeto integra a escuta sensível do Biostretch com a celebração libertadora do Be The Dance. Através da respiração consciente e da exploração do ritmo pessoal, cada participante acessa um estado de presença e plenitude. A prática continuada dissolve tensões acumuladas e resgata a autonomia física e emocional.",
+      "p3": "Ao priorizar o cuidado pessoal feminino, construímos alicerces sociais mais fortes. O projeto garante bolsas integrais para moradoras de Tøyen e Grønland, ao mesmo tempo em que se mantém aberto a mulheres de toda a cidade. Essa diversidade enriquece a rede de apoio mútuo, transformando as participantes em agentes multiplicadoras de saúde integrativa em suas famílias e bairros."
     },
     "program_section": {
       "kicker": "A Metodologia",
@@ -1649,43 +1649,43 @@
       "items": [
         {
           "number": "01",
-          "title": "Ouvir antes de agir (Biostretch)",
+          "title": "Biostretch",
           "list": [
             {
-              "label": "Descompressão",
+              "label": "Descompressão Somática",
               "desc": "Práticas gentis para soltar tensões físicas e emocionais acumuladas."
             },
             {
-              "label": "Escuta do Corpo",
-              "desc": "Substituir o esforço pela inteligência inerente do movimento."
+              "label": "Escuta Ativa",
+              "desc": "Substituímos a tensão pela inteligência inerente do movimento, promovendo alívio profundo."
             }
           ]
         },
         {
           "number": "02",
-          "title": "A Dança que já existe (Be The Dance)",
+          "title": "Be The Dance",
           "list": [
             {
               "label": "Movimento Livre",
-              "desc": "Descobrir que a dança não é privilégio, é expressão e não exige perfeição."
+              "desc": "O despertar da alegria através da exploração do ritmo pessoal e da expressão artística."
             },
             {
-              "label": "Celebração",
-              "desc": "Momentos de pura alegria, vitalidade e conexão através da música, como a nossa Good morning dance."
+              "label": "Presença e Vitalidade",
+              "desc": "Momentos de conexão através da música, elevando a energia e a autoconfiança."
             }
           ]
         },
         {
           "number": "03",
-          "title": "Møteplass (Ponto de Encontro)",
+          "title": "Ponto de Encontro",
           "list": [
             {
               "label": "Rede de Sustentação",
-              "desc": "A convivência aproxima mulheres de diferentes culturas e cria laços profundos."
+              "desc": "A convivência multicultural tece vínculos invisíveis e inquebráveis."
             },
             {
-              "label": "Espaço Seguro",
-              "desc": "Um ambiente sem julgamentos, onde o acolhimento e a confiança são o alicerce."
+              "label": "Pertencimento",
+              "desc": "Um ecossistema de acolhimento onde a empatia e o respeito mútuo são o alicerce."
             }
           ]
         }
@@ -1693,19 +1693,19 @@
     },
     "impact_section": {
       "kicker": "Pilares de Impacto",
-      "intro": "Para investidores e patrocinadores, o projeto Kvinne entrega resultados profundos e mensuráveis no desenvolvimento comunitário.",
+      "intro": "Nossa abordagem traduz os objetivos de transformação social em ações práticas, garantindo resultados profundos e estruturais na comunidade.",
       "items": [
         {
-          "title": "Saúde Mental e Autonomia Físico-emocional",
-          "desc": "A prática somática reduz o estresse crônico, construindo uma base de autoconfiança que se reflete na resiliência do dia a dia."
+          "title": "Saúde Integrativa e Autonomia",
+          "desc": "A integração de práticas somáticas atua diretamente na redução do estresse crônico. Este processo devolve às mulheres a propriedade sobre seus próprios corpos, refletindo-se em resiliência e clareza mental."
         },
         {
-          "title": "Inclusão e Integração Cultural",
-          "desc": "A dança transcende idiomas. O movimento e a música se tornam a linguagem comum que une mulheres de diferentes nacionalidades."
+          "title": "Coesão Social e Diversidade",
+          "desc": "A linguagem universal da dança dissolve barreiras linguísticas. Criamos um espaço de pertencimento onde mulheres de diferentes trajetórias constroem laços autênticos."
         },
         {
-          "title": "Efeito Multiplicador Comunitário",
-          "desc": "Mulheres são o núcleo familiar. Ao investir no bem-estar de uma mulher, o impacto social irradia imediatamente para seus filhos e seu entorno."
+          "title": "Efeito Multiplicador Estrutural",
+          "desc": "O bem-estar feminino é o alicerce da saúde familiar. Uma mulher fortalecida irradia essa estabilidade para seus filhos e seu entorno, gerando um ciclo sustentável de impacto."
         }
       ]
     },

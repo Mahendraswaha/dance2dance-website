@@ -263,9 +263,12 @@ export default function Dance2DanceKvinnePage() {
                 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                 className="w-full md:w-2/5 shrink-0"
               >
-                <div className="aspect-[3/4] overflow-hidden rounded-[2px]">
-                  <img src="/images/creator-be-the-dance.jpg" alt="Safia" className="w-full h-full object-cover filter grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000" />
-                </div>
+                <Link to="/safia" className="block aspect-[3/4] overflow-hidden rounded-[2px] relative group cursor-pointer">
+                    <img src="/images/creator-be-the-dance.jpg" alt="Safia" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" />
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <span className="text-white font-heading text-xs tracking-widest uppercase border border-white/40 px-6 py-2 rounded-[2px] backdrop-blur-sm">Safia CV</span>
+                    </div>
+                  </Link>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
