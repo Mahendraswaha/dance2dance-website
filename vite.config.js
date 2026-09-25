@@ -33,7 +33,7 @@ export default defineConfig({
                   const { default: handler } = await import(moduleName);
                   await handler(req, res);
                 } catch (err) {
-                  console.error(\`Erro em /api\${req.url}:\`, err);
+                  console.error(`Erro em /api${req.url}:`, err);
                   res.statusCode = 500;
                   res.setHeader('Content-Type', 'application/json');
                   res.end(JSON.stringify({ error: err.message }));
