@@ -9,7 +9,7 @@ import {
   Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid,
   Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock
 } from 'lucide-react';
-import { generateInstructorCalendarUrl, formatEventDate, getLocalizedEvent } from '../utils/eventHelpers';
+import { generateInstructorCalendarUrl, formatEventDate, getLocalizedEvent, getEventCategory, getEventRoute } from '../utils/eventHelpers';
 
 // Helper para formatar a data de nascimento e calcular a idade
 function formatBirthDateAndAge(birthDateStr, yearsOldLabel = 'anos') {
@@ -453,6 +453,41 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
 
       setEnrollments(prev => prev.map(e => e.id === enrollmentId ? { ...e, status: 'enrolled' } : e));
       if (onEventUpdated) onEventUpdated();
+
+      // Send the promotion email!
+      try {
+        const promotedStudent = enrollments.find(e => e.id === enrollmentId);
+        if (promotedStudent) {
+          const cat = getEventCategory(event);
+          const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+          const fullTitle = niceCat ? `${localizedTitle} - ${niceCat}` : localizedTitle;
+          const link = `https://www.dance2dance.no${getEventRoute(event)}`;
+          
+          let dateStr = '';
+          if (event?.startDate) dateStr = new Date(event.startDate + 'T12:00:00').toLocaleDateString(currentLang === 'no' ? 'no-NO' : currentLang === 'en' ? 'en-US' : 'pt-BR');
+
+          await fetch('/api/agenda-notify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'waitlist_promoted',
+              userEmail: promotedStudent.userEmail,
+              userName: promotedStudent.userName,
+              userLang: promotedStudent.userLang || currentLang,
+              workshopName: fullTitle,
+              workshopLink: link,
+              workshopDate: dateStr,
+              workshopTime: event.startTime || '',
+              locationName: localizedLocation || 'Dance2Dance Studio',
+              locationMapLink: event?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address)}` : 'https://maps.google.com'
+            })
+          });
+        }
+      } catch (emailErr) {
+        console.error("Failed to send manual promotion email", emailErr);
+      }
+
+
     } catch (err) {
       alert("Erro ao promover aluno: " + err.message);
     }
