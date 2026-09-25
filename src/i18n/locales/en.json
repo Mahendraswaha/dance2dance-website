@@ -241,13 +241,13 @@
       "desc": "We materialize theory into practical projects with high social impact and geographic focus.",
       "youth": {
         "title": "Be the Dance Ung",
-        "subtitle": "Lavterskel dans, mestring og inkludering",
-        "desc": "An authentic *lavterskeltilbud* (low-threshold access) for youth in Tøyen and Grønland. Led by Safia, we use dance to create a space of *tilhørighet* (belonging). The goal goes beyond inclusion: we aim to qualify these youth through *mestring* (technical mastery) and shape the next generation of dancers.",
+        "subtitle": "Low-threshold dance, mastery, and inclusion",
+        "desc": "An authentic low-threshold access space for youth in Tøyen and Grønland. Led by Safia, we use dance to create a space of belonging. The goal goes beyond inclusion: we aim to qualify these youth through technical mastery and shape the next generation of dancers.",
         "btn": "View project details"
       },
       "women": {
         "title": "Dance2Dance Kvinne",
-        "subtitle": "Sosial møteplass, velvære og selvtillit",
+        "subtitle": "Social meeting place, wellbeing, and confidence",
         "desc": "Integrating our Biostretch and Be the Dance methodologies, we offer a dedicated space for women. By uniting conscious movement and artistic expression, we promote not only preventive quality of life but also personal wellbeing, self-knowledge, and confidence, creating a vital meeting point against social isolation.",
         "btn": "View project details"
       }
@@ -1608,16 +1608,16 @@
       "intro": "Our approach translates social transformation goals into practical actions, ensuring profound and structural results in the community:",
       "items": [
         {
-          "title": "Inclusion & Access (Lavterskeltilbud)",
-          "desc": "We do not just offer free entry; we break down cultural and financial barriers. By providing 100% scholarships to local residents, we create a low-threshold space (lavterskeltilbud) where any youth from Tøyen or Grønland receives the exact same standard of excellence as an elite academy, promoting real inclusion (inkludering)."
+          "title": "Inclusion & Access",
+          "desc": "We do not just offer free entry; we break down cultural and financial barriers. By providing 100% scholarships to local residents, we create a low-threshold space where any youth from Tøyen or Grønland receives the exact same standard of excellence as an elite academy, promoting real inclusion."
         },
         {
-          "title": "Mastery & Resilience (Mestring)",
-          "desc": "Dance demands rigor and consistency. By mastering complex movements and overcoming their own physical limitations, youth build an unshakable sense of mastery (mestring). This experience of continuous mastery in the studio translates into resilience to face academic and social adversities in everyday life."
+          "title": "Mastery & Resilience",
+          "desc": "Dance demands rigor and consistency. By mastering complex movements and overcoming their own physical limitations, youth build an unshakable sense of mastery. This experience of continuous mastery in the studio translates into resilience to face academic and social adversities in everyday life."
         },
         {
-          "title": "Absolute Belonging (Tilhørighet)",
-          "desc": "In an era of digital isolation and social fragmentation, the studio becomes a physical safe haven. Youth become part of a community united by a common language of respect and art. This deep bond with the group and the space creates strong roots, pulling them away from marginalization and consolidating their belonging (tilhørighet)."
+          "title": "Absolute Belonging",
+          "desc": "In an era of digital isolation and social fragmentation, the studio becomes a physical safe haven. Youth become part of a community united by a common language of respect and art. This deep bond with the group and the space creates strong roots, pulling them away from marginalization and consolidating their belonging."
         }
       ]
     },

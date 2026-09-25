@@ -241,13 +241,13 @@
       "desc": "Nós materializamos a teoria em projetos práticos com alto impacto social e foco geográfico.",
       "youth": {
         "title": "Be the Dance Ung",
-        "subtitle": "Lavterskel dans, mestring og inkludering",
-        "desc": "Um autêntico *lavterskeltilbud* (acesso facilitado) para jovens de Tøyen e Grønland. Sob a liderança da Safia, utilizamos a dança para criar um espaço de *tilhørighet* (pertencimento). O objetivo vai além da inclusão: queremos qualificar esses jovens através do *mestring* (superação técnica) e formar a próxima geração de bailarinos.",
+        "subtitle": "Dança de fácil acesso, superação e inclusão",
+        "desc": "Um autêntico espaço de acesso facilitado para jovens de Tøyen e Grønland. Sob a liderança da Safia, utilizamos a dança para criar um espaço de pertencimento. O objetivo vai além da inclusão: queremos qualificar esses jovens através do superação técnica e formar a próxima geração de bailarinos.",
         "btn": "Ver detalhes do projeto"
       },
       "women": {
         "title": "Dance2Dance Kvinne",
-        "subtitle": "Sosial møteplass, velvære og selvtillit",
+        "subtitle": "Ponto de encontro social, bem-estar e autoconfiança",
         "desc": "Integrando nossas metodologias Biostretch e Be the Dance, oferecemos um espaço focado em mulheres. Ao unir movimento consciente e expressão artística, promovemos não apenas a qualidade de vida preventiva, mas também o bem-estar pessoal, o autoconhecimento e a confiança, criando um ponto de encontro vital contra o isolamento social.",
         "btn": "Ver detalhes do projeto"
       }
@@ -1608,16 +1608,16 @@
       "intro": "Nossa abordagem traduz os objetivos de transformação social em ações práticas, garantindo resultados profundos e estruturais na comunidade:",
       "items": [
         {
-          "title": "Inclusão & Acesso (Lavterskeltilbud)",
-          "desc": "Não oferecemos apenas gratuidade; destruímos barreiras culturais e financeiras. Ao disponibilizar 100% de bolsas para moradores locais, criamos um espaço de acesso facilitado (lavterskeltilbud) onde qualquer jovem de Tøyen ou Grønland recebe o exato mesmo padrão de excelência de uma academia de elite, promovendo uma inclusão real (inkludering)."
+          "title": "Inclusão & Acesso",
+          "desc": "Não oferecemos apenas gratuidade; destruímos barreiras culturais e financeiras. Ao disponibilizar 100% de bolsas para moradores locais, criamos um espaço de acesso facilitado onde qualquer jovem de Tøyen ou Grønland recebe o exato mesmo padrão de excelência de uma academia de elite, promovendo uma inclusão real."
         },
         {
-          "title": "Superação & Resiliência (Mestring)",
-          "desc": "A dança exige rigor e constância. Ao dominar movimentos complexos e superar as próprias limitações físicas, o jovem constrói um senso inabalável de capacidade (mestring). Essa experiência de superação contínua no estúdio traduz-se em resiliência para enfrentar as adversidades acadêmicas e sociais da vida cotidiana."
+          "title": "Superação & Resiliência",
+          "desc": "A dança exige rigor e constância. Ao dominar movimentos complexos e superar as próprias limitações físicas, o jovem constrói um senso inabalável de capacidade. Essa experiência de superação contínua no estúdio traduz-se em resiliência para enfrentar as adversidades acadêmicas e sociais da vida cotidiana."
         },
         {
-          "title": "Pertencimento Absoluto (Tilhørighet)",
-          "desc": "Em uma era de isolamento digital e fragmentação social, o estúdio se torna um porto seguro físico. Os jovens passam a integrar uma comunidade unida por uma linguagem comum de respeito e arte. Esse vínculo profundo com o grupo e com o espaço cria raízes fortes, afastando-os da marginalização e consolidando o seu pertencimento (tilhørighet)."
+          "title": "Pertencimento Absoluto",
+          "desc": "Em uma era de isolamento digital e fragmentação social, o estúdio se torna um porto seguro físico. Os jovens passam a integrar uma comunidade unida por uma linguagem comum de respeito e arte. Esse vínculo profundo com o grupo e com o espaço cria raízes fortes, afastando-os da marginalização e consolidando o seu pertencimento."
         }
       ]
     },
