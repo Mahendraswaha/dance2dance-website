@@ -1,11 +1,33 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+  // Configurar CORS
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        // ignora
+      }
+    }
+
     const { 
       type, // 'enrolled' or 'waitlist_promoted'
       userEmail, 
@@ -16,7 +38,7 @@ export default async function handler(req, res) {
       workshopTime,
       locationName,
       locationMapLink
-    } = req.body;
+    } = body;
 
     // Conexao com o servidor de e-mail
     const smtpHost = process.env.SMTP_HOST || 'smtp.proisp.no';
