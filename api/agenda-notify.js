@@ -1,0 +1,196 @@
+import nodemailer from 'nodemailer';
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { 
+      type, // 'enrolled' or 'waitlist_promoted'
+      userEmail, 
+      userName, 
+      userLang, // 'pt', 'en', 'no'
+      workshopName,
+      workshopDate,
+      workshopTime,
+      locationName,
+      locationMapLink
+    } = req.body;
+
+    // Conexǜo com o servidor de e-mail (usando as variǭveis jǭ existentes na Vercel)
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = process.env.SMTP_PORT;
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
+
+    if (!smtpHost || !smtpUser || !smtpPass) {
+      throw new Error('Configuraes SMTP nǜo encontradas no ambiente.');
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: Number(smtpPort) || 465,
+      secure: true,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      }
+    });
+
+    const lang = userLang || 'pt';
+    let subject = '';
+    let htmlContent = '';
+
+    const formatHtml = (content) => `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0A0A0E; margin: 0; padding: 24px; color: #FAF8F5; }
+        .wrapper { max-width: 600px; margin: 0 auto; background: #14141A; border-radius: 12px; overflow: hidden; border: 1px solid #1E1E24; }
+        .header { background: #0D0D12; padding: 32px; text-align: center; border-bottom: 1px solid #1E1E24; }
+        .logo { margin: 0; font-size: 24px; font-weight: 700; color: #FAF8F5; letter-spacing: 1px; }
+        .logo-accent { color: #C9A84C; }
+        .content { padding: 40px 32px; font-size: 15px; line-height: 1.7; color: #D4D4D8; }
+        .content strong { color: #FAF8F5; }
+        .greeting { font-size: 18px; color: #FAF8F5; margin-bottom: 24px; font-weight: 600; }
+        .divider { height: 1px; background: #1E1E24; margin: 32px 0; }
+        .location-box { background: #0A0A0E; border-left: 3px solid #C9A84C; padding: 16px; border-radius: 4px; margin: 24px 0; }
+        .footer { padding: 24px 32px; background: #0D0D12; border-top: 1px solid #1E1E24; font-size: 12px; color: #71717A; text-align: center; line-height: 1.7; }
+        .footer a { color: #C9A84C; text-decoration: none; }
+      </style>
+    </head>
+    <body>
+      <div class="wrapper">
+        <div class="header">
+          <h1 class="logo">Dance<span class="logo-accent">2</span>Dance</h1>
+        </div>
+        <div class="content">
+          ${content}
+        </div>
+        <div class="footer">
+          <strong>Dance2Dance</strong><br>
+          <a href="mailto:contact@dance2dance.no">contact@dance2dance.no</a> ? <a href="https://www.dance2dance.no" target="_blank">www.dance2dance.no</a>
+        </div>
+      </div>
+    </body>
+    </html>
+    `;
+
+    if (type === 'enrolled') {
+      if (lang === 'en') {
+        subject = `Registration confirmed: ${workshopName}`;
+        htmlContent = `
+          <div class="greeting">Hello ${userName}.</div>
+          <p>Your spot for <strong>${workshopName}</strong> on ${workshopDate} at ${workshopTime} is confirmed.</p>
+          <p>Dance2Dance operates on a solidarity model. We offer full scholarships to local residents and keep classes small to ensure excellence. As a result, our spots are strictly limited and waitlists are common.</p>
+          <p>An absence without cancellation takes the opportunity to participate away from someone else.</p>
+          <p>If you are unable to attend, please cancel your registration directly on our scheduling page as early as possible. This moves the waitlist automatically and opens the space for the next participant.</p>
+          <p>Please arrive 10 to 15 minutes early to settle in.</p>
+          <p>See you at:</p>
+          <div class="location-box">
+            📍 <strong>${locationName}</strong><br>
+            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          </div>
+          <p><strong>The Dance2Dance Team</strong></p>
+        `;
+      } else if (lang === 'no') {
+        subject = `Påmelding bekreftet: ${workshopName}`;
+        htmlContent = `
+          <div class="greeting">Hei ${userName}.</div>
+          <p>Din plass på <strong>${workshopName}</strong> den ${workshopDate} kl. ${workshopTime} er bekreftet.</p>
+          <p>Dance2Dance driver etter en solidaritetsmodell. Vi tilbyr fulle stipender til lokale innbyggere og holder klassene små for å sikre høy kvalitet. Derfor er plassene våre strengt begrensede og ventelister er vanlige.</p>
+          <p>Å ikke møte opp uten å avbestille tar fra noen andre muligheten til å delta.</p>
+          <p>Hvis du ikke kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen vår så tidlig som mulig. Dette flytter ventelisten automatisk og frigjør plassen for neste deltaker.</p>
+          <p>Vennligst møt opp 10-15 minutter før for å finne deg til rette.</p>
+          <p>Vi ses på:</p>
+          <div class="location-box">
+            📍 <strong>${locationName}</strong><br>
+            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          </div>
+          <p><strong>Dance2Dance-teamet</strong></p>
+        `;
+      } else {
+        // Default PT
+        subject = `Inscrição confirmada: ${workshopName}`;
+        htmlContent = `
+          <div class="greeting">Olá, ${userName}.</div>
+          <p>Sua presença no <strong>${workshopName}</strong> (dia ${workshopDate}, às ${workshopTime}) está confirmada.</p>
+          <p>O Dance2Dance opera sob um modelo de solidariedade. Oferecemos bolsas integrais para moradores locais e mantemos turmas reduzidas para garantir a excelência do encontro. Por isso, nossas vagas são estritamente limitadas e a lista de espera é constante.</p>
+          <p>A ausência sem cancelamento tira de outra pessoa a oportunidade de participar.</p>
+          <p>Caso não possa comparecer, cancele sua inscrição diretamente na agenda do nosso site com a maior antecedência possível. Isso faz a lista girar automaticamente e libera o espaço para o próximo participante.</p>
+          <p>Por favor, chegue com 10 a 15 minutos de antecedência para se acomodar com calma.</p>
+          <p>Nos vemos em:</p>
+          <div class="location-box">
+            📍 <strong>${locationName}</strong><br>
+            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          </div>
+          <p><strong>Equipe Dance2Dance</strong></p>
+        `;
+      }
+    } else if (type === 'waitlist_promoted') {
+      if (lang === 'en') {
+        subject = `A spot has opened up for you: ${workshopName}`;
+        htmlContent = `
+          <div class="greeting">Hello ${userName}.</div>
+          <p>The waitlist has moved, and your spot for <strong>${workshopName}</strong> on ${workshopDate} at ${workshopTime} is now confirmed.</p>
+          <p>Since our spots are limited and based on a solidarity model, we rely on everyone's support to keep access open.</p>
+          <p>If your plans have changed and you can no longer attend, please cancel your registration directly on the scheduling page as soon as possible. This ensures the next participant in line gets a chance to join.</p>
+          <p>Please arrive 10 to 15 minutes early.</p>
+          <p>See you at:</p>
+          <div class="location-box">
+            📍 <strong>${locationName}</strong><br>
+            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          </div>
+          <p><strong>The Dance2Dance Team</strong></p>
+        `;
+      } else if (lang === 'no') {
+        subject = `En plass har blitt ledig for deg: ${workshopName}`;
+        htmlContent = `
+          <div class="greeting">Hei ${userName}.</div>
+          <p>Ventelisten har flyttet seg, og din plass på <strong>${workshopName}</strong> den ${workshopDate} kl. ${workshopTime} er nå bekreftet.</p>
+          <p>Ettersom plassene våre er begrensede og bygger på en solidaritetsmodell, er vi avhengige av alles støtte for å holde tilgangen åpen.</p>
+          <p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p>
+          <p>Vennligst møt opp 10-15 minutter før start.</p>
+          <p>Vi ses på:</p>
+          <div class="location-box">
+            📍 <strong>${locationName}</strong><br>
+            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          </div>
+          <p><strong>Dance2Dance-teamet</strong></p>
+        `;
+      } else {
+        // Default PT
+        subject = `Uma vaga foi liberada para você: ${workshopName}`;
+        htmlContent = `
+          <div class="greeting">Olá, ${userName}.</div>
+          <p>A lista de espera girou e sua vaga para o <strong>${workshopName}</strong> (dia ${workshopDate}, às ${workshopTime}) está confirmada.</p>
+          <p>Como nossas vagas são limitadas e baseadas em um modelo de solidariedade, contamos com o apoio de todos para manter o acesso aberto.</p>
+          <p>Se os seus planos mudaram e você não puder mais participar, pedimos que cancele sua inscrição diretamente na nossa agenda o quanto antes. Assim, o próximo participante da lista também terá a chance de ser chamado.</p>
+          <p>Por favor, chegue com 10 a 15 minutos de antecedência.</p>
+          <p>Nos vemos em:</p>
+          <div class="location-box">
+            📍 <strong>${locationName}</strong><br>
+            🔗 <a href="${locationMapLink}" target="_blank">Google Maps</a>
+          </div>
+          <p><strong>Equipe Dance2Dance</strong></p>
+        `;
+      }
+    }
+
+    const info = await transporter.sendMail({
+      from: `"Dance2Dance" <${smtpUser}>`,
+      to: userEmail,
+      subject: subject,
+      html: formatHtml(htmlContent)
+    });
+
+    return res.status(200).json({ success: true, messageId: info.messageId });
+
+  } catch (error) {
+    console.error('Erro ao enviar e-mail de agenda:', error);
+    return res.status(500).json({ error: 'Falha ao enviar e-mail', details: error.message });
+  }
+}
