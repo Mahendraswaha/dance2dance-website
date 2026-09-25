@@ -703,8 +703,6 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
 
           {/* Botões Utilitários */}
           <div className="flex items-center gap-2">
-            
-            <div className="flex items-center gap-2">
               {!isInstructorUser && (
                 <button
                   onClick={handleSyncCounters}
@@ -1078,3 +1076,4 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
     </div>
   );
 }
+
