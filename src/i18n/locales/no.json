@@ -1652,12 +1652,16 @@
           "title": "Biostretch",
           "list": [
             {
-              "label": "Somatisk Dekompresjon",
-              "desc": "Skånsomme praksiser for å frigjøre oppsamlede fysiske og emosjonelle spenninger."
+              "label": "Kroppslig Intelligens",
+              "desc": "Å oppdage den iboende intelligensen i oss. Ved å lytte til den, åpner vi veier til helse og tilstedeværelse."
             },
             {
-              "label": "Aktiv Lytting",
-              "desc": "Vi erstatter anstrengelse med bevegelsens iboende intelligens for å fremme dyp mestring."
+              "label": "Meditasjon i Bevegelse",
+              "desc": "Et øyeblikk for å suspendere det vi har lært om hvordan kroppen bør fungere, og starte en personlig utforskning."
+            },
+            {
+              "label": "Dekonstruksjon av Innsats",
+              "desc": "En invitasjon til å senke farten, puste og gi slipp på det som ikke lenger trenger å bæres."
             }
           ]
         },
@@ -1666,12 +1670,16 @@
           "title": "Be The Dance",
           "list": [
             {
-              "label": "Fri Bevegelse",
-              "desc": "Å vekke glede gjennom utforskning av personlig rytme og kunstnerisk uttrykk."
+              "label": "Dansen i Oss",
+              "desc": "Å oppdage at dans ikke er et privilegium. Den ligger i genene våre, i spontane gester og personlig rytme."
             },
             {
-              "label": "Tilstedeværelse og Vitalitet",
-              "desc": "Øyeblikk av forbindelse gjennom musikk, som løfter energi og selvtillit."
+              "label": "Kroppen som Passasje",
+              "desc": "Et oppdagelsesterritorium for å finne et kunstnerisk uttrykk som er genuint, unikt og personlig."
+            },
+            {
+              "label": "Møteglede",
+              "desc": "Dans som trer ut av isolasjon for å bringe mennesker sammen, vekke glede og skape ekte forbindelser."
             }
           ]
         },
@@ -1680,12 +1688,16 @@
           "title": "Møteplass",
           "list": [
             {
-              "label": "Støttenettverk",
-              "desc": "Flerkulturelt samspill vever usynlige og ubrytelige bånd."
+              "label": "Eksklusivt Fristed",
+              "desc": "Et trygt miljø der sosialt og kulturelt press legges igjen utenfor, med fokus på personlig velvære."
             },
             {
-              "label": "Tilhørighet",
-              "desc": "Et inkluderende økosystem der empati og gjensidig respekt er grunnmuren."
+              "label": "Støttenettverk",
+              "desc": "Samspill bringer kvinner med ulik bakgrunn sammen og bygger dyp, gjensidig støtte."
+            },
+            {
+              "label": "Grenseløs Inkludering",
+              "desc": "Kroppens språk bryter ned barrierer og skaper et økosystem for tilhørighet og empati."
             }
           ]
         }

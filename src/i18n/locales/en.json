@@ -1652,12 +1652,16 @@
           "title": "Biostretch",
           "list": [
             {
-              "label": "Somatic Decompression",
-              "desc": "Gentle practices to release accumulated physical and emotional tension."
+              "label": "Bodily Intelligence",
+              "desc": "Discovering the inherent intelligence within us. By listening to it, we open paths to health and presence."
             },
             {
-              "label": "Active Listening",
-              "desc": "We replace strain with the inherent intelligence of movement, promoting profound relief."
+              "label": "Meditation in Movement",
+              "desc": "A moment to suspend what we've learned about how the body should function and begin a personal investigation."
+            },
+            {
+              "label": "Deconstructing Effort",
+              "desc": "An invitation to slow down, breathe, and release what no longer needs to be carried."
             }
           ]
         },
@@ -1666,12 +1670,16 @@
           "title": "Be The Dance",
           "list": [
             {
-              "label": "Free Movement",
-              "desc": "Awakening joy through the exploration of personal rhythm and artistic expression."
+              "label": "The Dance Within",
+              "desc": "Discovering that dance is not a privilege. It is in our genes, in spontaneous gestures and personal rhythm."
             },
             {
-              "label": "Presence and Vitality",
-              "desc": "Moments of connection through music, elevating energy and self-confidence."
+              "label": "The Body as a Passage",
+              "desc": "A territory of discovery to find a form of expression that is unique, personal, and genuine."
+            },
+            {
+              "label": "The Joy of Gathering",
+              "desc": "Dance that steps out of isolation to bring people together, awaken joy, and create connections."
             }
           ]
         },
@@ -1680,12 +1688,16 @@
           "title": "Meeting Point",
           "list": [
             {
-              "label": "Support Network",
-              "desc": "Multicultural interaction weaves invisible and unbreakable bonds."
+              "label": "Exclusive Refuge",
+              "desc": "A safe environment where social and cultural pressure is left outside, prioritizing personal care."
             },
             {
-              "label": "Belonging",
-              "desc": "A welcoming ecosystem where empathy and mutual respect are the foundation."
+              "label": "Support Network",
+              "desc": "Interaction brings women from different backgrounds together and builds deep mutual support."
+            },
+            {
+              "label": "Integration Without Borders",
+              "desc": "The language of the body dissolves barriers, creating an ecosystem of belonging and empathy."
             }
           ]
         }

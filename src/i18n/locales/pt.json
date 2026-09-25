@@ -1652,12 +1652,16 @@
           "title": "Biostretch",
           "list": [
             {
-              "label": "Descompressão Somática",
-              "desc": "Práticas gentis para soltar tensões físicas e emocionais acumuladas."
+              "label": "Inteligência Corporal",
+              "desc": "Descobrir que existe uma inteligência inerente em nós. Ao escutá-la, abrimos caminhos para mais saúde e presença."
             },
             {
-              "label": "Escuta Ativa",
-              "desc": "Substituímos a tensão pela inteligência inerente do movimento, promovendo alívio profundo."
+              "label": "Meditação em Movimento",
+              "desc": "Um momento para suspender o que aprendemos sobre como o corpo deveria funcionar e iniciar uma investigação."
+            },
+            {
+              "label": "Desconstrução do Esforço",
+              "desc": "Um convite para desacelerar, respirar e soltar o que já não precisa ser sustentado."
             }
           ]
         },
@@ -1666,12 +1670,16 @@
           "title": "Be The Dance",
           "list": [
             {
-              "label": "Movimento Livre",
-              "desc": "O despertar da alegria através da exploração do ritmo pessoal e da expressão artística."
+              "label": "A Dança Interna",
+              "desc": "Descobrir que a dança não é privilégio. Ela está nos nossos genes, no gesto espontâneo e no ritmo pessoal."
             },
             {
-              "label": "Presença e Vitalidade",
-              "desc": "Momentos de conexão através da música, elevando a energia e a autoconfiança."
+              "label": "Corpo como Passagem",
+              "desc": "Um território de descoberta para encontrar uma forma de expressão que seja única, pessoal e genuína."
+            },
+            {
+              "label": "Alegria do Encontro",
+              "desc": "A dança que sai do isolamento para aproximar pessoas, despertar alegria e criar conexões."
             }
           ]
         },
@@ -1680,12 +1688,16 @@
           "title": "Ponto de Encontro",
           "list": [
             {
-              "label": "Rede de Sustentação",
-              "desc": "A convivência multicultural tece vínculos invisíveis e inquebráveis."
+              "label": "Refúgio Exclusivo",
+              "desc": "Um ambiente seguro onde a pressão social e cultural fica do lado de fora e o cuidado pessoal é prioridade."
             },
             {
-              "label": "Pertencimento",
-              "desc": "Um ecossistema de acolhimento onde a empatia e o respeito mútuo são o alicerce."
+              "label": "Rede de Sustentação",
+              "desc": "A convivência aproxima mulheres de diferentes origens e constrói laços de apoio mútuo profundos."
+            },
+            {
+              "label": "Integração sem Fronteiras",
+              "desc": "A linguagem do corpo dissolve barreiras, criando um ecossistema de pertencimento e empatia."
             }
           ]
         }
