@@ -82,6 +82,7 @@ export default async function handler(req, res) {
         
         .footer { padding: 24px 32px; background: #0D0D12; border-top: 1px solid #1E1E24; font-size: 12px; color: #71717A; text-align: center; line-height: 1.7; }
         .footer a { color: #C9A84C; text-decoration: none; }
+        .loc-link:hover { color: #C9A84C !important; }
       </style>
     </head>
     <body>
@@ -106,14 +107,14 @@ export default async function handler(req, res) {
         subject = `Registration confirmed: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Hello ${userName}.</div>
-          <p>Your spot for <strong>${workshopName}</strong> on ${workshopDate} at ${workshopTime} is confirmed.</p>
+          <p>We confirm your enrollment in the workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
           <p>Dance2Dance operates on a solidarity model. We offer full scholarships to local residents and keep classes small to ensure excellence. As a result, our spots are strictly limited and waitlists are common.</p>
           <p>An absence without cancellation takes the opportunity to participate away from someone else.</p>
           <p>If you are unable to attend, please cancel your registration directly on our scheduling page as early as possible. This moves the waitlist automatically and opens the space for the next participant.</p>
           <p>Please arrive 10 to 15 minutes early to settle in.</p>
           <p>See you at:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -130,7 +131,7 @@ export default async function handler(req, res) {
           <p>Vennligst møt opp 10-15 minutter før for å finne deg til rette.</p>
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -141,14 +142,14 @@ export default async function handler(req, res) {
         subject = `Inscrição confirmada: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Olá, ${userName}.</div>
-          <p>Sua presença no <strong>${workshopName}</strong> (dia ${workshopDate}, às ${workshopTime}) está confirmada.</p>
+          <p>Confirmamos sua inscri&ccedil;&atilde;o no workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">dia: ${workshopDate}</p><p style="margin-top: 0;">hora: ${workshopTime}</p>
           <p>O Dance2Dance opera sob um modelo de solidariedade. Oferecemos bolsas integrais para moradores locais e mantemos turmas reduzidas para garantir a excelência do encontro. Por isso, nossas vagas são estritamente limitadas e a lista de espera é constante.</p>
           <p>A ausência sem cancelamento tira de outra pessoa a oportunidade de participar.</p>
           <p>Caso não possa comparecer, cancele sua inscrição diretamente na agenda do nosso site com a maior antecedência possível. Isso faz a lista girar automaticamente e libera o espaço para o próximo participante.</p>
           <p>Por favor, chegue com 10 a 15 minutos de antecedência para se acomodar com calma.</p>
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -160,13 +161,13 @@ export default async function handler(req, res) {
         subject = `A spot has opened up for you: ${workshopName}`;
         htmlContent = `
           <div class="greeting">Hello ${userName}.</div>
-          <p>The waitlist has moved, and your spot for <strong>${workshopName}</strong> on ${workshopDate} at ${workshopTime} is now confirmed.</p>
+          <p>The waitlist has moved. We confirm your enrollment in the workshop:</p><p style="margin-bottom: 5px;"><strong>${workshopName}</strong></p><p style="margin-top: 0; margin-bottom: 5px;">date: ${workshopDate}</p><p style="margin-top: 0;">time: ${workshopTime}</p>
           <p>Since our spots are limited and based on a solidarity model, we rely on everyone's support to keep access open.</p>
           <p>If your plans have changed and you can no longer attend, please cancel your registration directly on the scheduling page as soon as possible. This ensures the next participant in line gets a chance to join.</p>
           <p>Please arrive 10 to 15 minutes early.</p>
           <p>See you at:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -182,7 +183,7 @@ export default async function handler(req, res) {
           <p>Vennligst møt opp 10-15 minutter før start.</p>
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
@@ -199,7 +200,7 @@ export default async function handler(req, res) {
           <p>Por favor, chegue com 10 a 15 minutos de antecedência.</p>
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
-            <a href="${locationMapLink}" target="_blank" style="color: #C9A84C; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
+            <a href="${locationMapLink}" target="_blank" class="loc-link" style="color: #9A9A9A; text-decoration: underline; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
               <span style="color: #C9A84C; margin-right: 4px;">&#9679;</span> ${locationName}
             </a>
           </div>
