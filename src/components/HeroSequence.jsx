@@ -290,7 +290,7 @@ const HeroSequence = () => {
 
       {/* 2. Restante do texto (Rola continuamente) */}
       <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pointer-events-none">
-          <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start gap-6">
+          <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p1")}
           </p>
@@ -320,3 +320,4 @@ const HeroSequence = () => {
 };
 
 export default HeroSequence;
+
