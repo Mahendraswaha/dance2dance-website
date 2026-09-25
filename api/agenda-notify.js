@@ -114,7 +114,7 @@ export default async function handler(req, res) {
           <p>See you at:</p>
           <div style="margin-top: 15px;">
             <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              📍 ${locationName}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; margin-bottom: 2px;"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ${locationName}
             </a>
           </div>
           <p><strong>The Dance2Dance Team</strong></p>
@@ -131,7 +131,7 @@ export default async function handler(req, res) {
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
             <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              📍 ${locationName}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; margin-bottom: 2px;"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ${locationName}
             </a>
           </div>
           <p><strong>Dance2Dance-teamet</strong></p>
@@ -149,7 +149,7 @@ export default async function handler(req, res) {
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
             <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              📍 ${locationName}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; margin-bottom: 2px;"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ${locationName}
             </a>
           </div>
           <p><strong>Equipe Dance2Dance</strong></p>
@@ -167,7 +167,7 @@ export default async function handler(req, res) {
           <p>See you at:</p>
           <div style="margin-top: 15px;">
             <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              📍 ${locationName}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; margin-bottom: 2px;"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ${locationName}
             </a>
           </div>
           <p><strong>The Dance2Dance Team</strong></p>
@@ -183,7 +183,7 @@ export default async function handler(req, res) {
           <p>Vi ses på:</p>
           <div style="margin-top: 15px;">
             <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              📍 ${locationName}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; margin-bottom: 2px;"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ${locationName}
             </a>
           </div>
           <p><strong>Dance2Dance-teamet</strong></p>
@@ -200,7 +200,7 @@ export default async function handler(req, res) {
           <p>Nos vemos em:</p>
           <div style="margin-top: 15px;">
             <a href="${locationMapLink}" target="_blank" style="color: #9A9A9A; text-decoration: none; border-bottom: 1px dotted #9A9A9A; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; transition: color 0.3s;">
-              📍 ${locationName}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; margin-bottom: 2px;"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> ${locationName}
             </a>
           </div>
           <p><strong>Equipe Dance2Dance</strong></p>
