@@ -83,7 +83,7 @@ const ImpactPage = () => {
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-[100dvh] flex flex-col justify-end pt-40 pb-16 md:pb-24 overflow-hidden bg-primary">
+      <section className="relative w-full min-h-[100dvh] flex flex-col pt-48 md:pt-56 pb-16 md:pb-24 overflow-hidden bg-primary">
         
         {/* Background Layer - Video aligned perfectly to the right */}
         <div className="absolute top-1/2 left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">

@@ -24,8 +24,8 @@
     },
     "seq2": {
       "p1": "is a social organization born to build these places. Spaces where dance is not only performance, but above all is presence. Where movement is more than exercise or stretching, it is listening and expression. Where art is not an end, but the beginning of an encounter.",
-      "p2": "The encounter with oneself and the encounter that happens when people breathe and move at the same rhythm.",
-      "p3": "Change begins in the skin, when a person rediscovers their own strength, their creativity, their own voice. And when this happens in a group, a path opens up for",
+      "p2": "The encounter with oneself and the connection that happens when people breathe and move in the same rhythm.",
+      "p3": "Change begins from within, when a person rediscovers their own strength, their creativity, their own voice. And when this happens in a group, a path opens up for",
       "p4": "social transformation",
       "p6": "creates the conditions for people to meet."
     },
@@ -67,17 +67,17 @@
     "2": {
       "kicker": "What movement heals",
       "title": "Well-being",
-      "desc": "Listening to the body is a political act. Conscious movement practices expand perception, reorganize physical patterns and return to people the authorship over themselves."
+      "desc": "Listening to the body is a political act. Conscious movement practices expand perception, reorganize physical patterns and give people back agency over themselves."
     },
     "3": {
       "kicker": "What the body invents",
       "title": "Creation",
-      "desc": "Movement is raw material. From dance, choreography is born; from silence, the gesture is born; from the encounter, the work is born. Art is what happens when the body has the freedom to express itself."
+      "desc": "Movement is raw material. From dance, choreography is born; from silence, a gesture is born; from the encounter, art is born. Art is what happens when the body has the freedom to express itself."
     },
     "4": {
       "kicker": "What remains in the community",
       "title": "Transformation",
-      "desc": "When people move together, something changes. Dance crosses walls, creates bonds and opens space for a transformation that begins in the body and reverberates on the street, in the neighborhood, in the city."
+      "desc": "When people move together, something changes. Dance crosses walls, creates bonds and opens space for a transformation that begins in the body and reverberates in the streets, throughout the neighborhood, and across the city."
     }
   },
   "action": {
@@ -112,7 +112,7 @@
       "kicker": "The proposition",
       "title": "Why Tøyen and Grønland?",
       "p1": "Tøyen and Grønland are neighbourhoods of contrast - diversity, history and cultural richness coexist with inequalities in access to quality services and activities. This is exactly the context that calls us to act.",
-      "p2": "Dance2Dance is born in this territory with a clear mission: that dance, movement and well-being should not be a privilege for those who can pay. Every workshop we develop carries the same quality, the same care and the same intention - regardless of who is in the room.",
+      "p2": "Dance2Dance was founded in this neighborhood with a clear mission: that dance, movement and well-being should not be a privilege for those who can pay. Every workshop we develop carries the same quality, the same care and the same intention - regardless of who is in the room.",
       "quote": "The same product. The same quality. The same value. For everyone."
     },
     "value": {
@@ -141,7 +141,7 @@
       },
       "pillar2": {
         "title": "Companies & sponsors",
-        "desc": "Private companies wishing to associate their brand with real social impact and quality culture find in Dance2Dance a purposeful and visible partner."
+        "desc": "Private companies wishing to associate their brand with real social impact and quality culture will find a purposeful and visible partner in Dance2Dance."
       },
       "pillar3": {
         "title": "Public funds & municipality",
@@ -156,7 +156,7 @@
     },
     "partners": {
       "kicker": "Who is with us",
-      "title": "Partners who build together.",
+      "title": "Partners who build with us.",
       "desc": "Dance2Dance does not act alone. We work in network with organisations that share the conviction that art transforms and that access to culture is a right."
     },
     "cta": {
@@ -210,7 +210,7 @@
       },
       "pillar2": {
         "title": "Visionary Brands",
-        "desc": "Corporate sponsors who add the project to their ESG impact reports, gaining visibility and social equity."
+        "desc": "Corporate sponsors who add the project to their ESG impact reports, gaining visibility and social capital."
       },
       "pillar3": {
         "title": "Public Funding",
@@ -218,7 +218,7 @@
       },
       "pillar4": {
         "title": "Private Donors",
-        "desc": "Independent philanthropists who demand clear metrics and bet on the transformative power of bodily practices and access to culture."
+        "desc": "Independent philanthropists who demand clear metrics and believe in the transformative power of somatic practices and access to culture."
       },
       "summary": "An antifragile model: if one source fluctuates, the financial matrix rebalances itself. Maximum security for investors, guaranteed continuity for dancers.",
       "highlight": "ESG in practice. Diluted risk."
@@ -294,7 +294,7 @@
           "title": "WHAT ARE THE BENEFITS?",
           "content": [
             "• Promotes deep relaxation and contributes to stress reduction.",
-            "• Increases energy, physical readiness, and the fluidity of movements.",
+            "• Increases energy, physical responsiveness, and the fluidity of movements.",
             "• Recognizes natural movements and expands body awareness, creating space for a more authentic expression.",
             "• Develops attention, awakening the senses and deepening presence.",
             "• Explores the relationship between breath and movement, discovering new ways to dance with more freedom.",
@@ -312,7 +312,7 @@
         "be-water": {
           "title": "Be Water",
           "shortDescription": "Letting go and flowing",
-          "fullDescription": "Surrendering to movement is finding the flow.\nWhen we stop trying to direct every gesture, the body naturally finds new paths. Movement becomes freer and more organic, guided by listening and sensation.\nIn this workshop, we explore flowing as a possibility of expression. An invitation to experience movement without resistance, trust the body, and allow one action to naturally lead to the next.\nLike water, which finds its way without needing to fight against it, we learn to accompany movement instead of controlling it.\nBe Water is an experience of surrender. A space to let the body follow its own flow and discover the dance that emerges when we simply let go.",
+          "fullDescription": "Surrendering to movement is finding the flow.\nWhen we stop trying to direct every gesture, the body naturally finds new paths. Movement becomes freer and more organic, guided by listening and sensation.\nIn this workshop, we explore flowing as a possibility of expression. An invitation to experience movement without resistance, trust the body, and allow one action to naturally lead to the next.\nLike water, which finds its way without needing to fight against it, we learn to follow the movement instead of controlling it.\nBe Water is an experience of surrender. A space to let the body follow its own flow and discover the dance that emerges when we simply let go.",
           "closingQuote": "Be Water, My Friend. Empty your mind. Be formless, shapeless, like water. You put water into a cup, it becomes the cup. You put water into a bottle, it becomes the bottle. You put it into a teapot, it becomes the teapot. Now water can flow or it can crash. Be water, my friend.",
           "closingAuthor": "Bruce Lee"
         },
@@ -355,7 +355,7 @@
         "paragraphs": [
           "My history with dance started early. At seven years old, between barres, mirrors, precise positions, and rigorous discipline, I entered a ballet school. It was a universe of rules, codified movements, repetition, and demands. The body had to obey. The search for the perfect movement.",
           "[SILVER]And yet, I fell in love.",
-          "Dance took me far. As a classical ballerina, I traveled to different parts of the world to refine my technique, drink from different sources, and get closer to that idea of perfection that ballet teaches us to pursue.",
+          "Dance took me far. As a classical ballerina, I traveled to different parts of the world to refine my technique, draw inspiration from various traditions, and get closer to that idea of perfection that ballet teaches us to pursue.",
           "But, at some point, something began to change. My body was tired. And inside me, a growing desire to express dance in other ways was born. That was when I found modern dance.",
           "There, other doors opened. I discovered freer, more natural, and organic movements. I discovered that the body could also create, improvise, investigate. That an emotion could transform a gesture. That not every movement needed to be beautiful, precise, correct, or planned. And I began to realize that perhaps dance could be much more than technique.",
           "Throughout this journey, one phrase kept coming up repeatedly: “I would love to dance… but I don't want to be a dancer.” People who didn't want to go on stage or audition. Who didn't want to spend years inside a dance school. People who simply felt the urge to dance, but believed dance belonged to a place they had no access to.",
@@ -670,7 +670,7 @@
   },
   "corporate": {
     "kicker": "BIOSTRETCH FOR COMPANIES",
-    "title": "A pause for prevention",
+    "title": "A preventive pause",
     "subtitle": "When there is space for pause and care, work gains a different quality.",
     "hook": "Biostretch brings movement and body awareness experiences into companies, creating moments of pause, reconnection, and care, integrating well-being into the work routine in a simple, accessible, and profound way.",
     "body": {
@@ -713,7 +713,7 @@
         },
         "selfcare": {
           "title": "Self-care",
-          "desc": "Developing the habit of caring for oneself as part of the routine"
+          "desc": "Cultivating self-care as a daily habit"
         },
         "environment": {
           "title": "A more human environment",
@@ -792,7 +792,7 @@
       "items": {
         "seated": "People who spend long periods seated in front of screens",
         "standing": "Employees who spend many hours standing or in constant movement",
-        "high_demand": "High-demand environments that need moments of pause and reconnection",
+        "high_demand": "High-pressure environments that require moments of pause and reconnection",
         "attention": "Teams seeking more attention and body awareness",
         "wellbeing_culture": "Companies wanting to integrate well-being into their culture",
         "relationships": "Organizations that value relationships and balance at work"
@@ -1192,7 +1192,7 @@
     "kicker": "CONTACT & PARTNERSHIPS",
     "title": "Get in Touch",
     "subtitle": "Have questions about workshops, regular classes, or institutional partnerships? Talk directly to us.",
-    "executiveTitle": "Schedule Executive Meeting",
+    "executiveTitle": "Schedule an Executive Meeting",
     "executiveSubtitle": "Connect your organization or company with Dance 2 Dance for social projects, corporate wellness, or partnerships.",
     "corporateSubtitle": "Get in touch to create a customized experience tailored to your organization.",
     "emailLabel": "Email",
@@ -1609,11 +1609,11 @@
       "items": [
         {
           "title": "Inclusion & Access (Lavterskeltilbud)",
-          "desc": "We do not just offer free entry; we destroy cultural and financial barriers. By providing 100% scholarships to local residents, we create a low-threshold space (lavterskeltilbud) where any youth from Tøyen or Grønland receives the exact same standard of excellence as an elite academy, promoting real inclusion (inkludering)."
+          "desc": "We do not just offer free entry; we break down cultural and financial barriers. By providing 100% scholarships to local residents, we create a low-threshold space (lavterskeltilbud) where any youth from Tøyen or Grønland receives the exact same standard of excellence as an elite academy, promoting real inclusion (inkludering)."
         },
         {
           "title": "Mastery & Resilience (Mestring)",
-          "desc": "Dance demands rigor and consistency. By mastering complex movements and overcoming their own physical limitations, youth build an unshakable sense of capability (mestring). This experience of continuous mastery in the studio translates into resilience to face academic and social adversities in everyday life."
+          "desc": "Dance demands rigor and consistency. By mastering complex movements and overcoming their own physical limitations, youth build an unshakable sense of mastery (mestring). This experience of continuous mastery in the studio translates into resilience to face academic and social adversities in everyday life."
         },
         {
           "title": "Absolute Belonging (Tilhørighet)",

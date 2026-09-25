@@ -25,7 +25,7 @@
     "seq2": {
       "p1": "er en sosial organisasjon som ble skapt for å bygge disse stedene. Rom hvor dans ikke bare er opptreden, men fremfor alt er tilstedeværelse. Hvor bevegelse er mer enn trening eller tøying, det er lytting og uttrykk. Hvor kunst ikke er et mål, men begynnelsen på et møte.",
       "p2": "Møtet med seg selv og møtet som skjer når folk puster og beveger seg i samme rytme.",
-      "p3": "Endring begynner i huden, når en person gjenoppdager sin egen styrke, sin kreativitet, sin egen stemme. Og når dette skjer i en gruppe, åpnes en vei for",
+      "p3": "Endringen starter innenfra, når en person gjenoppdager sin egen styrke, sin kreativitet, sin egen stemme. Og når dette skjer i en gruppe, åpnes en vei for",
       "p4": "sosial transformasjon",
       "p6": "skaper vilkårene for at folk kan møtes."
     },
@@ -67,7 +67,7 @@
     "2": {
       "kicker": "Hva bevegelse helbreder",
       "title": "Velvære",
-      "desc": "Å lytte til kroppen er en politisk handling. Bevisste bevegelsespraksiser utvider oppfatningen, omorganiserer fysiske mønstre og gir folk forfatterskapet over seg selv tilbake."
+      "desc": "Å lytte til kroppen er en politisk handling. Bevisste bevegelsespraksiser utvider oppfatningen, omorganiserer fysiske mønstre og gir folk eierskapet over egen kropp tilbake."
     },
     "3": {
       "kicker": "Hva kroppen finner opp",
@@ -134,7 +134,7 @@
     "model": {
       "kicker": "Hvordan vi finansierer oss",
       "title": "Et økosystem av støtte.",
-      "intro": "Dance2Dance er designet for å ikke stole på en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer - hver enkelt essensiell, ingen tilstrekkelig alene.",
+      "intro": "Dance2Dance er designet for å ikke være avhengig av en enkelt kilde. Vår bærekraft kommer fra den strategiske kombinasjonen av flere pilarer - hver enkelt essensiell, ingen tilstrekkelig alene.",
       "pillar1": {
         "title": "Betalende deltakere",
         "desc": "De som kommer fra utenfor Tøyen og Grønland betaler den reelle verdien av workshopen. Denne inntekten bidrar direkte til å muliggjøre gratis tilgang for lokale beboere."
@@ -294,7 +294,7 @@
           "title": "HVILKE ER FORDELENE?",
           "content": [
             "• Fremme dyp avspenning og bidra til å redusere stress.",
-            "• Øke energien, kroppens tilgjengelighet og flyten i bevegelsene.",
+            "• Øke energien, kroppens smidighet og flyten i bevegelsene.",
             "• Gjenkjenne naturlige bevegelser og øke kroppsbevisstheten, og dermed skape rom for et mer autentisk uttrykk.",
             "• Utvikle oppmerksomheten, vekke sansene og utdype tilstedeværelsen.",
             "• Utforske forholdet mellom pust og bevegelse, og oppdage nye måter å danse på med større frihet.",
@@ -396,7 +396,7 @@
         {
           "title": "HVA ER BIOSTRETCH?",
           "content": [
-            "Biostretch er et treningssystem som fremmer en gjenforening med kroppen gjennom bevissthet om bevegelse.",
+            "Biostretch er et treningssystem som fremmer en fornyet kontakt med kroppen gjennom bevissthet om bevegelse.",
             "Metoden bruker oppmerksomhet som sitt viktigste verktøy: en enkel, kraftfull ressurs som er tilgjengelig for alle. Ved å rette den mot bevegelsesopplevelsen, utvider vi oppfatningen av kroppen og åpner rom for nye muligheter for kroppslig organisering.",
             "Inspirert av over fire tiår med fordypning i dans, somatisk bevegelseslære og meditasjon, anerkjenner metoden kroppen som et intelligent, helhetlig system i kontinuerlig endring. I stedet for å jage etter prestasjon eller perfeksjon, inviterer den til en nennsom utforskning av den kroppslige opplevelsen – hvor det betyr mindre hva du gjør, og mer hvordan du gjør det.",
             "Det er ut fra denne opplevelsen av tilstedeværelse at en ny måte å sanse og bebo egen kropp på vokser frem. Men hvordan foregår egentlig denne forvandlingen i praksis?"
@@ -800,7 +800,7 @@
     },
     "workshops_section": {
       "kicker": "WORKSHOPS OG OPPLEVELSER",
-      "p1": "Biostretch-workshoper er designet for å gi opplevelser som går utover en enkel pause i rutinen. De er øyeblikk av gjenforening med kroppen, med pusten og med nåtiden.",
+      "p1": "Biostretch-workshoper er designet for å gi opplevelser som går utover en enkel pause i rutinen. De er øyeblikk hvor man gjenoppretter kontakten med kroppen, med pusten og med nåtiden.",
       "p2": "Hvert møte skaper et rom for å senke farten, bevege seg med mer bevissthet og fornye energien for å fortsette dagen med mer tilstedeværelse og balanse.",
       "p3": "Opplevelsene kan leveres som del av livskvalitetsprogrammer, interne uker, bedriftsarrangementer, teammøter og andre velværeinitiativer."
     },
@@ -825,7 +825,7 @@
     "focused": {
       "kicker": "RETTET MOT DET DU TRENGER",
       "p1": "Den individuelle timen lar deg fordype spesifikke aspekter, som spenninger, holdning, mobilitet, fleksibilitet, balanse, koordinasjon eller bevegelsesmønstre. Hver time er tilpasset den enkeltes egenskaper og behov, med respekt for deres rytme og øyeblikk.",
-      "p2": "Mer enn bare å tøye eller bevege kroppen, foreslår Biostretch en undersøkelse gjennom bevegelse, som utvikler en bevissthet som kan tas med inn i daglige aktiviteter.",
+      "p2": "Mer enn bare å tøye eller bevege kroppen, foreslår Biostretch en utforskning gjennom bevegelse, som utvikler en bevissthet som kan tas med inn i daglige aktiviteter.",
       "pullQuote": "En undersøkelse gjennom bevegelse."
     },
     "deepening": {
@@ -1045,7 +1045,7 @@
       "cityCountry": "By / Land",
       "addressSection": "Bostedsadresse",
       "noAddress": "Ingen adresse registrert.",
-      "healthRestrictions": "Helse- og Fysiske Begrensninger",
+      "healthRestrictions": "Helse- og fysiske begrensninger",
       "attentionRequired": "Instruktøroppmerksomhet kreves:",
       "noRestrictions": "Ingen helsebegrensninger oppgitt.",
       "priorExperience": "Tidligere Erfaring",
