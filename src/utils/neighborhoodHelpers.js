@@ -19,7 +19,7 @@ export function isScholarshipEligibleNeighborhood(neighborhood) {
 
   const matchesToyen = 
     rawLower.includes('tøyen') || 
-    normalized.includes('toyen');
+    normalized.includes('toyen') || normalized.includes('toyem') || rawLower.includes('tøyem');
 
   const matchesGronland = 
     rawLower.includes('grønland') || 
