@@ -260,8 +260,7 @@ const HeroSequence = () => {
       </div>
       
       {/* Texto do Hero */}
-      <div className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
-        <div ref={heroContentRef} className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start">
+      <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
         <h1 className="flex flex-col gap-2">
           <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">{t("hero.subtitle1")}</span>
           <span className="hero-elem font-drama italic text-4xl sm:text-5xl md:text-8xl text-accent leading-none">{t("hero.subtitle2")}</span>
@@ -274,7 +273,6 @@ const HeroSequence = () => {
             <span className="relative z-10 flex items-center gap-2">{t("hero.cta")} <ArrowRight size={20}/></span>
           </button>
         </div>
-      </div>
       </div>
 
       <div className="dark-overlay absolute inset-0 bg-black/40 pointer-events-none" />
@@ -289,8 +287,7 @@ const HeroSequence = () => {
       </div>
 
       {/* 2. Restante do texto (Rola continuamente) */}
-      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pointer-events-none">
-          <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
+      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p1")}
           </p>
@@ -306,7 +303,6 @@ const HeroSequence = () => {
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p6")}
           </p>
-        </div>
       </div>
 
       {/* 3. Última frase (Centralizada com destaque dourado) */}
@@ -320,4 +316,3 @@ const HeroSequence = () => {
 };
 
 export default HeroSequence;
-
