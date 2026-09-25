@@ -18,20 +18,20 @@ export default async function handler(req, res) {
       locationMapLink
     } = req.body;
 
-    // Conexǜo com o servidor de e-mail (usando as variǭveis jǭ existentes na Vercel)
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = process.env.SMTP_PORT;
-    const smtpUser = process.env.SMTP_USER;
+    // Conexao com o servidor de e-mail
+    const smtpHost = process.env.SMTP_HOST || 'smtp.proisp.no';
+    const smtpPort = process.env.SMTP_PORT || '465';
+    const smtpUser = process.env.SMTP_USER || 'contact@dance2dance.no';
     const smtpPass = process.env.SMTP_PASS;
 
-    if (!smtpHost || !smtpUser || !smtpPass) {
-      throw new Error('Configuraes SMTP nǜo encontradas no ambiente.');
+    if (!smtpPass) {
+      throw new Error('Senha SMTP (SMTP_PASS) nao encontrada no ambiente.');
     }
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
-      port: Number(smtpPort) || 465,
-      secure: true,
+      port: Number(smtpPort),
+      secure: Number(smtpPort) === 465,
       auth: {
         user: smtpUser,
         pass: smtpPass,

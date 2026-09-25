@@ -5,40 +5,46 @@ export default defineConfig({
   plugins: [
     react(),
     {
-      name: 'api-contact-middleware',
+      name: 'api-middleware',
       configureServer(server) {
-        server.middlewares.use('/api/contact', async (req, res) => {
-          if (req.method === 'POST') {
-            let body = '';
-            req.on('data', chunk => { body += chunk; });
-            req.on('end', async () => {
-              try {
-                req.body = body ? JSON.parse(body) : {};
-              } catch (e) {
-                req.body = body;
-              }
-              res.status = function(code) {
-                this.statusCode = code;
-                return this;
-              };
-              res.json = function(data) {
-                this.setHeader('Content-Type', 'application/json');
-                this.end(JSON.stringify(data));
-                return this;
-              };
-              try {
-                const { default: handler } = await import('./api/contact.js');
-                await handler(req, res);
-              } catch (err) {
-                console.error('Erro em /api/contact:', err);
-                res.statusCode = 500;
-                res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ error: err.message }));
-              }
-            });
+        // Middleware para /api/contact e /api/agenda-notify
+        server.middlewares.use('/api', async (req, res, next) => {
+          if (req.url === '/contact' || req.url === '/agenda-notify') {
+            if (req.method === 'POST') {
+              let body = '';
+              req.on('data', chunk => { body += chunk; });
+              req.on('end', async () => {
+                try {
+                  req.body = body ? JSON.parse(body) : {};
+                } catch (e) {
+                  req.body = body;
+                }
+                res.status = function(code) {
+                  this.statusCode = code;
+                  return this;
+                };
+                res.json = function(data) {
+                  this.setHeader('Content-Type', 'application/json');
+                  this.end(JSON.stringify(data));
+                  return this;
+                };
+                try {
+                  const moduleName = req.url === '/contact' ? './api/contact.js' : './api/agenda-notify.js';
+                  const { default: handler } = await import(moduleName);
+                  await handler(req, res);
+                } catch (err) {
+                  console.error(\`Erro em /api\${req.url}:\`, err);
+                  res.statusCode = 500;
+                  res.setHeader('Content-Type', 'application/json');
+                  res.end(JSON.stringify({ error: err.message }));
+                }
+              });
+            } else {
+              res.statusCode = 405;
+              res.end(JSON.stringify({ error: 'Method Not Allowed' }));
+            }
           } else {
-            res.statusCode = 405;
-            res.end(JSON.stringify({ error: 'Method Not Allowed' }));
+            next();
           }
         });
       }
