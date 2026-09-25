@@ -105,7 +105,7 @@ const ImpactPage = () => {
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
         <div className="relative z-10 w-full max-w-5xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
-          <div className="flex flex-col md:w-2/3 lg:w-1/2 items-start">
+          <div className="flex flex-col md:w-3/4 lg:w-[65%] items-start">
           
           {/* B2B Authority Badge */}
           <div className="hero-elem inline-flex items-center gap-3 px-4 py-2 mb-8 rounded-full border border-slate-700/50 bg-black/40 backdrop-blur-md">
