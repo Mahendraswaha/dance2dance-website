@@ -104,7 +104,8 @@ const ImpactPage = () => {
         </div>
 
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start mt-auto px-6 lg:px-12 pointer-events-none">
+        <div className="relative z-10 w-full max-w-7xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
+          <div className="flex flex-col md:w-2/3 lg:w-1/2 items-start">
           
           {/* B2B Authority Badge */}
           <div className="hero-elem inline-flex items-center gap-3 px-4 py-2 mb-8 rounded-full border border-slate-700/50 bg-black/40 backdrop-blur-md">
@@ -137,7 +138,8 @@ const ImpactPage = () => {
             <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page_b2b.hero.scroll')}</span>
           </div>
         </div>
-      </section>
+        </div>
+        </section>
 
       {/* ─── CONTEXT / MANIFESTO ─────────────────────────────────────── */}
       <section className="py-24 md:py-32 px-6 lg:px-12 bg-[#0C0C0C] relative">
