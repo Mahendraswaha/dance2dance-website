@@ -83,7 +83,7 @@ const ImpactPage = () => {
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-[100dvh] flex flex-col pt-48 md:pt-56 pb-16 md:pb-24 overflow-hidden bg-primary">
+      <section className="relative w-full min-h-[100dvh] flex flex-col pt-32 md:pt-48 lg:pt-56 pb-16 md:pb-24 overflow-hidden bg-primary">
         
         {/* Background Layer - Video aligned perfectly to the right */}
         <div className="absolute top-1/2 left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
@@ -108,10 +108,10 @@ const ImpactPage = () => {
           <div className="flex flex-col md:w-3/4 lg:w-[65%] items-start">
           
           {/* B2B Authority Badge */}
-          <div className="hero-elem inline-flex items-center gap-3 px-4 py-2 mb-8 rounded-full border border-slate-700/50 bg-black/40 backdrop-blur-md">
-            <span className="text-xs text-slate-400 uppercase tracking-widest">{t('social_page_b2b.hero.badge')}</span>
-            <span className="font-heading font-bold text-sm text-accent">{t('social_page_b2b.hero.badge_brand')}</span>
-          </div>
+          <div className="hero-elem inline-flex items-center gap-3 px-5 py-3 mb-8 rounded-[24px] border border-slate-700/50 bg-black/40 backdrop-blur-md">
+              <span className="text-[10px] md:text-xs text-slate-400 uppercase tracking-widest whitespace-nowrap shrink-0">{t('social_page_b2b.hero.badge')}</span>
+              <span className="font-heading font-bold text-[13px] md:text-sm text-accent text-left leading-[1.2]">{t('social_page_b2b.hero.badge_brand')}</span>
+            </div>
 
           <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
             {t('social_page_b2b.hero.kicker')}
