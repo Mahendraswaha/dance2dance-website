@@ -132,11 +132,6 @@ const ImpactPage = () => {
               {t('social_page_b2b.hero.subtitle')}
             </p>
           </div>
-
-          <div className="hero-elem flex flex-col items-start gap-3 mt-12 text-slate-400/40 pointer-events-auto">
-            <ArrowDown size={18} />
-            <span className="font-heading text-[10px] tracking-[4px] uppercase">{t('social_page_b2b.hero.scroll')}</span>
-          </div>
         </div>
         </div>
         </section>
