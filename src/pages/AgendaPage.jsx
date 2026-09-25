@@ -195,6 +195,10 @@ export default function AgendaPage() {
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+              const cat = getEventCategory(ev);
+              const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+              const fullTitle = niceCat ? `${evTitle} - ${niceCat}` : evTitle;
+              const link = `https://www.dance2dance.no${getEventRoute(ev)}`;
             
             let dateStr = '';
             let timeStr = '';
@@ -209,7 +213,8 @@ export default function AgendaPage() {
                 userEmail: promotedEnrollmentData.userEmail,
                 userName: promotedEnrollmentData.userName,
                 userLang: currentLang, // Might send in the canceler's lang, but it's fine for now
-                workshopName: evTitle,
+                workshopName: fullTitle,
+                  workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
                 locationName: locationStr,
@@ -325,6 +330,10 @@ export default function AgendaPage() {
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+              const cat = getEventCategory(ev);
+              const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+              const fullTitle = niceCat ? `${evTitle} - ${niceCat}` : evTitle;
+              const link = `https://www.dance2dance.no${getEventRoute(ev)}`;
             
             let dateStr = '';
             let timeStr = '';
@@ -339,7 +348,8 @@ export default function AgendaPage() {
                 userEmail: currentUser.email,
                 userName: profileData.fullName || profileData.nome || currentUser.email,
                 userLang: currentLang,
-                workshopName: evTitle,
+                workshopName: fullTitle,
+                  workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
                 locationName: locationStr,
@@ -358,6 +368,10 @@ export default function AgendaPage() {
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+              const cat = getEventCategory(ev);
+              const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+              const fullTitle = niceCat ? `${evTitle} - ${niceCat}` : evTitle;
+              const link = `https://www.dance2dance.no${getEventRoute(ev)}`;
             
             let dateStr = '';
             let timeStr = '';
@@ -372,7 +386,8 @@ export default function AgendaPage() {
                 userEmail: currentUser.email,
                 userName: profileData.fullName || profileData.nome || currentUser.email,
                 userLang: currentLang,
-                workshopName: evTitle,
+                workshopName: fullTitle,
+                  workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
                 locationName: locationStr,

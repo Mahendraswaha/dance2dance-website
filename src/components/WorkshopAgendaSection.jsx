@@ -199,6 +199,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+              const cat = getEventCategory(ev);
+              const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+              const fullTitle = niceCat ? `${evTitle} - ${niceCat}` : evTitle;
+              const link = `https://www.dance2dance.no${getEventRoute(ev)}`;
             
             let dateStr = '';
             let timeStr = '';
@@ -213,7 +217,8 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 userEmail: currentUser.email,
                 userName: profileData.fullName || profileData.nome || currentUser.email,
                 userLang: currentLang,
-                workshopName: evTitle,
+                workshopName: fullTitle,
+                  workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
                 locationName: locationStr,
@@ -232,6 +237,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+              const cat = getEventCategory(ev);
+              const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+              const fullTitle = niceCat ? `${evTitle} - ${niceCat}` : evTitle;
+              const link = `https://www.dance2dance.no${getEventRoute(ev)}`;
             
             let dateStr = '';
             let timeStr = '';
@@ -246,7 +255,8 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 userEmail: currentUser.email,
                 userName: profileData.fullName || profileData.nome || currentUser.email,
                 userLang: currentLang,
-                workshopName: evTitle,
+                workshopName: fullTitle,
+                  workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
                 locationName: locationStr,
@@ -355,6 +365,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             const evTitle = localizedEv.title || '';
             const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
+              const cat = getEventCategory(ev);
+              const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
+              const fullTitle = niceCat ? `${evTitle} - ${niceCat}` : evTitle;
+              const link = `https://www.dance2dance.no${getEventRoute(ev)}`;
             
             let dateStr = '';
             let timeStr = '';
@@ -369,7 +383,8 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 userEmail: promotedEnrollmentData.userEmail,
                 userName: promotedEnrollmentData.userName,
                 userLang: currentLang,
-                workshopName: evTitle,
+                workshopName: fullTitle,
+                  workshopLink: link,
                 workshopDate: dateStr,
                 workshopTime: timeStr,
                 locationName: locationStr,
