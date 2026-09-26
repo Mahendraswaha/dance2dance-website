@@ -76,7 +76,7 @@ export default function WorkshopTemplate({ workshop, program }) {
       : t('actions.ready_to_start_wishlist', 'Inscreva-se na lista de interesse para novas turmas.');
 
   return (
-    <div className="pt-40 md:pt-52 pb-24 bg-primary min-h-screen font-sans text-background relative">
+    <div className="pt-32 lg:pt-[15vh] pb-24 bg-primary min-h-screen font-sans text-background relative">
       
       {/* Watermark Logo */}
       {program.logo && (
@@ -332,3 +332,4 @@ export default function WorkshopTemplate({ workshop, program }) {
     </div>
   );
 }
+

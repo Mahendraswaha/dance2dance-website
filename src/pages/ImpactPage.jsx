@@ -83,11 +83,11 @@ const ImpactPage = () => {
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-[100dvh] flex flex-col pt-32 md:pt-48 lg:pt-56 pb-4 md:pb-24 overflow-hidden bg-primary">
+      <section className="relative w-full min-h-[100dvh] flex flex-col justify-center pt-24 lg:pt-[12vh] pb-8 md:pb-16 overflow-hidden bg-primary">
         
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
-          <div className="flex flex-col md:w-3/4 lg:w-[65%] items-start">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-12 pointer-events-none">
+          <div className="flex flex-col md:w-4/5 lg:w-[75%] max-w-3xl items-start">
           
           {/* B2B Authority Badge */}
           <div className="hero-elem inline-flex items-center gap-3 px-5 py-3 mb-8 rounded-[24px] border border-slate-700/50 bg-black/40 backdrop-blur-md">
@@ -384,6 +384,9 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
+
+
 
 
 

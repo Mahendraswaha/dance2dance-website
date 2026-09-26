@@ -24,7 +24,7 @@ export default function IndividualPage() {
     <div className="bg-primary min-h-screen font-sans text-background">
       <Navbar />
 
-      <div className="pt-40 md:pt-52 pb-24 relative">
+      <div className="pt-32 lg:pt-[15vh] pb-24 relative">
 
         {/* Watermark Logo */}
         <div className="fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40">
@@ -249,3 +249,4 @@ export default function IndividualPage() {
     </div>
   );
 }
+

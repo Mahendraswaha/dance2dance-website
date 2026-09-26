@@ -45,7 +45,7 @@ export default function PricingPage() {
       <Navbar />
 
       {/* 1. Main Container com margem superior ampla (pt-48 md:pt-56) para eliminar colisão com Navbar */}
-      <main className="relative z-10 flex-grow pt-48 md:pt-56 pb-24 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto w-full">
+      <main className="relative z-10 flex-grow pt-32 lg:pt-[15vh] pb-24 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto w-full">
 
         {/* HERO SECTION */}
         <motion.header
@@ -438,3 +438,4 @@ export default function PricingPage() {
     </div>
   );
 }
+

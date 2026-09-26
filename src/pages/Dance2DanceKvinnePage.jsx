@@ -39,7 +39,7 @@ export default function Dance2DanceKvinnePage() {
       
       <Navbar />
 
-      <div className="pt-32 md:pt-48 lg:pt-56 pb-24 relative">
+      <div className="pt-32 lg:pt-[15vh] pb-24 relative">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10">
           
           {/* HERO SPLIT */}
@@ -330,3 +330,4 @@ export default function Dance2DanceKvinnePage() {
     </div>
   );
 }
+
