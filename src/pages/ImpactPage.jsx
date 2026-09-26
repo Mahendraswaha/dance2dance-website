@@ -109,17 +109,10 @@ const ImpactPage = () => {
           </h1>
 
           <div className="hero-elem w-full pointer-events-auto">
-            <p className="font-heading text-base md:text-lg lg:text-xl text-background/80 leading-relaxed max-w-lg mb-10">
-              {t('social_page_b2b.hero.description')}
+            <div className="h-[1px] w-full max-w-md bg-slate-100/10 mb-8 draw-line" />
+            <p className="font-heading text-background/70 text-base md:text-lg lg:text-xl leading-[1.6] max-w-lg">
+              {t('social_page_b2b.hero.subtitle')}
             </p>
-            <button 
-              onClick={scrollToInvestment}
-              className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-primary rounded-full font-heading font-bold text-sm tracking-widest uppercase overflow-hidden transition-transform hover:scale-105"
-            >
-              <span className="relative z-10">{t('social_page_b2b.hero.cta')}</span>
-              <ArrowDown size={18} className="relative z-10 group-hover:translate-y-1 transition-transform" />
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-            </button>
           </div>
           </div>
         </div>
