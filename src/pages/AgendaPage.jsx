@@ -987,7 +987,7 @@ export default function AgendaPage() {
       />
       <Navbar />
       
-      <main className="flex-grow pt-32 lg:pt-[15vh] pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
+      <main className="flex-grow pt-40 md:pt-48 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
         
         {/* Cabeçalho mais compacto para caber na altura da tela */}
         <motion.div
@@ -1388,4 +1388,5 @@ export default function AgendaPage() {
     </div>
   );
 }
+
 
