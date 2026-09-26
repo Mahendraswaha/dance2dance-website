@@ -126,7 +126,7 @@ const ImpactPage = () => {
               muted 
               playsInline
               poster={heroBlurPlaceholder}
-              className="w-full h-full object-cover lg:object-contain object-center lg:object-right opacity-60 mix-blend-luminosity"
+              className="w-full h-full object-cover lg:object-contain object-right opacity-60 mix-blend-luminosity"
             >
               <source src="/hero-social-project-small.mp4" type="video/mp4" />
             </video>
@@ -384,6 +384,7 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
 
 
 
