@@ -87,15 +87,7 @@ const ImpactPage = () => {
         
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
         <div className="relative z-10 w-full max-w-5xl mx-auto my-auto px-6 lg:px-12 pointer-events-none">
-          <div className="flex flex-col md:w-4/5 lg:w-[75%] max-w-3xl items-start">
-          
-          {/* B2B Authority Badge */}
-          <div className="hero-elem inline-flex items-center gap-3 px-5 py-3 mb-8 rounded-[24px] border border-slate-700/50 bg-black/40 backdrop-blur-md">
-              <span className="text-[10px] md:text-xs text-slate-400 uppercase tracking-widest whitespace-nowrap shrink-0">{t('social_page_b2b.hero.badge')}</span>
-              <span className="font-heading font-bold text-[13px] md:text-sm text-accent text-left leading-[1.2]">{t('social_page_b2b.hero.badge_brand')}</span>
-            </div>
-
-          <span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
+          <div className="flex flex-col md:w-4/5 lg:w-[75%] max-w-3xl items-start"><span className="hero-elem font-heading text-[10px] md:text-[11px] tracking-[5px] uppercase text-slate-400 mb-6 block">
             {t('social_page_b2b.hero.kicker')}
           </span>
           <h1 className="flex flex-col gap-0 md:gap-2 mb-8 pointer-events-none">
@@ -113,12 +105,16 @@ const ImpactPage = () => {
             <p className="font-heading text-background/70 text-base md:text-lg lg:text-xl leading-[1.6] max-w-lg">
               {t('social_page_b2b.hero.subtitle')}
             </p>
+              <div className="hero-elem inline-flex items-center gap-3 px-5 py-3 mt-10 rounded-[24px] border border-slate-700/50 bg-black/40 backdrop-blur-md">
+                <span className="text-[10px] md:text-xs text-slate-400 uppercase tracking-widest whitespace-nowrap shrink-0">{t('social_page_b2b.hero.badge')}</span>
+                <span className="font-heading font-bold text-[13px] md:text-sm text-accent text-left leading-[1.2]">{t('social_page_b2b.hero.badge_brand')}</span>
+              </div>
+            </div>
+            </div>
           </div>
-          </div>
-        </div>
 
-        {/* Video Layer - Mobile: Below text. Desktop: Original absolute floating position */}
-        <div className="relative lg:absolute lg:top-[53%] left-0 w-full px-0 lg:px-12 h-auto lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-2 lg:mt-0">
+          {/* Video Layer - Mobile: Below text. Desktop: Original absolute floating position */}
+        <div className="relative lg:absolute lg:top-[58%] left-0 w-full px-0 lg:px-12 h-auto lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-2 lg:mt-0">
           <div className="w-full max-w-5xl mx-auto h-full relative overflow-hidden md:overflow-visible md:translate-x-1">
             <video 
               autoPlay 
@@ -133,8 +129,6 @@ const ImpactPage = () => {
           </div>
           {/* Subtle gradient to blend left edge on Desktop */}
           <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent" />
-          {/* Bottom fade gradient - HIDES THE HARD WRIST CUTOFF FOREVER */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary to-transparent" />
           {/* Top fade gradient for Mobile to blend smoothly with text above */}
           <div className="lg:hidden absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-primary to-transparent" />
         </div>
@@ -384,6 +378,10 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
+
+
+
 
 
 

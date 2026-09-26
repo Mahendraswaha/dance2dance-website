@@ -28,7 +28,7 @@ const Navbar = () => {
 
     mm.add("(min-width: 768px)", () => {
       ScrollTrigger.create({
-        start: 'top -100',
+        start: 'top -10',
         onUpdate: (self) => {
           if (self.direction === 1) {
             gsap.to(navRef.current, { backgroundColor: 'rgba(13, 13, 18, 0.8)', borderColor: '#2A2A35', duration: 0.3, backdropFilter: 'blur(16px)' });
@@ -43,7 +43,7 @@ const Navbar = () => {
 
     mm.add("(max-width: 767px)", () => {
       ScrollTrigger.create({
-        start: 'top -100',
+        start: 'top -10',
         onUpdate: (self) => {
           if (self.direction === 1) {
             gsap.to(navRef.current, { backgroundColor: 'rgba(13, 13, 18, 0.8)', borderColor: '#2A2A35', duration: 0.3, backdropFilter: 'blur(16px)' });
@@ -307,3 +307,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
