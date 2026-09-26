@@ -118,7 +118,7 @@ const ImpactPage = () => {
         </div>
 
         {/* Video Layer - Mobile: Below text. Desktop: Original absolute floating position */}
-        <div className="relative lg:absolute lg:top-[60%] left-0 w-full lg:px-12 h-[40vh] lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-12 lg:mt-0">
+        <div className="relative lg:absolute lg:top-[53%] left-0 w-full px-6 lg:px-12 h-[55vh] lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-8 lg:mt-0">
           <div className="w-full max-w-5xl mx-auto h-full relative md:translate-x-1">
             <video 
               autoPlay 
@@ -384,6 +384,7 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
 
 
 
