@@ -86,7 +86,7 @@ const ImpactPage = () => {
       <section className="relative w-full min-h-[100dvh] flex flex-col pt-32 md:pt-48 lg:pt-56 pb-16 md:pb-24 overflow-hidden bg-primary">
         
         {/* Background Layer - Video aligned perfectly to the right */}
-        <div className="absolute top-[60%] left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 z-0 pointer-events-none">
+        <div className="absolute top-[60%] lg:top-auto lg:-bottom-[5vh] left-0 w-full px-6 lg:px-12 h-[70vh] -translate-y-1/2 lg:translate-y-0 z-0 pointer-events-none">
           <div className="w-full max-w-5xl mx-auto h-full relative md:translate-x-1">
             <video 
               autoPlay 
@@ -380,5 +380,6 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
 
 
