@@ -83,7 +83,7 @@ const ImpactPage = () => {
       <Navbar />
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-[100dvh] flex flex-col pt-32 md:pt-48 lg:pt-56 pb-16 md:pb-24 overflow-hidden bg-primary">
+      <section className="relative w-full min-h-[100dvh] flex flex-col pt-32 md:pt-48 lg:pt-56 pb-4 md:pb-24 overflow-hidden bg-primary">
         
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
         <div className="relative z-10 w-full max-w-5xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
@@ -118,7 +118,7 @@ const ImpactPage = () => {
         </div>
 
         {/* Video Layer - Mobile: Below text. Desktop: Original absolute floating position */}
-        <div className="relative lg:absolute lg:top-[53%] left-0 w-full px-0 lg:px-12 h-auto lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-8 lg:mt-0">
+        <div className="relative lg:absolute lg:top-[53%] left-0 w-full px-0 lg:px-12 h-auto lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-2 lg:mt-0">
           <div className="w-full max-w-5xl mx-auto h-full relative overflow-hidden md:overflow-visible md:translate-x-1">
             <video 
               autoPlay 
@@ -141,7 +141,7 @@ const ImpactPage = () => {
       </section>
 
       {/* ─── CONTEXT / MANIFESTO ─────────────────────────────────────── */}
-      <section className="py-24 md:py-32 px-6 lg:px-12 bg-[#0C0C0C] relative">
+      <section className="pt-12 pb-24 md:py-32 px-6 lg:px-12 bg-[#0C0C0C] relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-20 items-start">
 
           <div className="md:col-span-4 reveal-elem">
@@ -384,6 +384,9 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
+
+
 
 
 
