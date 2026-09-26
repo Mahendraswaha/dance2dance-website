@@ -887,11 +887,11 @@
         },
         {
           "title": "3. Dados Coletados",
-          "content": "<p>Nós coletamos e processamos os seguintes tipos de dados pessoais:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informações Fornecidas por Você:</strong> Nome, sobrenome, endereço de e-mail, informações fornecidas durante o cadastro em workshops, formulários de anamnese ou contato.</li><li><strong>Informações Coletadas Automaticamente:</strong> Quando você visita nosso site, coletamos informações anonimizadas sobre seu dispositivo, localização genérica, páginas visitadas e interação, para fins estatísticos e de funcionamento da plataforma.</li></ul>"
+          "content": "<p>Nós coletamos e processamos os seguintes tipos de dados pessoais:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informações Fornecidas por Você:</strong> Nome, endereço de e-mail e informações fornecidas durante o cadastro ou contato.</li><li><strong>Informações Coletadas Automaticamente:</strong> Quando você visita nosso site, utilizamos ferramentas como o Google Analytics para coletar informações anonimizadas sobre seu dispositivo, localização genérica, páginas visitadas e interação, para fins de estatística e otimização.</li></ul>"
         },
         {
           "title": "4. Uso de Cookies",
-          "content": "<p>Utilizamos cookies (pequenos arquivos de texto armazenados no seu dispositivo) para melhorar a experiência do usuário, entender como nossos serviços são utilizados e garantir o correto funcionamento do site.</p><p>Você pode configurar seu navegador para recusar cookies, mas isso pode afetar a disponibilidade de certas funcionalidades do site.</p>"
+          "content": "<p>Utilizamos cookies (pequenos arquivos de texto armazenados no seu dispositivo) para garantir o funcionamento essencial do site e cookies de análise (através do Google Analytics) para entender como nossos serviços são utilizados e melhorar a experiência do usuário.</p><p>Você pode configurar seu navegador para recusar cookies, mas isso pode afetar algumas funcionalidades. Ao aceitar o aviso de cookies no site, você concorda com a coleta de dados analíticos.</p>"
         },
         {
           "title": "5. Finalidades do Processamento",
@@ -906,8 +906,8 @@
           "content": "<p>Você possui diversos direitos em relação aos seus dados, incluindo: direito de acesso, retificação, exclusão de dados sob nossa posse, e direito de retirar o consentimento. Para exercer esses direitos, entre em contato conosco.</p>"
         },
         {
-          "title": "8. Prevenção de Spam e Serviços de Terceiros",
-          "content": "<p>Para proteger nossos formulários e evitar mensagens de spam geradas por robôs, utilizamos o serviço Cloudflare Turnstile. Ao navegar e utilizar nosso site, você reconhece e concorda que a operação deste serviço de proteção invisível está sujeita ao <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Adendo de Privacidade do Cloudflare Turnstile</a>.</p>"
+          "title": "8. Serviços de Terceiros e Analytics",
+          "content": "<p>Para proteger nossos formulários, utilizamos o serviço Cloudflare Turnstile, sujeito ao <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Adendo de Privacidade do Turnstile</a>.</p><p>Também utilizamos o <strong>Google Analytics</strong> para analisar o tráfego do site. O Google Analytics coleta dados anonimizados por meio de cookies. Você pode entender como o Google usa seus dados consultando a <a href='https://policies.google.com/privacy' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Política de Privacidade do Google</a>.</p>"
         }
       ]
     },
@@ -1730,5 +1730,11 @@
       "text": "Apoie o Dance2Dance Kvinne e associe sua marca ao empoderamento feminino e à saúde integrativa em Oslo.",
       "button": "Agendar Reunião Executiva"
     }
+  },
+  "cookies": {
+    "title": "Nós valorizamos sua privacidade",
+    "description": "Utilizamos cookies essenciais e cookies de análise (Google Analytics) para entender como você interage com nosso site e melhorar sua experiência. Para saber mais, leia nossa ",
+    "policyLink": "Política de Privacidade",
+    "accept": "Entendi e Aceito"
   }
 }

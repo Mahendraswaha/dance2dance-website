@@ -887,11 +887,11 @@
         },
         {
           "title": "3. Innsamlede Data",
-          "content": "<p>Vi samler inn og behandler:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informasjon fra deg:</strong> Navn, e-post, og info gitt ved registrering til workshops.</li><li><strong>Automatisk innsamlet informasjon:</strong> Anonymiserte data om enhet og interaksjon for statistiske formål.</li></ul>"
+          "content": "<p>Vi samler inn og behandler følgende typer personopplysninger:</p><ul class='list-disc pl-5 space-y-2 mt-2'><li><strong>Informasjon gitt av deg:</strong> Navn, e-postadresse og informasjon oppgitt under registrering eller kontakt.</li><li><strong>Automatisk innsamlet informasjon:</strong> Når du besøker nettstedet vårt, bruker vi verktøy som Google Analytics for å samle inn anonymisert informasjon om enheten din, generell plassering, besøkte sider og interaksjon, for statistiske formål og optimalisering.</li></ul>"
         },
         {
           "title": "4. Bruk av Informasjonskapsler (Cookies)",
-          "content": "<p>Vi bruker informasjonskapsler for å forbedre brukeropplevelsen og sikre nettstedets funksjonalitet. Du kan konfigurere nettleseren din til å avvise informasjonskapsler.</p>"
+          "content": "<p>Vi bruker informasjonskapsler (små tekstfiler lagret på enheten din) for å sikre at nettstedet fungerer som det skal, og analysekapsler (via Google Analytics) for å forstå hvordan tjenestene våre brukes og forbedre brukeropplevelsen.</p><p>Du kan konfigurere nettleseren din til å avvise informasjonskapsler, men dette kan påvirke enkelte funksjoner. Ved å akseptere informasjonskapselbanneret på nettstedet, godtar du innsamlingen av analytiske data.</p>"
         },
         {
           "title": "5. Formål med Behandlingen",
@@ -906,8 +906,8 @@
           "content": "<p>Du har rett til innsyn, retting, sletting, og til å trekke tilbake samtykke. Kontakt oss for å utøve disse rettighetene.</p>"
         },
         {
-          "title": "8. Spamforebygging og tredjepartstjenester",
-          "content": "<p>For å beskytte skjemaene våre og forhindre spam-meldinger generert av roboter, bruker vi Cloudflare Turnstile-tjenesten. Ved å surfe og bruke nettstedet vårt, anerkjenner og godtar du at driften av denne usynlige beskyttelsestjenesten er underlagt <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Cloudflare Turnstile Privacy Addendum</a>.</p>"
+          "title": "8. Tredjepartstjenester og Analyse",
+          "content": "<p>For å beskytte skjemaene våre bruker vi Cloudflare Turnstile-tjenesten, underlagt <a href='https://www.cloudflare.com/en-gb/turnstile-privacy-policy/' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Turnstile Privacy Addendum</a>.</p><p>Vi bruker også <strong>Google Analytics</strong> for å analysere nettstedstrafikk. Google Analytics samler inn anonymiserte data via informasjonskapsler. Du kan forstå hvordan Google bruker dataene dine ved å lese <a href='https://policies.google.com/privacy' target='_blank' rel='noopener noreferrer' class='text-[#CC5833] hover:underline'>Googles personvernerklæring</a>.</p>"
         }
       ]
     },
@@ -1730,5 +1730,11 @@
       "text": "Støtt Dance2Dance Kvinne og knytt merkevaren din til kvinners egenmakt og integrativ helse i Oslo.",
       "button": "Planlegg Ledermøte"
     }
+  },
+  "cookies": {
+    "title": "Vi verdsetter ditt personvern",
+    "description": "Vi bruker essensielle informasjonskapsler (cookies) og analysekapsler (Google Analytics) for å forstå hvordan du samhandler med nettstedet vårt og forbedre opplevelsen din. For å lære mer, les vår ",
+    "policyLink": "Personvernerklæring",
+    "accept": "Jeg forstår og aksepterer"
   }
 }
