@@ -118,7 +118,7 @@ const ImpactPage = () => {
         </div>
 
         {/* Video Layer - Mobile: Below text. Desktop: Original absolute floating position */}
-        <div className="relative lg:absolute lg:top-[53%] left-0 w-full px-6 lg:px-12 h-[55vh] lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-8 lg:mt-0">
+        <div className="relative lg:absolute lg:top-[53%] left-0 w-full px-6 lg:px-12 h-[45vh] lg:h-[70vh] lg:-translate-y-1/2 z-0 pointer-events-none mt-8 lg:mt-0">
           <div className="w-full max-w-5xl mx-auto h-full relative md:translate-x-1">
             <video 
               autoPlay 
@@ -126,7 +126,7 @@ const ImpactPage = () => {
               muted 
               playsInline
               poster={heroBlurPlaceholder}
-              className="w-full h-full object-contain object-center lg:object-right opacity-60 mix-blend-luminosity"
+              className="w-full h-full object-cover lg:object-contain object-center lg:object-right opacity-60 mix-blend-luminosity"
             >
               <source src="/hero-social-project-small.mp4" type="video/mp4" />
             </video>
@@ -384,6 +384,8 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
+
 
 
 
