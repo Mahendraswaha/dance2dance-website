@@ -85,23 +85,26 @@ const ImpactPage = () => {
       {/* ─── HERO ────────────────────────────────────────────────────── */}
       <section className="relative w-full min-h-[100dvh] flex flex-col pt-32 md:pt-48 lg:pt-56 pb-16 md:pb-24 overflow-hidden bg-primary">
         
+        {/* Background Layer - Video aligned perfectly to the right */}
+        <div className="absolute bottom-0 left-0 w-full px-6 lg:px-12 h-[75vh] z-0 pointer-events-none">
+          <div className="w-full max-w-5xl mx-auto h-full relative md:translate-x-1">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              poster={heroBlurPlaceholder}
+              className="w-full h-full object-contain object-right opacity-50 mix-blend-luminosity"
+            >
+              <source src="/hero-social-project-small.mp4" type="video/mp4" />
+            </video>
+          </div>
+          {/* Subtle gradient to blend left edge */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent" />
+        </div>
+
         {/* Content Layer: Unified wrapper matches HeroSequence floating alignment exactly */}
-          <div className="relative z-10 w-full max-w-5xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
-            
-            {/* Background Layer - Video aligned exactly at the top of the content block (Powered By tag) */}
-            <div className="absolute top-0 right-6 lg:right-12 w-full md:w-[60%] lg:w-[50%] h-[75vh] z-0 pointer-events-none">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                poster={heroBlurPlaceholder}
-                className="w-full h-full object-contain object-right-top opacity-50 mix-blend-luminosity md:translate-x-4"
-              >
-                <source src="/hero-social-project-small.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent" />
-            </div>
+        <div className="relative z-10 w-full max-w-5xl mx-auto mt-auto px-6 lg:px-12 pointer-events-none">
           <div className="flex flex-col md:w-3/4 lg:w-[65%] items-start">
           
           {/* B2B Authority Badge */}
@@ -377,3 +380,4 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
+
