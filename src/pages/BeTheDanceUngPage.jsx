@@ -39,8 +39,8 @@ export default function BeTheDanceUngPage() {
       
       <Navbar />
 
-      <div className="pt-32 lg:pt-[15vh] pb-24 relative">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10">
+      <div className="pt-32 md:pt-40 pb-24 relative flex flex-col min-h-screen">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10 my-auto w-full">
           
           {/* HERO SPLIT */}
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-24 mt-12">
@@ -330,4 +330,6 @@ export default function BeTheDanceUngPage() {
     </div>
   );
 }
+
+
 

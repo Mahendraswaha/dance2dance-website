@@ -76,7 +76,7 @@ export default function WorkshopTemplate({ workshop, program }) {
       : t('actions.ready_to_start_wishlist', 'Inscreva-se na lista de interesse para novas turmas.');
 
   return (
-    <div className="pt-32 lg:pt-[15vh] pb-24 bg-primary min-h-screen font-sans text-background relative">
+    <div className="pt-32 md:pt-40 pb-24 flex flex-col bg-primary min-h-screen font-sans text-background relative">
       
       {/* Watermark Logo */}
       {program.logo && (
@@ -91,7 +91,7 @@ export default function WorkshopTemplate({ workshop, program }) {
         </div>
       )}
 
-      <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10">
+      <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10 my-auto w-full">
         
         {/* ─── HEADER ─────────────────────────────── */}
         <header className="mb-12">
@@ -332,4 +332,6 @@ export default function WorkshopTemplate({ workshop, program }) {
     </div>
   );
 }
+
+
 

@@ -24,7 +24,7 @@ export default function IndividualPage() {
     <div className="bg-primary min-h-screen font-sans text-background">
       <Navbar />
 
-      <div className="pt-32 lg:pt-[15vh] pb-24 relative">
+      <div className="pt-32 md:pt-40 pb-24 relative flex flex-col min-h-screen">
 
         {/* Watermark Logo */}
         <div className="fixed top-24 md:top-36 left-0 w-full px-6 lg:px-12 pointer-events-none z-40">
@@ -38,7 +38,7 @@ export default function IndividualPage() {
           </div>
         </div>
 
-        <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10">
+        <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10 my-auto w-full">
 
           {/* HEADER */}
           <header className="mb-12">
@@ -249,4 +249,6 @@ export default function IndividualPage() {
     </div>
   );
 }
+
+
 
