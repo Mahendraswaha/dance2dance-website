@@ -12,7 +12,7 @@ import Brand from './Brand';
 const Activities = () => {
   const { t } = useTranslation();
   return (
-    <section id="workshops" className="scroll-mt-32 md:scroll-mt-40 py-24 px-8 bg-[#0C0C0C] min-h-screen flex items-center">
+    <section id="workshops" className="pt-40 md:pt-48 pb-24 px-8 bg-[#0C0C0C] min-h-screen flex items-center">
       <div className="max-w-[1200px] w-full mx-auto text-center">
         
         <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">{t("activities.kicker")}</p>
@@ -88,4 +88,5 @@ const Activities = () => {
 };
 
 export default Activities;
+
 
