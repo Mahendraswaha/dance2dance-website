@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -15,6 +15,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const { login, resetPassword } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
   async function handleResetPassword(e) {
     e.preventDefault();
@@ -39,7 +41,7 @@ export default function LoginPage() {
       setError('');
       setLoading(true);
       await login(email, password);
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (err) {
       setError(t('auth.loginError', 'Falha ao fazer login. Verifique seu email e senha.'));
     }
@@ -126,7 +128,7 @@ export default function LoginPage() {
           <div className="mt-8 text-center border-t border-[#222222] pt-6">
             <p className="font-heading text-sm text-[#9A9A9A] font-light">
               {t('auth.noAccount', 'Ainda não tem uma conta?')}{' '}
-              <Link to="/cadastro" className="text-accent hover:text-[#F0EDE8] transition-colors">
+              <Link to="/cadastro" state={{ from }} className="text-accent hover:text-[#F0EDE8] transition-colors">
                 {t('auth.createAccountLink', 'Criar conta')}
               </Link>
             </p>

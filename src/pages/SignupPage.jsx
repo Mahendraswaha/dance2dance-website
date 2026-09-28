@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
@@ -32,6 +32,8 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
   // Fallback de segurança para não travar o cadastro caso o Turnstile falhe ou seja bloqueado
   useEffect(() => {
@@ -80,7 +82,7 @@ export default function SignupPage() {
       };
       
       await signup(formData.email, formData.password, userData);
-      navigate('/');
+      navigate(from, { replace: true });
     } catch (err) {
       console.error(err);
       setError(t('auth.signupError', 'Falha ao criar conta. Verifique se o e-mail já está em uso.'));
@@ -348,7 +350,7 @@ export default function SignupPage() {
           <div className="mt-8 text-center border-t border-[#222222] pt-6">
             <p className="font-heading text-sm text-[#9A9A9A] font-light">
               {t('auth.alreadyHaveAccount', 'Já tem uma conta?')}{' '}
-              <Link to="/login" className="text-accent hover:text-[#F0EDE8] transition-colors">
+              <Link to="/login" state={{ from }} className="text-accent hover:text-[#F0EDE8] transition-colors">
                 {t('auth.loginLink', 'Entrar')}
               </Link>
             </p>
