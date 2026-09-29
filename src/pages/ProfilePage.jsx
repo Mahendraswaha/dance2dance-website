@@ -302,7 +302,7 @@ export default function ProfilePage() {
       await deleteDoc(doc(db, 'users', currentUser.uid));
       
       // 2. Apagar usuário no Auth
-      await deleteUser(currentUser);
+      if (auth.currentUser) await deleteUser(auth.currentUser);
       
       alert(t('profile.accountDeleted', 'Sua conta foi excluída com sucesso.'));
       navigate('/'); 
