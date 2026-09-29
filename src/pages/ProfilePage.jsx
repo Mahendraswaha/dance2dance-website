@@ -10,10 +10,11 @@ import {
   CheckCircle2, User, Save, ArrowLeft, Calendar, Clock, 
   MapPin, Sparkles, ExternalLink, CalendarPlus, ShieldCheck, 
   Star, MessageSquare, AlertCircle, Loader2, Award, ChevronRight,
-  GraduationCap, Download, Trash2
+  GraduationCap, Download, Trash2, TriangleAlert
 } from 'lucide-react';
 import { collection, getDocs, query, where, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { deleteUser } from 'firebase/auth';
 import { 
   getCategoryTheme, 
   formatEventDate, 
