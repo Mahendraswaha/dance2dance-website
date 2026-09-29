@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import i18n from '../i18n';
 
 const AuthContext = createContext();
 
@@ -41,6 +42,7 @@ export function AuthProvider({ children }) {
 
     // Enviar email de verificação
     try {
+      auth.languageCode = i18n.language || 'pt';
       await sendEmailVerification(user);
     } catch (err) {
       console.error("Erro ao enviar email de verificação:", err);
@@ -97,6 +99,7 @@ export function AuthProvider({ children }) {
 
   async function resendVerificationEmail() {
     if (currentUser) {
+      auth.languageCode = i18n.language || 'pt';
       await sendEmailVerification(currentUser);
     }
   }
