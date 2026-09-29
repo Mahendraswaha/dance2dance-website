@@ -255,8 +255,8 @@ export default function AgendaPage() {
       }
 
       // NOVO: Verificar se o email está confirmado
-      await reload(currentUser);
-      if (!currentUser.emailVerified) {
+      if (auth.currentUser) await reload(auth.currentUser);
+      if (!auth.currentUser?.emailVerified) {
         alert(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
         return;
       }
