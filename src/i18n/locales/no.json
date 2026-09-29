@@ -1287,7 +1287,8 @@
     "savingProfile": "Lagrer...",
     "profileSuccess": "Profilen ble oppdatert!",
     "profileError": "Kunne ikke oppdatere profilen. Vennligst prøv igjen.",
-    "readOnlyEmail": "E-postadressen kan ikke endres direkte."
+    "readOnlyEmail": "E-postadressen kan ikke endres direkte.",
+    "verifyEmailAlert": "Bare ett trinn igjen! Bekreft e-posten din ved å klikke på lenken vi sendte deg for å sikre plassen din."
   },
   "btd_corporate": {
     "kicker": "BE THE DANCE FOR BEDRIFTER",

@@ -1287,7 +1287,8 @@
     "savingProfile": "Salvando...",
     "profileSuccess": "Cadastro atualizado com sucesso!",
     "profileError": "Erro ao atualizar cadastro. Tente novamente.",
-    "readOnlyEmail": "O e-mail não pode ser alterado diretamente."
+    "readOnlyEmail": "O e-mail não pode ser alterado diretamente.",
+    "verifyEmailAlert": "Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga."
   },
   "btd_corporate": {
     "kicker": "BE THE DANCE PARA EMPRESAS",
