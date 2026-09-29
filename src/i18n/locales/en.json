@@ -1288,7 +1288,10 @@
     "profileSuccess": "Profile updated successfully!",
     "profileError": "Failed to update profile. Please try again.",
     "readOnlyEmail": "Email address cannot be changed directly.",
-    "verifyEmailAlert": "Just one step left! Please confirm your email by clicking the link we sent you to secure your spot."
+    "verifyEmailAlert": "Just one step left! Please confirm your email by clicking the link we sent you to secure your spot.",
+    "signupSuccessAlert": "Registration successful! We've sent a confirmation link to your email. Please check your inbox before enrolling in workshops.",
+    "verifyEmailMessage": "Your email has not been confirmed yet. You will not be able to enroll in workshops until you confirm your email.",
+    "resendEmailBtn": "Resend Email"
   },
   "btd_corporate": {
     "kicker": "BE THE DANCE FOR COMPANIES",
@@ -1737,5 +1740,12 @@
     "description": "We use essential cookies and analytical cookies (Google Analytics) to understand how you interact with our website and improve your experience. To learn more, read our ",
     "policyLink": "Privacy Policy",
     "accept": "I Understand and Accept"
+  },
+  "profile": {
+    "confirmDelete": "DANGER ZONE:\nAre you absolutely sure? This action cannot be undone and you will lose access to all your enrollments.",
+    "accountDeleted": "Your account has been successfully deleted.",
+    "dangerZone": "Danger Zone",
+    "dangerZoneDesc": "By deleting your account, you will permanently lose access to all your data and enrollments. This action is irreversible.",
+    "deleteAccountBtn": "Delete Account"
   }
 }

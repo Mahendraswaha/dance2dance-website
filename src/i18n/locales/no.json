@@ -1288,7 +1288,10 @@
     "profileSuccess": "Profilen ble oppdatert!",
     "profileError": "Kunne ikke oppdatere profilen. Vennligst prøv igjen.",
     "readOnlyEmail": "E-postadressen kan ikke endres direkte.",
-    "verifyEmailAlert": "Bare ett trinn igjen! Bekreft e-posten din ved å klikke på lenken vi sendte deg for å sikre plassen din."
+    "verifyEmailAlert": "Bare ett trinn igjen! Bekreft e-posten din ved å klikke på lenken vi sendte deg for å sikre plassen din.",
+    "signupSuccessAlert": "Registreringen er fullført! Vi har sendt en bekreftelseslenke til e-posten din. Vennligst sjekk innboksen din før du melder deg på workshops.",
+    "verifyEmailMessage": "E-posten din er ikke bekreftet ennå. Du vil ikke kunne melde deg på workshops før du har bekreftet e-posten din.",
+    "resendEmailBtn": "Send e-post på nytt"
   },
   "btd_corporate": {
     "kicker": "BE THE DANCE FOR BEDRIFTER",
@@ -1737,5 +1740,12 @@
     "description": "Vi bruker essensielle informasjonskapsler (cookies) og analysekapsler (Google Analytics) for å forstå hvordan du samhandler med nettstedet vårt og forbedre opplevelsen din. For å lære mer, les vår ",
     "policyLink": "Personvernerklæring",
     "accept": "Jeg forstår og aksepterer"
+  },
+  "profile": {
+    "confirmDelete": "FARESØNE:\nEr du helt sikker? Denne handlingen kan ikke angres, og du vil miste tilgang til alle dine påmeldinger.",
+    "accountDeleted": "Kontoen din har blitt slettet.",
+    "dangerZone": "Faresone",
+    "dangerZoneDesc": "Ved å slette kontoen din, vil du permanent miste tilgang til alle dine data og påmeldinger. Denne handlingen er irreversibel.",
+    "deleteAccountBtn": "Slett Konto"
   }
 }

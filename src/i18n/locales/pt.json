@@ -1288,7 +1288,10 @@
     "profileSuccess": "Cadastro atualizado com sucesso!",
     "profileError": "Erro ao atualizar cadastro. Tente novamente.",
     "readOnlyEmail": "O e-mail não pode ser alterado diretamente.",
-    "verifyEmailAlert": "Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga."
+    "verifyEmailAlert": "Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.",
+    "signupSuccessAlert": "Cadastro concluído! Enviamos um link de confirmação para o seu e-mail. Por favor, verifique sua caixa de entrada antes de se inscrever nos workshops.",
+    "verifyEmailMessage": "Seu e-mail ainda não foi confirmado. Você não poderá se inscrever em workshops até confirmar seu e-mail.",
+    "resendEmailBtn": "Reenviar E-mail"
   },
   "btd_corporate": {
     "kicker": "BE THE DANCE PARA EMPRESAS",
@@ -1737,5 +1740,12 @@
     "description": "Utilizamos cookies essenciais e cookies de análise (Google Analytics) para entender como você interage com nosso site e melhorar sua experiência. Para saber mais, leia nossa ",
     "policyLink": "Política de Privacidade",
     "accept": "Entendi e Aceito"
+  },
+  "profile": {
+    "confirmDelete": "ZONA DE PERIGO:\nTem certeza absoluta? Esta ação não pode ser desfeita e você perderá o acesso a todas as suas inscrições.",
+    "accountDeleted": "Sua conta foi excluída com sucesso.",
+    "dangerZone": "Zona de Perigo",
+    "dangerZoneDesc": "Ao excluir sua conta, você perderá acesso permanente a todos os seus dados e inscrições. Esta ação é irreversível.",
+    "deleteAccountBtn": "Excluir Conta"
   }
 }
