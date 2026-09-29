@@ -28,7 +28,7 @@ import {
 export default function ProfilePage() {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'pt';
-  const { currentUser, updateProfileData } = useAuth();
+  const { currentUser, updateProfileData, resendVerificationEmail } = useAuth();
   const navigate = useNavigate();
 
   // Tab: 'courses' | 'personal_data'
@@ -1132,4 +1132,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
 
