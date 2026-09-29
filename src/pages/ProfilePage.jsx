@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { collection, getDocs, query, where, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
-import { deleteUser } from 'firebase/auth';
+import { deleteUser, EmailAuthProvider, GoogleAuthProvider, reauthenticateWithCredential, reauthenticateWithPopup } from 'firebase/auth';
 import { 
   getCategoryTheme, 
   formatEventDate, 
@@ -292,12 +292,25 @@ export default function ProfilePage() {
   const studentName = currentUser?.profile?.fullName || currentUser?.profile?.nome || currentUser?.email?.split('@')[0] || 'Aluno';
 
 
-  async function handleDeleteAccount() {
+    async function handleDeleteAccount() {
     if (!window.confirm(t('profile.confirmDelete', 'ZONA DE PERIGO:\nTem certeza absoluta? Esta ação não pode ser desfeita e você perderá o acesso a todas as suas inscrições.'))) {
       return;
     }
-    
+
     try {
+      const providerId = auth.currentUser?.providerData[0]?.providerId;
+      
+      // Reautenticação
+      if (providerId === 'password') {
+        const password = window.prompt(t('profile.confirmPasswordPrompt', 'Por segurança, digite sua senha para confirmar a exclusão:'));
+        if (!password) return; // Usuário cancelou
+        const credential = EmailAuthProvider.credential(auth.currentUser.email, password);
+        await reauthenticateWithCredential(auth.currentUser, credential);
+      } else if (providerId === 'google.com') {
+        const provider = new GoogleAuthProvider();
+        await reauthenticateWithPopup(auth.currentUser, provider);
+      }
+
       // 1. Apagar documento do Firestore
       await deleteDoc(doc(db, 'users', currentUser.uid));
       
@@ -308,7 +321,9 @@ export default function ProfilePage() {
       navigate('/'); 
     } catch (error) {
       console.error("Erro ao excluir conta:", error);
-      if (error.code === 'auth/requires-recent-login') {
+      if (error.code === 'auth/wrong-password') {
+        alert(t('profile.wrongPassword', 'Senha incorreta. A exclusão foi cancelada.'));
+      } else if (error.code === 'auth/requires-recent-login') {
         alert(t('profile.reauthNeeded', 'Por segurança, você precisa fazer logout e entrar novamente antes de excluir sua conta.'));
         logout();
       } else {

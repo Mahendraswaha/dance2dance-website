@@ -1746,6 +1746,9 @@
     "accountDeleted": "Kontoen din har blitt slettet.",
     "dangerZone": "Faresone",
     "dangerZoneDesc": "Ved å slette kontoen din, vil du permanent miste tilgang til alle dine data og påmeldinger. Denne handlingen er irreversibel.",
-    "deleteAccountBtn": "Slett Konto"
+    "deleteAccountBtn": "Slett Konto",
+    "confirmPasswordPrompt": "Av sikkerhetsgrunner, vennligst skriv inn passordet ditt for å bekrefte sletting:",
+    "wrongPassword": "Feil passord. Sletting avbrutt.",
+    "reauthNeeded": "Av sikkerhetsgrunner må du logge ut og logge inn på nytt før du kan slette kontoen din."
   }
 }

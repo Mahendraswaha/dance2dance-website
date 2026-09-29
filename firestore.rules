@@ -24,9 +24,15 @@ service cloud.firestore {
     // 2. Coleção 'events' (Agenda / Workshops)
     // ==========================================================
     match /events/{eventId} {
-      // Qualquer um pode ver a agenda. Apenas admins podem criar ou editar workshops.
+      // Qualquer um pode ver a agenda. Apenas admins podem criar ou deletar workshops.
       allow read: if true;
-      allow write: if isAdmin();
+      allow create, delete: if isAdmin();
+      
+      // Para se inscrever, alunos precisam alterar os campos de contagem
+      allow update: if isAdmin() || (
+        request.auth != null &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['enrolledCount', 'waitlistCount'])
+      );
     }
     
     // ==========================================================

@@ -1746,6 +1746,9 @@
     "accountDeleted": "Sua conta foi excluída com sucesso.",
     "dangerZone": "Zona de Perigo",
     "dangerZoneDesc": "Ao excluir sua conta, você perderá acesso permanente a todos os seus dados e inscrições. Esta ação é irreversível.",
-    "deleteAccountBtn": "Excluir Conta"
+    "deleteAccountBtn": "Excluir Conta",
+    "confirmPasswordPrompt": "Por segurança, digite sua senha para confirmar a exclusão:",
+    "wrongPassword": "Senha incorreta. A exclusão foi cancelada.",
+    "reauthNeeded": "Por segurança, você precisa fazer logout e entrar novamente antes de excluir sua conta."
   }
 }

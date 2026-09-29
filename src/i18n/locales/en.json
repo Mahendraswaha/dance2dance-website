@@ -1746,6 +1746,9 @@
     "accountDeleted": "Your account has been successfully deleted.",
     "dangerZone": "Danger Zone",
     "dangerZoneDesc": "By deleting your account, you will permanently lose access to all your data and enrollments. This action is irreversible.",
-    "deleteAccountBtn": "Delete Account"
+    "deleteAccountBtn": "Delete Account",
+    "confirmPasswordPrompt": "For security, please enter your password to confirm deletion:",
+    "wrongPassword": "Incorrect password. Deletion cancelled.",
+    "reauthNeeded": "For security, you must log out and log back in before deleting your account."
   }
 }
