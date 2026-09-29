@@ -41,6 +41,7 @@ import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 import ScholarshipModal from '../components/ScholarshipModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
+import { toast } from 'sonner';
 
 function getIsoDate(year, month, day) {
   return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -241,7 +242,7 @@ export default function AgendaPage() {
 
     } catch(err) {
       console.error(err);
-      alert(t("agendaPage.cancelError", "Erro ao cancelar: ") + err.message);
+      toast.error(t("agendaPage.cancelError", "Erro ao cancelar: ") + err.message);
     }
     setActionLoading(null);
   }
@@ -257,7 +258,7 @@ export default function AgendaPage() {
       // NOVO: Verificar se o email está confirmado
       if (auth.currentUser) await reload(auth.currentUser);
       if (!auth.currentUser?.emailVerified) {
-        alert(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
+        toast.success(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
         return;
       }
 
@@ -425,7 +426,7 @@ export default function AgendaPage() {
 
     } catch (err) {
       console.error(err);
-      alert("ERRO: " + err.message);
+      toast.error("ERRO: " + err.message);
     } finally {
       setActionLoading(null);
     }

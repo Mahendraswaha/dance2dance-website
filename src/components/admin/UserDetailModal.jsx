@@ -9,6 +9,7 @@ import {
   Compass, ExternalLink, CalendarDays, Star, Shield, Award
 } from 'lucide-react';
 import { getCategoryTheme, formatEventDate, getLocalizedEvent, isEventPast } from '../../utils/eventHelpers';
+import { toast } from 'sonner';
 
 // Helper para calcular idade a partir da data de nascimento
 function formatBirthDateAndAge(birthDateStr, yearsOldLabel = 'anos') {
@@ -88,7 +89,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
       setTimeout(() => setRoleSuccess(false), 3000);
     } catch (err) {
       console.error("Erro ao atualizar perfil:", err);
-      alert(t('adminPage.usersManager.roleError', 'Erro ao atualizar perfil do usuário.'));
+      toast.error(t('adminPage.usersManager.roleError', 'Erro ao atualizar perfil do usuário.'));
     } finally {
       setUpdatingRole(false);
     }

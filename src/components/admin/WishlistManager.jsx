@@ -10,6 +10,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { getCategoryTheme } from '../../utils/eventHelpers';
+import { toast } from 'sonner';
 
 const GOAL_COUNT = 10;
 
@@ -194,7 +195,7 @@ export default function WishlistManager({ onScheduleWorkshop }) {
       await deleteDoc(doc(db, 'wishlists', wishId));
     } catch (err) {
       console.error("Erro ao deletar interesse:", err);
-      alert("Erro ao remover registro.");
+      toast.error("Erro ao remover registro.");
     } finally {
       setDeletingId(null);
     }

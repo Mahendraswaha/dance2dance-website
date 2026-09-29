@@ -36,6 +36,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import AnalyticsTracker from './components/AnalyticsTracker';
+import { Toaster } from 'sonner';
 import CookieBanner from './components/CookieBanner';
 import AdminRoute from './components/AdminRoute';
 import './i18n';
@@ -81,6 +82,19 @@ export default function App() {
       <BrowserRouter>
         <ScrollToTop />
         <AnalyticsTracker />
+        <Toaster 
+          theme="dark"
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: '#0a0a0a',
+              border: '1px solid #333',
+              color: '#F0EDE8',
+              fontFamily: 'Inter, sans-serif'
+            },
+            className: 'font-heading text-sm font-light uppercase tracking-wider',
+          }}
+        />
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />

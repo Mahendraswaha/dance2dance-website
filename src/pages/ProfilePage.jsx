@@ -15,6 +15,7 @@ import {
 import { collection, getDocs, query, where, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { deleteUser, EmailAuthProvider, GoogleAuthProvider, reauthenticateWithCredential, reauthenticateWithPopup } from 'firebase/auth';
+import { toast } from 'sonner';
 import { 
   getCategoryTheme, 
   formatEventDate, 
@@ -317,17 +318,17 @@ export default function ProfilePage() {
       // 2. Apagar usuário no Auth
       if (auth.currentUser) await deleteUser(auth.currentUser);
       
-      alert(t('profile.accountDeleted', 'Sua conta foi excluída com sucesso.'));
+      toast.success(t('profile.accountDeleted', 'Sua conta foi excluída com sucesso.'));
       navigate('/'); 
     } catch (error) {
       console.error("Erro ao excluir conta:", error);
       if (error.code === 'auth/wrong-password') {
-        alert(t('profile.wrongPassword', 'Senha incorreta. A exclusão foi cancelada.'));
+        toast.success(t('profile.wrongPassword', 'Senha incorreta. A exclusão foi cancelada.'));
       } else if (error.code === 'auth/requires-recent-login') {
-        alert(t('profile.reauthNeeded', 'Por segurança, você precisa fazer logout e entrar novamente antes de excluir sua conta.'));
+        toast.success(t('profile.reauthNeeded', 'Por segurança, você precisa fazer logout e entrar novamente antes de excluir sua conta.'));
         logout();
       } else {
-        alert(t('profile.deleteError', 'Ocorreu um erro ao excluir sua conta: ') + error.message);
+        toast.error(t('profile.deleteError', 'Ocorreu um erro ao excluir sua conta: ') + error.message);
       }
     }
   }
@@ -354,9 +355,9 @@ export default function ProfilePage() {
                 onClick={async () => {
                   try {
                     await resendVerificationEmail();
-                    alert(t('auth.verifyEmailSent', 'E-mail de verificação reenviado. Verifique sua caixa de entrada.'));
+                    toast.success(t('auth.verifyEmailSent', 'E-mail de verificação reenviado. Verifique sua caixa de entrada.'));
                   } catch (e) {
-                    alert('Erro: ' + e.message);
+                    toast.error('Erro: ' + e.message);
                   }
                 }}
                 className="text-xs font-heading tracking-[1px] uppercase bg-red-900/50 hover:bg-red-800 text-white px-4 py-2 rounded-[2px] transition-colors whitespace-nowrap"
@@ -1131,3 +1132,4 @@ export default function ProfilePage() {
     </div>
   );
 }
+

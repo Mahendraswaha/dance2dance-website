@@ -52,6 +52,22 @@ Este documento serve como a "Bíblia" do projeto Dance2Dance. Toda Inteligência
   * Deve usar sempre **Bokmål** (nunca Nynorsk ou Sueco).
   * Em textos institucionais e projetos sociais, garantir a presença de "Grant-application keywords" (palavras-chave para editais do governo): *personlig velvære, kunstnerisk uttrykk, selvinnsikt, selvtillit*.
 
-## 5. Regras de Fluxo e Lógica
+
+## 5. A Visão do Produto (Micro CRM SaaS)
+**MANDATO CRÍTICO:** O Dance2Dance NÃO é apenas um site. Ele é o "Cliente Zero" e o Case de Sucesso (laboratório) para a construção do nosso próprio produto: um **Micro CRM SaaS**.
+Toda a arquitetura de backend, captação de leads, e-mails, listas de espera e inteligência de marketing que estamos construindo aqui deve ser pensada para ser **desacoplada e vendida como um serviço independente no futuro**.
+
+* **A Separação:**
+  * **Frontend (Dance2Dance):** O site React atual que atende os alunos.
+  * **Backend (O Micro CRM SaaS):** O motor de gestão de clientes, automações e disparo de e-mails (usando o servidor Pro ISP) que estamos construindo no Firebase. 
+* **Regra de Desenvolvimento:** Sempre que criarmos uma funcionalidade de gestão de alunos, automação ou marketing, a IA deve perguntar e refletir: *"Como construo isso de forma modular para que amanhã possamos extrair esse código, colocar outra marca e vender como um software para outras escolas/organizações?"*
+* **Nada de CRMs externos definitivos:** Ferramentas de prateleira só devem ser cogitadas se formos utilizá-las estritamente como *API de disparo* (motores "burros"). O **cérebro** das regras de negócio (Lead Scoring, Funis, Tags, Inteligência) será totalmente construído por nós mesmos dentro do nosso ecossistema para compor o SaaS.
+* **Arquitetura Single Tenant (Isolamento de Instâncias):** 
+  * O Micro CRM NÃO será Multi-tenant (um bancão de dados gigante misturando todos os clientes com `tenant_id`). 
+  * O modelo será **Single Tenant**. Cada cliente futuro do SaaS terá seu próprio projeto Firebase / Banco de Dados isolado. 
+  * Benefícios: Segurança máxima de dados, zero risco de vazamento entre clientes, performance garantida (sem "noisy neighbors") e posicionamento de produto Premium. Todo o código do backend deve ser escrito assumindo que o banco de dados pertence a **um único cliente**.
+
+
+## 6. Regras de Fluxo e Lógica
 * **Login/Redirecionamento:** Páginas de Autenticação (`LoginPage`, `SignupPage`) devem sempre capturar o `location.state.from` para devolver o usuário à tela exata em que ele estava (ex: continuar uma inscrição na Agenda), sem jogá-lo forçadamente para a Home.
 * **Workshops (Vagas):** O sistema opera com vagas baseadas em investimento (pagantes) que financiam as vagas de bolsa (gratuitas). A lógica de lista de espera deve respeitar as arrays do Firebase rigorosamente.

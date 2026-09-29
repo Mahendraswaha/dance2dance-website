@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, where, getDocs, doc, runTransaction, getDoc, updateDoc } from 'firebase/firestore';
@@ -298,10 +299,10 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
         enrolledCount: enrolledStudents.length,
         waitlistCount: waitlistStudents.length
       });
-      alert("Contadores sincronizados com sucesso! Atualize a página do site (F5).");
+      toast.success("Contadores sincronizados com sucesso! Atualize a página do site (F5).");
       if (onEventUpdated) onEventUpdated();
     } catch(err) {
-      alert("Erro ao sincronizar: " + err.message);
+      toast.error("Erro ao sincronizar: " + err.message);
     }
   }
 
@@ -318,7 +319,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
   // 2. Exportar CSV (Respeita a privacidade: instrutor recebe apenas dados pedagógicos/CRM)
   function handleExportCsv() {
     if (currentList.length === 0) {
-      alert(t("adminPage.studentsModal.noStudentsToExport", "Não há alunos na lista atual para exportar."));
+      toast.success(t("adminPage.studentsModal.noStudentsToExport", "Não há alunos na lista atual para exportar."));
       return;
     }
 
@@ -506,7 +507,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
 
 
     } catch (err) {
-      alert("Erro ao promover aluno: " + err.message);
+      toast.error("Erro ao promover aluno: " + err.message);
     }
     setActionLoading(null);
   }
@@ -536,7 +537,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
       setEnrollments(prev => prev.filter(e => e.id !== enrollmentId));
       if (onEventUpdated) onEventUpdated();
     } catch (err) {
-      alert("Erro ao remover: " + err.message);
+      toast.error("Erro ao remover: " + err.message);
     }
     setActionLoading(null);
   }
@@ -563,7 +564,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
       setTimeout(() => setSavedSuccessId(null), 3000);
     } catch (err) {
       console.error("Erro ao salvar avaliação do CRM:", err);
-      alert("Erro ao salvar avaliação: " + err.message);
+      toast.error("Erro ao salvar avaliação: " + err.message);
     } finally {
       setSavingEvalId(null);
     }

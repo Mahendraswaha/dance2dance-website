@@ -30,6 +30,7 @@ import {
 import WorkshopWishlist from './WorkshopWishlist';
 import ScholarshipModal from './ScholarshipModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
+import { toast } from 'sonner';
 
 export default function WorkshopAgendaSection({ program, workshop, onEventsLoaded }) {
   const { t, i18n } = useTranslation();
@@ -126,7 +127,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
       // NOVO: Verificar se o email está confirmado
       if (auth.currentUser) await reload(auth.currentUser);
       if (!auth.currentUser?.emailVerified) {
-        alert(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
+        toast.success(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
         return;
       }
 
@@ -295,7 +296,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
 
     } catch (err) {
       console.error(err);
-      alert("ERRO: " + err.message);
+      toast.error("ERRO: " + err.message);
     } finally {
       setActionLoading(null);
     }
@@ -422,7 +423,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
 
     } catch(err) {
       console.error(err);
-      alert(t("agendaPage.cancelError", "Erro ao cancelar: ") + err.message);
+      toast.error(t("agendaPage.cancelError", "Erro ao cancelar: ") + err.message);
     } finally {
       setActionLoading(null);
     }

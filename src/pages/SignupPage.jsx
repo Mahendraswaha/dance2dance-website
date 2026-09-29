@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { TURNSTILE_SITE_KEY } from '../utils/constants';
+import { toast } from 'sonner';
 
 export default function SignupPage() {
   const { t } = useTranslation();
@@ -83,7 +84,7 @@ export default function SignupPage() {
       
       await signup(formData.email, formData.password, userData);
         trackEvent('sign_up', { method: 'email' });
-      alert(t('auth.signupSuccessAlert', 'Cadastro concluído! Enviamos um link de confirmação para o seu e-mail. Por favor, verifique sua caixa de entrada antes de se inscrever nos workshops.'));
+      toast.success(t('auth.signupSuccessAlert', 'Cadastro concluído! Enviamos um link de confirmação para o seu e-mail. Por favor, verifique sua caixa de entrada antes de se inscrever nos workshops.'));
       navigate(from, { replace: true });
     } catch (err) {
       console.error(err);

@@ -12,6 +12,7 @@ import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorC
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 import RegisteredUsersManager from '../components/admin/RegisteredUsersManager';
 import WishlistManager from '../components/admin/WishlistManager';
+import { toast } from 'sonner';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
 const EVENT_PRESETS = {
@@ -313,7 +314,7 @@ export default function AdminDashboard() {
       });
 
       if (formData.endDate && formData.startDate && formData.endDate < formData.startDate) {
-        alert(t('adminPage.invalidEndDate', 'A data de término não pode ser anterior à data de início.'));
+        toast.success(t('adminPage.invalidEndDate', 'A data de término não pode ser anterior à data de início.'));
         return;
       }
 
@@ -367,7 +368,7 @@ export default function AdminDashboard() {
       fetchEvents(); 
     } catch (err) {
       console.error("Erro ao salvar evento", err);
-      alert(t('adminPage.saveError', 'Erro ao salvar evento.') + ' ' + (err.message || ''));
+      toast.error(t('adminPage.saveError', 'Erro ao salvar evento.') + ' ' + (err.message || ''));
     }
   }
 
@@ -414,7 +415,7 @@ export default function AdminDashboard() {
         await deleteDoc(doc(db, 'events', id));
         fetchEvents();
       } catch(err) {
-        alert(t('adminPage.deleteError', 'Erro ao deletar.') + ' ' + (err.message || ''));
+        toast.error(t('adminPage.deleteError', 'Erro ao deletar.') + ' ' + (err.message || ''));
       }
     }
   }

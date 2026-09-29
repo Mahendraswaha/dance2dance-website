@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { useTranslation } from 'react-i18next';
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 export default function AuthActionPage() {
   const [searchParams] = useSearchParams();
@@ -70,7 +71,7 @@ export default function AuthActionPage() {
   async function handlePasswordSubmit(e) {
     e.preventDefault();
     if (!newPassword || newPassword.length < 6) {
-      alert(t('auth.passwordTooShort', 'A senha deve ter pelo menos 6 caracteres.'));
+      toast.success(t('auth.passwordTooShort', 'A senha deve ter pelo menos 6 caracteres.'));
       return;
     }
 

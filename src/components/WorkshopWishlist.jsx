@@ -5,6 +5,7 @@ import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 import { 
   Sparkles, 
   Heart, 
@@ -82,7 +83,7 @@ export default function WorkshopWishlist({ program, workshop }) {
       }
     } catch (err) {
       console.error("Erro ao atualizar interesse:", err);
-      alert(t('common.error', 'Ocorreu um erro ao atualizar seu interesse. Tente novamente.'));
+      toast.error(t('common.error', 'Ocorreu um erro ao atualizar seu interesse. Tente novamente.'));
     } finally {
       setSubmitting(false);
     }
