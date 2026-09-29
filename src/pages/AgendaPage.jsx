@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, orderBy, getDocs, doc, runTransaction, where, getDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
+import { reload } from 'firebase/auth';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';

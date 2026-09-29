@@ -43,7 +43,12 @@ export function AuthProvider({ children }) {
     // Enviar email de verificação
     try {
       auth.languageCode = i18n.language || 'pt';
-      await sendEmailVerification(user);
+      
+      const actionCodeSettings = {
+        url: window.location.origin + '/agenda',
+        handleCodeInApp: false
+      };
+      await sendEmailVerification(user, actionCodeSettings);
     } catch (err) {
       console.error("Erro ao enviar email de verificação:", err);
     }
@@ -100,7 +105,12 @@ export function AuthProvider({ children }) {
   async function resendVerificationEmail() {
     if (currentUser) {
       auth.languageCode = i18n.language || 'pt';
-      await sendEmailVerification(currentUser);
+      
+      const actionCodeSettings = {
+        url: window.location.origin + '/agenda',
+        handleCodeInApp: false
+      };
+      await sendEmailVerification(auth.currentUser, actionCodeSettings);
     }
   }
 
