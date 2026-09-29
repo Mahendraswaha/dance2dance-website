@@ -16,7 +16,6 @@ service cloud.firestore {
     // 1. Coleção 'users' (Perfis de usuário)
     // ==========================================================
     match /users/{userId} {
-      // O usuário logado só pode ver e alterar seu próprio perfil. Admins podem tudo.
       allow read, write: if request.auth != null && (request.auth.uid == userId || isAdmin());
     }
     
@@ -24,11 +23,9 @@ service cloud.firestore {
     // 2. Coleção 'events' (Agenda / Workshops)
     // ==========================================================
     match /events/{eventId} {
-      // Qualquer um pode ver a agenda. Apenas admins podem criar ou deletar workshops.
       allow read: if true;
       allow create, delete: if isAdmin();
       
-      // Para se inscrever, alunos precisam alterar os campos de contagem
       allow update: if isAdmin() || (
         request.auth != null &&
         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['enrolledCount', 'waitlistCount'])
@@ -39,21 +36,31 @@ service cloud.firestore {
     // 3. Coleção 'enrollments' (Inscrições nos Workshops)
     // ==========================================================
     match /enrollments/{enrollmentId} {
-      // Leitura: O aluno só vê suas próprias inscrições.
-      allow read: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
-      // Criação: O ID da inscrição deve pertencer ao usuário logado.
+      // Leitura: O aluno vê as próprias OR precisa ler a lista de espera para promovê-los
+      allow read: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin() || resource.data.status == 'waitlist');
+      
       allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
-      // Alteração/Deleção: O aluno só mexe na dele (ex: cancelar).
-      allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+      
+      // Deleção: Aluno deleta a dele
+      allow delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+      
+      // Update: Aluno atualiza a dele OR promove o próximo da lista de espera
+      allow update: if request.auth != null && (
+        resource.data.userId == request.auth.uid || 
+        isAdmin() || 
+        (
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']) && 
+          request.resource.data.status == 'enrolled' && 
+          resource.data.status == 'waitlist'
+        )
+      );
     }
     
     // ==========================================================
     // 4. Coleção 'wishlists' (Listas de Interesse / Vote)
     // ==========================================================
     match /wishlists/{wishlistId} {
-      // Leitura pública (necessário porque o site conta e exibe a % de interessados ao vivo).
       allow read: if true;
-      // Criação/Deleção: Só o próprio usuário autenticado pode se adicionar ou remover da wishlist.
       allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
       allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
     }
@@ -62,9 +69,7 @@ service cloud.firestore {
     // 5. Coleção 'contacts' (Mensagens do Formulário de Contato)
     // ==========================================================
     match /contacts/{contactId} {
-      // Qualquer pessoa pode preencher o formulário no site e enviar.
       allow create: if true;
-      // Só admins podem ler e deletar as mensagens no painel.
       allow read, update, delete: if isAdmin();
     }
     
@@ -72,9 +77,7 @@ service cloud.firestore {
     // 6. Coleção 'reviews' (Depoimentos dos alunos)
     // ==========================================================
     match /reviews/{reviewId} {
-      // Leitura pública (para exibir os depoimentos nas páginas).
       allow read: if true;
-      // Só usuários logados podem enviar depoimentos vinculados à sua conta.
       allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
       allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
     }

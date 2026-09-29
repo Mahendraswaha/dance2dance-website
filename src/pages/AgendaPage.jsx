@@ -41,6 +41,7 @@ import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 import ScholarshipModal from '../components/ScholarshipModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
+import ConfirmModal from '../components/ConfirmModal';
 import { toast } from 'sonner';
 
 function getIsoDate(year, month, day) {
@@ -53,6 +54,7 @@ export default function AgendaPage() {
 
   const [events, setEvents] = useState([]);
   const [userEnrollments, setUserEnrollments] = useState({});
+  const [cancelModal, setCancelModal] = useState({ isOpen: false, eventId: null });
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(null);
   
@@ -133,8 +135,14 @@ export default function AgendaPage() {
     });
   };
 
-  async function handleCancelEnrollment(eventId) {
-    if (!window.confirm(t("agendaPage.confirmCancel", "Tem certeza que deseja cancelar sua inscrição/espera para este evento?"))) return;
+  function requestCancel(eventId) {
+    setCancelModal({ isOpen: true, eventId });
+  }
+
+  async function confirmCancelEnrollment() {
+    const eventId = cancelModal.eventId;
+    setCancelModal({ isOpen: false, eventId: null });
+    if (!eventId) return;
     
     setActionLoading(eventId);
     try {
@@ -875,7 +883,7 @@ export default function AgendaPage() {
 
             {!isPast && (userStatus === 'enrolled' || userStatus === 'waitlist') && (
               <button 
-                onClick={() => handleCancelEnrollment(event.id)} 
+                onClick={() => requestCancel(event.id)} 
                 disabled={actionLoading === event.id} 
                 className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors mt-2 text-center block"
               >
@@ -1382,7 +1390,14 @@ export default function AgendaPage() {
             </div>
           </div>
         )}
-      </main>
+        <ConfirmModal 
+        isOpen={cancelModal.isOpen}
+        title={t('agendaPage.cancelTitle', 'Cancelar Inscrição')}
+        message={t('agendaPage.confirmCancel', 'Tem certeza que deseja cancelar sua inscrição/espera para este evento?')}
+        onConfirm={confirmCancelEnrollment}
+        onCancel={() => setCancelModal({ isOpen: false, eventId: null })}
+      />
+    </main>
 
       <Footer />
 

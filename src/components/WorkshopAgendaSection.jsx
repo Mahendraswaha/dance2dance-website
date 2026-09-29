@@ -30,6 +30,7 @@ import {
 import WorkshopWishlist from './WorkshopWishlist';
 import ScholarshipModal from './ScholarshipModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
+import ConfirmModal from './ConfirmModal';
 import { toast } from 'sonner';
 
 export default function WorkshopAgendaSection({ program, workshop, onEventsLoaded }) {
@@ -40,6 +41,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
 
   const [events, setEvents] = useState([]);
   const [userEnrollments, setUserEnrollments] = useState({});
+  const [cancelModal, setCancelModal] = useState({ isOpen: false, eventId: null });
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(null);
   const [expandedSchedules, setExpandedSchedules] = useState({});
@@ -314,8 +316,14 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
     handleEnroll(eventId, isFull, false);
   }
 
-  async function handleCancelEnrollment(eventId) {
-    if (!window.confirm(t("agendaPage.confirmCancel", "Tem certeza que deseja cancelar sua inscrição/espera para este evento?"))) return;
+  function requestCancel(eventId) {
+    setCancelModal({ isOpen: true, eventId });
+  }
+
+  async function confirmCancelEnrollment() {
+    const eventId = cancelModal.eventId;
+    setCancelModal({ isOpen: false, eventId: null });
+    if (!eventId) return;
     
     setActionLoading(eventId);
     try {
@@ -658,7 +666,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
 
                   {(userStatus === 'enrolled' || userStatus === 'waitlist') && (
                     <button 
-                      onClick={() => handleCancelEnrollment(event.id)} 
+                      onClick={() => requestCancel(event.id)} 
                       disabled={actionLoading === event.id} 
                       className="text-[#9A9A9A] hover:text-red-400 text-[9px] uppercase tracking-wider font-heading transition-colors mt-2 text-center block cursor-pointer"
                     >
