@@ -13,7 +13,7 @@ import {
   GraduationCap, Download, Trash2, TriangleAlert
 } from 'lucide-react';
 import { collection, getDocs, query, where, doc, setDoc, deleteDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { 
   getCategoryTheme, 
