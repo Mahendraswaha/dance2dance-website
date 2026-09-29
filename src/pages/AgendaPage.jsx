@@ -247,10 +247,19 @@ export default function AgendaPage() {
 
   async function handleEnroll(eventId, isFull, scholarshipDecision = null) {
     try {
+
       if (!currentUser) {
         navigate('/login', { state: { from: window.location.pathname } });
         return;
       }
+
+      // NOVO: Verificar se o email está confirmado
+      await currentUser.reload(); // Recarrega para pegar o status mais recente
+      if (!currentUser.emailVerified) {
+        alert(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
+        return;
+      }
+
 
       // 1. Obter dados atualizados do perfil (do cache local e do Firestore caso necessário)
       let profileData = currentUser.profile || {};

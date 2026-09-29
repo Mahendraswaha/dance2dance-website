@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ==========================================================
+    // FUNÇÃO AUXILIAR: Verifica se o usuário é Admin/Instrutor
+    // ==========================================================
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email in ['mahendra.swaha@gmail.com', 'contato@dance2dance.no'] || 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'instructor']
+      );
+    }
+    
+    // ==========================================================
+    // 1. Coleção 'users' (Perfis de usuário)
+    // ==========================================================
+    match /users/{userId} {
+      // O usuário logado só pode ver e alterar seu próprio perfil. Admins podem tudo.
+      allow read, write: if request.auth != null && (request.auth.uid == userId || isAdmin());
+    }
+    
+    // ==========================================================
+    // 2. Coleção 'events' (Agenda / Workshops)
+    // ==========================================================
+    match /events/{eventId} {
+      // Qualquer um pode ver a agenda. Apenas admins podem criar ou editar workshops.
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // ==========================================================
+    // 3. Coleção 'enrollments' (Inscrições nos Workshops)
+    // ==========================================================
+    match /enrollments/{enrollmentId} {
+      // Leitura: O aluno só vê suas próprias inscrições.
+      allow read: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+      // Criação: O ID da inscrição deve pertencer ao usuário logado.
+      allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
+      // Alteração/Deleção: O aluno só mexe na dele (ex: cancelar).
+      allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+    
+    // ==========================================================
+    // 4. Coleção 'wishlists' (Listas de Interesse / Vote)
+    // ==========================================================
+    match /wishlists/{wishlistId} {
+      // Leitura pública (necessário porque o site conta e exibe a % de interessados ao vivo).
+      allow read: if true;
+      // Criação/Deleção: Só o próprio usuário autenticado pode se adicionar ou remover da wishlist.
+      allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+    
+    // ==========================================================
+    // 5. Coleção 'contacts' (Mensagens do Formulário de Contato)
+    // ==========================================================
+    match /contacts/{contactId} {
+      // Qualquer pessoa pode preencher o formulário no site e enviar.
+      allow create: if true;
+      // Só admins podem ler e deletar as mensagens no painel.
+      allow read, update, delete: if isAdmin();
+    }
+    
+    // ==========================================================
+    // 6. Coleção 'reviews' (Depoimentos dos alunos)
+    // ==========================================================
+    match /reviews/{reviewId} {
+      // Leitura pública (para exibir os depoimentos nas páginas).
+      allow read: if true;
+      // Só usuários logados podem enviar depoimentos vinculados à sua conta.
+      allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+  }
+}

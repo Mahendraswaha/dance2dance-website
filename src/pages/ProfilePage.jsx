@@ -294,8 +294,38 @@ export default function ProfilePage() {
     <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
 
-      <main className="flex-grow pt-40 md:pt-48 pb-24 px-4 sm:px-6 relative">
-        <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #222 0%, transparent 60%)' }} />
+      
+        <main className="flex-grow pt-40 md:pt-48 pb-24 px-4 sm:px-6 relative">
+          {currentUser && !currentUser.emailVerified && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-4xl mx-auto mb-8 bg-red-950/40 border border-red-500/30 p-4 rounded-[2px] flex flex-col sm:flex-row items-center justify-between gap-4"
+            >
+              <div className="flex items-center gap-3 text-red-200">
+                <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-400" />
+                <p className="text-sm font-sans font-light">
+                  {t('auth.verifyEmailMessage', 'Seu e-mail ainda não foi confirmado. Você não poderá se inscrever em workshops até confirmar seu e-mail.')}
+                </p>
+              </div>
+              <button 
+                onClick={async () => {
+                  try {
+                    await resendVerificationEmail();
+                    alert(t('auth.verifyEmailSent', 'E-mail de verificação reenviado. Verifique sua caixa de entrada.'));
+                  } catch (e) {
+                    alert('Erro: ' + e.message);
+                  }
+                }}
+                className="text-xs font-heading tracking-[1px] uppercase bg-red-900/50 hover:bg-red-800 text-white px-4 py-2 rounded-[2px] transition-colors whitespace-nowrap"
+              >
+                {t('auth.resendEmailBtn', 'Reenviar E-mail')}
+              </button>
+            </motion.div>
+          )}
+
+          <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #222 0%, transparent 60%)' }} />
+
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

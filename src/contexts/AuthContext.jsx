@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
     updateProfile,
+  sendEmailVerification,
   sendPasswordResetEmail, 
   signOut, 
   onAuthStateChanged 
@@ -37,6 +38,14 @@ export function AuthProvider({ children }) {
       createdAt: new Date().toISOString(),
       ...userData
     });
+
+    // Enviar email de verificação
+    try {
+      await sendEmailVerification(user);
+    } catch (err) {
+      console.error("Erro ao enviar email de verificação:", err);
+    }
+
     
     return userCredential;
   }
@@ -86,12 +95,19 @@ export function AuthProvider({ children }) {
     }));
   }
 
+  async function resendVerificationEmail() {
+    if (currentUser) {
+      await sendEmailVerification(currentUser);
+    }
+  }
+
   const value = {
     currentUser,
     signup,
     login,
     logout,
     resetPassword,
+    resendVerificationEmail,
     updateProfileData
   };
 
