@@ -54,6 +54,7 @@ const RegularClassesPage = lazyWithRetries(() => import('./pages/RegularClassesP
 const CurriculumPage = lazyWithRetries(() => import('./pages/CurriculumPage'));
 const LoginPage = lazyWithRetries(() => import('./pages/LoginPage'));
 const SignupPage = lazyWithRetries(() => import('./pages/SignupPage'));
+const AuthActionPage = lazyWithRetries(() => import('./pages/AuthActionPage'));
 const ProfilePage = lazyWithRetries(() => import('./pages/ProfilePage'));
 const TermsPage = lazyWithRetries(() => import('./pages/TermsPage'));
 const PrivacyPolicyPage = lazyWithRetries(() => import('./pages/PrivacyPolicyPage'));
@@ -95,6 +96,7 @@ export default function App() {
             <Route path="/safia" element={<CurriculumPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/cadastro" element={<SignupPage />} />
+            <Route path="/auth-action" element={<AuthActionPage />} />
             <Route path="/perfil" element={<ProfilePage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
