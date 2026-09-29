@@ -779,6 +779,8 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         neighborhood={pendingEnrollment?.neighborhood || ''}
         loading={actionLoading !== null}
       />
-    </motion.section>
+      <ConfirmModal isOpen={cancelModal.isOpen} title={t('agendaPage.cancelTitle', 'Cancelar Inscrição')} message={t('agendaPage.confirmCancel', 'Tem certeza que deseja cancelar sua inscrição/espera para este evento?')} onConfirm={confirmCancelEnrollment} onCancel={() => setCancelModal({ isOpen: false, eventId: null })} />
+      </motion.section>
   );
 }
+
