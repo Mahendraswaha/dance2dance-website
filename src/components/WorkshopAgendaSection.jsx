@@ -180,7 +180,8 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
           transaction.update(eventRef, { enrolledCount: (eventData.enrolledCount || 0) + 1 });
         }
 
-        transaction.set(newEnrollmentRef, {
+        trackEvent('enroll_workshop', { event_id: eventId, status: finalStatus });
+          transaction.set(newEnrollmentRef, {
           eventId: eventId,
             userLang: currentLang,
           userId: currentUser.uid || 'unknown',

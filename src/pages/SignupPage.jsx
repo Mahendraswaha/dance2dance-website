@@ -82,6 +82,7 @@ export default function SignupPage() {
       };
       
       await signup(formData.email, formData.password, userData);
+        trackEvent('sign_up', { method: 'email' });
       alert(t('auth.signupSuccessAlert', 'Cadastro concluído! Enviamos um link de confirmação para o seu e-mail. Por favor, verifique sua caixa de entrada antes de se inscrever nos workshops.'));
       navigate(from, { replace: true });
     } catch (err) {

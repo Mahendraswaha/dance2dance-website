@@ -35,6 +35,7 @@ function lazyWithRetries(componentImport) {
 import { AuthProvider } from './contexts/AuthContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
+import AnalyticsTracker from './components/AnalyticsTracker';
 import CookieBanner from './components/CookieBanner';
 import AdminRoute from './components/AdminRoute';
 import './i18n';
@@ -79,6 +80,7 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <AnalyticsTracker />
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
