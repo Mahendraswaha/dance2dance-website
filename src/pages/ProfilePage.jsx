@@ -290,8 +290,34 @@ export default function ProfilePage() {
 
   const studentName = currentUser?.profile?.fullName || currentUser?.profile?.nome || currentUser?.email?.split('@')[0] || 'Aluno';
 
+
+  async function handleDeleteAccount() {
+    if (!window.confirm(t('profile.confirmDelete', 'ZONA DE PERIGO:\nTem certeza absoluta? Esta ação não pode ser desfeita e você perderá o acesso a todas as suas inscrições.'))) {
+      return;
+    }
+    
+    try {
+      // 1. Apagar documento do Firestore
+      await deleteDoc(doc(db, 'users', currentUser.uid));
+      
+      // 2. Apagar usuário no Auth
+      await deleteUser(currentUser);
+      
+      alert(t('profile.accountDeleted', 'Sua conta foi excluída com sucesso.'));
+      navigate('/'); 
+    } catch (error) {
+      console.error("Erro ao excluir conta:", error);
+      if (error.code === 'auth/requires-recent-login') {
+        alert(t('profile.reauthNeeded', 'Por segurança, você precisa fazer logout e entrar novamente antes de excluir sua conta.'));
+        logout();
+      } else {
+        alert(t('profile.deleteError', 'Ocorreu um erro ao excluir sua conta: ') + error.message);
+      }
+    }
+  }
+
   return (
-    <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
+  <div className="bg-primary min-h-screen flex flex-col font-sans text-background selection:bg-accent/30">
       <Navbar />
 
       
