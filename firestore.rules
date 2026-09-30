@@ -3,7 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     
     // ==========================================================
-    // FUNÇÃO AUXILIAR: Verifica se o usuário é Admin/Instrutor
+    // FUNÃƒâ€¡ÃƒÆ’O AUXILIAR: Verifica se o usuÃƒÂ¡rio ÃƒÂ© Admin/Instrutor
     // ==========================================================
     function isAdmin() {
       return request.auth != null && (
@@ -13,14 +13,14 @@ service cloud.firestore {
     }
     
     // ==========================================================
-    // 1. Coleção 'users' (Perfis de usuário)
+    // 1. ColeÃƒÂ§ÃƒÂ£o 'users' (Perfis de usuÃƒÂ¡rio)
     // ==========================================================
     match /users/{userId} {
       allow read, write: if request.auth != null && (request.auth.uid == userId || isAdmin());
     }
     
     // ==========================================================
-    // 2. Coleção 'events' (Agenda / Workshops)
+    // 2. ColeÃƒÂ§ÃƒÂ£o 'events' (Agenda / Workshops)
     // ==========================================================
     match /events/{eventId} {
       allow read: if true;
@@ -33,18 +33,18 @@ service cloud.firestore {
     }
     
     // ==========================================================
-    // 3. Coleção 'enrollments' (Inscrições nos Workshops)
+    // 3. ColeÃƒÂ§ÃƒÂ£o 'enrollments' (InscriÃƒÂ§ÃƒÂµes nos Workshops)
     // ==========================================================
     match /enrollments/{enrollmentId} {
-      // Leitura: O aluno vê as próprias OR precisa ler a lista de espera para promovê-los
+      // Leitura: O aluno vÃƒÂª as prÃƒÂ³prias OR precisa ler a lista de espera para promovÃƒÂª-los
       allow read: if true;
       
       allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
       
-      // Deleção: Aluno deleta a dele
+      // DeleÃƒÂ§ÃƒÂ£o: Aluno deleta a dele
       allow delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin());
       
-      // Update: Aluno atualiza a dele OR promove o próximo da lista de espera
+      // Update: Aluno atualiza a dele OR promove o prÃƒÂ³ximo da lista de espera
       allow update: if request.auth != null && (
         resource.data.userId == request.auth.uid || 
         isAdmin() || 
@@ -57,7 +57,7 @@ service cloud.firestore {
     }
     
     // ==========================================================
-    // 4. Coleção 'wishlists' (Listas de Interesse / Vote)
+    // 4. ColeÃƒÂ§ÃƒÂ£o 'wishlists' (Listas de Interesse / Vote)
     // ==========================================================
     match /wishlists/{wishlistId} {
       allow read: if true;
@@ -66,7 +66,7 @@ service cloud.firestore {
     }
     
     // ==========================================================
-    // 5. Coleção 'contacts' (Mensagens do Formulário de Contato)
+    // 5. ColeÃƒÂ§ÃƒÂ£o 'contacts' (Mensagens do FormulÃƒÂ¡rio de Contato)
     // ==========================================================
     match /crm_email_templates/{templateId} {
       allow read: if true;
@@ -79,7 +79,7 @@ service cloud.firestore {
     }
     
     // ==========================================================
-    // 6. Coleção 'reviews' (Depoimentos dos alunos)
+    // 6. ColeÃƒÂ§ÃƒÂ£o 'reviews' (Depoimentos dos alunos)
     // ==========================================================
     match /reviews/{reviewId} {
       allow read: if true;
