@@ -240,7 +240,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 locationMapLink: locationMap
               })
             });
-          } catch(emailErr) {
+              if (response.ok) {
+                await updateDoc(newEnrollmentRef, { emailSent: true });
+              }
+            } catch(emailErr) {
             console.error("Failed to send waitlist joined email", emailErr);
           }
         }
@@ -278,7 +281,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 locationMapLink: locationMap
               })
             });
-          } catch(emailErr) {
+              if (response.ok) {
+                await updateDoc(newEnrollmentRef, { emailSent: true });
+              }
+            } catch(emailErr) {
             console.error("Failed to send enrollment email", emailErr);
           }
         }
@@ -412,7 +418,10 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 locationMapLink: locationMap
               })
             });
-          } catch(emailErr) {
+              if (response.ok) {
+                await updateDoc(newEnrollmentRef, { emailSent: true });
+              }
+            } catch(emailErr) {
             console.error("Failed to send waitlist promotion email", emailErr);
           }
         }
@@ -779,7 +788,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         neighborhood={pendingEnrollment?.neighborhood || ''}
         loading={actionLoading !== null}
       />
-      <ConfirmModal isOpen={cancelModal.isOpen} title={t('agendaPage.cancelTitle', 'Cancelar Inscrição')} message={t('agendaPage.confirmCancel', 'Tem certeza que deseja cancelar sua inscrição/espera para este evento?')} onConfirm={confirmCancelEnrollment} onCancel={() => setCancelModal({ isOpen: false, eventId: null })} />
+      <ConfirmModal isOpen={cancelModal.isOpen} title={t('agendaPage.cancelTitle', 'Cancelar Inscriï¿½ï¿½o')} message={t('agendaPage.confirmCancel', 'Tem certeza que deseja cancelar sua inscriï¿½ï¿½o/espera para este evento?')} onConfirm={confirmCancelEnrollment} onCancel={() => setCancelModal({ isOpen: false, eventId: null })} />
       </motion.section>
   );
 }

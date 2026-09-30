@@ -231,7 +231,10 @@ export default function AgendaPage() {
                 locationMapLink: locationMap
               })
             });
-          } catch(emailErr) {
+              if (response.ok) {
+                await updateDoc(newEnrollmentRef, { emailSent: true });
+              }
+            } catch(emailErr) {
             console.error("Failed to send waitlist promotion email", emailErr);
           }
         }
@@ -376,7 +379,10 @@ export default function AgendaPage() {
                 locationMapLink: locationMap
               })
             });
-          } catch(emailErr) {
+              if (response.ok) {
+                await updateDoc(newEnrollmentRef, { emailSent: true });
+              }
+            } catch(emailErr) {
             console.error("Failed to send waitlist joined email", emailErr);
           }
         }
@@ -414,7 +420,10 @@ export default function AgendaPage() {
                 locationMapLink: locationMap
               })
             });
-          } catch(emailErr) {
+              if (response.ok) {
+                await updateDoc(newEnrollmentRef, { emailSent: true });
+              }
+            } catch(emailErr) {
             console.error("Failed to send enrollment email", emailErr);
           }
         }
