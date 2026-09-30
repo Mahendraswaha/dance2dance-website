@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, query, orderBy, getDocs, doc, runTransaction, where, getDoc } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs, doc, runTransaction, where, getDoc, updateDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { reload } from 'firebase/auth';
 import { useAuth } from '../contexts/AuthContext';
@@ -224,7 +224,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             if (ev?.startDate) dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(currentLang === 'no' ? 'no-NO' : currentLang === 'en' ? 'en-US' : 'pt-BR');
             if (ev?.startTime) timeStr = ev.startTime;
 
-            await fetch('/api/agenda-notify', {
+            const response = await fetch('/api/agenda-notify', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -262,7 +262,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             if (ev?.startDate) dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(currentLang === 'no' ? 'no-NO' : currentLang === 'en' ? 'en-US' : 'pt-BR');
             if (ev?.startTime) timeStr = ev.startTime;
 
-            await fetch('/api/agenda-notify', {
+            const response = await fetch('/api/agenda-notify', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -396,7 +396,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             if (ev?.startDate) dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(currentLang === 'no' ? 'no-NO' : currentLang === 'en' ? 'en-US' : 'pt-BR');
             if (ev?.startTime) timeStr = ev.startTime;
 
-            await fetch('/api/agenda-notify', {
+            const response = await fetch('/api/agenda-notify', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -783,4 +783,6 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
       </motion.section>
   );
 }
+
+
 

@@ -37,7 +37,7 @@ service cloud.firestore {
     // ==========================================================
     match /enrollments/{enrollmentId} {
       // Leitura: O aluno vê as próprias OR precisa ler a lista de espera para promovê-los
-      allow read: if request.auth != null && (resource.data.userId == request.auth.uid || isAdmin() || resource.data.status == 'waitlist');
+      allow read: if true;
       
       allow create: if request.auth != null && (request.resource.data.userId == request.auth.uid || isAdmin());
       
@@ -68,6 +68,11 @@ service cloud.firestore {
     // ==========================================================
     // 5. Coleção 'contacts' (Mensagens do Formulário de Contato)
     // ==========================================================
+    match /crm_email_templates/{templateId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     match /contacts/{contactId} {
       allow create: if true;
       allow read, update, delete: if isAdmin();
@@ -83,3 +88,12 @@ service cloud.firestore {
     }
   }
 }
+
+
+
+
+
+
+
+
+

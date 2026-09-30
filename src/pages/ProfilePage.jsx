@@ -12,7 +12,7 @@ import {
   Star, MessageSquare, AlertCircle, Loader2, Award, ChevronRight,
   GraduationCap, Download, Trash2, TriangleAlert
 } from 'lucide-react';
-import { collection, getDocs, query, where, doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where, doc, setDoc, deleteDoc, runTransaction } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { deleteUser, EmailAuthProvider, GoogleAuthProvider, reauthenticateWithCredential, reauthenticateWithPopup } from 'firebase/auth';
 import { toast } from 'sonner';
@@ -1132,5 +1132,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+
 
 
