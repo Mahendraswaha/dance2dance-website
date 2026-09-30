@@ -14,7 +14,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { type, userEmail, userName, workshopName, workshopDate, workshopTime, workshopLink, locationName, locationMapLink, lang = 'en' } = req.body;
+  const { type, userEmail, userName, workshopName, workshopDate, workshopTime, workshopLink, locationName, locationMapLink, lang = 'en', userLang } = req.body;
+  
+  const finalLang = userLang || lang;
 
   if (!userEmail || !type || !workshopName) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -30,7 +32,7 @@ export default async function handler(req, res) {
 
   // Mapear o tipo do frontend para o prefixo do ID no Firestore
   let templatePrefix = '';
-  if (type === 'enrollment_confirmed') templatePrefix = 'enrollment_confirmed';
+  if (type === 'enrollment_confirmed' || type === 'enrolled') templatePrefix = 'enrollment_confirmed';
   else if (type === 'waitlist_joined') templatePrefix = 'waitlist_joined';
   else if (type === 'waitlist_promoted') templatePrefix = 'waitlist_promoted';
   else {
@@ -39,7 +41,7 @@ export default async function handler(req, res) {
 
   // Montar o ID do documento baseado na linguagem
   // Ex: "enrollment_confirmed_en"
-  const templateId = `${templatePrefix}_${lang}`;
+  const templateId = `${templatePrefix}_${finalLang}`;
   const projectId = 'dance2dance-734d1';
   
   let subject = '';
