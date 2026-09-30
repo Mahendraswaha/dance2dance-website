@@ -1,4 +1,10 @@
 {
+    "rewrites":  [
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/((?!api/|sitemap\\.xml|robots\\.txt|.*\\.xml|.*\\.txt|.*\\.json).*)"
+                     }
+                 ],
     "crons":  [
                   {
                       "path":  "/api/crm-cron",
