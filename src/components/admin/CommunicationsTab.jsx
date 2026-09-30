@@ -2,6 +2,7 @@
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { toast } from 'sonner';
+import RichTextEditor from './RichTextEditor';
 import { Edit2, CheckCircle2, Loader2, Save, Eye } from 'lucide-react';
 
 const TEMPLATES_LIST = [
