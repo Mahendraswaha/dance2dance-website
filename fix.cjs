@@ -1,16 +1,15 @@
-const fs = require('fs');
-let lines = fs.readFileSync('src/pages/AdminDashboard.jsx', 'utf8').split('\n');
+﻿const fs = require('fs');
+let code = fs.readFileSync('src/components/admin/CommunicationsTab.jsx', 'utf8');
 
-for (let i = 0; i < lines.length; i++) {
-    if (lines[i].includes('adminPage.tabUpcoming')) {
-        lines[i+1] = '                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${';
-        lines[i+2] = '                    adminTab === \'upcoming\' ? \'bg-primary/20 text-primary font-bold\' : \'bg-[#222222] text-[#CFCFCF]\'\n                  }`}>';
-        lines[i+3] = '';
-    }
-    if (lines[i].includes('adminPage.tabPast')) {
-        lines[i+1] = '                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${';
-        lines[i+2] = '                    adminTab === \'past\' ? \'bg-primary/20 text-primary font-bold\' : \'bg-[#222222] text-[#CFCFCF]\'\n                  }`}>';
-        lines[i+3] = '';
-    }
-}
-fs.writeFileSync('src/pages/AdminDashboard.jsx', lines.join('\n'));
+// Replace the TEMPLATES_LIST
+code = code.replace(/const TEMPLATES_LIST = \[\s*\{ id: 'agenda_enrolled'.*?\n\s*\{ id: 'agenda_waitlist'.*?\n\];/s, `const TEMPLATES_LIST = [
+  { id: 'enrollment_confirmed', name: 'Confirmação de Inscrição' },
+  { id: 'waitlist_joined', name: 'Entrada na Fila de Espera' },
+  { id: 'waitlist_promoted', name: 'Vaga Liberada da Fila (Promoted)' },
+  { id: 'contact_received', name: 'Formulário de Contato Recebido' }
+];`);
+
+// Also fix the selectedTemplate default state
+code = code.replace(/const \[selectedTemplate, setSelectedTemplate\] = useState\('agenda_enrolled'\);/, `const [selectedTemplate, setSelectedTemplate] = useState('enrollment_confirmed');`);
+
+fs.writeFileSync('src/components/admin/CommunicationsTab.jsx', code);

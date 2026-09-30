@@ -5,12 +5,16 @@ import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/fire
 
 export default function OverviewTab({ events, userEnrollments, usersCount }) {
   const [failedEmails, setFailedEmails] = useState([]);
+  const [totalUsers, setTotalUsers] = useState(0);
   const [isResending, setIsResending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchFailedEmails = async () => {
+  const fetchFailedEmailsAndUsers = async () => {
     setIsLoading(true);
     try {
+      const usersSnap = await getDocs(collection(db, 'users'));
+      setTotalUsers(usersSnap.size);
+
       // Query global para achar falhas no envio (outbox pattern)
       const q = query(
         collection(db, 'enrollments'),
@@ -23,14 +27,14 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
       });
       setFailedEmails(failures);
     } catch (err) {
-      console.error("Erro ao buscar emails falhados:", err);
+      console.error("Erro ao buscar dados do overview:", err);
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchFailedEmails();
+    fetchFailedEmailsAndUsers();
   }, []);
 
   const handleResend = async (enrollment) => {
@@ -69,7 +73,7 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
       });
       
       alert('E-mail reenviado com sucesso!');
-      await fetchFailedEmails();
+      await fetchFailedEmailsAndUsers();
 
     } catch (err) {
       console.error(err);
@@ -105,7 +109,7 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
               <Users className="w-4 h-4 text-accent" />
             </div>
           </div>
-          <p className="text-3xl font-heading text-white">{usersCount || '---'}</p>
+          <p className="text-3xl font-heading text-white">{totalUsers || '---'}</p>
         </div>
 
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
@@ -139,7 +143,7 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
         </div>
       </div>
 
-      {/* Alertas Críticos (Red or Green) */}
+      {/* Alertas Críticos */}
       <div className={`border rounded-md p-6 ${hasFailures ? 'bg-red-950/20 border-red-900/50' : 'bg-green-950/20 border-green-900/50'}`}>
         <div className="flex items-start gap-4">
           <div className={`p-2 rounded-full mt-1 border ${hasFailures ? 'bg-red-900/40 border-red-800/50' : 'bg-green-900/40 border-green-800/50'}`}>

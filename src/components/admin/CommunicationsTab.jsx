@@ -5,8 +5,10 @@ import { toast } from 'sonner';
 import { Edit2, CheckCircle2, Loader2, Save, Eye } from 'lucide-react';
 
 const TEMPLATES_LIST = [
-  { id: 'agenda_enrolled', name: 'Confirmação de Inscrição' },
-  { id: 'agenda_waitlist', name: 'Entrada na Fila de Espera' }
+  { id: 'enrollment_confirmed', name: 'Confirmação de Inscrição' },
+  { id: 'waitlist_joined', name: 'Entrada na Fila de Espera' },
+  { id: 'waitlist_promoted', name: 'Vaga Liberada da Fila (Promoted)' },
+  { id: 'contact_received', name: 'Formulário de Contato Recebido' }
 ];
 
 const LANGUAGES = [
@@ -17,7 +19,7 @@ const LANGUAGES = [
 
 export default function CommunicationsTab() {
   const [templates, setTemplates] = useState({});
-  const [selectedTemplate, setSelectedTemplate] = useState('agenda_enrolled');
+  const [selectedTemplate, setSelectedTemplate] = useState('enrollment_confirmed');
   const [selectedLang, setSelectedLang] = useState('pt');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
