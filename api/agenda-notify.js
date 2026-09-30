@@ -125,7 +125,8 @@ export default async function handler(req, res) {
               </tr>
               <tr>
                 <td style="text-align: left; font-size: 12px; color: #666; padding-top: 40px; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
-                  &copy; ${new Date().getFullYear()} Dance2Dance. Todos os direitos reservados.
+                  &copy; 2026 Dance2Dance. Todos os direitos reservados.<br><br>
+                  <a href="mailto:contact@dance2dance.no" style="color: #666; text-decoration: none;">contact@dance2dance.no</a> | <a href="https://www.dance2dance.no" style="color: #666; text-decoration: none;">www.dance2dance.no</a>
                 </td>
               </tr>
             </table>

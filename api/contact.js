@@ -94,7 +94,8 @@ export default async function handler(req, res) {
           ${content}
         </div>
         <div class="footer">
-          &copy; ${new Date().getFullYear()} Dance2Dance. Todos os direitos reservados.
+          &copy; 2026 Dance2Dance. Todos os direitos reservados.<br><br>
+                  <a href="mailto:contact@dance2dance.no" style="color: #666; text-decoration: none;">contact@dance2dance.no</a> | <a href="https://www.dance2dance.no" style="color: #666; text-decoration: none;">www.dance2dance.no</a>
         </div>
       </div>
     </body>
