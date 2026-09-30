@@ -12,6 +12,8 @@ import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorC
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 import RegisteredUsersManager from '../components/admin/RegisteredUsersManager';
 import WishlistManager from '../components/admin/WishlistManager';
+import CommunicationsTab from '../components/admin/CommunicationsTab';
+import OverviewTab from '../components/admin/OverviewTab';
 import { toast } from 'sonner';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
@@ -149,7 +151,7 @@ export default function AdminDashboard() {
   const [editingId, setEditingId] = useState(null);
   const [selectedEventForStudents, setSelectedEventForStudents] = useState(null);
   const [adminTab, setAdminTab] = useState('upcoming'); // 'upcoming' | 'past'
-  const [masterTab, setMasterTab] = useState('events'); // 'events' | 'users' | 'wishlists'
+  const [masterTab, setMasterTab] = useState('overview'); // 'overview' | 'events' | 'users' | 'wishlists' | 'communications'
   const [wishlistStats, setWishlistStats] = useState({ totalWorkshops: 0, goalsReached: 0 });
 
   const userEmail = (currentUser?.email || '').toLowerCase().trim();
@@ -511,6 +513,14 @@ export default function AdminDashboard() {
         {/* Abas Mestras do Painel: Apenas para Admin Geral */}
         {!isInstructor && (
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 mb-8 border-b border-[#222222] pb-4">
+                        <button
+              type="button"
+              onClick={() => setMasterTab('overview')}
+              className={lex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer }
+            >
+              <span className="truncate">Vis„o Geral</span>
+            </button>
+
             <button
               type="button"
               onClick={() => setMasterTab('events')}
@@ -565,10 +575,27 @@ export default function AdminDashboard() {
                 </span>
               )}
             </button>
+
+            <button
+              type="button"
+              onClick={() => setMasterTab('communications')}
+              className={lex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer }
+            >
+              <span className="truncate">ComunicaÁıes</span>
+            </button>
+
           </div>
         )}
 
-        {(masterTab === 'events' || isInstructor) ? (
+        {masterTab === 'overview' && !isInstructor && (
+          <OverviewTab events={events} usersCount={0 /* Placeholder for now */} />
+        )}
+
+        {masterTab === 'communications' && !isInstructor && (
+          <CommunicationsTab />
+        )}
+
+        {(masterTab === 'events' || isInstructor) || isInstructor) ? (
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
           {/* Coluna 1: Formul√°rio de Cria√ß√£o / Edi√ß√£o (Apenas Admin Geral) */}
           {!isInstructor && (
@@ -1150,3 +1177,5 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+
