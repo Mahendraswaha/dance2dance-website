@@ -10,17 +10,21 @@ const MenuBar = ({ editor }) => {
   }
 
   const setLink = () => {
-    const previousUrl = editor.getAttributes('link').href;
-    const url = window.prompt('URL do link (inclua http:// ou https://):', previousUrl || '');
+    try {
+      const previousUrl = editor.getAttributes('link')?.href || '';
+      const url = window.prompt('URL do link (inclua http:// ou https://):', previousUrl);
 
-    if (url === null) return;
+      if (url === null) return;
 
-    if (url === '') {
-      editor.chain().focus().extendMarkRange('link').unsetLink().run();
-      return;
+      if (url === '') {
+        editor.chain().focus().extendMarkRange('link').unsetLink().run();
+        return;
+      }
+
+      editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+    } catch (e) {
+      console.error(e);
     }
-
-    editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
   };
 
   return (
@@ -94,6 +98,8 @@ const MenuBar = ({ editor }) => {
 };
 
 export default function RichTextEditor({ value, onChange }) {
+  const safeValue = value || '';
+  
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -108,7 +114,7 @@ export default function RichTextEditor({ value, onChange }) {
         }
       })
     ],
-    content: value,
+    content: safeValue,
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
@@ -121,18 +127,22 @@ export default function RichTextEditor({ value, onChange }) {
 
   // Keep editor synced if value changes externally (like clicking a different template)
   useEffect(() => {
-    if (editor && value !== editor.getHTML()) {
-      // Store current cursor position to prevent jumping
-      const { from, to } = editor.state.selection;
-      editor.commands.setContent(value, false);
-      // Try to restore cursor position if it's within bounds
+    if (editor && safeValue !== editor.getHTML()) {
       try {
-        editor.commands.setTextSelection({ from, to });
+        let from, to;
+        if (editor.state && editor.state.selection) {
+          from = editor.state.selection.from;
+          to = editor.state.selection.to;
+        }
+        editor.commands.setContent(safeValue, false);
+        if (from !== undefined && to !== undefined) {
+          editor.commands.setTextSelection({ from, to });
+        }
       } catch (e) {
-        // Ignore if position is invalid after content change
+        console.error('Editor sync error:', e);
       }
     }
-  }, [value, editor]);
+  }, [safeValue, editor]);
 
   return (
     <div className="border border-[#333333] rounded-lg bg-[#0A0A0E] overflow-hidden flex flex-col focus-within:border-accent/50 transition-colors">
