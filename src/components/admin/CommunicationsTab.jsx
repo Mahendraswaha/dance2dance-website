@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { toast } from 'sonner';
-import { Edit2, CheckCircle2, Loader2, Save } from 'lucide-react';
+import { Edit2, CheckCircle2, Loader2, Save, Eye } from 'lucide-react';
 
 const TEMPLATES_LIST = [
-  { id: 'enrollment_confirmed', name: 'Inscrição Confirmada' },
-  { id: 'waitlist_joined', name: 'Entrou na Lista de Espera' },
-  { id: 'waitlist_promoted', name: 'Fura-fila (Vaga Liberada)' },
-  { id: 'contact_received', name: 'Contato (Formulário Site)' }
+  { id: 'agenda_enrolled', name: 'Confirmação de Inscrição' },
+  { id: 'agenda_waitlist', name: 'Entrada na Fila de Espera' }
 ];
 
 const LANGUAGES = [
@@ -19,15 +17,15 @@ const LANGUAGES = [
 
 export default function CommunicationsTab() {
   const [templates, setTemplates] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [selectedTemplate, setSelectedTemplate] = useState(TEMPLATES_LIST[0].id);
+  const [selectedTemplate, setSelectedTemplate] = useState('agenda_enrolled');
   const [selectedLang, setSelectedLang] = useState('pt');
-  const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   
-  // Dados do formulário
+  const [isEditing, setIsEditing] = useState(false);
   const [subject, setSubject] = useState('');
   const [bodyHtml, setBodyHtml] = useState('');
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     fetchTemplates();
@@ -83,7 +81,6 @@ export default function CommunicationsTab() {
       
       await setDoc(docRef, payload, { merge: true });
       
-      // Atualizar state local
       setTemplates(prev => ({
         ...prev,
         [docId]: { ...prev[docId], ...payload }
@@ -98,6 +95,17 @@ export default function CommunicationsTab() {
       setSaving(false);
     }
   }
+
+  // Função para renderizar o preview com variáveis preenchidas
+  const getPreviewHtml = () => {
+    if (!bodyHtml) return "<p class='text-zinc-500 italic'>Nenhum conteúdo no template.</p>";
+    return bodyHtml
+      .replace(/{{userName}}/g, "<strong>Safia Costa</strong>")
+      .replace(/{{workshopName}}/g, "<strong>Be The Dance Masterclass</strong>")
+      .replace(/{{workshopDate}}/g, "<strong>15/10/2026</strong>")
+      .replace(/{{workshopTime}}/g, "<strong>19:00</strong>")
+      .replace(/{{locationName}}/g, "<strong>Studio Tøyen, Oslo</strong>");
+  };
 
   if (loading) {
     return (
@@ -169,33 +177,45 @@ export default function CommunicationsTab() {
               <span className="text-zinc-500 ml-2 text-sm uppercase">({selectedLang})</span>
             </h3>
             
-            {!isEditing ? (
+            <div className="flex items-center gap-2">
               <button
-                onClick={() => setIsEditing(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-[#1a1a1f] hover:bg-[#222222] text-zinc-300 rounded text-xs font-heading uppercase tracking-[1px] transition-colors border border-[#333333]"
+                onClick={() => setShowPreview(!showPreview)}
+                className={`flex items-center gap-2 px-3 py-2 rounded text-xs font-heading uppercase tracking-[1px] transition-colors border ${
+                  showPreview ? 'bg-accent text-primary border-accent font-bold' : 'bg-[#1a1a1f] hover:bg-[#222222] text-zinc-300 border-[#333333]'
+                }`}
               >
-                <Edit2 className="w-3.5 h-3.5" />
-                Editar Texto
+                <Eye className="w-3.5 h-3.5" />
+                {showPreview ? 'Ocultar Preview' : 'Ver Preview'}
               </button>
-            ) : (
-              <div className="flex gap-2">
+
+              {!isEditing ? (
                 <button
-                  onClick={() => setIsEditing(false)}
-                  className="px-4 py-2 text-zinc-400 hover:text-white text-xs font-heading uppercase tracking-[1px]"
-                  disabled={saving}
+                  onClick={() => setIsEditing(true)}
+                  className="flex items-center gap-2 px-4 py-2 bg-[#1a1a1f] hover:bg-[#222222] text-zinc-300 rounded text-xs font-heading uppercase tracking-[1px] transition-colors border border-[#333333]"
                 >
-                  Cancelar
+                  <Edit2 className="w-3.5 h-3.5" />
+                  Editar Texto
                 </button>
-                <button
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="flex items-center gap-2 px-4 py-2 bg-accent text-primary rounded text-xs font-heading uppercase tracking-[1px] transition-colors font-bold disabled:opacity-50"
-                >
-                  {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
-                  Salvar Mudanças
-                </button>
-              </div>
-            )}
+              ) : (
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setIsEditing(false)}
+                    className="px-4 py-2 text-zinc-400 hover:text-white text-xs font-heading uppercase tracking-[1px]"
+                    disabled={saving}
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="flex items-center gap-2 px-4 py-2 bg-accent text-primary rounded text-xs font-heading uppercase tracking-[1px] transition-colors font-bold disabled:opacity-50"
+                  >
+                    {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
+                    Salvar Mudanças
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -213,17 +233,28 @@ export default function CommunicationsTab() {
 
             <div>
               <label className="block text-xs font-heading uppercase tracking-[1px] text-zinc-500 mb-1.5">Corpo do E-mail (HTML permitido)</label>
-              <textarea
-                value={bodyHtml}
-                onChange={(e) => setBodyHtml(e.target.value)}
-                disabled={!isEditing}
-                rows={12}
-                className="w-full bg-[#121214] border border-[#333333] rounded px-4 py-3 text-zinc-300 text-sm focus:outline-none focus:border-accent font-mono disabled:opacity-70 disabled:cursor-not-allowed leading-relaxed"
-                placeholder="<p>Olá {{userName}}...</p>"
-              />
-              <p className="mt-2 text-xs text-zinc-500">
-                Variáveis disponíveis: <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>
-              </p>
+              
+              {showPreview ? (
+                <div 
+                  className="w-full bg-white border border-[#333333] rounded p-6 text-zinc-900 text-base font-sans overflow-auto"
+                  style={{ minHeight: '300px' }}
+                  dangerouslySetInnerHTML={{ __html: getPreviewHtml() }}
+                />
+              ) : (
+                <>
+                  <textarea
+                    value={bodyHtml}
+                    onChange={(e) => setBodyHtml(e.target.value)}
+                    disabled={!isEditing}
+                    rows={12}
+                    className="w-full bg-[#121214] border border-[#333333] rounded px-4 py-3 text-zinc-300 text-sm focus:outline-none focus:border-accent font-mono disabled:opacity-70 disabled:cursor-not-allowed leading-relaxed"
+                    placeholder="<p>Olá {{userName}}...</p>"
+                  />
+                  <p className="mt-2 text-xs text-zinc-500">
+                    Variáveis disponíveis: <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

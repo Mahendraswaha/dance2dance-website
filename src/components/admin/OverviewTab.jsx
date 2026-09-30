@@ -1,8 +1,84 @@
-import React, { useMemo } from 'react';
-import { Users, TrendingUp, Calendar, AlertCircle } from 'lucide-react';
+﻿import React, { useMemo, useState, useEffect } from 'react';
+import { Users, TrendingUp, Calendar, AlertCircle, CheckCircle, RefreshCw } from 'lucide-react';
+import { db } from '../../firebase';
+import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
 
 export default function OverviewTab({ events, userEnrollments, usersCount }) {
-  // Calcular métricas
+  const [failedEmails, setFailedEmails] = useState([]);
+  const [isResending, setIsResending] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchFailedEmails = async () => {
+    setIsLoading(true);
+    try {
+      // Query global para achar falhas no envio (outbox pattern)
+      const q = query(
+        collection(db, 'enrollments'),
+        where('emailSent', '==', false)
+      );
+      const snapshot = await getDocs(q);
+      const failures = [];
+      snapshot.forEach(docSnap => {
+        failures.push({ id: docSnap.id, ...docSnap.data() });
+      });
+      setFailedEmails(failures);
+    } catch (err) {
+      console.error("Erro ao buscar emails falhados:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchFailedEmails();
+  }, []);
+
+  const handleResend = async (enrollment) => {
+    if (!window.confirm(`Reenviar e-mail para ${enrollment.userName || enrollment.userEmail}?`)) return;
+    setIsResending(true);
+    try {
+      // Chama a mesma API de agenda-notify que o frontend original chamaria
+      const ev = events.find(e => e.id === enrollment.eventId) || {};
+      
+      const payload = {
+        eventId: enrollment.eventId,
+        userId: enrollment.userId,
+        userEmail: enrollment.userEmail,
+        userName: enrollment.userName,
+        eventTitleEn: ev.title_en || 'Dance2Dance Event',
+        eventTitlePt: ev.title_pt || 'Dance2Dance Event',
+        eventTitleNo: ev.title_no || 'Dance2Dance Event',
+        eventDate: ev.startDate || '',
+        eventTime: ev.startTime || '',
+        language: enrollment.language || 'en'
+      };
+
+      const response = await fetch('/api/agenda-notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha no webhook da Vercel');
+      }
+
+      // Se sucesso, atualiza o documento removendo a flag de erro
+      await updateDoc(doc(db, 'enrollments', enrollment.id), {
+        emailSent: true
+      });
+      
+      alert('E-mail reenviado com sucesso!');
+      await fetchFailedEmails();
+
+    } catch (err) {
+      console.error(err);
+      alert('Erro ao reenviar: ' + err.message);
+    } finally {
+      setIsResending(false);
+    }
+  };
+
   const upcomingEvents = events.filter(e => new Date(e.startDate) >= new Date());
   
   const totalRevenue = useMemo(() => {
@@ -14,12 +90,9 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
   }, [upcomingEvents]);
 
   const totalWaitlist = upcomingEvents.reduce((acc, ev) => acc + (ev.waitlistCount || 0), 0);
-
-  // Alunos com e-mail pendente (Outbox pattern falhado)
-  // Como as inscrições são carregadas em outro lugar (no evento específico), 
-  // por enquanto o CRM completo precisaria buscar `enrollments` na root.
-  // Vamos deixar o bloco pronto visualmente e nas próximas iterações conectamos aos dados.
   
+  const hasFailures = failedEmails.length > 0;
+
   return (
     <div className="space-y-6">
       
@@ -66,20 +139,46 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
         </div>
       </div>
 
-      {/* Alertas Críticos */}
-      <div className="bg-red-950/20 border border-red-900/50 rounded-md p-6">
+      {/* Alertas Críticos (Red or Green) */}
+      <div className={`border rounded-md p-6 ${hasFailures ? 'bg-red-950/20 border-red-900/50' : 'bg-green-950/20 border-green-900/50'}`}>
         <div className="flex items-start gap-4">
-          <div className="p-2 bg-red-900/40 rounded-full mt-1 border border-red-800/50">
-            <AlertCircle className="w-5 h-5 text-red-400" />
+          <div className={`p-2 rounded-full mt-1 border ${hasFailures ? 'bg-red-900/40 border-red-800/50' : 'bg-green-900/40 border-green-800/50'}`}>
+            {hasFailures ? <AlertCircle className="w-5 h-5 text-red-400" /> : <CheckCircle className="w-5 h-5 text-green-400" />}
           </div>
-          <div>
-            <h3 className="text-red-300 font-heading text-sm uppercase tracking-[1px] font-semibold mb-2">E-mails com Falha de Envio (Outbox)</h3>
-            <p className="text-sm text-red-200/70 mb-4 max-w-3xl">
-              Nenhuma falha detectada. Se a internet de algum aluno cair durante o cadastro e o servidor não conseguir enviar o e-mail,
-              ele aparecerá aqui e você poderá clicar em "Reenviar".
-            </p>
-            {/* Lista mockada por enquanto até o backend ser conectado à view global */}
-            <div className="text-xs text-red-400/50 italic">Todos os sistemas operando normalmente.</div>
+          <div className="flex-1">
+            <h3 className={`${hasFailures ? 'text-red-300' : 'text-green-300'} font-heading text-sm uppercase tracking-[1px] font-semibold mb-2`}>
+              E-mails com Falha de Envio (Outbox)
+            </h3>
+            
+            {!hasFailures ? (
+              <p className="text-sm text-green-200/70">
+                Nenhuma falha detectada. Todos os sistemas operando normalmente. Se a internet de algum aluno cair durante o cadastro e o servidor não conseguir enviar o e-mail, ele aparecerá aqui para você reenviar manualmente.
+              </p>
+            ) : (
+              <div className="space-y-4">
+                <p className="text-sm text-red-200/70 max-w-3xl">
+                  Atenção: A internet de alguns alunos falhou durante a inscrição e o webhook da Vercel não confirmou o envio do e-mail. Reenvie manualmente abaixo:
+                </p>
+                <div className="bg-[#0A0A0E] border border-red-900/30 rounded overflow-hidden">
+                  {failedEmails.map(enr => (
+                    <div key={enr.id} className="p-3 border-b border-red-900/20 flex items-center justify-between last:border-0">
+                      <div>
+                        <div className="text-sm font-medium text-white">{enr.userName || 'Aluno'}</div>
+                        <div className="text-xs text-zinc-400">{enr.userEmail}</div>
+                      </div>
+                      <button
+                        onClick={() => handleResend(enr)}
+                        disabled={isResending}
+                        className="flex items-center gap-2 bg-red-900/40 hover:bg-red-800/60 text-red-100 px-3 py-1.5 rounded text-xs font-semibold transition-colors disabled:opacity-50"
+                      >
+                        <RefreshCw className={`w-3 h-3 ${isResending ? 'animate-spin' : ''}`} />
+                        Forçar Reenvio
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
