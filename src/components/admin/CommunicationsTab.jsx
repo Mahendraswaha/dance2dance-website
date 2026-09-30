@@ -248,14 +248,7 @@ export default function CommunicationsTab() {
                 />
               ) : (
                 <>
-                  <textarea
-                    value={bodyHtml}
-                    onChange={(e) => setBodyHtml(e.target.value)}
-                    disabled={!isEditing}
-                    rows={12}
-                    className="w-full bg-[#121214] border border-[#333333] rounded px-4 py-3 text-zinc-300 text-sm focus:outline-none focus:border-accent font-mono disabled:opacity-70 disabled:cursor-not-allowed leading-relaxed"
-                    placeholder="<p>Olá {{userName}}...</p>"
-                  />
+                  {isEditing ? <RichTextEditor value={bodyHtml} onChange={setBodyHtml} /> : <div className="prose prose-invert prose-sm max-w-none min-h-[300px] p-6 border border-[#222222] rounded bg-[#0A0A0E] text-zinc-300" dangerouslySetInnerHTML={{ __html: bodyHtml }} />}
                   <p className="mt-2 text-xs text-zinc-500">
                     Variáveis disponíveis: <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>
                   </p>
