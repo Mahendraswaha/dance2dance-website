@@ -96,10 +96,10 @@ export default async function handler(req, res) {
 
     let successCount = 0;
     let failCount = 0;
-    let errorDetails = [];
-
-    // A URL base do prprio sistema
-    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.dance2dance.no';
+    // Forçamos a URL oficial de produção.
+    // O uso de process.env.VERCEL_URL falha (401 Protected Deployment) 
+    // porque a Vercel tranca as URLs internas de deploy.
+    const baseUrl = 'https://www.dance2dance.no';
 
     for (const item of outboxItems) {
       try {
