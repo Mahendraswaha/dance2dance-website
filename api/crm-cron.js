@@ -96,15 +96,15 @@ export default async function handler(req, res) {
 
     let successCount = 0;
     let failCount = 0;
+    let errorDetails = [];
 
-    // A URL do vprio sistema (Vercel injeta VERCEL_URL, mas preferimos hardcoded production se disponvel)
+    // A URL base do prprio sistema
     const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.dance2dance.no';
 
     for (const item of outboxItems) {
       try {
         console.log(`Processando envio para ID: ${item.id}...`);
         
-        // Mapear os campos do Firestore REST ({ stringValue: "..." }) para o formato normal
         const enrollment = {
           eventId: item.fields.eventId?.stringValue,
           userEmail: item.fields.userEmail?.stringValue,
@@ -114,14 +114,12 @@ export default async function handler(req, res) {
         };
 
         if (!enrollment.userEmail || !enrollment.eventId) {
-          console.warn("Faltando dados mnimos na inscrio", item.id);
-          failCount++;
-          continue;
+          throw new Error("Faltando userEmail ou eventId na inscricao");
         }
 
-        // Buscar detalhes do evento para montar o corpo do e-mail
+        // Buscar evento
         const eventRes = await fetch(`https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/events/${enrollment.eventId}`);
-        if (!eventRes.ok) throw new Error("Falha ao buscar detalhes do evento");
+        if (!eventRes.ok) throw new Error(`Falha ao buscar evento ${enrollment.eventId}: ${eventRes.status}`);
         
         const eventDoc = await eventRes.json();
         const ev = {
@@ -138,16 +136,14 @@ export default async function handler(req, res) {
           dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(loc);
         }
 
-        // Decidir tipo de email
         let notifyType = 'enrollment_confirmed';
         if (enrollment.status === 'waitlist') notifyType = 'waitlist_joined';
 
-        // 5. Chamar a nossa prpria API de envio de e-mails (reaproveitando 100% da lgica de templates)
         const notifyBody = {
           type: notifyType,
           userEmail: enrollment.userEmail,
           userName: enrollment.userName || 'Aluno',
-          workshopName: ev.title,
+          workshopName: ev.title || 'Workshop',
           workshopDate: dateStr,
           workshopTime: ev.startTime,
           locationName: ev.neighborhood,
@@ -155,7 +151,6 @@ export default async function handler(req, res) {
           lang: enrollment.language
         };
 
-        console.log(`Disparando agenda-notify para ${enrollment.userEmail}...`);
         const notifyRes = await fetch(`${baseUrl}/api/agenda-notify`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -164,53 +159,44 @@ export default async function handler(req, res) {
 
         if (!notifyRes.ok) {
           const errData = await notifyRes.text();
-          console.error(`Falha no agenda-notify para ${item.id}:`, errData);
-          failCount++;
-          continue; // Pula para o prximo, no atualiza o Firestore
+          throw new Error(`Falha na API agenda-notify (${notifyRes.status}): ${errData}`);
         }
 
-        console.log(`E-mail enviado com sucesso para ${item.id}. Atualizando banco de dados...`);
-
-        // 6. E-mail enviado! Agora atualizar o Firestore usando o token do Rob (Admin)
-        // Precisamos fazer um PATCH para setar emailSent: true
         const updateUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/enrollments/${item.id}?updateMask.fieldPaths=emailSent`;
-        
-        const updateBody = {
-          fields: {
-            emailSent: { booleanValue: true }
-          }
-        };
+        const updateBody = { fields: { emailSent: { booleanValue: true } } };
 
         const updateRes = await fetch(updateUrl, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${idToken}` // <-- O Token do Rob, essencial para passar pela regra de Admin!
+            'Authorization': `Bearer ${idToken}`
           },
           body: JSON.stringify(updateBody)
         });
 
         if (!updateRes.ok) {
-          console.error(`Aviso: O e-mail foi enviado, mas falhou ao atualizar o Firestore para o ID ${item.id}`);
-          failCount++;
-        } else {
-          successCount++;
+          const errData = await updateRes.text();
+          throw new Error(`Email enviado, mas falhou ao atualizar Firestore (${updateRes.status}): ${errData}`);
         }
+
+        successCount++;
 
       } catch (itemErr) {
         console.error(`Falha ao processar item ${item.id}:`, itemErr);
         failCount++;
+        errorDetails.push({ id: item.id, error: itemErr.message });
       }
     }
     
     return res.status(200).json({ 
       success: true, 
-      message: 'Varredura da Outbox concluda.',
+      message: 'Varredura da Outbox concluida.',
       stats: {
         totalPending: outboxItems.length,
         sent: successCount,
         failed: failCount
-      }
+      },
+      errors: errorDetails
     });
 
   } catch (error) {
