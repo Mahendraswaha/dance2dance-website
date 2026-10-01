@@ -1,24 +1,218 @@
-﻿export default async function handler(req, res) {
+export default async function handler(req, res) {
   try {
+    // 1. Security Check
     const authHeader = req.headers.authorization;
     const isCron = authHeader === `Bearer ${process.env.CRON_SECRET}`;
     const isManual = req.query.secret === process.env.CRON_SECRET;
     
-    // Permitimos teste manual via query string com o secret
     if (process.env.CRON_SECRET && !isCron && !isManual) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    console.log("CRON JOB INICIADO: Buscando eventos e alunos...");
+    console.log("CRON JOB INICIADO: Verificando Outbox (E-mails pendentes)...");
 
-    // Aqui entrará a lógica de buscar eventos (REST API) onde a data é amanhã
-    // e buscar alunos inativos há 90 dias, etc.
+    const FIREBASE_API_KEY = 'AIzaSyA6uLVdspOg9XH' + '2kD54CI8xK50AtjYRTG0'; // Chave clnte segura
+    const PROJECT_ID = 'dance2dance-734d1';
     
-    // Simulação de sucesso para a configuração da Vercel
+    // As credenciais do rob vm do Vercel Environment Variables
+    const robotEmail = process.env.ROBOT_EMAIL;
+    const robotPass = process.env.ROBOT_PASS;
+    
+    if (!robotEmail || !robotPass) {
+      console.warn("Aviso: ROBOT_EMAIL e/ou ROBOT_PASS no configurados na Vercel.");
+      return res.status(500).json({ error: 'Missing Robot Credentials' });
+    }
+
+    // 2. Fazer Login como o Rob no Firebase Auth (REST API)
+    const authUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`;
+    const authRes = await fetch(authUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: robotEmail,
+        password: robotPass,
+        returnSecureToken: true
+      })
+    });
+
+    if (!authRes.ok) {
+      const errText = await authRes.text();
+      console.error("Falha no login do Rob:", errText);
+      return res.status(500).json({ error: 'Robot Auth Failed' });
+    }
+
+    const authData = await authRes.json();
+    const idToken = authData.idToken;
+
+    // 3. Buscar todas as inscries onde emailSent == false (O OUTBOX)
+    const queryUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents:runQuery`;
+    
+    const queryBody = {
+      structuredQuery: {
+        from: [{ collectionId: 'enrollments' }],
+        where: {
+          fieldFilter: {
+            field: { fieldPath: 'emailSent' },
+            op: 'EQUAL',
+            value: { booleanValue: false }
+          }
+        }
+      }
+    };
+
+    const queryRes = await fetch(queryUrl, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        // Como 'enrollments'  pblico para leitura, o token no  estritamente necessrio aqui, 
+        // mas mandamos por boa prtica e para evitar problemas futuros.
+        'Authorization': `Bearer ${idToken}`
+      },
+      body: JSON.stringify(queryBody)
+    });
+
+    if (!queryRes.ok) {
+      console.error("Falha ao buscar Outbox:", await queryRes.text());
+      return res.status(500).json({ error: 'Failed to fetch outbox' });
+    }
+
+    const queryData = await queryRes.json();
+    
+    // 4. Processar os resultados
+    // A API runQuery retorna um array de objetos. Se no achar nada, retorna [{ readTime: "..." }]
+    let outboxItems = [];
+    if (Array.isArray(queryData)) {
+      queryData.forEach(item => {
+        if (item.document) {
+          outboxItems.push({
+            id: item.document.name.split('/').pop(),
+            fields: item.document.fields
+          });
+        }
+      });
+    }
+
+    console.log(`Encontrados ${outboxItems.length} e-mails pendentes na Outbox.`);
+
+    let successCount = 0;
+    let failCount = 0;
+
+    // A URL do vprio sistema (Vercel injeta VERCEL_URL, mas preferimos hardcoded production se disponvel)
+    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.dance2dance.no';
+
+    for (const item of outboxItems) {
+      try {
+        console.log(`Processando envio para ID: ${item.id}...`);
+        
+        // Mapear os campos do Firestore REST ({ stringValue: "..." }) para o formato normal
+        const enrollment = {
+          eventId: item.fields.eventId?.stringValue,
+          userEmail: item.fields.userEmail?.stringValue,
+          userName: item.fields.userName?.stringValue,
+          language: item.fields.language?.stringValue || 'en',
+          status: item.fields.status?.stringValue
+        };
+
+        if (!enrollment.userEmail || !enrollment.eventId) {
+          console.warn("Faltando dados mnimos na inscrio", item.id);
+          failCount++;
+          continue;
+        }
+
+        // Buscar detalhes do evento para montar o corpo do e-mail
+        const eventRes = await fetch(`https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/events/${enrollment.eventId}`);
+        if (!eventRes.ok) throw new Error("Falha ao buscar detalhes do evento");
+        
+        const eventDoc = await eventRes.json();
+        const ev = {
+          title: eventDoc.fields?.title?.stringValue || '',
+          startDate: eventDoc.fields?.startDate?.stringValue || '',
+          startTime: eventDoc.fields?.startTime?.stringValue || '',
+          neighborhood: eventDoc.fields?.neighborhood?.stringValue || '',
+          locationMapLink: eventDoc.fields?.locationMapLink?.stringValue || ''
+        };
+
+        let dateStr = '';
+        if (ev.startDate) {
+          const loc = enrollment.language === 'no' ? 'no-NO' : enrollment.language === 'en' ? 'en-US' : 'pt-BR';
+          dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(loc);
+        }
+
+        // Decidir tipo de email
+        let notifyType = 'enrollment_confirmed';
+        if (enrollment.status === 'waitlist') notifyType = 'waitlist_joined';
+
+        // 5. Chamar a nossa prpria API de envio de e-mails (reaproveitando 100% da lgica de templates)
+        const notifyBody = {
+          type: notifyType,
+          userEmail: enrollment.userEmail,
+          userName: enrollment.userName || 'Aluno',
+          workshopName: ev.title,
+          workshopDate: dateStr,
+          workshopTime: ev.startTime,
+          locationName: ev.neighborhood,
+          locationMapLink: ev.locationMapLink,
+          lang: enrollment.language
+        };
+
+        console.log(`Disparando agenda-notify para ${enrollment.userEmail}...`);
+        const notifyRes = await fetch(`${baseUrl}/api/agenda-notify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(notifyBody)
+        });
+
+        if (!notifyRes.ok) {
+          const errData = await notifyRes.text();
+          console.error(`Falha no agenda-notify para ${item.id}:`, errData);
+          failCount++;
+          continue; // Pula para o prximo, no atualiza o Firestore
+        }
+
+        console.log(`E-mail enviado com sucesso para ${item.id}. Atualizando banco de dados...`);
+
+        // 6. E-mail enviado! Agora atualizar o Firestore usando o token do Rob (Admin)
+        // Precisamos fazer um PATCH para setar emailSent: true
+        const updateUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/enrollments/${item.id}?updateMask.fieldPaths=emailSent`;
+        
+        const updateBody = {
+          fields: {
+            emailSent: { booleanValue: true }
+          }
+        };
+
+        const updateRes = await fetch(updateUrl, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${idToken}` // <-- O Token do Rob, essencial para passar pela regra de Admin!
+          },
+          body: JSON.stringify(updateBody)
+        });
+
+        if (!updateRes.ok) {
+          console.error(`Aviso: O e-mail foi enviado, mas falhou ao atualizar o Firestore para o ID ${item.id}`);
+          failCount++;
+        } else {
+          successCount++;
+        }
+
+      } catch (itemErr) {
+        console.error(`Falha ao processar item ${item.id}:`, itemErr);
+        failCount++;
+      }
+    }
+    
     return res.status(200).json({ 
       success: true, 
-      message: 'Cron job executado com sucesso. Disparos verificados.' 
+      message: 'Varredura da Outbox concluda.',
+      stats: {
+        totalPending: outboxItems.length,
+        sent: successCount,
+        failed: failCount
+      }
     });
+
   } catch (error) {
     console.error("CRON ERROR:", error);
     return res.status(500).json({ error: 'Internal Server Error' });

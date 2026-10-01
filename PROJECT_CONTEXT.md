@@ -207,4 +207,103 @@ Before committing any change that touches these files, verify:
 
 ---
 
+---
+
+## 10. Business Context & Architectural Decisions
+
+**Current Phase: PHASE 1 (Bootstrapping)**
+The user is building this business from scratch with zero external funding. The primary directive for Phase 1 is **minimizing operational costs** and validating the model. We build in-house MVPs and leverage existing paid infrastructure (like Pro ISP). 
+
+**Future Phase: PHASE 2 (Scaling)**
+When the business gains traction and volume increases, the user *wants* to adopt specialized, scalable tools (geometric scaling). The agent must be intelligent enough to recognize when the project is outgrowing Phase 1 and proactively suggest Phase 2 upgrades.
+
+### CRM: Built in-house (Core SaaS Product Feature)
+**Decision**: Continuously evolve the custom micro-CRM inside the admin dashboard.
+**Business Context**: The user has identified an underserved niche that lacks the budget for market solutions (HubSpot, ActiveCampaign, or even self-hosted Mautic). The micro-CRM is NOT a throwaway MVP; it is being shaped into a low-cost, high-value SaaS offering for this exact niche.
+**Strategy**: Do NOT suggest migrating to third-party CRMs as the business scales. Instead, act as a lead engineer to help architect advanced CRM features (like drip campaigns, contact history, and analytics) *within* the current Serverless/Firebase stack to increase the product's competitive value.
+
+### Email: Nodemailer with Pro ISP SMTP (Phase 1)
+**Decision**: Use `nodemailer` pointing at Pro ISP's SMTP server.
+**Why**: Zero extra cost (included in current hosting). Handles current volume perfectly.
+**When to suggest Phase 2 (SendGrid, Resend, Postmark)**:
+- If the user reports that CRM emails are landing in Spam/Junk folders (deliverability issues).
+- If Pro ISP rate limits are hit (e.g., sending hundreds of emails per hour).
+- If detailed analytics (open rates, click rates, bounce tracking) become critical for the business.
+
+### Deployment: Vercel (Phase 1 & 2)
+**Decision**: Vercel handles build, CDN, and serverless functions. Fits both current needs and scales well.
+
+### Database & Backend Logic: Firebase Spark Plan + Vercel
+**Decision**: Firestore for all persistent data. Firebase is on the Spark (Free) plan.
+**Constraint**: Because we are on the Free plan, we CANNOT use Firebase Cloud Functions (database triggers). 
+**The Orchestrator Pattern**: The user's browser (React frontend) acts as the "Maestro". It must write to Firestore and then immediately call Vercel Serverless APIs to execute backend logic (like sending emails).
+**Vulnerability & Fix (The Outbox)**: Because the client orchestrates, if the user loses internet or closes the tab between the Firestore write and the Vercel API call, data becomes orphaned.
+*Actual Implementation (Already exists)*: When a user enrolls, the frontend saves the enrollment with `emailSent: false`. If the Vercel API succeeds, it updates to `emailSent: true`. Failed ones show up in `OverviewTab.jsx` as "Outbox" for manual retry.
+**Cron Job Automation (The Robot User)**: The Vercel Cron job (`api/crm-cron.js`) acts as a sweeper for these `emailSent: false` records. To allow the unauthenticated Vercel Cron to update Firestore without exposing a Service Account, we use a **"Robot User"** strategy. The cron job logs into Firebase Auth via REST API using a dedicated email/password stored securely in Vercel Environment Variables.
+**NEVER suggest**: "Use a Firebase Cloud Function for this trigger", a database migration, or using Google Cloud Service Account JSONs.
+
+---
+
+## 11. Current State of the Project (update each session)
+
+### Working in production (www.dance2dance.no)
+- Full website with EN/PT/NO i18n
+- Event agenda + workshop registration + waitlist system
+- Firebase Auth (admin login)
+- Admin dashboard: events, users, wishlists, overview
+- Contact form (Pro ISP SMTP)
+- Agenda notification emails
+- CRM Communications tab with WYSIWYG email editor (Tiptap)
+- CRM email templates in Firestore (7 templates, 3 languages = 21 documents)
+- Vercel Cron at 08:00 UTC hitting `/api/crm-cron`
+- SPA routing via `vercel.json` rewrites
+- Pitch deck at `/pitch-deck.html`
+
+### Partially implemented / in progress
+- `api/crm-cron.js` — skeleton exists, logic for sending automated emails needs completion
+- Cron triggers needed: "1 day before event" reminder, "90 days inactive" re-engagement, "post event feedback"
+
+### Planned (not started)
+- CRM contact history per user (log of emails sent)
+- Student profile page improvements
+- Analytics dashboard for admin
+
+---
+
+## 12. Agent Self-Update Protocol
+
+After every session where a significant decision is made, the agent MUST update this file:
+
+- New library installed → update Section 1 (Stack)
+- New route added → update Section 8 (Known Working Routes)
+- Something tried and failed → add to Section 9 (Lesson Log)
+- Architectural decision made → add to Section 10
+- Feature completed → move to Section 11 (Working)
+- Feature started → add to Section 11 (In progress)
+
+This file is the single source of truth. The agent's memory resets between sessions. This file does not.
+
+---
+
+## 13. Deployment Flow (agent reference)
+
+The user NEVER runs commands locally. The full deployment flow is:
+
+```
+Agent edits files on disk
+  → User opens GitHub Desktop
+  → User commits the changed files
+  → User clicks "Push to origin"
+  → Vercel detects the push automatically
+  → Vercel runs npm run build (~30 seconds)
+  → New version is live at www.dance2dance.no
+  → User refreshes browser (Ctrl+F5 to bypass cache)
+```
+
+**Do NOT tell the user to refresh immediately after a commit.** The Vercel build takes ~30 seconds. Say: "After Vercel finishes building (about 30 seconds after your push), then refresh."
+
+**Do NOT tell the user to run npm install or any terminal command.** Vercel installs dependencies automatically during its build.
+
+---
+
 *Last updated: 2026-10-01. Update this file every time a non-obvious decision is made or a mistake is corrected.*
