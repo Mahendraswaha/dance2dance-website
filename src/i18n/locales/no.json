@@ -1541,7 +1541,7 @@
     "kicker": "EFFEKTPROSJEKT",
     "title": "Be the Dance Ung.",
     "subtitle": "Lavterskeltilbud, mestring og tilhørighet i Tøyen og Grønland.",
-    "hook": "Å forme et individ krever mer enn bare å fylle tiden deres. Det innebærer å tilby fremragende verktøy som utvikler både fysisk mestring og emosjonell balanse. Hos Be the Dance Ung møter den strenge teknikken i ballett og samtidsdans dybden i autentisk uttrykk, og skaper en kontinuerlig plattform som går langt utover studioet og påvirker liv.",
+    "hook": "Å utvikle et ungt menneske krever mer enn bare å fylle tiden deres. Det innebærer å tilby fremragende verktøy som utvikler både fysisk mestring og emosjonell balanse. Hos Be the Dance Ung møter den strenge teknikken i ballett og samtidsdans dybden i autentisk uttrykk, og skaper en kontinuerlig plattform som går langt utover studioet og påvirker liv.",
     "body": {
       "p1": "Å tilby tilgang til kultur er bare det første skrittet. Ekte sosial innvirkning skjer når vi leverer kvalitet. Ved å designe en læreplan som integrerer faste grunnklasser med fordypning i individuelt uttrykk, bygger vi et trygt rom der ungdom oppdager at disiplin ikke er en pålagt byrde, men veien til egen autonomi.",
       "pullQuote": "Kunstnerisk kvalitet er det kraftigste verktøyet for å forme selvtillit.",
@@ -1554,10 +1554,10 @@
       "items": [
         {
           "number": "01",
-          "title": "Det Tekniske Fundamentet",
+          "title": "Det tekniske fundamentet",
           "list": [
             {
-              "label": "Klassisk Ballett",
+              "label": "Klassisk ballett",
               "desc": "Utvikler disiplin, kroppslinjer og motorisk koordinasjon gjennom klassisk strukturering."
             },
             {
@@ -1572,32 +1572,32 @@
         },
         {
           "number": "02",
-          "title": "Den Kunstneriske Kjernen",
+          "title": "Den kunstneriske kjernen",
           "list": [
             {
-              "label": "Urokkelig Selvtillit",
+              "label": "Urokkelig selvtillit",
               "desc": "Praksiser designet for å dempe indre og ytre dommer, og la den sanne essensen tre frem."
             },
             {
-              "label": "Unikt Uttrykk",
+              "label": "Unikt uttrykk",
               "desc": "Ungdommene guides til å finne sin egen stemme i bevegelse, med forståelsen av at deres egenart er deres største ressurs."
             },
             {
-              "label": "Fokus og Tilstedeværelse",
+              "label": "Fokus og tilstedeværelse",
               "desc": "Oppmerksomhetsøvelser som forankrer utøveren i øyeblikket, og bekjemper digital distraksjon."
             }
           ]
         },
         {
           "number": "03",
-          "title": "Profesjonell Kvalifisering",
+          "title": "Profesjonell kvalifisering",
           "list": [
             {
               "label": "Be the Dance Pro",
               "desc": "Det avanserte stadiet designet for å løfte unge talenter og forberede dem på virkelige utfordringer."
             },
             {
-              "label": "Kontinuerlig Veiledning",
+              "label": "Kontinuerlig veiledning",
               "desc": "Individuell oppfølging som transformerer rått potensial til udiskutabel teknisk kapasitet."
             },
             {
@@ -1613,16 +1613,16 @@
       "intro": "Vår tilnærming oversetter mål for sosial transformasjon til praktiske handlinger, og sikrer dype og strukturelle resultater i lokalsamfunnet:",
       "items": [
         {
-          "title": "Lavterskeltilbud & Inkludering",
+          "title": "Lavterskeltilbud og inkludering",
           "desc": "Vi tilbyr ikke bare gratis adgang; vi river ned kulturelle og økonomiske barrierer. Ved å gi 100% stipender til lokale innbyggere, skaper vi et reelt lavterskeltilbud hvor enhver ungdom fra Tøyen eller Grønland får nøyaktig samme kvalitetsstandard som på et eliteakademi, noe som fremmer ekte inkludering."
         },
         {
-          "title": "Mestring & Robusthet",
+          "title": "Mestring og robusthet",
           "desc": "Dans krever strenghet og kontinuitet. Ved å mestre komplekse bevegelser og overvinne egne fysiske begrensninger, bygger ungdommene en urokkelig følelse av mestring. Denne opplevelsen av kontinuerlig overvinnelse i studioet oversettes til robusthet i møte med faglige og sosiale motganger i hverdagen."
         },
         {
-          "title": "Absolutt Tilhørighet",
-          "desc": "I en tid med digital isolasjon og sosial fragmentering blir studioet en fysisk trygg havn. Ungdommene blir en del av et fellesskap forent av et felles språk basert på respekt og kunst. Dette dype båndet til gruppen og rommet skaper sterke røtter, som trekker dem vekk fra marginalisering og befester deres tilhørighet."
+          "title": "Absolutt tilhørighet",
+          "desc": "I en tid med digital isolasjon og sosial fragmentering blir studioet en fysisk trygg havn. Ungdommene blir en del av et fellesskap forent av et felles språk basert på respekt og kunst. Dette dype båndet til gruppen og rommet skaper sterke røtter, som trekker dem vekk fra utenforskap og befester deres tilhørighet."
         }
       ]
     },
@@ -1657,15 +1657,15 @@
           "title": "Biostretch",
           "list": [
             {
-              "label": "Kroppslig Intelligens",
+              "label": "Kroppslig intelligens",
               "desc": "En opplevelse av å gjenopprette kontakten med den iboende intelligensen i hver enkelt av oss. I denne lyttingen åpnes veier for mer helse og tilstedeværelse."
             },
             {
-              "label": "Meditasjon i Bevegelse",
+              "label": "Meditasjon i bevegelse",
               "desc": "Et øyeblikk for å fokusere oppmerksomheten på nået, forlate det vi har lært om hvordan kroppen bør fungere, og slappe av."
             },
             {
-              "label": "Dekonstruksjon av Innsats",
+              "label": "Dekonstruksjon av innsats",
               "desc": "En invitasjon til å senke farten, puste og gi slipp på det som ikke lenger trenger å bæres."
             }
           ]
@@ -1675,11 +1675,11 @@
           "title": "Be The Dance",
           "list": [
             {
-              "label": "Dansen i Oss",
+              "label": "Dansen i oss",
               "desc": "Sekvenser av bevegelser designet for å lede til uutforskede territorier. Å få tilgang til den urgamle dansen som allerede ligger i våre gener. Den spontane gesten."
             },
             {
-              "label": "Kroppen som Passasje",
+              "label": "Kroppen som passasje",
               "desc": "Et oppdagelsesterritorium for å finne et kunstnerisk uttrykk som er genuint, unikt og personlig."
             },
             {
@@ -1693,7 +1693,7 @@
           "title": "Møteplass",
           "list": [
             {
-              "label": "Eksklusivt Fristed",
+              "label": "Eksklusivt fristed",
               "desc": "Et trygt miljø der sosialt og kulturelt press legges igjen utenfor, med fokus på personlig velvære."
             },
             {
@@ -1701,7 +1701,7 @@
               "desc": "Samspill bringer kvinner med ulik bakgrunn sammen og bygger dyp, gjensidig støtte."
             },
             {
-              "label": "Grenseløs Inkludering",
+              "label": "Grenseløs inkludering",
               "desc": "Kroppens språk bryter ned barrierer og skaper et økosystem for tilhørighet og empati."
             }
           ]
@@ -1713,15 +1713,15 @@
       "intro": "Vår tilnærming oversetter sosiale transformasjonsmål til praktiske handlinger, og sikrer dype og strukturelle resultater i samfunnet.",
       "items": [
         {
-          "title": "Integrativ Helse og Autonomi",
+          "title": "Integrativ helse og autonomi",
           "desc": "Integrering av somatisk praksis reduserer kronisk stress direkte. Denne prosessen gir kvinner eierskap over egne kropper, noe som reflekteres i økt motstandskraft og mental klarhet."
         },
         {
-          "title": "Sosial Samhold og Mangfold",
+          "title": "Sosialt samhold og mangfold",
           "desc": "Dansens universelle språk oppløser språklige barrierer. Vi skaper et rom for inkludering der kvinner med ulik bakgrunn bygger autentiske bånd."
         },
         {
-          "title": "Strukturell Multiplikatoreffekt",
+          "title": "Strukturell multiplikatoreffekt",
           "desc": "Kvinners velvære er fundamentet for familiens helse. En styrket kvinne utstråler denne stabiliteten til sine barn og omgivelser, og skaper en bærekraftig syklus av sosial innvirkning."
         }
       ]

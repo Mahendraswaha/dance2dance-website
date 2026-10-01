@@ -23,7 +23,7 @@ const templates = [
   {
     id: "enrollment_confirmed_no",
     subject: "Bekreftet påmelding: {{workshopName}}",
-    body_html: `<div class="greeting">Hei {{userName}}.</div><p>Din påmelding er bekreftet:</p><p style="margin-bottom: 5px;">workshop: <a href="{{workshopLink}}" style="color: #C9A84C; text-decoration: none;"><strong>{{workshopName}}</strong></a></p><p style="margin-top: 0; margin-bottom: 5px;">dato: {{workshopDate}}</p><p style="margin-top: 0;">tid: {{workshopTime}}</p><p>Ettersom plassene våre er begrensede og bygger på en solidaritetsmodell, er vi avhengige av alles støtte for å holde tilgangen åpen.</p><p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p><p>Vennligst møt opp 10-15 minutter før start.</p><p>Sted:</p><div style="margin-top: 15px;"><span style="color: #C9A84C; margin-right: 4px;">&#9679;</span><a href="{{locationMapLink}}" target="_blank" style="color: #9A9A9A; text-decoration: underline;">{{locationName}}</a></div><div class="divider"></div><p><strong>Dance2Dance-teamet</strong></p>`,
+    body_html: `<div class="greeting">Hei {{userName}}.</div><p>Din påmelding er bekreftet:</p><p style="margin-bottom: 5px;">workshop: <a href="{{workshopLink}}" style="color: #C9A84C; text-decoration: none;"><strong>{{workshopName}}</strong></a></p><p style="margin-top: 0; margin-bottom: 5px;">dato: {{workshopDate}}</p><p style="margin-top: 0;">tid: {{workshopTime}}</p><p>Ettersom plassene våre er begrensede og er basert på en solidaritetsmodell, er vi avhengige av alles støtte for å holde tilgangen åpen.</p><p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p><p>Vennligst møt opp 10-15 minutter før start.</p><p>Sted:</p><div style="margin-top: 15px;"><span style="color: #C9A84C; margin-right: 4px;">&#9679;</span><a href="{{locationMapLink}}" target="_blank" style="color: #9A9A9A; text-decoration: underline;">{{locationName}}</a></div><div class="divider"></div><p><strong>Dance2Dance-teamet</strong></p>`,
     isActive: true
   },
   {
@@ -63,7 +63,7 @@ const templates = [
   {
     id: "waitlist_promoted_no",
     subject: "En plass har blitt ledig for deg: {{workshopName}}",
-    body_html: `<div class="greeting">Hei {{userName}}.</div><p>Ventelisten har flyttet seg, og din plass er bekreftet:</p><p style="margin-bottom: 5px;">workshop: <a href="{{workshopLink}}" style="color: #C9A84C; text-decoration: none;"><strong>{{workshopName}}</strong></a></p><p style="margin-top: 0; margin-bottom: 5px;">dato: {{workshopDate}}</p><p style="margin-top: 0;">tid: {{workshopTime}}</p><p>Ettersom plassene våre er begrensede og bygger på en solidaritetsmodell, er vi avhengige av alles støtte for å holde tilgangen åpen.</p><p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p><p>Vennligst møt opp 10-15 minutter før start.</p><p>Sted:</p><div style="margin-top: 15px;"><span style="color: #C9A84C; margin-right: 4px;">&#9679;</span><a href="{{locationMapLink}}" target="_blank" style="color: #9A9A9A; text-decoration: underline;">{{locationName}}</a></div><div class="divider"></div><p><strong>Dance2Dance-teamet</strong></p>`,
+    body_html: `<div class="greeting">Hei {{userName}}.</div><p>Ventelisten har flyttet seg, og din plass er bekreftet:</p><p style="margin-bottom: 5px;">workshop: <a href="{{workshopLink}}" style="color: #C9A84C; text-decoration: none;"><strong>{{workshopName}}</strong></a></p><p style="margin-top: 0; margin-bottom: 5px;">dato: {{workshopDate}}</p><p style="margin-top: 0;">tid: {{workshopTime}}</p><p>Ettersom plassene våre er begrensede og er basert på en solidaritetsmodell, er vi avhengige av alles støtte for å holde tilgangen åpen.</p><p>Hvis planene dine har endret seg og du ikke lenger kan delta, ber vi deg avbestille påmeldingen direkte i kalenderen så snart som mulig. Slik får neste deltaker på listen muligheten til å bli med.</p><p>Vennligst møt opp 10-15 minutter før start.</p><p>Sted:</p><div style="margin-top: 15px;"><span style="color: #C9A84C; margin-right: 4px;">&#9679;</span><a href="{{locationMapLink}}" target="_blank" style="color: #9A9A9A; text-decoration: underline;">{{locationName}}</a></div><div class="divider"></div><p><strong>Dance2Dance-teamet</strong></p>`,
     isActive: true
   },
   {
@@ -76,14 +76,14 @@ const templates = [
   // 4. CONTACT RECEIVED
   {
     id: "contact_received_en",
-    subject: "Dance2Dance - We have received your inquiry!",
-    body_html: `<div class="greeting">Hello, {{userName}}!</div><p>Thank you for reaching out to Dance2Dance!</p><p>We have safely received your inquiry regarding <strong>{{subject}}</strong> and our team will get back to you shortly.</p><div class="divider"></div><p><strong>The Dance2Dance Team</strong></p>`,
+    subject: "Dance2Dance - We've received your message!",
+    body_html: `<div class="greeting">Hello, {{userName}}!</div><p>Thank you for reaching out to Dance2Dance!</p><p>We have received your inquiry regarding <strong>{{subject}}</strong> and our team will get back to you shortly.</p><div class="divider"></div><p><strong>The Dance2Dance Team</strong></p>`,
     isActive: true
   },
   {
     id: "contact_received_no",
     subject: "Dance2Dance - Vi har mottatt din henvendelse!",
-    body_html: `<div class="greeting">Hei, {{userName}}!</div><p>Takk for at du kontakter Dance2Dance!</p><p>Vi har trygt mottatt din henvendelse angående <strong>{{subject}}</strong>, og vårt team vil svare deg så snart som mulig.</p><div class="divider"></div><p><strong>Dance2Dance-teamet</strong></p>`,
+    body_html: `<div class="greeting">Hei, {{userName}}!</div><p>Takk for at du kontakter Dance2Dance!</p><p>Vi har mottatt din henvendelse angående <strong>{{subject}}</strong>, og vårt team vil svare deg så snart som mulig.</p><div class="divider"></div><p><strong>Dance2Dance-teamet</strong></p>`,
     isActive: true
   },
   {
