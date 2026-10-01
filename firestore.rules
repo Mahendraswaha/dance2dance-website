@@ -7,8 +7,8 @@ service cloud.firestore {
     // ==========================================================
     function isAdmin() {
       return request.auth != null && (
-        request.auth.token.email in ['mahendra.swaha@gmail.com', 'contato@dance2dance.no', 'robo@dance2dance.no'] || 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'instructor']
+        (request.auth.token.email != null && request.auth.token.email in ['mahendra.swaha@gmail.com', 'contato@dance2dance.no', 'robo@dance2dance.no']) || 
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'instructor'])
       );
     }
     
