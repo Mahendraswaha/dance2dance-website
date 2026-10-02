@@ -522,7 +522,7 @@ export default function AdminDashboard() {
               onClick={() => setMasterTab('overview')}
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'overview' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
-              <span className="truncate">VisÃ£o Geral</span>
+              <span className="truncate">Visão Geral</span>
             </button>
 
             <button
@@ -565,7 +565,7 @@ export default function AdminDashboard() {
               onClick={() => setMasterTab('communications')}
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'communications' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
-              <span className="truncate">ComunicaÃ§Ãµes</span>
+              <span className="truncate">Comunicações</span>
             </button>
           </div>
         )}
