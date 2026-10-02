@@ -432,13 +432,13 @@ export default function ProfilePage() {
               className={`flex-1 py-3 px-4 rounded-[2px] text-xs font-heading font-semibold uppercase tracking-[1.5px] transition-all flex items-center justify-center gap-2.5 ${
                 activeTab === 'courses'
                   ? 'bg-accent text-primary shadow-md'
-                  : 'text-zinc-400 hover:text-white hover:bg-white/[0.03]'
+                  : 'bg-[#141419] text-[#D0D0D0] hover:text-white hover:bg-[#1C1C24] border border-[#22222A]'
               }`}
             >
               <Calendar className="w-4 h-4 shrink-0" />
               <span>{t('studentPortal.tabCourses', 'Meus Cursos & Workshops')}</span>
               <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${
-                activeTab === 'courses' ? 'bg-primary/20 text-primary' : 'bg-[#181822] text-zinc-300'
+                activeTab === 'courses' ? 'bg-primary/20 text-primary' : 'bg-[#1E1E28] text-zinc-300'
               }`}>
                 {enrollments.length}
               </span>
@@ -449,7 +449,7 @@ export default function ProfilePage() {
               className={`flex-1 py-3 px-4 rounded-[2px] text-xs font-heading font-semibold uppercase tracking-[1.5px] transition-all flex items-center justify-center gap-2.5 ${
                 activeTab === 'personal_data'
                   ? 'bg-accent text-primary shadow-md'
-                  : 'text-zinc-400 hover:text-white hover:bg-white/[0.03]'
+                  : 'bg-[#141419] text-[#D0D0D0] hover:text-white hover:bg-[#1C1C24] border border-[#22222A]'
               }`}
             >
               <User className="w-4 h-4 shrink-0" />
