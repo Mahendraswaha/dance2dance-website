@@ -1199,6 +1199,22 @@
       "interestedStudentsList": "Elever på Ønskeliste",
       "removeEntry": "Fjern oppføring",
       "confirmDelete": "Er du sikker på at du vil fjerne denne oppføringen?"
+    },
+    "tabs": {
+      "overview": "Oversikt",
+      "communications": "Kommunikasjon"
+    },
+    "overview": {
+      "totalUsers": "Totalt antall studenter",
+      "projectedRevenue": "Forventet Inntekt (Neste)",
+      "activeEvents": "Aktive Arrangementer",
+      "globalWaitlist": "Global Venteliste",
+      "outboxTitle": "Mislykkede E-poster (Utboks)",
+      "outboxEmpty": "Ingen feil oppdaget. Alle systemer fungerer normalt.",
+      "upcomingClasses": "Kommende Klasser (Hurtigvisning)",
+      "ongoingEvents": "Pågående Arrangementer",
+      "noUpcoming": "Ingen kommende klasser planlagt.",
+      "noOngoing": "Ingen arrangementer pågår for øyeblikket."
     }
   },
   "contactPage": {

@@ -1199,6 +1199,22 @@
       "interestedStudentsList": "Alunos na Lista de Espera",
       "removeEntry": "Remover registro",
       "confirmDelete": "Deseja remover este registro de interesse da lista?"
+    },
+    "tabs": {
+      "overview": "Visão Geral",
+      "communications": "Comunicações"
+    },
+    "overview": {
+      "totalUsers": "Alunos na Base",
+      "projectedRevenue": "Receita Projetada (Prox)",
+      "activeEvents": "Eventos Ativos",
+      "globalWaitlist": "Fila de Espera Global",
+      "outboxTitle": "E-mails com Falha de Envio (Outbox)",
+      "outboxEmpty": "Nenhuma falha detectada. Todos os sistemas operando normalmente.",
+      "upcomingClasses": "Próximas Turmas (Visão Rápida)",
+      "ongoingEvents": "Eventos em Andamento",
+      "noUpcoming": "Nenhuma turma futura programada.",
+      "noOngoing": "Nenhum evento em andamento no momento."
     }
   },
   "contactPage": {

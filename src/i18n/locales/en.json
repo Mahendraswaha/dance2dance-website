@@ -1199,6 +1199,22 @@
       "interestedStudentsList": "Students on Wishlist",
       "removeEntry": "Remove entry",
       "confirmDelete": "Are you sure you want to remove this wish entry?"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "communications": "Communications"
+    },
+    "overview": {
+      "totalUsers": "Total Students",
+      "projectedRevenue": "Projected Revenue (Next)",
+      "activeEvents": "Active Events",
+      "globalWaitlist": "Global Waitlist",
+      "outboxTitle": "Failed Emails (Outbox)",
+      "outboxEmpty": "No failures detected. All systems operating normally.",
+      "upcomingClasses": "Upcoming Classes (Quick View)",
+      "ongoingEvents": "Events in Progress",
+      "noUpcoming": "No upcoming classes scheduled.",
+      "noOngoing": "No events currently in progress."
     }
   },
   "contactPage": {

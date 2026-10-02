@@ -1,10 +1,12 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Users, TrendingUp, Calendar, AlertCircle, CheckCircle, RefreshCw } from 'lucide-react';
-import { isEventPast } from '../../utils/eventHelpers';
+import { isEventPast, isEventOngoing } from '../../utils/eventHelpers';
+import { useTranslation } from 'react-i18next';
 import { db } from '../../firebase';
 import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
 
 export default function OverviewTab({ events, usersCount }) {
+  const { t, i18n } = useTranslation();
   const [failedEmails, setFailedEmails] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [isResending, setIsResending] = useState(false);
@@ -87,7 +89,8 @@ export default function OverviewTab({ events, usersCount }) {
     }
   };
 
-  const upcomingEvents = events.filter(e => !isEventPast(e));
+  const upcomingEvents = events.filter(e => !isEventPast(e) && !isEventOngoing(e));
+  const ongoingEvents = events.filter(e => isEventOngoing(e));
   
   const totalRevenue = useMemo(() => {
     return upcomingEvents.reduce((acc, ev) => {
@@ -108,7 +111,7 @@ export default function OverviewTab({ events, usersCount }) {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">Alunos na Base</h3>
+            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">{t('adminPage.overview.totalUsers', 'Alunos na Base')}</h3>
             <div className="w-8 h-8 rounded-full bg-[#121214] flex items-center justify-center border border-[#333333]">
               <Users className="w-4 h-4 text-accent" />
             </div>
@@ -118,7 +121,7 @@ export default function OverviewTab({ events, usersCount }) {
 
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">Receita Projetada (Prox)</h3>
+            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">{t('adminPage.overview.projectedRevenue', 'Receita Projetada (Prox)')}</h3>
             <div className="w-8 h-8 rounded-full bg-[#121214] flex items-center justify-center border border-[#333333]">
               <TrendingUp className="w-4 h-4 text-green-400" />
             </div>
@@ -128,7 +131,7 @@ export default function OverviewTab({ events, usersCount }) {
 
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">Eventos Ativos</h3>
+            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">{t('adminPage.overview.activeEvents', 'Eventos Ativos')}</h3>
             <div className="w-8 h-8 rounded-full bg-[#121214] flex items-center justify-center border border-[#333333]">
               <Calendar className="w-4 h-4 text-blue-400" />
             </div>
@@ -138,7 +141,7 @@ export default function OverviewTab({ events, usersCount }) {
 
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">Fila de Espera Global</h3>
+            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">{t('adminPage.overview.globalWaitlist', 'Fila de Espera Global')}</h3>
             <div className="w-8 h-8 rounded-full bg-[#121214] flex items-center justify-center border border-[#333333]">
               <Users className="w-4 h-4 text-orange-400" />
             </div>
@@ -159,9 +162,7 @@ export default function OverviewTab({ events, usersCount }) {
             </h3>
             
             {!hasFailures ? (
-              <p className="text-sm text-green-200/70">
-                Nenhuma falha detectada. Todos os sistemas operando normalmente. Se a internet de algum aluno cair durante o cadastro e o servidor não conseguir enviar o e-mail, ele aparecerá aqui para você reenviar manualmente.
-              </p>
+              <p className="text-sm text-green-200/70">{t('adminPage.overview.outboxEmpty', 'Nenhuma falha detectada. Todos os sistemas operando normalmente. Se a internet de algum aluno cair durante o cadastro e o servidor não conseguir enviar o e-mail, ele aparecerá aqui para você reenviar manualmente.')}</p>
             ) : (
               <div className="space-y-4">
                 <p className="text-sm text-red-200/70 max-w-3xl">
@@ -194,7 +195,7 @@ export default function OverviewTab({ events, usersCount }) {
       {/* Visão de Ocupação */}
       <div className="bg-[#0A0A0E] border border-[#222222] rounded-md overflow-hidden">
         <div className="p-5 border-b border-[#222222]">
-          <h3 className="font-heading uppercase tracking-[1px] text-xs text-zinc-400 font-semibold">Próximas Turmas (Visão Rápida)</h3>
+          <h3 className="font-heading uppercase tracking-[1px] text-xs text-zinc-400 font-semibold">{t('adminPage.overview.upcomingClasses', 'Próximas Turmas (Visão Rápida)')}</h3>
         </div>
         <div className="divide-y divide-[#222222]">
           {upcomingEvents.slice(0, 3).map(ev => {
@@ -206,7 +207,7 @@ export default function OverviewTab({ events, usersCount }) {
               <div key={ev.id} className="p-5 flex items-center justify-between">
                 <div>
                   <h4 className="text-white font-medium mb-1">{ev.title_pt || ev.title_en}</h4>
-                  <p className="text-xs text-zinc-500">{new Date(ev.startDate).toLocaleDateString('pt-BR')} — {ev.startTime}</p>
+                  <p className="text-xs text-zinc-500">{new Date(ev.startDate).toLocaleDateString(i18n.language || 'pt-BR')} — {ev.startTime}</p>
                 </div>
                 <div className="w-1/3 flex items-center gap-4">
                   <div className="flex-1 bg-[#121214] h-2 rounded-full overflow-hidden border border-[#333333]">
@@ -223,7 +224,7 @@ export default function OverviewTab({ events, usersCount }) {
           
           {upcomingEvents.length === 0 && (
             <div className="p-8 text-center text-zinc-500 text-sm">
-              Nenhuma turma futura programada.
+              {t('adminPage.overview.noUpcoming', 'Nenhuma turma futura programada.')}
             </div>
           )}
         </div>
