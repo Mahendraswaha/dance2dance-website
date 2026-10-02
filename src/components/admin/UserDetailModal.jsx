@@ -98,6 +98,40 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
 
   const { currentUser } = useAuth();
   const [isAddingNote, setIsAddingNote] = useState(false);
+  const [editingEnrId, setEditingEnrId] = useState(null);
+  const [editRating, setEditRating] = useState(0);
+  const [editNotes, setEditNotes] = useState('');
+  const [isSavingEval, setIsSavingEval] = useState(false);
+  const [localEnrollments, setLocalEnrollments] = useState(userEnrollments || []);
+
+  useEffect(() => {
+    setLocalEnrollments(userEnrollments || []);
+  }, [userEnrollments]);
+
+  async function handleSaveEvaluation(enrId) {
+    setIsSavingEval(true);
+    try {
+      const updatedEval = {
+        rating: editRating,
+        notes: editNotes,
+        instructorName: currentUser?.displayName || currentUser?.email || 'Admin',
+        updatedAt: new Date().toISOString()
+      };
+      
+      await updateDoc(doc(db, 'enrollments', enrId), {
+        evaluation: updatedEval
+      });
+      
+      setLocalEnrollments(prev => prev.map(e => e.id === enrId ? { ...e, evaluation: updatedEval } : e));
+      setEditingEnrId(null);
+      toast.success(t('adminPage.usersManager.evalSavedSuccess', 'Avaliação do workshop salva com sucesso!'));
+    } catch (err) {
+      console.error('Erro ao salvar avaliação do workshop:', err);
+      toast.error(t('adminPage.usersManager.evalSavedError', 'Erro ao salvar avaliação.'));
+    } finally {
+      setIsSavingEval(false);
+    }
+  }
   const [newNoteText, setNewNoteText] = useState('');
   const [isSubmittingNote, setIsSubmittingNote] = useState(false);
   const [localNotes, setLocalNotes] = useState(user?.adminNotes || []);
@@ -518,38 +552,93 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                         </div>
 
                         {/* Anotação Interna de CRM / Avaliação do Instrutor */}
-                        {enr.evaluation && (
-                          <div className="mt-3 pt-2.5 border-t border-white/[0.06] w-full">
-                            <div className="flex items-center justify-between gap-2 mb-1">
-                              <span className="text-[10px] font-heading uppercase tracking-wider text-accent font-semibold flex items-center gap-1">
-                                <Star className="w-3 h-3 fill-accent text-accent" />
-                                {t('adminPage.usersManager.crmNoteTitle', 'CRM • Avaliação do Instrutor')}
-                              </span>
-                              <div className="flex items-center gap-1.5">
-                                {enr.evaluation.rating > 0 && (
-                                  <div className="flex items-center gap-0.5">
-                                    {[1, 2, 3, 4, 5].map((s) => (
-                                      <Star 
-                                        key={s} 
-                                        className={`w-3 h-3 ${s <= enr.evaluation.rating ? 'fill-accent text-accent' : 'text-zinc-700'}`} 
-                                      />
-                                    ))}
-                                  </div>
-                                )}
-                                {enr.evaluation.instructorName && (
-                                  <span className="text-[10px] font-heading text-zinc-400">
-                                    ({enr.evaluation.instructorName})
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                            {enr.evaluation.notes && (
-                              <p className="text-xs font-heading italic text-zinc-300 bg-[#161620] p-2.5 rounded-[2px] border border-[#22222E] whitespace-pre-wrap leading-relaxed">
-                                "{enr.evaluation.notes}"
-                              </p>
+                        <div className="mt-3 pt-2.5 border-t border-white/[0.06] w-full">
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <span className="text-[10px] font-heading uppercase tracking-wider text-accent font-semibold flex items-center gap-1">
+                              <Star className="w-3 h-3 fill-accent text-accent" />
+                              {t('adminPage.usersManager.crmNoteTitle', 'CRM • Avaliação do Instrutor')}
+                            </span>
+                            
+                            {editingEnrId !== enr.id && (
+                              <button 
+                                onClick={() => {
+                                  setEditingEnrId(enr.id);
+                                  setEditRating(enr.evaluation?.rating || 0);
+                                  setEditNotes(enr.evaluation?.notes || '');
+                                }}
+                                className="text-[10px] text-zinc-400 hover:text-accent underline font-heading uppercase tracking-wider cursor-pointer"
+                              >
+                                {enr.evaluation ? t('adminPage.usersManager.editEvaluation', 'Editar') : t('adminPage.usersManager.addEvaluation', 'Adicionar Avaliação')}
+                              </button>
                             )}
                           </div>
-                        )}
+
+                          {editingEnrId === enr.id ? (
+                            <div className="space-y-3 bg-[#121216] border border-[#1E1E24] p-3 rounded-[2px] mt-2">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[10px] font-heading text-zinc-500 uppercase tracking-wider">Rating:</span>
+                                <div className="flex items-center gap-1 cursor-pointer">
+                                  {[1, 2, 3, 4, 5].map((s) => (
+                                    <Star 
+                                      key={s} 
+                                      onClick={() => setEditRating(s)}
+                                      className={`w-4 h-4 ${s <= editRating ? 'fill-accent text-accent' : 'text-zinc-700 hover:text-zinc-500'}`} 
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                              <textarea 
+                                value={editNotes}
+                                onChange={(e) => setEditNotes(e.target.value)}
+                                placeholder={t('adminPage.usersManager.notePlaceholder', 'Escreva uma anotação sobre o desempenho...')}
+                                className="w-full h-20 bg-[#0A0A0E] border border-[#1E1E28] rounded-[2px] p-2 text-xs text-[#FAF8F5] focus:outline-none focus:border-accent/50 resize-none font-sans"
+                              />
+                              <div className="flex justify-end gap-2">
+                                <button 
+                                  onClick={() => setEditingEnrId(null)}
+                                  className="px-3 py-1.5 rounded-[2px] text-zinc-400 hover:text-white font-heading text-[10px] uppercase tracking-wider transition-colors cursor-pointer"
+                                >
+                                  {t('adminPage.usersManager.cancel', 'Cancelar')}
+                                </button>
+                                <button 
+                                  onClick={() => handleSaveEvaluation(enr.id)}
+                                  disabled={isSavingEval}
+                                  className="px-3 py-1.5 rounded-[2px] bg-accent hover:bg-accent-hover text-primary font-heading text-[10px] uppercase tracking-wider font-bold transition-colors disabled:opacity-50 flex items-center gap-1 cursor-pointer"
+                                >
+                                  {isSavingEval ? t('adminPage.usersManager.saving', 'Salvando...') : t('adminPage.usersManager.saveEvaluation', 'Salvar Avaliação')}
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            enr.evaluation && (
+                              <div className="mt-1">
+                                <div className="flex items-center gap-1.5 mb-2">
+                                  {enr.evaluation.rating > 0 && (
+                                    <div className="flex items-center gap-0.5">
+                                      {[1, 2, 3, 4, 5].map((s) => (
+                                        <Star 
+                                          key={s} 
+                                          className={`w-3 h-3 ${s <= enr.evaluation.rating ? 'fill-accent text-accent' : 'text-zinc-700'}`} 
+                                        />
+                                      ))}
+                                    </div>
+                                  )}
+                                  {enr.evaluation.instructorName && (
+                                    <span className="text-[10px] font-heading text-zinc-400">
+                                      ({enr.evaluation.instructorName})
+                                    </span>
+                                  )}
+                                </div>
+                                {enr.evaluation.notes && (
+                                  <p className="text-xs font-heading italic text-zinc-300 bg-[#161620] p-2.5 rounded-[2px] border border-[#22222E] whitespace-pre-wrap leading-relaxed">
+                                    "{enr.evaluation.notes}"
+                                  </p>
+                                )}
+                              </div>
+                            )
+                          )}
+                        </div>
+
                       </div>
 
                       {/* Coluna Direita: Data da Inscrição */}
@@ -579,7 +668,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                 onClick={() => setIsAddingNote(!isAddingNote)}
                 className="text-[10px] font-heading uppercase tracking-wider text-accent border border-accent/30 hover:bg-accent hover:text-primary transition-colors px-3 py-1 rounded-[2px] cursor-pointer"
               >
-                {isAddingNote ? t('adminPage.usersManager.cancel', 'Cancelar') : '+ Nova Anotação'}
+                {isAddingNote ? t('adminPage.usersManager.cancel', 'Cancelar') : t('adminPage.usersManager.addNote', '+ Nova Anotação')}
               </button>
             </div>
             
@@ -693,7 +782,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
             onClick={onClose}
             className="px-6 py-2.5 rounded-[2px] bg-[#14141C] hover:bg-[#1E1E28] border border-[#2A2A38] text-xs font-heading font-semibold uppercase tracking-wider text-[#FAF8F5] transition-colors cursor-pointer"
           >
-            {t('adminPage.close', 'Fechar')}
+            {t('adminPage.usersManager.close', 'Fechar')}
           </button>
         </div>
       </motion.div>

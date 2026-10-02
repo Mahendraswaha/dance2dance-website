@@ -1056,7 +1056,19 @@
       "eventNotFound": "Inscrição em evento arquivado ou ID:",
       "upcomingBadge": "Próximo",
       "enrolledOn": "Inscrito em",
-      "hasRestrictionsHint": "Possui restrições de saúde registradas"
+      "hasRestrictionsHint": "Possui restrições de saúde registradas",
+      "crmNotesTitle": "Acompanhamento & Avaliações (CRM)",
+      "cancel": "Cancelar",
+      "addNote": "+ Nova Anotação",
+      "noCrmNotes": "Nenhum histórico de acompanhamento registrado para este aluno.",
+      "notePlaceholder": "Escreva uma anotação sobre o desempenho, restrições ou acompanhamento do aluno...",
+      "saving": "Salvando...",
+      "saveNote": "Salvar Anotação",
+      "userFeedbackTitle": "Feedbacks do Usuário",
+      "noUserFeedback": "Este aluno ainda não enviou nenhum feedback de curso.",
+      "editEvaluation": "Editar",
+      "addEvaluation": "Adicionar Avaliação",
+      "saveEvaluation": "Salvar Avaliação"
     },
     "autoGenerateSchedule": "Gerar Resumo da Programação",
     "schedulePicker": {

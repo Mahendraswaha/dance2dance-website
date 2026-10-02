@@ -1056,7 +1056,19 @@
       "eventNotFound": "Enrollment in archived event or ID:",
       "upcomingBadge": "Upcoming",
       "enrolledOn": "Enrolled on",
-      "hasRestrictionsHint": "Has registered health restrictions"
+      "hasRestrictionsHint": "Has registered health restrictions",
+      "crmNotesTitle": "CRM Notes & Follow-up",
+      "cancel": "Cancel",
+      "addNote": "+ New Note",
+      "noCrmNotes": "No CRM follow-up records found for this student.",
+      "notePlaceholder": "Write a note about the student's performance, restrictions, or follow-up...",
+      "saving": "Saving...",
+      "saveNote": "Save Note",
+      "userFeedbackTitle": "User Feedback",
+      "noUserFeedback": "This student hasn't submitted any course feedback yet.",
+      "editEvaluation": "Edit",
+      "addEvaluation": "Add Evaluation",
+      "saveEvaluation": "Save Evaluation"
     },
     "autoGenerateSchedule": "Generate Schedule Summary",
     "schedulePicker": {

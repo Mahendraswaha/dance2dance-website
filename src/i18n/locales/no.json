@@ -1056,7 +1056,19 @@
       "eventNotFound": "Påmelding til arkivert arrangement eller ID:",
       "upcomingBadge": "Kommende",
       "enrolledOn": "Påmeldt den",
-      "hasRestrictionsHint": "Har registrerte helsebegrensninger"
+      "hasRestrictionsHint": "Har registrerte helsebegrensninger",
+      "crmNotesTitle": "CRM-notater og oppfølging",
+      "cancel": "Avbryt",
+      "addNote": "+ Nytt notat",
+      "noCrmNotes": "Ingen CRM-oppfølgingslogger funnet for denne eleven.",
+      "notePlaceholder": "Skriv et notat om elevens prestasjoner, begrensninger eller oppfølging...",
+      "saving": "Lagrer...",
+      "saveNote": "Lagre notat",
+      "userFeedbackTitle": "Tilbakemelding fra bruker",
+      "noUserFeedback": "Denne eleven har ikke sendt inn noen kurstilbakemeldinger ennå.",
+      "editEvaluation": "Rediger",
+      "addEvaluation": "Legg til evaluering",
+      "saveEvaluation": "Lagre evaluering"
     },
     "autoGenerateSchedule": "Generer Sammendrag av Timeplan",
     "schedulePicker": {
