@@ -158,7 +158,7 @@ export default function OverviewTab({ events, usersCount }) {
           </div>
           <div className="flex-1">
             <h3 className={`${hasFailures ? 'text-red-300' : 'text-green-300'} font-heading text-sm uppercase tracking-[1px] font-semibold mb-2`}>
-              E-mails com Falha de Envio (Outbox)
+              {t('adminPage.overview.outboxTitle', 'E-mails com Falha de Envio (Outbox)')}
             </h3>
             
             {!hasFailures ? (
