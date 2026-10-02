@@ -67,7 +67,7 @@ function cleanPhoneForWhatsApp(phone) {
   return phone.replace(/[^\d+]/g, '').replace('+', '');
 }
 
-export default function UserDetailModal({ user, userEnrollments = [], onClose, onRoleChange }) {
+export default function UserDetailModal({ user, userEnrollments = [], onClose, onRoleChange, onEvaluationUpdated }) {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'pt';
 
@@ -123,6 +123,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
       });
       
       setLocalEnrollments(prev => prev.map(e => e.id === enrId ? { ...e, evaluation: updatedEval } : e));
+      if (onEvaluationUpdated) onEvaluationUpdated(enrId, updatedEval);
       setEditingEnrId(null);
       toast.success(t('adminPage.usersManager.evalSavedSuccess', 'Avaliação do workshop salva com sucesso!'));
     } catch (err) {
@@ -447,7 +448,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
               </span>
             </div>
 
-            {userEnrollments.length === 0 ? (
+            {localEnrollments.length === 0 ? (
               <div className="p-8 text-center bg-[#121216] border border-[#1E1E24] rounded-[2px]">
                 <p className="text-zinc-400 font-heading text-xs">
                   {t('adminPage.usersManager.noEnrollmentsYet', 'Este aluno ainda não se inscreveu em nenhum workshop ou aula.')}
@@ -455,7 +456,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
               </div>
             ) : (
               <div className="space-y-3">
-                {userEnrollments.map((enr, idx) => {
+                {localEnrollments.map((enr, idx) => {
                   const ev = enr.event;
                   if (!ev) {
                     return (
@@ -735,7 +736,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
               </h3>
             </div>
             
-            {userEnrollments.filter(e => e.userFeedback).length === 0 ? (
+            {localEnrollments.filter(e => e.userFeedback).length === 0 ? (
               <div className="p-6 text-center bg-[#121216] border border-[#1E1E24] rounded-[2px]">
                 <p className="text-zinc-500 font-heading text-xs italic">
                   {t('adminPage.usersManager.noUserFeedback', 'Este aluno ainda não enviou nenhum feedback de curso.')}
@@ -743,7 +744,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
               </div>
             ) : (
               <div className="space-y-3">
-                {userEnrollments.filter(e => e.userFeedback).map((enr, idx) => (
+                {localEnrollments.filter(e => e.userFeedback).map((enr, idx) => (
                   <div key={idx} className="p-4 bg-[#161620] border border-[#22222E] rounded-[2px]">
                     <div className="flex justify-between items-start mb-2">
                       <span className="text-[11px] font-heading font-semibold text-accent uppercase tracking-wide">
