@@ -203,7 +203,7 @@ export default function AgendaPage() {
             const ev = events.find(e => e.id === eventId);
             const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
             const evTitle = localizedEv.title || '';
-            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationStr = localizedEv.location || ev?.location || t('agenda.locationTBA', 'Location TBA');
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
               const cat = getEventCategory(ev);
               const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
@@ -351,7 +351,7 @@ export default function AgendaPage() {
             const ev = events.find(e => e.id === eventId);
             const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
             const evTitle = localizedEv.title || '';
-            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationStr = localizedEv.location || ev?.location || t('agenda.locationTBA', 'Location TBA');
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
               const cat = getEventCategory(ev);
               const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));
@@ -392,7 +392,7 @@ export default function AgendaPage() {
             const ev = events.find(e => e.id === eventId);
             const localizedEv = ev ? getLocalizedEvent(ev, currentLang) : {};
             const evTitle = localizedEv.title || '';
-            const locationStr = localizedEv.location || ev?.location || 'Dance2Dance Studio';
+            const locationStr = localizedEv.location || ev?.location || t('agenda.locationTBA', 'Location TBA');
             const locationMap = ev?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}` : (locationStr ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}` : 'https://maps.google.com');
               const cat = getEventCategory(ev);
               const niceCat = cat === 'bethedance' ? 'Be the Dance' : (cat === 'biostretch' ? 'Biostretch' : (cat === 'kroppsskole' ? 'Kroppsskole' : ''));

@@ -1,37 +1,32 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Users, TrendingUp, Calendar, AlertCircle, CheckCircle, RefreshCw } from 'lucide-react';
+import { isEventPast } from '../../utils/eventHelpers';
 import { db } from '../../firebase';
 import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
 
-export default function OverviewTab({ events, userEnrollments, usersCount }) {
+export default function OverviewTab({ events, usersCount }) {
   const [failedEmails, setFailedEmails] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [isResending, setIsResending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchFailedEmailsAndUsers = async () => {
-    setIsLoading(true);
+  async function fetchFailedEmailsAndUsers() {
     try {
-      const usersSnap = await getDocs(collection(db, 'users'));
-      setTotalUsers(usersSnap.size);
+      const enrRef = collection(db, 'enrollments');
+      const qFailed = query(enrRef, where('emailSent', '==', false));
+      const snapFailed = await getDocs(qFailed);
+      const fails = snapFailed.docs.map(d => ({ id: d.id, ...d.data() }));
+      setFailedEmails(fails);
 
-      // Query global para achar falhas no envio (outbox pattern)
-      const q = query(
-        collection(db, 'enrollments'),
-        where('emailSent', '==', false)
-      );
-      const snapshot = await getDocs(q);
-      const failures = [];
-      snapshot.forEach(docSnap => {
-        failures.push({ id: docSnap.id, ...docSnap.data() });
-      });
-      setFailedEmails(failures);
+      const usersRef = collection(db, 'users');
+      const usersSnap = await getDocs(usersRef);
+      setTotalUsers(usersSnap.size);
     } catch (err) {
-      console.error("Erro ao buscar dados do overview:", err);
+      console.error(err);
     } finally {
       setIsLoading(false);
     }
-  };
+  }
 
   useEffect(() => {
     fetchFailedEmailsAndUsers();
@@ -41,7 +36,6 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
     if (!window.confirm(`Reenviar e-mail para ${enrollment.userName || enrollment.userEmail}?`)) return;
     setIsResending(true);
     try {
-      // Chama a mesma API de agenda-notify que o frontend original chamaria
       const ev = events.find(e => e.id === enrollment.eventId) || {};
       
       let dateStr = '';
@@ -50,7 +44,7 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
       const lang = enrollment.language || 'en';
       const evTitle = lang === 'no' ? (ev.title_no || ev.title_en) : lang === 'en' ? (ev.title_en || ev.title_pt) : (ev.title_pt || ev.title_en);
       const locKey = `location_${lang}`;
-      const locationStr = ev[locKey] || ev.location || 'Dance2Dance Studio';
+      const locationStr = ev[locKey] || ev.location || (lang === 'no' ? 'Sted kommer senere' : lang === 'pt' ? 'Local a definir' : 'Location TBA');
       const locationMap = ev.address 
         ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}`
         : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}`;
@@ -78,7 +72,6 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
         throw new Error('Falha no webhook da Vercel');
       }
 
-      // Se sucesso, atualiza o documento removendo a flag de erro
       await updateDoc(doc(db, 'enrollments', enrollment.id), {
         emailSent: true
       });
@@ -94,7 +87,7 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
     }
   };
 
-  const upcomingEvents = events.filter(e => new Date(e.startDate) >= new Date());
+  const upcomingEvents = events.filter(e => !isEventPast(e));
   
   const totalRevenue = useMemo(() => {
     return upcomingEvents.reduce((acc, ev) => {
@@ -125,7 +118,7 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
 
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">Receita Projetada (Próx)</h3>
+            <h3 className="font-heading uppercase tracking-[1px] text-[10px] text-zinc-500 font-semibold">Receita Projetada (Prox)</h3>
             <div className="w-8 h-8 rounded-full bg-[#121214] flex items-center justify-center border border-[#333333]">
               <TrendingUp className="w-4 h-4 text-green-400" />
             </div>
@@ -212,8 +205,8 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
             return (
               <div key={ev.id} className="p-5 flex items-center justify-between">
                 <div>
-                  <h4 className="text-white font-medium mb-1">{ev.title_pt}</h4>
-                  <p className="text-xs text-zinc-500">{new Date(ev.startDate).toLocaleDateString('pt-BR')} • {ev.startTime}</p>
+                  <h4 className="text-white font-medium mb-1">{ev.title_pt || ev.title_en}</h4>
+                  <p className="text-xs text-zinc-500">{new Date(ev.startDate).toLocaleDateString('pt-BR')} — {ev.startTime}</p>
                 </div>
                 <div className="w-1/3 flex items-center gap-4">
                   <div className="flex-1 bg-[#121214] h-2 rounded-full overflow-hidden border border-[#333333]">

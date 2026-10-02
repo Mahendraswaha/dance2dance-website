@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -59,12 +59,12 @@ const EVENT_PRESETS = {
   biostretch: {
     no: [
       "En Bedre Holdning",
-      "Lære å Slappe Av",
+      "LÃ¦re Ã¥ Slappe Av",
       "Strekk, Pust og Mediter",
       "Transformere Vaner",
-      "Daglige Bevegelser for å Forhindre Stress",
+      "Daglige Bevegelser for Ã¥ Forhindre Stress",
       "Gjenvinne Fokus",
-      "Biostretch: Individuell Økt",
+      "Biostretch: Individuell Ã˜kt",
       "Biostretch: Faste Klasser",
       "Biostretch: Bedrift"
     ],
@@ -83,10 +83,10 @@ const EVENT_PRESETS = {
       "Uma Melhor Postura",
       "Aprendendo a Relaxar",
       "Alongar, Respirar e Meditar",
-      "Transformando Hábitos",
-      "Movimentos Diários para Prevenir o Stress",
+      "Transformando HÃ¡bitos",
+      "Movimentos DiÃ¡rios para Prevenir o Stress",
       "Recuperando o Foco",
-      "Biostretch: Sessão Individual",
+      "Biostretch: SessÃ£o Individual",
       "Biostretch: Aulas Regulares",
       "Biostretch: Corporate"
     ],
@@ -106,7 +106,7 @@ const EVENT_PRESETS = {
     no: [
       "Kroppsskole: Grunnkurs",
       "Kroppens Intelligens",
-      "Pust og Nærvær",
+      "Pust og NÃ¦rvÃ¦r",
       "Holdning og Bevegelse",
       "Kroppsskole: Fordypning"
     ],
@@ -119,10 +119,10 @@ const EVENT_PRESETS = {
     ],
     pt: [
       "Kroppsskole: Fundamentos",
-      "A Inteligência do Corpo",
-      "Respiração e Presença",
+      "A InteligÃªncia do Corpo",
+      "RespiraÃ§Ã£o e PresenÃ§a",
       "Postura e Movimento",
-      "Kroppsskole: Imersão"
+      "Kroppsskole: ImersÃ£o"
     ],
     routes: [
       "/kroppsskole",
@@ -156,7 +156,7 @@ export default function AdminDashboard() {
   const userEmail = (currentUser?.email || '').toLowerCase().trim();
   const userName = (currentUser?.profile?.nome || currentUser?.displayName || '').toLowerCase().trim();
 
-  // Se for instrutor, filtra apenas os eventos onde ele é o instrutor
+  // Se for instrutor, filtra apenas os eventos onde ele Ã© o instrutor
   const myEvents = isInstructor
     ? events.filter(e => {
         const evEmail = (e.instructorEmail || '').toLowerCase().trim();
@@ -203,7 +203,7 @@ export default function AdminDashboard() {
   const [isTitleDropdownOpen, setIsTitleDropdownOpen] = useState(false);
   const titleDropdownRef = useRef(null);
 
-  // Fecha o dropdown de títulos ao clicar fora do componente
+  // Fecha o dropdown de tÃ­tulos ao clicar fora do componente
   useEffect(() => {
     function handleClickOutside(e) {
       if (titleDropdownRef.current && !titleDropdownRef.current.contains(e.target)) {
@@ -225,7 +225,7 @@ export default function AdminDashboard() {
       }));
       setEvents(fetchedEvents);
 
-      // Se o modal estiver aberto, atualiza os dados do evento nele também
+      // Se o modal estiver aberto, atualiza os dados do evento nele tambÃ©m
       if (selectedEventForStudents) {
         const updatedSelected = fetchedEvents.find(e => e.id === selectedEventForStudents.id);
         if (updatedSelected) setSelectedEventForStudents(updatedSelected);
@@ -240,7 +240,7 @@ export default function AdminDashboard() {
     fetchEvents();
   }, []);
 
-  // Monitora estatísticas das Wishlists para exibir badge no topo das abas
+  // Monitora estatÃ­sticas das Wishlists para exibir badge no topo das abas
   useEffect(() => {
     if (isInstructor) return;
     const unsub = onSnapshot(collection(db, 'wishlists'), (snapshot) => {
@@ -254,13 +254,13 @@ export default function AdminDashboard() {
       const goalsReached = Object.values(grouped).filter(count => count >= 10).length;
       setWishlistStats({ totalWorkshops, goalsReached });
     }, (err) => {
-      console.error("Erro ao carregar estatísticas de wishlist:", err);
+      console.error("Erro ao carregar estatÃ­sticas de wishlist:", err);
     });
 
     return () => unsub();
   }, [isInstructor]);
 
-  // Função acionada pelo WishlistManager para pré-preencher o formulário de evento
+  // FunÃ§Ã£o acionada pelo WishlistManager para prÃ©-preencher o formulÃ¡rio de evento
   function handleScheduleFromWishlist(workshopData) {
     setMasterTab('events');
     setEditingId(null);
@@ -291,7 +291,7 @@ export default function AdminDashboard() {
       }));
     }
 
-    // Rola suavemente até o topo onde fica o formulário
+    // Rola suavemente atÃ© o topo onde fica o formulÃ¡rio
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -301,6 +301,11 @@ export default function AdminDashboard() {
       const primaryTitle = (formData[`title_${activeLangTab}`] || formData.title_no || formData.title_en || formData.title_pt || '').trim();
       const primarySchedule = (formData[`scheduleDetails_${activeLangTab}`] || formData.scheduleDetails_no || formData.scheduleDetails_en || formData.scheduleDetails_pt || '').trim();
       const primaryLocation = (formData[`location_${activeLangTab}`] || formData.location_no || formData.location_en || formData.location_pt || '').trim();
+
+      if (!primaryLocation) {
+        toast.error(t('adminPage.locationRequired', 'A localização do evento é obrigatória.'));
+        return;
+      }
 
       const title_no = (formData.title_no || primaryTitle).trim();
       const title_en = (formData.title_en || primaryTitle).trim();
@@ -315,7 +320,7 @@ export default function AdminDashboard() {
       });
 
       if (formData.endDate && formData.startDate && formData.endDate < formData.startDate) {
-        toast.success(t('adminPage.invalidEndDate', 'A data de término não pode ser anterior à data de início.'));
+        toast.success(t('adminPage.invalidEndDate', 'A data de tÃ©rmino nÃ£o pode ser anterior Ã  data de inÃ­cio.'));
         return;
       }
 
@@ -472,7 +477,7 @@ export default function AdminDashboard() {
     const matchIdx = listForLang.findIndex(t => t.toLowerCase() === val.trim().toLowerCase());
 
     if (matchIdx !== -1) {
-      // Auto-preenche as traduções dos 3 idiomas e a rota específica
+      // Auto-preenche as traduÃ§Ãµes dos 3 idiomas e a rota especÃ­fica
       setFormData(prev => ({
         ...prev,
         title_no: presets.no[matchIdx],
@@ -481,7 +486,7 @@ export default function AdminDashboard() {
         targetPath: presets.routes[matchIdx]
       }));
     } else {
-      // Digitação livre
+      // DigitaÃ§Ã£o livre
       setFormData(prev => ({
         ...prev,
         [`title_${activeLangTab}`]: val,
@@ -495,16 +500,16 @@ export default function AdminDashboard() {
       <Navbar />
       
       <main className="flex-grow pt-44 md:pt-48 pb-24 px-4 sm:px-8 max-w-[1680px] mx-auto w-full relative z-10 overflow-x-hidden">
-        {/* Título do Painel */}
+        {/* TÃ­tulo do Painel */}
         <div className="mb-6">
           <h1 className="font-batang text-3xl sm:text-4xl text-[#F0EDE8]">
             {isInstructor 
-              ? `${t("adminPage.instructorPortalTitle", "Portal do Instrutor")} • ${currentUser?.profile?.nome || currentUser?.displayName || 'Instrutor'}`
+              ? `${t("adminPage.instructorPortalTitle", "Portal do Instrutor")} â€¢ ${currentUser?.profile?.nome || currentUser?.displayName || 'Instrutor'}`
               : t("adminPage.adminTitle")}
           </h1>
           {isInstructor && (
             <p className="font-heading text-xs text-[#9A9A9A] mt-1.5">
-              {t("adminPage.instructorSubtitle", "Acesse seus cursos, consulte os alunos inscritos e registre notas de participação e acompanhamento CRM.")}
+              {t("adminPage.instructorSubtitle", "Acesse seus cursos, consulte os alunos inscritos e registre notas de participaÃ§Ã£o e acompanhamento CRM.")}
             </p>
           )}
         </div>
@@ -517,7 +522,7 @@ export default function AdminDashboard() {
               onClick={() => setMasterTab('overview')}
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'overview' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
-              <span className="truncate">Visão Geral</span>
+              <span className="truncate">VisÃ£o Geral</span>
             </button>
 
             <button
@@ -538,7 +543,7 @@ export default function AdminDashboard() {
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'users' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
               <Users className="w-4 h-4 shrink-0" />
-              <span className="truncate">{t('adminPage.masterTabUsers', 'Alunos & Usuários')}</span>
+              <span className="truncate">{t('adminPage.masterTabUsers', 'Alunos & UsuÃ¡rios')}</span>
             </button>
 
             <button
@@ -560,7 +565,7 @@ export default function AdminDashboard() {
               onClick={() => setMasterTab('communications')}
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'communications' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
-              <span className="truncate">Comunicações</span>
+              <span className="truncate">ComunicaÃ§Ãµes</span>
             </button>
           </div>
         )}
@@ -575,7 +580,7 @@ export default function AdminDashboard() {
 
                 {(masterTab === 'events' || isInstructor) ? (
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10">
-          {/* Coluna 1: Formulário de Criação / Edição (Apenas Admin Geral) */}
+          {/* Coluna 1: FormulÃ¡rio de CriaÃ§Ã£o / EdiÃ§Ã£o (Apenas Admin Geral) */}
           {!isInstructor && (
             <div className="xl:col-span-5 2xl:col-span-5 bg-[#0a0a0a] border border-[#222222] p-4 sm:p-8 rounded-[4px] h-fit">
               <h2 className="font-heading text-xl text-[#F0EDE8] mb-6">
@@ -583,7 +588,7 @@ export default function AdminDashboard() {
               </h2>
               <form onSubmit={handleSubmit} className="space-y-5">
                 
-                {/* Seleção de Categoria */}
+                {/* SeleÃ§Ã£o de Categoria */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.category", "Categoria")}
@@ -651,7 +656,7 @@ export default function AdminDashboard() {
                 {/* Abas de Idioma na ordem: NO -> EN -> PT */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                    {t("adminPage.languageTab", "Idioma do Formulário")}
+                    {t("adminPage.languageTab", "Idioma do FormulÃ¡rio")}
                   </label>
                   <div className="flex gap-2 p-1 bg-[#141414] rounded-[2px] w-full border border-[#333333]">
                     <button 
@@ -678,7 +683,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Título do Evento no Idioma Ativo (Combobox estrito por Categoria) */}
+                {/* TÃ­tulo do Evento no Idioma Ativo (Combobox estrito por Categoria) */}
                 <div ref={titleDropdownRef} className="relative">
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.eventTitle")} ({activeLangTab.toUpperCase()})
@@ -745,7 +750,7 @@ export default function AdminDashboard() {
                   </AnimatePresence>
                 </div>
                 
-                {/* Seletor Visual de Calendário Multi-Sessões */}
+                {/* Seletor Visual de CalendÃ¡rio Multi-SessÃµes */}
                 <div>
                   <ScheduleCalendarPicker
                     sessions={formData.sessions || []}
@@ -766,11 +771,11 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                {/* Carga Horária e Total de Vagas */}
+                {/* Carga HorÃ¡ria e Total de Vagas */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                      {t("adminPage.totalHours", "Carga Horária (h)")}
+                      {t("adminPage.totalHours", "Carga HorÃ¡ria (h)")}
                     </label>
                     <input
                       type="number"
@@ -798,7 +803,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Texto Visível de Datas / Horários no Idioma Ativo */}
+                {/* Texto VisÃ­vel de Datas / HorÃ¡rios no Idioma Ativo */}
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF]">
@@ -819,10 +824,10 @@ export default function AdminDashboard() {
                           }));
                         }}
                         className="text-[10px] font-heading uppercase tracking-wider text-accent hover:text-white transition-colors flex items-center gap-1 bg-accent/10 px-2 py-0.5 rounded border border-accent/30"
-                        title={t("adminPage.autoGenerateSchedule", "Gerar Resumo da Programação")}
+                        title={t("adminPage.autoGenerateSchedule", "Gerar Resumo da ProgramaÃ§Ã£o")}
                       >
                         <Sparkles className="w-3 h-3 text-accent" />
-                        <span>{t("adminPage.autoGenerateSchedule", "Gerar Resumo da Programação")}</span>
+                        <span>{t("adminPage.autoGenerateSchedule", "Gerar Resumo da ProgramaÃ§Ã£o")}</span>
                       </button>
                     )}
                   </div>
@@ -836,7 +841,7 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                {/* Local / Estúdio no Idioma Ativo */}
+                {/* Local / EstÃºdio no Idioma Ativo */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
                     {t("adminPage.location")} ({activeLangTab.toUpperCase()})
@@ -851,10 +856,10 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                {/* Endereço Completo (Usado para o Google Maps) */}
+                {/* EndereÃ§o Completo (Usado para o Google Maps) */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
-                    {t("adminPage.address", "Endereço Completo (Para Google Maps)")}
+                    {t("adminPage.address", "EndereÃ§o Completo (Para Google Maps)")}
                   </label>
                   <input 
                     type="text" 
@@ -866,7 +871,7 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                {/* Botões de Ação do Form */}
+                {/* BotÃµes de AÃ§Ã£o do Form */}
                 <div className="flex gap-2 pt-2">
                   <button 
                     type="submit" 
@@ -895,7 +900,7 @@ export default function AdminDashboard() {
                 {isInstructor ? t("adminPage.myCoursesTitle", "Meus Cursos & Workshops") : t("adminPage.activeAgenda")}
               </h2>
 
-              {/* Abas: Próximos & Ativos vs Encerrados / Histórico */}
+              {/* Abas: PrÃ³ximos & Ativos vs Encerrados / HistÃ³rico */}
               <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 p-1 bg-[#121214] border border-[#222222] rounded-[2px] w-full sm:w-auto">
                 <button
                   type="button"
@@ -906,7 +911,7 @@ export default function AdminDashboard() {
                       : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
                   }`}
                 >
-                  <span>{t("adminPage.tabUpcoming", "Próximos & Ativos")}</span>
+                  <span>{t("adminPage.tabUpcoming", "PrÃ³ximos & Ativos")}</span>
                   <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${
                     adminTab === 'upcoming' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#222222] text-[#CFCFCF]'
                   }`}>
@@ -924,7 +929,7 @@ export default function AdminDashboard() {
                       : 'text-[#9A9A9A] hover:text-[#F0EDE8]'
                   }`}
                 >
-                  <span>{t("adminPage.tabPast", "Passados / Histórico")}</span>
+                  <span>{t("adminPage.tabPast", "Passados / HistÃ³rico")}</span>
                   <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${
                     adminTab === 'past' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#222222] text-[#CFCFCF]'
                   }`}>
@@ -946,7 +951,7 @@ export default function AdminDashboard() {
                 return (
                   <div className="p-8 border border-[#222222] bg-[#0a0a0a] rounded-[2px] text-center text-[#9A9A9A] font-heading">
                     {adminTab === 'past' 
-                      ? t("adminPage.emptyPast", "Nenhum evento encerrado no histórico.") 
+                      ? t("adminPage.emptyPast", "Nenhum evento encerrado no histÃ³rico.") 
                       : t("adminPage.emptyUpcoming", "Nenhum evento ativo ou futuro no momento.")}
                   </div>
                 );
@@ -1005,7 +1010,7 @@ export default function AdminDashboard() {
                             {/* Instrutor */}
                             {event.instructor && (
                               <span className="text-[10px] font-heading text-[#9A9A9A] ml-2">
-                                • <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
+                                â€¢ <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
                               </span>
                             )}
                           </div>
@@ -1014,7 +1019,7 @@ export default function AdminDashboard() {
                           
                           <div className="font-heading text-xs text-[#9A9A9A] space-y-1">
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <strong className="text-[#CFCFCF]">{t("adminPage.eventDates", "Período")}:</strong> 
+                              <strong className="text-[#CFCFCF]">{t("adminPage.eventDates", "PerÃ­odo")}:</strong> 
                               <span>{dateStr || '-'}</span>
                               {event.startTime && (
                                 <span className="text-[#7A7A85] ml-1">
@@ -1061,14 +1066,14 @@ export default function AdminDashboard() {
                             </div>
                           </div>
 
-                          {/* Ações por Ícones Elegantes com Tooltips */}
+                          {/* AÃ§Ãµes por Ãcones Elegantes com Tooltips */}
                           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                             <a 
                               href={generateInstructorCalendarUrl(event, i18n.language, event.instructorEmail)}
                               target="_blank" 
                               rel="noopener noreferrer"
-                              title={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor (Google Calendar)")}
-                              aria-label={t("adminPage.addToInstructorCalendar", "Adicionar à Agenda do Instrutor")}
+                              title={t("adminPage.addToInstructorCalendar", "Adicionar Ã  Agenda do Instrutor (Google Calendar)")}
+                              aria-label={t("adminPage.addToInstructorCalendar", "Adicionar Ã  Agenda do Instrutor")}
                               className="p-2 sm:p-2.5 rounded-[2px] bg-[#1a1a1a] hover:bg-accent hover:text-primary text-[#9A9A9A] transition-colors flex items-center justify-center"
                             >
                               <CalendarPlus className="w-4 h-4" />
@@ -1136,12 +1141,12 @@ export default function AdminDashboard() {
           </div>
         ) : masterTab === 'users' ? (
           <RegisteredUsersManager events={events} />
-        ) : (
+        ) : masterTab === 'wishlists' ? (
           <WishlistManager onScheduleWorkshop={handleScheduleFromWishlist} />
-        )}
+        ) : null}
       </main>
 
-      {/* Modal de Gestão de Alunos */}
+      {/* Modal de GestÃ£o de Alunos */}
       <AnimatePresence>
         {selectedEventForStudents && (
           <StudentsModal 

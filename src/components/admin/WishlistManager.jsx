@@ -221,6 +221,10 @@ export default function WishlistManager({ onScheduleWorkshop }) {
 
   return (
     <div className="space-y-8">
+      <h2 className="font-heading text-xl text-[#F0EDE8]">
+        {t('adminPage.wishlistManager.title', 'Wishlist & Demandas')}
+      </h2>
+      
       {/* 1. Banner Superior de Alerta se houver Metas Atingidas */}
       {stats.goalsReached > 0 && (
         <motion.div 

@@ -496,7 +496,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
               workshopLink: link,
               workshopDate: dateStr,
               workshopTime: event.startTime || '',
-              locationName: localizedLocation || 'Dance2Dance Studio',
+              locationName: localizedLocation || t('agenda.locationTBA', 'Location TBA'),
               locationMapLink: event?.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.address)}` : 'https://maps.google.com'
             })
           });
