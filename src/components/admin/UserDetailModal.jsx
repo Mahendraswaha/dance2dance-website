@@ -114,7 +114,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
       const updatedEval = {
         rating: editRating,
         notes: editNotes,
-        instructorName: currentUser?.displayName || currentUser?.email || 'Admin',
+        instructorName: currentUser?.profile?.fullName || currentUser?.profile?.nome || currentUser?.displayName || (currentUser?.email ? currentUser.email.split('@')[0] : 'Admin'),
         updatedAt: new Date().toISOString()
       };
       
@@ -142,7 +142,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
     try {
       const newNote = {
         text: newNoteText.trim(),
-        author: currentUser?.displayName || currentUser?.email || 'Admin',
+        author: currentUser?.profile?.fullName || currentUser?.profile?.nome || currentUser?.displayName || (currentUser?.email ? currentUser.email.split('@')[0] : 'Admin'),
         date: new Date().toISOString()
       };
       await updateDoc(doc(db, 'users', user.id || user.uid), {
@@ -625,7 +625,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                                   )}
                                   {enr.evaluation.instructorName && (
                                     <span className="text-[10px] font-heading text-zinc-400">
-                                      ({enr.evaluation.instructorName})
+                                      ({enr.evaluation.instructorName?.includes('@') ? enr.evaluation.instructorName.split('@')[0].charAt(0).toUpperCase() + enr.evaluation.instructorName.split('@')[0].slice(1) : enr.evaluation.instructorName})
                                     </span>
                                   )}
                                 </div>
@@ -712,7 +712,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                 {localNotes.map((note, idx) => (
                   <div key={idx} className="p-4 bg-[#121216] border border-[#1E1E24] rounded-[2px]">
                     <div className="flex justify-between items-start mb-2">
-                      <span className="text-xs font-heading font-semibold text-[#E0DDD5]">{note.author || 'Admin'}</span>
+                      <span className="text-xs font-heading font-semibold text-[#E0DDD5]">{note.author?.includes('@') ? note.author.split('@')[0].charAt(0).toUpperCase() + note.author.split('@')[0].slice(1) : (note.author || 'Admin')}</span>
                       <span className="text-[10px] font-mono text-zinc-500">
                         {note.date ? new Date(note.date).toLocaleDateString(currentLang, { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''}
                       </span>
