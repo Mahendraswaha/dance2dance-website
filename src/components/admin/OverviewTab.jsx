@@ -93,14 +93,14 @@ export default function OverviewTab({ events, usersCount }) {
   const ongoingEvents = events.filter(e => isEventOngoing(e));
   
   const totalRevenue = useMemo(() => {
-    return upcomingEvents.reduce((acc, ev) => {
+    return activeEventsList.reduce((acc, ev) => {
       const price = parseFloat(ev.price) || 0;
       const enrolled = ev.enrolledCount || 0;
       return acc + (price * enrolled);
     }, 0);
-  }, [upcomingEvents]);
+  }, [activeEventsList]);
 
-  const totalWaitlist = upcomingEvents.reduce((acc, ev) => acc + (ev.waitlistCount || 0), 0);
+  const totalWaitlist = activeEventsList.reduce((acc, ev) => acc + (ev.waitlistCount || 0), 0);
   
   const hasFailures = failedEmails.length > 0;
 
@@ -136,7 +136,7 @@ export default function OverviewTab({ events, usersCount }) {
               <Calendar className="w-4 h-4 text-blue-400" />
             </div>
           </div>
-          <p className="text-3xl font-heading text-white">{upcomingEvents.length}</p>
+          <p className="text-3xl font-heading text-white">{activeEventsList.length}</p>
         </div>
 
         <div className="bg-[#0A0A0E] border border-[#222222] p-5 rounded-md flex flex-col justify-between">
