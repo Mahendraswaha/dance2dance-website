@@ -146,7 +146,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
   const cleanPhone = cleanPhoneForWhatsApp(phone);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-28 md:pt-36">
       {/* Backdrop */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -162,7 +162,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#0A0A0E] border border-[#1E1E28] rounded-[4px] shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col z-10 font-sans text-background"
+        className="relative w-full max-w-4xl max-h-[calc(100vh-8rem)] md:max-h-[calc(100vh-10rem)] bg-[#0A0A0E] border border-[#1E1E28] rounded-[4px] shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col z-10 font-sans text-background"
       >
         {/* Header do Modal */}
         <div className="p-6 sm:p-8 border-b border-[#1A1A24] bg-[#0D0D12] flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative">
