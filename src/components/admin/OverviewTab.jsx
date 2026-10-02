@@ -89,6 +89,7 @@ export default function OverviewTab({ events, usersCount }) {
     }
   };
 
+  const activeEventsList = events.filter(e => !isEventPast(e));
   const upcomingEvents = events.filter(e => !isEventPast(e) && !isEventOngoing(e));
   const ongoingEvents = events.filter(e => isEventOngoing(e));
   
