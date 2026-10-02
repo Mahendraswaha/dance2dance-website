@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Users, TrendingUp, Calendar, AlertCircle, CheckCircle, RefreshCw } from 'lucide-react';
 import { db } from '../../firebase';
 import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
@@ -47,17 +47,25 @@ export default function OverviewTab({ events, userEnrollments, usersCount }) {
       let dateStr = '';
       if (ev?.startDate) dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(enrollment.language === 'no' ? 'no-NO' : enrollment.language === 'en' ? 'en-US' : 'pt-BR');
       
+      const lang = enrollment.language || 'en';
+      const evTitle = lang === 'no' ? (ev.title_no || ev.title_en) : lang === 'en' ? (ev.title_en || ev.title_pt) : (ev.title_pt || ev.title_en);
+      const locKey = `location_${lang}`;
+      const locationStr = ev[locKey] || ev.location || 'Dance2Dance Studio';
+      const locationMap = ev.address 
+        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}`
+        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationStr)}`;
+
       const payload = {
         type: enrollment.status === 'waitlist' ? 'waitlist_joined' : 'enrollment_confirmed',
         userEmail: enrollment.userEmail,
         userName: enrollment.userName,
-        lang: enrollment.language || 'en',
-        workshopName: enrollment.language === 'no' ? (ev.title_no || ev.title_en) : enrollment.language === 'en' ? (ev.title_en || ev.title_pt) : (ev.title_pt || ev.title_en),
+        lang: lang,
+        workshopName: evTitle || 'Workshop',
         workshopDate: dateStr,
         workshopTime: ev.startTime || '',
         workshopLink: 'https://www.dance2dance.no/agenda',
-        locationName: 'Dance2Dance Studio',
-        locationMapLink: 'https://maps.google.com'
+        locationName: locationStr,
+        locationMapLink: locationMap
       };
 
       const response = await fetch('/api/agenda-notify', {
