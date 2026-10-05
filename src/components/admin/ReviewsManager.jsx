@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { Star, CheckCircle2, Trash2, ShieldCheck, Clock, Award } from 'lucide-react';
+import { Star, CheckCircle2, Trash2, ShieldCheck, Clock, Award, XCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 
@@ -56,7 +56,7 @@ export default function ReviewsManager() {
   return (
     <div className="space-y-6">
       {/* Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div className="bg-[#121214] border border-[#222222] p-4 rounded-[2px] flex items-center gap-4">
           <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
             <Award className="w-5 h-5 text-accent" />
@@ -90,6 +90,17 @@ export default function ReviewsManager() {
             </div>
           </div>
         </div>
+        <div className="bg-[#121214] border border-[#222222] p-4 rounded-[2px] flex items-center gap-4">
+          <div className="w-10 h-10 rounded-full bg-orange-950/30 flex items-center justify-center shrink-0">
+            <XCircle className="w-5 h-5 text-orange-400" />
+          </div>
+          <div>
+            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">Rejeitados</div>
+            <div className="text-xl font-mono text-white">
+              {reviews.filter(r => r.status === 'rejected').length}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}
@@ -105,6 +116,12 @@ export default function ReviewsManager() {
           className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'approved' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
         >
           Aprovados (Site)
+        </button>
+        <button 
+          onClick={() => setFilterStatus('rejected')}
+          className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'rejected' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
+        >
+          Rejeitados
         </button>
         <button 
           onClick={() => setFilterStatus('all')}
@@ -144,20 +161,52 @@ export default function ReviewsManager() {
                 
                 <div className="flex sm:flex-col gap-2 shrink-0 border-t sm:border-t-0 border-[#222222] pt-3 sm:pt-0">
                   {(!review.status || review.status === 'pending') && (
-                    <button 
-                      onClick={() => handleUpdateStatus(review.id, 'approved')}
-                      className="px-3 py-1.5 bg-green-950/30 text-green-400 border border-green-900/50 hover:bg-green-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5" /> Aprovar
-                    </button>
+                    <>
+                      <button 
+                        onClick={() => handleUpdateStatus(review.id, 'approved')}
+                        className="px-3 py-1.5 bg-green-950/30 text-green-400 border border-green-900/50 hover:bg-green-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5" /> Aprovar
+                      </button>
+                      <button 
+                        onClick={() => handleUpdateStatus(review.id, 'rejected')}
+                        className="px-3 py-1.5 bg-orange-950/30 text-orange-400 border border-orange-900/50 hover:bg-orange-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <XCircle className="w-3.5 h-3.5" /> Rejeitar
+                      </button>
+                    </>
                   )}
                   {review.status === 'approved' && (
-                    <button 
-                      onClick={() => handleUpdateStatus(review.id, 'pending')}
-                      className="px-3 py-1.5 bg-amber-950/30 text-amber-400 border border-amber-900/50 hover:bg-amber-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                    >
-                      <Clock className="w-3.5 h-3.5" /> Para Fila
-                    </button>
+                    <>
+                      <button 
+                        onClick={() => handleUpdateStatus(review.id, 'pending')}
+                        className="px-3 py-1.5 bg-amber-950/30 text-amber-400 border border-amber-900/50 hover:bg-amber-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <Clock className="w-3.5 h-3.5" /> Para Fila
+                      </button>
+                      <button 
+                        onClick={() => handleUpdateStatus(review.id, 'rejected')}
+                        className="px-3 py-1.5 bg-orange-950/30 text-orange-400 border border-orange-900/50 hover:bg-orange-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <XCircle className="w-3.5 h-3.5" /> Rejeitar
+                      </button>
+                    </>
+                  )}
+                  {review.status === 'rejected' && (
+                    <>
+                      <button 
+                        onClick={() => handleUpdateStatus(review.id, 'approved')}
+                        className="px-3 py-1.5 bg-green-950/30 text-green-400 border border-green-900/50 hover:bg-green-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5" /> Aprovar
+                      </button>
+                      <button 
+                        onClick={() => handleUpdateStatus(review.id, 'pending')}
+                        className="px-3 py-1.5 bg-amber-950/30 text-amber-400 border border-amber-900/50 hover:bg-amber-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <Clock className="w-3.5 h-3.5" /> Para Fila
+                      </button>
+                    </>
                   )}
                   <button 
                     onClick={() => handleDelete(review.id)}
