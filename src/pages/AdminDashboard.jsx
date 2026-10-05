@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -7,13 +7,14 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
-import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download, Heart } from 'lucide-react';
+import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download, Heart, Star } from 'lucide-react';
 import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, downloadEventIcs, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 import RegisteredUsersManager from '../components/admin/RegisteredUsersManager';
 import WishlistManager from '../components/admin/WishlistManager';
 import CommunicationsTab from '../components/admin/CommunicationsTab';
 import OverviewTab from '../components/admin/OverviewTab';
+import ReviewsManager from '../components/admin/ReviewsManager';
 import { toast } from 'sonner';
 
 // Presets estruturados por categoria e idioma com suas respectivas rotas
@@ -567,6 +568,14 @@ export default function AdminDashboard() {
             >
               <span className="truncate">{t('adminPage.tabs.communications', 'Comunicações')}</span>
             </button>
+            <button
+              type="button"
+              onClick={() => setMasterTab('reviews')}
+              className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'reviews' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
+            >
+              <Star className="w-4 h-4 shrink-0" />
+              <span className="truncate">{t('adminPage.tabs.reviews', 'Avaliações')}</span>
+            </button>
           </div>
         )}
 
@@ -576,6 +585,10 @@ export default function AdminDashboard() {
 
         {masterTab === 'communications' && !isInstructor && (
           <CommunicationsTab />
+        )}
+
+        {masterTab === 'reviews' && !isInstructor && (
+          <ReviewsManager />
         )}
 
                 {(masterTab === 'events' || isInstructor) ? (

@@ -71,3 +71,82 @@ Toda a arquitetura de backend, captação de leads, e-mails, listas de espera e 
 ## 6. Regras de Fluxo e Lógica
 * **Login/Redirecionamento:** Páginas de Autenticação (`LoginPage`, `SignupPage`) devem sempre capturar o `location.state.from` para devolver o usuário à tela exata em que ele estava (ex: continuar uma inscrição na Agenda), sem jogá-lo forçadamente para a Home.
 * **Workshops (Vagas):** O sistema opera com vagas baseadas em investimento (pagantes) que financiam as vagas de bolsa (gratuitas). A lógica de lista de espera deve respeitar as arrays do Firebase rigorosamente.
+
+
+# Dance2Dance — Contexto e Regras do Projeto (Micro CRM e Site)
+
+Este documento centraliza as regras de negócio, padrões de arquitetura e decisões técnicas extraídas do histórico de desenvolvimento do site e do Micro CRM. Serve como mapa de referência rápida para mantermos a consistência nos próximos passos.
+
+## 1. Arquitetura e Padrões de Código
+
+### 1.1 Stack Tecnológico
+- **Frontend:** React (usado com Vite), Tailwind CSS.
+- **Backend/BaaS:** Firebase (Auth, Firestore, Hosting).
+- **Internacionalização:** `i18next` (Três idiomas: `pt`, `en`, `no`).
+
+### 1.2 Padrões de Interface (UI/UX)
+- **Tema:** Escuro (Dark Mode nativo). Fundo predominante `bg-[#0a0a0a]`, texto claro `text-[#F0EDE8]`.
+- **Acento (Gold):** Usado em links, botões primários e detalhes através da classe `text-accent`.
+- **Tipografia:** Fonte estilizada `font-drama` para títulos (ex: "Dance2Dance").
+- **Apresentação da Marca:** O nome da marca sempre possui formatação especial para o "2": 
+  `Dance<span className="text-accent text-[1.28em] inline-block align-baseline">2</span>Dance`.
+- **Alertas (Toaster):** Proibido o uso de `window.alert()`. O sistema foi migrado para um sistema de Toast/Notificações nativas e não-intrusivas na interface.
+- **Espaçamento Global:** Páginas principais (`main`) precisam de padding superior (`pt-44 md:pt-52`) para não serem sobrepostas pela barra de navegação (Navbar).
+
+---
+
+## 2. Autenticação e Firebase (Auth)
+
+### 2.1 Single-Tenant e Segurança
+- O sistema suporta/configurou lógicas de _Single-Tenant_ no Firebase para isolar usuários da organização.
+- **Danger Zone:** Ações destrutivas, como exclusão de conta (Delete Account), exigem **reautenticação imediata** do usuário por motivos de segurança.
+
+### 2.2 E-mails Transacionais
+- E-mails de Firebase (Redefinição de Senha, Verificação) estão vinculados ao idioma atual do usuário (`auth.languageCode = i18n.language`).
+- Há manipuladores customizados de ação de e-mail (Email Action Routes) para capturar o clique do usuário nos links enviados pelo Firebase.
+
+### 2.3 Perfil e Cadastro (Signup)
+- O fluxo de cadastro (`SignupPage.jsx`) vai além de e-mail e senha. Ele captura o perfil completo no Firestore: `nome`, `telefone`, `endereço`, `cidade`, `CEP`, `país`, `data de nascimento`, `profissão`, `experiência com dança` e `restrições médicas`.
+- Após a criação do Auth (Authentication), os metadados são injetados no documento do usuário no Firestore (`patch_profile`).
+
+---
+
+## 3. Internacionalização (i18n)
+
+### 3.1 Idiomas Suportados
+- **PT:** Português (Brasil) - Idioma base de desenvolvimento e da criadora.
+- **EN:** Inglês - Idioma corporativo/internacional.
+- **NO:** Norueguês (Bokmål) - Idioma local obrigatório para captar fundos públicos e grants em Oslo.
+
+### 3.2 Regras de Localização
+- Os _placeholders_ (textos de dica) de formulários se adaptam ao idioma. Exemplo no campo de telefone:
+  - PT: `+55 ...`
+  - EN / NO: `+47 ...` e `Norway...` / `Norge...`
+- Traduções isoladas e complexas (ex: parágrafos da biografia da Safia) são mapeadas cuidadosamente para manter a formatação do HTML intacta (ex: o `span` da marca Dance2Dance no meio do texto).
+
+---
+
+## 4. Formulários e Captura de Leads (Micro CRM)
+
+### 4.1 Formulário de Contato (`ContactPage`)
+- A estrutura do formulário de contato foi expandida para incluir endereço completo (rua, cidade, CEP, país), fundamental para qualificar leads institucionais.
+- O campo de assunto (`subject`) é dinâmico. Se o usuário vier de um link corporativo, o valor padrão é `reuniao-executiva`. Caso contrário, cai na vala comum de `Dúvidas Gerais / Informações`.
+
+### 4.2 Lógica do Micro CRM (Próximos Passos Baseados no Histórico)
+O sistema (Firestore) já está preparado para:
+- Cadastro e login de usuários.
+- Inscrições em workshops da agenda.
+- Disparo de eventos e-mails transacionais (Outbox/Retry patterns).
+- Dashboard administrativo.
+- Multilíngue embutido.
+
+### 4.3 Arquitetura Macro
+- **Site (Frontend Público):** Focado em conversão e SEO (Apresentar os programas: Be The Dance, Biostretch, Projetos Sociais).
+- **Notion:** Focado na gestão *interna* da equipe (conteúdo, ideias de grants, tarefas manuais).
+- **Micro CRM (Firebase):** Focado em *Pessoas e Relacionamentos* (inscrições, formulários de leads como e-books, automações de e-mail de boas-vindas e feedback).
+
+
+## Instruções para o Agente (Meta-Regras)
+- Sempre que o usuário disser que uma funcionalidade foi "concluída", "aprovada" ou que "funcionou", você DEVE alertá-lo com a seguinte mensagem: 
+  "Notifiquei que terminamos esta etapa! Deseja que eu atualize este arquivo projeto.md com o resumo desta nova implementação antes de fecharmos o chat?"
+

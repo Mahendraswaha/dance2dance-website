@@ -151,32 +151,6 @@ export default function ReviewModal({ event, existingReview, user, onClose, onRe
         {/* Formulário */}
         <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
 
-          {/* Banner de status se já foi enviado */}
-          {existingReview && (
-            <div className={`p-3.5 rounded-[2px] border text-xs font-heading flex items-start gap-2.5 ${
-              existingReview.status === 'approved'
-                ? 'bg-green-950/30 border-green-800/40 text-green-300'
-                : 'bg-amber-950/30 border-amber-800/40 text-amber-200'
-            }`}>
-              {existingReview.status === 'approved' ? (
-                <ShieldCheck className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-              ) : (
-                <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-              )}
-              <div>
-                <span className="font-semibold block">
-                  {existingReview.status === 'approved'
-                    ? t('reviews.statusApproved', 'Avaliação Aprovada & Visível no Site')
-                    : t('reviews.statusPending', 'Avaliação em Análise')}
-                </span>
-                <span className="text-[11px] opacity-90 leading-relaxed block mt-0.5">
-                  {existingReview.status === 'approved'
-                    ? t('reviews.statusApprovedDesc', 'Seu depoimento foi aprovado pela coordenação e pode ser exibido publicamente.')
-                    : t('reviews.statusPendingDesc', 'Recebemos seu depoimento com carinho! Ele passará pela moderação da equipe antes de ser publicado.')}
-                </span>
-              </div>
-            </div>
-          )}
 
           {/* Seletor de Estrelas (1 a 5) */}
           <div className="space-y-2 text-center bg-[#14141A] border border-[#1E1E26] p-5 rounded-[2px]">

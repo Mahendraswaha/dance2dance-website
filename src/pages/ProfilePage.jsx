@@ -801,18 +801,6 @@ export default function ProfilePage() {
                                         </span>
                                       </div>
 
-                                      {/* Status da Avaliação */}
-                                      {existingReview.status === 'approved' ? (
-                                        <span className="text-[10px] font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-green-950/40 text-green-400 border border-green-800/40 flex items-center gap-1">
-                                          <ShieldCheck className="w-3 h-3 text-green-400" />
-                                          {t('studentPortal.reviewApprovedBadge', 'Depoimento Publicado')}
-                                        </span>
-                                      ) : (
-                                        <span className="text-[10px] font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-amber-950/40 text-amber-400 border border-amber-800/40 flex items-center gap-1">
-                                          <Clock className="w-3 h-3 text-amber-400" />
-                                          {t('studentPortal.reviewPendingBadge', 'Em Moderação')}
-                                        </span>
-                                      )}
                                     </div>
 
                                     {/* Comentário do Aluno */}
@@ -820,11 +808,6 @@ export default function ProfilePage() {
                                       "{existingReview.comment}"
                                     </blockquote>
 
-                                    {existingReview.status !== 'approved' && (
-                                      <p className="text-[10px] text-zinc-500 font-heading">
-                                        {t('reviews.statusPendingDesc', 'Recebemos seu depoimento com carinho! Ele passará pela moderação da equipe antes de ser publicado.')}
-                                      </p>
-                                    )}
 
                                     {/* Botão de Editar */}
                                     <div className="pt-1 flex justify-end">
