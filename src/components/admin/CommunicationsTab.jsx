@@ -29,6 +29,7 @@ export default function CommunicationsTab() {
   const [subject, setSubject] = useState('');
   const [bodyHtml, setBodyHtml] = useState('');
   const [isEditing, setIsEditing] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
@@ -40,9 +41,11 @@ export default function CommunicationsTab() {
     if (templates[key]) {
       setSubject(templates[key].subject || '');
       setBodyHtml(templates[key].body_html || '');
+      setIsActive(templates[key].isActive !== false);
     } else {
       setSubject('');
       setBodyHtml('');
+      setIsActive(true);
     }
     setIsEditing(false);
   }, [selectedTemplate, selectedLang, templates]);
@@ -73,7 +76,7 @@ export default function CommunicationsTab() {
         id: key,
         subject: subject,
         body_html: bodyHtml,
-        isActive: true
+        isActive: isActive
       };
 
       await setDoc(docRef, payload, { merge: true });
@@ -216,6 +219,22 @@ export default function CommunicationsTab() {
           </div>
 
           <div className="space-y-4">
+            {/* Toggle Status */}
+            <div className="flex items-center justify-between bg-[#121214] border border-[#222222] p-4 rounded mb-2">
+              <div>
+                <h4 className="text-sm font-heading text-white">Status do E-mail</h4>
+                <p className="text-xs text-zinc-500">Quando desativado, este e-mail será pausado e não será enviado.</p>
+              </div>
+              <button
+                type="button"
+                disabled={!isEditing}
+                onClick={() => setIsActive(!isActive)}
+                className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isActive ? 'bg-accent' : 'bg-[#333333]'} ${!isEditing ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+              >
+                <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${isActive ? 'translate-x-5' : 'translate-x-1'}`} />
+              </button>
+            </div>
+
             <div>
               <label className="block text-xs font-heading tracking-[1px] text-zinc-500 mb-1.5">{t('adminPage.tabs.communications.subject')}</label>
               <input

@@ -63,6 +63,13 @@ export default async function handler(req, res) {
       throw new Error('Template document is empty or malformed');
     }
 
+    // TRAVA DE SEGURANÇA (Verifica se o template está pausado no Micro CRM)
+    const isActive = docData.fields.isActive?.booleanValue;
+    if (isActive === false) {
+      console.log(`Envio cancelado: O template ${templateId} está pausado pelo administrador.`);
+      return res.status(200).json({ success: true, message: 'Template is paused. Email not sent.' });
+    }
+
     // Extrair subject e body_html (A API REST retorna { stringValue: '...' })
     const rawSubject = docData.fields.subject?.stringValue || '';
     const rawBodyHtml = docData.fields.body_html?.stringValue || '';

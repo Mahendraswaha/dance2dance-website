@@ -167,3 +167,9 @@ O sistema (Firestore) já está preparado para:
 * **Proteção de Marcas e Editais:**
   * **Kroppsskole** nunca é traduzido em nenhum idioma.
   * O norueguês deve sempre garantir o uso de palavras-chave de editais locais: *personlig velvære*, *kunstnerisk uttrykk*, *selvinnsikt*, e *selvtillit*.
+
+
+## 7. Documentação Técnica Avançada
+Para não poluir este manifesto com regras de infraestrutura complexa, os manuais técnicos do projeto estão isolados na pasta docs/. Sempre que precisar alterar ou construir uma dessas áreas, oriente a IA a ler o documento correspondente:
+* **Arquitetura de E-mails e Cron Jobs:** Leia docs/micro_crm_email_architecture.md
+* **Ecossistema do Notion (Projetos vs Tarefas):** Leia docs/NOTION_ARCHITECTURE.md
