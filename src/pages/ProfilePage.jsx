@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
@@ -30,6 +30,7 @@ export default function ProfilePage() {
   const currentLang = i18n.language || 'pt';
   const { currentUser, updateProfileData, resendVerificationEmail } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Tab: 'courses' | 'personal_data'
   const [activeTab, setActiveTab] = useState('courses');
@@ -65,9 +66,9 @@ export default function ProfilePage() {
   // Redireciona se não autenticado
   useEffect(() => {
     if (!currentUser) {
-      navigate('/login');
+      navigate('/login', { state: { from: location.pathname + location.search } });
     }
-  }, [currentUser, navigate]);
+  }, [currentUser, navigate, location.pathname, location.search]);
 
   // Carrega dados do perfil atual
   useEffect(() => {
@@ -154,6 +155,23 @@ export default function ProfilePage() {
   useEffect(() => {
     fetchUserCoursesAndReviews();
   }, [fetchUserCoursesAndReviews]);
+
+  // Abre automaticamente o modal se houver parametro na URL
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    if (!loadingCourses && Object.keys(eventsMap).length > 0) {
+      const reviewEventId = searchParams.get('review');
+      if (reviewEventId && eventsMap[reviewEventId]) {
+        const ev = eventsMap[reviewEventId];
+        const existingReview = reviewsMap[reviewEventId] || null;
+        setSelectedEventForReview(ev);
+        setSelectedReviewForModal(existingReview);
+        
+        searchParams.delete('review');
+        setSearchParams(searchParams, { replace: true });
+      }
+    }
+  }, [loadingCourses, eventsMap, reviewsMap, searchParams, setSearchParams]);
 
   // Separa cursos em Próximos e Realizados
   const { upcomingList, pastList } = useMemo(() => {

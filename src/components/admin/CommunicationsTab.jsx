@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { toast } from 'sonner';
@@ -110,7 +110,8 @@ export default function CommunicationsTab() {
       .replace(/{{workshopName}}/g, "<strong>Be The Dance Masterclass</strong>")
       .replace(/{{workshopDate}}/g, "<strong>15/10/2026</strong>")
       .replace(/{{workshopTime}}/g, "<strong>19:00</strong>")
-      .replace(/{{locationName}}/g, "<strong>Studio Tøyen, Oslo</strong>");
+      .replace(/{{locationName}}/g, "<strong>Studio Tøyen, Oslo</strong>")
+      .replace(/{{eventId}}/g, "preview_event_123");
   };
 
   if (loading) {
@@ -250,7 +251,7 @@ export default function CommunicationsTab() {
                 <>
                   {isEditing ? <RichTextEditor value={bodyHtml} onChange={setBodyHtml} /> : <div className="prose prose-invert prose-sm max-w-none min-h-[300px] p-6 border border-[#222222] rounded bg-[#0A0A0E] text-zinc-300" dangerouslySetInnerHTML={{ __html: bodyHtml }} />}
                   <p className="mt-2 text-xs text-zinc-500">
-                    Variáveis disponíveis: <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>
+                    Variáveis disponíveis: <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>, <code className="text-zinc-400">{'{{eventId}}'}</code>
                   </p>
                 </>
               )}

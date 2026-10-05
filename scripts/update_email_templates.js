@@ -8,7 +8,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 const getBtn = (text) => `<div style="margin: 24px 0;">
-  <a href="https://dance2dance.no/perfil" style="display: inline-block; background-color: #C9A84C; color: #0A0A0E; padding: 12px 20px; border-radius: 2px; text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
+  <a href="https://dance2dance.no/perfil?review={{eventId}}" style="display: inline-block; background-color: #C9A84C; color: #0A0A0E; padding: 12px 20px; border-radius: 2px; text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
     &#9733;&nbsp;&nbsp;${text}
   </a>
 </div>`;
@@ -45,14 +45,10 @@ async function run() {
   let htmlEn = d2.data()?.body_html || '';
   let htmlNo = d3.data()?.body_html || '';
 
-  // PT
-  htmlPt = htmlPt.replace(/\[botão Avaliar workshop\s*&amp;\s*Deixar depoimento\]/gi, getBtn('Avaliar Workshop &amp; Deixar Depoimento'));
-  
-  // EN
-  htmlEn = htmlEn.replace(/<p>Please reply to this email and let us know what you thought.<\/p>/gi, getBtn('Review Workshop &amp; Leave Testimonial'));
-
-  // NO
-  htmlNo = htmlNo.replace(/<p>Vennligst svar på denne e-posten og la oss få vite hva du syntes.<\/p>/gi, getBtn('Vurder Workshop &amp; Gi Tilbakemelding'));
+  // PT, EN, NO replace href="https://dance2dance.no/perfil" with href="https://dance2dance.no/perfil?review={{eventId}}"
+  htmlPt = htmlPt.replace(/href="https:\/\/dance2dance\.no\/perfil"/gi, 'href="https://dance2dance.no/perfil?review={{eventId}}"');
+  htmlEn = htmlEn.replace(/href="https:\/\/dance2dance\.no\/perfil"/gi, 'href="https://dance2dance.no/perfil?review={{eventId}}"');
+  htmlNo = htmlNo.replace(/href="https:\/\/dance2dance\.no\/perfil"/gi, 'href="https://dance2dance.no/perfil?review={{eventId}}"');
 
   await updateDoc(doc(db, 'crm_email_templates', 'post_event_feedback_pt'), { body_html: htmlPt });
   await updateDoc(doc(db, 'crm_email_templates', 'post_event_feedback_en'), { body_html: htmlEn });
