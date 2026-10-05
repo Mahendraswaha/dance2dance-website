@@ -1202,7 +1202,38 @@
     },
     "tabs": {
       "overview": "Visão Geral",
-      "communications": "Comunicações",
+      "communications": {
+        "title": "Comunicações e E-mails",
+        "desc": "Gerencie os textos automáticos disparados para os alunos. As variáveis entre chaves como {{userName}} serão substituídas automaticamente pelo sistema.",
+        "selectTrigger": "SELECIONE O GATILHO",
+        "emailLang": "IDIOMA DO E-MAIL",
+        "triggers": {
+          "enrollment_confirmed": "Confirmação de Inscrição",
+          "waitlist_joined": "Entrada na Fila de Espera",
+          "waitlist_promoted": "Vaga Liberada da Fila (Promoted)",
+          "contact_received": "Formulário de Contato Recebido",
+          "reminder_1_day": "Lembrete (1 Dia Antes)",
+          "post_event_feedback": "Feedback (Pós-Evento)",
+          "inactive_90_days": "Inatividade (90 Dias)"
+        },
+        "langs": {
+          "pt": "PORTUGUÊS",
+          "en": "INGLÊS",
+          "no": "NORUEGUÊS"
+        },
+        "hidePreview": "Ocultar Preview",
+        "showPreview": "Ver Preview",
+        "edit": "Editar Texto",
+        "cancel": "Cancelar",
+        "save": "Salvar Mudanças",
+        "subject": "ASSUNTO DO E-MAIL",
+        "body": "CORPO DO E-MAIL (HTML PERMITIDO)",
+        "empty": "Nenhum conteúdo no template.",
+        "availableVars": "Variáveis disponíveis:",
+        "loading": "Carregando CRM...",
+        "saveSuccess": "Template salvo com sucesso!",
+        "saveError": "Erro ao salvar template:"
+      },
       "reviews": "Avaliações"
     },
     "overview": {

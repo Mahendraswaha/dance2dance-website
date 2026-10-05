@@ -1202,7 +1202,38 @@
     },
     "tabs": {
       "overview": "Oversikt",
-      "communications": "Kommunikasjon",
+      "communications": {
+        "title": "Kommunikasjon & E-poster",
+        "desc": "Administrer automatiserte tekster sendt til elever. Variabler i klammer som {{userName}} erstattes automatisk.",
+        "selectTrigger": "VELG UTLØSER",
+        "emailLang": "E-POSTSPRÅK",
+        "triggers": {
+          "enrollment_confirmed": "Påmelding bekreftet",
+          "waitlist_joined": "Satt på venteliste",
+          "waitlist_promoted": "Venteliste oppdatert (Fått plass)",
+          "contact_received": "Kontaktskjema mottatt",
+          "reminder_1_day": "Påminnelse (1 dag før)",
+          "post_event_feedback": "Tilbakemelding (Etter arrangement)",
+          "inactive_90_days": "Inaktivitet (90 Dager)"
+        },
+        "langs": {
+          "pt": "PORTUGISISK",
+          "en": "ENGELSK",
+          "no": "NORSK"
+        },
+        "hidePreview": "Skjul forhåndsvisning",
+        "showPreview": "Se forhåndsvisning",
+        "edit": "Rediger tekst",
+        "cancel": "Avbryt",
+        "save": "Lagre endringer",
+        "subject": "E-POSTEMNE",
+        "body": "E-POSTKROPP (HTML TILLATT)",
+        "empty": "Ikke noe innhold i malen.",
+        "availableVars": "Tilgjengelige variabler:",
+        "loading": "Laster CRM...",
+        "saveSuccess": "Malen ble lagret!",
+        "saveError": "Feil ved lagring av mal:"
+      },
       "reviews": "Anmeldelser"
     },
     "overview": {

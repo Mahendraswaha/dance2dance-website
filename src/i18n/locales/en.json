@@ -1202,7 +1202,38 @@
     },
     "tabs": {
       "overview": "Overview",
-      "communications": "Communications",
+      "communications": {
+        "title": "Communications & Emails",
+        "desc": "Manage automated texts sent to students. Variables in braces like {{userName}} will be replaced automatically.",
+        "selectTrigger": "SELECT TRIGGER",
+        "emailLang": "EMAIL LANGUAGE",
+        "triggers": {
+          "enrollment_confirmed": "Registration Confirmed",
+          "waitlist_joined": "Waitlist Joined",
+          "waitlist_promoted": "Waitlist Promoted",
+          "contact_received": "Contact Form Received",
+          "reminder_1_day": "Reminder (1 Day Before)",
+          "post_event_feedback": "Post-Event Feedback",
+          "inactive_90_days": "Inactivity (90 Days)"
+        },
+        "langs": {
+          "pt": "PORTUGUESE",
+          "en": "ENGLISH",
+          "no": "NORWEGIAN"
+        },
+        "hidePreview": "Hide Preview",
+        "showPreview": "View Preview",
+        "edit": "Edit Text",
+        "cancel": "Cancel",
+        "save": "Save Changes",
+        "subject": "EMAIL SUBJECT",
+        "body": "EMAIL BODY (HTML ALLOWED)",
+        "empty": "No content in the template.",
+        "availableVars": "Available variables:",
+        "loading": "Loading CRM...",
+        "saveSuccess": "Template saved successfully!",
+        "saveError": "Error saving template:"
+      },
       "reviews": "Reviews"
     },
     "overview": {

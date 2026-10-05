@@ -4,33 +4,31 @@ import { db } from '../../firebase';
 import { toast } from 'sonner';
 import RichTextEditor from './RichTextEditor';
 import { Edit2, CheckCircle2, Loader2, Save, Eye } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const TEMPLATES_LIST = [
-  { id: 'enrollment_confirmed', name: 'Confirmação de Inscrição' },
-  { id: 'waitlist_joined', name: 'Entrada na Fila de Espera' },
-  { id: 'waitlist_promoted', name: 'Vaga Liberada da Fila (Promoted)' },
-  { id: 'contact_received', name: 'Formulário de Contato Recebido' },
-  { id: 'reminder_1_day', name: 'Lembrete (1 Dia Antes)' },
-  { id: 'post_event_feedback', name: 'Feedback (Pós-Evento)' },
-  { id: 'inactive_90_days', name: 'Inatividade (90 Dias)' }
+const TEMPLATE_IDS = [
+  'enrollment_confirmed',
+  'waitlist_joined',
+  'waitlist_promoted',
+  'contact_received',
+  'reminder_1_day',
+  'post_event_feedback',
+  'inactive_90_days'
 ];
 
-const LANGUAGES = [
-  { code: 'pt', label: 'Português' },
-  { code: 'en', label: 'Inglês' },
-  { code: 'no', label: 'Norueguês' }
-];
+const LANG_CODES = ['pt', 'en', 'no'];
 
 export default function CommunicationsTab() {
+  const { t } = useTranslation();
   const [templates, setTemplates] = useState({});
   const [selectedTemplate, setSelectedTemplate] = useState('enrollment_confirmed');
   const [selectedLang, setSelectedLang] = useState('pt');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   
-  const [isEditing, setIsEditing] = useState(false);
   const [subject, setSubject] = useState('');
   const [bodyHtml, setBodyHtml] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
@@ -38,73 +36,65 @@ export default function CommunicationsTab() {
   }, []);
 
   useEffect(() => {
-    loadTemplateData();
-  }, [selectedTemplate, selectedLang, templates]);
-
-  async function fetchTemplates() {
-    setLoading(true);
-    try {
-      const snap = await getDocs(collection(db, 'crm_email_templates'));
-      const data = {};
-      snap.forEach(d => {
-        data[d.id] = d.data();
-      });
-      setTemplates(data);
-    } catch (err) {
-      console.error(err);
-      toast.error('Erro ao carregar templates de e-mail.');
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  function loadTemplateData() {
-    const docId = `${selectedTemplate}_${selectedLang}`;
-    const tpl = templates[docId];
-    if (tpl) {
-      setSubject(tpl.subject || '');
-      setBodyHtml(tpl.body_html || '');
+    const key = `${selectedTemplate}_${selectedLang}`;
+    if (templates[key]) {
+      setSubject(templates[key].subject || '');
+      setBodyHtml(templates[key].body_html || '');
     } else {
       setSubject('');
       setBodyHtml('');
     }
     setIsEditing(false);
-  }
+  }, [selectedTemplate, selectedLang, templates]);
 
-  async function handleSave() {
-    setSaving(true);
-    const docId = `${selectedTemplate}_${selectedLang}`;
-    
+  const fetchTemplates = async () => {
     try {
-      const docRef = doc(db, 'crm_email_templates', docId);
+      const snap = await getDocs(collection(db, 'crm_email_templates'));
+      const data = {};
+      snap.forEach(doc => {
+        data[doc.id] = doc.data();
+      });
+      setTemplates(data);
+    } catch (err) {
+      console.error(err);
+      toast.error('Erro ao carregar templates');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      const key = `${selectedTemplate}_${selectedLang}`;
+      const docRef = doc(db, 'crm_email_templates', key);
       
       const payload = {
-        id: docId,
-        subject,
+        id: key,
+        subject: subject,
         body_html: bodyHtml,
         isActive: true
       };
-      
+
       await setDoc(docRef, payload, { merge: true });
       
       setTemplates(prev => ({
         ...prev,
-        [docId]: { ...prev[docId], ...payload }
+        [key]: { ...prev[key], ...payload }
       }));
       
-      toast.success('Template salvo com sucesso!');
+      toast.success(t('adminPage.tabs.communications.saveSuccess'));
       setIsEditing(false);
     } catch (err) {
       console.error(err);
-      toast.error('Erro ao salvar template: ' + err.message);
+      toast.error(t('adminPage.tabs.communications.saveError') + ' ' + err.message);
     } finally {
       setSaving(false);
     }
   }
 
-  // Função para renderizar o preview com variáveis preenchidas
   const getPreviewHtml = () => {
-    if (!bodyHtml) return "<p class='text-zinc-500 italic'>Nenhum conteúdo no template.</p>";
+    if (!bodyHtml) return `<p class='text-zinc-500 italic'>${t('adminPage.tabs.communications.empty')}</p>`;
     return bodyHtml
       .replace(/{{userName}}/g, "<strong>Safia Costa</strong>")
       .replace(/{{workshopName}}/g, "<strong>Be The Dance Masterclass</strong>")
@@ -118,7 +108,7 @@ export default function CommunicationsTab() {
     return (
       <div className="py-20 flex flex-col items-center justify-center text-zinc-500">
         <Loader2 className="w-8 h-8 animate-spin mb-4" />
-        <p className="font-heading uppercase tracking-[2px] text-xs">Carregando CRM...</p>
+        <p className="font-heading uppercase tracking-[2px] text-xs">{t('adminPage.tabs.communications.loading')}</p>
       </div>
     );
   }
@@ -126,11 +116,11 @@ export default function CommunicationsTab() {
   return (
     <div className="bg-[#0A0A0E] border border-[#222222] rounded-md overflow-hidden">
       <div className="p-6 border-b border-[#222222]">
-        <h2 className="text-xl font-heading text-accent mb-2">Comunicações e E-mails</h2>
+        <h2 className="text-xl font-heading text-accent mb-2">{t('adminPage.tabs.communications.title')}</h2>
         <p className="text-sm text-zinc-400 max-w-2xl">
-          Gerencie os textos automáticos disparados para os alunos. As variáveis entre chaves 
-          como <code className="text-accent bg-accent/10 px-1 py-0.5 rounded">{'{{userName}}'}</code> serão 
-          substituídas automaticamente pelo sistema.
+          {t('adminPage.tabs.communications.desc').split('{{userName}}')[0]}
+          <code className="text-accent bg-accent/10 px-1 py-0.5 rounded">{'{{userName}}'}</code>
+          {t('adminPage.tabs.communications.desc').split('{{userName}}')[1]}
         </p>
       </div>
 
@@ -138,38 +128,38 @@ export default function CommunicationsTab() {
         {/* Sidebar */}
         <div className="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-[#222222] bg-[#121214]">
           <div className="p-4 border-b border-[#222222]">
-            <h3 className="font-heading uppercase tracking-[1px] text-xs text-zinc-500 font-semibold mb-3">Selecione o Gatilho</h3>
+            <h3 className="font-heading tracking-[1px] text-xs text-zinc-500 font-semibold mb-3">{t('adminPage.tabs.communications.selectTrigger')}</h3>
             <div className="space-y-1">
-              {TEMPLATES_LIST.map(t => (
+              {TEMPLATE_IDS.map(id => (
                 <button
-                  key={t.id}
-                  onClick={() => setSelectedTemplate(t.id)}
+                  key={id}
+                  onClick={() => setSelectedTemplate(id)}
                   className={`w-full text-left px-3 py-2.5 rounded text-sm transition-colors ${
-                    selectedTemplate === t.id 
+                    selectedTemplate === id 
                       ? 'bg-accent/10 text-accent font-medium border border-accent/20' 
                       : 'text-zinc-400 hover:bg-[#1a1a1f] hover:text-zinc-200'
                   }`}
                 >
-                  {t.name}
+                  {t(`adminPage.tabs.communications.triggers.${id}`)}
                 </button>
               ))}
             </div>
           </div>
 
           <div className="p-4">
-            <h3 className="font-heading uppercase tracking-[1px] text-xs text-zinc-500 font-semibold mb-3">Idioma do E-mail</h3>
+            <h3 className="font-heading tracking-[1px] text-xs text-zinc-500 font-semibold mb-3">{t('adminPage.tabs.communications.emailLang')}</h3>
             <div className="flex gap-2">
-              {LANGUAGES.map(l => (
+              {LANG_CODES.map(code => (
                 <button
-                  key={l.code}
-                  onClick={() => setSelectedLang(l.code)}
-                  className={`flex-1 py-2 text-center text-xs font-heading uppercase tracking-wider rounded transition-colors ${
-                    selectedLang === l.code
+                  key={code}
+                  onClick={() => setSelectedLang(code)}
+                  className={`flex-1 py-2 text-center text-xs font-heading tracking-wider rounded transition-colors ${
+                    selectedLang === code
                       ? 'bg-[#222222] text-white border border-[#333333]'
                       : 'bg-transparent text-zinc-500 border border-transparent hover:text-zinc-300'
                   }`}
                 >
-                  {l.label}
+                  {t(`adminPage.tabs.communications.langs.${code}`)}
                 </button>
               ))}
             </div>
@@ -180,7 +170,7 @@ export default function CommunicationsTab() {
         <div className="w-full md:w-2/3 p-6">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-heading text-lg text-white">
-              {TEMPLATES_LIST.find(t => t.id === selectedTemplate)?.name} 
+              {t(`adminPage.tabs.communications.triggers.${selectedTemplate}`)} 
               <span className="text-zinc-500 ml-2 text-sm uppercase">({selectedLang})</span>
             </h3>
             
@@ -192,7 +182,7 @@ export default function CommunicationsTab() {
                 }`}
               >
                 <Eye className="w-3.5 h-3.5" />
-                {showPreview ? 'Ocultar Preview' : 'Ver Preview'}
+                {showPreview ? t('adminPage.tabs.communications.hidePreview') : t('adminPage.tabs.communications.showPreview')}
               </button>
 
               {!isEditing ? (
@@ -201,7 +191,7 @@ export default function CommunicationsTab() {
                   className="flex items-center gap-2 px-4 py-2 bg-[#1a1a1f] hover:bg-[#222222] text-zinc-300 rounded text-xs font-heading uppercase tracking-[1px] transition-colors border border-[#333333]"
                 >
                   <Edit2 className="w-3.5 h-3.5" />
-                  Editar Texto
+                  {t('adminPage.tabs.communications.edit')}
                 </button>
               ) : (
                 <div className="flex gap-2">
@@ -210,7 +200,7 @@ export default function CommunicationsTab() {
                     className="px-4 py-2 text-zinc-400 hover:text-white text-xs font-heading uppercase tracking-[1px]"
                     disabled={saving}
                   >
-                    Cancelar
+                    {t('adminPage.tabs.communications.cancel')}
                   </button>
                   <button
                     onClick={handleSave}
@@ -218,7 +208,7 @@ export default function CommunicationsTab() {
                     className="flex items-center gap-2 px-4 py-2 bg-accent text-primary rounded text-xs font-heading uppercase tracking-[1px] transition-colors font-bold disabled:opacity-50"
                   >
                     {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
-                    Salvar Mudanças
+                    {t('adminPage.tabs.communications.save')}
                   </button>
                 </div>
               )}
@@ -227,7 +217,7 @@ export default function CommunicationsTab() {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-heading uppercase tracking-[1px] text-zinc-500 mb-1.5">Assunto do E-mail</label>
+              <label className="block text-xs font-heading tracking-[1px] text-zinc-500 mb-1.5">{t('adminPage.tabs.communications.subject')}</label>
               <input
                 type="text"
                 value={subject}
@@ -239,7 +229,7 @@ export default function CommunicationsTab() {
             </div>
 
             <div>
-              <label className="block text-xs font-heading uppercase tracking-[1px] text-zinc-500 mb-1.5">Corpo do E-mail (HTML permitido)</label>
+              <label className="block text-xs font-heading tracking-[1px] text-zinc-500 mb-1.5">{t('adminPage.tabs.communications.body')}</label>
               
               {showPreview ? (
                 <div 
@@ -251,7 +241,7 @@ export default function CommunicationsTab() {
                 <>
                   {isEditing ? <RichTextEditor value={bodyHtml} onChange={setBodyHtml} /> : <div className="prose prose-invert prose-sm max-w-none min-h-[300px] p-6 border border-[#222222] rounded bg-[#0A0A0E] text-zinc-300" dangerouslySetInnerHTML={{ __html: bodyHtml }} />}
                   <p className="mt-2 text-xs text-zinc-500">
-                    Variáveis disponíveis: <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>, <code className="text-zinc-400">{'{{eventId}}'}</code>
+                    {t('adminPage.tabs.communications.availableVars')} <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>, <code className="text-zinc-400">{'{{eventId}}'}</code>
                   </p>
                 </>
               )}
