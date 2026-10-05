@@ -1005,7 +1005,7 @@
     "myCoursesTitle": "My Courses & Workshops",
     "studentsAndCrm": "Students & CRM",
     "masterTabEvents": "Events & Schedule",
-    "masterTabUsers": "Registered Students & Users",
+    "masterTabUsers": "Registered Users",
     "usersManager": {
       "totalRegistered": "Total Registered",
       "withEnrollments": "With Enrollments",
@@ -1166,7 +1166,7 @@
     },
     "addToInstructorCalendar": "Add to Instructor's Calendar (Google Calendar)",
     "instructorEmail": "Instructor Email",
-    "masterTabWishlist": "Demand & Wishlist",
+    "masterTabWishlist": "Wishlist",
     "ready": "Ready to Schedule",
     "wishlistManager": {
       "alertReadyDesc": "There is confirmed demand to schedule new workshop cohorts.",
@@ -1203,7 +1203,7 @@
     "tabs": {
       "overview": "Overview",
       "communications": {
-        "title": "Communications & Emails",
+        "title": "Communications",
         "desc": "Manage automated texts sent to students. Variables in braces like {{userName}} will be replaced automatically.",
         "selectTrigger": "SELECT TRIGGER",
         "emailLang": "EMAIL LANGUAGE",

@@ -1005,7 +1005,7 @@
     "myCoursesTitle": "Meus Cursos & Workshops",
     "studentsAndCrm": "Alunos & CRM",
     "masterTabEvents": "Eventos & Agenda",
-    "masterTabUsers": "Alunos & Usuários Cadastrados",
+    "masterTabUsers": "Usuários Cadastrados",
     "usersManager": {
       "totalRegistered": "Total Cadastrados",
       "withEnrollments": "Com Inscrições",
@@ -1166,7 +1166,7 @@
     },
     "addToInstructorCalendar": "Adicionar à Agenda do Instrutor (Google Calendar)",
     "instructorEmail": "E-mail do Instrutor",
-    "masterTabWishlist": "Demandas & Wishlist",
+    "masterTabWishlist": "Wishlist",
     "ready": "Pronto para Agendar",
     "wishlistManager": {
       "alertReadyDesc": "Há demanda confirmada para a abertura de novas turmas na agenda.",
@@ -1203,7 +1203,7 @@
     "tabs": {
       "overview": "Visão Geral",
       "communications": {
-        "title": "Comunicações e E-mails",
+        "title": "Comunicações",
         "desc": "Gerencie os textos automáticos disparados para os alunos. As variáveis entre chaves como {{userName}} serão substituídas automaticamente pelo sistema.",
         "selectTrigger": "SELECIONE O GATILHO",
         "emailLang": "IDIOMA DO E-MAIL",

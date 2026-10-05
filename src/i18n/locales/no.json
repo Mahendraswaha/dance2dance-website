@@ -1005,7 +1005,7 @@
     "myCoursesTitle": "Mine Kurs & Workshops",
     "studentsAndCrm": "Elever & CRM",
     "masterTabEvents": "Arrangementer & Timeplan",
-    "masterTabUsers": "Registrerte Elever & Brukere",
+    "masterTabUsers": "Registrerte brukere",
     "usersManager": {
       "totalRegistered": "Totalt Registrert",
       "withEnrollments": "Med Påmeldinger",
@@ -1166,7 +1166,7 @@
     },
     "addToInstructorCalendar": "Legg til i Instruktørens Kalender (Google Calendar)",
     "instructorEmail": "Instruktørens E-post",
-    "masterTabWishlist": "Etterspørsel & Ønskeliste",
+    "masterTabWishlist": "Ønskeliste",
     "ready": "Klar til Oppsetting",
     "wishlistManager": {
       "alertReadyDesc": "Det er bekreftet etterspørsel for oppstart av nye workshop-grupper.",
@@ -1203,7 +1203,7 @@
     "tabs": {
       "overview": "Oversikt",
       "communications": {
-        "title": "Kommunikasjon & E-poster",
+        "title": "Kommunikasjon",
         "desc": "Administrer automatiserte tekster sendt til elever. Variabler i klammer som {{userName}} erstattes automatisk.",
         "selectTrigger": "VELG UTLØSER",
         "emailLang": "E-POSTSPRÅK",

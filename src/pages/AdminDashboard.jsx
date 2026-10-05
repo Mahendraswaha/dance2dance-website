@@ -544,7 +544,7 @@ export default function AdminDashboard() {
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'users' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
               <Users className="w-4 h-4 shrink-0" />
-              <span className="truncate">{t('adminPage.masterTabUsers', 'Alunos & UsuÃ¡rios')}</span>
+              <span className="truncate">{t('adminPage.masterTabUsers', 'Usuários Cadastrados')}</span>
             </button>
 
             <button
@@ -553,7 +553,7 @@ export default function AdminDashboard() {
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'wishlists' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
               <Heart className="w-4 h-4 shrink-0" />
-              <span className="truncate">{t('adminPage.masterTabWishlist', 'Wishlists')}</span>
+              <span className="truncate">{t('adminPage.masterTabWishlist', 'Wishlist')}</span>
               {wishlistStats.totalWorkshops > 0 && (
               <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full shrink-0 ${masterTab === 'wishlists' ? 'bg-primary/20 text-primary font-bold' : 'bg-[#1A1A22] text-[#CFCFCF]'} `}>
                   {wishlistStats.totalWorkshops}
@@ -566,7 +566,7 @@ export default function AdminDashboard() {
               onClick={() => setMasterTab('communications')}
               className={`flex-1 sm:flex-initial flex items-center justify-center sm:justify-start gap-2.5 px-3.5 sm:px-5 py-2.5 rounded-[2px] font-heading text-[11px] sm:text-xs uppercase tracking-[1.5px] font-semibold transition-all cursor-pointer ${masterTab === 'communications' ? 'bg-accent text-primary shadow-sm font-bold' : 'bg-[#121214] border border-[#222222] text-[#9A9A9A] hover:text-[#FAF8F5] hover:border-[#333333]'} `}
             >
-              <span className="truncate">{t('adminPage.tabs.communications.title', 'Comunicações e E-mails')}</span>
+              <span className="truncate">{t('adminPage.tabs.communications.title', 'Comunicações')}</span>
             </button>
             <button
               type="button"
