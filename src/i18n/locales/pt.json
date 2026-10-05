@@ -1202,7 +1202,8 @@
     },
     "tabs": {
       "overview": "Visão Geral",
-      "communications": "Comunicações"
+      "communications": "Comunicações",
+      "reviews": "Avaliações"
     },
     "overview": {
       "totalUsers": "Alunos na Base",
@@ -1778,5 +1779,25 @@
     "confirmPasswordPrompt": "Por segurança, digite sua senha para confirmar a exclusão:",
     "wrongPassword": "Senha incorreta. A exclusão foi cancelada.",
     "reauthNeeded": "Por segurança, você precisa fazer logout e entrar novamente antes de excluir sua conta."
+  },
+  "reviewsManager": {
+    "loadError": "Erro ao carregar avaliações.",
+    "statusUpdated": "Status atualizado!",
+    "statusUpdateError": "Erro ao atualizar status.",
+    "deleteConfirm": "Tem certeza que deseja apagar este depoimento?",
+    "deleted": "Depoimento apagado.",
+    "deleteError": "Erro ao apagar.",
+    "averageRating": "Média Geral",
+    "pending": "Pendentes",
+    "approved": "Aprovados",
+    "approvedSite": "Aprovados (Site)",
+    "rejected": "Rejeitados",
+    "all": "Todos",
+    "loading": "Carregando avaliações...",
+    "empty": "Nenhuma avaliação encontrada.",
+    "actionApprove": "Aprovar",
+    "actionReject": "Rejeitar",
+    "actionQueue": "Para Fila",
+    "actionDelete": "Excluir"
   }
 }

@@ -9,7 +9,7 @@ export default function ReviewsManager() {
   const { t } = useTranslation();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filterStatus, setFilterStatus] = useState('pending'); // 'pending' | 'approved' | 'all'
+  const [filterStatus, setFilterStatus] = useState('pending'); // 'pending' | 'approved' | 'rejected' | 'all'
 
   useEffect(() => {
     const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
@@ -19,28 +19,28 @@ export default function ReviewsManager() {
       setLoading(false);
     }, (err) => {
       console.error(err);
-      toast.error('Erro ao carregar avaliações.');
+      toast.error(t('reviewsManager.loadError', 'Erro ao carregar avaliações.'));
       setLoading(false);
     });
     return () => unsub();
-  }, []);
+  }, [t]);
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
       await updateDoc(doc(db, 'reviews', id), { status: newStatus, updatedAt: new Date().toISOString() });
-      toast.success('Status atualizado!');
+      toast.success(t('reviewsManager.statusUpdated', 'Status atualizado!'));
     } catch (err) {
-      toast.error('Erro ao atualizar status.');
+      toast.error(t('reviewsManager.statusUpdateError', 'Erro ao atualizar status.'));
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Tem certeza que deseja apagar este depoimento?')) return;
+    if (!window.confirm(t('reviewsManager.deleteConfirm', 'Tem certeza que deseja apagar este depoimento?'))) return;
     try {
       await deleteDoc(doc(db, 'reviews', id));
-      toast.success('Depoimento apagado.');
+      toast.success(t('reviewsManager.deleted', 'Depoimento apagado.'));
     } catch (err) {
-      toast.error('Erro ao apagar.');
+      toast.error(t('reviewsManager.deleteError', 'Erro ao apagar.'));
     }
   };
 
@@ -62,7 +62,9 @@ export default function ReviewsManager() {
             <Award className="w-5 h-5 text-accent" />
           </div>
           <div>
-            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">Média Geral</div>
+            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">
+              {t('reviewsManager.averageRating', 'Média Geral')}
+            </div>
             <div className="text-xl font-mono text-white flex items-center gap-2">
               {avgRating} <Star className="w-4 h-4 fill-accent text-accent" />
             </div>
@@ -73,7 +75,9 @@ export default function ReviewsManager() {
             <Clock className="w-5 h-5 text-amber-400" />
           </div>
           <div>
-            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">Pendentes</div>
+            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">
+              {t('reviewsManager.pending', 'Pendentes')}
+            </div>
             <div className="text-xl font-mono text-white">
               {reviews.filter(r => !r.status || r.status === 'pending').length}
             </div>
@@ -84,7 +88,9 @@ export default function ReviewsManager() {
             <ShieldCheck className="w-5 h-5 text-green-400" />
           </div>
           <div>
-            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">Aprovados</div>
+            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">
+              {t('reviewsManager.approved', 'Aprovados')}
+            </div>
             <div className="text-xl font-mono text-white">
               {reviews.filter(r => r.status === 'approved').length}
             </div>
@@ -95,7 +101,9 @@ export default function ReviewsManager() {
             <XCircle className="w-5 h-5 text-orange-400" />
           </div>
           <div>
-            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">Rejeitados</div>
+            <div className="text-[10px] uppercase font-heading tracking-widest text-[#9A9A9A]">
+              {t('reviewsManager.rejected', 'Rejeitados')}
+            </div>
             <div className="text-xl font-mono text-white">
               {reviews.filter(r => r.status === 'rejected').length}
             </div>
@@ -109,34 +117,34 @@ export default function ReviewsManager() {
           onClick={() => setFilterStatus('pending')}
           className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'pending' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
         >
-          Pendentes
+          {t('reviewsManager.pending', 'Pendentes')}
         </button>
         <button 
           onClick={() => setFilterStatus('approved')}
           className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'approved' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
         >
-          Aprovados (Site)
+          {t('reviewsManager.approvedSite', 'Aprovados (Site)')}
         </button>
         <button 
           onClick={() => setFilterStatus('rejected')}
           className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'rejected' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
         >
-          Rejeitados
+          {t('reviewsManager.rejected', 'Rejeitados')}
         </button>
         <button 
           onClick={() => setFilterStatus('all')}
           className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'all' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
         >
-          Todos
+          {t('reviewsManager.all', 'Todos')}
         </button>
       </div>
 
       {/* Reviews List */}
       <div className="space-y-4">
         {loading ? (
-          <div className="text-zinc-500 font-heading text-sm text-center py-10">Carregando avaliações...</div>
+          <div className="text-zinc-500 font-heading text-sm text-center py-10">{t('reviewsManager.loading', 'Carregando avaliações...')}</div>
         ) : filteredReviews.length === 0 ? (
-          <div className="text-zinc-500 font-heading text-sm text-center py-10">Nenhuma avaliação encontrada.</div>
+          <div className="text-zinc-500 font-heading text-sm text-center py-10">{t('reviewsManager.empty', 'Nenhuma avaliação encontrada.')}</div>
         ) : (
           filteredReviews.map(review => (
             <div key={review.id} className="bg-[#121214] border border-[#222222] p-5 rounded-[2px] space-y-3">
@@ -166,13 +174,13 @@ export default function ReviewsManager() {
                         onClick={() => handleUpdateStatus(review.id, 'approved')}
                         className="px-3 py-1.5 bg-green-950/30 text-green-400 border border-green-900/50 hover:bg-green-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5" /> Aprovar
+                        <CheckCircle2 className="w-3.5 h-3.5" /> {t('reviewsManager.actionApprove', 'Aprovar')}
                       </button>
                       <button 
                         onClick={() => handleUpdateStatus(review.id, 'rejected')}
                         className="px-3 py-1.5 bg-orange-950/30 text-orange-400 border border-orange-900/50 hover:bg-orange-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <XCircle className="w-3.5 h-3.5" /> Rejeitar
+                        <XCircle className="w-3.5 h-3.5" /> {t('reviewsManager.actionReject', 'Rejeitar')}
                       </button>
                     </>
                   )}
@@ -182,13 +190,13 @@ export default function ReviewsManager() {
                         onClick={() => handleUpdateStatus(review.id, 'pending')}
                         className="px-3 py-1.5 bg-amber-950/30 text-amber-400 border border-amber-900/50 hover:bg-amber-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <Clock className="w-3.5 h-3.5" /> Para Fila
+                        <Clock className="w-3.5 h-3.5" /> {t('reviewsManager.actionQueue', 'Para Fila')}
                       </button>
                       <button 
                         onClick={() => handleUpdateStatus(review.id, 'rejected')}
                         className="px-3 py-1.5 bg-orange-950/30 text-orange-400 border border-orange-900/50 hover:bg-orange-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <XCircle className="w-3.5 h-3.5" /> Rejeitar
+                        <XCircle className="w-3.5 h-3.5" /> {t('reviewsManager.actionReject', 'Rejeitar')}
                       </button>
                     </>
                   )}
@@ -198,13 +206,13 @@ export default function ReviewsManager() {
                         onClick={() => handleUpdateStatus(review.id, 'approved')}
                         className="px-3 py-1.5 bg-green-950/30 text-green-400 border border-green-900/50 hover:bg-green-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5" /> Aprovar
+                        <CheckCircle2 className="w-3.5 h-3.5" /> {t('reviewsManager.actionApprove', 'Aprovar')}
                       </button>
                       <button 
                         onClick={() => handleUpdateStatus(review.id, 'pending')}
                         className="px-3 py-1.5 bg-amber-950/30 text-amber-400 border border-amber-900/50 hover:bg-amber-900/50 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                       >
-                        <Clock className="w-3.5 h-3.5" /> Para Fila
+                        <Clock className="w-3.5 h-3.5" /> {t('reviewsManager.actionQueue', 'Para Fila')}
                       </button>
                     </>
                   )}
@@ -212,7 +220,7 @@ export default function ReviewsManager() {
                     onClick={() => handleDelete(review.id)}
                     className="px-3 py-1.5 bg-[#1A1A22] text-red-400 border border-[#2A2A35] hover:bg-red-950/30 rounded-[2px] text-[10px] font-heading uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                   >
-                    <Trash2 className="w-3.5 h-3.5" /> Excluir
+                    <Trash2 className="w-3.5 h-3.5" /> {t('reviewsManager.actionDelete', 'Excluir')}
                   </button>
                 </div>
               </div>

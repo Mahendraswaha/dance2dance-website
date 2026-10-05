@@ -1202,7 +1202,8 @@
     },
     "tabs": {
       "overview": "Oversikt",
-      "communications": "Kommunikasjon"
+      "communications": "Kommunikasjon",
+      "reviews": "Anmeldelser"
     },
     "overview": {
       "totalUsers": "Totalt antall studenter",
@@ -1778,5 +1779,25 @@
     "confirmPasswordPrompt": "Av sikkerhetsgrunner, vennligst skriv inn passordet ditt for å bekrefte sletting:",
     "wrongPassword": "Feil passord. Sletting avbrutt.",
     "reauthNeeded": "Av sikkerhetsgrunner må du logge ut og logge inn på nytt før du kan slette kontoen din."
+  },
+  "reviewsManager": {
+    "loadError": "Feil ved lasting av anmeldelser.",
+    "statusUpdated": "Status oppdatert!",
+    "statusUpdateError": "Feil ved oppdatering av status.",
+    "deleteConfirm": "Er du sikker på at du vil slette denne uttalelsen?",
+    "deleted": "Uttalelse slettet.",
+    "deleteError": "Feil ved sletting.",
+    "averageRating": "Gjennomsnittlig Vurdering",
+    "pending": "Venter",
+    "approved": "Godkjent",
+    "approvedSite": "Godkjent (Nettside)",
+    "rejected": "Avvist",
+    "all": "Alle",
+    "loading": "Laster anmeldelser...",
+    "empty": "Ingen anmeldelser funnet.",
+    "actionApprove": "Godkjenn",
+    "actionReject": "Avvis",
+    "actionQueue": "Til Kø",
+    "actionDelete": "Slett"
   }
 }
