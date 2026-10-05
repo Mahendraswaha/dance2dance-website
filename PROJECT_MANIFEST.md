@@ -155,6 +155,9 @@ O sistema (Firestore) já está preparado para:
 ## 5. Diretrizes de Tradução e i18n
 *Baseado na auditoria e no contexto cultural do projeto.*
 
+**A REGRA DE OURO (Tríade e Planilha):**
+Toda e qualquer alteração textual no site, banco de dados ou e-mails DEVE sempre ser pensada para os 3 idiomas simultaneamente (Português, Inglês e Norueguês). Após aplicar as alterações no código, a IA ou o Desenvolvedor DEVE OBRIGATORIAMENTE atualizar a planilha local `C:\Renas\Antigravity\Dance2Dance_Traducoes_Revisao.xlsx`, adicionando ou alterando as chaves correspondentes, respeitando rigorosamente o formato de colunas existente.
+
 * **Evite Calques (Tradução Literal):** Não traduza expressões figurativas palavra por palavra. Exemplo: "A mudança começa na pele" vira "Change begins from within" (EN) e "Endringen starter innenfra" (NO).
 * **Falsos Amigos em Norueguês (Bokmål):**
   * "Autoria de si": Use `Eierskap` (senso de domínio), nunca `Forfatterskap` (autoria de livros).
