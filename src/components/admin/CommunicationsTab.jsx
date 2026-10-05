@@ -72,6 +72,7 @@ export default function CommunicationsTab() {
       const key = `${selectedTemplate}_${selectedLang}`;
       const docRef = doc(db, 'crm_email_templates', key);
       
+      // 1. Salva o conteúdo do idioma atual
       const payload = {
         id: key,
         subject: subject,
@@ -80,6 +81,21 @@ export default function CommunicationsTab() {
       };
 
       await setDoc(docRef, payload, { merge: true });
+
+      // 2. Sincroniza o status Liga/Desliga para TODOS os idiomas deste mesmo gatilho
+      const LANG_CODES = ['pt', 'en', 'no'];
+      const otherLangs = LANG_CODES.filter(lang => lang !== selectedLang);
+      
+      for (const lang of otherLangs) {
+        const otherKey = `${selectedTemplate}_${lang}`;
+        const otherDocRef = doc(db, 'crm_email_templates', otherKey);
+        await setDoc(otherDocRef, { isActive: isActive }, { merge: true });
+        
+        // Atualiza no cache local da tela para não precisar recarregar a página
+        if (templates[otherKey]) {
+          templates[otherKey].isActive = isActive;
+        }
+      }
       
       setTemplates(prev => ({
         ...prev,
