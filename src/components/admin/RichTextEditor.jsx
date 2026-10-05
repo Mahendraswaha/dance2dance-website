@@ -1,15 +1,12 @@
-﻿import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
-import { Bold, Italic, Link as LinkIcon, Unlink, List, ListOrdered, Heading1, Heading2, AlignLeft, AlignCenter } from 'lucide-react';
-import React, { useEffect } from 'react';
+import { Bold, Italic, Link as LinkIcon, Unlink, List, ListOrdered, Heading1, Heading2, AlignLeft, AlignCenter, Code } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
-const MenuBar = ({ editor }) => {
-  if (!editor) {
-    return null;
-  }
-
+const MenuBar = ({ editor, isRawMode, toggleRawMode }) => {
   const setLink = () => {
+    if (!editor || isRawMode) return;
     try {
       const previousUrl = editor.getAttributes('link')?.href || '';
       const url = window.prompt('URL do link (inclua http:// ou https://):', previousUrl);
@@ -28,70 +25,87 @@ const MenuBar = ({ editor }) => {
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-1 p-2 border-b border-[#222222] bg-[#1a1a1f] rounded-t-lg">
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleBold().run()}
-        className={`p-1.5 rounded transition-colors ${editor.isActive('bold') ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Negrito"
-      >
-        <Bold size={16} />
-      </button>
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={`p-1.5 rounded transition-colors ${editor.isActive('italic') ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Itálico"
-      >
-        <Italic size={16} />
-      </button>
+    <div className="flex flex-wrap items-center gap-1 p-2 border-b border-[#222222] bg-[#1a1a1f] rounded-t-lg justify-between">
+      <div className="flex flex-wrap items-center gap-1">
+        <button
+          type="button"
+          onClick={() => editor?.chain().focus().toggleBold().run()}
+          disabled={isRawMode}
+          className={`p-1.5 rounded transition-colors ${editor?.isActive('bold') && !isRawMode ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222] disabled:opacity-50'}`}
+          title="Negrito"
+        >
+          <Bold size={16} />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor?.chain().focus().toggleItalic().run()}
+          disabled={isRawMode}
+          className={`p-1.5 rounded transition-colors ${editor?.isActive('italic') && !isRawMode ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222] disabled:opacity-50'}`}
+          title="Itálico"
+        >
+          <Italic size={16} />
+        </button>
+        
+        <div className="w-px h-5 bg-[#333] mx-1"></div>
+        
+        <button
+          type="button"
+          onClick={setLink}
+          disabled={isRawMode}
+          className={`p-1.5 rounded transition-colors ${editor?.isActive('link') && !isRawMode ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222] disabled:opacity-50'}`}
+          title="Inserir Link"
+        >
+          <LinkIcon size={16} />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor?.chain().focus().unsetLink().run()}
+          disabled={!editor?.isActive('link') || isRawMode}
+          className={`p-1.5 rounded transition-colors ${!editor?.isActive('link') || isRawMode ? 'opacity-30 cursor-not-allowed' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
+          title="Remover Link"
+        >
+          <Unlink size={16} />
+        </button>
+
+        <div className="w-px h-5 bg-[#333] mx-1"></div>
+
+        <button
+          type="button"
+          onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+          disabled={isRawMode}
+          className={`px-2 py-1 rounded transition-colors font-bold text-xs ${editor?.isActive('heading', { level: 2 }) && !isRawMode ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222] disabled:opacity-50'}`}
+          title="Título Principal"
+        >
+          H1
+        </button>
+
+        <button
+          type="button"
+          onClick={() => editor?.chain().focus().toggleBulletList().run()}
+          disabled={isRawMode}
+          className={`p-1.5 rounded transition-colors ${editor?.isActive('bulletList') && !isRawMode ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222] disabled:opacity-50'}`}
+          title="Lista"
+        >
+          <List size={16} />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor?.chain().focus().toggleOrderedList().run()}
+          disabled={isRawMode}
+          className={`p-1.5 rounded transition-colors ${editor?.isActive('orderedList') && !isRawMode ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222] disabled:opacity-50'}`}
+          title="Lista Numerada"
+        >
+          <ListOrdered size={16} />
+        </button>
+      </div>
       
-      <div className="w-px h-5 bg-[#333] mx-1"></div>
-      
       <button
         type="button"
-        onClick={setLink}
-        className={`p-1.5 rounded transition-colors ${editor.isActive('link') ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Inserir Link"
+        onClick={toggleRawMode}
+        className={`px-3 py-1.5 rounded transition-colors flex items-center gap-1 text-xs font-bold ${isRawMode ? 'bg-accent text-[#0A0A0E]' : 'bg-[#222222] text-zinc-300 hover:bg-[#333]'}`}
+        title="Editar código HTML puro"
       >
-        <LinkIcon size={16} />
-      </button>
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().unsetLink().run()}
-        disabled={!editor.isActive('link')}
-        className={`p-1.5 rounded transition-colors ${!editor.isActive('link') ? 'opacity-30 cursor-not-allowed' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Remover Link"
-      >
-        <Unlink size={16} />
-      </button>
-
-      <div className="w-px h-5 bg-[#333] mx-1"></div>
-
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={`px-2 py-1 rounded transition-colors font-bold text-xs ${editor.isActive('heading', { level: 2 }) ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Título Principal"
-      >
-        H1
-      </button>
-
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={`p-1.5 rounded transition-colors ${editor.isActive('bulletList') ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Lista"
-      >
-        <List size={16} />
-      </button>
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={`p-1.5 rounded transition-colors ${editor.isActive('orderedList') ? 'bg-accent/20 text-accent' : 'text-zinc-400 hover:text-white hover:bg-[#222]'}`}
-        title="Lista Numerada"
-      >
-        <ListOrdered size={16} />
+        <Code size={14} /> {isRawMode ? 'Visual (Tiptap)' : 'HTML Raw'}
       </button>
     </div>
   );
@@ -99,6 +113,8 @@ const MenuBar = ({ editor }) => {
 
 export default function RichTextEditor({ value, onChange }) {
   const safeValue = value || '';
+  const [isRawMode, setIsRawMode] = useState(false);
+  const [rawText, setRawText] = useState(safeValue);
   
   const editor = useEditor({
     extensions: [
@@ -116,7 +132,9 @@ export default function RichTextEditor({ value, onChange }) {
     ],
     content: safeValue,
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
+      if (!isRawMode) {
+        onChange(editor.getHTML());
+      }
     },
     editorProps: {
       attributes: {
@@ -127,7 +145,10 @@ export default function RichTextEditor({ value, onChange }) {
 
   // Keep editor synced if value changes externally (like clicking a different template)
   useEffect(() => {
-    if (editor && safeValue !== editor.getHTML()) {
+    if (safeValue !== rawText) {
+      setRawText(safeValue);
+    }
+    if (editor && safeValue !== editor.getHTML() && !isRawMode) {
       try {
         let from, to;
         if (editor.state && editor.state.selection) {
@@ -142,16 +163,41 @@ export default function RichTextEditor({ value, onChange }) {
         console.error('Editor sync error:', e);
       }
     }
-  }, [safeValue, editor]);
+  }, [safeValue, editor, isRawMode]);
+
+  const handleRawChange = (e) => {
+    setRawText(e.target.value);
+    onChange(e.target.value);
+  };
+
+  const toggleRawMode = () => {
+    if (isRawMode) {
+      // Switching BACK to Visual Mode -> update Tiptap editor content
+      editor.commands.setContent(rawText, false);
+    } else {
+      // Switching TO HTML Mode -> update rawText from Tiptap editor (or current prop value)
+      setRawText(editor.getHTML());
+    }
+    setIsRawMode(!isRawMode);
+  };
 
   return (
     <div className="border border-[#333333] rounded-lg bg-[#0A0A0E] overflow-hidden flex flex-col focus-within:border-accent/50 transition-colors">
-      <MenuBar editor={editor} />
+      <MenuBar editor={editor} isRawMode={isRawMode} toggleRawMode={toggleRawMode} />
       <div className="flex-1 overflow-y-auto max-h-[500px]">
-        <EditorContent editor={editor} />
+        {isRawMode ? (
+          <textarea
+            value={rawText}
+            onChange={handleRawChange}
+            className="w-full min-h-[300px] p-6 bg-[#0A0A0E] text-zinc-300 font-mono text-sm focus:outline-none resize-y"
+            spellCheck="false"
+          />
+        ) : (
+          <EditorContent editor={editor} />
+        )}
       </div>
       <div className="bg-[#1a1a1f] px-4 py-2 border-t border-[#222222] text-xs text-zinc-500 flex justify-between">
-        <span>Você pode usar variáveis como {'{{userName}}'} e {'{{workshopName}}'} livremente no texto.</span>
+        <span>Você pode usar variáveis como {'{{userName}}'} e {'{{workshopName}}'} livremente no texto. {isRawMode && <span className="text-yellow-500 font-bold ml-2">Atenção: Ao voltar para o Modo Visual, o editor pode limpar tags HTML avançadas.</span>}</span>
       </div>
     </div>
   );
