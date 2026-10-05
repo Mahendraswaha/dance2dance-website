@@ -150,3 +150,20 @@ O sistema (Firestore) já está preparado para:
 - Sempre que o usuário disser que uma funcionalidade foi "concluída", "aprovada" ou que "funcionou", você DEVE alertá-lo com a seguinte mensagem: 
   "Notifiquei que terminamos esta etapa! Deseja que eu atualize este arquivo projeto.md com o resumo desta nova implementação antes de fecharmos o chat?"
 
+
+
+## 5. Diretrizes de Tradução e i18n
+*Baseado na auditoria e no contexto cultural do projeto.*
+
+* **Evite Calques (Tradução Literal):** Não traduza expressões figurativas palavra por palavra. Exemplo: "A mudança começa na pele" vira "Change begins from within" (EN) e "Endringen starter innenfra" (NO).
+* **Falsos Amigos em Norueguês (Bokmål):**
+  * "Autoria de si": Use `Eierskap` (senso de domínio), nunca `Forfatterskap` (autoria de livros).
+  * "Reconexão com o corpo": Use `Fornyet kontakt` ou `Gjenopprette kontakten`, nunca `Gjenforening` (reunião familiar).
+  * "Disponibilidade corporal": Use `Smidighet`, nunca `Tilgjengelighet` (agenda livre).
+  * "Investigação": Use `Utforskning` (explorar), nunca `Undersøkelse` (exame médico/policial).
+* **Tom Corporativo (B2B):** Evite jargões informais ou de incerteza ("Bet on" -> "Believe in"). "Ganho social" traduz-se melhor como "Social capital" (e não "Social equity").
+* **Impacto Social (Acolhimento):** Evite termos violentos. Em vez de "Destroy cultural barriers", use "Break down barriers".
+* **Capitalização (Maiúsculas e Minúsculas):** Inglês aceita Title Case em títulos ("Health and Physical Restrictions"). Norueguês exige minúsculas após a primeira palavra ("Helse- og fysiske begrensninger").
+* **Proteção de Marcas e Editais:**
+  * **Kroppsskole** nunca é traduzido em nenhum idioma.
+  * O norueguês deve sempre garantir o uso de palavras-chave de editais locais: *personlig velvære*, *kunstnerisk uttrykk*, *selvinnsikt*, e *selvtillit*.

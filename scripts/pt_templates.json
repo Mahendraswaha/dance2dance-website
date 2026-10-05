@@ -1,0 +1,44 @@
+{
+  "enrollment_confirmed": {
+    "id": "enrollment_confirmed_pt",
+    "body_html": "<p>Olá {{userName}}.</p><p>Que alegria ter você com a gente! <br>Sua inscrição está confirmada.</p><p>workshop: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{workshopLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><strong><u>{{workshopName}}</u></strong></a></p><p>dia: {{workshopDate}}</p><p>hora: {{workshopTime}}</p><p>Local: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{locationMapLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><u>{{locationName}}</u></a></p><p>Estamos muito felizes em compartilhar esse momento com você e esperamos que seja uma experiência inspiradora e cheia de boas conexões.</p><p>Se por algum motivo seus planos mudarem e você não puder participar, pedimos apenas que cancele sua inscrição na agenda assim que possível. Dessa forma, podemos liberar a vaga para outra pessoa.</p><p>Por favor, chegue com 10 minutos de antecedência para ter tempo de se preparar</p><p>Nos vemos em breve!</p><p></p><p><strong>Equipe Dance2Dance</strong></p>",
+    "isActive": true,
+    "subject": "Inscrição confirmada: {{workshopName}}"
+  },
+  "waitlist_joined": {
+    "id": "waitlist_joined_pt",
+    "body_html": "<p>Olá, {{userName}}.</p><p>Que bom saber que você quer participar.</p><p>workshop: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{workshopLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><strong><u>{{workshopName}}</u></strong></a></p><p>dia: {{workshopDate}}</p><p>hora: {{workshopTime}}</p><p>Local: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{locationMapLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><u>{{locationName}}</u></a></p><p>Estamos atentos a qualquer cancelamento. <strong>Assim que uma vaga for liberada, entraremos em contato com você por e.mail</strong>. Esperamos te encontrar em breve.</p><p></p><p><strong>Equipe Dance2Dance</strong></p>",
+    "subject": "Confirmação de Lista de Espera: {{workshopName}}",
+    "isActive": true
+  },
+  "waitlist_promoted": {
+    "id": "waitlist_promoted_pt",
+    "isActive": true,
+    "body_html": "<p>Olá, {{userName}}.</p><p>A lista de espera girou e sua vaga foi confirmada.</p><p>workshop: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{workshopLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><strong><u>{{workshopName}}</u></strong></a></p><p>dia: {{workshopDate}}</p><p>hora: {{workshopTime}}</p><p>Local: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{locationMapLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><u>{{locationName}}</u></a></p><p>Estamos muito felizes em compartilhar esse momento com você e esperamos que seja uma experiência inspiradora e cheia de boas conexões.</p><p>Se por algum motivo seus planos mudarem e você não puder participar, pedimos apenas que cancele sua inscrição na agenda assim que possível. Dessa forma, podemos liberar a vaga para outra pessoa.</p><p>Por favor, chegue com 10 minutos de antecedência para ter tempo de se preparar</p><p>Nos vemos em breve!</p><p></p><p><strong>Equipe Dance2Dance</strong></p>",
+    "subject": "Uma vaga foi liberada para você: {{workshopName}}"
+  },
+  "contact_received": {
+    "subject": "Dance2Dance - Recebemos sua mensagem!",
+    "body_html": "<p>Olá, {{userName}}!</p><p>Obrigado por entrar em contato com o Dance2Dance!</p><p>Recebemos com sucesso sua mensagem sobre <strong>{{subject}}</strong> e nossa equipe responderá o mais breve possível.</p><p><strong>Equipe Dance2Dance</strong></p>",
+    "id": "contact_received_pt",
+    "isActive": true
+  },
+  "reminder_1_day": {
+    "subject": "Lembrete: {{workshopName}} é amanhã!",
+    "id": "reminder_1_day_pt",
+    "isActive": true,
+    "body_html": "<p>Olá, {{userName}}.</p><p>Este é um rápido lembrete de que o seu workshop <strong>{{workshopName}}</strong> começa amanhã!</p><p>dia: {{workshopDate}}</p><p>hora: {{workshopTime}}</p><p>Local: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"{{locationMapLink}}\" style=\"color: rgb(201, 168, 76); text-decoration: underline;\"><u>{{locationName}}</u></a></p><p>Por favor, chegue com 10 de antecedência.</p><p>Nos vemos amanhã.</p><p></p><p><strong>Equipe Dance2Dance</strong></p>"
+  },
+  "post_event_feedback": {
+    "subject": "Como foi sua experiência no {{workshopName}}?",
+    "id": "post_event_feedback_pt",
+    "body_html": "<p>Olá, {{userName}}.</p><p>Obrigado por participar do <strong>{{workshopName}}</strong>.</p><p>Gostaríamos muito de saber como foi para você. Seu feedback é muito importante para nós, nos ajuda a criar experiências cada vez melhores e quem sabe também inspirar outras pessoas a participar.</p><p></p><p><div style=\"margin: 24px 0;\">\n  <a href=\"https://dance2dance.no/perfil?review={{eventId}}\" style=\"display: inline-block; background-color: #C9A84C; color: #0A0A0E; padding: 12px 20px; border-radius: 2px; text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-align: center;\">\n    &#9733;&nbsp;&nbsp;Avaliar Workshop &amp; Deixar Depoimento\n  </a>\n</div></p><p></p><p>Esperamos te encontrar em breve.</p><p><strong>Equipe Dance2Dance</strong></p>",
+    "isActive": true
+  },
+  "inactive_90_days": {
+    "id": "inactive_90_days_pt",
+    "body_html": "<p>Olá, {{userName}}.</p><p>Faz um tempinho desde a última vez que vimos você por aqui e sentimos sua falta.</p><p>Às vezes, a correria do dia a dia nos afasta das coisas que gostamos, ou talvez você apenas tenha perdido o ritmo. Seja qual for o motivo, queremos que você saiba de uma coisa: a nossa comunidade não é a mesma sem a sua energia e a sua presença.<br>Muitas coisas boas aconteceram nesses últimos meses e adoraríamos compartilhar isso com você.</p><p>Não importa quanto tempo você ficou fora. O melhor momento para recomeçar é agora.<br>Que tal dar uma olhada no que preparamos para as próximas semanas? Sem pressão, apenas um convite para matar a saudade.<br><div style=\"margin: 24px 0;\">\n  <a href=\"https://dance2dance.no/agenda\" style=\"display: inline-block; background-color: #C9A84C; color: #0A0A0E; padding: 12px 20px; border-radius: 2px; text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-align: center;\">\n    Quero Voltar a Participar\n  </a>\n</div></p><p><strong>Equipe Dance2Dance</strong></p>",
+    "subject": "Sentimos sua falta - Dance2Dance",
+    "isActive": true
+  }
+}
