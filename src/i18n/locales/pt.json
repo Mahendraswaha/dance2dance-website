@@ -1498,7 +1498,8 @@
     "editReviewBtn": "Ver / Editar Minha Avaliação",
     "reviewPendingBadge": "Em Moderação",
     "reviewApprovedBadge": "Depoimento Publicado",
-    "loading": "Carregando seus cursos..."
+    "loading": "Carregando seus cursos...",
+    "reviewPublished": "Avaliação Publicada (Não Editável)"
   },
   "workshopAgenda": {
     "badge": "Datas Confirmadas",
@@ -1830,6 +1831,7 @@
     "actionReject": "Rejeitar",
     "actionQueue": "Para Fila",
     "actionDelete": "Excluir",
-    "searchPlaceholder": "Filtrar por workshop, aluno ou data (ex: 24/10)..."
+    "searchPlaceholder": "Filtrar por workshop, aluno ou data (ex: 24/10)...",
+    "allGroups": "Todos os Grupos"
   }
 }

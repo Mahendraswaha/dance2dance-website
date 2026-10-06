@@ -13,6 +13,7 @@ export default function ReviewsManager() {
   const [eventsMap, setEventsMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState('pending'); // 'pending' | 'approved' | 'rejected' | 'all'
+  const [filterCategory, setFilterCategory] = useState('all'); // 'all' | 'bethedance' | 'biostretch' | 'kroppsskole'
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -72,8 +73,13 @@ export default function ReviewsManager() {
       statusMatch = r.status === filterStatus || (!r.status && filterStatus === 'pending');
     }
     if (!statusMatch) return false;
+    
+    // 2. Filter by Category
+    if (filterCategory !== 'all') {
+      if (r.category !== filterCategory) return false;
+    }
 
-    // 2. Filter by Search Query
+    // 3. Filter by Search Query
     if (searchQuery.trim() !== '') {
       const queryLower = searchQuery.toLowerCase();
       const eventMatch = (r.eventTitle || '').toLowerCase().includes(queryLower);
@@ -176,15 +182,28 @@ export default function ReviewsManager() {
           </button>
         </div>
         
-        <div className="relative w-full md:w-96 shrink-0">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
-          <input 
-            type="text" 
-            placeholder={t('reviewsManager.searchPlaceholder', 'Filtrar por workshop, aluno ou data (ex: 24/10)...')} 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#1A1A1A] border border-[#333333] text-white pl-9 pr-3 py-1.5 text-xs focus:border-accent focus:outline-none transition-colors rounded-[2px]"
-          />
+        <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto shrink-0">
+          <select 
+            value={filterCategory} 
+            onChange={(e) => setFilterCategory(e.target.value)}
+            className="bg-[#1A1A1A] border border-[#333333] text-[#9A9A9A] px-3 py-1.5 text-xs font-heading uppercase tracking-wider focus:border-accent focus:outline-none transition-colors rounded-[2px]"
+          >
+            <option value="all">{t('reviewsManager.allGroups', 'Todos os Grupos')}</option>
+            <option value="bethedance">Be the Dance</option>
+            <option value="biostretch">Biostretch</option>
+            <option value="kroppsskole">Kroppsskole</option>
+          </select>
+
+          <div className="relative w-full sm:w-64">
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+            <input 
+              type="text" 
+              placeholder={t('reviewsManager.searchPlaceholder', 'Filtrar por workshop, aluno ou data (ex: 24/10)...')} 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#1A1A1A] border border-[#333333] text-white pl-9 pr-3 py-1.5 text-xs focus:border-accent focus:outline-none transition-colors rounded-[2px]"
+            />
+          </div>
         </div>
       </div>
 

@@ -827,16 +827,23 @@ export default function ProfilePage() {
                                     </blockquote>
 
 
-                                    {/* Botão de Editar */}
+                                    {/* Botão de Editar / Status */}
                                     <div className="pt-1 flex justify-end">
-                                      <button
-                                        type="button"
-                                        onClick={() => handleOpenReviewModal(ev, existingReview)}
-                                        className="px-3 py-1.5 rounded-[2px] bg-[#161622] hover:bg-[#20202E] border border-zinc-700 hover:border-accent/40 text-[11px] font-heading text-[#CFCFCF] hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer"
-                                      >
-                                        <Star className="w-3.5 h-3.5 text-accent" />
-                                        <span>{t('studentPortal.editReviewBtn', 'Ver / Editar Minha Avaliação')}</span>
-                                      </button>
+                                      {existingReview.status === 'approved' ? (
+                                        <div className="px-3 py-1.5 rounded-[2px] bg-[#121218] border border-green-900/30 text-[11px] font-heading text-green-400/80 flex items-center gap-1.5">
+                                          <CheckCircle2 className="w-3.5 h-3.5" />
+                                          <span>{t('studentPortal.reviewPublished', 'Avaliação Publicada (Não Editável)')}</span>
+                                        </div>
+                                      ) : (
+                                        <button
+                                          type="button"
+                                          onClick={() => handleOpenReviewModal(ev, existingReview)}
+                                          className="px-3 py-1.5 rounded-[2px] bg-[#161622] hover:bg-[#20202E] border border-zinc-700 hover:border-accent/40 text-[11px] font-heading text-[#CFCFCF] hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer"
+                                        >
+                                          <Star className="w-3.5 h-3.5 text-accent" />
+                                          <span>{t('studentPortal.editReviewBtn', 'Ver / Editar Minha Avaliação')}</span>
+                                        </button>
+                                      )}
                                     </div>
                                   </div>
                                 ) : (

@@ -1498,7 +1498,8 @@
     "editReviewBtn": "View / Edit My Review",
     "reviewPendingBadge": "Under Moderation",
     "reviewApprovedBadge": "Testimonial Published",
-    "loading": "Loading your courses..."
+    "loading": "Loading your courses...",
+    "reviewPublished": "Published Review (Not Editable)"
   },
   "workshopAgenda": {
     "badge": "Confirmed Dates",
@@ -1830,6 +1831,7 @@
     "actionReject": "Reject",
     "actionQueue": "To Queue",
     "actionDelete": "Delete",
-    "searchPlaceholder": "Filter by workshop, student or date (e.g. 24/10)..."
+    "searchPlaceholder": "Filter by workshop, student or date (e.g. 24/10)...",
+    "allGroups": "All Groups"
   }
 }

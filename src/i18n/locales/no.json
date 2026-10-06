@@ -1498,7 +1498,8 @@
     "editReviewBtn": "Vis / Rediger Min Vurdering",
     "reviewPendingBadge": "Under Moderering",
     "reviewApprovedBadge": "Tilbakemelding Publisert",
-    "loading": "Laster inn dine kurs..."
+    "loading": "Laster inn dine kurs...",
+    "reviewPublished": "Publisert Vurdering (Kan ikke redigeres)"
   },
   "workshopAgenda": {
     "badge": "Bekreftede datoer",
@@ -1830,6 +1831,7 @@
     "actionReject": "Avvis",
     "actionQueue": "Til Kø",
     "actionDelete": "Slett",
-    "searchPlaceholder": "Filtrer etter workshop, elev eller dato (f.eks. 24/10)..."
+    "searchPlaceholder": "Filtrer etter workshop, elev eller dato (f.eks. 24/10)...",
+    "allGroups": "Alle Grupper"
   }
 }
