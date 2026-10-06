@@ -302,6 +302,131 @@ export default async function handler(req, res) {
       }
     }
 
+    // ==========================================
+    // 6. NOVA VARREDURA: Feedback Pós-Evento (1 Dia Depois)
+    // ==========================================
+    console.log('INICIANDO VARREDURA: Feedback Pos-Evento...');
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yY = yesterday.getFullYear();
+    const mY = String(yesterday.getMonth() + 1).padStart(2, '0');
+    const dY = String(yesterday.getDate()).padStart(2, '0');
+    const yesterdayStr = `${yY}-${mY}-${dY}`;
+
+    // Buscamos eventos onde endDate == yesterdayStr OU startDate == yesterdayStr
+    // Para simplificar via REST API (que não tem operador OR nativo fácil), faremos duas queries rápidas
+    const queryEndDateBody = {
+      structuredQuery: {
+        from: [{ collectionId: 'events' }],
+        where: { fieldFilter: { field: { fieldPath: 'endDate' }, op: 'EQUAL', value: { stringValue: yesterdayStr } } }
+      }
+    };
+    
+    const queryStartDateBody = {
+      structuredQuery: {
+        from: [{ collectionId: 'events' }],
+        where: { fieldFilter: { field: { fieldPath: 'startDate' }, op: 'EQUAL', value: { stringValue: yesterdayStr } } }
+      }
+    };
+    
+    const [resEnd, resStart] = await Promise.all([
+      fetch(eventQueryUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` }, body: JSON.stringify(queryEndDateBody) }),
+      fetch(eventQueryUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` }, body: JSON.stringify(queryStartDateBody) })
+    ]);
+    
+    let eventsYesterday = new Map(); // Usar Map para evitar duplicados
+    
+    const processRes = async (resObj) => {
+       if (resObj.ok) {
+         const data = await resObj.json();
+         if (Array.isArray(data)) {
+           data.forEach(item => {
+             if (item.document) {
+               const docId = item.document.name.split('/').pop();
+               eventsYesterday.set(docId, { id: docId, fields: item.document.fields });
+             }
+           });
+         }
+       }
+    };
+    
+    await processRes(resEnd);
+    await processRes(resStart);
+    
+    // Filtrar apenas os que realmente terminaram ontem (caso o startDate seja ontem, mas o endDate seja no futuro, não queremos mandar feedback ainda)
+    const validEventsYesterday = Array.from(eventsYesterday.values()).filter(ev => {
+        const finalDate = ev.fields.endDate?.stringValue || ev.fields.startDate?.stringValue;
+        return finalDate === yesterdayStr;
+    });
+
+    console.log(`Encontrados ${validEventsYesterday.length} eventos terminados ontem (${yesterdayStr}).`);
+    let feedbackSuccess = 0;
+    
+    for (const evDoc of validEventsYesterday) {
+      const enrollQueryBody = {
+        structuredQuery: {
+          from: [{ collectionId: 'enrollments' }],
+          where: { fieldFilter: { field: { fieldPath: 'eventId' }, op: 'EQUAL', value: { stringValue: evDoc.id } } }
+        }
+      };
+      
+      const enrollRes = await fetch(eventQueryUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` },
+        body: JSON.stringify(enrollQueryBody)
+      });
+      
+      if (!enrollRes.ok) continue;
+      const enrollData = await enrollRes.json();
+      
+      for (const item of (Array.isArray(enrollData) ? enrollData : [])) {
+        if (!item.document) continue;
+        const eFields = item.document.fields;
+        const enrollId = item.document.name.split('/').pop();
+        
+        if (eFields.status?.stringValue !== 'enrolled') continue;
+        if (eFields.feedbackSent && eFields.feedbackSent.booleanValue === true) continue;
+        
+        const lang = eFields.language?.stringValue || 'en';
+        const loc = lang === 'no' ? 'no-NO' : lang === 'en' ? 'en-US' : 'pt-BR';
+        const dateStr = new Date(evDoc.fields.startDate.stringValue + 'T12:00:00').toLocaleDateString(loc);
+        
+        const notifyBody = {
+          type: 'post_event_feedback',
+          userEmail: eFields.userEmail?.stringValue,
+          userName: eFields.userName?.stringValue || 'Aluno',
+          workshopName: evDoc.fields.title?.stringValue || 'Workshop',
+          workshopDate: dateStr,
+          workshopTime: evDoc.fields.startTime?.stringValue || '',
+          locationName: evDoc.fields.neighborhood?.stringValue || '',
+          locationMapLink: evDoc.fields.locationMapLink?.stringValue || '',
+          lang: lang
+        };
+        
+        try {
+          const notifyApiRes = await fetch(`${baseUrl}/api/agenda-notify`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(notifyBody)
+          });
+          
+          if (!notifyApiRes.ok) throw new Error('API call failed');
+          
+          const updateUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/enrollments/${enrollId}?updateMask.fieldPaths=feedbackSent`;
+          await fetch(updateUrl, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` },
+            body: JSON.stringify({ fields: { feedbackSent: { booleanValue: true } } })
+          });
+          
+          feedbackSuccess++;
+        } catch (err) {
+          console.error(`Falha ao enviar feedback para ${enrollId}`, err);
+        }
+      }
+    }
+
     return res.status(200).json({ 
       success: true, 
       message: 'Varredura da Outbox concluida.',
@@ -309,7 +434,8 @@ export default async function handler(req, res) {
         totalPending: outboxItems.length,
         sent: successCount,
         failed: failCount,
-        remindersSent: reminderSuccess
+        remindersSent: reminderSuccess,
+        feedbackSent: feedbackSuccess
       },
       errors: errorDetails
     });

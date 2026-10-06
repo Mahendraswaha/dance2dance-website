@@ -36,6 +36,7 @@ export default async function handler(req, res) {
   else if (type === 'waitlist_joined') templatePrefix = 'waitlist_joined';
   else if (type === 'waitlist_promoted') templatePrefix = 'waitlist_promoted';
   else if (type === 'reminder_1_day') templatePrefix = 'reminder_1_day';
+  else if (type === 'post_event_feedback') templatePrefix = 'post_event_feedback';
   else {
     return res.status(400).json({ error: 'Unknown notification type' });
   }
