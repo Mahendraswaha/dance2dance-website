@@ -190,13 +190,126 @@ export default async function handler(req, res) {
       }
     }
     
+    // ==========================================
+    // 5. NOVA VARREDURA: Lembrete 1 Dia Antes
+    // ==========================================
+    console.log('INICIANDO VARREDURA: Lembrete de 1 Dia Antes...');
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const yyyy = tomorrow.getFullYear();
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    const dd = String(tomorrow.getDate()).padStart(2, '0');
+    const tomorrowStr = `${yyyy}-${mm}-${dd}`;
+
+    const eventQueryUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents:runQuery`;
+    const eventQueryBody = {
+      structuredQuery: {
+        from: [{ collectionId: 'events' }],
+        where: {
+          fieldFilter: { field: { fieldPath: 'startDate' }, op: 'EQUAL', value: { stringValue: tomorrowStr } }
+        }
+      }
+    };
+    
+    const eventQueryRes = await fetch(eventQueryUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` },
+      body: JSON.stringify(eventQueryBody)
+    });
+    
+    let eventsTomorrow = [];
+    if (eventQueryRes.ok) {
+       const eventData = await eventQueryRes.json();
+       if (Array.isArray(eventData)) {
+         eventData.forEach(item => {
+           if (item.document) {
+             eventsTomorrow.push({
+               id: item.document.name.split('/').pop(),
+               fields: item.document.fields
+             });
+           }
+         });
+       }
+    }
+    
+    console.log(`Encontrados ${eventsTomorrow.length} eventos para amanha (${tomorrowStr}).`);
+    let reminderSuccess = 0;
+    
+    for (const evDoc of eventsTomorrow) {
+      const enrollQueryBody = {
+        structuredQuery: {
+          from: [{ collectionId: 'enrollments' }],
+          where: {
+            fieldFilter: { field: { fieldPath: 'eventId' }, op: 'EQUAL', value: { stringValue: evDoc.id } }
+          }
+        }
+      };
+      
+      const enrollRes = await fetch(eventQueryUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` },
+        body: JSON.stringify(enrollQueryBody)
+      });
+      
+      if (!enrollRes.ok) continue;
+      const enrollData = await enrollRes.json();
+      
+      for (const item of (Array.isArray(enrollData) ? enrollData : [])) {
+        if (!item.document) continue;
+        const eFields = item.document.fields;
+        const enrollId = item.document.name.split('/').pop();
+        
+        if (eFields.status?.stringValue !== 'enrolled') continue;
+        if (eFields.reminder1DaySent && eFields.reminder1DaySent.booleanValue === true) continue;
+        
+        const lang = eFields.language?.stringValue || 'en';
+        const loc = lang === 'no' ? 'no-NO' : lang === 'en' ? 'en-US' : 'pt-BR';
+        const dateStr = new Date(evDoc.fields.startDate.stringValue + 'T12:00:00').toLocaleDateString(loc);
+        
+        const notifyBody = {
+          type: 'reminder_1_day',
+          userEmail: eFields.userEmail?.stringValue,
+          userName: eFields.userName?.stringValue || 'Aluno',
+          workshopName: evDoc.fields.title?.stringValue || 'Workshop',
+          workshopDate: dateStr,
+          workshopTime: evDoc.fields.startTime?.stringValue || '',
+          locationName: evDoc.fields.neighborhood?.stringValue || '',
+          locationMapLink: evDoc.fields.locationMapLink?.stringValue || '',
+          lang: lang
+        };
+        
+        try {
+          const notifyApiRes = await fetch(`${baseUrl}/api/agenda-notify`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(notifyBody)
+          });
+          
+          if (!notifyApiRes.ok) throw new Error('API call failed');
+          
+          const updateUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/enrollments/${enrollId}?updateMask.fieldPaths=reminder1DaySent`;
+          await fetch(updateUrl, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${idToken}` },
+            body: JSON.stringify({ fields: { reminder1DaySent: { booleanValue: true } } })
+          });
+          
+          reminderSuccess++;
+        } catch (err) {
+          console.error(`Falha ao enviar lembrete para ${enrollId}`, err);
+        }
+      }
+    }
+
     return res.status(200).json({ 
       success: true, 
       message: 'Varredura da Outbox concluida.',
       stats: {
         totalPending: outboxItems.length,
         sent: successCount,
-        failed: failCount
+        failed: failCount,
+        remindersSent: reminderSuccess
       },
       errors: errorDetails
     });
