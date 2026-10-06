@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { Star, CheckCircle2, Trash2, ShieldCheck, Clock, Award, XCircle } from 'lucide-react';
+import { Star, CheckCircle2, Trash2, ShieldCheck, Clock, Award, XCircle, Search } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 
@@ -10,6 +10,7 @@ export default function ReviewsManager() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState('pending'); // 'pending' | 'approved' | 'rejected' | 'all'
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
@@ -45,8 +46,22 @@ export default function ReviewsManager() {
   };
 
   const filteredReviews = reviews.filter(r => {
-    if (filterStatus === 'all') return true;
-    return r.status === filterStatus || (!r.status && filterStatus === 'pending');
+    // 1. Filter by Status
+    let statusMatch = true;
+    if (filterStatus !== 'all') {
+      statusMatch = r.status === filterStatus || (!r.status && filterStatus === 'pending');
+    }
+    if (!statusMatch) return false;
+
+    // 2. Filter by Search Query
+    if (searchQuery.trim() !== '') {
+      const queryLower = searchQuery.toLowerCase();
+      const eventMatch = (r.eventTitle || '').toLowerCase().includes(queryLower);
+      const nameMatch = (r.userName || r.rawName || '').toLowerCase().includes(queryLower);
+      if (!eventMatch && !nameMatch) return false;
+    }
+    
+    return true;
   });
 
   // Calculate metrics
@@ -111,32 +126,45 @@ export default function ReviewsManager() {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="flex gap-2 border-b border-[#222222] pb-2 overflow-x-auto">
-        <button 
-          onClick={() => setFilterStatus('pending')}
-          className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'pending' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
-        >
-          {t('reviewsManager.pending', 'Pendentes')}
-        </button>
-        <button 
-          onClick={() => setFilterStatus('approved')}
-          className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'approved' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
-        >
-          {t('reviewsManager.approvedSite', 'Aprovados (Site)')}
-        </button>
-        <button 
-          onClick={() => setFilterStatus('rejected')}
-          className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'rejected' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
-        >
-          {t('reviewsManager.rejected', 'Rejeitados')}
-        </button>
-        <button 
-          onClick={() => setFilterStatus('all')}
-          className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'all' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
-        >
-          {t('reviewsManager.all', 'Todos')}
-        </button>
+      {/* Filters & Search */}
+      <div className="flex flex-col md:flex-row gap-4 justify-between border-b border-[#222222] pb-2">
+        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
+          <button 
+            onClick={() => setFilterStatus('pending')}
+            className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'pending' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
+          >
+            {t('reviewsManager.pending', 'Pendentes')}
+          </button>
+          <button 
+            onClick={() => setFilterStatus('approved')}
+            className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'approved' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
+          >
+            {t('reviewsManager.approvedSite', 'Aprovados (Site)')}
+          </button>
+          <button 
+            onClick={() => setFilterStatus('rejected')}
+            className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'rejected' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
+          >
+            {t('reviewsManager.rejected', 'Rejeitados')}
+          </button>
+          <button 
+            onClick={() => setFilterStatus('all')}
+            className={`px-4 py-2 text-xs font-heading uppercase tracking-wider transition-colors shrink-0 ${filterStatus === 'all' ? 'text-accent border-b-2 border-accent' : 'text-[#9A9A9A] hover:text-white'}`}
+          >
+            {t('reviewsManager.all', 'Todos')}
+          </button>
+        </div>
+        
+        <div className="relative w-full md:w-64 shrink-0">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+          <input 
+            type="text" 
+            placeholder={t('reviewsManager.searchPlaceholder', 'Filtrar por workshop ou aluno...')} 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-[#1A1A1A] border border-[#333333] text-white pl-9 pr-3 py-1.5 text-xs focus:border-accent focus:outline-none transition-colors rounded-[2px]"
+          />
+        </div>
       </div>
 
       {/* Reviews List */}
