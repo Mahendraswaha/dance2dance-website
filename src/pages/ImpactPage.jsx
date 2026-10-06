@@ -324,7 +324,9 @@ const ImpactPage = () => {
                   </div>
                 </div>
                 <div className="p-8 md:p-12 flex-grow flex flex-col">
-                  <h3 className="font-drama text-3xl text-background mb-2 group-hover:text-accent transition-colors">{t('social_page_b2b.projects.women.title')}</h3>
+                  <h3 className="font-drama text-3xl text-background mb-2 group-hover:text-accent transition-colors">
+                    Dance<span className="text-accent text-[1.28em]">2</span>Dance Kvinne
+                  </h3>
                   <p className="font-heading text-[11px] uppercase tracking-[2px] text-accent/80 mb-6 font-semibold">{t('social_page_b2b.projects.women.subtitle')}</p>
                   <p className="font-heading font-light text-slate-300 leading-[1.8] mb-10 flex-grow">
                     {t('social_page_b2b.projects.women.desc')}
