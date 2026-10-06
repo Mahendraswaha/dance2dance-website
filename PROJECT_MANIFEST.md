@@ -57,6 +57,7 @@ Este documento serve como a "Bíblia" do projeto Dance2Dance. Toda Inteligência
 **MANDATO CRÍTICO:** O Dance2Dance NÃO é apenas um site. Ele é o "Cliente Zero" e o Case de Sucesso (laboratório) para a construção do nosso próprio produto: um **Micro CRM SaaS**.
 Toda a arquitetura de backend, captação de leads, e-mails, listas de espera e inteligência de marketing que estamos construindo aqui deve ser pensada para ser **desacoplada e vendida como um serviço independente no futuro**.
 
+* **Documentação Oficial do CRM:** Todas as lógicas técnicas de agendamento de e-mails, crons e gestão de avaliações DEVEM seguir estritamente o arquivo `docs/MICRO_CRM.md`. Sempre leia aquele arquivo ao lidar com envios em massa ou automações.
 * **A Separação:**
   * **Frontend (Dance2Dance):** O site React atual que atende os alunos.
   * **Backend (O Micro CRM SaaS):** O motor de gestão de clientes, automações e disparo de e-mails (usando o servidor Pro ISP) que estamos construindo no Firebase. 

@@ -1340,7 +1340,7 @@
     "resetSuccess": "Check your inbox for password reset instructions.",
     "resetError": "Failed to reset password. Please check the entered email.",
     "birthDateLabel": "Date of Birth *",
-    "birthDatePlaceholder": "YYYY-MM-DD",
+    "birthDatePlaceholder": "DD/MM/YYYY",
     "profileTitle": "My Profile",
     "profileSubtitle": "Keep your registration details up to date.",
     "saveProfile": "Save Changes",

@@ -1340,7 +1340,7 @@
     "resetSuccess": "Sjekk innboksen din for å tilbakestille passordet.",
     "resetError": "Kunne ikke tilbakestille passordet. Sjekk oppgitt e-post.",
     "birthDateLabel": "Fødselsdato *",
-    "birthDatePlaceholder": "ÅÅÅÅ-MM-DD",
+    "birthDatePlaceholder": "DD/MM/ÅÅÅÅ",
     "profileTitle": "Min Profil",
     "profileSubtitle": "Hold registreringsopplysningene dine oppdatert.",
     "saveProfile": "Lagre Endringer",

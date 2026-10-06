@@ -88,3 +88,8 @@ A arquitetura futura contará com:
    - Passo 1: Esperar 3 dias -> Enviar Template Dicas 1
    - Passo 2: Esperar 7 dias -> Enviar Template Convite Workshop
 3. **Máquina de Estados:** O CRM (via Cron) lerá essas regras e atualizará um contador (sequenceStep) em cada usuário (leads), calculando matematicamente quando disparar a próxima fase do funil sem intervenção manual.
+
+## 4. Gestão de Avaliações (Reviews)
+O módulo de avaliações (Feedback Pós-Evento) também faz parte do fluxo do CRM.
+- **Painel Admin:** Interface para curadoria (Pendente, Aprovado, Rejeitado), contando com filtros rápidos por Grupo/Categoria (Be the Dance, Biostretch, Kroppsskole) e busca omnibox (Aluno, Título ou Data).
+- **Perfil do Aluno:** O estudante pode editar sua avaliação **apenas** enquanto ela não foi publicada (ou seja, `status === 'pending'` ou `rejected`). Assim que o administrador mudar o status para `approved`, o frontend aplica um *lock* (travamento), removendo o botão de edição e exibindo a tag "Avaliação Recebida" para garantir a integridade dos depoimentos exibidos no site público.
