@@ -1829,6 +1829,7 @@
     "actionApprove": "Approve",
     "actionReject": "Reject",
     "actionQueue": "To Queue",
-    "actionDelete": "Delete"
+    "actionDelete": "Delete",
+    "searchPlaceholder": "Filter by workshop, student or date (e.g. 24/10)..."
   }
 }

@@ -1829,6 +1829,7 @@
     "actionApprove": "Godkjenn",
     "actionReject": "Avvis",
     "actionQueue": "Til Kø",
-    "actionDelete": "Slett"
+    "actionDelete": "Slett",
+    "searchPlaceholder": "Filtrer etter workshop, elev eller dato (f.eks. 24/10)..."
   }
 }

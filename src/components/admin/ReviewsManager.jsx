@@ -5,12 +5,26 @@ import { Star, CheckCircle2, Trash2, ShieldCheck, Clock, Award, XCircle, Search 
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 
+import { formatEventDate } from '../../utils/eventHelpers';
+
 export default function ReviewsManager() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [reviews, setReviews] = useState([]);
+  const [eventsMap, setEventsMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState('pending'); // 'pending' | 'approved' | 'rejected' | 'all'
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    const unsubEvents = onSnapshot(collection(db, 'events'), (snapshot) => {
+      const eMap = {};
+      snapshot.forEach(doc => {
+        eMap[doc.id] = doc.data();
+      });
+      setEventsMap(eMap);
+    });
+    return () => unsubEvents();
+  }, []);
 
   useEffect(() => {
     const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
@@ -45,7 +59,13 @@ export default function ReviewsManager() {
     }
   };
 
-  const filteredReviews = reviews.filter(r => {
+  const reviewsWithDate = reviews.map(r => {
+    const ev = eventsMap[r.eventId];
+    const eventDate = ev ? formatEventDate(ev.startDate, ev.endDate, i18n.language || 'pt') : '';
+    return { ...r, computedEventDate: eventDate };
+  });
+
+  const filteredReviews = reviewsWithDate.filter(r => {
     // 1. Filter by Status
     let statusMatch = true;
     if (filterStatus !== 'all') {
@@ -58,7 +78,8 @@ export default function ReviewsManager() {
       const queryLower = searchQuery.toLowerCase();
       const eventMatch = (r.eventTitle || '').toLowerCase().includes(queryLower);
       const nameMatch = (r.userName || r.rawName || '').toLowerCase().includes(queryLower);
-      if (!eventMatch && !nameMatch) return false;
+      const dateMatch = (r.computedEventDate || '').toLowerCase().includes(queryLower);
+      if (!eventMatch && !nameMatch && !dateMatch) return false;
     }
     
     return true;
@@ -155,11 +176,11 @@ export default function ReviewsManager() {
           </button>
         </div>
         
-        <div className="relative w-full md:w-64 shrink-0">
+        <div className="relative w-full md:w-96 shrink-0">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
           <input 
             type="text" 
-            placeholder={t('reviewsManager.searchPlaceholder', 'Filtrar por workshop ou aluno...')} 
+            placeholder={t('reviewsManager.searchPlaceholder', 'Filtrar por workshop, aluno ou data (ex: 24/10)...')} 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#1A1A1A] border border-[#333333] text-white pl-9 pr-3 py-1.5 text-xs focus:border-accent focus:outline-none transition-colors rounded-[2px]"
@@ -183,7 +204,7 @@ export default function ReviewsManager() {
                     <span className="text-[10px] text-zinc-500 font-mono">{new Date(review.createdAt).toLocaleDateString()}</span>
                   </div>
                   <div className="text-[11px] font-heading text-accent/80 uppercase tracking-wider mb-2">
-                    {review.eventTitle}
+                    {review.eventTitle} {review.computedEventDate && <span className="text-zinc-500 lowercase ml-1">({review.computedEventDate})</span>}
                   </div>
                   <div className="flex items-center gap-1 mb-2">
                     {[1,2,3,4,5].map(star => (
