@@ -123,8 +123,8 @@ export default async function handler(req, res) {
           <td align="center" style="padding: 40px 20px; background-color: #0A0A0E;">
             <table border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; width: 100%; margin: 0 auto; background: #0A0A0E;">
               <tr>
-                <td style="text-align: left; padding-bottom: 20px; border-bottom: 1px solid rgba(201, 168, 76, 0.2);">
-                  <img src="https://www.dance2dance.no/logo-dance2dance.png" alt="Dance2Dance" style="height: 40px; display: block; border: none; font-size: 0; color: transparent;">
+                <td style="text-align: center; padding-bottom: 25px; border-bottom: 1px solid rgba(201, 168, 76, 0.2);">
+                  <img src="https://www.dance2dance.no/logo-dance2dance.png" alt="Dance2Dance" style="height: 64px; margin: 0 auto; display: block; border: none; font-size: 0; color: transparent;">
                 </td>
               </tr>
               <tr>

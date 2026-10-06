@@ -77,8 +77,8 @@ export default async function handler(req, res) {
       <style>
         body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0A0A0E; color: #F0EDE8; margin: 0; padding: 40px 20px; line-height: 1.6; }
         .container { max-width: 600px; margin: 0 auto; background: #0A0A0E; padding: 0; }
-        .header { text-align: left; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid rgba(201, 168, 76, 0.2); }
-        .logo { max-height: 40px; }
+        .header { text-align: center; margin-bottom: 40px; padding-bottom: 25px; border-bottom: 1px solid rgba(201, 168, 76, 0.2); }
+        .logo { height: 64px; margin: 0 auto; display: block; }
         .content { color: #9A9A9A; font-size: 15px; }
         .greeting { color: #F0EDE8; font-family: Georgia, 'Times New Roman', serif; font-size: 22px; margin-bottom: 25px; }
         .divider { height: 1px; background-color: rgba(201, 168, 76, 0.2); margin: 35px 0; }
