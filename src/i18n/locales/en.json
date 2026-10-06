@@ -1602,16 +1602,16 @@
     "kicker": "IMPACT PROJECT",
     "title": "Be the Dance Ung.",
     "subtitle": "Low-threshold access, mastery, and belonging in Tøyen and Grønland.",
-    "hook": "Developing a young person requires more than just filling their schedule. It involves providing tools of excellence that develop both physical mastery and emotional balance. At Be the Dance Ung, the rigorous technique of ballet and contemporary dance meets the depth of authentic expression, creating a continuous platform that transcends the studio and impacts lives.",
+    "hook": "The formation of an individual requires more than just occupying their time. It involves access to experiences and tools capable of developing not only mastery of the body, but also emotional balance.",
     "body": {
-      "p1": "Providing access to culture is only the first step. True social impact occurs when we deliver excellence. By designing a curriculum that integrates regular foundational classes with immersions focused on individual expression, we build a safe space where youth discover that discipline is not an imposition, but the pathway to their own autonomy.",
-      "pullQuote": "Artistic excellence is the most powerful tool to sculpt confidence.",
-      "p2": "The project is structured to welcome and challenge. The technical foundation, built through classical ballet and contemporary dance, develops mental focus, posture, and spatial awareness. Simultaneously, the Be the Dance awareness methodology nurtures the young person’s inner world, encouraging them to embrace their uniqueness and express themselves without constraints.",
-      "p3": "The result is an organic journey of mastery. A young person entering an open class can follow a continuous path, culminating in advanced levels and performances—a true qualification platform that opens doors to artistic development under the attentive mentorship of Safia and guest artists."
+      "p1": "At Be the Dance Ung, the dance techniques and body work offered provide much more than learning movements. They stimulate awareness, develop sensitivity, and awaken the depth of authentic expression, allowing each individual to discover and develop their own potential.\n\nIt is a formation that transcends the limits of the classroom and strengthens disciplines and competencies that accompany the individual in different dimensions and throughout life.\n\nOffering access to culture is only the first step. True social impact occurs when we deliver excellence. By designing a curriculum that integrates regular core classes with immersions focused on individual expression, we build a safe space where youth discover that discipline is not an imposition, but a path to their own autonomy.",
+      "pullQuote": "Artistic excellence is a powerful tool to sculpt confidence.",
+      "p2": "The project was structured to welcome and challenge. The technical foundation, built through classical ballet and contemporary dance, develops mental focus, spatial perception, and a sense of group. Simultaneously, the Be the Dance awareness methodology acts on the internal state of the youth, stimulating sensitivity, encouraging them to embrace their uniqueness and express themselves without restraints.",
+      "p3": "The result is a journey of overcoming and growth in an organic way. The youth who enters an open class can follow a continuous path, reaching advanced levels and culminating in performances. A true qualification platform that opens doors for personal and artistic development."
     },
     "program_section": {
       "kicker": "PROGRAM STRUCTURE",
-      "intro": "The Be the Dance Ung curriculum is built on three complementary fronts, combining the rigor of formal techniques with the development of self-confidence:",
+      "intro": "The Be the Dance Ung curriculum was architected in three complementary fronts, combining the rigor of formal techniques with sensitization and the stimulus of autonomy and originality:",
       "items": [
         {
           "number": "01",
@@ -1619,15 +1619,15 @@
           "list": [
             {
               "label": "Classical Ballet",
-              "desc": "Developing discipline, body lines, and motor coordination through classical structuring."
+              "desc": "Development of body lines and motor coordination. Understanding of discipline and perseverance as the foundation for technical excellence."
             },
             {
               "label": "Contemporary Dance",
-              "desc": "Exploring weight, floorwork, and free movement dynamics to stimulate physical expressiveness."
+              "desc": "Exploration of weight, displacements, and dynamics of free movement, stimulating physical and emotional expressiveness."
             },
             {
               "label": "Body Awareness",
-              "desc": "Intelligent understanding of one’s own mechanics, preventing injuries and building a solid athletic base."
+              "desc": "Deep understanding of the mechanics of ones own body, preventing injuries and building a solid body foundation."
             }
           ]
         },
@@ -1636,16 +1636,16 @@
           "title": "The Artistic Core",
           "list": [
             {
-              "label": "Unshakable Self-Confidence",
-              "desc": "Practices designed to silence internal and external judgment, allowing true essence to emerge."
+              "label": "Growing Self-Confidence",
+              "desc": "Practices designed to silence internal and external judgment, cultivating connection with ones own essence."
             },
             {
               "label": "Unique Expression",
-              "desc": "Youth are guided to find their own voice in movement, understanding that their uniqueness is their greatest asset."
+              "desc": "The youth is encouraged to find their own voice in movement, experiencing their uniqueness as their greatest asset."
             },
             {
               "label": "Focus and Presence",
-              "desc": "Mindfulness exercises that anchor the practitioner in the present moment, combating digital distraction."
+              "desc": "Mindfulness exercises that anchor the practitioner in the present moment, combating digital distraction and enhancing focus and attention."
             }
           ]
         },
@@ -1655,15 +1655,15 @@
           "list": [
             {
               "label": "Be the Dance Pro",
-              "desc": "The advanced stage designed to elevate young talents and prepare them for real challenges."
+              "desc": "The advanced stage designed to propel young talents and prepare them for real challenges."
             },
             {
               "label": "Continuous Mentorship",
-              "desc": "Individualized guidance that transforms raw potential into unquestionable technical capability."
+              "desc": "An individualized accompaniment that identifies the potential of each youth and transforms it into technical development, artistic expression, and excellence."
             },
             {
               "label": "Stage Excellence",
-              "desc": "The immersive experience of creating, rehearsing, and performing, consolidating identity as an artist and citizen."
+              "desc": "The immersive experience of creating, rehearsing, and performing, consolidating identity as an artist and creator."
             }
           ]
         }
@@ -1679,16 +1679,16 @@
         },
         {
           "title": "Mastery & Resilience",
-          "desc": "Dance demands rigor and consistency. By mastering complex movements and overcoming their own physical limitations, youth build an unshakable sense of mastery. This experience of continuous mastery in the studio translates into resilience to face academic and social adversities in everyday life."
+          "desc": "Dance demands rigor and constancy. By mastering complex movements and overcoming ones own physical limitations, the youth builds an unshakable sense of capability. This practical experience of continuous overcoming translates into resilience to face the challenges and adversities of societal development."
         },
         {
           "title": "Absolute Belonging",
-          "desc": "In an era of digital isolation and social fragmentation, the studio becomes a physical safe haven. Youth become part of a community united by a common language of respect and art. This deep bond with the group and the space creates strong roots, offering a strong alternative to social exclusion and deepening their sense of belonging."
+          "desc": "In an era of digital isolation and social fragmentation, Dance2Dance becomes a physical safe haven. The youth become part of a community united by a common language of respect and art. This deep bond with the group and the space creates strong roots, steering them away from marginalization and consolidating their belonging."
         }
       ]
     },
     "mentorKicker": "ARTISTIC DIRECTION",
-    "mentorText": "Under Safia’s vision, youth receive more than technical instructions; they inherit decades of international dance research. The experience gained on global stages is translated into a sensitive, rigorous mentorship deeply dedicated to awakening each student’s autonomy and leadership.",
+    "mentorText": "A sensitive, rigorous, and deeply dedicated mentoring to awaken the autonomy and protagonism of each student.",
     "closing": "Excellence is not a privilege.\nIt is the result of belonging.",
     "cta": {
       "title": "Shall we transform the next generation together?",

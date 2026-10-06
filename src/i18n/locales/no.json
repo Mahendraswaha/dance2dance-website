@@ -1602,16 +1602,16 @@
     "kicker": "EFFEKTPROSJEKT",
     "title": "Be the Dance Ung.",
     "subtitle": "Lavterskeltilbud, mestring og tilhørighet i Tøyen og Grønland.",
-    "hook": "Å utvikle et ungt menneske krever mer enn bare å fylle tiden deres. Det innebærer å tilby fremragende verktøy som utvikler både fysisk mestring og emosjonell balanse. Hos Be the Dance Ung møter den strenge teknikken i ballett og samtidsdans dybden i autentisk uttrykk, og skaper en kontinuerlig plattform som går langt utover studioet og påvirker liv.",
+    "hook": "Å forme et individ krever mer enn bare å fylle tiden deres. Det innebærer tilgang til opplevelser og verktøy som er i stand til å utvikle ikke bare mestring av kroppen, men også emosjonell balanse.",
     "body": {
-      "p1": "Å tilby tilgang til kultur er bare det første skrittet. Ekte sosial innvirkning skjer når vi leverer kvalitet. Ved å designe en læreplan som integrerer faste grunnklasser med fordypning i individuelt uttrykk, bygger vi et trygt rom der ungdom oppdager at disiplin ikke er en pålagt byrde, men veien til egen autonomi.",
-      "pullQuote": "Kunstnerisk kvalitet er det kraftigste verktøyet for å forme selvtillit.",
-      "p2": "Prosjektet er strukturert for å både omfavne og utfordre. Det tekniske fundamentet, bygget gjennom klassisk ballett og samtidsdans, utvikler mentalt fokus, holdning og romforståelse. Samtidig jobber Be the Dance sin bevissthetsmetodikk med ungdommens indre tilstand, og oppmuntrer dem til å omfavne sin egenart og uttrykke seg fritt.",
-      "p3": "Resultatet er en organisk mestringsreise. En ungdom som starter i en åpen klasse, kan følge en kontinuerlig vei som kulminerer i avanserte nivåer og forestillinger – en sann kvalifiseringsplattform som åpner dører for kunstnerisk utvikling under Safias og gjestekunstneres oppmerksomme veiledning."
+      "p1": "Hos Be the Dance Ung gir danseteknikkene og kroppsarbeidet som tilbys mye mer enn å lære bevegelser. De stimulerer bevissthet, utvikler sensitivitet og vekker dybden av autentisk uttrykk, slik at hvert individ kan oppdage og utvikle sitt eget potensial.\n\nDet er en opplæring som overskrider klasserommets grenser og styrker disipliner og ferdigheter som følger individet i ulike dimensjoner og gjennom hele livet.\n\nÅ tilby tilgang til kultur er bare det første skrittet. Ekte sosial innvirkning skjer når vi leverer fortreffelighet. Ved å designe en læreplan som integrerer faste grunnklasser med dypdykk fokusert på individuelt uttrykk, bygger vi et trygt rom der ungdommene oppdager at disiplin ikke er et pålegg, men en vei til egen autonomi.",
+      "pullQuote": "Kunstnerisk fortreffelighet er et kraftig verktøy for å forme selvtillit.",
+      "p2": "Prosjektet er strukturert for å ønske velkommen og utfordre. Det tekniske fundamentet, bygget gjennom klassisk ballett og samtidsdans, utvikler mentalt fokus, romoppfatning og en følelse av gruppe. Samtidig virker Be the Dance-bevissthetsmetodikken på ungdommens indre tilstand, stimulerer sensitivitet og oppmuntrer dem til å omfavne sin egenart og uttrykke seg uten begrensninger.",
+      "p3": "Resultatet er en reise med mestring og vekst på en organisk måte. Ungdommen som går inn i en åpen klasse kan følge en kontinuerlig vei, nå avanserte nivåer og kulminere i forestillinger. En ekte kvalifiseringsplattform som åpner dører for personlig og kunstnerisk utvikling."
     },
     "program_section": {
       "kicker": "PROGRAMSTRUKTUR",
-      "intro": "Be the Dance Ung-læreplanen bygger på tre utfyllende fronter, og kombinerer strengheten fra formelle teknikker med utvikling av selvtillit:",
+      "intro": "Læreplanen til Be the Dance Ung ble bygget i tre komplementære fronter, som kombinerer strengheten til formelle teknikker med bevisstgjøring og stimulering av autonomi og originalitet:",
       "items": [
         {
           "number": "01",
@@ -1619,15 +1619,15 @@
           "list": [
             {
               "label": "Klassisk ballett",
-              "desc": "Utvikler disiplin, kroppslinjer og motorisk koordinasjon gjennom klassisk strukturering."
+              "desc": "Utvikling av kroppslinjer og motorisk koordinering. Forståelse av disiplin og utholdenhet som grunnlag for teknisk dyktighet."
             },
             {
               "label": "Samtidsdans",
-              "desc": "Utforsker vekt, gulvarbeid og frie bevegelsesdynamikker for å stimulere fysisk uttrykksevne."
+              "desc": "Utforskning av vekt, forskyvninger og dynamikken i fri bevegelse, for å stimulere fysisk og emosjonell uttrykksevne."
             },
             {
               "label": "Kroppsbevissthet",
-              "desc": "Intelligent forståelse av kroppens mekanikk, som forebygger skader og bygger en solid atletisk base."
+              "desc": "Dyp forståelse av mekanikken i ens egen kropp, forebygger skader og bygger et solid kroppslig fundament."
             }
           ]
         },
@@ -1636,16 +1636,16 @@
           "title": "Den kunstneriske kjernen",
           "list": [
             {
-              "label": "Urokkelig selvtillit",
-              "desc": "Praksiser designet for å dempe indre og ytre dommer, og la den sanne essensen tre frem."
+              "label": "Økende Selvtillit",
+              "desc": "Praksiser designet for å dempe intern og ekstern dømming, for å dyrke forbindelsen med ens egen essens."
             },
             {
               "label": "Unikt uttrykk",
-              "desc": "Ungdommene guides til å finne sin egen stemme i bevegelse, med forståelsen av at deres egenart er deres største ressurs."
+              "desc": "Ungdommen oppmuntres til å finne sin egen stemme i bevegelse, og oppleve sin egenart som sin største styrke."
             },
             {
               "label": "Fokus og tilstedeværelse",
-              "desc": "Oppmerksomhetsøvelser som forankrer utøveren i øyeblikket, og bekjemper digital distraksjon."
+              "desc": "Mindfulness-øvelser som forankrer utøveren i øyeblikket, bekjemper digital distraksjon og forbedrer fokus og oppmerksomhet."
             }
           ]
         },
@@ -1655,15 +1655,15 @@
           "list": [
             {
               "label": "Be the Dance Pro",
-              "desc": "Det avanserte stadiet designet for å løfte unge talenter og forberede dem på virkelige utfordringer."
+              "desc": "Den avanserte fasen designet for å drive unge talenter fremover og forberede dem på virkelige utfordringer."
             },
             {
               "label": "Kontinuerlig veiledning",
-              "desc": "Individuell oppfølging som transformerer rått potensial til udiskutabel teknisk kapasitet."
+              "desc": "En individualisert oppfølging som identifiserer potensialet til hver ungdom og forvandler det til teknisk utvikling, kunstnerisk uttrykk og fortreffelighet."
             },
             {
               "label": "Scenekvalitet",
-              "desc": "Den oppslukende opplevelsen av å skape, øve og fremføre, som konsoliderer identiteten som artist og medborger."
+              "desc": "Den oppslukende opplevelsen av å skape, øve og opptre, og konsolidere identiteten som kunstner og skaper."
             }
           ]
         }
@@ -1679,16 +1679,16 @@
         },
         {
           "title": "Mestring og robusthet",
-          "desc": "Dans krever strenghet og kontinuitet. Ved å mestre komplekse bevegelser og overvinne egne fysiske begrensninger, bygger ungdommene en urokkelig følelse av mestring. Denne opplevelsen av kontinuerlig overvinnelse i studioet oversettes til robusthet i møte med faglige og sosiale motganger i hverdagen."
+          "desc": "Dans krever strenghet og utholdenhet. Ved å mestre komplekse bevegelser og overvinne egne fysiske begrensninger, bygger ungdommen en urokkelig følelse av kapasitet. Denne praktiske opplevelsen av kontinuerlig mestring oversettes til motstandskraft for å møte utfordringene og motgangene i samfunnets utvikling."
         },
         {
           "title": "Absolutt tilhørighet",
-          "desc": "I en tid med digital isolasjon og sosial fragmentering blir studioet en fysisk trygg havn. Ungdommene blir en del av et fellesskap forent av et felles språk basert på respekt og kunst. Dette dype båndet til gruppen og rommet skaper sterke røtter, som trekker dem vekk fra utenforskap og befester deres tilhørighet."
+          "desc": "I en tid med digital isolasjon og sosial fragmentering blir Dance2Dance en fysisk trygg havn. Ungdommene blir en del av et fellesskap forent av et felles språk av respekt og kunst. Dette dype båndet med gruppen og rommet skaper sterke røtter, styrer dem bort fra marginalisering og konsoliderer deres tilhørighet."
         }
       ]
     },
     "mentorKicker": "KUNSTNERISK LEDELSE",
-    "mentorText": "Under Safias visjon får ungdommene mer enn bare teknisk instruksjon; de arver tiår med internasjonal danseforskning. Erfaringen fra globale scener oversettes til en følsom og streng veiledning, dypt dedikert til å vekke hver enkelt elevs autonomi og handlekraft.",
+    "mentorText": "En sensitiv, streng og dypt dedikert veiledning for å vekke autonomien og protagonismen til hver elev.",
     "closing": "Fremragende kvalitet er ikke et privilegium.\nDet er resultatet av tilhørighet.",
     "cta": {
       "title": "Skal vi transformere neste generasjon sammen?",

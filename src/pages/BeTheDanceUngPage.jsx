@@ -105,7 +105,7 @@ export default function BeTheDanceUngPage() {
               <motion.p
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
+                className="font-heading font-light text-[#CFCFCF] whitespace-pre-line text-base md:text-lg leading-[1.85] mb-8"
               >
                 {t('btd_ung.body.p1')}
               </motion.p>
@@ -263,12 +263,9 @@ export default function BeTheDanceUngPage() {
                 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                 className="w-full md:w-2/5 shrink-0"
               >
-                <Link to="/safia" className="block aspect-[3/4] overflow-hidden rounded-[2px] relative group cursor-pointer">
+                <div className="block aspect-[3/4] overflow-hidden rounded-[2px] relative group">
                     <img src="/images/creator-be-the-dance.jpg" alt="Safia" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <span className="text-white font-heading text-xs tracking-widest uppercase border border-white/40 px-6 py-2 rounded-[2px] backdrop-blur-sm">Safia CV</span>
-                    </div>
-                  </Link>
+                </div>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
@@ -277,9 +274,15 @@ export default function BeTheDanceUngPage() {
                 <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-6 block">
                   {t('btd_ung.mentorKicker')}
                 </span>
-                <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85]">
-                  {t('btd_ung.mentorText')}
-                </p>
+                <blockquote className="font-drama text-2xl md:text-3xl text-[#F0EDE8] leading-[1.5] mb-8">
+                  "{t('btd_ung.mentorText')}"
+                </blockquote>
+                <Link to="/curriculum" onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center gap-4 text-xs font-heading uppercase tracking-[3px] text-background hover:text-accent transition-colors w-fit group/btn">
+                  {t('curriculum.link', 'O currículo de Safia')}
+                  <div className="w-8 h-[1px] bg-white/30 group-hover/btn:w-12 group-hover/btn:bg-accent transition-all duration-300 relative">
+                    <ArrowRight className="absolute -right-1 -top-[7px] w-4 h-4 text-white/30 group-hover/btn:text-accent transition-colors" />
+                  </div>
+                </Link>
               </motion.div>
             </div>
           </div>
