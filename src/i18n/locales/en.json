@@ -1833,5 +1833,8 @@
     "actionDelete": "Delete",
     "searchPlaceholder": "Filter by workshop, student or date (e.g. 24/10)...",
     "allGroups": "All Groups"
+  },
+  "curriculum": {
+    "link": "Director's CV"
   }
 }

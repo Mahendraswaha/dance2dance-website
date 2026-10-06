@@ -1833,5 +1833,8 @@
     "actionDelete": "Excluir",
     "searchPlaceholder": "Filtrar por workshop, aluno ou data (ex: 24/10)...",
     "allGroups": "Todos os Grupos"
+  },
+  "curriculum": {
+    "link": "Currículo da Diretora"
   }
 }

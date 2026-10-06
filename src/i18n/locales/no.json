@@ -1833,5 +1833,8 @@
     "actionDelete": "Slett",
     "searchPlaceholder": "Filtrer etter workshop, elev eller dato (f.eks. 24/10)...",
     "allGroups": "Alle Grupper"
+  },
+  "curriculum": {
+    "link": "Direktørens CV"
   }
 }
