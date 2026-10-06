@@ -832,7 +832,7 @@ export default function ProfilePage() {
                                       {existingReview.status === 'approved' ? (
                                         <div className="px-3 py-1.5 rounded-[2px] bg-[#121218] border border-green-900/30 text-[11px] font-heading text-green-400/80 flex items-center gap-1.5">
                                           <CheckCircle2 className="w-3.5 h-3.5" />
-                                          <span>{t('studentPortal.reviewPublished', 'Avaliação Publicada (Não Editável)')}</span>
+                                          <span>{t('studentPortal.reviewPublished', 'Avaliação Recebida')}</span>
                                         </div>
                                       ) : (
                                         <button
