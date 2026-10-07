@@ -93,6 +93,7 @@ const HeroSequence = () => {
           start: 'top top',
           end: '+=800%', 
           pin: true,
+          pinType: 'transform',
           scrub: window.matchMedia("(pointer: coarse)").matches ? true : 1,
           pinSpacing: true, // Força a criação do espaço para não sobrepor
           onUpdate: (self) => {
