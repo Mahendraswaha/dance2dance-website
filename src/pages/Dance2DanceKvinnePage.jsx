@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, Award, Users } from 'lucide-react';
+import { Heart, Award, Users, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
