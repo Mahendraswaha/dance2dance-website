@@ -105,7 +105,7 @@ export default function Dance2DanceKvinnePage() {
               <motion.p
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
+                className="font-heading font-light text-[#CFCFCF] whitespace-pre-line text-base md:text-lg leading-[1.85] mb-8"
               >
                 {t('btd_kvinne.body.p1')}
               </motion.p>
@@ -192,7 +192,7 @@ export default function Dance2DanceKvinnePage() {
               <motion.p
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] mb-8"
+                className="font-heading font-light text-[#CFCFCF] whitespace-pre-line text-base md:text-lg leading-[1.85] mb-8"
               >
                 {t('btd_kvinne.body.p2')}
               </motion.p>
@@ -200,7 +200,7 @@ export default function Dance2DanceKvinnePage() {
               <motion.p
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp}
-                className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85]"
+                className="font-heading font-light text-[#CFCFCF] whitespace-pre-line text-base md:text-lg leading-[1.85]"
               >
                 {t('btd_kvinne.body.p3')}
               </motion.p>

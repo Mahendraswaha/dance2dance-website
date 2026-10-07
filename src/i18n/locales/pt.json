@@ -248,7 +248,7 @@
       "women": {
         "title": "Dance2Dance Kvinne",
         "subtitle": "Ponto de encontro social, bem-estar e autoconfiança",
-        "desc": "Integrando nossas metodologias Biostretch e Be the Dance, oferecemos um espaço focado em mulheres. Ao unir movimento consciente e expressão artística, promovemos não apenas a qualidade de vida preventiva, mas também o bem-estar pessoal, o autoconhecimento e a confiança, criando um ponto de encontro vital contra o isolamento social.",
+        "desc": "Integrando nossas metodologias Biostretch e Be the Dance, oferecemos um espaço focado em mulheres. Ao unir movimento consciente e expressão artística, promovemos a saúde preventiva, o bem-estar pessoal e o autoconhecimento, criando um ponto de encontro seguro e vital contra o isolamento social.",
         "btn": "Ver detalhes do projeto"
       }
     }
@@ -1704,10 +1704,10 @@
     "subtitle": "Um espaço de encontro e bem-estar, integrando a consciência corporal e a alegria do movimento.",
     "hook": "A escuta profunda do corpo abre espaço para uma presença mais autêntica, onde cada mulher redescobre a própria vitalidade.",
     "body": {
-      "p1": "Dance2Dance Kvinne propõe um ambiente seguro onde o corpo deixa de ser um instrumento de cobrança para se tornar uma bússola de autoconhecimento. Ao acolher mulheres em um espaço livre de expectativas externas, facilitamos uma transição suave entre a agitação diária e o reencontro com a própria essência.",
+      "p1": "Dance2Dance Kvinne propõe um espaço seguro onde o corpo deixa de ser objeto de regulação, controle e disciplina para se tornar uma bússola de autoconhecimento. Ao acolher mulheres em um ambiente livre de expectativas externas e julgamentos, criamos uma transição suave entre a agitação do cotidiano e o reencontro com aquilo que existe de mais genuíno em cada uma: sua própria essência.\n\nQuando começamos a questionar as normas que determinam o que deve ser um corpo “saudável”, “produtivo”, “belo” ou “comportado”, abrimos espaço para uma escuta mais profunda das necessidades reais do corpo. Reconhecer a fome, o cansaço, a dor, o prazer, o desejo e os próprios limites é também recuperar a capacidade de decidir sobre o próprio corpo e resistir aos padrões que procuram regulá-lo e padronizá-lo.",
       "pullQuote": "Quando o movimento flui sem julgamentos, a autoestima floresce e conexões genuínas se formam.",
-      "p2": "O projeto integra a escuta sensível do Biostretch com a celebração libertadora do Be The Dance. Através da respiração consciente e da exploração do ritmo pessoal, cada participante acessa um estado de presença e plenitude. A prática continuada dissolve tensões acumuladas e resgata a autonomia física e emocional.",
-      "p3": "Ao priorizar o cuidado pessoal feminino, construímos alicerces sociais mais fortes. O projeto garante bolsas integrais para moradoras de Tøyen e Grønland, ao mesmo tempo em que se mantém aberto a mulheres de toda a cidade. Essa diversidade enriquece a rede de apoio mútuo, transformando as participantes em agentes multiplicadoras de saúde integrativa em suas famílias e bairros."
+      "p2": "A dança torna-se, nesse processo, uma poderosa ferramenta de reconexão consigo mesma e com as outras. Por meio do movimento, da presença e da escuta corporal, criamos possibilidades para desenvolver resiliência, autonomia e empoderamento, não para transformar o corpo em algo a ser aperfeiçoado, mas para habitá-lo com mais liberdade, consciência e confiança.\n\nO projeto integra a escuta sensível do Biostretch à celebração libertadora do Be The Dance. Por meio da respiração consciente, da sensibilização e da exploração do ritmo próprio, cada participante é convidada a desacelerar, reconhecer suas necessidades e aprofundar sua presença no corpo. Com a continuidade da prática, tensões acumuladas podem ser liberadas, fortalecendo a autonomia física e emocional e ampliando a confiança na própria capacidade de sentir, escolher e agir.",
+      "p3": "Ao colocar o cuidado de si como uma dimensão fundamental da vida das mulheres, contribuímos também para a construção de comunidades mais fortes e conectadas. O projeto oferece bolsas integrais para moradoras de Tøyen e Grønland, mantendo-se, ao mesmo tempo, aberto a mulheres de toda a cidade. Essa diversidade de experiências e trajetórias amplia a rede de apoio mútuo e favorece a criação de vínculos que ultrapassam o espaço da prática.\n\nDessa forma, o cuidado individual torna-se também uma força coletiva: as participantes levam consigo novas ferramentas de autocuidado, consciência corporal e autonomia, tornando-se potenciais agentes multiplicadoras de bem-estar e saúde integrativa em suas famílias, redes e comunidades."
     },
     "program_section": {
       "kicker": "A Metodologia",
@@ -1775,7 +1775,7 @@
       "items": [
         {
           "title": "Saúde Integrativa e Autonomia",
-          "desc": "A integração de práticas somáticas atua diretamente na redução do estresse crônico. Este processo devolve às mulheres a propriedade sobre seus próprios corpos, refletindo-se em resiliência e clareza mental."
+          "desc": "A integração de práticas somáticas contribui para a redução do estresse crônico e para a recuperação da autonomia sobre o próprio corpo. Ao romper com padrões de controle e aprender a reconhecer suas próprias necessidades, as mulheres fortalecem a resiliência, a clareza mental e a capacidade de tomar decisões a partir de uma relação mais livre e consciente consigo mesmas."
         },
         {
           "title": "Coesão Social e Diversidade",
@@ -1783,12 +1783,12 @@
         },
         {
           "title": "Efeito Multiplicador Estrutural",
-          "desc": "O bem-estar feminino é o alicerce da saúde familiar. Uma mulher fortalecida irradia essa estabilidade para seus filhos e seu entorno, gerando um ciclo sustentável de impacto."
+          "desc": "O bem-estar feminino é o alicerce da saúde familiar. Uma mulher fortalecida irradia essa estabilidade para seus filhos e seu entorno, gerando um ciclo positivo de impacto."
         }
       ]
     },
     "mentorKicker": "Direção Artística",
-    "mentorText": "Safia une suas décadas de pesquisa em dança e meditação para conduzir esse espaço. Mais do que técnica, ela oferece um ambiente seguro onde cada mulher é guiada a descobrir seu próprio movimento e recuperar o prazer de habitar o próprio corpo.",
+    "mentorText": "Um ambiente seguro onde cada mulher é estimulada a descobrir seu próprio movimento e recuperar o prazer de habitar o próprio corpo.",
     "closing": "Transformar a realidade de uma mulher\né transformar o núcleo de uma comunidade inteira.",
     "cta": {
       "title": "Seja um parceiro de impacto",
