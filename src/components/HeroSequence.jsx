@@ -95,6 +95,12 @@ const HeroSequence = () => {
           pin: true,
           scrub: 0.5,
           pinSpacing: true, // Força a criação do espaço para não sobrepor
+          onUpdate: (self) => {
+            if (videoRef.current) {
+              if (self.progress > 0 && !videoRef.current.paused) videoRef.current.pause();
+              else if (self.progress === 0 && videoRef.current.paused) videoRef.current.play();
+            }
+          }
         }
       });
       
@@ -129,7 +135,7 @@ const HeroSequence = () => {
       tl.to('.seq-block-rest', 
         { 
           yPercent: -100,
-          y: () => -window.innerHeight,
+          y: -window.innerHeight,
           ease: 'none', 
           duration: 0.48 
         }, 
