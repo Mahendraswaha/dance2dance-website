@@ -283,7 +283,7 @@ export default function Dance2DanceKvinnePage() {
                 <p className="font-drama text-xl text-accent italic mb-10">— Safia</p>
 
                 <Link 
-                  to="/curriculum" 
+                  to="/safia" 
                   onClick={() => window.scrollTo(0, 0)} 
                   className="group flex flex-col items-center gap-4 w-fit"
                 >
