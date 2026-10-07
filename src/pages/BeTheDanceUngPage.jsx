@@ -124,7 +124,7 @@ export default function BeTheDanceUngPage() {
               <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-6">
                 {t('btd_ung.program_section.kicker')}
               </span>
-              <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] max-w-[700px]">
+              <p className="font-heading font-light text-[#CFCFCF] text-base md:text-lg leading-[1.85] max-w-[900px]">
                 {t('btd_ung.program_section.intro')}
               </p>
             </motion.div>
