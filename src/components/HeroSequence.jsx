@@ -34,6 +34,11 @@ const HeroSequence = () => {
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
 
+    // Botão Nuclear: GSAP assume o controle absoluto da inércia no mobile
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      ScrollTrigger.normalizeScroll(true);
+    }
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
@@ -93,7 +98,6 @@ const HeroSequence = () => {
           start: 'top top',
           end: '+=800%', 
           pin: true,
-          pinType: 'transform',
           scrub: window.matchMedia("(pointer: coarse)").matches ? true : 1,
           pinSpacing: true, // Força a criação do espaço para não sobrepor
           onUpdate: (self) => {
