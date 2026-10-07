@@ -93,7 +93,7 @@ const HeroSequence = () => {
           start: 'top top',
           end: '+=800%', 
           pin: true,
-          scrub: true,
+          scrub: 1,
           pinSpacing: true, // Força a criação do espaço para não sobrepor
         }
       });
@@ -287,7 +287,7 @@ const HeroSequence = () => {
       </div>
 
       {/* 2. Restante do texto (Rola continuamente) */}
-      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6">
+      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6 will-change-transform transform-gpu" style={{ transform: 'translateZ(0)' }}>
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p1")}
           </p>
