@@ -30,25 +30,23 @@ export const preloadFrames = (onProgress) => {
 
   // Load the FIRST frame immediately (Critical for LCP)
   frameCache[0].src = currentFrame(0);
-  frameCache[0].decode().then(() => {
+  frameCache[0].onload = () => {
     loadedCount++;
     callbacks.forEach(cb => cb(loadedCount / frameCount));
 
     // Only AFTER frame 1 is loaded (and LCP is satisfied), load the rest immediately so they are ready for scrolling
     for (let i = 1; i < frameCount; i++) {
       frameCache[i].src = currentFrame(i);
-      frameCache[i].decode().then(() => {
+      frameCache[i].onload = () => {
         loadedCount++;
         callbacks.forEach(cb => cb(loadedCount / frameCount));
-        if (loadedCount === frameCount) isLoaded = true;
-      }).catch(() => {
-        // Ignora erros de decodificação silenciosamente para não travar o loader
-        loadedCount++;
-        callbacks.forEach(cb => cb(loadedCount / frameCount));
-        if (loadedCount === frameCount) isLoaded = true;
-      });
+        
+        if (loadedCount === frameCount) {
+          isLoaded = true;
+        }
+      };
     }
-  }).catch(err => console.error('Erro LCP frame:', err));
+  };
 
   return frameCache;
 };
