@@ -37,6 +37,17 @@ const Action = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
+    const isVisibleRef = { current: false };
+    const st = ScrollTrigger.create({
+      trigger: "#agenda",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => isVisibleRef.current = true,
+      onLeave: () => isVisibleRef.current = false,
+      onEnterBack: () => isVisibleRef.current = true,
+      onLeaveBack: () => isVisibleRef.current = false,
+    });
+
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
@@ -93,6 +104,7 @@ const Action = () => {
 
     // Loop fixo a 15fps: suave e consistente
     const interval = setInterval(() => {
+      if (!isVisibleRef.current) return; // Poupa o celular: Pausa se estiver fora da tela
       if (fadingRef.current) return;
 
       const current = frameRef.current;
@@ -109,6 +121,7 @@ const Action = () => {
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', resize);
+      st.kill();
     };
   }, [isLoaded]);
 
