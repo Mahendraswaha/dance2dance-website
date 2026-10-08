@@ -51,6 +51,7 @@ const WorkshopPage = lazyWithRetries(() => import('./pages/WorkshopPage'));
 const SocialPage = lazyWithRetries(() => import('./pages/ImpactPage'));
 const CorporatePage = lazyWithRetries(() => import('./pages/CorporatePage'));
 const BtdCorporatePage = lazyWithRetries(() => import('./pages/BtdCorporatePage'));
+const GoodMorningDancePage = lazyWithRetries(() => import('./pages/GoodMorningDancePage'));
 const IndividualPage = lazyWithRetries(() => import('./pages/IndividualPage'));
 const RegularClassesPage = lazyWithRetries(() => import('./pages/RegularClassesPage'));
 const CurriculumPage = lazyWithRetries(() => import('./pages/CurriculumPage'));
@@ -107,6 +108,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/biostretch/empresas" element={<CorporatePage />} />
             <Route path="/be-the-dance/empresas" element={<BtdCorporatePage />} />
+            <Route path="/be-the-dance/good-morning-dance" element={<GoodMorningDancePage />} />
             <Route path="/biostretch/individual" element={<IndividualPage />} />
             <Route path="/biostretch/aulas-regulares" element={<RegularClassesPage />} />
             <Route path="/safia" element={<CurriculumPage />} />

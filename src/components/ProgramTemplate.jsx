@@ -274,6 +274,22 @@ export default function ProgramTemplate({ program }) {
                 </Link>
               )}
 
+              {/* Good Morning Dance */}
+              {program.goodMorningDance && (
+                <Link to={`/${program.id}/good-morning-dance`} className="group block py-10 md:py-12 border-b border-[#222222] hover:border-accent/60 transition-colors">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                      <h3 className="font-batang text-2xl md:text-3xl font-normal text-[#F0EDE8] mb-3 group-hover:text-accent transition-colors">{t(`programs.${program.id}.goodMorningDance.title`, program.goodMorningDance.title)}</h3>
+                      <p className="font-heading text-[#9A9A9A] font-light text-lg leading-relaxed max-w-2xl">{t(`programs.${program.id}.goodMorningDance.description`, program.goodMorningDance.description)}</p>
+                    </div>
+                    <div className="shrink-0 text-accent opacity-40 group-hover:opacity-100 group-hover:translate-x-3 transition-all duration-300 flex items-center gap-3">
+                      <span className="font-heading text-[10px] tracking-[3px] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">{t('actions.learn_more', 'Saiba mais')}</span>
+                      <ArrowRight size={28} strokeWidth={1} />
+                    </div>
+                  </div>
+                </Link>
+              )}
+
               {/* Formato para Empresas */}
               {program.corporate && (
                 <Link to={`/${program.id}/empresas`} className="group block py-10 md:py-12 border-b border-[#222222] hover:border-accent/60 transition-colors">

@@ -91,6 +91,11 @@
         "image": "/gallery/workshops/be-the-dance-day.jpg"
       }
     ],
+    "goodMorningDance": {
+      "id": "good-morning-dance",
+      "title": "Good Morning Dance",
+      "description": "Wake up. Move. Have fun."
+    },
     "corporate": {
       "id": "empresas",
       "title": "Formato para Empresas",
