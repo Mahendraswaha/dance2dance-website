@@ -297,7 +297,7 @@ const HeroSequence = () => {
       {/* 1. Primeira frase (Centralizada como o original) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
         <h2 className="seq-text-1 font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
-          {t("hero.seq1.p1")} <br/><span className="text-accent italic font-drama">{t("hero.seq1.p2")}</span>
+          {t("hero.seq1.p1")} <br/><span className="text-accent italic font-drama text-[1.15em]">{t("hero.seq1.p2")}</span>
         </h2>
       </div>
 
