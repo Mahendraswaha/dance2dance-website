@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { TURNSTILE_SITE_KEY } from '../utils/constants';
 import { toast } from 'sonner';
+import { trackEvent } from '../utils/analytics';
 
 export default function SignupPage() {
   const { t } = useTranslation();
