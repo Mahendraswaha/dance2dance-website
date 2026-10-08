@@ -468,7 +468,10 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                   {isEditing ? (
                       <div className="flex flex-col gap-2">
                         <input type="text" name="address" value={editData.address} onChange={handleEditChange} placeholder="Endereço" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
-                        <input type="text" name="zip" value={editData.zip} onChange={handleEditChange} placeholder="CEP" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-32" />
+                        <div className="flex gap-2">
+                          <input type="text" name="neighborhood" value={editData.neighborhood} onChange={handleEditChange} placeholder="Bairro" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
+                          <input type="text" name="zip" value={editData.zip} onChange={handleEditChange} placeholder="CEP" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-32" />
+                        </div>
                       </div>
                   ) : fullAddress ? (
                     <>
