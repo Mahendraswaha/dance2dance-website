@@ -163,12 +163,11 @@ const HeroSequence = () => {
         0.48 // <- ANTECIPADO para se sobrepor harmoniosamente com a saída do bloco
       );
 
-      // Crescimento e elevação contínuos de 0.48 até 1.0 (sem pausas estáticas)
+      // Crescimento contínuo de 0.48 até 1.0 (sem conflito de eixo Y)
       tl.fromTo('.seq-text-last',
         { scale: 0.95 },
         { 
           scale: 1.35, 
-          y: -40, 
           ease: 'none', 
           duration: 0.52 
         },
