@@ -1843,7 +1843,7 @@
   "good_morning_dance": {
     "kicker": "BE THE DANCE",
     "title": "Good Morning Dance",
-    "subtitle": "Dance antes que o dia te absorva.",
+    "subtitle": "Acorde. Mova-se. Divirta-se.",
     "hook": "Esta aula de dança matinal é para quem quer começar o dia com música, movimento e um tempinho só para si.",
     "block1": {
       "p1": "Que tal começar sua manhã com movimento, em vez de pressa? Antes de checar seu celular, e-mails e listas de tarefas, reserve um tempinho só para você.",
@@ -1883,7 +1883,7 @@
       "title": "Uma maneira diferente de começar o dia",
       "p1": "Você não precisa começar todas as manhãs da mesma forma. De vez em quando, você pode reservar uma hora para si mesmo antes que o dia passe a girar em torno de todo mundo e de tudo o mais. Dance. E lembre-se:",
       "pullQuote": "Seu corpo não é algo que você precisa consertar. É algo que você tem a oportunidade de vivenciar.",
-      "closingQuote": "Quero que “Good Morning Dance” seja um presente que você dá a si mesmo antes do dia começar. Não mais uma coisa que você precisa realizar. Apenas um pouco de música, alguns movimentos e uma oportunidade de se sentir bem no seu próprio corpo.",
+      "closingQuote": "Quero que <i>Good Morning Dance</i> seja um presente que você dá a si mesmo antes do dia começar. Não mais uma coisa que você precisa realizar. Apenas um pouco de música, alguns movimentos e uma oportunidade de se sentir bem no seu próprio corpo.",
       "signoff": "— Safia"
     }
   }
