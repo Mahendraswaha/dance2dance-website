@@ -274,7 +274,7 @@ export default function GoodMorningDancePage() {
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
                 variants={fadeUp} custom={3}
-                className="mt-16 mb-16 max-w-2xl"
+                className="mt-16 mb-16 w-full"
               >
                 <blockquote 
                   className="font-drama text-lg md:text-xl text-[#F0EDE8] leading-[1.7] mb-4"
