@@ -278,7 +278,7 @@ export default function WorkshopTemplate({ workshop, program }) {
       </div>
 
       {/* ─── CALL TO ACTION & WORKSHOP AGENDA (SAME WIDTH AS AGENDA PAGE: max-w-6xl) ─── */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 mt-24 pt-16 border-t border-[#222222] flex flex-col items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 mt-24 pt-16 border-t border-[#222222] flex flex-col items-center w-full">
         <motion.div 
           initial={{ opacity: 0, y: 15 }} 
           whileInView={{ opacity: 1, y: 0 }} 
