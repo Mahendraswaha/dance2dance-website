@@ -278,7 +278,7 @@ const HeroSequence = () => {
       <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
         <h1 className="flex flex-col gap-2">
           <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">{t("hero.subtitle1")}</span>
-          <span className="hero-elem font-drama italic text-5xl sm:text-6xl md:text-8xl text-accent leading-none">{t("hero.subtitle2")}</span>
+          <span className="hero-elem font-drama italic text-[40px] sm:text-5xl md:text-8xl text-accent leading-none">{t("hero.subtitle2")}</span>
         </h1>
         <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
           {t("hero.desc")}
