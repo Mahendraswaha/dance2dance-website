@@ -32,6 +32,8 @@ import ScholarshipModal from './ScholarshipModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
 import ConfirmModal from './ConfirmModal';
 import { toast } from 'sonner';
+import { trackEvent } from '../utils/analytics';
+
 
 export default function WorkshopAgendaSection({ program, workshop, onEventsLoaded }) {
   const { t, i18n } = useTranslation();

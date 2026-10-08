@@ -61,7 +61,7 @@ export default function GoodMorningDancePage() {
           </div>
         </div>
 
-        <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10 w-full">
+        <div className="max-w-6xl mx-auto px-8 md:px-16 lg:px-20 relative z-10 w-full">
           {/* HEADER */}
           <header className="mb-12">
             <motion.p
