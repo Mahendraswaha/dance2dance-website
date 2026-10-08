@@ -25,21 +25,36 @@ const Philosophy = () => {
         stagger: 0.2,
         ease: 'power3.out'
       });
+
+      // Parallax premium substituindo o background-attachment: fixed
+      gsap.fromTo('.watermark-bg', 
+        { yPercent: -15 },
+        { 
+          yPercent: 15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: philRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: window.matchMedia("(pointer: coarse)").matches ? true : 1
+          }
+        }
+      );
     }, philRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] flex items-center justify-center">
+    <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] flex items-center justify-center overflow-hidden">
       
-      {/* Watermark - Fixed while scrolling */}
+      {/* Watermark - Parallax acelerado por hardware no lugar de fixed */}
       <style>{`
         .watermark-bg {
           background-image: url(/logo-D2D-dancer.png);
-          background-attachment: fixed;
           background-repeat: no-repeat;
           background-size: auto 45vh; /* Menor no celular */
           background-position: center calc(50% + 60px); /* Deslocado para baixo */
+          will-change: transform;
         }
         @media (min-width: 1024px) {
           .watermark-bg {
@@ -48,7 +63,7 @@ const Philosophy = () => {
           }
         }
       `}</style>
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none watermark-bg" />
+      <div className="absolute -inset-y-[15%] inset-x-0 z-0 opacity-20 pointer-events-none watermark-bg" />
 
       <div className="relative z-10 max-w-4xl w-full mx-auto text-center flex flex-col gap-8">
         <p className="phil-line font-heading font-normal text-background/50 text-2xl md:text-3xl tracking-tight">
