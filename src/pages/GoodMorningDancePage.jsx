@@ -61,7 +61,7 @@ export default function GoodMorningDancePage() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-8 md:px-16 lg:px-20 relative z-10 w-full">
+        <div className="max-w-[900px] mx-auto px-8 md:px-16 lg:px-20 relative z-10 w-full">
           {/* HEADER */}
           <header className="mb-12">
             <motion.p
@@ -301,8 +301,8 @@ export default function GoodMorningDancePage() {
             </section>
           </div>
 
-          {/* 🌟 CALL TO ACTION & WORKSHOP AGENDA (SAME WIDTH AS AGENDA PAGE: max-w-6xl) 🌟 */}
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 mt-24 pt-16 border-t border-[#222222] flex flex-col items-center w-full">
+          {/* 🌟 CALL TO ACTION & WORKSHOP AGENDA (SAME WIDTH AS AGENDA PAGE: max-w-[900px]) 🌟 */}
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 md:px-8 relative z-10 mt-24 pt-16 border-t border-[#222222] flex flex-col items-center w-full">
             <motion.div 
               initial={{ opacity: 0, y: 15 }} 
               whileInView={{ opacity: 1, y: 0 }} 
