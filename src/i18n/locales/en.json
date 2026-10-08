@@ -1841,6 +1841,50 @@
     "link": "Director's CV"
   },
   "good_morning_dance": {
-    "subtitle": "Dance before the day takes over"
+    "kicker": "BE THE DANCE",
+    "title": "Good Morning Dance",
+    "subtitle": "Dance before the day takes over",
+    "hook": "This morning dance class is for those who want to start the day with music, movement and some time for themselves.",
+    "block1": {
+      "p1": "How would you like to start your morning with movement instead of rushing? Before you check your phone, emails and to-do lists, take a little time for yourself.",
+      "p2": "Good Morning Dance offers a unique way to start your day. We use music and movement to energise your body, get things moving, and enjoy some fun before the day takes over. You don't need to be a dancer, know the steps or perform. Just come as you are and let yourself move.",
+      "p3": "We stretch, groove, shake and explore rhythm and dance. Sometimes there's a simple sequence to follow, and sometimes there's space to improvise. All you need is to let the music take you away.",
+      "pullQuote": "This isn't about getting the movements right. It's about connecting with your body and enjoying the sensation of movement."
+    },
+    "session": {
+      "title": "The session",
+      "items": [
+        {
+          "title": "Wake up",
+          "desc": "We start gently with a warm-up to get things moving."
+        },
+        {
+          "title": "Move",
+          "desc": "Music takes us from simple movement into rhythm, dance and playful exploration."
+        },
+        {
+          "title": "Play",
+          "desc": "There's no need to take yourself too seriously. You might laugh, sweat a little, and surprise yourself."
+        },
+        {
+          "title": "Feel good",
+          "desc": "You will leave feeling more awake and with a sense that you have already made the most of the morning."
+        }
+      ]
+    },
+    "experience": {
+      "title": "The experience",
+      "p1": "Just you, your body, the music and the freedom to move.",
+      "p2": "Every class is different, but we always start gently, giving you time to arrive. Then the music builds and we dance. There may be guided sequences, simple exercises, improvisation and moments when you can forget about the steps and follow what feels good.",
+      "p3": "If you're thinking, 'I'm not a dancer', this class is exactly for you.",
+      "p4": "There is no choreography to master and no one to impress. You can make your movements as big or as small as you like. You can follow, copy, play or freestyle, or simply move in whatever way feels natural that morning. This is dance without the pressure to be good at it."
+    },
+    "different_way": {
+      "title": "A different way to start the day",
+      "p1": "You don't have to start every morning in the same way. Eventually, you could allow yourself an hour before the day becomes all about everyone and everything else. Dance! And remember:",
+      "pullQuote": "Your body isn't something you have to fix. It's something you get to experience!",
+      "closingQuote": "I want Good Morning Dance to be a little gift that you give yourself before the day begins. Not another thing you have to achieve. Just some music, some movement, and an opportunity to feel good in your own body.",
+      "signoff": "— Safia"
+    }
   }
 }

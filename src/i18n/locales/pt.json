@@ -1841,6 +1841,50 @@
     "link": "Currículo da Diretora"
   },
   "good_morning_dance": {
-    "subtitle": "Dance antes que o dia te absorva."
+    "kicker": "BE THE DANCE",
+    "title": "Good Morning Dance",
+    "subtitle": "Dance antes que o dia te absorva.",
+    "hook": "Esta aula de dança matinal é para quem quer começar o dia com música, movimento e um tempinho só para si.",
+    "block1": {
+      "p1": "Que tal começar sua manhã com movimento, em vez de pressa? Antes de checar seu celular, e-mails e listas de tarefas, reserve um tempinho só para você.",
+      "p2": "Good Morning Dance oferece uma maneira única de começar o seu dia. Usamos música e movimento para energizar seu corpo, dar o pontapé inicial e curtir um pouco de diversão antes que o dia tome conta de tudo. Você não precisa ser dançarino, saber os passos nem se apresentar. Basta vir como você é e se deixar levar pelo movimento.",
+      "p3": "Fazemos alongamentos, chacoalhamos, balançamos e exploramos o ritmo e a dança. Às vezes, há uma sequência simples para seguir; outras vezes, há espaço para improvisar. Tudo o que você precisa é deixar a música te levar.",
+      "pullQuote": "O importante não é acertar os movimentos. Trata-se de se conectar com seu corpo e aproveitar a sensação do movimento."
+    },
+    "session": {
+      "title": "A sessão",
+      "items": [
+        {
+          "title": "Acorde",
+          "desc": "Começamos suavemente com um aquecimento para dar o pontapé inicial."
+        },
+        {
+          "title": "Mova-se",
+          "desc": "A música nos leva de movimentos simples ao ritmo, à dança e à exploração lúdica."
+        },
+        {
+          "title": "Brinque",
+          "desc": "Não precisa se levar muito a sério. Você pode rir, suar um pouco e se surpreender."
+        },
+        {
+          "title": "Sinta-se bem",
+          "desc": "Você vai sair se sentindo mais desperto e com a sensação de que já aproveitou ao máximo a manhã."
+        }
+      ]
+    },
+    "experience": {
+      "title": "A experiência",
+      "p1": "Só você, seu corpo, a música e a liberdade de se mover.",
+      "p2": "Cada aula é diferente, mas sempre começamos devagar, dando tempo para você entrar no clima. Depois, a música vai ganhando força e a dança acontece. Podem haver sequências guiadas, exercícios simples, improvisação e momentos em que você pode esquecer os passos e seguir o que lhe fizer bem.",
+      "p3": "Se você está pensando: “Não sou bailarino”, essa aula é exatamente para você.",
+      "p4": "Não há coreografia para dominar nem ninguém para impressionar. Você pode fazer movimentos tão amplos ou tão pequenos quanto quiser. Pode acompanhar, imitar, brincar, dançar livremente, ou simplesmente se mover da maneira que parecer mais natural naquela manhã. Essa é a dança sem a pressão de ter que ser bom nisso."
+    },
+    "different_way": {
+      "title": "Uma maneira diferente de começar o dia",
+      "p1": "Você não precisa começar todas as manhãs da mesma forma. De vez em quando, você pode reservar uma hora para si mesmo antes que o dia passe a girar em torno de todo mundo e de tudo o mais. Dance. E lembre-se:",
+      "pullQuote": "Seu corpo não é algo que você precisa consertar. É algo que você tem a oportunidade de vivenciar.",
+      "closingQuote": "Quero que “Good Morning Dance” seja um presente que você dá a si mesmo antes do dia começar. Não mais uma coisa que você precisa realizar. Apenas um pouco de música, alguns movimentos e uma oportunidade de se sentir bem no seu próprio corpo.",
+      "signoff": "— Safia"
+    }
   }
 }
