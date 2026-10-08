@@ -186,3 +186,12 @@ A planilha possui uma formatação avançada (cabeçalhos coloridos, painéis co
 Para não poluir este manifesto com regras de infraestrutura complexa, os manuais técnicos do projeto estão isolados na pasta docs/. Sempre que precisar alterar ou construir uma dessas áreas, oriente a IA a ler o documento correspondente:
 * **Micro CRM (E-mails, Funis, Dashboards, Cron Jobs):** Leia docs/MICRO_CRM.md
 * **Ecossistema do Notion (Projetos vs Tarefas):** Leia docs/NOTION_ARCHITECTURE.md
+
+## 8. Padrões de Layout (Layout Patterns) - ATUALIZAÇÕES
+* **Workshops e Páginas de Conteúdo:** O bloco de texto principal (header e parágrafos explicativos) DEVE utilizar o container estreito e elegante max-w-[900px]. Isso garante leitura agradável e impede que o texto esprema contra as bordas ou cubra a marca d'água de background.
+* **Sessão de Agenda e CTA (Call To Action) nos Workshops:** O bloco inferior que contém a lista de turmas da agenda e o botão de "Pronto para começar?" DEVE obrigatoriamente utilizar o formato largo e expansivo max-w-6xl E também a instrução w-full. Exemplo: <div className="max-w-6xl mx-auto px-4 ... w-full">. Sem o w-full, a caixa da agenda se encolhe no centro, quebrando a padronização.
+* **Componentes Responsáveis:** WorkshopTemplate.jsx e qualquer página manual como GoodMorningDancePage.jsx.
+
+## 9. A Regra de Ouro Reforçada
+* Toda string ou chave nova no 	ranslation.json (seja en, 
+o, ou pt) deve também ser inserida manualmente na planilha Excel mestre de traduções (C:\Renas\Antigravity\Dance2Dance_Traducoes_Revisao.xlsx).
