@@ -94,6 +94,12 @@ Este documento centraliza as regras de negócio, padrões de arquitetura e decis
 - **Alertas (Toaster):** Proibido o uso de `window.alert()`. O sistema foi migrado para um sistema de Toast/Notificações nativas e não-intrusivas na interface.
 - **Espaçamento Global:** Páginas principais (`main`) precisam de padding superior (`pt-44 md:pt-52`) para não serem sobrepostas pela barra de navegação (Navbar).
 
+### 1.3 Performance e Animações Cinematográficas (GSAP)
+- **Backgrounds e Parallax no Mobile:** É estritamente proibido usar `background-attachment: fixed`. Essa propriedade destrói a inércia nativa do iOS/Android e causa bugs de renderização severos (efeito "stepper motor"). Use sempre uma `div` com altura extra (ex: `-inset-y-[15%]`) e aplique parallax via GSAP (`yPercent`).
+- **ScrollTrigger e Mobile:** Sempre que usar `pin: true` ou scrub no mobile com elementos pesados (Sequências de Imagens/Vídeos), trate a lógica condicionalmente para dispositivos móveis (`window.matchMedia("(pointer: coarse)")`). Em casos de desincronização entre o motor de rolagem e a thread principal, utilize `ScrollTrigger.normalizeScroll(true)` restrito ao Mobile.
+- **Vídeos Autoplay:** Evite tentar forçar a execução usando `.play()` via JavaScript (como em eventos `onUpdate` do GSAP ou `onLoadedData`) em desktops. Navegadores costumam punir essa técnica bloqueando a reprodução e cancelando o autoplay nativo. Deixe a tag `<video autoPlay loop muted>` fazer seu trabalho naturalmente e utilize `<link rel="preload" as="video">` no cabeçalho `index.html` para anular atrasos de rede.
+- **FOUT e Fontes:** Use `display=block` nas chamadas do Google Fonts para que o navegador não exiba momentaneamente fontes genéricas do sistema. Se as fontes Serifadas parecerem desproporcionalmente menores que as Sans-Serif por causa da altura-x óptica, faça a compensação usando unidades relativas (ex: `text-[1.15em]`) para manter a proporção intacta no responsivo.
+
 ---
 
 ## 2. Autenticação e Firebase (Auth)
