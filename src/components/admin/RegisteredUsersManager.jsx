@@ -501,7 +501,7 @@ export default function RegisteredUsersManager({ events = [] }) {
                       <span className="flex items-center gap-1.5 text-[#CFCFCF] truncate">
                         <Mail className="w-3 h-3 text-accent/60 shrink-0" />
                         <span>{email}</span>
-                        {u.emailVerified ? (
+                        {(u.emailVerified || u.emailVerifiedOverride) ? (
                           <CheckCircle2 className="w-3 h-3 text-green-500/80 shrink-0 ml-0.5" title="E-mail Validado" />
                         ) : (
                           <span className="px-1.5 py-0.5 rounded-[2px] bg-red-950/40 text-red-400 text-[9px] uppercase font-semibold tracking-wider flex items-center gap-1 ml-1" title="E-mail NÃO validado">Não Validado</span>

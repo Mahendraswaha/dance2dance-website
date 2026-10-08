@@ -369,7 +369,7 @@ export default function ProfilePage() {
 
       
         <main className="flex-grow pt-40 md:pt-48 pb-24 px-4 sm:px-6 relative">
-          {currentUser && !currentUser.emailVerified && (
+          {currentUser && auth.currentUser && !auth.currentUser.emailVerified && !currentUser.profile?.emailVerifiedOverride && (
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
