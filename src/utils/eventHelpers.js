@@ -178,6 +178,7 @@ export function getEventRoute(event) {
   if (normalized.includes('pro')) return '/be-the-dance/be-the-dance-pro';
   if (normalized.includes('day') || normalized.includes('dag')) return '/be-the-dance/be-the-dance-day';
   if (normalized.includes('stillness') || /\bro\b/.test(normalized)) return '/be-the-dance/be-stillness';
+  if (normalized.includes('good') || normalized.includes('morning')) return '/be-the-dance/good-morning-dance';
 
   // Fallback: se o workshop não existir especificamente, salta para a página da tag Be The Dance
   return '/be-the-dance';

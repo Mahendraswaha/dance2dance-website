@@ -465,6 +465,7 @@ export default function AgendaPage() {
   const categoryFilteredEvents = useMemo(() => {
     return events.filter(ev => {
       if (filter === 'all') return true;
+      if (filter === 'goodmorningdance') return ev.workshopSlug === 'good-morning-dance' || ev.workshopId === 'good-morning-dance';
       return getCategory(ev) === filter;
     });
   }, [events, filter]);
@@ -1108,6 +1109,16 @@ export default function AgendaPage() {
               }`}
             >
               Kroppsskole
+            </button>
+            <button 
+              onClick={() => setFilter('goodmorningdance')}
+              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-200 cursor-pointer ${
+                filter === 'goodmorningdance' 
+                  ? 'bg-[#D28C4B]/20 text-[#D28C4B] border border-[#D28C4B]/60 shadow-sm' 
+                  : 'bg-transparent text-[#9E9EAA] hover:text-[#D28C4B]'
+              }`}
+            >
+              Good Morning
             </button>
           </div>
         </motion.div>

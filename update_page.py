@@ -1,4 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import codecs
+
+jsx = """import React, { useState, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -339,3 +341,8 @@ export default function GoodMorningDancePage() {
     </div>
   );
 }
+"""
+
+with codecs.open('C:/Renas/Antigravity/Website-builder/src/pages/GoodMorningDancePage.jsx', 'w', 'utf-8') as f:
+    f.write(jsx)
+print("GoodMorningDancePage updated successfully")
