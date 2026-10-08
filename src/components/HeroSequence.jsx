@@ -252,8 +252,6 @@ const HeroSequence = () => {
           onLoadedData={() => {
             if (videoRef.current) {
               videoRef.current.playbackRate = 0.5;
-              const p = videoRef.current.play();
-              if (p !== undefined) p.catch(() => {});
             }
           }}
           poster="/gallery/sequence/frame-001.jpg"
