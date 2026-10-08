@@ -113,6 +113,7 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
         city: user.city || '',
         country: user.country || '',
         address: user.address || user.endereco || '',
+        neighborhood: user.neighborhood || user.bairro || '',
         zip: user.zip || user.cep || '',
         experiencia: user.experiencia || user.experience || '',
         restricoes: user.restricoes || user.restrictions || ''
