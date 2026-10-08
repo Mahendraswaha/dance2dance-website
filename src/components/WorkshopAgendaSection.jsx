@@ -130,8 +130,19 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
 
       // NOVO: Verificar se o email está confirmado
       if (auth.currentUser) await reload(auth.currentUser);
-      if (!auth.currentUser?.emailVerified && !currentUser?.profile?.emailVerified) {
-        toast.success(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
+      
+      // Sincronizar o Firestore se o Auth estiver validado mas o Firestore ainda não souber (evita bug visual no Admin)
+      if (auth.currentUser?.emailVerified && !currentUser?.profile?.emailVerified) {
+        try {
+          const { doc, setDoc } = await import('firebase/firestore');
+          await setDoc(doc(db, 'users', currentUser.uid), { emailVerified: true }, { merge: true });
+        } catch (e) {
+          console.error("Erro ao sincronizar emailVerified:", e);
+        }
+      }
+
+      if (!auth.currentUser?.emailVerified && !currentUser?.profile?.emailVerified && !currentUser?.profile?.emailVerifiedOverride) {
+        toast.error(t('auth.verifyEmailAlert', 'Falta só um passo! Confirme seu e-mail clicando no link que enviamos para garantir sua vaga.'));
         return;
       }
 

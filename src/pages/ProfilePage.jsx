@@ -71,6 +71,23 @@ export default function ProfilePage() {
     }
   }, [currentUser, navigate, location.pathname, location.search]);
 
+  // Sincroniza o Firebase Auth com o Firestore para o Admin saber que está validado
+  useEffect(() => {
+    async function syncVerification() {
+      if (auth.currentUser && !currentUser?.profile?.emailVerified) {
+        await auth.currentUser.reload();
+        if (auth.currentUser.emailVerified) {
+          try {
+            await setDoc(doc(db, 'users', currentUser.uid), { emailVerified: true }, { merge: true });
+          } catch (e) {
+            console.error("Erro ao sincronizar Firestore na ProfilePage:", e);
+          }
+        }
+      }
+    }
+    syncVerification();
+  }, [currentUser]);
+
   // Carrega dados do perfil atual
   useEffect(() => {
     if (currentUser?.profile) {
