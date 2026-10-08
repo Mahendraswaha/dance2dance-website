@@ -239,9 +239,9 @@ export default function GoodMorningDancePage() {
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={fadeUp} custom={0}
-              className="text-center mb-16"
+              className="border-l-2 border-accent pl-6 md:pl-8 mb-16 max-w-3xl"
             >
-              <h2 className="font-batang text-3xl md:text-4xl text-[#F0EDE8]">
+              <h2 className="font-drama italic text-2xl md:text-3xl text-[#E8E0D4] leading-[1.45]">
                 {different_way.title}
               </h2>
             </motion.div>
@@ -277,7 +277,7 @@ export default function GoodMorningDancePage() {
                 className="mt-16 mb-16 max-w-2xl"
               >
                 <blockquote 
-                  className="font-drama text-2xl md:text-3xl text-[#F0EDE8] leading-[1.5] mb-4"
+                  className="font-drama text-xl md:text-2xl text-[#F0EDE8] leading-[1.6] mb-4"
                   dangerouslySetInnerHTML={{ __html: different_way.closingQuote }}
                 />
                 <p className="font-drama text-xl text-accent italic mb-10">
