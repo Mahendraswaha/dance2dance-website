@@ -297,31 +297,34 @@ export default function GoodMorningDancePage() {
                   {different_way.signoff}
                 </p>
               </motion.div>
-            </div>
-          </section>
-          
-          <div className="w-full h-[1px] bg-slate-800/60 mb-20" />
-
-          {/* AGENDA SECTION & REGISTRATION */}
-          <div className="text-center mb-12">
-            <h2 className="font-batang text-4xl md:text-5xl text-[#F0EDE8] mb-4">
-              {t('actions.ready_to_start', 'Pronto para começar?')}
-            </h2>
-            <p className="font-heading text-[#CFCFCF] text-lg font-light">
-              {hasEvents 
-                ? t('actions.ready_to_start_has_spots', 'Inscreva-se agora e garanta sua vaga.')
-                : t('actions.ready_to_start_wishlist', 'Inscreva-se na lista de interesse para novas turmas.')}
-            </p>
+                          </div>
+            </section>
           </div>
 
-          <WorkshopAgendaSection 
-            program={program} 
-            workshop={workshop} 
-            onEventsLoaded={handleEventsLoaded}
-          />
+          {/* 🌟 CALL TO ACTION & WORKSHOP AGENDA (SAME WIDTH AS AGENDA PAGE: max-w-6xl) 🌟 */}
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 mt-24 pt-16 border-t border-[#222222] flex flex-col items-center w-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }}
+              className="text-center mb-6 max-w-2xl mx-auto"
+            >
+              <h3 className="font-batang text-3xl md:text-5xl text-[#F0EDE8] mb-3">
+                {t('actions.ready_to_start', 'Pronto para começar?')}
+              </h3>
+              <p className="font-heading font-light text-[#9A9A9A] text-xs md:text-sm leading-relaxed whitespace-pre-line">
+                {contextualSubtitle}
+              </p>
+            </motion.div>
 
-          {/* ACTION BUTTONS (Print 2 style) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 mb-16">
+            <WorkshopAgendaSection 
+              program={program} 
+              workshop={workshop} 
+              onEventsLoaded={handleEventsLoaded}
+            />
+
+            {/* ACTION BUTTONS */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 mb-12">
             <Link 
               to="/agenda" 
               className="group inline-flex items-center gap-3 text-center font-heading text-[12px] tracking-[3px] uppercase bg-accent text-primary px-9 py-4 hover:bg-white hover:text-primary transition-colors duration-300 font-bold rounded-full shadow-lg"
