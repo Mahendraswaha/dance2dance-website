@@ -277,10 +277,10 @@ export default function GoodMorningDancePage() {
                 className="mt-16 mb-16 max-w-2xl"
               >
                 <blockquote 
-                  className="font-drama text-xl md:text-2xl text-[#F0EDE8] leading-[1.6] mb-4"
+                  className="font-drama text-lg md:text-xl text-[#F0EDE8] leading-[1.7] mb-4"
                   dangerouslySetInnerHTML={{ __html: different_way.closingQuote }}
                 />
-                <p className="font-drama text-xl text-accent italic mb-10">
+                <p className="font-drama text-lg text-accent italic mb-10">
                   {different_way.signoff}
                 </p>
               </motion.div>
