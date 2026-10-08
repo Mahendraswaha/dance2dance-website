@@ -26,11 +26,24 @@ export default function GoodMorningDancePage() {
   const program = programsData['be-the-dance'];
   const workshop = { id: 'good-morning-dance', title: 'Good Morning Dance', slug: 'good-morning-dance' };
 
-  // Track if there are events to change the section subtitle
-  const [hasEvents, setHasEvents] = useState(false);
-  const handleEventsLoaded = useCallback((state) => {
-    setHasEvents(state.hasDates);
+  // Estado contextual da agenda do workshop
+  const [agendaState, setAgendaState] = useState({ loaded: false, hasDates: false, hasSpots: false });
+  const handleEventsLoaded = useCallback((matchingEvents) => {
+    if (!matchingEvents || matchingEvents.length === 0) {
+      setAgendaState({ loaded: true, hasDates: false, hasSpots: false });
+    } else {
+      const anySpotAvailable = matchingEvents.some(ev => (ev.enrolledCount || 0) < (ev.totalSpots || 0));
+      setAgendaState({ loaded: true, hasDates: true, hasSpots: anySpotAvailable });
+    }
   }, []);
+
+  const contextualSubtitle = !agendaState.loaded
+    ? t('actions.ready_to_start_sub', 'Inscreva-se em uma das datas abaixo ou entre na lista de interesse para novas turmas.')
+    : agendaState.hasDates
+      ? (agendaState.hasSpots 
+          ? t('actions.ready_to_start_has_spots', 'Inscreva-se agora e garanta sua vaga.')
+          : t('actions.ready_to_start_waitlist', 'Inscreva-se na lista de espera.'))
+      : t('actions.ready_to_start_wishlist', 'Inscreva-se na lista de interesse para novas turmas.');
 
   return (
     <div className="bg-primary min-h-screen font-sans text-background">
