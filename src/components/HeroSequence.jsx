@@ -101,7 +101,7 @@ const HeroSequence = () => {
           scrub: window.matchMedia("(pointer: coarse)").matches ? true : 1,
           pinSpacing: true, // Força a criação do espaço para não sobrepor
           onUpdate: (self) => {
-            if (videoRef.current) {
+            if (videoRef.current && window.matchMedia("(pointer: coarse)").matches) {
               // Margem de 1% para evitar que arredondamento de pixels no mobile trave o vídeo
               if (self.progress > 0.01 && !videoRef.current.paused) {
                 videoRef.current.pause();
