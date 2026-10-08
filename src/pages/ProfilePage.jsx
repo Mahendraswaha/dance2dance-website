@@ -46,7 +46,8 @@ export default function ProfilePage() {
     zip: '',
     country: '',
     experiencia: '',
-    restricoes: ''
+    restricoes: '',
+    hasRestrictions: false
   });
 
   const [loading, setLoading] = useState(false);
@@ -93,6 +94,17 @@ export default function ProfilePage() {
   const fetchUserCoursesAndReviews = useCallback(async () => {
     if (!currentUser?.uid) return;
     setLoadingCourses(true);
+
+    // Validar idade
+    if (formData.birthDate) {
+      const birthYear = new Date(formData.birthDate).getFullYear();
+      const currentYear = new Date().getFullYear();
+      if (currentYear - birthYear < 10) {
+        toast.error(t('auth.invalidAge', 'A idade mínima para se registrar é de 10 anos.'));
+        setSaving(false);
+        return;
+      }
+    }
 
     try {
       // 1. Busca eventos para compor o mapa

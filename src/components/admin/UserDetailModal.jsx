@@ -67,7 +67,7 @@ function cleanPhoneForWhatsApp(phone) {
   return phone.replace(/[^\d+]/g, '').replace('+', '');
 }
 
-export default function UserDetailModal({ user, userEnrollments = [], onClose, onRoleChange, onEvaluationUpdated }) {
+export default function UserDetailModal({ user, userEnrollments = [], onClose, onRoleChange, onEvaluationUpdated, onUserDeleted, onUserUpdated }) {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'pt';
 
@@ -98,6 +98,64 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
 
   const { currentUser } = useAuth();
   const [isAddingNote, setIsAddingNote] = useState(false);
+  
+  // EDIT STATE
+  const [isEditing, setIsEditing] = useState(false);
+  const [editData, setEditData] = useState({});
+  const [isSavingEdit, setIsSavingEdit] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    if (isEditing && user) {
+      setEditData({
+        phone: user.phone || '',
+        birthDate: user.birthDate || user.birthdate || user.dataNascimento || user.nascimento || '',
+        city: user.city || '',
+        country: user.country || '',
+        address: user.address || user.endereco || '',
+        zip: user.zip || user.cep || '',
+        experiencia: user.experiencia || user.experience || '',
+        restricoes: user.restricoes || user.restrictions || ''
+      });
+    }
+  }, [isEditing, user]);
+
+  const handleEditChange = (e) => {
+    setEditData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSaveEdit = async () => {
+    setIsSavingEdit(true);
+    try {
+      const uid = user.id || user.uid;
+      await updateDoc(doc(db, 'users', uid), editData);
+      if (onUserUpdated) onUserUpdated(uid, editData);
+      setIsEditing(false);
+      toast.success(t('adminPage.usersManager.updateSuccess', 'Cadastro atualizado com sucesso.'));
+    } catch (error) {
+      console.error(error);
+      toast.error(t('adminPage.usersManager.updateError', 'Erro ao atualizar cadastro.'));
+    } finally {
+      setIsSavingEdit(false);
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    if (!window.confirm(t('adminPage.usersManager.confirmDelete', 'Tem certeza que deseja excluir permanentemente este cadastro? Esta ação não pode ser desfeita.'))) return;
+    
+    setIsDeleting(true);
+    try {
+      const uid = user.id || user.uid;
+      await deleteDoc(doc(db, 'users', uid));
+      if (onUserDeleted) onUserDeleted(uid);
+      toast.success(t('adminPage.usersManager.deleteSuccess', 'Cadastro excluído com sucesso.'));
+    } catch (error) {
+      console.error(error);
+      toast.error(t('adminPage.usersManager.deleteError', 'Erro ao excluir cadastro.'));
+    } finally {
+      setIsDeleting(false);
+    }
+  };
   const [editingEnrId, setEditingEnrId] = useState(null);
   const [editRating, setEditRating] = useState(0);
   const [editNotes, setEditNotes] = useState('');
@@ -343,7 +401,11 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
               <div className="space-y-2.5 text-xs font-heading bg-[#121216] border border-[#1E1E24] p-4 rounded-[2px]">
                 <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
                   <span className="text-[#888888]">{t('adminPage.usersManager.phoneLabel', 'Telefone / WhatsApp')}:</span>
-                  <span className="text-[#E0DDD5] font-mono">{phone || '-'}</span>
+                  {isEditing ? (
+                      <input type="text" name="phone" value={editData.phone} onChange={handleEditChange} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-40" />
+                    ) : (
+                      <span className="text-[#E0DDD5] font-mono">{phone || '-'}</span>
+                    )}
                 </div>
 
                 <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
@@ -351,9 +413,11 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                     <Cake className="w-3.5 h-3.5 text-accent/60" />
                     {t('adminPage.usersManager.birthDateLabel', 'Data de Nascimento')}:
                   </span>
-                  <span className="text-[#E0DDD5] font-mono">
-                    {birthInfo?.display || birthDate || '-'}
-                  </span>
+                  {isEditing ? (
+                      <input type="date" name="birthDate" value={editData.birthDate} onChange={handleEditChange} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-32" />
+                    ) : (
+                      <span className="text-[#E0DDD5] font-mono">{birthInfo?.display || birthDate || '-'}</span>
+                    )}
                 </div>
 
                 <div className="flex items-center justify-between py-1">
@@ -772,20 +836,60 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
 
         </div>
 
-        {/* Footer do Modal */}
-        <div className="p-4 sm:p-6 bg-[#0D0D12] border-t border-[#1A1A24] flex items-center justify-between gap-4">
-          <span className="text-xs text-zinc-500 font-heading">
-            ID: <span className="font-mono text-zinc-400">{user.id || user.uid}</span>
-          </span>
+                  {/* Footer do Modal */}
+          <div className="p-4 sm:p-6 bg-[#0D0D12] border-t border-[#1A1A24] flex items-center justify-between gap-4">
+            <span className="text-xs text-zinc-500 font-heading">
+              ID: <span className="font-mono text-zinc-400">{user.id || user.uid}</span>
+            </span>
 
-          <button 
-            type="button" 
-            onClick={onClose}
-            className="px-6 py-2.5 rounded-[2px] bg-[#14141C] hover:bg-[#1E1E28] border border-[#2A2A38] text-xs font-heading font-semibold uppercase tracking-wider text-[#FAF8F5] transition-colors cursor-pointer"
-          >
-            {t('adminPage.usersManager.close', 'Fechar')}
-          </button>
-        </div>
+            <div className="flex items-center gap-2">
+              <button 
+                type="button" 
+                onClick={handleDeleteUser}
+                disabled={isDeleting}
+                className="px-4 py-2 rounded-[2px] bg-red-950/20 hover:bg-red-900/40 border border-red-900/40 text-xs font-heading font-semibold uppercase tracking-wider text-red-200 transition-colors cursor-pointer disabled:opacity-50"
+              >
+                {isDeleting ? 'Excluindo...' : 'Excluir'}
+              </button>
+
+              {isEditing ? (
+                <>
+                  <button 
+                    type="button" 
+                    onClick={() => setIsEditing(false)}
+                    className="px-4 py-2 rounded-[2px] bg-[#14141C] hover:bg-[#1E1E28] border border-[#2A2A38] text-xs font-heading font-semibold uppercase tracking-wider text-zinc-400 transition-colors cursor-pointer"
+                  >
+                    Cancelar
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={handleSaveEdit}
+                    disabled={isSavingEdit}
+                    className="px-4 py-2 rounded-[2px] bg-accent/20 hover:bg-accent/30 border border-accent/40 text-xs font-heading font-semibold uppercase tracking-wider text-accent transition-colors cursor-pointer disabled:opacity-50"
+                  >
+                    {isSavingEdit ? 'Salvando...' : 'Salvar'}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button 
+                    type="button" 
+                    onClick={() => setIsEditing(true)}
+                    className="px-4 py-2 rounded-[2px] bg-[#14141C] hover:bg-[#1E1E28] border border-[#2A2A38] text-xs font-heading font-semibold uppercase tracking-wider text-zinc-300 transition-colors cursor-pointer"
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={onClose}
+                    className="px-6 py-2 rounded-[2px] bg-[#14141C] hover:bg-[#1E1E28] border border-[#2A2A38] text-xs font-heading font-semibold uppercase tracking-wider text-[#FAF8F5] transition-colors cursor-pointer"
+                  >
+                    {t('adminPage.usersManager.close', 'Fechar')}
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
       </motion.div>
     </div>
   );

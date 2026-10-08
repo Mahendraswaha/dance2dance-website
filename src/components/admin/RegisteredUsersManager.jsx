@@ -608,6 +608,14 @@ export default function RegisteredUsersManager({ events = [] }) {
               setUsers(prev => prev.map(u => (u.id === userId || u.uid === userId) ? { ...u, role: newRole } : u));
               setSelectedUserForModal(prev => prev ? { ...prev, role: newRole } : null);
             }}
+            onUserDeleted={(userId) => {
+              setUsers(prev => prev.filter(u => u.id !== userId && u.uid !== userId));
+              setSelectedUserForModal(null);
+            }}
+            onUserUpdated={(userId, newData) => {
+              setUsers(prev => prev.map(u => (u.id === userId || u.uid === userId) ? { ...u, ...newData } : u));
+              setSelectedUserForModal(prev => prev ? { ...prev, ...newData } : null);
+            }}
           />
         )}
       </AnimatePresence>

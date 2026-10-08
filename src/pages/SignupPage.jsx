@@ -24,7 +24,8 @@ export default function SignupPage() {
     zip: '',
     country: '',
     experiencia: '',
-    restricoes: ''
+    restricoes: '',
+      hasRestrictions: false
   });
   
   const [error, setError] = useState('');
@@ -54,6 +55,14 @@ export default function SignupPage() {
     
     if (formData.password !== formData.confirmPassword) {
       return setError(t('auth.passwordMismatch', 'As senhas não coincidem.'));
+    }
+
+    if (formData.birthDate) {
+      const birthYear = new Date(formData.birthDate).getFullYear();
+      const currentYear = new Date().getFullYear();
+      if (currentYear - birthYear < 10) {
+        return setError(t('auth.invalidAge', 'A idade mínima para se registrar é de 10 anos.'));
+      }
     }
 
     if (!turnstileToken && !turnstileError) {
