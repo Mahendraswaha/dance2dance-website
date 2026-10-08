@@ -386,6 +386,9 @@
         "read_less": "Ocultar",
         "cv_link_text": "Currículo da Criadora",
         "cv_url": "/safia"
+      },
+      "goodMorningDance": {
+        "description": "Dance antes que o dia te absorva."
       }
     },
     "biostretch": {
@@ -1836,5 +1839,8 @@
   },
   "curriculum": {
     "link": "Currículo da Diretora"
+  },
+  "good_morning_dance": {
+    "subtitle": "Dance antes que o dia te absorva."
   }
 }

@@ -386,6 +386,9 @@
         "read_less": "Vis mindre",
         "cv_link_text": "Skaperens CV",
         "cv_url": "/safia"
+      },
+      "goodMorningDance": {
+        "description": "Dans før dagen tar over"
       }
     },
     "biostretch": {
@@ -1836,5 +1839,8 @@
   },
   "curriculum": {
     "link": "Direktørens CV"
+  },
+  "good_morning_dance": {
+    "subtitle": "Dans før dagen tar over"
   }
 }

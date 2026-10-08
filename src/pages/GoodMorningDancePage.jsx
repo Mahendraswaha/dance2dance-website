@@ -82,7 +82,7 @@ export default function GoodMorningDancePage() {
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
               className="font-heading text-xl text-[#CFCFCF] font-light leading-relaxed"
             >
-              {t('good_morning_dance.subtitle', 'Wake up. Move. Have fun.')}
+              {t('good_morning_dance.subtitle', 'Dance antes que o dia te absorva.')}
             </motion.p>
           </header>
 

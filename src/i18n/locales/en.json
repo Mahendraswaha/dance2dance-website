@@ -386,6 +386,9 @@
         "read_less": "Show less",
         "cv_link_text": "Creator's CV",
         "cv_url": "/safia"
+      },
+      "goodMorningDance": {
+        "description": "Dance before the day takes over"
       }
     },
     "biostretch": {
@@ -1836,5 +1839,8 @@
   },
   "curriculum": {
     "link": "Director's CV"
+  },
+  "good_morning_dance": {
+    "subtitle": "Dance before the day takes over"
   }
 }
