@@ -60,8 +60,8 @@ export default function SignupPage() {
     if (formData.birthDate) {
       const birthYear = new Date(formData.birthDate).getFullYear();
       const currentYear = new Date().getFullYear();
-      if (currentYear - birthYear < 10) {
-        return setError(t('auth.invalidAge', 'A idade mínima para se registrar é de 10 anos.'));
+      if (currentYear - birthYear < 7) {
+        return setError(t('auth.invalidAge', 'A idade mínima para se registrar é de 7 anos.'));
       }
     }
 

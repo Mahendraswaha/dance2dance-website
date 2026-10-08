@@ -74,8 +74,19 @@ export function AuthProvider({ children }) {
       if (user) {
         // Fetch additional user data from Firestore if needed
         try {
-          const userDoc = await getDoc(doc(db, 'users', user.uid));
-          setCurrentUser({ ...user, profile: userDoc.exists() ? userDoc.data() : {} });
+          const userRef = doc(db, 'users', user.uid);
+          const userDoc = await getDoc(userRef);
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            setCurrentUser({ ...user, profile: data });
+            
+            // Sync emailVerified to Firestore so Admins can see it
+            if (data.emailVerified !== user.emailVerified) {
+              await setDoc(userRef, { emailVerified: user.emailVerified }, { merge: true });
+            }
+          } else {
+            setCurrentUser({ ...user, profile: {} });
+          }
         } catch (error) {
           console.error("Erro ao buscar dados do usuário no Firestore:", error);
           setCurrentUser({ ...user, profile: {} }); // Permite o login mesmo se o Firestore falhar

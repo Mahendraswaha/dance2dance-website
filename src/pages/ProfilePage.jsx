@@ -99,8 +99,8 @@ export default function ProfilePage() {
     if (formData.birthDate) {
       const birthYear = new Date(formData.birthDate).getFullYear();
       const currentYear = new Date().getFullYear();
-      if (currentYear - birthYear < 10) {
-        toast.error(t('auth.invalidAge', 'A idade mínima para se registrar é de 10 anos.'));
+      if (currentYear - birthYear < 7) {
+        toast.error(t('auth.invalidAge', 'A idade mínima para se registrar é de 7 anos.'));
         setSaving(false);
         return;
       }
