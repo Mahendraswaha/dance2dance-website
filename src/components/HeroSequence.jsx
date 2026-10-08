@@ -102,8 +102,13 @@ const HeroSequence = () => {
           pinSpacing: true, // Força a criação do espaço para não sobrepor
           onUpdate: (self) => {
             if (videoRef.current) {
-              if (self.progress > 0 && !videoRef.current.paused) videoRef.current.pause();
-              else if (self.progress === 0 && videoRef.current.paused) videoRef.current.play();
+              // Margem de 1% para evitar que arredondamento de pixels no mobile trave o vídeo
+              if (self.progress > 0.01 && !videoRef.current.paused) {
+                videoRef.current.pause();
+              } else if (self.progress <= 0.01 && videoRef.current.paused) {
+                const p = videoRef.current.play();
+                if (p !== undefined) p.catch(() => {}); // Previne erros no console caso o navegador bloqueie
+              }
             }
           }
         }
