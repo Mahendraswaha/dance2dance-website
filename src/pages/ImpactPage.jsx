@@ -233,38 +233,6 @@ const ImpactPage = () => {
       {/* ─── FUNDING PILLARS ─────────────────────────────────────────── */}
       <SocialPillars translationKey="social_page_b2b" />
 
-      {/* ─── PARTNERS ────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 px-6 lg:px-12 bg-primary relative">
-        <div className="max-w-5xl mx-auto reveal-elem">
-          <div className="text-center mb-20">
-            <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
-              {t('social_page_b2b.partners.kicker')}
-            </span>
-            <h3 className="font-drama italic text-3xl md:text-5xl text-background/80 leading-tight">
-              {t('social_page_b2b.partners.title')}
-            </h3>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24 mt-16">
-            <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer"
-               className="group opacity-40 hover:opacity-80 transition-opacity duration-500">
-              <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited"
-                   className="h-10 md:h-14 object-contain filter grayscale transition-all duration-500 brightness-200" />
-            </a>
-            <div className="hidden md:block w-[1px] h-14 bg-white/10" />
-            <a href="https://poaciadanca.com.br/en/" target="_blank" rel="noopener noreferrer"
-               className="group opacity-40 hover:opacity-80 transition-opacity duration-500">
-              <img src="/logo-poaciadanca.png" alt="POA Cia de Dança"
-                   className="h-14 md:h-20 object-contain filter grayscale transition-all duration-500 brightness-200" />
-            </a>
-          </div>
-
-          <p className="mt-16 font-heading text-background/40 font-light text-sm md:text-base text-center max-w-2xl mx-auto leading-[1.8]">
-            {t('social_page_b2b.partners.desc')}
-          </p>
-        </div>
-      </section>
-
       {/* ─── CTA B2B ─────────────────────────────────────────────────── */}
       
         {/* ⚡ IMPACT PROJECTS (YOUTH & WOMEN) ⚡ */}
@@ -344,7 +312,39 @@ const ImpactPage = () => {
           </div>
         </section>
 
-<section id="apoie" className="py-24 bg-gradient-to-br from-[#0a0a0e] to-[#1a1a24] border-t border-slate-800 relative overflow-hidden">
+      {/* ─── PARTNERS ────────────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-6 lg:px-12 bg-primary relative">
+        <div className="max-w-5xl mx-auto reveal-elem">
+          <div className="text-center mb-20">
+            <span className="font-heading text-[10px] tracking-[5px] uppercase text-slate-400 block mb-6">
+              {t('social_page_b2b.partners.kicker')}
+            </span>
+            <h3 className="font-drama italic text-3xl md:text-5xl text-background/80 leading-tight">
+              {t('social_page_b2b.partners.title')}
+            </h3>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24 mt-16">
+            <a href="https://toyenunlimited.no/" target="_blank" rel="noopener noreferrer"
+               className="group opacity-40 hover:opacity-80 transition-opacity duration-500">
+              <img src="/logo-toyen-unlimited.png" alt="Toyen Unlimited"
+                   className="h-10 md:h-14 object-contain filter grayscale transition-all duration-500 brightness-200" />
+            </a>
+            <div className="hidden md:block w-[1px] h-14 bg-white/10" />
+            <a href="https://poaciadanca.com.br/en/" target="_blank" rel="noopener noreferrer"
+               className="group opacity-40 hover:opacity-80 transition-opacity duration-500">
+              <img src="/logo-poaciadanca.png" alt="POA Cia de Dança"
+                   className="h-14 md:h-20 object-contain filter grayscale transition-all duration-500 brightness-200" />
+            </a>
+          </div>
+
+          <p className="mt-16 font-heading text-background/40 font-light text-sm md:text-base text-center max-w-2xl mx-auto leading-[1.8]">
+            {t('social_page_b2b.partners.desc')}
+          </p>
+        </div>
+      </section>
+
+      <section id="apoie" className="py-24 bg-gradient-to-br from-[#0a0a0e] to-[#1a1a24] border-t border-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] opacity-[0.03]"
                style={{ background: 'radial-gradient(ellipse, #E2E8F0 0%, transparent 70%)' }} />
@@ -380,30 +380,3 @@ const ImpactPage = () => {
 };
 
 export default ImpactPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
