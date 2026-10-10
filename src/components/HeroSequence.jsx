@@ -183,10 +183,11 @@ const HeroSequence = () => {
       }, 0.85);
       
       // Coreografia de Iluminação
-      // 1. Transição Bloco 1 -> Bloco 2: o vídeo brilha 100% puro no intervalo
+      // 1. Transição Bloco 1 -> Bloco 2: a cena brilha 100% limpa e permanece iluminada durante o Bloco 2 (sustentada pelo text-glow)
       tl.to('.hero-gradient', { opacity: 0, duration: 0.02, ease: 'power1.out' }, 0.015);
-      // 2. O contraste retorna com força total (base 80% / meio 50%) para a leitura firme dos Blocos 2 e 3
-      tl.to('.hero-gradient', { opacity: 1, duration: 0.025, ease: 'power1.in' }, 0.045);
+      
+      // 2. O contraste retorna mais tarde (0.085), exatamente na preparação para a subida do Bloco 3 (manifesto longo)
+      tl.to('.hero-gradient', { opacity: 1, duration: 0.04, ease: 'power1.in' }, 0.085);
 
       // 3. Desfecho: a partir do final do Bloco 3 (0.48), dissolve suavemente até o fim da seção
       tl.to('.hero-gradient', { opacity: 0, duration: 0.42, ease: 'power1.inOut' }, 0.48);
