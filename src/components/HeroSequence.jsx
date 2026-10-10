@@ -182,17 +182,14 @@ const HeroSequence = () => {
         ease: 'power2.in' 
       }, 0.85);
       
-      // Coreografia de Iluminação / Respiro de Luz
-      // 1. Transição Bloco 1 -> Bloco 2: o vídeo brilha 100% puro no intervalo (mantido conforme aprovado)
+      // Coreografia de Iluminação
+      // 1. Transição Bloco 1 -> Bloco 2: o vídeo brilha 100% puro no intervalo
       tl.to('.hero-gradient', { opacity: 0, duration: 0.02, ease: 'power1.out' }, 0.015);
+      // 2. O contraste retorna com força total (base 80% / meio 50%) para a leitura firme dos Blocos 2 e 3
       tl.to('.hero-gradient', { opacity: 1, duration: 0.025, ease: 'power1.in' }, 0.045);
 
-      // 2. Transição Bloco 2 -> Bloco 3: transição gradual e contínua (sem corte/piscar de luz)
-      // O gradiente vai suavizando organicamente de 100% para 80% durante a entrada e rolagem do Bloco 3
-      tl.to('.hero-gradient', { opacity: 0.8, duration: 0.25, ease: 'power1.out' }, 0.10);
-
-      // 3. Desfecho: a partir do meio da rolagem (0.45), dissolve suavemente até sumir totalmente
-      tl.to('.hero-gradient', { opacity: 0, duration: 0.45, ease: 'power1.inOut' }, 0.45);
+      // 3. Desfecho: a partir do final do Bloco 3 (0.48), dissolve suavemente até o fim da seção
+      tl.to('.hero-gradient', { opacity: 0, duration: 0.42, ease: 'power1.inOut' }, 0.48);
 
     }, containerRef);
 
@@ -267,7 +264,7 @@ const HeroSequence = () => {
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
 
-        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/50 to-transparent" />
+        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/50 to-transparent" />
 
         {/* Desfoque suave invisível estendido na marca d'água usando máscara radial */}
         <div 
