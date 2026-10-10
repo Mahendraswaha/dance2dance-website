@@ -182,21 +182,17 @@ const HeroSequence = () => {
         ease: 'power2.in' 
       }, 0.85);
       
-      // Coreografia de Iluminação / Respiro de Luz (Pulso de Contraste entre os 4 blocos de texto)
-      // 1. Transição Bloco 1 -> Bloco 2: o vídeo brilha 100% puro no intervalo
+      // Coreografia de Iluminação / Respiro de Luz
+      // 1. Transição Bloco 1 -> Bloco 2: o vídeo brilha 100% puro no intervalo (mantido conforme aprovado)
       tl.to('.hero-gradient', { opacity: 0, duration: 0.02, ease: 'power1.out' }, 0.015);
       tl.to('.hero-gradient', { opacity: 1, duration: 0.025, ease: 'power1.in' }, 0.045);
 
-      // 2. Transição Bloco 2 -> Bloco 3: o vídeo brilha 100% na troca para o manifesto
-      tl.to('.hero-gradient', { opacity: 0, duration: 0.025, ease: 'power1.out' }, 0.10);
-      tl.to('.hero-gradient', { opacity: 1, duration: 0.03, ease: 'power1.in' }, 0.135);
+      // 2. Transição Bloco 2 -> Bloco 3: transição gradual e contínua (sem corte/piscar de luz)
+      // O gradiente vai suavizando organicamente de 100% para 70% durante a entrada e rolagem do Bloco 3
+      tl.to('.hero-gradient', { opacity: 0.7, duration: 0.25, ease: 'power1.out' }, 0.10);
 
-      // 3. Transição Bloco 3 -> Bloco 4: o vídeo brilha 100% antes da frase final
-      tl.to('.hero-gradient', { opacity: 0, duration: 0.03, ease: 'power1.out' }, 0.44);
-      tl.to('.hero-gradient', { opacity: 1, duration: 0.035, ease: 'power1.in' }, 0.485);
-
-      // 4. Desfecho final (0.85 a 1.0): dissolve suavemente para conectar com a seção seguinte
-      tl.to('.hero-gradient', { opacity: 0.3, duration: 0.15, ease: 'power1.inOut' }, 0.85);
+      // 3. Desfecho: a partir do meio da rolagem (0.45), dissolve suavemente até sumir totalmente
+      tl.to('.hero-gradient', { opacity: 0, duration: 0.45, ease: 'power1.inOut' }, 0.45);
 
     }, containerRef);
 
