@@ -255,7 +255,7 @@ const HeroSequence = () => {
             }
           }}
           poster="/gallery/sequence/frame-001.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
