@@ -188,8 +188,8 @@ const HeroSequence = () => {
       tl.to('.hero-gradient', { opacity: 1, duration: 0.025, ease: 'power1.in' }, 0.045);
 
       // 2. Transição Bloco 2 -> Bloco 3: transição gradual e contínua (sem corte/piscar de luz)
-      // O gradiente vai suavizando organicamente de 100% para 70% durante a entrada e rolagem do Bloco 3
-      tl.to('.hero-gradient', { opacity: 0.7, duration: 0.25, ease: 'power1.out' }, 0.10);
+      // O gradiente vai suavizando organicamente de 100% para 80% durante a entrada e rolagem do Bloco 3
+      tl.to('.hero-gradient', { opacity: 0.8, duration: 0.25, ease: 'power1.out' }, 0.10);
 
       // 3. Desfecho: a partir do meio da rolagem (0.45), dissolve suavemente até sumir totalmente
       tl.to('.hero-gradient', { opacity: 0, duration: 0.45, ease: 'power1.inOut' }, 0.45);
