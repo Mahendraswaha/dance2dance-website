@@ -290,7 +290,7 @@ const HeroSequence = () => {
         </div>
       </div>
 
-      <div className="dark-overlay absolute inset-0 bg-black/20 pointer-events-none" />
+      <div className="dark-overlay absolute inset-0 bg-black/0 pointer-events-none" />
 
       {/* Textos da Sequência (Surgem depois) */}
       
