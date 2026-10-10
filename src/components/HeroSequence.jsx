@@ -260,7 +260,7 @@ const HeroSequence = () => {
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
 
-        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/60 to-transparent" />
+        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/50 to-transparent" />
 
         {/* Desfoque suave invisível estendido na marca d'água usando máscara radial */}
         <div 
