@@ -264,7 +264,7 @@ const HeroSequence = () => {
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
 
-        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/50 to-transparent" />
+        <div className="hero-gradient absolute inset-0 bg-gradient-to-t from-primary/80 md:from-primary/70 via-primary/50 to-transparent" />
 
         {/* Desfoque suave invisível estendido na marca d'água usando máscara radial */}
         <div 
@@ -280,11 +280,11 @@ const HeroSequence = () => {
       
       {/* Texto do Hero */}
       <div ref={heroContentRef} className="absolute inset-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start justify-end pb-24 md:pb-32 px-6 lg:px-12 pointer-events-none">
-        <h1 className="flex flex-col gap-2">
+        <h1 className="flex flex-col gap-2 text-glow-subtle">
           <span className="hero-elem font-heading font-bold text-3xl md:text-5xl text-background/90 tracking-tight">{t("hero.subtitle1")}</span>
           <span className="hero-elem font-drama italic text-[40px] sm:text-5xl md:text-8xl text-accent leading-none">{t("hero.subtitle2")}</span>
         </h1>
-        <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md">
+        <p className="hero-elem mt-8 text-lg md:text-xl text-background/70 font-heading max-w-md text-glow-subtle">
           {t("hero.desc")}
         </p>
         <div className="hero-elem mt-10 pointer-events-auto">
@@ -300,13 +300,13 @@ const HeroSequence = () => {
       
       {/* 1. Primeira frase (Centralizada como o original) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
-        <h2 className="seq-text-1 font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight">
+        <h2 className="seq-text-1 font-heading font-bold text-3xl md:text-5xl text-background/90 opacity-0 max-w-4xl leading-tight text-glow-subtle">
           {t("hero.seq1.p1")} <br/><span className="text-accent italic font-drama">{t("hero.seq1.p2")}</span>
         </h2>
       </div>
 
       {/* 2. Restante do texto (Rola continuamente) */}
-      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6 will-change-transform transform-gpu" style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', WebkitFontSmoothing: 'antialiased' }}>
+      <div className="seq-block-rest absolute top-full left-0 right-0 z-10 w-full max-w-7xl mx-auto flex flex-col md:w-2/3 lg:w-1/2 items-start px-6 lg:px-12 pointer-events-none gap-6 will-change-transform transform-gpu text-glow-subtle" style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', WebkitFontSmoothing: 'antialiased' }}>
           <p className="font-heading text-lg md:text-xl text-background/90 leading-relaxed">
             <Brand className="text-background text-2xl md:text-3xl" /> {t("hero.seq2.p1")}
           </p>
@@ -326,7 +326,7 @@ const HeroSequence = () => {
 
       {/* 3. Última frase (Centralizada com destaque dourado) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10 pointer-events-none">
-        <h2 className="seq-text-last font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight">
+        <h2 className="seq-text-last font-drama italic text-4xl md:text-6xl text-background opacity-0 max-w-4xl leading-tight text-glow-subtle">
           <span className="text-accent">{t('hero.seq3.p1')}</span> {t('hero.seq3.p2')}
         </h2>
       </div>
