@@ -12,7 +12,7 @@ import SEOHead from '../components/SEOHead';
 gsap.registerPlugin(ScrollTrigger);
 
 const ImpactPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const heroBlurPlaceholder = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAALAAtAAD//gAPTGF2YzYzLjEuMTAwAP/bAEMACAQEBAQEBQUFBQUFBgYGBgYGBgYGBgYGBgcHBwgICAcHBwYGBwcICAgICQkJCAgICAkJCgoKDAwLCw4ODhERFP/EAHQAAAIDAQAAAAAAAAAAAAAAAAUEAwIHBgEAAwEAAAAAAAAAAAAAAAAAAAIEBRAAAgEEAQICCwEAAAAAAAAAAgEDBBIAEQYFE9IhBxUUVJSTkVMXMjEiEQEAAgEEAwEAAAAAAAAAAAABAgARUQWCMiMEAyH/wAARCAALABQDASIAAhEAAxEA/9oADAMBAAIRAxEAPwDDNvGenxlUTRU4sEU0wRh3DGMLjaQojkaAU3pXE0K35vWL5Sb9H9cZzimb19X6KOUqV9n2I1/q8TOalKGQTITiYVMEZFYSdsgJxmOiFvIvxVzH7dB8YHgwzxLkvX6/jtBLU9Sq5TEJI7u4xJiE0iG5jq4tf0y2ZPzJt4S9cdV9+q/nSeLIZbh9oyRT8U6acroR2315RJBPCCeTXi3/2Q==";
 
@@ -367,7 +367,7 @@ const ImpactPage = () => {
             >
               {t('social_page_b2b.cta.btn1')}
             </Link>
-            <a href="/pitch-deck.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors text-center">
+            <a href={`/pitch-deck.html?lng=${i18n.language || 'pt'}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors text-center">
                 {t('social_page_b2b.cta.btn2')}
               </a>
           </div>

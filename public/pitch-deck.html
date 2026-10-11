@@ -862,6 +862,16 @@
     </section>
 
     <script>
+        function updateExternalLinks(lang) {
+            document.querySelectorAll('a[href*="dance2dance.no"]').forEach(a => {
+                try {
+                    const url = new URL(a.href);
+                    url.searchParams.set('lng', lang);
+                    a.href = url.toString();
+                } catch(e) {}
+            });
+        }
+
         function setLang(lang) {
             document.body.className = 'show-' + lang;
             
@@ -874,6 +884,25 @@
             if(activeBtn) {
                 activeBtn.classList.add('active');
             }
+
+            try {
+                localStorage.setItem('i18nextLng', lang);
+            } catch(e) {}
+
+            updateExternalLinks(lang);
+        }
+
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = params.get('lng') || params.get('lang');
+            const savedLang = urlLang || localStorage.getItem('i18nextLng');
+            if (savedLang && ['pt', 'en', 'no'].includes(savedLang)) {
+                setLang(savedLang);
+            } else {
+                updateExternalLinks('en');
+            }
+        } catch(e) {
+            updateExternalLinks('en');
         }
     </script>
 </body>
