@@ -214,6 +214,44 @@
             min-width: 0;
         }
 
+        .cv-link-btn {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+            text-decoration: none;
+            width: fit-content;
+            cursor: pointer;
+        }
+        .cv-link-text {
+            font-family: var(--font-body);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, 0.8);
+            transition: color 0.3s ease;
+        }
+        .cv-link-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        .cv-link-btn:hover .cv-link-text {
+            color: var(--accent-color);
+        }
+        .cv-link-btn:hover .cv-link-circle {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
         @media screen and (max-width: 768px) {
             .watermark {
                 display: none !important;
@@ -742,7 +780,7 @@
             <span class="lang-no">Kunstnerisk Ledelse</span>
         </p>
         <div class="founder-grid">
-            <a href="https://www.dance2dance.no/curriculum" target="_blank"><img src="/images/creator-be-the-dance.jpg" alt="Safia" style="cursor:pointer; border-radius:4px; width:100%; display:block; height:auto;"></a>
+            <a href="https://www.dance2dance.no/safia" target="_blank"><img src="/images/creator-be-the-dance.jpg" alt="Safia" style="cursor:pointer; border-radius:4px; width:100%; display:block; height:auto;"></a>
             <div>
                 <h2 class="title" style="margin-bottom: 8px;">Safia</h2>
                 <p class="kicker" style="color:var(--text-secondary); margin-bottom: 24px;">
@@ -755,6 +793,19 @@
                     <span class="lang-pt">Aperfeiçoamento na Escola Estatal de Ballet Clássico de Kiev (método Vaganova). Atuou no Ballet de Camaguey e no Ballet Nacional de Cuba. Estudou técnica Release na Trisha Brown Company e Movement Research em Nova York. Cofundou a Porto Alegre Cia de Dança em 2007 como Diretora Artística. Criou o método Biostretch e o programa Be The Dance, sintetizando décadas de pesquisa em dança, educação somática e meditação. Hoje na Noruega, ela conecta a excelência artística entre Brasil e Escandinávia através do Dance2Dance.</span>
                     <span class="lang-no">Videreutdanning ved den statlige ballettskolen i Kiev (Vaganova-metoden). Opptråd med Ballet de Camaguey og Cubas nasjonalballett. Studerte Release-teknikk ved Trisha Brown Company og Movement Research i New York. Medgrunnla Porto Alegre Cia de Dança i 2007 som kunstnerisk direktør. Skapte Biostretch-metoden og Be The Dance-programmet, og syntetiserte tiår med forskning innen dans, somatisk utdanning og meditasjon. Nå basert i Norge, bygger hun en kunstnerisk bro mellom Brasil og Skandinavia gjennom Dance2Dance.</span>
                 </p>
+                <a href="https://www.dance2dance.no/safia" target="_blank" class="cv-link-btn">
+                    <span class="cv-link-text">
+                        <span class="lang-en">Director's CV</span>
+                        <span class="lang-pt">Currículo da Diretora</span>
+                        <span class="lang-no">Direktørens CV</span>
+                    </span>
+                    <div class="cv-link-circle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
             </div>
         </div>
     </section>

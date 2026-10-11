@@ -155,7 +155,7 @@ O sistema (Firestore) já está preparado para:
 
 ## Instruções para o Agente (Meta-Regras)
 - Sempre que o usuário disser que uma funcionalidade foi "concluída", "aprovada" ou que "funcionou", você DEVE alertá-lo com a seguinte mensagem: 
-  "Notifiquei que terminamos esta etapa! Deseja que eu atualize este arquivo projeto.md com o resumo desta nova implementação antes de fecharmos o chat?"
+  "Notifiquei que terminamos esta etapa! Deseja que eu atualize este arquivo PROJECT_MANIFEST.md com o resumo desta nova implementação antes de fecharmos o chat?"
 
 
 
@@ -193,5 +193,23 @@ Para não poluir este manifesto com regras de infraestrutura complexa, os manuai
 * **Componentes Responsáveis:** WorkshopTemplate.jsx e qualquer página manual como GoodMorningDancePage.jsx.
 
 ## 9. A Regra de Ouro Reforçada
-* Toda string ou chave nova no 	ranslation.json (seja en, 
-o, ou pt) deve também ser inserida manualmente na planilha Excel mestre de traduções (C:\Renas\Antigravity\Dance2Dance_Traducoes_Revisao.xlsx).
+* Toda string ou chave nova no translation.json (seja en, no, ou pt) deve também ser inserida manualmente na planilha Excel mestre de traduções (C:\Renas\Antigravity\Dance2Dance_Traducoes_Revisao.xlsx).
+
+## 10. Calibração Visual e Iluminação da Hero (HeroSequence)
+* **Opacidade do Vídeo:** O elemento `<video>` opera em opacidade nativa máxima (`opacity-100`).
+* **Sobreposição Escura (`dark-overlay`):** Fixada em `bg-black/0` (0% de opacidade / 100% de transparência).
+* **Gradiente Vertical Responsivo (`hero-gradient`):** 
+  * Mobile: `from-primary/80` (80% na base para garantir leitura confortável em telas compactas).
+  * Desktop: `md:from-primary/70` (70% na base para manter amplitude, iluminação e máxima presença visual do vídeo).
+  * Centro da tela: `via-primary/50` (50% de sombra no meio).
+  * Topo: `to-transparent`.
+* **Contraste Ambiente nas Letras (`text-glow-subtle`):**
+  * Definido em `src/index.css` via `.text-glow-subtle` (`text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(0, 0, 0, 0.5)`).
+  * Aplicado em todos os 4 blocos de texto da hero, emoldurando as letras e permitindo que o vídeo permaneça vívido sem necessidade de escurecer a imagem de fundo.
+* **Coreografia de Iluminação na Linha do Tempo (GSAP ScrollTrigger):**
+  * *Transição Bloco 1 -> 2:* O gradiente zera em `0.015`, permitindo que o vídeo brilhe 100% limpo no intervalo entre frases.
+  * *Bloco 2:* A cena permanece aberta e iluminada durante a frase *"Há lugares que não aceitam atalhos..."*, sustentada pelo `text-glow-subtle`.
+  * *Bloco 3:* O contraste retorna suavemente a partir de `0.085`, atingindo contraste pleno exatamente no momento em que os múltiplos parágrafos do manifesto começam a subir.
+  * *Desfecho:* A partir de `0.48`, o gradiente dissolve suavemente até o término da seção para entregar o encerramento iluminado.
+* **Componentes Responsáveis:** `HeroSequence.jsx` e `src/index.css`.
+
