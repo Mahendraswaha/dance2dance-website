@@ -20,8 +20,7 @@ i18n
     resources,
     fallbackLng: 'en',
     detection: {
-      order: ['querystring', 'localStorage', 'navigator'],
-      lookupQuerystring: 'lng',
+      order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
     },
     interpolation: {

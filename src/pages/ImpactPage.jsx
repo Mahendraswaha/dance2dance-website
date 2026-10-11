@@ -367,7 +367,7 @@ const ImpactPage = () => {
             >
               {t('social_page_b2b.cta.btn1')}
             </Link>
-            <a href={`/pitch-deck.html?lng=${i18n.language || 'pt'}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors text-center">
+            <a href="/pitch-deck.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-transparent text-white border border-slate-600 px-8 py-4 rounded-full font-bold text-sm hover:bg-white/5 transition-colors text-center">
                 {t('social_page_b2b.cta.btn2')}
               </a>
           </div>

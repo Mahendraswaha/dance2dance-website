@@ -1,20 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 export default function ScrollToTop() {
-  const { pathname, hash, search } = useLocation();
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    if (search) {
-      const params = new URLSearchParams(search);
-      const urlLang = params.get('lng') || params.get('lang');
-      if (urlLang && ['pt', 'en', 'no'].includes(urlLang) && i18n.language !== urlLang) {
-        i18n.changeLanguage(urlLang);
-      }
-    }
-  }, [search, i18n]);
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (hash) {
