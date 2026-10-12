@@ -66,7 +66,6 @@ const PricingPage = lazyWithRetries(() => import('./pages/PricingPage'));
 const AdminDashboard = lazyWithRetries(() => import('./pages/AdminDashboard'));
 const BeTheDanceUngPage = lazyWithRetries(() => import('./pages/BeTheDanceUngPage'));
 const Dance2DanceKvinnePage = lazyWithRetries(() => import('./pages/Dance2DanceKvinnePage'));
-const HomeLab = lazyWithRetries(() => import('./pages/HomeLab'));
 const NotFoundPage = lazyWithRetries(() => import('./pages/NotFoundPage'));
 
 // Indicador discreto de transição entre páginas
@@ -100,7 +99,6 @@ export default function App() {
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/lab" element={<HomeLab />} />
             <Route path="/agenda" element={<AgendaPage />} />
             <Route path="/valores" element={<PricingPage />} />
             <Route path="/pricing" element={<PricingPage />} />
