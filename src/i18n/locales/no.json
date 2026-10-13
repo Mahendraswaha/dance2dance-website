@@ -1844,47 +1844,47 @@
     "kicker": "BE THE DANCE",
     "title": "Good Morning Dance",
     "subtitle": "Våkn opp. Beveg deg. Ha det gøy.",
-    "hook": "This morning dance class is for those who want to start the day with music, movement and some time for themselves.",
+    "hook": "Denne morgendansen er for deg som vil starte dagen med musikk, bevegelse og litt tid til deg selv.",
     "block1": {
-      "p1": "How about starting your morning with movement instead of rushing? Before you check your phone, emails and to-do lists, take a little time for yourself.",
-      "p2": "Good Morning Dance offers a unique way to start your day. We use music and movement to energise your body, get things moving, and enjoy some fun before the day takes over. You don't need to be a dancer, know the steps or perform. Just come as you are and let yourself move.",
-      "p3": "We stretch, groove, shake and explore rhythm and dance. Sometimes there's a simple sequence to follow, and sometimes there's space to improvise. All you need is to let the music take you away.",
-      "pullQuote": "This isn't about getting the movements right. It's about connecting with your body and enjoying the sensation of movement."
+      "p1": "Hva med å starte morgenen med bevegelse i stedet for hastverk? Før du sjekker telefonen, e-poster og gjøremålslister, ta litt tid til deg selv.",
+      "p2": "Good Morning Dance tilbyr en unik måte å starte dagen på. Vi bruker musikk og bevegelse for å gi kroppen energi, komme i gang og ha det gøy før hverdagen tar over. Du trenger ikke å være danser, kunne trinnene eller prestere. Bare kom som du er, og la kroppen bevege seg.",
+      "p3": "Vi tøyer, rister løs, finner grooven og utforsker rytme og dans. Noen ganger følger vi en enkel sekvens, andre ganger er det rom for å improvisere. Alt du trenger er å la musikken ta deg med.",
+      "pullQuote": "Dette handler ikke om å gjøre bevegelsene riktig. Det handler om å gjenopprette kontakten med kroppen og kjenne gleden ved bevegelse."
     },
     "session": {
-      "title": "The session",
+      "title": "Økten",
       "items": [
         {
-          "title": "Wake up",
-          "desc": "We start gently with a warm-up to get things moving."
+          "title": "Våkn opp",
+          "desc": "Vi starter rolig med en oppvarming for å vekke kroppen."
         },
         {
-          "title": "Move",
-          "desc": "Music takes us from simple movement into rhythm, dance and playful exploration."
+          "title": "Beveg deg",
+          "desc": "Musikken leder oss fra enkle bevegelser inn i rytme, dans og leken utforskning."
         },
         {
-          "title": "Play",
-          "desc": "There's no need to take yourself too seriously. You might laugh, sweat a little, and surprise yourself."
+          "title": "Lek",
+          "desc": "Det er ingen grunn til å ta seg selv for høytidelig. Du kan le, svette litt og bli positivt overrasket."
         },
         {
-          "title": "Feel good",
-          "desc": "You will leave feeling more awake and with a sense that you have already made the most of the morning."
+          "title": "Føl deg vel",
+          "desc": "Du går herfra mer våken, med personlig velvære og følelsen av å ha fått en fantastisk start på morgenen."
         }
       ]
     },
     "experience": {
-      "title": "The experience",
-      "p1": "Just you, your body, the music and the freedom to move.",
-      "p2": "Every class is different, but we always start gently, giving you time to arrive. Then the music builds and we dance. There may be guided sequences, simple exercises, improvisation and moments when you can forget about the steps and follow what feels good.",
-      "p3": "If you're thinking, 'I'm not a dancer', this class is exactly for you.",
-      "p4": "There is no choreography to master and no one to impress. You can make your movements as big or as small as you like. You can follow, copy, play or freestyle, or simply move in whatever way feels natural that morning. This is dance without the pressure to be good at it."
+      "title": "Opplevelsen",
+      "p1": "Bare deg, kroppen din, musikken og friheten til å bevege deg.",
+      "p2": "Hver time er unik, men vi starter alltid rolig slik at du får tid til å lande. Deretter bygger musikken seg opp, og dansen oppstår. Det kan være guidede sekvenser, enkle øvelser, improvisasjon og stunder der du kan glemme trinnene og bare følge det som føles godt.",
+      "p3": "Hvis du tenker: «Jeg er ingen danser», er denne timen midt i blinken for deg.",
+      "p4": "Det er ingen koreografi du må mestre, og ingen du trenger å imponere. Du kan gjøre bevegelsene så store eller så små du vil: følge med, herme, leke, danse fritt, eller bare bevege deg slik det føles mest naturlig denne morgenen. Dette er dans uten noe krav om å være flink."
     },
     "different_way": {
-      "title": "A different way to start the day",
-      "p1": "You don't have to start every morning in the same way. Eventually, you could allow yourself an hour before the day becomes all about everyone and everything else. Dance! And remember:",
-      "pullQuote": "Your body isn't something you have to fix. It's something you get to experience!",
+      "title": "En annerledes måte å starte dagen på",
+      "p1": "Du trenger ikke å starte hver morgen på samme måte. Unn deg en time for deg selv før dagen handler om alle andre og alt annet. Dans! Og husk:",
+      "pullQuote": "Kroppen din er ikke noe du må fikse. Den er noe du får lov til å oppleve!",
       "closingQuote": "\"Jeg vil at <i>Good Morning Dance</i> skal være en liten gave som du gir deg selv før dagen begynner. Bare litt musikk, litt bevegelse og en mulighet til å føle deg vel i din egen kropp.\"",
-      "signoff": "— Safia"
+      "signoff": "- Safia"
     }
   }
 }
