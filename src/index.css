@@ -34,4 +34,39 @@
   .text-glow-subtle {
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(0, 0, 0, 0.5);
   }
+
+  /* Breathing Light — Divisor luminoso com gradiente dourado */
+  .divider-warm {
+    height: 1px;
+    border: none;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201, 168, 76, 0.3) 30%,
+      rgba(201, 168, 76, 0.3) 70%,
+      transparent 100%
+    );
+  }
+
+  /* Breathing Light — Glow ambiente atrás de títulos (stage spotlight) */
+  .ambient-glow {
+    position: relative;
+  }
+  .ambient-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(201, 168, 76, 0.06) 0%,
+      rgba(201, 168, 76, 0.02) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
 }

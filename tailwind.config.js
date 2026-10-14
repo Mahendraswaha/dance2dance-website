@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -8,9 +8,11 @@ export default {
     extend: {
       colors: {
         background: '#FAF8F5',
-        primary: '#0D0D12',
+        primary: '#110F0D',
+        'primary-alt': '#16130F',
+        surface: '#1C1814',
         accent: '#C9A84C',
-        dark: '#0D0D12',
+        dark: '#110F0D',
         textDark: '#2A2A35',
       },
       fontFamily: {

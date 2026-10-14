@@ -45,7 +45,7 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-[#08080C] flex items-center justify-center overflow-hidden">
+    <section ref={philRef} className="relative py-48 px-6 lg:px-12 bg-primary flex items-center justify-center overflow-hidden">
       
       {/* Watermark - Parallax acelerado por hardware no lugar de fixed */}
       <style>{`
