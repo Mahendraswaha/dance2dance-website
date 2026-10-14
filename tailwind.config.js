@@ -8,11 +8,9 @@ export default {
     extend: {
       colors: {
         background: '#FAF8F5',
-        primary: '#110F0D',
-        'primary-alt': '#16130F',
-        surface: '#1C1814',
+        primary: '#0D0D12',
         accent: '#C9A84C',
-        dark: '#110F0D',
+        dark: '#0D0D12',
         textDark: '#2A2A35',
       },
       fontFamily: {

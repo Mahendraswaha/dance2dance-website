@@ -12,21 +12,19 @@ import Brand from './Brand';
 const Activities = () => {
   const { t } = useTranslation();
   return (
-    <section id="workshops" className="pt-32 pb-24 px-8 bg-primary-alt min-h-screen flex items-center">
+    <section id="workshops" className="pt-32 pb-24 px-8 bg-[#0C0C0C] min-h-screen flex items-center">
       <div className="max-w-[1200px] w-full mx-auto text-center">
         
         <p className="font-heading text-[10px] tracking-[5px] uppercase text-accent mb-5">{t("activities.kicker")}</p>
         
-        <div className="ambient-glow">
-          <h2 className="relative z-10 font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 leading-tight tracking-tight">{t("activities.title")}</h2>
-        </div>
+        <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 leading-tight tracking-tight">{t("activities.title")}</h2>
         
-        <div className="divider-warm w-12 mx-auto mb-16"></div>
+        <div className="w-12 h-[1px] bg-[#C4B49A]/70 mx-auto mb-16"></div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
           
           {/* Card 1 - Be The Dance */}
-          <Link to="/be-the-dance" className="group relative bg-surface px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#2A2420] rounded-[2px] hover:-translate-y-[10px] hover:border-[#8BBCD8]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(139,188,216,0.15)] flex flex-col items-center">
+          <Link to="/be-the-dance" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#8BBCD8]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(139,188,216,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(139,188,216,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
@@ -43,7 +41,7 @@ const Activities = () => {
           </Link>
           
           {/* Card 2 - Biostretch */}
-          <Link to="/biostretch" className="group relative bg-surface px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#2A2420] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(90,168,122,0.15)] flex flex-col items-center">
+          <Link to="/biostretch" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(90,168,122,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(90,168,122,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
@@ -60,7 +58,7 @@ const Activities = () => {
           </Link>
           
           {/* Card 3 - Kroppsskole */}
-          <Link to="/kroppsskole" className="group relative bg-surface px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#2A2420] rounded-[2px] hover:-translate-y-[10px] hover:border-[#4A9B8E]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(74,155,142,0.15)] flex flex-col items-center">
+          <Link to="/kroppsskole" className="group relative bg-[#141414] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#222222] rounded-[2px] hover:-translate-y-[10px] hover:border-[#4A9B8E]/35 hover:shadow-[0_24px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(74,155,142,0.15)] flex flex-col items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(74,155,142,0.4)_0%,transparent_70%)]"></div>
             
             <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
