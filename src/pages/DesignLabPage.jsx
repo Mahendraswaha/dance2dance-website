@@ -44,7 +44,7 @@ export default function DesignLabPage() {
             }`}
           >
             <Sun size={12} className={styleMode === 'linen' ? 'text-[#8C6D23]' : ''} />
-            <span>Linho Claro</span>
+            <span>Papel de Parede</span>
           </button>
 
           <button
@@ -81,8 +81,12 @@ export default function DesignLabPage() {
             Exatos mesmos textos, fontes e logos — testando a atmosfera
         ============================================================== */}
         {styleMode === 'linen' ? (
-          /* VARIAÇÃO A: RESPIRO EM LINHO NÓRDICO (#F5F2EB) */
-          <section id="workshops" className="pt-32 pb-28 px-8 bg-[#F5F2EB] text-[#1A1715] min-h-screen flex items-center transition-colors duration-500 relative z-10">
+          /* VARIAÇÃO A: PAPEL DE PAREDE COM LOGOS PARA FUNDO CLARO E CANTOS ARREDONDADOS */
+          <section 
+            id="workshops" 
+            className="pt-32 pb-28 px-8 text-[#1A1715] min-h-screen flex items-center transition-colors duration-500 relative z-10 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/bg-activities-lab.jpg')" }}
+          >
             <div className="max-w-[1200px] w-full mx-auto text-center">
               
               <p className="font-heading text-[10px] tracking-[5px] uppercase text-[#8C6D23] font-semibold mb-5">
@@ -100,12 +104,12 @@ export default function DesignLabPage() {
                 {/* Card 1 - Be The Dance */}
                 <Link 
                   to="/be-the-dance" 
-                  className="group relative bg-[#FFFFFF] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#E5DFD3] rounded-[2px] hover:-translate-y-[10px] hover:border-[#8BBCD8]/80 hover:shadow-[0_20px_50px_rgba(40,30,20,0.08)] flex flex-col items-center"
+                  className="group relative bg-[#FFFFFF] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#E5DFD3] rounded-2xl hover:-translate-y-[10px] hover:border-[#8BBCD8]/80 hover:shadow-[0_20px_50px_rgba(40,30,20,0.08)] flex flex-col items-center"
                 >
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(139,188,216,0.35)_0%,transparent_70%)]" />
                   
                   <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
-                    <img src="/logo-bethedance.png" alt="Be the Dance" className="max-h-full max-w-[150px] object-contain" />
+                    <img src="/logo-bethedance-light.png" alt="Be the Dance" className="max-h-full max-w-[150px] object-contain" />
                   </div>
                   
                   <h3 className="text-[22px] font-normal text-[#1A1715] mb-3.5 tracking-wide relative z-10 font-batang">
@@ -122,12 +126,12 @@ export default function DesignLabPage() {
                 {/* Card 2 - Biostretch */}
                 <Link 
                   to="/biostretch" 
-                  className="group relative bg-[#FFFFFF] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#E5DFD3] rounded-[2px] hover:-translate-y-[10px] hover:border-[#5AA87A]/80 hover:shadow-[0_20px_50px_rgba(40,30,20,0.08)] flex flex-col items-center"
+                  className="group relative bg-[#FFFFFF] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#E5DFD3] rounded-2xl hover:-translate-y-[10px] hover:border-[#5AA87A]/80 hover:shadow-[0_20px_50px_rgba(40,30,20,0.08)] flex flex-col items-center"
                 >
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(90,168,122,0.35)_0%,transparent_70%)]" />
                   
                   <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
-                    <img src="/logo-biostretch.png" alt="Biostretch" className="max-h-full max-w-[180px] scale-110 object-contain" />
+                    <img src="/logo-biostretch-light.png" alt="Biostretch" className="max-h-full max-w-[180px] scale-110 object-contain" />
                   </div>
                   
                   <h3 className="text-[22px] font-normal text-[#1A1715] mb-3.5 tracking-wide relative z-10 font-batang">
@@ -144,12 +148,12 @@ export default function DesignLabPage() {
                 {/* Card 3 - Kroppsskole */}
                 <Link 
                   to="/kroppsskole" 
-                  className="group relative bg-[#FFFFFF] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#E5DFD3] rounded-[2px] hover:-translate-y-[10px] hover:border-[#4A9B8E]/80 hover:shadow-[0_20px_50px_rgba(40,30,20,0.08)] flex flex-col items-center"
+                  className="group relative bg-[#FFFFFF] px-9 pt-12 pb-12 text-center overflow-hidden cursor-pointer transition-all duration-[600ms] border border-[#E5DFD3] rounded-2xl hover:-translate-y-[10px] hover:border-[#4A9B8E]/80 hover:shadow-[0_20px_50px_rgba(40,30,20,0.08)] flex flex-col items-center"
                 >
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[200px] rounded-full opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle,rgba(74,155,142,0.35)_0%,transparent_70%)]" />
                   
                   <div className="h-[110px] flex items-center justify-center mb-8 relative z-10 w-full">
-                    <img src="/logo-kroppsskole.png" alt="Kroppsskole" className="max-h-full max-w-[150px] object-contain" />
+                    <img src="/logo-kroppsskole-light.png" alt="Kroppsskole" className="max-h-full max-w-[150px] object-contain" />
                   </div>
                   
                   <h3 className="text-[22px] font-normal text-[#1A1715] mb-3.5 tracking-wide relative z-10 font-batang">
