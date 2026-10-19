@@ -36,6 +36,20 @@
   },
   "activities": {
     "kicker": "What we do",
+    "title": "Our Activities",
+    "card1": {
+      "desc": "Every body holds a dance it hasn't yet dared to release. These workshops are a space where movement, presence, and expression bring it to light."
+    },
+    "card2": {
+      "desc": "Conscious movement practices that expand perception, encourage bodily reorganization, and transform how we inhabit our bodies."
+    },
+    "card3": {
+      "desc": "Community projects that reach across streets and neighborhoods - weaving connections, building bonds, and sparking transformation."
+    },
+    "cta": "EXPLORE OUR SCHEDULE"
+  },
+  "activitiesLab": {
+    "kicker": "What we do",
     "title": "Three Paths to Transformation",
     "subtitle": "Workshops, programs and projects: the body as a starting point.",
     "card1": {

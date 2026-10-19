@@ -47,15 +47,15 @@ export default function DesignLabPage() {
             <div className="max-w-[1200px] w-full mx-auto text-center">
               
               <p className="font-heading text-[10px] tracking-[5px] uppercase text-[#8C6D23] font-semibold mb-5">
-                {t("activities.kicker")}
+                {t("activitiesLab.kicker")}
               </p>
               
               <h2 className="font-batang text-[38px] font-normal text-[#1A1715] mb-4 leading-tight tracking-tight">
-                {t("activities.title")}
+                {t("activitiesLab.title")}
               </h2>
               
               <p className="font-heading text-[16px] md:text-[18px] text-[#5C554E] font-light max-w-2xl mx-auto mb-6 leading-relaxed">
-                {t("activities.subtitle")}
+                {t("activitiesLab.subtitle")}
               </p>
               
               <div className="w-12 h-[1.5px] bg-[#C9A84C] mx-auto mb-16" />
@@ -80,7 +80,7 @@ export default function DesignLabPage() {
                   <div className="w-7 h-[1px] bg-[#8C6D23]/30 group-hover:bg-[#8BBCD8] mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10" />
                   
                   <p className="font-heading text-[14px] leading-[1.75] text-[#5C554E] font-light relative z-10">
-                    {t("activities.card1.desc")}
+                    {t("activitiesLab.card1.desc")}
                   </p>
                 </Link>
                 
@@ -102,7 +102,7 @@ export default function DesignLabPage() {
                   <div className="w-7 h-[1px] bg-[#8C6D23]/30 group-hover:bg-[#5AA87A] mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10" />
                   
                   <p className="font-heading text-[14px] leading-[1.75] text-[#5C554E] font-light relative z-10">
-                    {t("activities.card2.desc")}
+                    {t("activitiesLab.card2.desc")}
                   </p>
                 </Link>
                 
@@ -124,7 +124,7 @@ export default function DesignLabPage() {
                   <div className="w-7 h-[1px] bg-[#8C6D23]/30 group-hover:bg-[#4A9B8E] mx-auto mb-5 transition-all duration-500 group-hover:w-14 relative z-10" />
                   
                   <p className="font-heading text-[14px] leading-[1.75] text-[#5C554E] font-light relative z-10">
-                    {t("activities.card3.desc")}
+                    {t("activitiesLab.card3.desc")}
                   </p>
                 </Link>
 
@@ -135,7 +135,7 @@ export default function DesignLabPage() {
                   to="/agenda" 
                   className="inline-block font-heading text-[11px] tracking-[4px] uppercase text-[#8C6D23] border-b border-[#8C6D23]/40 pb-2 transition-all duration-300 hover:border-[#1A1715] hover:text-[#1A1715]"
                 >
-                  {t("activities.cta")}
+                  {t("activitiesLab.cta")}
                 </Link>
               </div>
               

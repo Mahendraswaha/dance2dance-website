@@ -19,12 +19,6 @@ const Activities = () => {
         
         <h2 className="font-batang text-[38px] font-normal text-[#F0EDE8] mb-4 leading-tight tracking-tight">{t("activities.title")}</h2>
         
-        {t("activities.subtitle") && (
-          <p className="font-heading text-[16px] md:text-[18px] text-[#9A9A9A] font-light max-w-2xl mx-auto mb-6 leading-relaxed">
-            {t("activities.subtitle")}
-          </p>
-        )}
-        
         <div className="w-12 h-[1px] bg-[#C4B49A]/70 mx-auto mb-16"></div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
