@@ -36,15 +36,16 @@
   },
   "activities": {
     "kicker": "Hva vi gjør",
-    "title": "Våre Aktiviteter",
+    "title": "Tre veier til transformasjon",
+    "subtitle": "Workshops, programmer og prosjekter: kroppen som utgangspunkt.",
     "card1": {
-      "desc": "Hver kropp bærer på en dans den ennå ikke har våget å slippe fri. Disse workshopene er rommet hvor bevegelse, tilstedeværelse og uttrykk bringer den frem i lyset."
+      "desc": "Enhver kropp bærer på en dans den ennå ikke har våget å slippe fri. Disse workshopene skaper rommet for å bringe den frem i lyset."
     },
     "card2": {
-      "desc": "Bevisste bevegelsespraksiser som utvider sanseopplevelsen, stimulerer kroppslig omorganisering og forvandler måten vi er i egen kropp på."
+      "desc": "Bevisste bevegelsespraksiser som utvider sanseopplevelsen og stimulerer kroppslig omorganisering."
     },
     "card3": {
-      "desc": "Samfunnsprosjekter som krysser gater og nabolag, vever bånd, skaper forbindelser og transformerer."
+      "desc": "Tverrfaglige workshops. Integrerte aktiviteter for kroppslig og åndelig utvikling."
     },
     "cta": "SE VÅRT PROGRAM"
   },
