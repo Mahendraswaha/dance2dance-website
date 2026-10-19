@@ -54,6 +54,10 @@ export default function DesignLabPage() {
                 {t("activities.title")}
               </h2>
               
+              <p className="font-heading text-[16px] md:text-[18px] text-[#5C554E] font-light max-w-2xl mx-auto mb-6 leading-relaxed">
+                {t("activities.subtitle")}
+              </p>
+              
               <div className="w-12 h-[1.5px] bg-[#C9A84C] mx-auto mb-16" />
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
