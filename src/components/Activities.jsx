@@ -19,7 +19,7 @@ const Activities = () => {
       ============================================================== */}
       <section 
         id="workshops" 
-        className="pt-32 pb-28 px-8 text-[#1A1715] min-h-screen flex items-center transition-colors duration-500 relative z-10 bg-cover bg-right-top bg-no-repeat bg-[url('/bg-activities-lab-mobile.jpg')] md:bg-[url('/bg-activities-lab.jpg')]"
+        className="pt-32 pb-28 px-8 text-[#1A1715] min-h-screen flex items-center transition-colors duration-500 relative z-10 bg-cover bg-center bg-no-repeat bg-[url('/bg-activities-lab-mobile.jpg')] md:bg-[url('/bg-activities-lab.jpg')]"
       >
         <div className="max-w-[1200px] w-full mx-auto text-center">
           
