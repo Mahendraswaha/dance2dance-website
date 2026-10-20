@@ -213,3 +213,29 @@ Para não poluir este manifesto com regras de infraestrutura complexa, os manuai
   * *Desfecho:* A partir de `0.48`, o gradiente dissolve suavemente até o término da seção para entregar o encerramento iluminado.
 * **Componentes Responsáveis:** `HeroSequence.jsx` e `src/index.css`.
 
+## 11. Arquitetura da Seção "O que fazemos" (Activities) & Transições
+* **Substituição e Promoção do Layout:** O design validado no laboratório de design foi promovido definitivamente para a Home (`src/components/Activities.jsx`), substituindo o modelo anterior e encerrando a fase experimental.
+* **Hierarquia Visual e Tipografia:**
+  * **Kicker:** `font-heading uppercase text-[#8C6D23] font-semibold text-[10px] tracking-[5px]` ("O que fazemos" / "What we do" / "Hva vi gjør").
+  * **Título Principal:** `font-batang text-[38px] font-normal text-[#1A1715] leading-tight tracking-tight` ("Três Caminhos para a Transformação" / "Three Paths to Transformation" / "Tre veier til transformasjon").
+  * **Subtítulo:** `font-heading text-[16px] md:text-[18px] text-[#5C554E] font-light max-w-2xl mx-auto leading-relaxed` ("Workshops, programas e projetos: o corpo como ponto de partida.").
+  * **Linha Divisória de Destaque:** `w-12 h-[1.5px] bg-[#C9A84C] mx-auto mb-16`.
+* **Papel de Parede e Responsividade (Wallpapers):**
+  * **Desktop:** `bg-[url('/bg-activities-lab.jpg')]`
+  * **Mobile:** `bg-[url('/bg-activities-lab-mobile.jpg')]`
+  * **Ancoragem:** `bg-center` (centralizado tanto em mobile quanto em desktop; teste com ancoragem no topo-direita descartado após avaliação responsiva).
+  * **Observação de Futuro (Tablet):** Caso necessário no futuro, avaliar a introdução de asset dedicado para tablet (`bg-activities-tablet.jpg`).
+* **Delimitações e Transições em Degradê Dourado:**
+  * **Entrada (Hero -> Atividades):** Divisor com degradê dourado `w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent`.
+  * **Saída (Atividades -> Filosofia/Manifesto):** Divisor com degradê dourado `w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent`.
+* **Cards dos Três Programas:**
+  * Cards com fundo branco `#FFFFFF`, borda suave `#E5DFD3`, `rounded-2xl`, e hover lift elegante (`hover:-translate-y-[10px]`) acompanhado de brilho radial sutil em degradê temático:
+    * **Card 1 (Be the Dance):** Rota `/be-the-dance`, logo `logo-bethedance-light.png`, destaque hover azul suave `#8BBCD8`.
+    * **Card 2 (Biostretch):** Rota `/biostretch`, logo `logo-biostretch-light.png` (`scale-110`), destaque hover verde suave `#5AA87A`.
+    * **Card 3 (Kroppsskole):** Rota `/kroppsskole`, logo `logo-kroppsskole-light.png`, destaque hover verde-azulado `#4A9B8E`.
+* **Desativação e Limpeza do Lab (`/lab`):**
+  * A rota `/lab` e a página `DesignLabPage.jsx` foram definitivamente removidas do `App.jsx`.
+  * Chaves temporárias (`activitiesLab`) foram integralmente limpas dos arquivos de tradução (`pt.json`, `en.json`, `no.json`) e da planilha mestre `Dance2Dance_Traducoes_Revisao.xlsx` via `openpyxl`.
+* **Componentes Responsáveis:** `src/components/Activities.jsx`.
+
+
