@@ -117,9 +117,11 @@ export default function CommunicationsTab() {
     return bodyHtml
       .replace(/{{userName}}/g, "<strong>Safia Costa</strong>")
       .replace(/{{workshopName}}/g, "<strong>Be The Dance Masterclass</strong>")
+      .replace(/{{workshopLink}}/g, "https://www.dance2dance.no/be-the-dance")
       .replace(/{{workshopDate}}/g, "<strong>15/10/2026</strong>")
       .replace(/{{workshopTime}}/g, "<strong>19:00</strong>")
       .replace(/{{locationName}}/g, "<strong>Studio Tøyen, Oslo</strong>")
+      .replace(/{{locationMapLink}}/g, "https://maps.google.com")
       .replace(/{{eventId}}/g, "preview_event_123");
   };
 
@@ -276,7 +278,7 @@ export default function CommunicationsTab() {
                 <>
                   {isEditing ? <RichTextEditor value={bodyHtml} onChange={setBodyHtml} /> : <div className="prose prose-invert prose-sm max-w-none min-h-[300px] p-6 border border-[#222222] rounded bg-[#0A0A0E] text-zinc-300" dangerouslySetInnerHTML={{ __html: bodyHtml }} />}
                   <p className="mt-2 text-xs text-zinc-500">
-                    {t('adminPage.tabs.communications.availableVars')} <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>, <code className="text-zinc-400">{'{{eventId}}'}</code>
+                    {t('adminPage.tabs.communications.availableVars')} <code className="text-zinc-400">{'{{userName}}'}</code>, <code className="text-zinc-400">{'{{workshopName}}'}</code>, <code className="text-zinc-400">{'{{workshopLink}}'}</code>, <code className="text-zinc-400">{'{{workshopDate}}'}</code>, <code className="text-zinc-400">{'{{workshopTime}}'}</code>, <code className="text-zinc-400">{'{{locationName}}'}</code>, <code className="text-zinc-400">{'{{locationMapLink}}'}</code>, <code className="text-zinc-400">{'{{eventId}}'}</code>
                   </p>
                 </>
               )}

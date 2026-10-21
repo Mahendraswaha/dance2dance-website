@@ -1,3 +1,51 @@
+function resolveEventData(fields = {}, lang = 'en', eventId = '') {
+  // Title with language fallback
+  const title = fields[`title_${lang}`]?.stringValue ||
+                fields.title?.stringValue ||
+                fields.title_en?.stringValue ||
+                fields.title_pt?.stringValue ||
+                fields.title_no?.stringValue ||
+                'Workshop';
+
+  // Location with language fallback
+  const location = fields[`location_${lang}`]?.stringValue ||
+                   fields.location?.stringValue ||
+                   fields.location_en?.stringValue ||
+                   fields.location_pt?.stringValue ||
+                   fields.location_no?.stringValue ||
+                   'Dance2Dance Studio';
+
+  // Address for Google Maps Link
+  const address = fields.address?.stringValue?.trim() || '';
+  const locationMapLink = address
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+    : (location ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}` : 'https://maps.google.com');
+
+  // Workshop Link
+  let targetPath = fields.targetPath?.stringValue || '';
+  if (!targetPath) {
+    const cat = fields.category?.stringValue;
+    if (cat === 'kroppsskole') targetPath = '/kroppsskole';
+    else if (cat === 'biostretch') targetPath = '/biostretch';
+    else targetPath = '/be-the-dance';
+  }
+  const workshopLink = `https://www.dance2dance.no${targetPath}`;
+
+  const startDate = fields.startDate?.stringValue || '';
+  const startTime = fields.startTime?.stringValue || '';
+
+  return {
+    title,
+    location,
+    address,
+    locationMapLink,
+    workshopLink,
+    startDate,
+    startTime,
+    eventId
+  };
+}
+
 export default async function handler(req, res) {
   try {
     // 1. Security Check
@@ -124,18 +172,12 @@ export default async function handler(req, res) {
         if (!eventRes.ok) throw new Error(`Falha ao buscar evento ${enrollment.eventId}: ${eventRes.status}`);
         
         const eventDoc = await eventRes.json();
-        const ev = {
-          title: eventDoc.fields?.title?.stringValue || '',
-          startDate: eventDoc.fields?.startDate?.stringValue || '',
-          startTime: eventDoc.fields?.startTime?.stringValue || '',
-          neighborhood: eventDoc.fields?.neighborhood?.stringValue || '',
-          locationMapLink: eventDoc.fields?.locationMapLink?.stringValue || ''
-        };
+        const evData = resolveEventData(eventDoc.fields, enrollment.language, enrollment.eventId);
 
         let dateStr = '';
-        if (ev.startDate) {
+        if (evData.startDate) {
           const loc = enrollment.language === 'no' ? 'no-NO' : enrollment.language === 'en' ? 'en-US' : 'pt-BR';
-          dateStr = new Date(ev.startDate + 'T12:00:00').toLocaleDateString(loc);
+          dateStr = new Date(evData.startDate + 'T12:00:00').toLocaleDateString(loc);
         }
 
         let notifyType = 'enrollment_confirmed';
@@ -145,11 +187,13 @@ export default async function handler(req, res) {
           type: notifyType,
           userEmail: enrollment.userEmail,
           userName: enrollment.userName || 'Aluno',
-          workshopName: ev.title || 'Workshop',
+          workshopName: evData.title,
+          workshopLink: evData.workshopLink,
           workshopDate: dateStr,
-          workshopTime: ev.startTime,
-          locationName: ev.neighborhood,
-          locationMapLink: ev.locationMapLink,
+          workshopTime: evData.startTime,
+          locationName: evData.location,
+          locationMapLink: evData.locationMapLink,
+          eventId: evData.eventId,
           lang: enrollment.language
         };
 
@@ -264,18 +308,21 @@ export default async function handler(req, res) {
         if (eFields.reminder1DaySent && eFields.reminder1DaySent.booleanValue === true) continue;
         
         const lang = eFields.language?.stringValue || 'en';
+        const evData = resolveEventData(evDoc.fields, lang, evDoc.id);
         const loc = lang === 'no' ? 'no-NO' : lang === 'en' ? 'en-US' : 'pt-BR';
-        const dateStr = new Date(evDoc.fields.startDate.stringValue + 'T12:00:00').toLocaleDateString(loc);
+        const dateStr = evData.startDate ? new Date(evData.startDate + 'T12:00:00').toLocaleDateString(loc) : '';
         
         const notifyBody = {
           type: 'reminder_1_day',
           userEmail: eFields.userEmail?.stringValue,
           userName: eFields.userName?.stringValue || 'Aluno',
-          workshopName: evDoc.fields.title?.stringValue || 'Workshop',
+          workshopName: evData.title,
+          workshopLink: evData.workshopLink,
           workshopDate: dateStr,
-          workshopTime: evDoc.fields.startTime?.stringValue || '',
-          locationName: evDoc.fields.neighborhood?.stringValue || '',
-          locationMapLink: evDoc.fields.locationMapLink?.stringValue || '',
+          workshopTime: evData.startTime,
+          locationName: evData.location,
+          locationMapLink: evData.locationMapLink,
+          eventId: evData.eventId,
           lang: lang
         };
         
@@ -389,18 +436,21 @@ export default async function handler(req, res) {
         if (eFields.feedbackSent && eFields.feedbackSent.booleanValue === true) continue;
         
         const lang = eFields.language?.stringValue || 'en';
+        const evData = resolveEventData(evDoc.fields, lang, evDoc.id);
         const loc = lang === 'no' ? 'no-NO' : lang === 'en' ? 'en-US' : 'pt-BR';
-        const dateStr = new Date(evDoc.fields.startDate.stringValue + 'T12:00:00').toLocaleDateString(loc);
+        const dateStr = evData.startDate ? new Date(evData.startDate + 'T12:00:00').toLocaleDateString(loc) : '';
         
         const notifyBody = {
           type: 'post_event_feedback',
           userEmail: eFields.userEmail?.stringValue,
           userName: eFields.userName?.stringValue || 'Aluno',
-          workshopName: evDoc.fields.title?.stringValue || 'Workshop',
+          workshopName: evData.title,
+          workshopLink: evData.workshopLink,
           workshopDate: dateStr,
-          workshopTime: evDoc.fields.startTime?.stringValue || '',
-          locationName: evDoc.fields.neighborhood?.stringValue || '',
-          locationMapLink: evDoc.fields.locationMapLink?.stringValue || '',
+          workshopTime: evData.startTime,
+          locationName: evData.location,
+          locationMapLink: evData.locationMapLink,
+          eventId: evData.eventId,
           lang: lang
         };
         

@@ -1,10 +1,10 @@
 import nodemailer from 'nodemailer';
 
-// Helper: Substituir variveis dinmicas no formato {{variavel}}
+// Helper: Substituir variáveis dinâmicas no formato {{variavel}}
 function replaceVariables(templateString, variables) {
   let result = templateString;
   for (const [key, value] of Object.entries(variables)) {
-    result = result.replace(new RegExp(`{{\\s*${key}\\s*}}`, 'g'), value);
+    result = result.replace(new RegExp(`{{\\s*${key}\\s*}}`, 'g'), value !== undefined && value !== null ? value : '');
   }
   return result;
 }
@@ -14,7 +14,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { type, userEmail, userName, workshopName, workshopDate, workshopTime, workshopLink, locationName, locationMapLink, lang = 'en', userLang } = req.body;
+  const { 
+    type, 
+    userEmail, 
+    userName, 
+    workshopName, 
+    workshopDate, 
+    workshopTime, 
+    workshopLink, 
+    locationName, 
+    locationMapLink, 
+    eventId,
+    lang = 'en', 
+    userLang 
+  } = req.body;
   
   const finalLang = userLang || lang;
 
@@ -26,8 +39,8 @@ export default async function handler(req, res) {
   const smtpPass = process.env.SMTP_PASS;
 
   if (!smtpUser || !smtpPass) {
-    console.error('Configuraǜes SMTP ausentes.');
-    return res.status(500).json({ error: 'Erro de configuraǜo no servidor' });
+    console.error('Configurações SMTP ausentes.');
+    return res.status(500).json({ error: 'Erro de configuração no servidor' });
   }
 
   // Mapear o tipo do frontend para o prefixo do ID no Firestore
@@ -50,8 +63,8 @@ export default async function handler(req, res) {
   let bodyHtml = '';
 
   try {
-    // Buscar o template direto da API REST pblica do Firestore
-    // Nota: Requer que a coleǜo crm_email_templates tenha permissǜo de leitura pblica no firestore.rules
+    // Buscar o template direto da API REST pública do Firestore
+    // Nota: Requer que a coleção crm_email_templates tenha permissão de leitura pública no firestore.rules
     const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/crm_email_templates/${templateId}`;
     const response = await fetch(firestoreUrl);
     
@@ -74,17 +87,34 @@ export default async function handler(req, res) {
 
     // Extrair subject e body_html (A API REST retorna { stringValue: '...' })
     const rawSubject = docData.fields.subject?.stringValue || '';
-    const rawBodyHtml = docData.fields.body_html?.stringValue || '';
+    let rawBodyHtml = docData.fields.body_html?.stringValue || '';
 
-    // Variveis que o template espera
+    // Se o template tem {{workshopName}} sem link {{workshopLink}} e temos workshopLink,
+    // garantimos que o nome do workshop seja clicável e elegante
+    if (workshopLink && !rawBodyHtml.includes('{{workshopLink}}')) {
+      if (rawBodyHtml.includes('<strong>{{workshopName}}</strong>')) {
+        rawBodyHtml = rawBodyHtml.replace(
+          '<strong>{{workshopName}}</strong>',
+          `<a target="_blank" rel="noopener noreferrer nofollow" href="${workshopLink}" style="color: rgb(201, 168, 76); text-decoration: underline;"><strong><u>{{workshopName}}</u></strong></a>`
+        );
+      } else if (rawBodyHtml.includes('{{workshopName}}') && !rawBodyHtml.includes('href=')) {
+        rawBodyHtml = rawBodyHtml.replace(
+          '{{workshopName}}',
+          `<a target="_blank" rel="noopener noreferrer nofollow" href="${workshopLink}" style="color: rgb(201, 168, 76); text-decoration: underline;"><strong><u>{{workshopName}}</u></strong></a>`
+        );
+      }
+    }
+
+    // Variáveis que o template espera
     const variables = {
-      userName,
-      workshopName,
-      workshopDate,
-      workshopTime,
-      workshopLink,
-      locationName,
-      locationMapLink
+      userName: userName || '',
+      workshopName: workshopName || '',
+      workshopDate: workshopDate || '',
+      workshopTime: workshopTime || '',
+      workshopLink: workshopLink || '',
+      locationName: locationName || '',
+      locationMapLink: locationMapLink || '',
+      eventId: eventId || ''
     };
 
     subject = replaceVariables(rawSubject, variables);
