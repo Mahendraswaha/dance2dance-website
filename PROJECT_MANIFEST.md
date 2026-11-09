@@ -239,3 +239,12 @@ Para não poluir este manifesto com regras de infraestrutura complexa, os manuai
 * **Componentes Responsáveis:** `src/components/Activities.jsx`.
 
 
+
+## 12. Módulo de Importação de Alunos e Inscrições (Micro CRM)
+* **Objetivo de Produto:** Permitir a carga em lote de alunos e participantes provenientes de sistemas de parceiros (teatros, centros culturais, editais e empresas) diretamente para o banco de dados do Micro CRM.
+* **Planilha Modelo Oficial:** Disponibilizada para download no painel administrativo e em `public/templates/modelo_importacao_alunos.xlsx`, contendo cabeçalhos padronizados (`nome_completo`, `email`, `telefone`, `cidade`, `bairro`, `pais`, `idioma`, `parceiro_origem`, `observacoes`) e aba de instruções de preenchimento.
+* **Regras de Negócio e Segurança de Dados:**
+  * **Regra Anti-Spam (Escudo da Outbox):** Toda inscrição gerada via importação DEVE ter `emailSent: true` gravado no documento da coleção `enrollments`. Isso impede que o robô de envio (`crm-cron.js`) interprete o registro como pendente na Outbox e dispare e-mails de confirmação para eventos retroativos.
+  * **Deduplicação de Contatos:** A validação compara o e-mail da linha com os registros existentes na coleção `users`. Se o contato já existir, seus dados preenchidos anteriormente são preservados e novos campos ausentes são enriquecidos; se for novo, o perfil é criado com `hasAuthAccount: false` e `source: 'partner_import'`.
+  * **Vínculo Opcional a Workshops:** Permite associar a lista a um workshop existente da Agenda com status `attended` (concluído) ou `enrolled` (futuro).
+* **Componentes Responsáveis:** `src/components/admin/ImportUsersModal.jsx`, `src/components/admin/RegisteredUsersManager.jsx` e `public/templates/modelo_importacao_alunos.xlsx`.

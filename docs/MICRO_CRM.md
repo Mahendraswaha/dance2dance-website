@@ -93,3 +93,16 @@ A arquitetura futura contará com:
 O módulo de avaliações (Feedback Pós-Evento) também faz parte do fluxo do CRM.
 - **Painel Admin:** Interface para curadoria (Pendente, Aprovado, Rejeitado), contando com filtros rápidos por Grupo/Categoria (Be the Dance, Biostretch, Kroppsskole) e busca omnibox (Aluno, Título ou Data).
 - **Perfil do Aluno:** O estudante pode editar sua avaliação **apenas** enquanto ela não foi publicada (ou seja, `status === 'pending'` ou `rejected`). Assim que o administrador mudar o status para `approved`, o frontend aplica um *lock* (travamento), removendo o botão de edição e exibindo a tag "Avaliação Recebida" para garantir a integridade dos depoimentos exibidos no site público.
+
+
+## 5. Ingestão e Carga de Leads / Inscrições de Parceiros
+Para alimentar o CRM com alunos que se inscreveram através de canais externos (sistemas de parceiros culturais, editais ou eventos corporativos), o sistema conta com uma arquitetura de importação em lote (*batch ingestion*).
+
+### A. Fluxo de Ingestão de Dados
+1. **Entrada:** Arquivo `.xlsx` ou `.csv` processado no frontend pelo SheetJS (`xlsx`), compatível com o template oficial disponibilizado em `public/templates/modelo_importacao_alunos.xlsx`.
+2. **Mapeamento Flexível:** Reconhecimento automático de colunas em três idiomas (Português, Inglês e Norueguês Bokmål).
+3. **Validação Prévia:** Validação de formato de e-mail e presença de nome, separando contatos novos, existentes (merge) e inválidos com tabela de pré-visualização.
+4. **Gravação em Lote (Firestore `writeBatch`):**
+   - **Coleção `users`:** Criação ou atualização do contato sem sobrescrever informações preenchidas pelo próprio aluno. Contatos novos recebem `hasAuthAccount: false` e `source: 'partner_import'`.
+   - **Coleção `enrollments`:** Criação do vínculo com o workshop selecionado com status `attended` ou `enrolled`.
+   - **Trava de Disparo:** O campo `emailSent` é rigidamente gravado como `true` para garantir que o gatilho da Outbox no `api/crm-cron.js` não envie notificações para workshops que já ocorreram no passado.
