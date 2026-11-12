@@ -529,7 +529,7 @@ export default function AdminDashboard() {
         <div className="mb-6">
           <h1 className="font-batang text-3xl sm:text-4xl text-[#F0EDE8]">
             {isInstructor 
-              ? `${t("adminPage.instructorPortalTitle", "Portal do Instrutor")} â€¢ ${currentUser?.profile?.nome || currentUser?.displayName || 'Instrutor'}`
+              ? `${t("adminPage.instructorPortalTitle", "Portal do Instrutor")} • ${currentUser?.profile?.nome || currentUser?.displayName || 'Instrutor'}`
               : t("adminPage.adminTitle")}
           </h1>
           {isInstructor && (
@@ -1073,7 +1073,7 @@ export default function AdminDashboard() {
                             {/* Instrutor */}
                             {event.instructor && (
                               <span className="text-[10px] font-heading text-[#9A9A9A] ml-2">
-                                â€¢ <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
+                                • <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
                               </span>
                             )}
 
