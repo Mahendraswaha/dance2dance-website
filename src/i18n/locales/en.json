@@ -1295,7 +1295,13 @@
       "noOngoing": "No events currently in progress."
     },
     "allowScholarshipsLabel": "Community Scholarships (Tøyen / Grønland)",
-    "allowScholarshipsHint": "Enables option to request a 100% scholarship for residents of Tøyen and Grønland"
+    "allowScholarshipsHint": "Enables option to request a 100% scholarship for residents of Tøyen and Grønland",
+    "scholarshipEnabledToast": "Scholarships enabled for this workshop!",
+    "scholarshipDisabledToast": "Scholarships disabled for this workshop!",
+    "toggleScholarshipDisable": "Click to disable scholarships for this workshop",
+    "toggleScholarshipEnable": "Click to enable scholarships for this workshop",
+    "badgeScholarshipActive": "Scholarships Active (Tøyen/Grønland)",
+    "badgeScholarshipNone": "No Scholarships"
   },
   "contactPage": {
     "kicker": "CONTACT & PARTNERSHIPS",

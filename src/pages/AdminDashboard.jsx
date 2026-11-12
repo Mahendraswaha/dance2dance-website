@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import StudentsModal from '../components/StudentsModal';
 import { useTranslation } from 'react-i18next';
 import { Pencil, Trash2, Users, Calendar, MapPin, Clock, UserCheck, CalendarPlus, ChevronDown, Check, Sparkles, Download, Heart, Star } from 'lucide-react';
-import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, downloadEventIcs, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary } from '../utils/eventHelpers';
+import { getLocalizedEvent, getEventCategory, getEventRoute, generateInstructorCalendarUrl, downloadEventIcs, isEventPast, isEventOngoing, formatEventDate, getCategoryTheme, generateScheduleSummary, isEventScholarshipAllowed } from '../utils/eventHelpers';
 import ScheduleCalendarPicker from '../components/ScheduleCalendarPicker';
 import RegisteredUsersManager from '../components/admin/RegisteredUsersManager';
 import WishlistManager from '../components/admin/WishlistManager';
@@ -412,7 +412,7 @@ export default function AdminDashboard() {
       location_pt: event.location_pt || event.location || '',
       address: event.address || '',
       totalSpots: event.totalSpots || '',
-      allowScholarships: event.allowScholarships !== false
+      allowScholarships: isEventScholarshipAllowed(event)
     });
     setEditingId(event.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -421,6 +421,23 @@ export default function AdminDashboard() {
   function handleCancelEdit() {
     setEditingId(null);
     setFormData(initialFormState);
+  }
+
+  async function handleToggleScholarship(event) {
+    const currentAllowed = isEventScholarshipAllowed(event);
+    const newAllowed = !currentAllowed;
+    try {
+      await updateDoc(doc(db, 'events', event.id), {
+        allowScholarships: newAllowed
+      });
+      setEvents(prev => prev.map(e => e.id === event.id ? { ...e, allowScholarships: newAllowed } : e));
+      toast.success(newAllowed 
+        ? t('adminPage.scholarshipEnabledToast', 'Bolsas ativadas para este workshop!') 
+        : t('adminPage.scholarshipDisabledToast', 'Bolsas desativadas para este workshop!'));
+    } catch (err) {
+      console.error(err);
+      toast.error(t('adminPage.saveError', 'Erro ao atualizar bolsas:') + ' ' + (err.message || ''));
+    }
   }
 
   async function handleDelete(id) {
@@ -1058,6 +1075,25 @@ export default function AdminDashboard() {
                               <span className="text-[10px] font-heading text-[#9A9A9A] ml-2">
                                 â€¢ <span className="text-[#CFCFCF] font-semibold">{event.instructor}</span>
                               </span>
+                            )}
+
+                            {/* Toggle Rápido de Bolsas Comunitárias */}
+                            {!isInstructor && (
+                              <button
+                                type="button"
+                                onClick={() => handleToggleScholarship(event)}
+                                title={isEventScholarshipAllowed(event)
+                                  ? t("adminPage.toggleScholarshipDisable", "Clique para desativar bolsas neste workshop")
+                                  : t("adminPage.toggleScholarshipEnable", "Clique para ativar bolsas neste workshop")}
+                                className={`text-[8px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] transition-all flex items-center gap-1 cursor-pointer ml-1 ${
+                                  isEventScholarshipAllowed(event)
+                                    ? 'bg-accent/15 text-accent border border-accent/30 hover:bg-accent/25 font-semibold'
+                                    : 'bg-zinc-900 text-zinc-500 border border-zinc-800 hover:text-zinc-300 hover:border-zinc-700'
+                                }`}
+                              >
+                                <Sparkles className="w-2.5 h-2.5 shrink-0" />
+                                <span>{isEventScholarshipAllowed(event) ? t("adminPage.badgeScholarshipActive", "Bolsas Ativas (Tøyen/Grønland)") : t("adminPage.badgeScholarshipNone", "Sem Bolsas")}</span>
+                              </button>
                             )}
                           </div>
 

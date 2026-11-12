@@ -23,7 +23,8 @@ import { doc, collection, runTransaction, updateDoc } from 'firebase/firestore';
 import { 
   getCategoryTheme, 
   getLocalizedEvent, 
-  formatEventDate 
+  formatEventDate,
+  isEventScholarshipAllowed
 } from '../utils/eventHelpers';
 import { toast } from 'sonner';
 
@@ -95,8 +96,8 @@ export default function EnrollmentModal({
   const timeRange = event.startTime && event.endTime ? `${event.startTime} – ${event.endTime}` : '';
   const isFull = (event.enrolledCount || 0) >= (event.totalSpots || 0);
 
-  // O evento permite bolsas comunitárias? Padrão é true a menos que expressamente false (ex: Verketyoga)
-  const allowsScholarships = event.allowScholarships !== false;
+  // O evento permite bolsas comunitárias? Usa a flag ou fallback inteligente por polo comunitário
+  const allowsScholarships = isEventScholarshipAllowed(event);
   const isRequestingScholarship = allowsScholarships && scholarshipChoice === 'scholarship';
 
   async function handleSubmit(e) {

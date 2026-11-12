@@ -618,3 +618,47 @@ export function getCategoryTheme(category) {
   }
 }
 
+/**
+ * Determina se o evento disponibiliza bolsas comunitárias (Tøyen / Grønland).
+ * Respeita a flag explícita `allowScholarships`.
+ * Caso o evento seja legado e a flag não esteja definida:
+ * - Se for em local externo / parceiro (Verketyoga, Bærums Verk, etc.), retorna false.
+ * - Se for em polos comunitários (Interkulturelt Museum, K1, Gamle Munch, Tøyen, Grønland), retorna true.
+ */
+export function isEventScholarshipAllowed(event) {
+  if (!event) return false;
+  if (typeof event.allowScholarships === 'boolean') {
+    return event.allowScholarships;
+  }
+
+  // Fallback inteligente para eventos legados do banco
+  const combined = [
+    event.location,
+    event.location_no,
+    event.location_en,
+    event.location_pt,
+    event.address
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  // Locais conhecidos sem bolsa (parceiros externos / fora de Oslo comunitário)
+  if (combined.includes('verket') || combined.includes('bærum') || combined.includes('baerum')) {
+    return false;
+  }
+
+  // Polos sociais de Tøyen e Grønland
+  if (
+    combined.includes('tøyen') || 
+    combined.includes('toyen') || 
+    combined.includes('grønland') || 
+    combined.includes('gronland') ||
+    combined.includes('interkulturelt') ||
+    combined.includes('k1') ||
+    combined.includes('munch')
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+

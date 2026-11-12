@@ -1295,7 +1295,13 @@
       "noOngoing": "Ingen arrangementer pågår for øyeblikket."
     },
     "allowScholarshipsLabel": "Lokale stipendplasser (Tøyen / Grønland)",
-    "allowScholarshipsHint": "Gjør det mulig for beboere på Tøyen og Grønland å søke om 100 % stipend"
+    "allowScholarshipsHint": "Gjør det mulig for beboere på Tøyen og Grønland å søke om 100 % stipend",
+    "scholarshipEnabledToast": "Stipendplasser er aktivert for denne workshop!",
+    "scholarshipDisabledToast": "Stipendplasser er deaktivert for denne workshop!",
+    "toggleScholarshipDisable": "Klikk for å deaktivere stipendplasser for denne workshop",
+    "toggleScholarshipEnable": "Klikk for å aktivere stipendplasser for denne workshop",
+    "badgeScholarshipActive": "Stipend aktive (Tøyen/Grønland)",
+    "badgeScholarshipNone": "Uten stipend"
   },
   "contactPage": {
     "kicker": "KONTAKT & SAMARBEID",

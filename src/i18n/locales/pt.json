@@ -1295,7 +1295,13 @@
       "noOngoing": "Nenhum evento em andamento no momento."
     },
     "allowScholarshipsLabel": "Bolsas Comunitárias (Tøyen / Grønland)",
-    "allowScholarshipsHint": "Disponibiliza opção de solicitação de bolsa 100% para moradores de Tøyen e Grønland"
+    "allowScholarshipsHint": "Disponibiliza opção de solicitação de bolsa 100% para moradores de Tøyen e Grønland",
+    "scholarshipEnabledToast": "Bolsas ativadas para este workshop!",
+    "scholarshipDisabledToast": "Bolsas desativadas para este workshop!",
+    "toggleScholarshipDisable": "Clique para desativar bolsas neste workshop",
+    "toggleScholarshipEnable": "Clique para ativar bolsas neste workshop",
+    "badgeScholarshipActive": "Bolsas Ativas (Tøyen/Grønland)",
+    "badgeScholarshipNone": "Sem Bolsas"
   },
   "contactPage": {
     "kicker": "CONTATO & PARCERIAS",
