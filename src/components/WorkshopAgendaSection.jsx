@@ -25,7 +25,8 @@ import {
   isEventOngoing, 
   formatEventDate, 
   getCategoryTheme, 
-  getWeekdayAbbrev 
+  getWeekdayAbbrev,
+  isEventScholarshipAllowed 
 } from '../utils/eventHelpers';
 import WorkshopWishlist from './WorkshopWishlist';
 import ScholarshipModal from './ScholarshipModal';
@@ -180,9 +181,11 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
       const { isEligible, neighborhood: eligibleNeighborhood } = checkUserScholarshipEligibility(profileData);
       const userNeighborhood = profileData.neighborhood || profileData.bairro || eligibleNeighborhood || '';
 
-      // Se o usuário reside em Tøyen ou Grønland e ainda não decidiu sobre a bolsa:
-      if (scholarshipDecision === null && isEligible) {
-        const ev = events.find(e => e.id === eventId);
+      // Se o usuário reside em Tøyen ou Grønland e ainda não decidiu sobre a bolsa (e o evento permite bolsas):
+      const ev = events.find(e => e.id === eventId);
+      const allowsScholarships = isEventScholarshipAllowed(ev);
+
+      if (scholarshipDecision === null && allowsScholarships && isEligible) {
         const { title: evTitle } = ev ? getLocalizedEvent(ev, currentLang) : { title: '' };
         setPendingEnrollment({
           eventId,
@@ -688,7 +691,13 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                   ) : (
                       <div className="w-full flex flex-col items-center">
                         {isFull && <span className="text-[9px] text-red-400/80 font-heading tracking-[1.5px] uppercase mb-2 text-center">{t('agendaPage.fullSpots', 'Vagas esgotadas')}</span>}
-                        <button onClick={() => setEnrollmentModalEvent(event)}
+                        <button onClick={() => {
+                          if (!currentUser) {
+                            setEnrollmentModalEvent(event);
+                          } else {
+                            handleEnroll(event.id, isFull);
+                          }
+                        }}
                       disabled={actionLoading === event.id}
                       className={`w-full font-heading text-[10px] uppercase tracking-[2px] font-semibold py-3 px-8 transition-colors duration-300 rounded-full cursor-pointer ${
                         isFull 
