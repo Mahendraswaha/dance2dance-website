@@ -563,13 +563,13 @@ export default function RegisteredUsersManager({ events = [] }) {
                           const cat = ev.category || 'bethedance';
                           const theme = getCategoryTheme(cat);
                           const { title: eventTitle } = getLocalizedEvent(ev, currentLang);
-                          const dateRange = formatEventDate(ev.startDate, null, currentLang);
+                          const dateRange = formatEventDate(ev.startDate, ev.endDate, currentLang);
 
                           return (
                             <span 
                               key={i}
-                              className={`text-[10px] font-heading px-2 py-0.5 rounded-[2px] border truncate max-w-[180px] ${theme.badgeBg}`}
-                              title={`${eventTitle} (${dateRange})`}
+                              className={`text-[10px] font-heading px-2 py-0.5 rounded-[2px] border truncate max-w-[240px] ${theme.badgeBg}`}
+                              title={`${eventTitle} (${dateRange})${Array.isArray(ev.sessions) && ev.sessions.length > 1 ? ` • ${ev.sessions.length} encontros` : ''}`}
                             >
                               {eventTitle} {dateRange ? `• ${dateRange}` : ''}
                             </span>
