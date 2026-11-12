@@ -1293,7 +1293,9 @@
       "ongoingEvents": "Events in Progress",
       "noUpcoming": "No upcoming classes scheduled.",
       "noOngoing": "No events currently in progress."
-    }
+    },
+    "allowScholarshipsLabel": "Community Scholarships (Tøyen / Grønland)",
+    "allowScholarshipsHint": "Enables option to request a 100% scholarship for residents of Tøyen and Grønland"
   },
   "contactPage": {
     "kicker": "CONTACT & PARTNERSHIPS",
@@ -1928,6 +1930,43 @@
       "pullQuote": "Your body isn't something you have to fix. It's something you get to experience!",
       "closingQuote": "\"I want <i>Good Morning Dance</i> to be a little gift that you give yourself before the day begins. Just some music, some movement, and an opportunity to feel good in your own body.\"",
       "signoff": "— Safia"
+    }
+  },
+  "enrollmentModal": {
+    "fullName": "Full Name",
+    "email": "Email",
+    "restrictionsLabel": "Physical or Health Restrictions",
+    "restrictionsPlaceholder": "Back pain, injuries, recent surgeries, pregnancy... If none, leave blank.",
+    "scholarshipSectionTitle": "Enrollment Category",
+    "payingOption": "Regular Spot (Paying)",
+    "payingDesc": "Your fee funds social scholarships for the local community.",
+    "scholarshipOption": "Full Scholarship (100%)",
+    "scholarshipDesc": "Exclusive for residents of Tøyen and Grønland.",
+    "addressTitleScholarship": "Residential Address in Oslo (Tøyen / Grønland Verification)",
+    "addressTitleInvoice": "Billing Address for Invoice (Faktura)",
+    "addressPlaceholder": "Street and number (e.g. Kolstadgata 1)",
+    "zipPlaceholder": "Postal Code (e.g. 0652)",
+    "cityPlaceholder": "Neighborhood and City (e.g. Tøyen, Oslo)",
+    "passwordLabel": "Create an account password",
+    "passwordHint": "Your password allows you to access your student portal, history, and certificates.",
+    "newAccountLink": "I am a new student",
+    "existingAccountLink": "I already have an account",
+    "submitScholarshipBtn": "Request Full Scholarship",
+    "submitEnrollBtn": "Confirm Enrollment",
+    "successScholarship": "Scholarship request received! We will verify your Tøyen/Grønland address and follow up by email.",
+    "successWaitlist": "You joined the waitlist! We will notify you by email as soon as a spot opens.",
+    "successEnrolled": "Enrollment confirmed! We have sent the confirmation details to your email.",
+    "errors": {
+      "nameRequired": "Please enter your full name.",
+      "emailInvalid": "Please enter a valid email address.",
+      "addressRequired": "Please enter your street name and number.",
+      "zipRequired": "Please enter your postal code.",
+      "cityRequired": "Please enter your neighborhood or city.",
+      "passwordShort": "Password must be at least 6 characters long.",
+      "loginFailed": "Incorrect password or user not found. Please verify your credentials.",
+      "emailInUse": "This email is already registered. Please enter your existing password to complete enrollment.",
+      "genericAuth": "Failed to register student account.",
+      "genericEnroll": "Error registering your enrollment. Please try again."
     }
   }
 }

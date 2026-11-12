@@ -200,7 +200,8 @@ export default function AdminDashboard() {
     location_en: '',
     location_pt: '',
     address: '',
-    totalSpots: ''
+    totalSpots: '',
+    allowScholarships: true
   };
 
   const [formData, setFormData] = useState(initialFormState);
@@ -339,6 +340,7 @@ export default function AdminDashboard() {
         endTime: formData.endTime || '',
         totalHours: formData.totalHours ? Number(formData.totalHours) : null,
         totalSpots: Number(formData.totalSpots),
+        allowScholarships: formData.allowScholarships !== false,
         sessions: formData.sessions || [],
 
         title_no,
@@ -409,7 +411,8 @@ export default function AdminDashboard() {
       location_en: event.location_en || event.location || '',
       location_pt: event.location_pt || event.location || '',
       address: event.address || '',
-      totalSpots: event.totalSpots || ''
+      totalSpots: event.totalSpots || '',
+      allowScholarships: event.allowScholarships !== false
     });
     setEditingId(event.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -635,6 +638,8 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
+                
+
                 {/* Campos de Instrutor e E-mail com alinhamento perfeito */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
                   <div>
@@ -670,6 +675,8 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
+                
+
                 {/* Abas de Idioma na ordem: NO -> EN -> PT */}
                 <div>
                   <label className="block font-heading text-[10px] uppercase tracking-[1.5px] text-[#CFCFCF] mb-2">
@@ -699,6 +706,8 @@ export default function AdminDashboard() {
                     </button>
                   </div>
                 </div>
+
+                
 
                 {/* TÃ­tulo do Evento no Idioma Ativo (Combobox estrito por Categoria) */}
                 <div ref={titleDropdownRef} className="relative">
@@ -818,6 +827,26 @@ export default function AdminDashboard() {
                       className="w-full bg-[#141414] border border-[#333333] text-[#F0EDE8] px-3 py-3 focus:outline-none focus:border-accent/50 transition-colors rounded-[2px] font-heading font-light text-sm" 
                     />
                   </div>
+                </div>
+
+                {/* Opção de Bolsas Comunitárias */}
+                <div className="p-3 bg-[#16161C] border border-[#262632] rounded-[2px] flex items-center justify-between">
+                  <div>
+                    <label className="block font-heading text-xs text-[#F0EDE8] font-semibold cursor-pointer" htmlFor="allowScholarships">
+                      {t("adminPage.allowScholarshipsLabel", "Bolsas Comunitárias (Tøyen / Grønland)")}
+                    </label>
+                    <p className="text-[11px] font-heading text-zinc-400">
+                      {t("adminPage.allowScholarshipsHint", "Disponibiliza opção de solicitação de bolsa 100% para moradores de Tøyen e Grønland")}
+                    </p>
+                  </div>
+                  <input
+                    id="allowScholarships"
+                    type="checkbox"
+                    name="allowScholarships"
+                    checked={formData.allowScholarships !== false}
+                    onChange={(e) => setFormData(prev => ({ ...prev, allowScholarships: e.target.checked }))}
+                    className="w-4 h-4 accent-accent cursor-pointer"
+                  />
                 </div>
 
                 {/* Texto VisÃ­vel de Datas / HorÃ¡rios no Idioma Ativo */}

@@ -40,6 +40,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/SEOHead';
 import ScholarshipModal from '../components/ScholarshipModal';
+import EnrollmentModal from '../components/EnrollmentModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
 import ConfirmModal from '../components/ConfirmModal';
 import { toast } from 'sonner';
@@ -81,6 +82,7 @@ export default function AgendaPage() {
   // Modal de Solicitação de Bolsa Comunitária (Tøyen / Grønland)
   const [scholarshipModalOpen, setScholarshipModalOpen] = useState(false);
   const [pendingEnrollment, setPendingEnrollment] = useState(null);
+  const [enrollmentModalEvent, setEnrollmentModalEvent] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -257,6 +259,23 @@ export default function AgendaPage() {
     }
     setActionLoading(null);
   }
+
+  const handleEnrollmentSuccess = (result) => {
+    setUserEnrollments(prev => ({
+      ...prev,
+      [result.eventId]: { status: result.status, id: result.id }
+    }));
+    setEvents(prev => prev.map(ev => {
+      if (ev.id !== result.eventId) return ev;
+      if (result.status === 'enrolled') {
+        return { ...ev, enrolledCount: (ev.enrolledCount || 0) + 1 };
+      }
+      if (result.status === 'waitlist') {
+        return { ...ev, waitlistCount: (ev.waitlistCount || 0) + 1 };
+      }
+      return ev;
+    }));
+  };
 
   async function handleEnroll(eventId, isFull, scholarshipDecision = null) {
     try {
@@ -874,7 +893,7 @@ export default function AgendaPage() {
             ) : (
                       <div className="w-full flex flex-col items-center">
                         {isFull && <span className="text-[9px] text-red-400/80 font-heading tracking-[1.5px] uppercase mb-2 text-center">{t('agendaPage.fullSpots', 'Vagas esgotadas')}</span>}
-                        <button onClick={() => handleEnroll(event.id, isFull)}
+                        <button onClick={() => setEnrollmentModalEvent(event)}
                 disabled={actionLoading === event.id}
                 className={`w-full btn-magnetic font-heading text-[10px] uppercase tracking-[2px] font-semibold py-3 px-8 transition-colors duration-300 rounded-full ${
                   isFull 
@@ -1430,6 +1449,14 @@ export default function AgendaPage() {
         workshopTitle={pendingEnrollment?.workshopTitle || ''}
         neighborhood={pendingEnrollment?.neighborhood || ''}
         loading={actionLoading !== null}
+      />
+
+      {/* Modal de Inscrição Direta / Rápida */}
+      <EnrollmentModal
+        isOpen={!!enrollmentModalEvent}
+        event={enrollmentModalEvent}
+        onClose={() => setEnrollmentModalEvent(null)}
+        onSuccess={handleEnrollmentSuccess}
       />
     </div>
   );

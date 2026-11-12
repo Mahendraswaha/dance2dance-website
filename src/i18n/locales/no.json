@@ -1293,7 +1293,9 @@
       "ongoingEvents": "Pågående Arrangementer",
       "noUpcoming": "Ingen kommende klasser planlagt.",
       "noOngoing": "Ingen arrangementer pågår for øyeblikket."
-    }
+    },
+    "allowScholarshipsLabel": "Lokale stipendplasser (Tøyen / Grønland)",
+    "allowScholarshipsHint": "Gjør det mulig for beboere på Tøyen og Grønland å søke om 100 % stipend"
   },
   "contactPage": {
     "kicker": "KONTAKT & SAMARBEID",
@@ -1928,6 +1930,43 @@
       "pullQuote": "Kroppen din er ikke noe du må fikse. Den er noe du får lov til å oppleve!",
       "closingQuote": "\"Jeg vil at <i>Good Morning Dance</i> skal være en liten gave som du gir deg selv før dagen begynner. Bare litt musikk, litt bevegelse og en mulighet til å føle deg vel i din egen kropp.\"",
       "signoff": "- Safia"
+    }
+  },
+  "enrollmentModal": {
+    "fullName": "Fullt navn",
+    "email": "E-post",
+    "restrictionsLabel": "Fysiske eller helsemessige hensyn",
+    "restrictionsPlaceholder": "Ryggplager, skader, nylige operasjoner, graviditet... La stå tomt dersom du ikke har noen.",
+    "scholarshipSectionTitle": "Påmeldingstype",
+    "payingOption": "Ordinær plass (betalende)",
+    "payingDesc": "Deltakeravgiften finansierer fullstendige stipendplasser for lokalsamfunnet.",
+    "scholarshipOption": "Fullt stipend (100%)",
+    "scholarshipDesc": "Forbeholdt beboere i Tøyen og Grønland.",
+    "addressTitleScholarship": "Bostedsadresse i Oslo (dokumentasjon for Tøyen / Grønland)",
+    "addressTitleInvoice": "Fakturaadresse",
+    "addressPlaceholder": "Gate og nummer (f.eks. Kolstadgata 1)",
+    "zipPlaceholder": "Postnummer (f.eks. 0652)",
+    "cityPlaceholder": "Bydel og sted (f.eks. Tøyen, Oslo)",
+    "passwordLabel": "Opprett et passord",
+    "passwordHint": "Passordet gir deg tilgang til din elevprofil, kurshistorikk og kursbevis.",
+    "newAccountLink": "Jeg er ny deltaker",
+    "existingAccountLink": "Jeg har allerede en konto",
+    "submitScholarshipBtn": "Søk om fullt stipend",
+    "submitEnrollBtn": "Bekreft påmelding",
+    "successScholarship": "Søknad om stipend er mottatt. Vi kontrollerer bostedsadressen din i Tøyen/Grønland og tar kontakt på e-post.",
+    "successWaitlist": "Du er satt på venteliste. Vi gir deg beskjed på e-post så snart en plass blir ledig.",
+    "successEnrolled": "Påmeldingen er bekreftet. Vi har sendt bekreftelse til din e-post.",
+    "errors": {
+      "nameRequired": "Vennligst oppgi fullt navn.",
+      "emailInvalid": "Vennligst oppgi en gyldig e-postadresse.",
+      "addressRequired": "Vennligst oppgi gateadresse og husnummer.",
+      "zipRequired": "Vennligst oppgi postnummer.",
+      "cityRequired": "Vennligst oppgi bydel eller poststed.",
+      "passwordShort": "Passordet må bestå av minst 6 tegn.",
+      "loginFailed": "Feil passord eller bruker finnes ikke. Vennligst sjekk opplysningene.",
+      "emailInUse": "Denne e-postadressen er allerede registrert. Skriv inn ditt eksisterende passord for å bekrefte påmeldingen.",
+      "genericAuth": "Kunne ikke opprette deltakerkonto.",
+      "genericEnroll": "Det oppsto en feil under påmeldingen. Vennligst prøv igjen."
     }
   }
 }

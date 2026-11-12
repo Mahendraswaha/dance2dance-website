@@ -1293,7 +1293,9 @@
       "ongoingEvents": "Eventos em Andamento",
       "noUpcoming": "Nenhuma turma futura programada.",
       "noOngoing": "Nenhum evento em andamento no momento."
-    }
+    },
+    "allowScholarshipsLabel": "Bolsas Comunitárias (Tøyen / Grønland)",
+    "allowScholarshipsHint": "Disponibiliza opção de solicitação de bolsa 100% para moradores de Tøyen e Grønland"
   },
   "contactPage": {
     "kicker": "CONTATO & PARCERIAS",
@@ -1928,6 +1930,43 @@
       "pullQuote": "Seu corpo não é algo que você precisa consertar. É algo que você tem a oportunidade de vivenciar.",
       "closingQuote": "\"Quero que <i>Good Morning Dance</i> seja um presente que você dá a si mesmo antes do dia começar. Apenas um pouco de música, alguns movimentos e uma oportunidade de se sentir bem no seu próprio corpo.\"",
       "signoff": "- Safia"
+    }
+  },
+  "enrollmentModal": {
+    "fullName": "Nome Completo",
+    "email": "E-mail",
+    "restrictionsLabel": "Restrições Físicas ou de Saúde",
+    "restrictionsPlaceholder": "Dores na coluna, lesões, cirurgias recentes, gravidez... Se não tiver nenhuma, deixe em branco.",
+    "scholarshipSectionTitle": "Modalidade da Inscrição",
+    "payingOption": "Vaga Regular (Pagante)",
+    "payingDesc": "Sua taxa financia as bolsas sociais para a comunidade.",
+    "scholarshipOption": "Bolsa Integral (100%)",
+    "scholarshipDesc": "Exclusivo para moradores de Tøyen e Grønland.",
+    "addressTitleScholarship": "Endereço em Oslo (Validação Tøyen / Grønland)",
+    "addressTitleInvoice": "Endereço para emissão da Fatura (Faktura)",
+    "addressPlaceholder": "Rua e número (ex: Kolstadgata 1)",
+    "zipPlaceholder": "Código Postal / Postnummer (ex: 0652)",
+    "cityPlaceholder": "Bairro e Cidade (ex: Tøyen, Oslo)",
+    "passwordLabel": "Crie uma senha de acesso",
+    "passwordHint": "Sua senha permite acessar sua área de aluno, histórico e certificados.",
+    "newAccountLink": "Sou novo aluno",
+    "existingAccountLink": "Já tenho conta",
+    "submitScholarshipBtn": "Solicitar Bolsa Integral",
+    "submitEnrollBtn": "Confirmar Inscrição",
+    "successScholarship": "Solicitação de bolsa recebida com sucesso! Analisaremos seu endereço em Tøyen/Grønland e retornaremos por e-mail.",
+    "successWaitlist": "Você entrou na lista de espera! Avisaremos por e-mail assim que surgir uma vaga.",
+    "successEnrolled": "Inscrição confirmada com sucesso! Enviamos a confirmação para o seu e-mail.",
+    "errors": {
+      "nameRequired": "Por favor, informe seu nome completo.",
+      "emailInvalid": "Por favor, informe um e-mail válido.",
+      "addressRequired": "Por favor, informe a rua e número do seu endereço.",
+      "zipRequired": "Por favor, informe o código postal (Postnummer).",
+      "cityRequired": "Por favor, informe o bairro ou cidade.",
+      "passwordShort": "A senha de acesso deve ter pelo menos 6 caracteres.",
+      "loginFailed": "Senha incorreta ou usuário não encontrado. Verifique seus dados.",
+      "emailInUse": "Este e-mail já está cadastrado. Digite sua senha existente para confirmar a inscrição.",
+      "genericAuth": "Falha ao registrar conta de aluno.",
+      "genericEnroll": "Erro ao registrar sua inscrição. Tente novamente."
     }
   }
 }

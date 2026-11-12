@@ -29,6 +29,7 @@ import {
 } from '../utils/eventHelpers';
 import WorkshopWishlist from './WorkshopWishlist';
 import ScholarshipModal from './ScholarshipModal';
+import EnrollmentModal from './EnrollmentModal';
 import { isScholarshipEligibleNeighborhood, checkUserScholarshipEligibility } from '../utils/neighborhoodHelpers';
 import ConfirmModal from './ConfirmModal';
 import { toast } from 'sonner';
@@ -52,6 +53,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
   // Modal de Solicitação de Bolsa Comunitária (Tøyen / Grønland)
   const [scholarshipModalOpen, setScholarshipModalOpen] = useState(false);
   const [pendingEnrollment, setPendingEnrollment] = useState(null);
+  const [enrollmentModalEvent, setEnrollmentModalEvent] = useState(null);
 
   const workshopSlug = workshop?.slug || workshop?.id;
   const workshopRoute = `/${program?.id}/${workshopSlug}`;
@@ -118,6 +120,23 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         [eventId]: willExpand
       };
     });
+  };
+
+  const handleEnrollmentSuccess = (result) => {
+    setUserEnrollments(prev => ({
+      ...prev,
+      [result.eventId]: { status: result.status, id: result.id }
+    }));
+    setEvents(prev => prev.map(ev => {
+      if (ev.id !== result.eventId) return ev;
+      if (result.status === 'enrolled') {
+        return { ...ev, enrolledCount: (ev.enrolledCount || 0) + 1 };
+      }
+      if (result.status === 'waitlist') {
+        return { ...ev, waitlistCount: (ev.waitlistCount || 0) + 1 };
+      }
+      return ev;
+    }));
   };
 
   async function handleEnroll(eventId, isFull, scholarshipDecision = null) {
@@ -669,7 +688,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                   ) : (
                       <div className="w-full flex flex-col items-center">
                         {isFull && <span className="text-[9px] text-red-400/80 font-heading tracking-[1.5px] uppercase mb-2 text-center">{t('agendaPage.fullSpots', 'Vagas esgotadas')}</span>}
-                        <button onClick={() => handleEnroll(event.id, isFull)}
+                        <button onClick={() => setEnrollmentModalEvent(event)}
                       disabled={actionLoading === event.id}
                       className={`w-full font-heading text-[10px] uppercase tracking-[2px] font-semibold py-3 px-8 transition-colors duration-300 rounded-full cursor-pointer ${
                         isFull 
@@ -800,6 +819,14 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
         workshopTitle={pendingEnrollment?.workshopTitle || ''}
         neighborhood={pendingEnrollment?.neighborhood || ''}
         loading={actionLoading !== null}
+      />
+
+      {/* Modal de Inscrição Direta / Rápida */}
+      <EnrollmentModal
+        isOpen={!!enrollmentModalEvent}
+        event={enrollmentModalEvent}
+        onClose={() => setEnrollmentModalEvent(null)}
+        onSuccess={handleEnrollmentSuccess}
       />
       <ConfirmModal isOpen={cancelModal.isOpen} title={t('agendaPage.cancelTitle', 'Cancelar Inscri��o')} message={t('agendaPage.confirmCancel', 'Tem certeza que deseja cancelar sua inscri��o/espera para este evento?')} onConfirm={confirmCancelEnrollment} onCancel={() => setCancelModal({ isOpen: false, eventId: null })} />
       </motion.section>
