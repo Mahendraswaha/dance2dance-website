@@ -490,6 +490,11 @@ export function getWeekdayAbbrev(dateStr, lang = 'pt') {
  */
 export function formatEventDate(startDate, endDate, lang = 'pt', withWeekday = true) {
   if (!startDate) return '';
+  // Se endDate for um código de idioma ('pt', 'en', 'no'), trata chamada com assinatura reduzida
+  if (endDate === 'pt' || endDate === 'en' || endDate === 'no') {
+    lang = endDate;
+    endDate = null;
+  }
   const [y1, m1, d1] = startDate.split('-');
   const wd1 = withWeekday ? `${getWeekdayAbbrev(startDate, lang)}, ` : '';
   const startStr = `${wd1}${d1}/${m1}/${y1}`;

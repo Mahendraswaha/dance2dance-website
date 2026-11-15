@@ -504,13 +504,9 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                         {neighborhood || t('adminPage.usersManager.notInformed', 'Não informado')}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                    <div className="flex items-center justify-between py-1">
                       <span className="text-[#888888]">{t('adminPage.usersManager.zipPostal', 'CEP / Postnr')}:</span>
                       <span className="text-[#E0DDD5] font-mono">{zip || '-'}</span>
-                    </div>
-                    <div className="flex items-center justify-between py-1">
-                      <span className="text-[#888888]">{t('adminPage.usersManager.cityCountry', 'Cidade / País')}:</span>
-                      <span className="text-[#E0DDD5]">{[city, country].filter(Boolean).join(' • ') || '-'}</span>
                     </div>
                   </>
                 )}

@@ -562,7 +562,7 @@ export default function ImportUsersModal({
                     <option value="">{t('adminPage.usersManager.noWorkshopOption', 'Nenhum (Apenas cadastrar contato no CRM)')}</option>
                     {events.map(ev => {
                       const { title } = getLocalizedEvent(ev, currentLang);
-                      const dateStr = ev.startDate ? formatEventDate(ev.startDate, currentLang) : '';
+                      const dateStr = ev.startDate ? formatEventDate(ev.startDate, ev.endDate, currentLang) : '';
                       return (
                         <option key={ev.id} value={ev.id}>
                           {title || 'Workshop'} {dateStr ? `(${dateStr})` : ''}
