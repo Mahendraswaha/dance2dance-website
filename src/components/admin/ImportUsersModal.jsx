@@ -391,6 +391,7 @@ export default function ImportUsersModal({
               userCity: row.cidade || '',
               userCountry: row.pais || 'Norway',
               userLang: row.idioma || 'no',
+              language: row.idioma || 'no',
               status: 'enrolled',
               emailSent: true, // CRÍTICO: Previne disparo do crm-cron para eventos passados
               source: 'partner_import',

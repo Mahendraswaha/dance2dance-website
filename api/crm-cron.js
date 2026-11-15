@@ -432,10 +432,11 @@ export default async function handler(req, res) {
         const eFields = item.document.fields;
         const enrollId = item.document.name.split('/').pop();
         
-        if (eFields.status?.stringValue !== 'enrolled') continue;
+        const st = eFields.status?.stringValue;
+        if (st !== 'enrolled' && st !== 'attended') continue;
         if (eFields.feedbackSent && eFields.feedbackSent.booleanValue === true) continue;
         
-        const lang = eFields.language?.stringValue || 'en';
+        const lang = eFields.language?.stringValue || eFields.userLang?.stringValue || 'no';
         const evData = resolveEventData(evDoc.fields, lang, evDoc.id);
         const loc = lang === 'no' ? 'no-NO' : lang === 'en' ? 'en-US' : 'pt-BR';
         const dateStr = evData.startDate ? new Date(evData.startDate + 'T12:00:00').toLocaleDateString(loc) : '';
