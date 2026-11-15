@@ -7,7 +7,7 @@ import { db } from '../../firebase';
 import { 
   X, Mail, Phone, Calendar, MapPin, HeartPulse, Sparkles, 
   Cake, CheckCircle2, Clock, MessageSquare, AlertTriangle, 
-  Compass, ExternalLink, CalendarDays, Star, Shield, Award
+  Compass, ExternalLink, CalendarDays, Star, Shield, Award, Info
 } from 'lucide-react';
 import { getCategoryTheme, formatEventDate, getLocalizedEvent, isEventPast } from '../../utils/eventHelpers';
 import { toast } from 'sonner';
