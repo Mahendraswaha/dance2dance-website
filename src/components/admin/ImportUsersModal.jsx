@@ -44,8 +44,20 @@ function mapRowData(rawRow) {
     row.tlf || row.telefon || row.mobile || ''
   ).trim();
 
+  const endereco = 
+    row.endereco || row.address || row.rua || row.street || 
+    row.gateadresse || row.gate || row.adresse || '';
+
+  const bairro = 
+    row.bairro || row.neighborhood || row.bydel || row.omrade || 
+    row.distrito || '';
+
+  const cep = String(
+    row.cep || row.zip || row.postal_code || row.postnummer || 
+    row.postnr || row.codigo_postal || row.postalcode || ''
+  ).trim();
+
   const cidade = row.cidade || row.city || row.by || row.bosted || '';
-  const bairro = row.bairro || row.neighborhood || row.bydel || '';
   const pais = row.pais || row.country || row.land || 'Norway';
   
   let idioma = (row.idioma || row.language || row.sprak || row.lang || 'no').toLowerCase();
@@ -78,8 +90,10 @@ function mapRowData(rawRow) {
     nome,
     email,
     telefone,
-    cidade,
+    endereco,
     bairro,
+    cep,
+    cidade,
     pais,
     idioma,
     parceiro,
@@ -300,9 +314,17 @@ export default function ImportUsersModal({
               updatePayload.city = row.cidade;
               updatePayload.cidade = row.cidade;
             }
+            if (row.endereco && !row.existingUserData?.address && !row.existingUserData?.endereco) {
+              updatePayload.address = row.endereco;
+              updatePayload.endereco = row.endereco;
+            }
             if (row.bairro && !row.existingUserData?.neighborhood && !row.existingUserData?.bairro) {
               updatePayload.neighborhood = row.bairro;
               updatePayload.bairro = row.bairro;
+            }
+            if (row.cep && !row.existingUserData?.zip && !row.existingUserData?.cep) {
+              updatePayload.zip = row.cep;
+              updatePayload.cep = row.cep;
             }
             if (row.pais && !row.existingUserData?.country && !row.existingUserData?.pais) {
               updatePayload.country = row.pais;
@@ -328,10 +350,14 @@ export default function ImportUsersModal({
               email: row.email,
               phone: row.telefone,
               telefone: row.telefone,
-              city: row.cidade,
-              cidade: row.cidade,
+              address: row.endereco,
+              endereco: row.endereco,
               neighborhood: row.bairro,
               bairro: row.bairro,
+              zip: row.cep,
+              cep: row.cep,
+              city: row.cidade,
+              cidade: row.cidade,
               country: row.pais || 'Norway',
               pais: row.pais || 'Norway',
               preferredLang: row.idioma || 'no',
@@ -359,8 +385,10 @@ export default function ImportUsersModal({
               userName: row.nome,
               userEmail: row.email,
               userPhone: row.telefone || '',
-              userCity: row.cidade || '',
+              userAddress: row.endereco || '',
               userNeighborhood: row.bairro || '',
+              userZip: row.cep || '',
+              userCity: row.cidade || '',
               userCountry: row.pais || 'Norway',
               userLang: row.idioma || 'no',
               status: 'enrolled',

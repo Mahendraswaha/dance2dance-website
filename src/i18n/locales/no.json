@@ -1116,7 +1116,12 @@
       "importNoValidRows": "Ingen gyldige oppføringer å importere.",
       "previewRowsSummary": "{{total}} rader lest ({{valid}} gyldige)",
       "importObservationTitle": "Studentnotater / opprinnelse",
-      "colNotes": "Notater"
+      "colNotes": "Notater",
+      "streetAddress": "Gateadresse / Adresse",
+      "neighborhoodLabel": "Bydel / Område",
+      "zipPostal": "Postnummer",
+      "notInformed": "Ikke oppgitt",
+      "streetAddressPlaceholder": "Gatenavn og nummer"
     },
     "autoGenerateSchedule": "Generer Sammendrag av Timeplan",
     "schedulePicker": {

@@ -1116,7 +1116,12 @@
       "importNoValidRows": "Nenhum registro válido para importar.",
       "previewRowsSummary": "{{total}} linhas lidas ({{valid}} válidas)",
       "importObservationTitle": "Observações / Origem do Aluno",
-      "colNotes": "Observações"
+      "colNotes": "Observações",
+      "streetAddress": "Rua / Endereço",
+      "neighborhoodLabel": "Bairro",
+      "zipPostal": "CEP / Postnr",
+      "notInformed": "Não informado",
+      "streetAddressPlaceholder": "Rua e número"
     },
     "autoGenerateSchedule": "Gerar Resumo da Programação",
     "schedulePicker": {

@@ -223,12 +223,38 @@ export default function AdminDashboard() {
   async function fetchEvents() {
     setLoading(true);
     try {
-      const q = query(collection(db, 'events'), orderBy('startDate', 'asc'));
-      const querySnapshot = await getDocs(q);
-      const fetchedEvents = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
+      const [eventsSnap, enrollSnap] = await Promise.all([
+        getDocs(query(collection(db, 'events'), orderBy('startDate', 'asc'))),
+        getDocs(collection(db, 'enrollments'))
+      ]);
+
+      // Conta em tempo real as inscrições reais de cada evento
+      const enrollCountByEvent = {};
+      const waitlistCountByEvent = {};
+      enrollSnap.docs.forEach(d => {
+        const data = d.data();
+        const eid = data.eventId;
+        if (!eid) return;
+        if (data.status === 'enrolled' || data.status === 'attended') {
+          enrollCountByEvent[eid] = (enrollCountByEvent[eid] || 0) + 1;
+        } else if (data.status === 'waitlist') {
+          waitlistCountByEvent[eid] = (waitlistCountByEvent[eid] || 0) + 1;
+        }
+      });
+
+      const fetchedEvents = eventsSnap.docs.map(doc => {
+        const data = doc.data();
+        const realEnrolled = enrollCountByEvent[doc.id] !== undefined ? enrollCountByEvent[doc.id] : (data.enrolledCount || 0);
+        const realWaitlist = waitlistCountByEvent[doc.id] !== undefined ? waitlistCountByEvent[doc.id] : (data.waitlistCount || 0);
+
+        return {
+          id: doc.id,
+          ...data,
+          enrolledCount: realEnrolled,
+          waitlistCount: realWaitlist
+        };
+      });
+
       setEvents(fetchedEvents);
 
       // Se o modal estiver aberto, atualiza os dados do evento nele tambÃ©m

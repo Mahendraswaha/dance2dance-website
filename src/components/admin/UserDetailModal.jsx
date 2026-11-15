@@ -129,8 +129,17 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
     setIsSavingEdit(true);
     try {
       const uid = user.id || user.uid;
-      await updateDoc(doc(db, 'users', uid), editData);
-      if (onUserUpdated) onUserUpdated(uid, editData);
+      const dataToSave = {
+        ...editData,
+        endereco: editData.address,
+        bairro: editData.neighborhood,
+        cep: editData.zip,
+        cidade: editData.city,
+        pais: editData.country,
+        telefone: editData.phone
+      };
+      await updateDoc(doc(db, 'users', uid), dataToSave);
+      if (onUserUpdated) onUserUpdated(uid, dataToSave);
       setIsEditing(false);
       toast.success(t('adminPage.usersManager.updateSuccess', 'Cadastro atualizado com sucesso.'));
     } catch (error) {
@@ -413,9 +422,9 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
         {/* Conteúdo com Scroll */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-8 divide-y divide-[#1A1A24]">
 
-          {/* Seção 1: Dados Pessoais e Endereço */}
+          {/* Seção 1: Dados Pessoais e Endereço Lado a Lado */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Informações Cadastrais */}
+            {/* Coluna 1: Informações Cadastrais */}
             <div className="space-y-4">
               <h3 className="font-heading text-xs uppercase tracking-[2px] text-accent font-semibold flex items-center gap-2">
                 <Compass className="w-4 h-4 text-accent" />
@@ -426,10 +435,10 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                 <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
                   <span className="text-[#888888]">{t('adminPage.usersManager.phoneLabel', 'Telefone / WhatsApp')}:</span>
                   {isEditing ? (
-                      <input type="text" name="phone" value={editData.phone} onChange={handleEditChange} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-40" />
-                    ) : (
-                      <span className="text-[#E0DDD5] font-mono">{phone || '-'}</span>
-                    )}
+                    <input type="text" name="phone" value={editData.phone} onChange={handleEditChange} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-40" />
+                  ) : (
+                    <span className="text-[#E0DDD5] font-mono">{phone || '-'}</span>
+                  )}
                 </div>
 
                 <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
@@ -438,84 +447,98 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
                     {t('adminPage.usersManager.birthDateLabel', 'Data de Nascimento')}:
                   </span>
                   {isEditing ? (
-                      <input type="date" name="birthDate" value={editData.birthDate} onChange={handleEditChange} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-32" />
-                    ) : (
-                      <span className="text-[#E0DDD5] font-mono">{birthInfo?.display || birthDate || '-'}</span>
-                    )}
+                    <input type="date" name="birthDate" value={editData.birthDate} onChange={handleEditChange} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-32" />
+                  ) : (
+                    <span className="text-[#E0DDD5] font-mono">{birthInfo?.display || birthDate || '-'}</span>
+                  )}
                 </div>
 
                 <div className="flex items-center justify-between py-1">
-                    <span className="text-[#888888]">{t('adminPage.usersManager.cityCountry', 'Cidade / País')}:</span>
-                    {isEditing ? (
-                      <div className="flex gap-2">
-                        <input type="text" name="city" value={editData.city} onChange={handleEditChange} placeholder="Cidade" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-24" />
-                        <input type="text" name="country" value={editData.country} onChange={handleEditChange} placeholder="País" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-24" />
-                      </div>
-                    ) : (
-                      <span className="text-[#E0DDD5]">{[city, country].filter(Boolean).join(' • ') || '-'}</span>
-                    )}
-                  </div>
+                  <span className="text-[#888888]">{t('adminPage.usersManager.cityCountry', 'Cidade / País')}:</span>
+                  {isEditing ? (
+                    <div className="flex gap-2">
+                      <input type="text" name="city" value={editData.city} onChange={handleEditChange} placeholder="Cidade" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-24" />
+                      <input type="text" name="country" value={editData.country} onChange={handleEditChange} placeholder="País" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-24" />
+                    </div>
+                  ) : (
+                    <span className="text-[#E0DDD5]">{[city, country].filter(Boolean).join(' • ') || '-'}</span>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Observações da Importação / Origem */}
-            {(user.observacoes || user.partnerName) && (
-              <div className="md:col-span-2 p-4 bg-[#121216] border border-[#1E1E24] rounded-[2px] space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <span className="font-heading text-xs uppercase tracking-[2px] text-accent font-semibold flex items-center gap-1.5">
-                    <Info className="w-4 h-4 text-accent" />
-                    {t('adminPage.usersManager.importObservationTitle', 'Observações / Origem do Aluno')}
-                  </span>
-                  {user.partnerName && (
-                    <span className="text-[10px] font-mono text-zinc-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]">
-                      Parceiro: {user.partnerName}
-                    </span>
-                  )}
-                </div>
-                {user.observacoes && (
-                  <p className="text-xs text-[#E0DDD5] font-heading italic leading-relaxed whitespace-pre-wrap bg-[#0A0A0E] p-3 rounded-[2px] border border-[#1A1A22]">
-                    "{user.observacoes}"
-                  </p>
-                )}
-              </div>
-            )}
-
-            {/* Endereço Completo */}
+            {/* Coluna 2: Endereço Residencial Completo */}
             <div className="space-y-4">
               <h3 className="font-heading text-xs uppercase tracking-[2px] text-accent font-semibold flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-accent" />
                 {t('adminPage.usersManager.addressSection', 'Endereço Residencial')}
               </h3>
 
-              <div className="text-xs font-heading bg-[#121216] border border-[#1E1E24] p-4 rounded-[2px] space-y-2">
-                  {isEditing ? (
-                      <div className="flex flex-col gap-2">
-                        <input type="text" name="address" value={editData.address} onChange={handleEditChange} placeholder="Endereço" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
-                        <div className="flex gap-2">
-                          <input type="text" name="neighborhood" value={editData.neighborhood} onChange={handleEditChange} placeholder="Bairro" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
-                          <input type="text" name="zip" value={editData.zip} onChange={handleEditChange} placeholder="CEP" className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-32" />
-                        </div>
+              <div className="space-y-2.5 text-xs font-heading bg-[#121216] border border-[#1E1E24] p-4 rounded-[2px]">
+                {isEditing ? (
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      <span className="text-[10px] text-[#888888] uppercase block mb-0.5">{t('adminPage.usersManager.streetAddress', 'Rua / Endereço')}:</span>
+                      <input type="text" name="address" value={editData.address} onChange={handleEditChange} placeholder={t('adminPage.usersManager.streetAddressPlaceholder', 'Rua e número')} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <span className="text-[10px] text-[#888888] uppercase block mb-0.5">{t('adminPage.usersManager.neighborhoodLabel', 'Bairro')}:</span>
+                        <input type="text" name="neighborhood" value={editData.neighborhood} onChange={handleEditChange} placeholder={t('adminPage.usersManager.neighborhoodLabel', 'Bairro')} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
                       </div>
-                  ) : fullAddress ? (
-                    <>
-                      <p className="text-[#E0DDD5] leading-relaxed">
-                        {address || '-'}
-                      </p>
-                      <p className="text-[#888888]">
-                        {[neighborhood, city].filter(Boolean).join(', ')}
-                      </p>
-                      <p className="text-zinc-500 font-mono">
-                        {[zip, country].filter(Boolean).join(' • ')}
-                      </p>
-                    </>
-                  ) : (
-                    <p className="text-zinc-500 italic py-3">
-                      {t('adminPage.usersManager.noAddress', 'Nenhum endereço cadastrado.')}
-                    </p>
-                  )}
-                </div>
+                      <div>
+                        <span className="text-[10px] text-[#888888] uppercase block mb-0.5">{t('adminPage.usersManager.zipPostal', 'CEP / Postnr')}:</span>
+                        <input type="text" name="zip" value={editData.zip} onChange={handleEditChange} placeholder={t('adminPage.usersManager.zipPostal', 'CEP')} className="bg-[#14141A] border border-[#333] text-sm text-[#E0DDD5] px-2 py-1 rounded w-full" />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                      <span className="text-[#888888]">{t('adminPage.usersManager.streetAddress', 'Rua / Endereço')}:</span>
+                      <span className="text-[#E0DDD5]">{address || '-'}</span>
+                    </div>
+                    <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                      <span className="text-[#888888]">{t('adminPage.usersManager.neighborhoodLabel', 'Bairro')}:</span>
+                      <span className={neighborhood ? "text-[#FAF8F5] font-semibold" : "text-zinc-500 italic"}>
+                        {neighborhood || t('adminPage.usersManager.notInformed', 'Não informado')}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                      <span className="text-[#888888]">{t('adminPage.usersManager.zipPostal', 'CEP / Postnr')}:</span>
+                      <span className="text-[#E0DDD5] font-mono">{zip || '-'}</span>
+                    </div>
+                    <div className="flex items-center justify-between py-1">
+                      <span className="text-[#888888]">{t('adminPage.usersManager.cityCountry', 'Cidade / País')}:</span>
+                      <span className="text-[#E0DDD5]">{[city, country].filter(Boolean).join(' • ') || '-'}</span>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
+
+          {/* Observações da Importação / Origem (Largura Total abaixo das duas colunas) */}
+          {(user.observacoes || user.partnerName) && (
+            <div className="mt-6 p-4 bg-[#121216] border border-[#1E1E24] rounded-[2px] space-y-1.5">
+              <div className="flex items-center justify-between">
+                <span className="font-heading text-xs uppercase tracking-[2px] text-accent font-semibold flex items-center gap-1.5">
+                  <Info className="w-4 h-4 text-accent" />
+                  {t('adminPage.usersManager.importObservationTitle', 'Observações / Origem do Aluno')}
+                </span>
+                {user.partnerName && (
+                  <span className="text-[10px] font-mono text-zinc-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]">
+                    Parceiro: {user.partnerName}
+                  </span>
+                )}
+              </div>
+              {user.observacoes && (
+                <p className="text-xs text-[#E0DDD5] font-heading italic leading-relaxed whitespace-pre-wrap bg-[#0A0A0E] p-3 rounded-[2px] border border-[#1A1A22]">
+                  "{user.observacoes}"
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Seção 2: Ficha de Saúde e Experiência */}
           <div className="pt-8 grid grid-cols-1 md:grid-cols-2 gap-6">

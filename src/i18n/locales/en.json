@@ -1116,7 +1116,12 @@
       "importNoValidRows": "No valid records to import.",
       "previewRowsSummary": "{{total}} rows read ({{valid}} valid)",
       "importObservationTitle": "Student Notes / Origin",
-      "colNotes": "Notes"
+      "colNotes": "Notes",
+      "streetAddress": "Street Address",
+      "neighborhoodLabel": "Neighborhood",
+      "zipPostal": "Postal Code / Zip",
+      "notInformed": "Not provided",
+      "streetAddressPlaceholder": "Street and number"
     },
     "autoGenerateSchedule": "Generate Schedule Summary",
     "schedulePicker": {
