@@ -1114,7 +1114,9 @@
       "importMissingName": "Mangler navn",
       "importInvalidEmail": "Ugyldig e-post",
       "importNoValidRows": "Ingen gyldige oppføringer å importere.",
-      "previewRowsSummary": "{{total}} rader lest ({{valid}} gyldige)"
+      "previewRowsSummary": "{{total}} rader lest ({{valid}} gyldige)",
+      "importObservationTitle": "Studentnotater / opprinnelse",
+      "colNotes": "Notater"
     },
     "autoGenerateSchedule": "Generer Sammendrag av Timeplan",
     "schedulePicker": {
@@ -1208,7 +1210,9 @@
       "saved": "Vurdering Lagret!",
       "saveEvaluation": "Lagre Vurdering",
       "crmBtn": "CRM",
-      "crmBtnTooltip": "Elevvurdering og Interne CRM-notater"
+      "crmBtnTooltip": "Elevvurdering og Interne CRM-notater",
+      "attendedStatus": "Fullført",
+      "importNotesTitle": "Partner- / importnotater"
     },
     "addToInstructorCalendar": "Legg til i Instruktørens Kalender (Google Calendar)",
     "instructorEmail": "Instruktørens E-post",

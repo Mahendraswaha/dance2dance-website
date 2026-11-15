@@ -1114,7 +1114,9 @@
       "importMissingName": "Nome ausente",
       "importInvalidEmail": "E-mail inválido",
       "importNoValidRows": "Nenhum registro válido para importar.",
-      "previewRowsSummary": "{{total}} linhas lidas ({{valid}} válidas)"
+      "previewRowsSummary": "{{total}} linhas lidas ({{valid}} válidas)",
+      "importObservationTitle": "Observações / Origem do Aluno",
+      "colNotes": "Observações"
     },
     "autoGenerateSchedule": "Gerar Resumo da Programação",
     "schedulePicker": {
@@ -1208,7 +1210,9 @@
       "saved": "Avaliação Salva!",
       "saveEvaluation": "Salvar Avaliação",
       "crmBtn": "CRM",
-      "crmBtnTooltip": "Avaliação e Anotações Internas de CRM"
+      "crmBtnTooltip": "Avaliação e Anotações Internas de CRM",
+      "attendedStatus": "Concluído",
+      "importNotesTitle": "Observações da Importação / Parceiro"
     },
     "addToInstructorCalendar": "Adicionar à Agenda do Instrutor (Google Calendar)",
     "instructorEmail": "E-mail do Instrutor",

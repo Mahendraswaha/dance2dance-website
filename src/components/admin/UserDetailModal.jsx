@@ -458,6 +458,28 @@ export default function UserDetailModal({ user, userEnrollments = [], onClose, o
               </div>
             </div>
 
+            {/* Observações da Importação / Origem */}
+            {(user.observacoes || user.partnerName) && (
+              <div className="md:col-span-2 p-4 bg-[#121216] border border-[#1E1E24] rounded-[2px] space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="font-heading text-xs uppercase tracking-[2px] text-accent font-semibold flex items-center gap-1.5">
+                    <Info className="w-4 h-4 text-accent" />
+                    {t('adminPage.usersManager.importObservationTitle', 'Observações / Origem do Aluno')}
+                  </span>
+                  {user.partnerName && (
+                    <span className="text-[10px] font-mono text-zinc-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]">
+                      Parceiro: {user.partnerName}
+                    </span>
+                  )}
+                </div>
+                {user.observacoes && (
+                  <p className="text-xs text-[#E0DDD5] font-heading italic leading-relaxed whitespace-pre-wrap bg-[#0A0A0E] p-3 rounded-[2px] border border-[#1A1A22]">
+                    "{user.observacoes}"
+                  </p>
+                )}
+              </div>
+            )}
+
             {/* Endereço Completo */}
             <div className="space-y-4">
               <h3 className="font-heading text-xs uppercase tracking-[2px] text-accent font-semibold flex items-center gap-2">

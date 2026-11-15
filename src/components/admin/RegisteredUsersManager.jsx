@@ -137,7 +137,7 @@ export default function RegisteredUsersManager({ events = [] }) {
         const country = (u.country || u.pais || '').toLowerCase();
         const q = searchQuery.trim().toLowerCase();
 
-        const matchesQuery = !q || name.includes(q) || email.includes(q) || phone.includes(q) || city.includes(q) || country.includes(q);
+        const matchesQuery = !q || name.includes(q) || email.includes(q) || phone.includes(q) || city.includes(q) || country.includes(q) || (u.observacoes || '').toLowerCase().includes(q) || (u.partnerName || '').toLowerCase().includes(q);
         if (!matchesQuery) return false;
 
         const userEnrs = enrollmentsByUserId[u.id] || enrollmentsByUserId[u.uid] || [];

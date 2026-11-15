@@ -1114,7 +1114,9 @@
       "importMissingName": "Missing name",
       "importInvalidEmail": "Invalid email",
       "importNoValidRows": "No valid records to import.",
-      "previewRowsSummary": "{{total}} rows read ({{valid}} valid)"
+      "previewRowsSummary": "{{total}} rows read ({{valid}} valid)",
+      "importObservationTitle": "Student Notes / Origin",
+      "colNotes": "Notes"
     },
     "autoGenerateSchedule": "Generate Schedule Summary",
     "schedulePicker": {
@@ -1208,7 +1210,9 @@
       "saved": "Evaluation Saved!",
       "saveEvaluation": "Save Evaluation",
       "crmBtn": "CRM",
-      "crmBtnTooltip": "Student Evaluation & Internal CRM Notes"
+      "crmBtnTooltip": "Student Evaluation & Internal CRM Notes",
+      "attendedStatus": "Completed",
+      "importNotesTitle": "Partner / Import Notes"
     },
     "addToInstructorCalendar": "Add to Instructor's Calendar (Google Calendar)",
     "instructorEmail": "Instructor Email",

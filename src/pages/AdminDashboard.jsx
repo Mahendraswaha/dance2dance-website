@@ -1006,8 +1006,14 @@ export default function AdminDashboard() {
             {loading ? (
               <p className="text-[#9A9A9A] font-heading">{t("adminPage.loading", "Carregando...")}</p>
             ) : (() => {
-              const upcomingEvents = myEvents.filter(e => !isEventPast(e));
-              const pastEvents = myEvents.filter(e => isEventPast(e));
+              const upcomingEvents = [...myEvents]
+                .filter(e => !isEventPast(e))
+                .sort((a, b) => new Date(a.startDate || 0) - new Date(b.startDate || 0));
+
+              const pastEvents = [...myEvents]
+                .filter(e => isEventPast(e))
+                .sort((a, b) => new Date(b.endDate || b.startDate || 0) - new Date(a.endDate || a.startDate || 0));
+
               const displayedEvents = adminTab === 'past' ? pastEvents : upcomingEvents;
 
               if (displayedEvents.length === 0) {

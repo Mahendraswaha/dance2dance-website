@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { collection, doc, writeBatch, updateDoc, increment } from 'firebase/firestore';
+import { collection, doc, writeBatch, updateDoc, increment, arrayUnion } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { 
   X, Upload, Download, FileSpreadsheet, CheckCircle2, 
@@ -52,7 +52,27 @@ function mapRowData(rawRow) {
   if (!['pt', 'en', 'no'].includes(idioma)) idioma = 'no';
 
   const parceiro = row.parceiro || row.partner || row.parceiro_origem || row.partner_name || row.kilde || '';
-  const observacoes = row.observacoes || row.observacao || row.notes || row.note || row.notater || row.obs || '';
+  
+  let observacoes = 
+    row.observacoes || row.observacao || 
+    row.notes || row.note || row.notater || row.notat || 
+    row.obs || row.observacoes_aluno || row.observacao_aluno ||
+    row.nota || row.notas || 
+    row.comentario || row.comentarios || row.comment || row.comments || '';
+
+  if (!observacoes) {
+    const matchingKey = Object.keys(row).find(k => 
+      k.includes('observa') || 
+      k.includes('notat') || 
+      k.includes('note') || 
+      k.includes('nota') || 
+      k.startsWith('obs') || 
+      k.includes('coment')
+    );
+    if (matchingKey && row[matchingKey]) {
+      observacoes = String(row[matchingKey]).trim();
+    }
+  }
 
   return {
     nome,
@@ -89,7 +109,6 @@ export default function ImportUsersModal({
   
   // Configurações da Importação
   const [targetEventId, setTargetEventId] = useState('');
-  const [enrollmentStatus, setEnrollmentStatus] = useState('attended'); // 'attended' | 'enrolled'
   const [defaultPartnerName, setDefaultPartnerName] = useState('');
   const [previewFilter, setPreviewFilter] = useState('all'); // 'all' | 'new' | 'existing' | 'invalid'
   const [previewSearch, setPreviewSearch] = useState('');
@@ -117,7 +136,6 @@ export default function ImportUsersModal({
       setFileName('');
       setParsedRows([]);
       setTargetEventId('');
-      setEnrollmentStatus('attended');
       setDefaultPartnerName('');
       setPreviewFilter('all');
       setPreviewSearch('');
@@ -290,6 +308,14 @@ export default function ImportUsersModal({
               updatePayload.country = row.pais;
               updatePayload.pais = row.pais;
             }
+            if (row.observacoes) {
+              updatePayload.observacoes = row.observacoes;
+              updatePayload.adminNotes = arrayUnion({
+                text: `[Importação: ${partner}] ${row.observacoes}`,
+                author: partner,
+                date: nowIso
+              });
+            }
             batch.update(userRef, updatePayload);
           } else {
             // Novo Usuário
@@ -312,7 +338,12 @@ export default function ImportUsersModal({
               role: 'student',
               source: 'partner_import',
               partnerName: partner,
-              observacoes: row.observacoes,
+              observacoes: row.observacoes || '',
+              adminNotes: row.observacoes ? [{
+                text: `[Importação: ${partner}] ${row.observacoes}`,
+                author: partner,
+                date: nowIso
+              }] : [],
               hasAuthAccount: false,
               createdAt: nowIso,
               importedAt: nowIso
@@ -332,11 +363,17 @@ export default function ImportUsersModal({
               userNeighborhood: row.bairro || '',
               userCountry: row.pais || 'Norway',
               userLang: row.idioma || 'no',
-              status: enrollmentStatus, // 'attended' ou 'enrolled'
+              status: 'enrolled',
               emailSent: true, // CRÍTICO: Previne disparo do crm-cron para eventos passados
               source: 'partner_import',
               partnerName: partner,
               observacoes: row.observacoes || '',
+              evaluation: row.observacoes ? {
+                rating: 0,
+                notes: row.observacoes,
+                instructorName: partner,
+                updatedAt: nowIso
+              } : null,
               importedAt: nowIso,
               createdAt: selectedEvent.startDate ? new Date(selectedEvent.startDate).toISOString() : nowIso
             });
@@ -483,7 +520,7 @@ export default function ImportUsersModal({
               </div>
 
               {/* Parâmetros Globais da Importação */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5 rounded-[3px] bg-[#0E0E14] border border-[#1E1E28]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5 rounded-[3px] bg-[#0E0E14] border border-[#1E1E28]">
                 {/* 1. Vincular a Workshop */}
                 <div>
                   <label className="block text-[11px] font-heading uppercase tracking-wider text-zinc-400 font-semibold mb-2">
@@ -507,23 +544,7 @@ export default function ImportUsersModal({
                   </select>
                 </div>
 
-                {/* 2. Status da Inscrição */}
-                <div>
-                  <label className="block text-[11px] font-heading uppercase tracking-wider text-zinc-400 font-semibold mb-2">
-                    {t('adminPage.usersManager.enrollmentStatusLabel', 'Status da Inscrição')}
-                  </label>
-                  <select
-                    value={enrollmentStatus}
-                    disabled={!targetEventId}
-                    onChange={(e) => setEnrollmentStatus(e.target.value)}
-                    className="w-full bg-[#14141A] border border-[#2A2A36] text-[#FAF8F5] px-3 py-2.5 text-xs font-heading rounded-[2px] focus:outline-none focus:border-accent disabled:opacity-40"
-                  >
-                    <option value="attended">{t('adminPage.usersManager.statusAttended', 'Concluído / Participou (attended)')}</option>
-                    <option value="enrolled">{t('adminPage.usersManager.statusEnrolled', 'Inscrito / Futuro (enrolled)')}</option>
-                  </select>
-                </div>
-
-                {/* 3. Parceiro Padrão */}
+                {/* 2. Parceiro Padrão */}
                 <div>
                   <label className="block text-[11px] font-heading uppercase tracking-wider text-zinc-400 font-semibold mb-2">
                     {t('adminPage.usersManager.defaultPartnerLabel', 'Nome do Parceiro')}
@@ -664,12 +685,13 @@ export default function ImportUsersModal({
                       <th className="py-2.5 px-3 font-semibold text-zinc-400">{t('adminPage.usersManager.colEmail', 'E-mail')}</th>
                       <th className="py-2.5 px-3 font-semibold text-zinc-400">{t('adminPage.usersManager.colPhone', 'Telefone')}</th>
                       <th className="py-2.5 px-3 font-semibold text-zinc-400">{t('adminPage.usersManager.colLocation', 'Cidade / Bairro')}</th>
+                      <th className="py-2.5 px-3 font-semibold text-zinc-400">{t('adminPage.usersManager.colNotes', 'Observações')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#181822]">
                     {previewRows.length === 0 ? (
                       <tr>
-                        <td colSpan={6} className="py-8 text-center text-zinc-500">
+                        <td colSpan={7} className="py-8 text-center text-zinc-500">
                           {t('adminPage.usersManager.noRowsForFilter', 'Nenhum registro encontrado para este filtro.')}
                         </td>
                       </tr>
@@ -702,6 +724,13 @@ export default function ImportUsersModal({
                           <td className="py-2 px-3 text-zinc-400">{r.telefone || '-'}</td>
                           <td className="py-2 px-3 text-zinc-400">
                             {[r.cidade, r.bairro].filter(Boolean).join(' - ') || '-'}
+                          </td>
+                          <td className="py-2 px-3 text-zinc-400 max-w-[200px] truncate" title={r.observacoes || ''}>
+                            {r.observacoes ? (
+                              <span className="italic text-zinc-300 font-light">"{r.observacoes}"</span>
+                            ) : (
+                              <span className="text-zinc-600 font-mono text-[10px]">-</span>
+                            )}
                           </td>
                         </tr>
                       ))

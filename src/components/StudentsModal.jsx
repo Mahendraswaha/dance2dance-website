@@ -8,7 +8,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { 
   X, Copy, Check, Download, UserCheck, Trash2, Phone, HeartPulse, 
   Mail, Calendar, CalendarPlus, MapPin, Sparkles, Cake, List, LayoutGrid,
-  Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock, RotateCcw
+  Star, Save, CheckCircle2, ChevronDown, ChevronUp, Lock, RotateCcw, Info
 } from 'lucide-react';
 import { generateInstructorCalendarUrl, formatEventDate, getLocalizedEvent, getEventCategory, getEventRoute } from '../utils/eventHelpers';
 
@@ -270,7 +270,9 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
             // Dados pedagógicos e de saúde (essenciais para a condução segura do workshop)
             userBirthDate: prof.birthDate || prof.birthdate || prof.dataNascimento || prof.nascimento || e.userBirthDate || '',
             userExperience: prof.experiencia || prof.experience || e.userExperience || '',
-            userRestrictions: prof.restricoes || prof.restrictions || e.userRestrictions || ''
+            userRestrictions: prof.restricoes || prof.restrictions || e.userRestrictions || '',
+            observacoes: e.observacoes || prof.observacoes || '',
+            partnerName: e.partnerName || prof.partnerName || ''
           };
         });
 
@@ -285,7 +287,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
     fetchEnrollments();
   }, [event, isInstructorUser]);
 
-  const enrolledStudents = enrollments.filter(e => e.status === 'enrolled');
+  const enrolledStudents = enrollments.filter(e => e.status === 'enrolled' || e.status === 'attended');
   const waitlistStudents = enrollments.filter(e => e.status === 'waitlist');
   const currentList = activeTab === 'enrolled' ? enrolledStudents : waitlistStudents;
 
@@ -382,7 +384,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
         return [
           idx + 1,
           escapeCsv(e.userName || ''),
-          escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+          escapeCsv(e.status === 'waitlist' ? 'Espera' : 'Inscrito'),
           escapeCsv(e.scholarshipRequested ? 'Sim (Bolsa 100%)' : 'Não'),
           escapeCsv(birthInfo?.formattedDate || e.userBirthDate || ''),
           birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
@@ -398,7 +400,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
       return [
         idx + 1,
         escapeCsv(e.userName || ''),
-        escapeCsv(e.status === 'enrolled' ? 'Inscrito' : 'Espera'),
+        escapeCsv(e.status === 'waitlist' ? 'Espera' : 'Inscrito'),
         escapeCsv(e.scholarshipRequested ? 'Sim (Bolsa 100%)' : 'Não'),
         escapeCsv(birthInfo?.formattedDate || e.userBirthDate || ''),
         birthInfo?.age !== null && birthInfo?.age !== undefined ? birthInfo.age : '',
@@ -527,7 +529,7 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
         const evData = evDoc.data();
 
         transaction.delete(enrollRef);
-        if (currentStatus === 'enrolled') {
+        if (currentStatus === 'enrolled' || currentStatus === 'attended') {
           transaction.update(eventRef, { enrolledCount: Math.max(0, (evData.enrolledCount || 0) - 1) });
         } else {
           transaction.update(eventRef, { waitlistCount: Math.max(0, (evData.waitlistCount || 0) - 1) });
@@ -822,6 +824,23 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
                           </div>
                         )}
 
+                        {/* Observações da Importação ou Gerais */}
+                        {student.observacoes && (
+                          <div className="mt-1.5 flex items-start gap-1.5 text-xs text-zinc-400">
+                            <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.2 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 shrink-0">
+                              Obs
+                            </span>
+                            <span className="italic text-zinc-300">
+                              "{student.observacoes}"
+                            </span>
+                            {student.partnerName && (
+                              <span className="text-[10px] text-zinc-500 font-mono">
+                                ({student.partnerName})
+                              </span>
+                            )}
+                          </div>
+                        )}
+
                         {/* Restrições corporais / Observações de Saúde */}
                         {student.userRestrictions && (
                           <div className="mt-2 inline-flex items-start gap-1.5 px-2.5 py-1 rounded bg-red-950/30 border border-red-900/40 text-red-300 text-xs">
@@ -934,13 +953,13 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
                         )}
 
                         <span className={`text-[10px] font-heading uppercase tracking-wider font-bold px-2.5 py-1 rounded-[2px] border ${
-                          student.status === 'enrolled'
-                            ? 'bg-emerald-950/30 text-emerald-400 border-emerald-800/30'
-                            : 'bg-yellow-950/30 text-yellow-400 border-yellow-800/30'
+                          student.status === 'waitlist'
+                            ? 'bg-yellow-950/30 text-yellow-400 border-yellow-800/30'
+                            : 'bg-emerald-950/30 text-emerald-400 border-emerald-800/30'
                         }`}>
-                          {student.status === 'enrolled' 
-                            ? t("adminPage.studentsModal.enrolledTab", "Inscrito") 
-                            : t("adminPage.studentsModal.waitlistTab", "Espera")}
+                          {student.status === 'waitlist' 
+                            ? t("adminPage.studentsModal.waitlistTab", "Espera")
+                            : t("adminPage.studentsModal.enrolledTab", "Inscrito")}
                         </span>
 
                         {student.status === 'waitlist' && (
@@ -1056,6 +1075,24 @@ export default function StudentsModal({ event, isInstructor = false, onClose, on
                         </p>
                       </div>
                     </div>
+
+                    {/* Observações da Importação / Origem */}
+                    {(student.observacoes || student.partnerName) && (
+                      <div className="p-3 bg-[#0d0d12] border border-[#1c1c24] rounded-[2px] md:col-span-2 lg:col-span-3">
+                        <span className="text-[10px] uppercase tracking-[1.5px] text-[#7A7A7A] block mb-1 font-semibold flex items-center gap-1.5">
+                          <Info className="w-3.5 h-3.5 text-accent" />
+                          {t("adminPage.studentsModal.importNotesTitle", "Observações da Importação / Parceiro")}
+                        </span>
+                        <p className="text-[#CFCFCF] font-light leading-relaxed whitespace-pre-line">
+                          {student.observacoes ? `"${student.observacoes}"` : <span className="text-[#555555] italic">{t("adminPage.studentsModal.none", "Nenhuma observação informada")}</span>}
+                          {student.partnerName && (
+                            <span className="block mt-1 text-[11px] text-zinc-500 font-mono">
+                              Origem / Parceiro: {student.partnerName}
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                    )}
 
                     {/* CRM • Avaliação e Observações do Instrutor */}
                     <div className="mt-4 pt-4 border-t border-[#1E1E28]">

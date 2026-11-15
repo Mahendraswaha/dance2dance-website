@@ -19,8 +19,9 @@ export async function syncAllCounters() {
       let trueWaitlist = 0;
       
       enrollSnap.forEach(eDoc => {
-        if (eDoc.data().status === 'enrolled') trueEnrolled++;
-        else if (eDoc.data().status === 'waitlist') trueWaitlist++;
+        const st = eDoc.data().status;
+        if (st === 'enrolled' || st === 'attended') trueEnrolled++;
+        else if (st === 'waitlist') trueWaitlist++;
       });
       
       const currentData = eventDoc.data();
