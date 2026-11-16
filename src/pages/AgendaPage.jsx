@@ -1046,22 +1046,27 @@ export default function AgendaPage() {
       
       <main className="flex-grow pt-40 md:pt-48 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full relative z-10">
         
-        {/* Cabeçalho mais compacto para caber na altura da tela */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
+        {/* HERO SECTION NO PADRÃO VISUAL DO SITE (IGUAL A PRICING & ACCESS) */}
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-6 md:mb-8"
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
-          <span className="font-heading text-[10px] md:text-xs uppercase tracking-[3px] text-accent font-semibold block mb-2">
-            {t("nav.agenda").toUpperCase()}
+          <span className="font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-4 font-semibold">
+            {t("nav.agenda", "Schedule").toUpperCase()}
           </span>
-          <h1 className="font-drama text-3xl md:text-5xl text-[#F0EDE8] mb-3">
+
+          <h1 className="font-batang text-4xl sm:text-5xl md:text-6xl text-[#F0EDE8] mb-5 tracking-tight font-normal">
             {t("agendaPage.title")}
           </h1>
-          <p className="font-heading text-[#9A9A9A] max-w-xl mx-auto text-xs md:text-sm leading-relaxed">
+
+          <div className="w-12 h-[1px] bg-accent/60 mx-auto mb-6" />
+
+          <p className="font-heading text-[#CFCFCF] font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             {t("agendaPage.subtitle")}
           </p>
-        </motion.div>
+        </motion.header>
 
         {/* Barra de Controles: Alternador de Visualização (Lista vs Calendário) e Filtros de Categoria */}
         <motion.div 
