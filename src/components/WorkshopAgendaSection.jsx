@@ -540,7 +540,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
             >
               <div className="flex flex-col md:flex-row items-center gap-8 w-full">
                 {/* Left Column: Dates & Schedule */}
-                <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#2C2C3A] pb-6 md:pb-0 pr-6">
+                <div className="order-2 md:order-1 w-full md:w-1/3 shrink-0 md:border-r border-[#2C2C3A] md:pr-6">
                   <div className="font-heading text-sm font-semibold uppercase tracking-wider mb-2 mt-1 flex flex-wrap items-center gap-2">
                     <span className={theme.textColor}>{dateStr}</span>
                     {isOngoing && (
@@ -638,7 +638,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 </div>
 
                 {/* Center Column: Event Title & Location */}
-                <div className="flex-1 flex flex-col justify-center min-w-0 w-full space-y-2">
+                <div className="order-1 md:order-2 flex-1 flex flex-col justify-center min-w-0 w-full space-y-2 pb-6 md:pb-0 border-b md:border-b-0 border-[#2C2C3A]">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] w-fit ${theme.badgeBg}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor}`} />
@@ -670,7 +670,7 @@ export default function WorkshopAgendaSection({ program, workshop, onEventsLoade
                 </div>
 
                 {/* Right Column: Instructor & Action Button */}
-                <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center">
+                <div className="order-3 md:order-3 shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center pt-2 md:pt-0">
                   {event.instructor && (
                     <Link 
                       to="/safia"

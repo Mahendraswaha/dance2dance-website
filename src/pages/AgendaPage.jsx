@@ -722,7 +722,7 @@ export default function AgendaPage() {
       >
         <div className="flex flex-col md:flex-row items-center gap-8 w-full">
           {/* Coluna Esquerda: Datas e Horários */}
-          <div className="w-full md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-[#2C2C3A] pb-6 md:pb-0 pr-6">
+          <div className="order-2 md:order-1 w-full md:w-1/3 shrink-0 md:border-r border-[#2C2C3A] md:pr-6">
             <div className="font-heading text-sm font-semibold uppercase tracking-wider mb-2 mt-1 flex flex-wrap items-center gap-2">
               <span className={theme.textColor}>{dateStr}</span>
               {isOngoing && (
@@ -830,8 +830,8 @@ export default function AgendaPage() {
             )}
           </div>
 
-          {/* Coluna Central: Informações do Evento */}
-          <div className="flex-1 flex flex-col justify-center min-w-0 w-full space-y-2">
+          {/* Coluna Central: Informações do Evento (Nome, Tag, Local) */}
+          <div className="order-1 md:order-2 flex-1 flex flex-col justify-center min-w-0 w-full space-y-2 pb-6 md:pb-0 border-b md:border-b-0 border-[#2C2C3A]">
             <div className="flex flex-wrap items-center gap-2">
               <Link 
                 to={getDetailsLink(event)}
@@ -870,7 +870,7 @@ export default function AgendaPage() {
           </div>
 
           {/* Coluna Direita: Instrutor + Ações */}
-          <div className="shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center">
+          <div className="order-3 md:order-3 shrink-0 w-full md:w-auto md:min-w-[180px] flex flex-col items-center justify-center pt-2 md:pt-0">
             {event.instructor && (
               <Link 
                 to="/safia"
@@ -1138,16 +1138,7 @@ export default function AgendaPage() {
             >
               Kroppsskole
             </button>
-            <button 
-              onClick={() => setFilter('goodmorningdance')}
-              className={`px-3.5 py-1.5 rounded-[2px] font-heading text-xs uppercase tracking-[1.5px] font-semibold transition-all duration-200 cursor-pointer ${
-                filter === 'goodmorningdance' 
-                  ? 'bg-[#D28C4B]/20 text-[#D28C4B] border border-[#D28C4B]/60 shadow-sm' 
-                  : 'bg-transparent text-[#9E9EAA] hover:text-[#D28C4B]'
-              }`}
-            >
-              Good Morning
-            </button>
+
           </div>
         </motion.div>
 
