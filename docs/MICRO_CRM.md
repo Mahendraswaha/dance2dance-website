@@ -105,4 +105,28 @@ Para alimentar o CRM com alunos que se inscreveram através de canais externos (
 4. **Gravação em Lote (Firestore `writeBatch`):**
    - **Coleção `users`:** Criação ou atualização do contato sem sobrescrever informações preenchidas pelo próprio aluno. Contatos novos recebem `hasAuthAccount: false` e `source: 'partner_import'`.
    - **Coleção `enrollments`:** Criação do vínculo com o workshop selecionado com status `attended` ou `enrolled`.
-   - **Trava de Disparo:** O campo `emailSent` é rigidamente gravado como `true` para garantir que o gatilho da Outbox no `api/crm-cron.js` não envie notificações para workshops que já ocorreram no passado.
+   - **Trava de Disparo:** O campo `emailSent` é rigidamente gravado como `true` para garantir que o gatilho da Outbox no `api/crm-cron.js` não envie notificações de confirmação para workshops que já ocorreram no passado.
+   - **Mapeamento Multilíngue de Endereço:** Extração automática de logradouro (`rua`, `endereco`, `address`, `street`, `gateadresse`), bairro (`bairro`, `neighborhood`, `bydel`, `omrade`, `distrito`) e CEP (`cep`, `zip`, `postal_code`, `postnummer`, `postnr`), gravando simultaneamente nas coleções `users` e `enrollments`.
+   - **Fallback Geográfico de Idioma:** Na ausência de coluna explícita de idioma no arquivo do parceiro, o importador adota por padrão o idioma norueguês (`userLang: 'no'`), alinhado à base territorial da organização e dos parceiros em Oslo/Bærum.
+
+## 6. Motor de E-mails Pós-Evento e Gestão de Vagas
+
+### A. Regras de Feedback Pós-Evento (`post_event_feedback`)
+O robô (`api/crm-cron.js`) executa diariamente às **08:00 UTC** via Vercel Cron:
+1. **Janela Temporal:** Identifica workshops cujo término (`endDate` ou `startDate`) ocorreu exatamente no dia anterior (`yesterdayStr`).
+2. **Elegibilidade de Alunos:** O disparo contempla tanto alunos inscritos via site (`status === 'enrolled'`) quanto alunos que concluíram cursos via importação de parceiros (`status === 'attended'`).
+3. **Seleção de Idioma:** O motor prioriza `userLang` ou `language` do documento de inscrição, com fallback automático para `'no'`, acionando o template correspondente (`post_event_feedback_no`, `post_event_feedback_en` ou `post_event_feedback_pt`).
+4. **Idempotência:** Após o envio bem-sucedido, a inscrição é atualizada com `feedbackSent: true`, impedindo reenvios duplicados.
+5. **Proteção Anti-Confirmação:** Alunos importados possuem `emailSent: true` nativo, garantindo que **nunca** recebam e-mails de confirmação de inscrição fora de época.
+
+### B. Cálculo em Tempo Real de Contadores e Vagas
+Para evitar dessincronizações entre contadores estáticos e a realidade do banco:
+* O painel administrativo (`AdminDashboard.jsx`) calcula em tempo real o número de inscritos reais de cada evento cruzando a coleção `events` com `enrollments` (contando `enrolled` + `attended`).
+* O número de vagas restantes é deduzido dinamicamente (`totalSpots - enrolledCount`), exibindo badges precisos tanto na agenda ativa quanto no histórico de eventos passados.
+
+## 7. Ficha Cadastral e CRM Individual do Aluno (`UserDetailModal.jsx`)
+* **Layout Simétrico em Duas Colunas:** 
+  * *Coluna 1 (Dados Pessoais):* Telefone/WhatsApp, Data de Nascimento (com cálculo dinâmico de idade) e Cidade/País.
+  * *Coluna 2 (Endereço Residencial):* Rua/Endereço, Bairro (destacado e fundamental para mapeamento comunitário) e CEP/Postnr.
+  * *Largura Total Inferior:* Observações da importação e histórico do parceiro de origem.
+* **Persistência com Sincronização Dupla:** A edição de cadastros atualiza chaves em inglês e português (`address`/`endereco`, `neighborhood`/`bairro`, `zip`/`cep`, `city`/`cidade`, `country`/`pais`) garantindo compatibilidade total entre módulos legados e novos do BaaS.

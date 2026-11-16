@@ -245,6 +245,37 @@ Para não poluir este manifesto com regras de infraestrutura complexa, os manuai
 * **Planilha Modelo Oficial:** Disponibilizada para download no painel administrativo e em `public/templates/modelo_importacao_alunos.xlsx`, contendo cabeçalhos padronizados (`nome_completo`, `email`, `telefone`, `cidade`, `bairro`, `pais`, `idioma`, `parceiro_origem`, `observacoes`) e aba de instruções de preenchimento.
 * **Regras de Negócio e Segurança de Dados:**
   * **Regra Anti-Spam (Escudo da Outbox):** Toda inscrição gerada via importação DEVE ter `emailSent: true` gravado no documento da coleção `enrollments`. Isso impede que o robô de envio (`crm-cron.js`) interprete o registro como pendente na Outbox e dispare e-mails de confirmação para eventos retroativos.
+  * **Mapeamento Multilíngue de Endereço:** Extração flexível de colunas em português, inglês e norueguês para logradouro (`rua`, `endereco`, `address`, `street`, `gateadresse`), bairro (`bairro`, `neighborhood`, `bydel`, `omrade`, `distrito`) e CEP (`cep`, `zip`, `postal_code`, `postnummer`, `postnr`), sincronizando tanto o perfil mestre (`users`) quanto o registro de inscrição (`enrollments`).
+  * **Fallback Geográfico de Idioma:** Caso o arquivo do parceiro não informe a coluna de idioma, o sistema adota estritamente o norueguês (`userLang: 'no'`), garantindo que e-mails automatizados sejam disparados no idioma local da organização e dos parceiros em Oslo/Bærum.
   * **Deduplicação de Contatos:** A validação compara o e-mail da linha com os registros existentes na coleção `users`. Se o contato já existir, seus dados preenchidos anteriormente são preservados e novos campos ausentes são enriquecidos; se for novo, o perfil é criado com `hasAuthAccount: false` e `source: 'partner_import'`.
-  * **Vínculo Opcional a Workshops:** Permite associar a lista a um workshop existente da Agenda com status `attended` (concluído) ou `enrolled` (futuro).
+  * **Vínculo Opcional a Workshops:** Permite associar a lista a um workshop existente da Agenda com status `attended` (concluído) ou `enrolled` (futuro), com exibição de datas resilientes a variações de parâmetros.
 * **Componentes Responsáveis:** `src/components/admin/ImportUsersModal.jsx`, `src/components/admin/RegisteredUsersManager.jsx` e `public/templates/modelo_importacao_alunos.xlsx`.
+
+## 13. Gestão de Contadores, Vagas e Ficha do Aluno (Micro CRM)
+* **Contadores em Tempo Real no Painel Admin (`AdminDashboard.jsx`):**
+  * O método `fetchEvents()` calcula a contagem real de alunos por workshop consultando diretamente os documentos da coleção `enrollments` (agregando status `enrolled` e `attended`).
+  * Elimina discrepâncias visuais em eventos históricos (que exibiam vagas zeradas ou cheias estáticas). As vagas restantes refletem dinamicamente `totalSpots - enrolledCount` com badge preciso.
+  * A lista de eventos passados é ordenada por padrão com os eventos mais recentes no topo.
+* **Layout Simétrico e Sem Ruídos na Ficha do Aluno (`UserDetailModal.jsx`):**
+  * Estrutura em duas colunas rigorosamente simétricas com 3 linhas cada:
+    * *Coluna 1 (Dados Pessoais):* Telefone/WhatsApp, Data de Nascimento (com idade calculada) e Cidade/País.
+    * *Coluna 2 (Endereço Residencial):* Rua/Endereço, Bairro (destacado e fundamental para mapeamento geográfico comunitário) e CEP/Postnr.
+    * *Abaixo das Colunas (Largura Total):* Bloco de Observações da Importação e histórico do parceiro de origem.
+  * *Persistência Bilíngue:* Ao editar a ficha, a gravação atualiza simultaneamente chaves em inglês e português (`address`/`endereco`, `neighborhood`/`bairro`, `zip`/`cep`, `city`/`cidade`, `country`/`pais`).
+* **Automação de Feedback Pós-Evento (`api/crm-cron.js`):**
+  * O robô diário das 08:00 UTC dispara a pesquisa de avaliação (`post_event_feedback`) para eventos concluídos no dia anterior tanto para alunos `enrolled` quanto para alunos `attended` (importados de parceiros), respeitando o template do idioma do aluno (`post_event_feedback_no`).
+
+## 14. Padrões de Interface da Agenda (`AgendaPage.jsx` & `WorkshopAgendaSection.jsx`)
+* **Integridade dos Programas Mestres:** Os filtros da Agenda suportam única e exclusivamente os 3 programas oficiais da organização: `Be The Dance`, `Biostretch` e `Kroppsskole`. Cursos como *Good Morning Dance* pertencem hierarquicamente ao programa *Be The Dance* e não devem figurar como botões de programa de topo.
+* **Ordem Responsiva no Mobile:**
+  * No celular, o card do workshop inverte a ordem dos blocos via Tailwind (`order-1` / `order-2`):
+    * *Topo (order-1):* Tag do programa, Nome do Workshop e Local, com linha divisória sutil na base (`border-b`).
+    * *Centro (order-2):* Período de datas, horários, número de encontros, carga horária e links de calendário.
+    * *Base (order-3):* Identificação do instrutor e botão de inscrição.
+  * No computador, mantém-se a composição horizontal com duas colunas lado a lado intacta.
+* **Padronização Nobre do Cabeçalho Hero:**
+  * O topo da Agenda foi equalizado para espelhar a hierarquia visual de `PricingPage.jsx` (Valores & Acesso):
+    * *Kicker:* `font-heading text-[10px] tracking-[5px] uppercase text-accent block mb-4 font-semibold`
+    * *Título H1:* `font-batang text-4xl sm:text-5xl md:text-6xl text-[#F0EDE8] mb-5 tracking-tight font-normal`
+    * *Divisor Dourado:* `<div className="w-12 h-[1px] bg-accent/60 mx-auto mb-6" />`
+    * *Subtítulo:* `font-heading text-[#CFCFCF] font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto`
