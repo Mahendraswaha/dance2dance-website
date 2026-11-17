@@ -186,6 +186,7 @@ A planilha possui uma formatação avançada (cabeçalhos coloridos, painéis co
 Para não poluir este manifesto com regras de infraestrutura complexa, os manuais técnicos do projeto estão isolados na pasta docs/. Sempre que precisar alterar ou construir uma dessas áreas, oriente a IA a ler o documento correspondente:
 * **Micro CRM (E-mails, Funis, Dashboards, Cron Jobs):** Leia docs/MICRO_CRM.md
 * **Ecossistema do Notion (Projetos vs Tarefas):** Leia docs/NOTION_ARCHITECTURE.md
+* **Guia de Implantação e Handoff para Parceiros (Setup Leigo):** Leia docs/SETUP_GUIA_PARCEIRO.md
 
 ## 8. Padrões de Layout (Layout Patterns) - ATUALIZAÇÕES
 * **Workshops e Páginas de Conteúdo:** O bloco de texto principal (header e parágrafos explicativos) DEVE utilizar o container estreito e elegante max-w-[900px]. Isso garante leitura agradável e impede que o texto esprema contra as bordas ou cubra a marca d'água de background.
